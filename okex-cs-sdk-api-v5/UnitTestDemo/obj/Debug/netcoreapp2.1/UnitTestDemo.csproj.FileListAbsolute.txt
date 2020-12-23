@@ -1,0 +1,17 @@
+D:\ProgramData\OKExSDKLibrary\UnitTestDemo\bin\Debug\netcoreapp2.1\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+D:\ProgramData\OKExSDKLibrary\UnitTestDemo\bin\Debug\netcoreapp2.1\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+D:\ProgramData\OKExSDKLibrary\UnitTestDemo\bin\Debug\netcoreapp2.1\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+D:\ProgramData\OKExSDKLibrary\UnitTestDemo\bin\Debug\netcoreapp2.1\UnitTestDemo.deps.json
+D:\ProgramData\OKExSDKLibrary\UnitTestDemo\bin\Debug\netcoreapp2.1\UnitTestDemo.runtimeconfig.json
+D:\ProgramData\OKExSDKLibrary\UnitTestDemo\bin\Debug\netcoreapp2.1\UnitTestDemo.runtimeconfig.dev.json
+D:\ProgramData\OKExSDKLibrary\UnitTestDemo\bin\Debug\netcoreapp2.1\UnitTestDemo.dll
+D:\ProgramData\OKExSDKLibrary\UnitTestDemo\bin\Debug\netcoreapp2.1\UnitTestDemo.pdb
+D:\ProgramData\OKExSDKLibrary\UnitTestDemo\bin\Debug\netcoreapp2.1\OKExSDKLibrary.dll
+D:\ProgramData\OKExSDKLibrary\UnitTestDemo\bin\Debug\netcoreapp2.1\OKExSDKLibrary.pdb
+D:\ProgramData\OKExSDKLibrary\UnitTestDemo\obj\Debug\netcoreapp2.1\UnitTestDemo.csprojAssemblyReference.cache
+D:\ProgramData\OKExSDKLibrary\UnitTestDemo\obj\Debug\netcoreapp2.1\UnitTestDemo.csproj.CoreCompileInputs.cache
+D:\ProgramData\OKExSDKLibrary\UnitTestDemo\obj\Debug\netcoreapp2.1\UnitTestDemo.AssemblyInfoInputs.cache
+D:\ProgramData\OKExSDKLibrary\UnitTestDemo\obj\Debug\netcoreapp2.1\UnitTestDemo.AssemblyInfo.cs
+D:\ProgramData\OKExSDKLibrary\UnitTestDemo\obj\Debug\netcoreapp2.1\UnitTestDemo.csproj.CopyComplete
+D:\ProgramData\OKExSDKLibrary\UnitTestDemo\obj\Debug\netcoreapp2.1\UnitTestDemo.dll
+D:\ProgramData\OKExSDKLibrary\UnitTestDemo\obj\Debug\netcoreapp2.1\UnitTestDemo.pdb

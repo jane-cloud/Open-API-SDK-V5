@@ -1,0 +1,371 @@
+﻿<Window x:Class="WebSocketDemo.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WebSocketDemo"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="865.65" Width="900">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <TabControl>
+            <TabItem Header="WebSocket">
+                <ScrollViewer Margin="2,0,0,0">
+                    <StackPanel Orientation="Vertical">
+
+                        <Grid>
+                            <TabControl Margin="0,0,-25.4,0" >
+                                <TabItem Header="设置apikey">
+                                    <ScrollViewer>
+                                        <StackPanel Orientation="Vertical">
+                                            <GroupBox Header="设置ApiKey等信息" Width="811">
+                                                <StackPanel Orientation="Horizontal" Margin="4">
+                                                    <Label Height="26">apikey：</Label>
+                                                    <TextBox Width="96" Height="26"  VerticalContentAlignment="Center" Name="apikey"></TextBox>
+                                                    <Label Height="26">secret：</Label>
+                                                    <TextBox Width="106" Height="26" Name="secret_" ></TextBox>
+                                                    <Label Height="26">passphrase：</Label>
+                                                    <TextBox Width="106" Height="26"  Name="passphrase"></TextBox>
+                                                    <Button Content="确定" HorizontalAlignment="Left" VerticalAlignment="Top" Width="76" Click="btnSetKey"/>
+                                                </StackPanel>
+                                            </GroupBox>
+
+                                        </StackPanel>
+                                    </ScrollViewer>
+                                </TabItem>
+                                <TabItem Header="公共频道" RenderTransformOrigin="1.57,16.786">
+                                    <GroupBox>
+                                        <StackPanel Orientation="Vertical">
+                                            <Grid Height="46" Margin="0,0,-0.2,0">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="108*"/>
+                                                    <ColumnDefinition Width="13*"/>
+                                                    <ColumnDefinition Width="672*"/>
+                                                </Grid.ColumnDefinitions>
+                                                <Button Content="订阅(public)" HorizontalAlignment="Left" Margin="10,8,0,0" VerticalAlignment="Top" Width="88" Click="btnSubscribe"/>
+                                                <Button Content="取消订阅(public)" HorizontalAlignment="Left" Margin="103,8,0,0" VerticalAlignment="Top" Width="106" Click="btnUnSubscribe" Grid.ColumnSpan="3"/>
+                                                <Button Content="连接(public)" HorizontalAlignment="Left" Margin="99.6,8,0,0" VerticalAlignment="Top" Width="76" Click="btnConnect" Grid.Column="2"/>
+                                            </Grid>
+
+                                            <GroupBox Header="搜索参数" Width="811" >
+                                                <StackPanel Orientation="Vertical">
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <Label Height="26" Content="频道说明："></Label>
+                                                        <ComboBox Name="channel_public" Width="100" SelectedIndex="0" Margin="10">
+                                                            <ComboBoxItem >请选择频道</ComboBoxItem>
+                                                            <ComboBoxItem >instruments/产品频道</ComboBoxItem>
+                                                            <ComboBoxItem>tickers/行情频道</ComboBoxItem>
+                                                            <ComboBoxItem>open-interest/持仓总量频道</ComboBoxItem>
+                                                            <ComboBoxItem>candle/K线频道</ComboBoxItem>
+                                                            <ComboBoxItem>trades/交易频道</ComboBoxItem>
+                                                            <ComboBoxItem>estimated-price/预估交割/行权价格频道</ComboBoxItem>
+                                                            <ComboBoxItem>mark-price/标记价格频道</ComboBoxItem>
+                                                            <ComboBoxItem>mark-price-candle/标记价格K线频道</ComboBoxItem>
+                                                            <ComboBoxItem>price-limit/限价频道</ComboBoxItem>
+                                                            <ComboBoxItem>books/深度频道</ComboBoxItem>
+                                                            <ComboBoxItem>opt-summary/期权定价频道</ComboBoxItem>
+                                                            <ComboBoxItem>funding-rate/资金费率频道</ComboBoxItem>
+                                                            <ComboBoxItem>index-candle/指数K线频道</ComboBoxItem>
+                                                            <ComboBoxItem>index-tickers/指数行情频道</ComboBoxItem>
+                                                        </ComboBox>
+                                                        <Label Height="26" Content="instType：" HorizontalContentAlignment="Right"></Label>
+                                                        <ComboBox Name="instType_public" Width="100" SelectedIndex="0" Margin="10">
+                                                            <ComboBoxItem >请选择产品类型</ComboBoxItem>
+                                                            <ComboBoxItem >SPOT</ComboBoxItem>
+                                                            <ComboBoxItem>SWAP</ComboBoxItem>
+                                                            <ComboBoxItem>FUTURES</ComboBoxItem>
+                                                            <ComboBoxItem>OPTION</ComboBoxItem>
+                                                            <ComboBoxItem>ANY</ComboBoxItem>
+                                                        </ComboBox>
+                                                        <Label Height="26" Content="instId："></Label>
+                                                        <TextBox Width="138" Height="25" Name="instId_public">
+                                                            <TextBox.Resources>
+                                                                <VisualBrush x:Key="HintText" TileMode="None" Opacity="0.5" Stretch="None" AlignmentX="Left">
+                                                                    <VisualBrush.Visual>
+                                                                        <TextBox Width="138" Height="25" Text="请输入instId"  FontStyle="Italic"></TextBox>
+                                                                    </VisualBrush.Visual>
+                                                                </VisualBrush>
+                                                            </TextBox.Resources>
+                                                            <TextBox.Style>
+                                                                <Style TargetType="TextBox">
+                                                                    <Style.Triggers>
+                                                                        <Trigger Property="Text" Value="{x:Null}">
+                                                                            <Setter Property="Background" Value="{StaticResource HintText}"/>
+                                                                        </Trigger>
+                                                                        <Trigger Property="Text" Value="">
+                                                                            <Setter Property="Background" Value="{StaticResource HintText}"/>
+                                                                        </Trigger>
+                                                                    </Style.Triggers>
+                                                                </Style>
+                                                            </TextBox.Style>
+                                                        </TextBox>
+                                                        <Label Height="26" Content="K线时间粒度："></Label>
+                                                        <ComboBox Name="candle_public" Width="100" SelectedIndex="0" Margin="10">
+                                                            <ComboBoxItem >请选择时间粒度</ComboBoxItem>
+                                                            <ComboBoxItem >1Y</ComboBoxItem>
+                                                            <ComboBoxItem >6M</ComboBoxItem>
+                                                            <ComboBoxItem >3M</ComboBoxItem>
+                                                            <ComboBoxItem >1M</ComboBoxItem>
+                                                            <ComboBoxItem >1W</ComboBoxItem>
+                                                            <ComboBoxItem >1D</ComboBoxItem>
+                                                            <ComboBoxItem >2D</ComboBoxItem>
+                                                            <ComboBoxItem >3D</ComboBoxItem>
+                                                            <ComboBoxItem >5D</ComboBoxItem>
+                                                            <ComboBoxItem >12H</ComboBoxItem>
+                                                            <ComboBoxItem >6H</ComboBoxItem>
+                                                            <ComboBoxItem >4H</ComboBoxItem>
+                                                            <ComboBoxItem >2H</ComboBoxItem>
+                                                            <ComboBoxItem >1H</ComboBoxItem>
+                                                            <ComboBoxItem >30m</ComboBoxItem>
+                                                            <ComboBoxItem >15m</ComboBoxItem>
+                                                            <ComboBoxItem >5m</ComboBoxItem>
+                                                            <ComboBoxItem >3m</ComboBoxItem>
+                                                            <ComboBoxItem >1m</ComboBoxItem>
+                                                        </ComboBox>
+                                                        <Label HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,8,0,0" Width="83">123</Label>
+                                                    </StackPanel>
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <Label Height="26" Content="深度档位：" Width="65"></Label>
+                                                        <ComboBox Name="books_public" Width="114" SelectedIndex="0" Margin="10">
+                                                            <ComboBoxItem >请选择深度档位</ComboBoxItem>
+                                                            <ComboBoxItem >books</ComboBoxItem>
+                                                            <ComboBoxItem>books5</ComboBoxItem>
+                                                            <ComboBoxItem>books-l2-tbt</ComboBoxItem>
+                                                        </ComboBox>
+                                                        <Label Height="26" Content="uly："></Label>
+                                                        <TextBox Width="138" Height="25" Name="uly_public">
+                                                            <TextBox.Resources>
+                                                                <VisualBrush x:Key="HintText" TileMode="None" Opacity="0.5" Stretch="None" AlignmentX="Left">
+                                                                    <VisualBrush.Visual>
+                                                                        <TextBox  Width="138" Height="25" Text="请输入uly"  FontStyle="Italic"></TextBox>
+                                                                    </VisualBrush.Visual>
+                                                                </VisualBrush>
+                                                            </TextBox.Resources>
+                                                            <TextBox.Style>
+                                                                <Style TargetType="TextBox">
+                                                                    <Style.Triggers>
+                                                                        <Trigger Property="Text" Value="{x:Null}">
+                                                                            <Setter Property="Background" Value="{StaticResource HintText}"/>
+                                                                        </Trigger>
+                                                                        <Trigger Property="Text" Value="">
+                                                                            <Setter Property="Background" Value="{StaticResource HintText}"/>
+                                                                        </Trigger>
+                                                                    </Style.Triggers>
+                                                                </Style>
+                                                            </TextBox.Style>
+                                                        </TextBox>
+                                                    </StackPanel>
+                                                </StackPanel>
+                                            </GroupBox>
+                                        </StackPanel>
+                                    </GroupBox>
+                                </TabItem>
+                                <TabItem Header="私有频道">
+                                    <ScrollViewer>
+                                        <StackPanel Orientation="Vertical">
+                                            <Grid Height="62">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="107*"/>
+                                                    <ColumnDefinition Width="678*"/>
+                                                </Grid.ColumnDefinitions>
+                                                <Button Content="订阅(私有频道)" HorizontalAlignment="Left" Margin="10,8,0,0" VerticalAlignment="Top" Width="132" Click="btnSubscribe" Grid.ColumnSpan="2"/>
+                                                <Button Content="取消订阅(私有频道)" HorizontalAlignment="Left" Margin="45.4,8,0,0" VerticalAlignment="Top" Width="127" Click="btnUnSubscribe" Grid.Column="1"/>
+                                                <Button Content="登录(私有频道)" HorizontalAlignment="Left" Margin="177.4,8,0,0" VerticalAlignment="Top" Width="124" Click="btnLogin" Grid.Column="1"/>
+                                                <Button Content="连接(私有频道)" HorizontalAlignment="Left" Margin="326.4,8,0,0" VerticalAlignment="Top" Width="101" Click="btnConnect" Grid.Column="1"/>
+                                            </Grid>
+
+                                            <GroupBox Header="搜索参数" Width="811">
+                                                <StackPanel Orientation="Vertical">
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <Label Height="26" Content="频道说明："></Label>
+                                                        <ComboBox Name="channel_private" Width="100" SelectedIndex="0" Margin="10">
+                                                            <ComboBoxItem >请选择频道</ComboBoxItem>
+                                                            <ComboBoxItem>account/账户频道</ComboBoxItem>
+                                                            <ComboBoxItem>positions/持仓频道/</ComboBoxItem>
+                                                            <ComboBoxItem>orders/订单频道</ComboBoxItem>
+                                                            <ComboBoxItem>orders-algo/策略委托订单频道</ComboBoxItem>
+                                                        </ComboBox>
+                                                        <Label Height="26" Content="ccy："></Label>
+                                                        <TextBox Name="ccy_private" Width="138" Height="25"></TextBox>
+                                                        <Label Height="26" Content="instType：" HorizontalContentAlignment="Right"></Label>
+                                                        <ComboBox Name="instType_private" Width="100" SelectedIndex="0" Margin="10">
+                                                            <ComboBoxItem >请选择产品类型</ComboBoxItem>
+                                                            <ComboBoxItem >SPOT</ComboBoxItem>
+                                                            <ComboBoxItem>SWAP</ComboBoxItem>
+                                                            <ComboBoxItem>FUTURES</ComboBoxItem>
+                                                            <ComboBoxItem>OPTION</ComboBoxItem>
+                                                            <ComboBoxItem>ANY</ComboBoxItem>
+                                                        </ComboBox>
+                                                        <Label Height="26" Content="instId："></Label>
+                                                        <TextBox Width="138" Height="25" Name="instId_private">
+                                                            <TextBox.Resources>
+                                                                <VisualBrush x:Key="HintText" TileMode="None" Opacity="0.5" Stretch="None" AlignmentX="Left">
+                                                                    <VisualBrush.Visual>
+                                                                        <TextBox Width="138" Height="25" Text="请输入instId"  FontStyle="Italic"></TextBox>
+                                                                    </VisualBrush.Visual>
+                                                                </VisualBrush>
+                                                            </TextBox.Resources>
+                                                            <TextBox.Style>
+                                                                <Style TargetType="TextBox">
+                                                                    <Style.Triggers>
+                                                                        <Trigger Property="Text" Value="{x:Null}">
+                                                                            <Setter Property="Background" Value="{StaticResource HintText}"/>
+                                                                        </Trigger>
+                                                                        <Trigger Property="Text" Value="">
+                                                                            <Setter Property="Background" Value="{StaticResource HintText}"/>
+                                                                        </Trigger>
+                                                                    </Style.Triggers>
+                                                                </Style>
+                                                            </TextBox.Style>
+                                                        </TextBox>
+
+
+                                                    </StackPanel>
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <Label Height="26" Content="uly："></Label>
+                                                        <TextBox Width="138" Height="25" Name="uly_private">
+                                                            <TextBox.Resources>
+                                                                <VisualBrush x:Key="HintText" TileMode="None" Opacity="0.5" Stretch="None" AlignmentX="Left">
+                                                                    <VisualBrush.Visual>
+                                                                        <TextBox  Width="138" Height="25" Text="请输入uly"  FontStyle="Italic"></TextBox>
+                                                                    </VisualBrush.Visual>
+                                                                </VisualBrush>
+                                                            </TextBox.Resources>
+                                                            <TextBox.Style>
+                                                                <Style TargetType="TextBox">
+                                                                    <Style.Triggers>
+                                                                        <Trigger Property="Text" Value="{x:Null}">
+                                                                            <Setter Property="Background" Value="{StaticResource HintText}"/>
+                                                                        </Trigger>
+                                                                        <Trigger Property="Text" Value="">
+                                                                            <Setter Property="Background" Value="{StaticResource HintText}"/>
+                                                                        </Trigger>
+                                                                    </Style.Triggers>
+                                                                </Style>
+                                                            </TextBox.Style>
+                                                        </TextBox>
+                                                    </StackPanel>
+                                                </StackPanel>
+                                            </GroupBox>
+                                        </StackPanel>
+                                    </ScrollViewer>
+                                </TabItem>
+                                <TabItem Header="交易" Height="21" Margin="-1.8,-2,-2.2,0" VerticalAlignment="Top" >
+                                    <ScrollViewer>
+                                        <StackPanel Orientation="Vertical" Height="480">
+                                            <Grid Height="62">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="107*"/>
+                                                    <ColumnDefinition Width="678*"/>
+                                                </Grid.ColumnDefinitions>
+                                                <Button Content="订阅(交易)" HorizontalAlignment="Left" Margin="10,8,0,0" VerticalAlignment="Top" Width="76" Click="btnSubscribe"/>
+                                                <Button Content="登录(交易)" HorizontalAlignment="Right" Margin="0,10,705,0" VerticalAlignment="Top" Width="76" Click="btnLogin" Grid.ColumnSpan="2"/>
+                                                <Button Content="连接(交易)" HorizontalAlignment="Left" Margin="52.8,10,0,0" VerticalAlignment="Top" Width="76" Click="btnConnect" Grid.Column="1"/>
+                                            </Grid>
+                                            <GroupBox  Header="频道" Width="852" Height="68">
+                                                <StackPanel Orientation="Vertical">
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <ComboBox Name="channel_order" Width="100" SelectedIndex="0" Margin="10">
+                                                            <ComboBoxItem >请选择频道</ComboBoxItem>
+                                                            <ComboBoxItem>order/下单</ComboBoxItem>
+                                                            <ComboBoxItem>batch-orders/批量下单</ComboBoxItem>
+                                                            <ComboBoxItem>cancel-order/撤单</ComboBoxItem>
+                                                            <ComboBoxItem>batch-cancel-orders/批量撤单</ComboBoxItem>
+                                                            <ComboBoxItem>amend-order/改单</ComboBoxItem>
+                                                            <ComboBoxItem>batch-amend-orders/批量改单</ComboBoxItem>
+                                                        </ComboBox>
+                                                    </StackPanel>
+                                                </StackPanel>
+                                            </GroupBox>
+                                            <GroupBox Header="下单/批量下单(批量下单使用英文逗号,分隔多个参数)" Width="856" Height="146">
+                                                <StackPanel Orientation="Vertical">
+
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <Label Height="26" Content="频道说明："></Label>
+
+                                                        <Label Height="26" HorizontalContentAlignment="Right" Content="id：" Width="32"></Label>
+                                                        <TextBox Name="id_order" Width="138" Height="24" ></TextBox>
+                                                        <Label Height="26" HorizontalContentAlignment="Right" Content="instId：" Width="49"></Label>
+                                                        <TextBox Name="instId_order" Width="138" Height="24" ></TextBox>
+                                                        <Label Height="26" HorizontalContentAlignment="Right" Content="clOrdId：" Width="58"></Label>
+                                                        <TextBox Name="clOrdId_order" Width="138" Height="24" ></TextBox>
+                                                        <Label Height="26" HorizontalContentAlignment="Right" Content="tdMode：" Width="63"></Label>
+                                                        <TextBox Name="tdMode_order" Width="138" Height="24" ></TextBox>
+                                                    </StackPanel>
+                                                    <StackPanel Orientation="Horizontal" Height="39" Margin="0,0,0.2,0">
+
+                                                        <Label Height="26" HorizontalContentAlignment="Right" Content="ccy：" Width="51"></Label>
+                                                        <TextBox Name="ccy_order" Width="138" Height="24" ></TextBox>
+                                                        <Label Height="26" HorizontalContentAlignment="Right" Content="side：" Width="51"></Label>
+                                                        <TextBox Name="side_order" Width="138" Height="24" ></TextBox>
+                                                        <Label Height="26" HorizontalContentAlignment="Right" Content="ordType：" Width="76"></Label>
+                                                        <TextBox Name="ordType_order" Width="138" Height="24" ></TextBox>
+                                                        <Label Height="26" HorizontalContentAlignment="Right" Content="sz：" Width="39"></Label>
+                                                        <TextBox Name="sz_order" Width="138" Height="24" ></TextBox>
+                                                    </StackPanel>
+                                                    <StackPanel Orientation="Horizontal" Height="38" Margin="0,0,0.2,0">
+
+                                                        <Label Height="26" HorizontalContentAlignment="Right" Content="posSide：" Width="70"></Label>
+                                                        <TextBox Name="posSide_order" Width="138" Height="24" ></TextBox>
+                                                        <Label Height="26" HorizontalContentAlignment="Right" Content="tag：" Width="51"></Label>
+                                                        <TextBox Name="tag_order" Width="138" Height="24" ></TextBox>
+                                                        <Label Height="26" HorizontalContentAlignment="Right" Content="px：" Width="76"></Label>
+                                                        <TextBox Name="px_order" Width="138" Height="24" ></TextBox>
+                                                        <Label Height="26" HorizontalContentAlignment="Right" Content="reduceOnly：" Width="91" Margin="0,6,0,6.4"></Label>
+                                                        <TextBox Name="reduceOnly_order" Width="138" Height="24" ></TextBox>
+                                                    </StackPanel>
+                                                </StackPanel>
+                                            </GroupBox>
+                                            <GroupBox Header="撤单/批量撤单(批量下单使用英文逗号,分隔多个参数)" Width="856" Height="74">
+                                                <StackPanel Orientation="Vertical">
+                                                    <StackPanel Orientation="Horizontal" Height="41" Margin="0,0,0.2,0">
+                                                        <Label Height="26" HorizontalContentAlignment="Right" Content="id：" Width="39"></Label>
+                                                        <TextBox Name="id_cancel" Width="138" Height="24" ></TextBox>
+                                                        <Label Height="26" HorizontalContentAlignment="Right" Content="instId：" Width="51"></Label>
+                                                        <TextBox Name="instId_cancel" Width="138" Height="24" ></TextBox>
+                                                        <Label Height="26" HorizontalContentAlignment="Right" Content="ordId：" Width="58"></Label>
+                                                        <TextBox Name="ordId_cancel" Width="138" Height="24" ></TextBox>
+                                                        <Label Height="26" HorizontalContentAlignment="Right" Content="clOrdId：" Width="58"></Label>
+                                                        <TextBox Name="clOrdId_cancel" Width="138" Height="24" ></TextBox>
+                                                    </StackPanel>
+                                                </StackPanel>
+                                            </GroupBox>
+                                            <GroupBox Header="改单/批量改单(批量下单使用英文逗号,分隔多个参数)" Width="854" Height="105">
+                                                <StackPanel Orientation="Vertical">
+                                                    <StackPanel Orientation="Horizontal" Height="39" Margin="0,0,-0.4,0">
+                                                        <Label Height="26" HorizontalContentAlignment="Right" Content="id：" Width="48"></Label>
+                                                        <TextBox Name="id_amend" Width="138" Height="24" ></TextBox>
+                                                        <Label Height="26" HorizontalContentAlignment="Right" Content="instId：" Width="48"></Label>
+                                                        <TextBox Name="instId_amend" Width="138" Height="24" ></TextBox>
+                                                        <Label Height="26" HorizontalContentAlignment="Right" Content="ordId：" Width="58"></Label>
+                                                        <TextBox Name="ordId_amend" Width="138" Height="24" ></TextBox>
+                                                        <Label Height="26" HorizontalContentAlignment="Right" Content="clOrdId：" Width="71"></Label>
+                                                        <TextBox Name="clOrdId_amend" Width="138" Height="24" ></TextBox>
+
+                                                    </StackPanel>
+                                                    <StackPanel Orientation="Horizontal" Height="41" Margin="0,0,-0.4,0">
+                                                        <Label Height="26" HorizontalContentAlignment="Right" Content="cxlOnFail：" Width="67"></Label>
+                                                        <TextBox Name="cxlOnFail_amend" Width="138" Height="24" ></TextBox>
+                                                        <Label Height="26" HorizontalContentAlignment="Right" Content="reqId：" Width="58"></Label>
+                                                        <TextBox Name="reqId_amend" Width="138" Height="24" ></TextBox>
+                                                        <Label Height="26" HorizontalContentAlignment="Right" Content="newSz：" Width="61"></Label>
+                                                        <TextBox Name="newSz_amend" Width="138" Height="24" ></TextBox>
+                                                        <Label Height="26" HorizontalContentAlignment="Right" Content="newPx：" Width="50"></Label>
+                                                        <TextBox Name="newPx_amend" Width="143" Height="24" ></TextBox>
+                                                    </StackPanel>
+                                                </StackPanel>
+                                            </GroupBox>
+                                        </StackPanel>
+                                    </ScrollViewer>
+                                </TabItem>
+                            </TabControl>
+                        </Grid>
+                        <RichTextBox Name="msgBox" Height="500"></RichTextBox>
+                    </StackPanel>
+                </ScrollViewer>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>

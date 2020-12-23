@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.1169
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OKExSDKLibrary", "OKExSDKLibrary\OKExSDKLibrary.csproj", "{53F08982-BFE0-456E-8F60-8225420C09A7}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTestDemo", "UnitTestDemo\UnitTestDemo.csproj", "{5486EC99-E9D4-4AC2-828B-E99F3A363C6D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OKExSDK", "OKExSDK\OKExSDK.csproj", "{917D0134-27DF-44EB-B77D-89675DA4BAFA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebSocketDemo", "WebSocketDemo\WebSocketDemo.csproj", "{5964E157-DCFA-442D-8246-3BF6B5E2ADC2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{53F08982-BFE0-456E-8F60-8225420C09A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{53F08982-BFE0-456E-8F60-8225420C09A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{53F08982-BFE0-456E-8F60-8225420C09A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{53F08982-BFE0-456E-8F60-8225420C09A7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5486EC99-E9D4-4AC2-828B-E99F3A363C6D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5486EC99-E9D4-4AC2-828B-E99F3A363C6D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5486EC99-E9D4-4AC2-828B-E99F3A363C6D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5486EC99-E9D4-4AC2-828B-E99F3A363C6D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{917D0134-27DF-44EB-B77D-89675DA4BAFA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{917D0134-27DF-44EB-B77D-89675DA4BAFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{917D0134-27DF-44EB-B77D-89675DA4BAFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{917D0134-27DF-44EB-B77D-89675DA4BAFA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5964E157-DCFA-442D-8246-3BF6B5E2ADC2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5964E157-DCFA-442D-8246-3BF6B5E2ADC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5964E157-DCFA-442D-8246-3BF6B5E2ADC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5964E157-DCFA-442D-8246-3BF6B5E2ADC2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6361E8E0-0D2E-40A9-9B53-B53A90334AAA}
+	EndGlobalSection
+EndGlobal
