@@ -1,0 +1,9 @@
+D:\ProgramData\OKExSDKLibrary\OKExSDKLibrary\bin\Debug\netcoreapp2.1\OKExSDKLibrary.deps.json
+D:\ProgramData\OKExSDKLibrary\OKExSDKLibrary\bin\Debug\netcoreapp2.1\OKExSDKLibrary.dll
+D:\ProgramData\OKExSDKLibrary\OKExSDKLibrary\bin\Debug\netcoreapp2.1\OKExSDKLibrary.pdb
+D:\ProgramData\OKExSDKLibrary\OKExSDKLibrary\obj\Debug\netcoreapp2.1\OKExSDKLibrary.csproj.CoreCompileInputs.cache
+D:\ProgramData\OKExSDKLibrary\OKExSDKLibrary\obj\Debug\netcoreapp2.1\OKExSDKLibrary.AssemblyInfoInputs.cache
+D:\ProgramData\OKExSDKLibrary\OKExSDKLibrary\obj\Debug\netcoreapp2.1\OKExSDKLibrary.AssemblyInfo.cs
+D:\ProgramData\OKExSDKLibrary\OKExSDKLibrary\obj\Debug\netcoreapp2.1\OKExSDKLibrary.dll
+D:\ProgramData\OKExSDKLibrary\OKExSDKLibrary\obj\Debug\netcoreapp2.1\OKExSDKLibrary.pdb
+D:\ProgramData\OKExSDKLibrary\OKExSDKLibrary\obj\Debug\netcoreapp2.1\OKExSDKLibrary.csprojAssemblyReference.cache

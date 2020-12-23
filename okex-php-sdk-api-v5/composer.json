@@ -1,0 +1,27 @@
+{
+    "name": "bigxia/ok-v3",
+    "description": "This is an api sdk about OKEx V3",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Heng Liu",
+            "email": "ai747957633@qq.com"
+        }
+    ],
+    "require": {
+        "workerman/workerman": "^3.5",
+        "phpunit/phpunit": "^8.4"
+    },
+
+    "autoload": {
+        "psr-4": {
+            "okv3\\" : "src",
+            "test\\" : "test"
+        },
+
+        "files": [
+            "src/Websocket.php"
+        ]
+    }
+}

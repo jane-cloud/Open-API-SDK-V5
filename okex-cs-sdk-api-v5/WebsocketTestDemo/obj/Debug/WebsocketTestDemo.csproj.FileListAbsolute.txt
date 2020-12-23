@@ -1,0 +1,3 @@
+D:\ProgramData\OKExSDKLibrary\WebsocketTestDemo\obj\Debug\WebsocketTestDemo.csprojAssemblyReference.cache
+D:\ProgramData\OKExSDKLibrary\WebsocketTestDemo\obj\Debug\App.g.cs
+D:\ProgramData\OKExSDKLibrary\WebsocketTestDemo\obj\Debug\WebsocketTestDemo_MarkupCompile.cache

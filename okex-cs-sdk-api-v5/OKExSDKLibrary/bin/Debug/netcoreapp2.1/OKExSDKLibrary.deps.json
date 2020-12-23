@@ -1,0 +1,57 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v2.1",
+    "signature": "5e0ae9068e519fd50a5e11b7ef35019febc3aaac"
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v2.1": {
+      "OKExSDKLibrary/1.0.0": {
+        "dependencies": {
+          "Ionic.Zip": "1.9.1.8",
+          "Newtonsoft.Json": "12.0.3"
+        },
+        "runtime": {
+          "OKExSDKLibrary.dll": {}
+        }
+      },
+      "Ionic.Zip/1.9.1.8": {
+        "runtime": {
+          "lib/Ionic.Zip.dll": {
+            "assemblyVersion": "1.9.1.8",
+            "fileVersion": "1.9.1.8"
+          }
+        }
+      },
+      "Newtonsoft.Json/12.0.3": {
+        "runtime": {
+          "lib/netstandard2.0/Newtonsoft.Json.dll": {
+            "assemblyVersion": "12.0.0.0",
+            "fileVersion": "12.0.3.23909"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "OKExSDKLibrary/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Ionic.Zip/1.9.1.8": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-E77NU0+mXFsiJG/CikkINVD/2ugIgjqRZf41pixpAArRzOUrn/2gCL4G2PBREvRVOy+wU8ZbG/UBLcH4Tkw1gg==",
+      "path": "ionic.zip/1.9.1.8",
+      "hashPath": "ionic.zip.1.9.1.8.nupkg.sha512"
+    },
+    "Newtonsoft.Json/12.0.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-6mgjfnRB4jKMlzHSl+VD+oUc1IebOZabkbyWj2RiTgWwYPPuaK1H97G1sHqGwPlS5npiF5Q0OrxN1wni2n5QWg==",
+      "path": "newtonsoft.json/12.0.3",
+      "hashPath": "newtonsoft.json.12.0.3.nupkg.sha512"
+    }
+  }
+}
