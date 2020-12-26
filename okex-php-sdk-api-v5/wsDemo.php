@@ -6,16 +6,16 @@
  * Time: 8:22 PM
  */
 
-//namespace okv3;
+//namespace okv5;
 
 require './vendor/autoload.php';
 require './Config.php';
 
-use okv3\Config;
-use okv3\PrivateChannels;
-use okv3\PublicChannels;
-use okv3\TradeChannels;
-use okv3\Websocket;
+use okv5\Config;
+use okv5\PrivateChannels;
+use okv5\PublicChannels;
+use okv5\TradeChannels;
+use okv5\Websocket;
 
 $obj = new PublicChannels(Config::$config);
 

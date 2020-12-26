@@ -1,6 +1,6 @@
 <?php
 
-namespace okv3;
+namespace okv5;
 
 class Utils
 {
@@ -12,8 +12,6 @@ class Utils
     static $textToSign = '';
 
     const FUTURE_API_URL = 'https://www.okex.com';
-//    const FUTURE_API_URL = 'https://www.vvcoin.com';
-    const SERVER_TIMESTAMP_URL = '/api/general/v3/time';
 
     public function __construct($configs)
     {
@@ -151,17 +149,6 @@ class Utils
 
     }
 
-    public static function getServerTimestamp(){
-        try{
-            $response = file_get_contents(self::FUTURE_API_URL.self::SERVER_TIMESTAMP_URL);
-            $response = json_decode($response,true);
-
-            return $response['iso'];
-        }catch (Exception $e){
-            return '';
-        }
-    }
-
     public static function signature($timestamp, $method, $requestPath, $body, $secretKey)
     {
         $message = (string) $timestamp . strtoupper($method) . $requestPath . (string) $body;
@@ -201,6 +188,5 @@ class Utils
         self::$apiSecret=$configs["apiSecret"];
         self::$passphrase=$configs["passphrase"];
         self::$paper=$configs["paper"];
-
     }
 }

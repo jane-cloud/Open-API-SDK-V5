@@ -7,7 +7,7 @@
  */
 
 
-namespace okv3;
+namespace okv5;
 
 class Config{
     public static $config=[

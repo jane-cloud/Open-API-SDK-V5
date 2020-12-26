@@ -1,6 +1,6 @@
 {
-    "name": "bigxia/ok-v3",
-    "description": "This is an api sdk about OKEx V3",
+    "name": "bigxia/ok-v5",
+    "description": "This is an api sdk about OKEx V5",
     "type": "library",
     "license": "MIT",
     "authors": [
@@ -16,7 +16,7 @@
 
     "autoload": {
         "psr-4": {
-            "okv3\\" : "src",
+            "okv5\\" : "src",
             "test\\" : "test"
         },
 

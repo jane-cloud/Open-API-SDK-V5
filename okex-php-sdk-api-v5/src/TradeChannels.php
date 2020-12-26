@@ -6,14 +6,14 @@
  * Time: 8:22 PM
  */
 
-namespace okv3;
+namespace okv5;
 
 //require '../vendor/autoload.php';
 
 use Workerman\Lib\Timer;
 use Workerman\Worker;
 use Workerman\Connection\AsyncTcpConnection;
-use okv3\ChecksumTest;
+use okv5\ChecksumTest;
 
 /*
 *订阅数据函数
@@ -46,8 +46,6 @@ class TradeChannels extends Utils{
         $worker = new Worker();
 
         // 线上
-//        $url = "ws://real.okex.com:8443/ws/v3";
-
         $url = "ws://ws.okex.com:8443/ws/v5/private?brokerId=9999";
 
         $worker->onWorkerStart = function($worker) use ($url){

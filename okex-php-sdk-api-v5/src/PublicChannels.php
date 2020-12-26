@@ -6,7 +6,7 @@
  * Time: 8:22 PM
  */
 
-namespace okv3;
+namespace okv5;
 
 //require '../vendor/autoload.php';
 
@@ -44,8 +44,6 @@ class PublicChannels extends Utils{
         $worker = new Worker();
 
         // 线上
-//        $url = "ws://real.okex.com:8443/ws/v3";
-
         $url = "ws://ws.okex.com:8443/ws/v5/public?brokerId=9999";
 
         $worker->onWorkerStart = function($worker) use ($url){

@@ -10,19 +10,12 @@ require './vendor/autoload.php';
 
 require './Config.php';
 
-use okv3\AccountApi;
-use okv3\Config;
-use okv3\FundingApi;
-use okv3\FuturesApi;
-use okv3\MarginApi;
-use okv3\MarketDataAPI;
-use okv3\OptionsApi;
-use okv3\OthersAPI;
-use okv3\PublicDataAPI;
-use okv3\SpotApi;
-use okv3\SwapApi;
-use okv3\TradeAPI;
-use okv3\TradingDataAPI;
+use okv5\AccountApi;
+use okv5\Config;
+use okv5\FundingApi;
+use okv5\MarketDataAPI;
+use okv5\PublicDataAPI;
+use okv5\TradeAPI;
 use Workerman\Connection\AsyncTcpConnection;
 use Workerman\Worker;
 
@@ -98,7 +91,7 @@ $instrumentId = "ETH-USD-200925";
 $coin = "EOS";
 $obj = new MarketDataAPI(Config::$config);
 // 获取所有产品行情信息 Get Tickers
-//$res = $obj->getTickers('FUTURES','BTC-USD');
+$res = $obj->getTickers('FUTURES','BTC-USD');
 // 获取单个产品行情信息 Get Ticker
 //$res = $obj->getTicker('BTC-USD-SWAP');
 // 获取指数行情 Get Index Tickers
@@ -170,7 +163,7 @@ $obj = new TradeAPI(Config::$config);
 
 
 // 获取成交明细 Get Transaction Details
-//$res = $obj -> getFills('SPOT','','','','','','','');
+//$res = $obj -> getFills('SPOT','','','','','','');
 
 // 策略委托下单 Place Algo Order
 //$res = $obj -> orderAlgo('BTC-USDT','cash','','buy','','trigger','0.001','','10000','10000');
