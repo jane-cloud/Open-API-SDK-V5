@@ -8,11 +8,11 @@ import json
 
 if __name__ == '__main__':
     api_key = ""
-    seceret_key = ""
+    secret_key = ""
     passphrase = ""
 
     # account api
-    accountAPI = Account.AccountAPI(api_key, seceret_key, passphrase, False)
+    accountAPI = Account.AccountAPI(api_key, secret_key, passphrase, False)
     # 查看账户余额  Get Balance
     # result = accountAPI.get_account('')
     # 查看持仓信息  Get Positions
@@ -47,7 +47,7 @@ if __name__ == '__main__':
     # result = accountAPI.get_max_withdrawal('BTC')
 
     # funding api
-    fundingAPI = Funding.FundingAPI(api_key, seceret_key, passphrase, False)
+    fundingAPI = Funding.FundingAPI(api_key, secret_key, passphrase, False)
     # 获取充值地址信息  Get Deposit Address
     # result = fundingAPI.get_deposit_address('BTC')
     # 获取资金账户余额信息  Get Balance
@@ -68,7 +68,7 @@ if __name__ == '__main__':
     # result = fundingAPI.get_bills('BTC')
 
     # market api
-    marketAPI = Market.MarketAPI(api_key, seceret_key, passphrase, False)
+    marketAPI = Market.MarketAPI(api_key, secret_key, passphrase, False)
     # 获取所有产品行情信息  Get Tickers
     # result = marketAPI.get_tickers('SWAP', 'BTC-USD')
     # 获取单个产品行情信息  Get Ticker
@@ -89,7 +89,7 @@ if __name__ == '__main__':
     # result = marketAPI.get_trades('BTC-USDT')
 
     # public api
-    publicAPI = Public.PublicAPI(api_key, seceret_key, passphrase, False)
+    publicAPI = Public.PublicAPI(api_key, secret_key, passphrase, False)
     # 获取交易产品基础信息  Get instrument
     # result = publicAPI.get_instruments('SPOT')
     # 获取交割和行权记录  Get Delivery/Exercise History
@@ -116,7 +116,7 @@ if __name__ == '__main__':
     # result = publicAPI.get_mark_price('MARGIN')
 
     # trade api
-    tradeAPI = Trade.TradeAPI(api_key, seceret_key, passphrase, False)
+    tradeAPI = Trade.TradeAPI(api_key, secret_key, passphrase, False)
     # 下单  Place Order
     # result = tradeAPI.place_order('BTC-USDT', 'cash', 'buy', 'limit', '1', px='17896')
     # 批量下单  Place Multiple Orders

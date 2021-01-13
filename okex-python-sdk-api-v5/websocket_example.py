@@ -380,7 +380,7 @@ async def unsubscribe_without_login(url, channels):
 
 
 api_key = ""
-seceret_key = ""
+secret_key = ""
 passphrase = ""
 
 
@@ -480,9 +480,9 @@ loop = asyncio.get_event_loop()
 # loop.run_until_complete(subscribe_without_login(url, channels))
 
 # 私有频道 需要登录（账户，持仓，订单等）
-# loop.run_until_complete(subscribe(url, api_key, passphrase, seceret_key, channels))
+# loop.run_until_complete(subscribe(url, api_key, passphrase, secret_key, channels))
 
 # 交易（下单，撤单，改单等）
-# loop.run_until_complete(trade(url, api_key, passphrase, seceret_key, trade_param))
+# loop.run_until_complete(trade(url, api_key, passphrase, secret_key, trade_param))
 
 loop.close()
