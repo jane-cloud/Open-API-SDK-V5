@@ -5,12 +5,13 @@ from . import consts as c, utils, exceptions
 
 class Client(object):
 
-    def __init__(self, api_key, api_secret_key, passphrase, use_server_time=False):
+    def __init__(self, api_key, api_secret_key, passphrase, use_server_time=False, flag='1'):
 
         self.API_KEY = api_key
         self.API_SECRET_KEY = api_secret_key
         self.PASSPHRASE = passphrase
         self.use_server_time = use_server_time
+        self.flag = flag
 
     def _request(self, method, request_path, params):
 
@@ -28,7 +29,7 @@ class Client(object):
         body = json.dumps(params) if method == c.POST else ""
 
         sign = utils.sign(utils.pre_hash(timestamp, method, request_path, str(body)), self.API_SECRET_KEY)
-        header = utils.get_header(self.API_KEY, sign, timestamp, self.PASSPHRASE)
+        header = utils.get_header(self.API_KEY, sign, timestamp, self.PASSPHRASE, self.flag)
 
         # send request
         response = None

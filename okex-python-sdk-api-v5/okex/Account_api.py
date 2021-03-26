@@ -4,8 +4,8 @@ from .consts import *
 
 class AccountAPI(Client):
 
-    def __init__(self, api_key, api_secret_key, passphrase, use_server_time=False):
-        Client.__init__(self, api_key, api_secret_key, passphrase, use_server_time)
+    def __init__(self, api_key, api_secret_key, passphrase, use_server_time=False, flag='1'):
+        Client.__init__(self, api_key, api_secret_key, passphrase, use_server_time, flag)
 
     # Get Balance
     def get_account(self, ccy=''):
@@ -68,8 +68,8 @@ class AccountAPI(Client):
         return self._request_with_params(GET, GET_LEVERAGE, params)
 
     # Get the maximum loan of isolated MARGIN
-    def get_max_load(self, instId):
-        params = {'instId': instId}
+    def get_max_load(self, instId, mgnMode, mgnCcy):
+        params = {'instId': instId, 'mgnMode': mgnMode, 'mgnCcy': mgnCcy}
         return self._request_with_params(GET, MAX_LOAN, params)
 
     # Get Fee Rates

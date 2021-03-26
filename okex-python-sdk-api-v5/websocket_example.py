@@ -385,9 +385,15 @@ passphrase = ""
 
 
 # WebSocket公共频道
+# 实盘
+# url = "wss://ws.okex.com:8443/ws/v5/public"
+# 模拟盘
 # url = "wss://ws.okex.com:8443/ws/v5/public?brokerId=9999"
 
 # WebSocket私有频道
+# 实盘
+# url = "wss://ws.okex.com:8443/ws/v5/private"
+# 模拟盘
 # url = "wss://ws.okex.com:8443/ws/v5/private?brokerId=9999"
 
 '''
@@ -402,29 +408,29 @@ passphrase = ""
 # 产品频道
 # channels = [{"channel": "instruments", "instType": "FUTURES"}]
 # 行情频道
-# channels = [{"channel": "tickers", "instId": "BTC-USD-201225"}]
+# channels = [{"channel": "tickers", "instId": "BTC-USD-210326"}]
 # 持仓总量频道
-# channels = [{"channel": "open-interest", "instId": "BTC-USD-201225"}]
+# channels = [{"channel": "open-interest", "instId": "BTC-USD-210326"}]
 # K线频道
-# channels = [{"channel": "candle1m", "instId": "BTC-USD-201225"}]
+# channels = [{"channel": "candle1m", "instId": "BTC-USD-210326"}]
 # 交易频道
 # channels = [{"channel": "trades", "instId": "BTC-USD-201225"}]
 # 预估交割/行权价格频道
 # channels = [{"channel": "estimated-price", "instType": "FUTURES", "uly": "BTC-USD"}]
 # 标记价格频道
-# channels = [{"channel": "mark-price", "instId": "BTC-USD-201225"}]
+# channels = [{"channel": "mark-price", "instId": "BTC-USDT-210326"}]
 # 标记价格K线频道
 # channels = [{"channel": "mark-price-candle1D", "instId": "BTC-USD-201225"}]
 # 限价频道
 # channels = [{"channel": "price-limit", "instId": "BTC-USD-201225"}]
 # 深度频道
-# channels = [{"channel": "books", "instId": "BTC-USD-201225"}]
+# channels = [{"channel": "books", "instId": "BTC-USD-SWAP"}]
 # 期权定价频道
 # channels = [{"channel": "opt-summary", "uly": "BTC-USD"}]
 # 资金费率频道
 # channels = [{"channel": "funding-rate", "instId": "BTC-USD-SWAP"}]
 # 指数K线频道
-# channels = [{"channel": "index-candle1m", "instId": "BTC-USD"}]
+# channels = [{"channel": "index-candle1m", "instId": "BTC-USDT"}]
 # 指数行情频道
 # channels = [{"channel": "index-tickers", "instId": "BTC-USDT"}]
 
@@ -441,7 +447,7 @@ passphrase = ""
 # 账户频道
 # channels = [{"channel": "account", "ccy": "BTC"}]
 # 持仓频道
-# channels = [{"channel": "positions", "instType": "FUTURES", "uly": "BTC-USD", "instId": "BTC-USD-201225"}]
+# channels = [{"channel": "positions", "instType": "FUTURES", "uly": "BTC-USDT", "instId": "BTC-USDT-210326"}]
 # 订单频道
 # channels = [{"channel": "orders", "instType": "FUTURES", "uly": "BTC-USD", "instId": "BTC-USD-201225"}]
 # 策略委托订单频道
@@ -477,7 +483,7 @@ passphrase = ""
 loop = asyncio.get_event_loop()
 
 # 公共频道 不需要登录（行情，持仓总量，K线，标记价格，深度，资金费率等）
-# loop.run_until_complete(subscribe_without_login(url, channels))
+loop.run_until_complete(subscribe_without_login(url, channels))
 
 # 私有频道 需要登录（账户，持仓，订单等）
 # loop.run_until_complete(subscribe(url, api_key, passphrase, secret_key, channels))

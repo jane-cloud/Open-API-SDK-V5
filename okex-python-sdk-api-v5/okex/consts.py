@@ -1,4 +1,3 @@
-
 # http header
 API_URL = 'https://www.okex.com'
 
@@ -7,7 +6,6 @@ OK_ACCESS_KEY = 'OK-ACCESS-KEY'
 OK_ACCESS_SIGN = 'OK-ACCESS-SIGN'
 OK_ACCESS_TIMESTAMP = 'OK-ACCESS-TIMESTAMP'
 OK_ACCESS_PASSPHRASE = 'OK-ACCESS-PASSPHRASE'
-
 
 ACEEPT = 'Accept'
 COOKIE = 'Cookie'
@@ -20,7 +18,6 @@ POST = "POST"
 
 SERVER_TIMESTAMP_URL = '/api/v5/public/time'
 
-
 # account
 ACCOUNT_INFO = '/api/v5/account/balance'
 POSITION_INFO = '/api/v5/account/positions'
@@ -31,7 +28,7 @@ POSITION_MODE = '/api/v5/account/set-position-mode'
 SET_LEVERAGE = '/api/v5/account/set-leverage'
 MAX_TRADE_SIZE = '/api/v5/account/max-size'
 MAX_AVAIL_SIZE = '/api/v5/account/max-avail-size'
-ADJUSTMENT_MARGIN='/api/v5/account/position/margin-balance'
+ADJUSTMENT_MARGIN = '/api/v5/account/position/margin-balance'
 GET_LEVERAGE = '/api/v5/account/leverage-info'
 MAX_LOAN = '/api/v5/account/max-loan'
 FEE_RATES = '/api/v5/account/trade-fee'
@@ -52,7 +49,7 @@ BILLS_INFO = '/api/v5/asset/bills'
 
 # Market Data
 TICKERS_INFO = '/api/v5/market/tickers'
-TICKER_INFO ='/api/v5/market/ticker'
+TICKER_INFO = '/api/v5/market/ticker'
 INDEX_TICKERS = '/api/v5/market/index-tickers'
 ORDER_BOOKS = '/api/v5/market/books'
 MARKET_CANDLES = '/api/v5/market/candles'
@@ -91,4 +88,16 @@ ORDER_FILLS = '/api/v5/trade/fills'
 PLACE_ALGO_ORDER = '/api/v5/trade/order-algo'
 CANCEL_ALGOS = '/api/v5/trade/cancel-algos'
 ORDERS_ALGO_OENDING = '/api/v5/trade/orders-algo-pending'
-ORDERS_ALGO_HISTORY ='/api/v5/trade/orders-algo-history'
+ORDERS_ALGO_HISTORY = '/api/v5/trade/orders-algo-history'
+
+# SubAccount
+BALANCE = '/api/v5/account/subaccount/balances'
+BILLs = '/api/v5/asset/subaccount/bills'
+DELETE = '/api/v5/users/subaccount/delete-apikey'
+RESET = '/api/v5/users/subaccount/modify-apikey'
+CREATE = '/api/v5/users/subaccount/apikey'
+VIEW_LIST = '/api/v5/users/subaccount/list'
+CONTROL_TRANSFER = '/api/v5/asset/subaccount/transfer'
+
+# status
+STATUS = '/api/v5/system/status'

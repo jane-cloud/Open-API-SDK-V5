@@ -3,16 +3,20 @@ import okex.Funding_api as Funding
 import okex.Market_api as Market
 import okex.Public_api as Public
 import okex.Trade_api as Trade
+import okex.subAccount_api as SubAccount
+import okex.status_api as Status
 import json
-
 
 if __name__ == '__main__':
     api_key = ""
     secret_key = ""
     passphrase = ""
+    # flag是实盘与模拟盘的切换参数
+    # flag = '1'  # 模拟盘
+    flag = '0'  # 实盘
 
     # account api
-    accountAPI = Account.AccountAPI(api_key, secret_key, passphrase, False)
+    accountAPI = Account.AccountAPI(api_key, secret_key, passphrase, False, flag)
     # 查看账户余额  Get Balance
     # result = accountAPI.get_account('')
     # 查看持仓信息  Get Positions
@@ -28,17 +32,17 @@ if __name__ == '__main__':
     # 设置杠杆倍数  Set Leverage
     # result = accountAPI.set_leverage('5', 'cross', 'BTC-USDT')
     # 获取最大可交易数量  Get Maximum Tradable Size For Instrument
-    # result = accountAPI.get_maximum_trade_size('BTC-USDT-201225', 'cross', 'USDT')
+    # result = accountAPI.get_maximum_trade_size('BTC-USDT-210326', 'cross', 'USDT')
     # 获取最大可用数量  Get Maximum Available Tradable Amount
-    # result = accountAPI.get_max_avail_size('BTC-USDT-201225', 'isolated', 'BTC')
+    # result = accountAPI.get_max_avail_size('BTC-USDT-210326', 'isolated', 'BTC')
     # 调整保证金  Increase/Decrease margint
     # result = accountAPI.Adjustment_margin('BTC-USDT-201225', 'long', 'add', '1')
     # 获取杠杆倍数 Get Leverage
     # result = accountAPI.get_leverage('BTC-USDT-201225', 'isolated')
     # 获取币币逐仓杠杆最大可借  Get the maximum loan of isolated MARGIN
-    # result = accountAPI.get_max_load('BTC-USDT')
+    # result = accountAPI.get_max_load('BTC-USDT', 'cross', 'BTC')
     # 获取当前账户交易手续费费率  Get Fee Rates
-    # result = accountAPI.get_fee_rates('SPOT', '', category='1')
+    # result = accountAPI.get_fee_rates('FUTURES', '', category='1')
     # 获取计息记录  Get interest-accrued
     # result = accountAPI.get_interest_accrued('BTC-USDT', 'BTC', 'isolated', '', '', '10')
     # 期权希腊字母PA / BS切换  Set Greeks (PA/BS)
@@ -47,13 +51,13 @@ if __name__ == '__main__':
     # result = accountAPI.get_max_withdrawal('BTC')
 
     # funding api
-    fundingAPI = Funding.FundingAPI(api_key, secret_key, passphrase, False)
+    fundingAPI = Funding.FundingAPI(api_key, secret_key, passphrase, False, flag)
     # 获取充值地址信息  Get Deposit Address
     # result = fundingAPI.get_deposit_address('BTC')
     # 获取资金账户余额信息  Get Balance
     # result = fundingAPI.get_balances()
     # 资金划转  Funds Transfer
-    # result = fundingAPI.funds_transfer('usdt', '1', '1', '3')
+    # result = fundingAPI.funds_transfer(ccy='', amt='', type='1', froms="", to="",subAcct='')
     # 提币  Withdrawal
     # result = fundingAPI.coin_withdraw('usdt', '2', '3', '', '', '0')
     # 充值记录  Get Deposit History
@@ -65,31 +69,31 @@ if __name__ == '__main__':
     # 余币宝申购/赎回  PiggyBank Purchase/Redemption
     # result = fundingAPI.purchase_redempt('BTC', '1', 'purchase')
     # 资金流水查询  Asset Bills Details
-    # result = fundingAPI.get_bills('BTC')
+    # result = fundingAPI.get_bills('USDT', '130')
 
     # market api
-    marketAPI = Market.MarketAPI(api_key, secret_key, passphrase, False)
+    marketAPI = Market.MarketAPI(api_key, secret_key, passphrase, False, flag)
     # 获取所有产品行情信息  Get Tickers
-    # result = marketAPI.get_tickers('SWAP', 'BTC-USD')
+    # result = marketAPI.get_tickers('FUTURES', 'BTC-USDT')
     # 获取单个产品行情信息  Get Ticker
     # result = marketAPI.get_ticker('BTC-USDT-SWAP')
     # 获取指数行情  Get Index Tickers
     # result = marketAPI.get_index_ticker('BTC')
     # 获取产品深度  Get Order Book
-    # result = marketAPI.get_orderbook('BTC-USDT')
+    # result = marketAPI.get_orderbook('BTC-USDT-210326')
     # 获取所有交易产品K线数据  Get Candlesticks
-    # result = marketAPI.get_candlesticks('BTC-USDT')
+    # result = marketAPI.get_candlesticks('BTC-USDT-210924', bar='1m')
     # 获取交易产品历史K线数据（仅主流币）  Get Candlesticks History（top currencies only）
-    # result = marketAPI.get_history_candlesticks('BTC-USD-SWAP')
+    # result = marketAPI.get_history_candlesticks('BTC-USDT-210326')
     # 获取指数K线数据  Get Index Candlesticks
     # result = marketAPI.get_index_candlesticks('BTC-USDT')
     # 获取标记价格K线数据  Get Mark Price Candlesticks
     # result = marketAPI.get_markprice_candlesticks('BTC-USDT')
     # 获取交易产品公共成交数据  Get Trades
     # result = marketAPI.get_trades('BTC-USDT')
-
+    #
     # public api
-    publicAPI = Public.PublicAPI(api_key, secret_key, passphrase, False)
+    publicAPI = Public.PublicAPI(api_key, secret_key, passphrase, False, flag)
     # 获取交易产品基础信息  Get instrument
     # result = publicAPI.get_instruments('SPOT')
     # 获取交割和行权记录  Get Delivery/Exercise History
@@ -101,24 +105,25 @@ if __name__ == '__main__':
     # 获取永续合约历史资金费率  Get Funding Rate History
     # result = publicAPI.funding_rate_history('BTC-USD-SWAP')
     # 获取限价  Get Limit Price
-    # result = publicAPI.get_price_limit('BTC-USD-SWAP')
+    # result = publicAPI.get_price_limit('BTC-USD-210326')
     # 获取期权定价  Get Option Market Data
     # result = publicAPI.get_opt_summary('BTC-USD')
     # 获取预估交割/行权价格  Get Estimated Delivery/Excercise Price
-    # result = publicAPI.get_estimated_price('BTC-USD-201225')
+    # result = publicAPI.get_estimated_price('ETH-USD-210326')
     # 获取免息额度和币种折算率  Get Discount Rate And Interest-Free Quota
     # result = publicAPI.discount_interest_free_quota('')
     # 获取系统时间  Get System Time
     # result = publicAPI.get_system_time()
     # 获取平台公共爆仓单信息  Get Liquidation Orders
-    # result = publicAPI.get_liquidation_orders('SWAP', uly='BTC-USD')
+    # result = publicAPI.get_liquidation_orders('FUTURES', uly='BTC-USDT', alias='next_quarter', state='filled')
     # 获取标记价格  Get Mark Price
-    # result = publicAPI.get_mark_price('MARGIN')
+    # result = publicAPI.get_mark_price('FUTURES')
 
     # trade api
-    tradeAPI = Trade.TradeAPI(api_key, secret_key, passphrase, False)
+    tradeAPI = Trade.TradeAPI(api_key, secret_key, passphrase, False, flag)
     # 下单  Place Order
-    # result = tradeAPI.place_order('BTC-USDT', 'cash', 'buy', 'limit', '1', px='17896')
+    # result = tradeAPI.place_order(instId='BTC-USDT-210326', tdMode='cross', side='sell', posSide='short',
+    #                               ordType='market', sz='100')
     # 批量下单  Place Multiple Orders
     # result = tradeAPI.place_multiple_orders([
     #     {'instId': 'BTC-USD-201225', 'tdMode': 'isolated', 'side': 'buy', 'ordType': 'limit', 'sz': '1', 'px': '17400', 'posSide': 'long',
@@ -136,7 +141,7 @@ if __name__ == '__main__':
     # ])
 
     # 修改订单  Amend Order
-    # result = tradeAPI.amend_order('BTC-USDT', 'false', '260420008988258304', newSz='3')
+    # result = tradeAPI.amend_order()
     # 批量修改订单  Amend Multiple Orders
     # result = tradeAPI.amend_multiple_orders(
     #     [{'instId': 'BTC-USD-201225', 'cxlOnFail': 'false', 'ordId': '257551616434384896', 'newPx': '17880'},
@@ -156,12 +161,34 @@ if __name__ == '__main__':
     # 获取成交明细  Get Transaction Details
     # result = tradeAPI.get_fills()
     # 策略委托下单  Place Algo Order
-    # result = tradeAPI.place_algo_order('BTC-USDT-201225', 'isolated', 'buy', 'trigger', '1', posSide='long', triggerPx='19300', orderPx='19270')
+    # result = tradeAPI.place_algo_order('BTC-USDT-201225', 'isolated', 'buy', posSide='', orderPx='')
     # 撤销策略委托订单  Cancel Algo Order
     # result = tradeAPI.cancel_algo_order([{'algoId': '258550365751226368', 'instId': 'BTC-USDT-201225'}])
     # 获取未完成策略委托单列表  Get Algo Order List
     # result = tradeAPI.order_algos_list('trigger', instType='FUTURES')
     # 获取历史策略委托单列表  Get Algo Order History
     # result = tradeAPI.order_algos_history('trigger', 'canceled', instType='FUTURES')
+
+    # 子账户API subAccount
+    subAccountAPI = SubAccount.SubAccountAPI(api_key, secret_key, passphrase, False, flag)
+    # 查询子账户的交易账户余额(适用于母账户) Query detailed balance info of Trading Account of a sub-account via the master account
+    # result = subAccountAPI.balances(subAcct='')
+    # 查询子账户转账记录(仅适用于母账户) History of sub-account transfer(applies to master accounts only)
+    # result = subAccountAPI.bills()
+    # 删除子账户APIKey(仅适用于母账户) Delete the APIkey of sub-accounts (applies to master accounts only)
+    # result = subAccountAPI.delete(pwd='', subAcct='', apiKey='')
+    # 重置子账户的APIKey(仅适用于母账户) Reset the APIkey of a sub-account(applies to master accounts only)
+    # result = subAccountAPI.reset(pwd='', subAcct='', label='', apiKey='', perm='')
+    # 创建子账户的APIKey(仅适用于母账户) Create an APIkey for a sub-account(applies to master accounts only)
+    # result = subAccountAPI.create(pwd='123456', subAcct='', label='', Passphrase='')
+    # 查看子账户列表(仅适用于母账户) View sub-account list(applies to master accounts only)
+    # result = subAccountAPI.view_list()
+    # 母账户控制子账户与子账户之间划转（仅适用于母账户）manage the transfers between sub-accounts(applies to master accounts only)
+    # result = subAccountAPI.control_transfer(ccy='', amt='', froms='', to='', fromSubAccount='', toSubAccount='')
+
+    # 系统状态API(仅适用于实盘) system status
+    Status = Status.StatusAPI(api_key, secret_key, passphrase, False, flag)
+    # 查看系统的升级状态
+    # result = Status.status()
 
     print(json.dumps(result))
