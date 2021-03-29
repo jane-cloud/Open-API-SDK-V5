@@ -36,7 +36,7 @@ class Client(object):
         print("url:", url)
         # print("headers:", header)
         print("body:", body)
-#proxies parameter
+#proxies parameter e.g.1087
         if method == c.GET:
             response = requests.get(url, headers=header,proxies={'http': 'http://127.0.0.1:1087','https': 'https://127.0.0.1:1087'})
         elif method == c.POST:
