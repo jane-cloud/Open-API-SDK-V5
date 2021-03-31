@@ -18,27 +18,27 @@ if __name__ == '__main__':
     # account api
     accountAPI = Account.AccountAPI(api_key, secret_key, passphrase, False, flag)
     # 查看账户余额  Get Balance
-    # result = accountAPI.get_account('')
+    # result = accountAPI.get_account('BTC')
     # 查看持仓信息  Get Positions
-    # result = accountAPI.get_positions('', '')
+    # result = accountAPI.get_positions('FUTURES', 'BTC-USD-210402')
     # 账单流水查询（近七天） Get Bills Details (recent 7 days)
-    # result = accountAPI.get_bills_detail('', '')
+    # result = accountAPI.get_bills_detail('FUTURES', 'BTC','cross')
     # 账单流水查询（近三个月） Get Bills Details (recent 3 months)
-    # result = accountAPI.get_bills_details('', '')
+    # result = accountAPI.get_bills_details('FUTURES', 'BTC','cross')
     # 查看账户配置  Get Account Configuration
     # result = accountAPI.get_account_config()
     # 设置持仓模式  Set Position mode
     # result = accountAPI.get_position_mode('long_short_mode')
     # 设置杠杆倍数  Set Leverage
-    # result = accountAPI.set_leverage('5', 'cross', 'BTC-USDT')
+    # result = accountAPI.set_leverage(instId='BTC-USD-210402', lever='10', mgnMode='cross')
     # 获取最大可交易数量  Get Maximum Tradable Size For Instrument
-    # result = accountAPI.get_maximum_trade_size('BTC-USDT-210326', 'cross', 'USDT')
+    # result = accountAPI.get_maximum_trade_size('BTC-USDT-210402', 'cross', 'USDT')
     # 获取最大可用数量  Get Maximum Available Tradable Amount
-    # result = accountAPI.get_max_avail_size('BTC-USDT-210326', 'isolated', 'BTC')
+    # result = accountAPI.get_max_avail_size('BTC-USDT-210402', 'isolated', 'BTC')
     # 调整保证金  Increase/Decrease margint
-    # result = accountAPI.Adjustment_margin('BTC-USDT-201225', 'long', 'add', '1')
+    # result = accountAPI.Adjustment_margin('BTC-USDT-210409', 'long', 'add', '100')
     # 获取杠杆倍数 Get Leverage
-    # result = accountAPI.get_leverage('BTC-USDT-201225', 'isolated')
+    # result = accountAPI.get_leverage('BTC-USDT-210409', 'isolated')
     # 获取币币逐仓杠杆最大可借  Get the maximum loan of isolated MARGIN
     # result = accountAPI.get_max_load('BTC-USDT', 'cross', 'BTC')
     # 获取当前账户交易手续费费率  Get Fee Rates
@@ -48,14 +48,14 @@ if __name__ == '__main__':
     # 期权希腊字母PA / BS切换  Set Greeks (PA/BS)
     # result = accountAPI.set_greeks('BS')
     # 查看账户最大可转余额  Get Maximum Withdrawals
-    # result = accountAPI.get_max_withdrawal('BTC')
+    # result = accountAPI.get_max_withdrawal('')
 
     # funding api
     fundingAPI = Funding.FundingAPI(api_key, secret_key, passphrase, False, flag)
     # 获取充值地址信息  Get Deposit Address
-    # result = fundingAPI.get_deposit_address('BTC')
+    # result = fundingAPI.get_deposit_address('')
     # 获取资金账户余额信息  Get Balance
-    # result = fundingAPI.get_balances()
+    # result = fundingAPI.get_balances('BTC')
     # 资金划转  Funds Transfer
     # result = fundingAPI.funds_transfer(ccy='', amt='', type='1', froms="", to="",subAcct='')
     # 提币  Withdrawal
@@ -74,38 +74,38 @@ if __name__ == '__main__':
     # market api
     marketAPI = Market.MarketAPI(api_key, secret_key, passphrase, False, flag)
     # 获取所有产品行情信息  Get Tickers
-    # result = marketAPI.get_tickers('FUTURES', 'BTC-USDT')
+    # result = marketAPI.get_tickers('SPOT')
     # 获取单个产品行情信息  Get Ticker
-    # result = marketAPI.get_ticker('BTC-USDT-SWAP')
+    # result = marketAPI.get_ticker('BTC-USDT')
     # 获取指数行情  Get Index Tickers
-    # result = marketAPI.get_index_ticker('BTC')
+    # result = marketAPI.get_index_ticker('BTC', 'BTC-USD')
     # 获取产品深度  Get Order Book
-    # result = marketAPI.get_orderbook('BTC-USDT-210326')
+    # result = marketAPI.get_orderbook('BTC-USDT-210402', '400')
     # 获取所有交易产品K线数据  Get Candlesticks
     # result = marketAPI.get_candlesticks('BTC-USDT-210924', bar='1m')
-    # 获取交易产品历史K线数据（仅主流币）  Get Candlesticks History（top currencies only）
-    # result = marketAPI.get_history_candlesticks('BTC-USDT-210326')
+    # 获取交易产品历史K线数据（仅主流币实盘数据）  Get Candlesticks History（top currencies in real-trading only）
+    # result = marketAPI.get_history_candlesticks('BTC-USDT')
     # 获取指数K线数据  Get Index Candlesticks
     # result = marketAPI.get_index_candlesticks('BTC-USDT')
     # 获取标记价格K线数据  Get Mark Price Candlesticks
     # result = marketAPI.get_markprice_candlesticks('BTC-USDT')
     # 获取交易产品公共成交数据  Get Trades
-    # result = marketAPI.get_trades('BTC-USDT')
-    #
+    # result = marketAPI.get_trades('BTC-USDT', '400')
+
     # public api
     publicAPI = Public.PublicAPI(api_key, secret_key, passphrase, False, flag)
     # 获取交易产品基础信息  Get instrument
-    # result = publicAPI.get_instruments('SPOT')
+    # result = publicAPI.get_instruments('FUTURES', 'BTC-USDT')
     # 获取交割和行权记录  Get Delivery/Exercise History
     # result = publicAPI.get_deliver_history('FUTURES', 'BTC-USD')
     # 获取持仓总量  Get Open Interest
-    # result = publicAPI.get_open_interest('FUTURES')
+    # result = publicAPI.get_open_interest('SWAP')
     # 获取永续合约当前资金费率  Get Funding Rate
     # result = publicAPI.get_funding_rate('BTC-USD-SWAP')
     # 获取永续合约历史资金费率  Get Funding Rate History
     # result = publicAPI.funding_rate_history('BTC-USD-SWAP')
     # 获取限价  Get Limit Price
-    # result = publicAPI.get_price_limit('BTC-USD-210326')
+    # result = publicAPI.get_price_limit('BTC-USD-210402')
     # 获取期权定价  Get Option Market Data
     # result = publicAPI.get_opt_summary('BTC-USD')
     # 获取预估交割/行权价格  Get Estimated Delivery/Excercise Price
@@ -126,18 +126,20 @@ if __name__ == '__main__':
     #                               ordType='market', sz='100')
     # 批量下单  Place Multiple Orders
     # result = tradeAPI.place_multiple_orders([
-    #     {'instId': 'BTC-USD-201225', 'tdMode': 'isolated', 'side': 'buy', 'ordType': 'limit', 'sz': '1', 'px': '17400', 'posSide': 'long',
-    #      'clOrdId': 'a123', 'tag': 'test1210'},
-    #     {'instId': 'BTC-USD-201225', 'tdMode': 'isolated', 'side': 'buy', 'ordType': 'limit', 'sz': '1', 'px': '17359', 'posSide': 'long',
-    #      'clOrdId': 'a1234', 'tag': 'test1211'}
+    #     {'instId': 'BTC-USD-210402', 'tdMode': 'isolated', 'side': 'buy', 'ordType': 'limit', 'sz': '1', 'px': '17400',
+    #      'posSide': 'long',
+    #      'clOrdId': 'a12344', 'tag': 'test1210'},
+    #     {'instId': 'BTC-USD-210409', 'tdMode': 'isolated', 'side': 'buy', 'ordType': 'limit', 'sz': '1', 'px': '17359',
+    #      'posSide': 'long',
+    #      'clOrdId': 'a12344444', 'tag': 'test1211'}
     # ])
 
     # 撤单  Cancel Order
     # result = tradeAPI.cancel_order('BTC-USD-201225', '257164323454332928')
     # 批量撤单  Cancel Multiple Orders
     # result = tradeAPI.cancel_multiple_orders([
-    #     {"instId": "BTC-USD-201225", "ordId": "257173039964631040"},
-    #     {"instId": "BTC-USD-201225", "ordId": "257173039968825345"}
+    #     {"instId": "BTC-USD-210402", "ordId": "297389358169071616"},
+    #     {"instId": "BTC-USD-210409", "ordId": "297389358169071617"}
     # ])
 
     # 修改订单  Amend Order
@@ -149,7 +151,7 @@ if __name__ == '__main__':
     #      ])
 
     # 市价仓位全平  Close Positions
-    # result = tradeAPI.close_postions('BTC-USD-201225', 'isolated', 'long', '')
+    # result = tradeAPI.close_positions('BTC-USDT-210409', 'isolated', 'long', '')
     # 获取订单信息  Get Order Details
     # result = tradeAPI.get_orders('BTC-USD-201225', '257173039968825345')
     # 获取未成交订单列表  Get Order List
@@ -161,13 +163,14 @@ if __name__ == '__main__':
     # 获取成交明细  Get Transaction Details
     # result = tradeAPI.get_fills()
     # 策略委托下单  Place Algo Order
-    # result = tradeAPI.place_algo_order('BTC-USDT-201225', 'isolated', 'buy', posSide='', orderPx='')
+    # result = tradeAPI.place_algo_order('BTC-USDT-210409', 'isolated', 'buy', ordType='conditional',
+                                       # sz='100',posSide='long', tpTriggerPx='60000', tpOrdPx='59999')
     # 撤销策略委托订单  Cancel Algo Order
-    # result = tradeAPI.cancel_algo_order([{'algoId': '258550365751226368', 'instId': 'BTC-USDT-201225'}])
+    # result = tradeAPI.cancel_algo_order([{'algoId': '297394002194735104', 'instId': 'BTC-USDT-210409'}])
     # 获取未完成策略委托单列表  Get Algo Order List
-    # result = tradeAPI.order_algos_list('trigger', instType='FUTURES')
+    # result = tradeAPI.order_algos_list('conditional', instType='FUTURES')
     # 获取历史策略委托单列表  Get Algo Order History
-    # result = tradeAPI.order_algos_history('trigger', 'canceled', instType='FUTURES')
+    # result = tradeAPI.order_algos_history('conditional', 'canceled', instType='FUTURES')
 
     # 子账户API subAccount
     subAccountAPI = SubAccount.SubAccountAPI(api_key, secret_key, passphrase, False, flag)

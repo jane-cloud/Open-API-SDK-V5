@@ -32,14 +32,14 @@ class TradeAPI(Client):
         params = {'instId': instId, 'cxlOnFailc': cxlOnFail, 'ordId': ordId, 'clOrdId': clOrdId, 'reqId': reqId,
                   'newSz': newSz,
                   'newPx': newPx}
-        return self._request_with_params(POST, CANAEL_ORDER, params)
+        return self._request_with_params(POST, AMEND_ORDER, params)
 
     # Amend Multiple Orders
     def amend_multiple_orders(self, orders_data):
         return self._request_with_params(POST, AMEND_BATCH_ORDER, orders_data)
 
     # Close Positions
-    def close_postions(self, instId, mgnMode, posSide='', ccy=''):
+    def close_positions(self, instId, mgnMode, posSide='', ccy=''):
         params = {'instId': instId, 'mgnMode': mgnMode, 'posSide': posSide, 'ccy': ccy}
         return self._request_with_params(POST, CLOSE_POSITION, params)
 

@@ -9,7 +9,10 @@ class MarketAPI(Client):
 
     # Get Tickers
     def get_tickers(self, instType, uly=''):
-        params = {'instType': instType, 'uly': uly}
+        if uly:
+            params = {'instType': instType, 'uly': uly}
+        else:
+            params = {'instType': instType}
         return self._request_with_params(GET, TICKERS_INFO, params)
 
     # Get Ticker
