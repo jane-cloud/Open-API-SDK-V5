@@ -100,6 +100,13 @@ class MarketDataAPI extends Utils
         return $this->request('/api/v5/market/mark-price-candles',$params, 'GET');
     }
 
+    public function getPlatformVolume()
+    {
+        $params = [];
+
+        return $this->request('/api/v5/market/platform-24-volume',$params, 'GET');
+    }
+
     public function getTrades($instId,$limit='')
     {
         $params = [
@@ -108,5 +115,12 @@ class MarketDataAPI extends Utils
         ];
 
         return $this->request('/api/v5/market/trades',$params, 'GET');
+    }
+
+    public function getOracle()
+    {
+        $params = [];
+
+        return $this->request('/api/v5/market/oracle',$params, 'GET');
     }
 }

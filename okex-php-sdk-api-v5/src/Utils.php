@@ -21,14 +21,14 @@ class Utils
 
     public  static  function request($requestPath, $params, $method, $cursor = false)
     {
-
+        print_r($params);
         if (strtoupper($method) == 'GET') {
             $requestPath .= $params ? '?'.http_build_query($params) : '';
             $params = [];
         }
 
         $url = self::FUTURE_API_URL.$requestPath;
-
+        echo $url;
         $ch= curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
 
@@ -37,7 +37,7 @@ class Utils
 
         $sign = self::signature($timestamp, $method, $requestPath, $body, self::$apiSecret);
         $headers = self::getHeader(self::$apiKey, self::$paper,$sign, $timestamp, self::$passphrase, self::$textToSign);
-
+        print_r($headers);
 
         if($method == "POST") {
             curl_setopt($ch, CURLOPT_POST, true);
@@ -48,7 +48,7 @@ class Utils
 //        curl_setopt($ch, CURLOPT_TIMEOUT_MS,60);
 
         curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER , TRUE);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER , FALSE);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLINFO_HEADER_OUT,true);
 
@@ -152,9 +152,8 @@ class Utils
     public static function signature($timestamp, $method, $requestPath, $body, $secretKey)
     {
         $message = (string) $timestamp . strtoupper($method) . $requestPath . (string) $body;
-
         self::$textToSign = $message;
-
+        echo $message;
         return base64_encode(hash_hmac('sha256', $message, $secretKey, true));
     }
 

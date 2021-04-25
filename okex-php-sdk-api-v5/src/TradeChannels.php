@@ -10,6 +10,7 @@ namespace okv5;
 
 //require '../vendor/autoload.php';
 
+use okv5\Config;
 use Workerman\Lib\Timer;
 use Workerman\Worker;
 use Workerman\Connection\AsyncTcpConnection;
@@ -44,9 +45,11 @@ class TradeChannels extends Utils{
         $GLOBALS['sub_str'] = $sub_str;
         $GLOBALS['callback'] = $callback;
         $worker = new Worker();
-
-        // 线上
-        $url = "ws://ws.okex.com:8443/ws/v5/private?brokerId=9999";
+        if(isset(Config::$config['paper'])){
+            $url = "ws://ws.okex.com:8443/ws/v5/private?brokerId=9999";
+        }else{
+            $url = "ws://ws.okex.com:8443/ws/v5/private";
+        }
 
         $worker->onWorkerStart = function($worker) use ($url){
             // ssl需要访问443端口

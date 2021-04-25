@@ -12,20 +12,33 @@ namespace okv5;
 class AccountApi extends Utils
 {
     //
-    public function getBalance()
+    public function getBalance($ccy='')
     {
-        return $this->request('/api/v5/account/balance', [], 'GET');
+        $params = [
+            'ccy' => $ccy,
+        ];
+        return $this->request('/api/v5/account/balance', $params, 'GET');
     }
 
     //
-    public function getPositions($instType='',$instId='')
+    public function getPositions($instType='',$instId='',$posId='')
     {
         $params = [
             'instType' => $instType,
             'instId' => $instId,
+            'posId' => $posId,
         ];
 
         return $this->request('/api/v5/account/positions', $params, 'GET');
+    }
+
+    public function getAccountPositionRisk($instType='')
+    {
+        $params = [
+            'instType' => $instType,
+        ];
+
+        return $this->request('/api/v5/account/account-position-risk', $params, 'GET');
     }
 
     public function getBills($instType='',$ccy='',$mgnMode='',$ctType='',$type='',$subType='',$after='',$before='',$limit='')
@@ -134,10 +147,12 @@ class AccountApi extends Utils
         return $this->request('/api/v5/account/leverage-info', $params, 'GET');
     }
 
-    public function getMaxLoan($instId)
+    public function getMaxLoan($instId,$mgnMode,$mgnCcy='')
     {
         $params = [
             'instId' => $instId,
+            'mgnMode' => $mgnMode,
+            'mgnCcy' => $mgnCcy,
         ];
 
         return $this->request('/api/v5/account/max-loan', $params, 'GET');
@@ -155,13 +170,24 @@ class AccountApi extends Utils
         return $this->request('/api/v5/account/trade-fee', $params, 'GET');
     }
 
+    public function getInterestRate($ccy='')
+    {
+        $params = [
+            'ccy' => $ccy,
+        ];
+
+        return $this->request('/api/v5/account/interest-rate', $params, 'GET');
+    }
+
     public function getInterestAccrued($instId='',$ccy='',$mgnMode='',$after='',$before='',$limit='')
     {
         $params = [
             'instId' => $instId,
             'ccy' => $ccy,
+            'mgnMode' => $mgnMode,
             'after' => $after,
             'before' => $before,
+            'limit' => $limit,
         ];
 
         return $this->request('/api/v5/account/interest-accrued', $params, 'GET');
@@ -176,7 +202,7 @@ class AccountApi extends Utils
         return $this->request('/api/v5/account/set-greeks', $params, 'POST');
     }
 
-    public function getMaxWithdrawal($ccy)
+    public function getMaxWithdrawal($ccy='')
     {
         $params = [
             'ccy' => $ccy,

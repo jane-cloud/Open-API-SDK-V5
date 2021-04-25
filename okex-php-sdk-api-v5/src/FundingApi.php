@@ -17,9 +17,12 @@ class FundingApi extends Utils
     }
 
     //
-    public function getBalance()
+    public function getBalance($ccy='')
     {
-        return $this->request('/api/v5/asset/balances','', 'GET');
+        $params = [
+            'ccy' => $ccy,
+        ];
+        return $this->request('/api/v5/asset/balances',$params, 'GET');
     }
 
     //
@@ -95,7 +98,7 @@ class FundingApi extends Utils
         return $this->request('/api/v5/asset/purchase_redempt',$params, 'POST');
     }
 
-    public function getBills($ccy,$type='',$after='',$before='',$limit='')
+    public function getBills($ccy='',$type='',$after='',$before='',$limit='')
     {
         $params = [
             'ccy' => $ccy,

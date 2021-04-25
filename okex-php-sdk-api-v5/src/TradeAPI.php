@@ -25,21 +25,23 @@ class TradeAPI extends Utils
         return $this->request('/api/v5/trade/order', $params, 'POST');
     }
 
-    public function batchOrders($instId,$tdMode,$ccy='',$clOrdId='',$tag='',$side,$posSide='',$ordType,$sz,$px='',$reduceOnly='')
+    public function batchOrders($data)
     {
-        $params = [
-            'instId' => $instId,
-            'tdMode' => $tdMode,
-            'ccy' => $ccy,
-            'clOrdId' => $clOrdId,
-            'tag' => $tag,
-            'side' => $side,
-            'posSide' => $posSide,
-            'ordType' => $ordType,
-            'sz' => $sz,
-            'px' => $px,
-            'reduceOnly' => $reduceOnly,
-        ];
+        foreach ($data as $k => $v){
+            $params[] = [
+                'instId' => $data[$k][0],
+                'tdMode' => $data[$k][1],
+                'ccy' => $data[$k][2],
+                'clOrdId' => $data[$k][3],
+                'tag' => $data[$k][4],
+                'side' => $data[$k][5],
+                'posSide' => $data[$k][6],
+                'ordType' => $data[$k][7],
+                'sz' => $data[$k][8],
+                'px' => $data[$k][9],
+                'reduceOnly' => $data[$k][10],
+            ];
+        }
 
         return $this->request('/api/v5/trade/batch-orders', $params, 'POST');
     }
@@ -53,6 +55,19 @@ class TradeAPI extends Utils
         ];
 
         return $this->request('/api/v5/trade/cancel-order', $params, 'POST');
+    }
+    public function cancelBatchOrder($data)
+    {
+        foreach ($data as $k => $v){
+            $params[] = [
+                'instId' => $data[$k][0],
+                'ordId' => $data[$k][1],
+                'clOrdId' => $data[$k][2],
+            ];
+        }
+
+
+        return $this->request('/api/v5/trade/cancel-batch-orders', $params, 'POST');
     }
 
     public function amendOrder($instId,$cxlOnFail='',$ordId='',$clOrdId='',$reqId='',$newSz='',$newPx='')
@@ -68,6 +83,22 @@ class TradeAPI extends Utils
         ];
 
         return $this->request('/api/v5/trade/amend-order', $params, 'POST');
+    }
+    public function amendBatchOrder($data)
+    {
+        foreach ($data as $k => $v){
+            $params[] = [
+                'instId' => $data[$k][0],
+                'cxlOnFail' => $data[$k][1],
+                'ordId' => $data[$k][2],
+                'clOrdId' => $data[$k][3],
+                'reqId' => $data[$k][4],
+                'newSz' => $data[$k][5],
+                'newPx' => $data[$k][6],
+            ];
+        }
+
+        return $this->request('/api/v5/trade/amend-batch-orders', $params, 'POST');
     }
 
     public function closePosition($instId,$posSide='',$mgnMode,$ccy='')
@@ -109,7 +140,7 @@ class TradeAPI extends Utils
         return $this->request('/api/v5/trade/orders-pending', $params, 'GET');
     }
 
-    public function getOrdersHistory($instType='',$uly='',$instId='',$ordType='',$state='',$after='',$before='',$limit='')
+    public function getOrdersHistory($instType='',$uly='',$instId='',$ordType='',$state='',$category='',$after='',$before='',$limit='')
     {
         $params = [
             'instType' => $instType,
@@ -117,6 +148,7 @@ class TradeAPI extends Utils
             'instId' => $instId,
             'ordType' => $ordType,
             'state' => $state,
+            'category' => $category,
             'after' => $after,
             'before' => $before,
             'limit' => $limit,
@@ -125,7 +157,7 @@ class TradeAPI extends Utils
         return $this->request('/api/v5/trade/orders-history', $params, 'GET');
     }
 
-    public function getOrdersHistoryArchive($instType='',$uly='',$instId='',$ordType='',$state='',$after='',$before='',$limit='')
+    public function getOrdersHistoryArchive($instType='',$uly='',$instId='',$ordType='',$state='',$category='',$after='',$before='',$limit='')
     {
         $params = [
             'instType' => $instType,
@@ -133,6 +165,7 @@ class TradeAPI extends Utils
             'instId' => $instId,
             'ordType' => $ordType,
             'state' => $state,
+            'category' => $category,
             'after' => $after,
             'before' => $before,
             'limit' => $limit,
@@ -156,7 +189,7 @@ class TradeAPI extends Utils
         return $this->request('/api/v5/trade/fills', $params, 'GET');
     }
 
-    public function orderAlgo($instId,$tdMode,$ccy='',$side,$posSide='',$ordType,$sz,$reduceOnly='',$triggerPx='',$orderPx='')
+    public function orderAlgo($instId,$tdMode,$ccy='',$side,$posSide='',$ordType,$sz,$reduceOnly='',$triggerPx='',$orderPx='',$tpTriggerPx='',$tpOrdPx='',$slTriggerPx='',$slOrdPx='')
     {
         $params = [
             'instId' => $instId,
@@ -168,17 +201,24 @@ class TradeAPI extends Utils
             'sz' => $sz,
             'triggerPx' => $triggerPx,
             'orderPx' => $orderPx,
+            'tpTriggerPx' => $tpTriggerPx,
+            'tpOrdPx' => $tpOrdPx,
+            'slTriggerPx' => $slTriggerPx,
+            'slOrdPx' => $slOrdPx,
         ];
 
         return $this->request('/api/v5/trade/order-algo', $params, 'POST');
     }
 
-    public function cancelAlgos($algoId,$instId)
+    public function cancelAlgos($data)
     {
-        $params = [
-            'algoId' => $algoId,
-            'instId' => $instId,
-        ];
+        foreach ($data as $k => $v){
+            $params[] = [
+                'algoId' => $data[$k][0],
+                'instId' => $data[$k][1],
+            ];
+        }
+
 
         return $this->request('/api/v5/trade/cancel-algos', $params, 'POST');
     }

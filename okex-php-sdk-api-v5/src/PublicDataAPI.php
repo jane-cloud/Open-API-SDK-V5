@@ -90,7 +90,7 @@ class PublicDataAPI extends Utils
         return $this->request('/api/v5/public/estimated-price',$params, 'GET');
     }
 
-    public function getQuota($ccy)
+    public function getQuota($ccy='')
     {
         $params = [
             'ccy' => $ccy,
@@ -99,7 +99,7 @@ class PublicDataAPI extends Utils
         return $this->request('/api/v5/public/discount-rate-interest-free-quota',$params, 'GET');
     }
 
-    public function getTime($ccy)
+    public function getTime()
     {
         return $this->request('/api/v5/public/time','', 'GET');
     }
@@ -131,5 +131,19 @@ class PublicDataAPI extends Utils
         ];
 
         return $this->request('/api/v5/public/mark-price',$params, 'GET');
+    }
+
+    public function getTier($instType,$uly='',$instId='',$tdMode,$ccy='',$tier='')
+    {
+        $params = [
+            'instType' => $instType,
+            'uly' => $uly,
+            'instId' => $instId,
+            'tdMode' => $tdMode,
+            'ccy' => $ccy,
+            'tier' => $tier,
+        ];
+
+        return $this->request('/api/v5/public/tier',$params, 'GET');
     }
 }
