@@ -21,6 +21,16 @@ public class AccountAPITests extends  AccountAPIBaseTests {
         this.accountAPIService = new AccountAPIServiceImpl(this.config);
     }
 
+    /**
+     * 查看账户持仓风险 Get account and position risk
+     * GET /api/v5/account/account-position-risk
+     */
+    @Test
+    public void getAccountAndPosition(){
+        JSONObject result = this.accountAPIService.getAccountAndPosition("SWAP");
+        toResultString(LOG, "result", result);
+    }
+
 
     /**
      * 查看账户余额 Get Balance
@@ -28,7 +38,7 @@ public class AccountAPITests extends  AccountAPIBaseTests {
      */
     @Test
     public void getBalance(){
-        JSONObject result = this.accountAPIService.getBalance("BTC,ETH");
+        JSONObject result = this.accountAPIService.getBalance("USDT");
         toResultString(LOG, "result", result);
     }
 
@@ -39,7 +49,7 @@ public class AccountAPITests extends  AccountAPIBaseTests {
      */
     @Test
     public void getPositions(){
-        JSONObject result = this.accountAPIService.getPositions("FUTURES","BTC-USDT-210326");
+        JSONObject result = this.accountAPIService.getPositions("MARGIN",null,null);
         toResultString(LOG, "result", result);
     }
 
@@ -50,7 +60,7 @@ public class AccountAPITests extends  AccountAPIBaseTests {
      */
     @Test
     public void getBillsDetails7Days(){
-        JSONObject result = this.accountAPIService.getBillsDetails7Days("FUTURES","","","","","","","","");
+        JSONObject result = this.accountAPIService.getBillsDetails7Days("FUTERES","","","","","","","","");
         toResultString(LOG, "result", result);
     }
 
@@ -61,7 +71,7 @@ public class AccountAPITests extends  AccountAPIBaseTests {
      */
     @Test
     public void getBillsDetails3Months(){
-        JSONObject result = this.accountAPIService.getBillsDetails3Months("FUTURES","","","","","","","","");
+        JSONObject result = this.accountAPIService.getBillsDetails3Months("SWAP",null,null,null,"8",null,null,null,null);
         toResultString(LOG, "result", result);
     }
 
@@ -79,7 +89,7 @@ public class AccountAPITests extends  AccountAPIBaseTests {
 
     /**
      * 设置持仓模式 Set Position mode
-     * GET /api/v5/account/config
+     * POST  /api/v5/account/set-position-mode
      */
     @Test
     public void setPositionMode(){
@@ -97,16 +107,19 @@ public class AccountAPITests extends  AccountAPIBaseTests {
     @Test
     public void setLeverage(){
         SetLeverage setLeverage=new SetLeverage();
-        setLeverage.setInstId("BTC-USDT");
-        setLeverage.setLever("3.33");
+        setLeverage.setInstId("BTC-USDT-SWAP");
+//        setLeverage.setCcy("");
+        setLeverage.setLever("13.3");
         setLeverage.setMgnMode("cross");
+        setLeverage.setPosSide("net");
+
         JSONObject result = this.accountAPIService.setLeverage(setLeverage);
         toResultString(LOG, "result", result);
     }
 
 
     /**
-     * 获取最大可交易数量 Get Maximum Tradable Size For Instrument
+     * 获取最大可买卖/开仓数量 Get maximum buy/sell amount or open amount
      * GET /api/v5/account/max-size
      */
     @Test
@@ -122,7 +135,7 @@ public class AccountAPITests extends  AccountAPIBaseTests {
      */
     @Test
     public void getMaximumAvailableTradableAmount(){
-        JSONObject result = this.accountAPIService.getMaximumAvailableTradableAmount("BTC-USDT-210326","cross","","");
+        JSONObject result = this.accountAPIService.getMaximumAvailableTradableAmount("BTC-USDT-210924","isolated","","");
         toResultString(LOG, "result", result);
     }
 
@@ -135,8 +148,8 @@ public class AccountAPITests extends  AccountAPIBaseTests {
     public void increaseDecreaseMargin(){
         IncreaseDecreaseMargin increaseDecreaseMargin = new IncreaseDecreaseMargin();
 
-        increaseDecreaseMargin.setInstId("BTC-USDT-SWAP");
-        increaseDecreaseMargin.setPosSide("short");
+        increaseDecreaseMargin.setInstId("BTC-USDT-210924");
+        increaseDecreaseMargin.setPosSide("long");
         increaseDecreaseMargin.setType("add");
         increaseDecreaseMargin.setAmt("100");
 
@@ -152,22 +165,18 @@ public class AccountAPITests extends  AccountAPIBaseTests {
      */
     @Test
     public void getLeverage(){
-
-        JSONObject result = this.accountAPIService.getLeverage("BTC-USDT-210326","cross");
+        JSONObject result = this.accountAPIService.getLeverage("BTC-USDT-210924","cross");
         toResultString(LOG, "result", result);
     }
 
 
-
-
     /**
-     * 获取币币逐仓杠杆最大可借  Get the maximum loan of isolated MARGIN
+     * 获取交易产品最大可借  Get the maximum loan of instrument
      * GET /api/v5/account/max-loan
      */
     @Test
     public void getTheMaximumLoanOfIsolatedMARGIN(){
-
-        JSONObject result = this.accountAPIService.getTheMaximumLoanOfIsolatedMARGIN("BTC-USDT");
+        JSONObject result = this.accountAPIService.getTheMaximumLoanOfIsolatedMARGIN("BTC-USDT","cross","BTC");
         toResultString(LOG, "result", result);
     }
 
@@ -178,8 +187,7 @@ public class AccountAPITests extends  AccountAPIBaseTests {
      */
     @Test
     public void getFeeRates(){
-
-        JSONObject result = this.accountAPIService.getFeeRates("SPOT","BTC-USDT","","");
+        JSONObject result = this.accountAPIService.getFeeRates("SWAP",null,"BTC-USDT",null);
         toResultString(LOG, "result", result);
     }
 
@@ -190,8 +198,18 @@ public class AccountAPITests extends  AccountAPIBaseTests {
      */
     @Test
     public void getInterestAccrued(){
+        JSONObject result = this.accountAPIService.getInterestAccrued("BTC-USDT","USDT","","","","");
+        toResultString(LOG, "result", result);
+    }
 
-        JSONObject result = this.accountAPIService.getInterestAccrued("","","","","","");
+
+    /**
+     * 获取用户当前杠杆借币利率  Get interest rate
+     * GET /api/v5/account/interest-rate
+     */
+    @Test
+    public void getInterestRate(){
+        JSONObject result = this.accountAPIService.getInterestRate("USDT");
         toResultString(LOG, "result", result);
     }
 
@@ -216,7 +234,7 @@ public class AccountAPITests extends  AccountAPIBaseTests {
      */
     @Test
     public void getMaximumWithdrawals(){
-        JSONObject result = this.accountAPIService.getMaximumWithdrawals("");
+        JSONObject result = this.accountAPIService.getMaximumWithdrawals("USDT");
         toResultString(LOG, "result", result);
     }
 

@@ -15,6 +15,7 @@ public class PublicDataAPIBaseTest extends BaseTests {
         config.setSecretKey("");
         config.setPassphrase("");
 
+
         config.setPrint(true);
         /* config.setI18n(I18nEnum.SIMPLIFIED_CHINESE);*/
         config.setI18n(I18nEnum.ENGLISH);

@@ -24,10 +24,9 @@ public class FundingAPIServiceImpl implements FundingAPIService {
     }
 
     //获取资金账户余额信息 Get Balance
-
     @Override
-    public JSONObject getBalance() {
-        return this.client.executeSync(this.api.getBalance());
+    public JSONObject getBalance(String ccy) {
+        return this.client.executeSync(this.api.getBalance(ccy));
     }
 
     //资金划转  Funds Transfer

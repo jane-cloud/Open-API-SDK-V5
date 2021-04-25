@@ -7,6 +7,11 @@ import retrofit2.http.*;
 
 public interface AccountAPI {
 
+    //查看账户持仓风险 Get account and position risk
+    @GET("/api/v5/account/account-position-risk")
+    Call<JSONObject> getAccountAndPosition(@Query("instType") String instType);
+
+
     //查看账户余额 Get Balance
     @GET("/api/v5/account/balance")
     Call<JSONObject> getBalance(@Query("ccy") String ccy);
@@ -14,7 +19,7 @@ public interface AccountAPI {
 
     //查看持仓信息 Get Positions
     @GET("/api/v5/account/positions")
-    Call<JSONObject> getPositions(@Query("instType") String instType,@Query("instId") String instId);
+    Call<JSONObject> getPositions(@Query("instType") String instType,@Query("instId") String instId,@Query("posId") String posId);
 
     //账单流水查询（近七天） Get Bills Details (last 7 days)
     @GET("/api/v5/account/bills")
@@ -52,14 +57,13 @@ public interface AccountAPI {
     @POST("/api/v5/account/set-leverage")
     Call<JSONObject> setLeverage(@Body JSONObject jsonObject);
 
-    //获取最大可交易数量 Get Maximum Tradable Size For Instrument
+    //获取最大可买卖/开仓数量 Get maximum buy/sell amount or open amount
     @GET("/api/v5/account/max-size")
     Call<JSONObject> getMaximumTradableSizeForInstrument(@Query("instId") String instId,@Query("tdMode") String tdMode,@Query("ccy") String ccy,@Query("px") String px);
 
     //获取最大可用数量 Get Maximum Tradable Size For Instrument
     @GET("/api/v5/account/max-avail-size")
     Call<JSONObject> getMaximumAvailableTradableAmount(@Query("instId") String instId,@Query("tdMode") String tdMode,@Query("ccy") String ccy,@Query("reduceOnly") String reduceOnly);
-
 
     //调整保证金 Increase/Decrease margin
     @POST("/api/v5/account/position/margin-balance")
@@ -69,10 +73,9 @@ public interface AccountAPI {
     @GET("/api/v5/account/leverage-info")
     Call<JSONObject> getLeverage(@Query("instId") String instId,@Query("mgnMode") String mgnMode);
 
-
-    //获取币币逐仓杠杆最大可借 Get the maximum loan of isolated MARGIN
+    //获取交易产品最大可借 Get the maximum loan of instrument
     @GET("/api/v5/account/max-loan")
-    Call<JSONObject> getTheMaximumLoanOfIsolatedMARGIN(@Query("instId")String instId);
+    Call<JSONObject> getTheMaximumLoanOfIsolatedMARGIN(@Query("instId")String instId,@Query("mgnMode")String mgnMode,@Query("mgnCcy")String mgnCcy);
 
     //获取当前账户交易手续费费率 Get Fee Rates
     @GET("/api/v5/account/trade-fee")
@@ -81,6 +84,10 @@ public interface AccountAPI {
     //获取计息记录 Get interest-accrued
     @GET("/api/v5/account/interest-accrued")
     Call<JSONObject> getInterestAccrued(@Query("instId")String instId,@Query("ccy")String ccy,@Query("mgnMode")String mgnMode,@Query("after")String after,@Query("before")String before,@Query("limit")String limit);
+
+    //获取用户当前杠杆借币利率 Get interest rate
+    @GET("/api/v5/account/interest-rate")
+    Call<JSONObject> getInterestRate(@Query("ccy")String ccy);
 
     //期权希腊字母PA/BS切换 Set the display type of Greeks
     @POST("/api/v5/account/set-greeks")

@@ -19,9 +19,11 @@ public class AccountAPIBaseTests extends BaseTests {
         config.setEndpoint("https://www.okex.com/");
         // apiKey，api注册成功后页面上有
 
+
         config.setApiKey("");
         config.setSecretKey("");
         config.setPassphrase("");
+
 
         config.setPrint(true);
         config.setI18n(I18nEnum.ENGLISH);

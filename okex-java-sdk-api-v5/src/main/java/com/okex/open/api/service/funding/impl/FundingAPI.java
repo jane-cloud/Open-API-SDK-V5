@@ -13,7 +13,7 @@ interface FundingAPI {
 
     //获取资金账户余额信息
     @GET("/api/v5/asset/balances")
-    Call<JSONObject> getBalance();
+    Call<JSONObject> getBalance(@Query("ccy") String ccy);
 
     //资金划转  Funds Transfer
     @POST("/api/v5/asset/transfer")

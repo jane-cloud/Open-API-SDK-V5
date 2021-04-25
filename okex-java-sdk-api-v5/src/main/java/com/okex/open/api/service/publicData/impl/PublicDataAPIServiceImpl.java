@@ -17,8 +17,8 @@ public class PublicDataAPIServiceImpl implements PublicDataAPIService {
 
     //获取交易产品基础信息 Get Instruments
     @Override
-    public JSONObject getInstruments(String instType, String uly, String instId) {
-        return this.client.executeSync(this.api.getInstruments(instType, uly, instId));
+    public JSONObject getInstruments(String instType, String uly) {
+        return this.client.executeSync(this.api.getInstruments(instType, uly));
     }
 
     //获取交割和行权记录 Get Delivery/Exercise History
@@ -85,5 +85,11 @@ public class PublicDataAPIServiceImpl implements PublicDataAPIService {
     @Override
     public JSONObject getMarkPrice(String instType, String uly, String instId) {
         return this.client.executeSync(this.api.getMarkPrice(instType,uly,instId));
+    }
+
+    //获取合约衍生品仓位档位
+    @Override
+    public JSONObject getTier(String instType, String uly, String instId, String tdMode, String ccy, String tier) {
+        return this.client.executeSync(this.api.getTier(instType, uly, instId, tdMode, ccy, tier));
     }
 }

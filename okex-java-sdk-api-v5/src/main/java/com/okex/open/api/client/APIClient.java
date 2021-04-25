@@ -78,21 +78,11 @@ public class APIClient {
             //响应成功
             if (response.isSuccessful()) {
                 return response.body();
+
                 ////如果状态码是400,401,429,500中的任意一个，抛出异常
-            } else if (APIConstants.resultStatusArray.contains(status)) {
-                final HttpResult result = JSON.parseObject(new String(response.errorBody().bytes()), HttpResult.class);
-                if(result.getCode() == 0 && result.getMessage() == null){
-                   // System.out.println("错误码："+result.getErrorCode()+"\t错误信息"+result.getErrorMessage());
-                   // System.out.println(result);
-                    throw new APIException(result.getErrorCode(),result.getMsg());
-                }else{
-                    //System.out.println("错误码："+result.getCode()+"\t错误信息"+result.getMessage());
-                    //抛出异常
-                  //  System.out.println(result);
-                    throw new APIException(result.getCode(), result.getMsg());
-                }
             } else {
-                throw new APIException(message);
+                final HttpResult result = JSON.parseObject(new String(response.errorBody().bytes()), HttpResult.class);
+                throw new APIException(result.getCode(), result.getMsg());
             }
         } catch (final IOException e) {
             throw new APIException("APIClient executeSync exception.", e);

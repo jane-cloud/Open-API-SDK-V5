@@ -103,6 +103,7 @@ public class WebSocketClient {
 
                 //不进行解压
                 final String s = byteString;
+//                System.out.println("~~~~~~~~~~~~~~~~~~订阅后推送的数据："+s);
                 //判断是否是深度接口
                 if (s.contains("\"channel\":\"books\",")||s.contains("\"channel\":\"books-l2-tbt\",")) {
                     //是深度接口
@@ -130,7 +131,6 @@ public class WebSocketClient {
                         Optional<SpotOrderBook> newBook = parse(dataStr);
 
                         //获取增量的ask
-
                         List<SpotOrderBookItem> askList = newBook.get().getAsks();
                         //获取增量的bid
                         List<SpotOrderBookItem> bidList = newBook.get().getBids();
@@ -168,37 +168,10 @@ public class WebSocketClient {
                     //k线频道
                     System.out.println(DateFormatUtils.format(new Date(), DateUtils.TIME_STYLE_S4) + " Receive: " + s);
 
-              /*      JSONObject rst = JSONObject.fromObject(s);
-                    net.sf.json.JSONArray dataArr = net.sf.json.JSONArray.fromObject(rst.get("data"));
-
-                    Long pushTimestamp=null;
-                    Long localTimestamp = DateTime.now().getMillis();
-                    Long timing = null;
-
-
-                    if(s.contains("\"event\":\"subscribe\",")){
-
-                        System.out.println(DateFormatUtils.format(new Date(), DateUtils.TIME_STYLE_S4) + " Receive: " + s);
-
-                    }else {
-                        System.out.println("aaaaaaaaaaaaa"+dataArr);
-
-                        JSONArray dataCandle = JSONArray.parseArray(dataArr.get(0).toString());
-
-                        pushTimestamp= Long.parseLong(dataCandle.get(0).toString());
-
-                        timing =localTimestamp-pushTimestamp;
-
-                        System.out.println(DateFormatUtils.format(new Date(), DateUtils.TIME_STYLE_S4) +"("+timing+"ms)" + " Receive: " + s);
-
-                    }*/
-
-
                 } else if(s.contains("pong")){
                     System.out.println(DateFormatUtils.format(new Date(), DateUtils.TIME_STYLE_S4) + " Receive: " + s);
 
-                }
-                    else {
+                }else {
                     //不是深度 k线接口
                     JSONObject rst = JSONObject.fromObject(s);
                     net.sf.json.JSONArray dataArr = net.sf.json.JSONArray.fromObject(rst.get("data"));
@@ -220,9 +193,6 @@ public class WebSocketClient {
                     }else {
                         System.out.println(DateFormatUtils.format(new Date(), DateUtils.TIME_STYLE_S4) + " Receive: " + s);
                     }
-
-
-
 
 
                 }

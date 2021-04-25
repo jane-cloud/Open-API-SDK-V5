@@ -40,7 +40,7 @@ public class PublicChannelTest {
 
         Map map =new HashMap();
         map.put("channel","instruments");
-        map.put("instType","FUTURES");
+        map.put("instType","SPOT");
 
         channelList.add(map);
         //调用订阅方法
@@ -55,7 +55,7 @@ public class PublicChannelTest {
 
 
     /**
-     * 公共-行情频道
+     * 行情频道
      * Tickers Channel
      */
     @Test
@@ -63,11 +63,15 @@ public class PublicChannelTest {
         //添加订阅频道
         ArrayList<Map> channelList= new ArrayList<>();
 
-        Map map = new HashMap();
-        map.put("channel","tickers");
-        map.put("instId","BTC-USDT");
 
-        channelList.add(map);
+        Map spotTickerMap = new HashMap();
+        spotTickerMap.put("channel","tickers");
+        spotTickerMap.put("instId","FIL-USD-SWAP");
+
+
+        channelList.add(spotTickerMap);
+
+
         //调用订阅方法
         WebSocketClient.subscribe(channelList);
         //为保证测试方法不停，需要让线程延迟
@@ -80,7 +84,7 @@ public class PublicChannelTest {
 
 
     /**
-     * 公共-持仓总量频道
+     * 持仓总量频道
      * Open interest Channel
      */
     @Test
@@ -90,7 +94,7 @@ public class PublicChannelTest {
 
         Map map =new HashMap();
         map.put("channel","open-interest");
-        map.put("instId","BTC-USDT-210326");
+        map.put("instId","BTC-USDT-210924");
 
         channelList.add(map);
         //调用订阅方法
@@ -105,7 +109,7 @@ public class PublicChannelTest {
 
 
     /**
-     * 公共-K线频道
+     * K线频道
      * Candlesticks Channel
      */
     @Test
@@ -114,8 +118,8 @@ public class PublicChannelTest {
         ArrayList<Map> channelList= new ArrayList<>();
 
         Map map =new HashMap();
-        map.put("channel","candle1m");
-        map.put("instId","BTC-USDT-210326");
+        map.put("channel","candle5m");
+        map.put("instId","BTC-USDT-210924");
 
         channelList.add(map);
         //调用订阅方法
@@ -130,7 +134,7 @@ public class PublicChannelTest {
 
 
     /**
-     * 公共-交易频道
+     * 交易频道
      * Trades Channel
      */
     @Test
@@ -140,9 +144,14 @@ public class PublicChannelTest {
 
         Map map =new HashMap();
         map.put("channel","trades");
-        map.put("instId","BTC-USDT-210326");
+        map.put("instId","BTC-USDT-210625");
+
+        Map map1 =new HashMap();
+        map1.put("channel","trades");
+        map1.put("instId","BTC-USD-210625");
 
         channelList.add(map);
+        channelList.add(map1);
         //调用订阅方法
         WebSocketClient.subscribe(channelList);
         //为保证测试方法不停，需要让线程延迟
@@ -155,7 +164,7 @@ public class PublicChannelTest {
 
 
     /**
-     * 公共-预估交割/行权价格频道
+     * 预估交割/行权价格频道
      * Estimated delivery/exercise Price Channel
      */
     @Test
@@ -181,7 +190,7 @@ public class PublicChannelTest {
 
 
     /**
-     * 公共-标记价格频道
+     * 标记价格频道
      * Mark Price Channel
      */
     @Test
@@ -205,7 +214,7 @@ public class PublicChannelTest {
     }
 
     /**
-     * 公共-标记价格K线频道
+     * 标记价格K线频道
      * Mark Price Candlesticks Channel
      */
     @Test
@@ -230,7 +239,7 @@ public class PublicChannelTest {
 
 
     /**
-     * 公共-限价频道
+     * 限价频道
      * Price Limit Channel
      */
     @Test
@@ -315,7 +324,7 @@ public class PublicChannelTest {
 
         Map map =new HashMap();
         map.put("channel","books-l2-tbt");
-        map.put("instId","BTC-USDT");
+        map.put("instId","BTC-USDT-210625");
 
         channelList.add(map);
         //调用订阅方法
@@ -328,6 +337,30 @@ public class PublicChannelTest {
         }
     }
 
+
+    /**
+     * 公共-深度频道(50档增量)
+     * Order Book Channel
+     */
+    @Test
+    public void books50l2tbtChannel() {
+        //添加订阅频道
+        ArrayList<Map> channelList= new ArrayList<>();
+
+        Map map =new HashMap();
+        map.put("channel","books50-l2-tbt");
+        map.put("instId","BTC-USDT-210625");
+
+        channelList.add(map);
+        //调用订阅方法
+        WebSocketClient.subscribe(channelList);
+        //为保证测试方法不停，需要让线程延迟
+        try {
+            Thread.sleep(10000000);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
 
 
@@ -417,6 +450,29 @@ public class PublicChannelTest {
         Map map =new HashMap();
         map.put("channel","index-tickers");
         map.put("instId","BTC-USDT");
+
+        channelList.add(map);
+        //调用订阅方法
+        WebSocketClient.subscribe(channelList);
+        //为保证测试方法不停，需要让线程延迟
+        try {
+            Thread.sleep(10000000);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Status 频道
+     * Status Channel
+     */
+    @Test
+    public void statusChannel() {
+        //添加订阅频道
+        ArrayList<Map> channelList= new ArrayList<>();
+
+        Map map =new HashMap();
+        map.put("channel","status");
 
         channelList.add(map);
         //调用订阅方法

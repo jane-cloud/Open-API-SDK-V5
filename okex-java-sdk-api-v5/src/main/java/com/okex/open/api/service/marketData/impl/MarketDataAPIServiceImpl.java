@@ -1,9 +1,13 @@
 package com.okex.open.api.service.marketData.impl;
 
 import com.alibaba.fastjson.JSONObject;
+import com.okex.open.api.bean.market.result.BinanceCandlestick;
 import com.okex.open.api.client.APIClient;
 import com.okex.open.api.config.APIConfiguration;
+import com.okex.open.api.enums.BinanceInternal;
 import com.okex.open.api.service.marketData.MarketDataAPIService;
+
+import java.util.List;
 
 public class MarketDataAPIServiceImpl implements MarketDataAPIService {
     private final APIClient client;
@@ -68,6 +72,10 @@ public class MarketDataAPIServiceImpl implements MarketDataAPIService {
         return this.client.executeSync(this.marketDataAPI.getTrades(instId,limit));
     }
 
-
+    //获取平台24小时总成交量 Get total volume
+    @Override
+    public JSONObject getTotalVolume() {
+        return this.client.executeSync(this.marketDataAPI.getTotalVolume());
+    }
 
 }

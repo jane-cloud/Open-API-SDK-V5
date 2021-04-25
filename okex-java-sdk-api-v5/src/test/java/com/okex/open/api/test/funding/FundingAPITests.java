@@ -35,14 +35,13 @@ public class FundingAPITests extends FundingAPIBaseTests {
         toResultString(LOG, "result", result);
     }
 
-
     /**
      * 获取资金账户余额信息 Get Balance
      * GET /api/v5/asset/balances
      */
     @Test
     public void getBalance() {
-        JSONObject result = fundingAPIService.getBalance();
+        JSONObject result = fundingAPIService.getBalance("USDT");
         toResultString(LOG, "result", result);
     }
 
@@ -53,14 +52,14 @@ public class FundingAPITests extends FundingAPIBaseTests {
     @Test
     public void fundsTransfer() {
         FundsTransfer fundsTransfer = new FundsTransfer();
-        fundsTransfer.setCcy("BTC");
+        fundsTransfer.setCcy("EOS");
         fundsTransfer.setAmt("2");
-        fundsTransfer.setType("");
-        fundsTransfer.setFrom("6");
-        fundsTransfer.setTo("18");
-        fundsTransfer.setSubAcct("");
-        fundsTransfer.setInstId("");
-        fundsTransfer.setToInstId("");
+        fundsTransfer.setType("0");
+        fundsTransfer.setFrom("9");
+        fundsTransfer.setTo("3");
+//        fundsTransfer.setSubAcct("");
+        fundsTransfer.setInstId("EOS-USD");
+        fundsTransfer.setToInstId("EOS-USD");
         JSONObject result = fundingAPIService.fundsTransfer(fundsTransfer);
         toResultString(LOG, "result", result);
     }
@@ -124,7 +123,7 @@ public class FundingAPITests extends FundingAPIBaseTests {
     @Test
     public void piggyBankPurchaseRedemption() {
         PiggyBankPurchaseRedemption piggyBankPurchaseRedemption = new PiggyBankPurchaseRedemption();
-        piggyBankPurchaseRedemption.setCcy("BTC");
+        piggyBankPurchaseRedemption.setCcy("USDT");
         piggyBankPurchaseRedemption.setAmt("1");
         piggyBankPurchaseRedemption.setSide("purchase");
         JSONObject result = fundingAPIService.piggyBankPurchaseRedemption(piggyBankPurchaseRedemption);
@@ -138,7 +137,7 @@ public class FundingAPITests extends FundingAPIBaseTests {
      */
     @Test
     public void assetBillsDetails() {
-        JSONObject result = fundingAPIService.assetBillsDetails("BTC","","","","");
+        JSONObject result = fundingAPIService.assetBillsDetails("BTC",null,null,null,null);
         toResultString(LOG, "result", result);
     }
 

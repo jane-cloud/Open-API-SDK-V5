@@ -39,27 +39,23 @@ public class TradeChannelTest {
         Map order =new HashMap();
 
 
-        order.put("instId","BTC-USDT");
-        order.put("tdMode","isolated");
+        order.put("instId","LTC-USDT-SWAP");
+        order.put("tdMode","cross");
 //        order.put("ccy","USDT");
-//        order.put("clOrdId","testSpot123");
+        order.put("clOrdId","OK2104230918290804");
 //        order.put("tag","111");
 
         order.put("side","sell");
-//        order.put("posSide","net");
-        order.put("ordType","limit");
-        order.put("px","20000");
+        order.put("posSide","short");
+        order.put("ordType","market");
+//        order.put("px","2");
         order.put("sz","1");
-        order.put("reduceOnly",false);
+//        order.put("reduceOnly",false);
 
         placeOrder.add(order);
-        try {
-            Thread.sleep(100);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+
         //订阅
-        WebSocketClient.wsPlaceOrder(placeOrder,"testwsplaceorder2020");
+        WebSocketClient.wsPlaceOrder(placeOrder,"test123");
         //为保证测试方法不停，需要让线程延迟
         try {
             Thread.sleep(10000000);
@@ -139,11 +135,7 @@ public class TradeChannelTest {
 
 
         cancelOrder.add(order);
-        try {
-            Thread.sleep(100);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+
         //订阅
         WebSocketClient.wsCancelOrder(cancelOrder,"testwscancelorder2020");
         //为保证测试方法不停，需要让线程延迟
@@ -180,11 +172,7 @@ public class TradeChannelTest {
 
         cancelOrder.add(order1);
         cancelOrder.add(order2);
-        try {
-            Thread.sleep(100);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+
         //订阅
         WebSocketClient.wsCancelMultipleOrders(cancelOrder,"testwsCancelMultipleOrders2020");
         //为保证测试方法不停，需要让线程延迟
@@ -217,11 +205,7 @@ public class TradeChannelTest {
 
 
         cancelOrder.add(order);
-        try {
-            Thread.sleep(100);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+
         //订阅
         WebSocketClient.wsAmendOrder(cancelOrder,"testwsAmendOrder2020");
         //为保证测试方法不停，需要让线程延迟
@@ -234,8 +218,8 @@ public class TradeChannelTest {
 
 
     /**
-     * 改单
-     * Amend Order
+     * 批量改单
+     * Amend Multiple Orders
      */
     @Test
     public void wsAmendMultipleOrders() {
@@ -263,11 +247,7 @@ public class TradeChannelTest {
 
         cancelOrder.add(order1);
         cancelOrder.add(order2);
-        try {
-            Thread.sleep(100);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+
         //订阅
         WebSocketClient.wsAmendMultipleOrders(cancelOrder,"testwsAmendMultipleOrders2020");
         //为保证测试方法不停，需要让线程延迟

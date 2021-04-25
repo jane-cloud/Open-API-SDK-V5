@@ -85,11 +85,9 @@ public class APIHttpClient {
             builder.add(HttpHeadersEnum.OK_ACCESS_SIGN.header(), this.sign(request, timestamp));
             builder.add(HttpHeadersEnum.OK_ACCESS_TIMESTAMP.header(), timestamp);
             builder.add(HttpHeadersEnum.OK_ACCESS_PASSPHRASE.header(), this.credentials.getPassphrase());
-            builder.add("x-simulated-trading","1");
-//            System.out.println("__________simulated:"+simulated);
-//            builder.add(HttpHeadersEnum.x_simulated_trading.header(),simulated);
+//            builder.add("x-simulated-trading","1");
         }else{
-            builder.add("x-simulated-trading","1");
+//            builder.add("x-simulated-trading","1");
         }
 
         return builder.build();

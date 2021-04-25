@@ -2,11 +2,12 @@ package com.okex.open.api.service.publicData;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import retrofit2.http.Query;
 
 public interface PublicDataAPIService {
 
     //获取交易产品基础信息 Get Instruments
-    JSONObject getInstruments(String instType,String uly,String instId);
+    JSONObject getInstruments(String instType,String uly);
 
     //获取交割和行权记录 Get Delivery/Exercise History
     JSONObject getDeliveryExerciseHistory(String instType,String uly,String after,String before,String limit);
@@ -40,4 +41,7 @@ public interface PublicDataAPIService {
 
     //获取标记价格 Get Mark Price
     JSONObject getMarkPrice(String instType,String uly,String instId);
+
+    //获取合约衍生品仓位档位
+    JSONObject getTier(String instType, String uly, String instId, String tdMode, String ccy, String tier);
 }

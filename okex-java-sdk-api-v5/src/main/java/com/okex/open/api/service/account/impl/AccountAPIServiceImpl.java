@@ -6,6 +6,7 @@ import com.okex.open.api.bean.account.param.*;
 import com.okex.open.api.client.APIClient;
 import com.okex.open.api.config.APIConfiguration;
 import com.okex.open.api.service.account.AccountAPIService;
+import retrofit2.http.Query;
 
 public class AccountAPIServiceImpl implements AccountAPIService {
 
@@ -17,6 +18,12 @@ public class AccountAPIServiceImpl implements AccountAPIService {
         this.api = client.createService(AccountAPI.class);
     }
 
+    //查看账户持仓风险 Get account and position risk
+    @Override
+    public JSONObject getAccountAndPosition(String instType) {
+        return this.client.executeSync(this.api.getAccountAndPosition(instType));
+    }
+
     //查看账户余额 Get Balance
     @Override
     public JSONObject getBalance(String ccy) {
@@ -25,8 +32,8 @@ public class AccountAPIServiceImpl implements AccountAPIService {
 
     //查看持仓信息 Get Positions
     @Override
-    public JSONObject getPositions(String instType, String instId) {
-        return this.client.executeSync(this.api.getPositions(instType,instId));
+    public JSONObject getPositions(String instType, String instId,String posId) {
+        return this.client.executeSync(this.api.getPositions(instType,instId,posId));
     }
 
     //账单流水查询（近七天） Get Bills Details (last 7 days)
@@ -59,7 +66,7 @@ public class AccountAPIServiceImpl implements AccountAPIService {
         return this.client.executeSync(this.api.setLeverage(JSONObject.parseObject(JSON.toJSONString(setLeverage))));
     }
 
-    //获取最大可交易数量 Get Maximum Tradable Size For Instrument
+    //获取最大可买卖/开仓数量 Get maximum buy/sell amount or open amount
     @Override
     public JSONObject getMaximumTradableSizeForInstrument(String instId, String tdMode, String ccy, String px) {
         return this.client.executeSync(this.api.getMaximumTradableSizeForInstrument(instId,tdMode,ccy,px));
@@ -83,10 +90,10 @@ public class AccountAPIServiceImpl implements AccountAPIService {
         return this.client.executeSync(this.api.getLeverage(instId,mgnMode));
     }
 
-    //获取币币逐仓杠杆最大可借 Get the maximum loan of isolated MARGIN
+    //获取币币逐仓杠杆最大可借 Get the maximum loan of instrument
     @Override
-    public JSONObject getTheMaximumLoanOfIsolatedMARGIN(String instId) {
-        return this.client.executeSync(this.api.getTheMaximumLoanOfIsolatedMARGIN(instId));
+    public JSONObject getTheMaximumLoanOfIsolatedMARGIN(String instId,String mgnMode,String mgnCcy) {
+        return this.client.executeSync(this.api.getTheMaximumLoanOfIsolatedMARGIN(instId,mgnMode,mgnCcy));
     }
 
     //获取当前账户交易手续费费率 Get Fee Rates
@@ -100,6 +107,12 @@ public class AccountAPIServiceImpl implements AccountAPIService {
     @Override
     public JSONObject getInterestAccrued(String instId, String ccy, String mgnMode, String after, String before, String limit) {
         return this.client.executeSync(this.api.getInterestAccrued(instId,ccy,mgnMode,after,before,limit));
+    }
+
+    //获取用户当前杠杆借币利率 Get interest rate
+    @Override
+    public JSONObject getInterestRate(String ccy) {
+        return this.client.executeSync(this.api.getInterestRate(ccy));
     }
 
     //期权希腊字母PA/BS切换 Set the display type of Greeks

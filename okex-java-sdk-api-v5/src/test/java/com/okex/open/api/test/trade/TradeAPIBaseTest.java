@@ -10,9 +10,11 @@ public class TradeAPIBaseTest extends BaseTests {
 
         config.setEndpoint("https://www.okex.com/");
 
-        config.setApiKey("d");
+
+        config.setApiKey("");
         config.setSecretKey("");
         config.setPassphrase("");
+
 
         config.setPrint(true);
        /* config.setI18n(I18nEnum.SIMPLIFIED_CHINESE);*/

@@ -31,17 +31,17 @@ public class TradeAPITest extends TradeAPIBaseTest {
     public void placeOrder(){
 
         PlaceOrder placeOrder =new PlaceOrder();
-        placeOrder.setInstId("BTC-USDT-210625");
+        placeOrder.setInstId("LTC-USDT-SWAP");
         placeOrder.setTdMode("cross");
-        placeOrder.setCcy("USDT");
-        placeOrder.setClOrdId("testfutures01");
-        placeOrder.setTag("");
+//        placeOrder.setCcy("USDT");
+        placeOrder.setClOrdId("0423a3a06");
+//        placeOrder.setTag("");
         placeOrder.setSide("sell");
         placeOrder.setPosSide("short");
-        placeOrder.setOrdType("limit");
-        placeOrder.setSz("10");
-        placeOrder.setPx("24536");
-        placeOrder.setReduceOnly(false);
+        placeOrder.setOrdType("market");
+        placeOrder.setSz("1");
+//        placeOrder.setPx("60000");
+//        placeOrder.setReduceOnly(false);
         JSONObject result = tradeAPIService.placeOrder(placeOrder);
 
         toResultString(LOG, "result", result);
@@ -60,13 +60,13 @@ public class TradeAPITest extends TradeAPIBaseTest {
         PlaceOrder placeOrder1 =new PlaceOrder();
         placeOrder1.setInstId("TRX-USDT");
         placeOrder1.setTdMode("isolated");
-        placeOrder1.setClOrdId("testspot07");
+        placeOrder1.setClOrdId("123testspot07");
         placeOrder1.setTag("");
-        placeOrder1.setSide("buy");
+        placeOrder1.setSide("sell");
         placeOrder1.setPosSide("");
         placeOrder1.setOrdType("limit");
         placeOrder1.setSz("10");
-        placeOrder1.setPx("0.027");
+        placeOrder1.setPx("0.09");
         placeOrder1.setReduceOnly(null);
 
 
@@ -144,13 +144,13 @@ public class TradeAPITest extends TradeAPIBaseTest {
     public void amendOrder(){
 
         AmendOrder amendOrder = new AmendOrder();
-        amendOrder.setInstId("TRX-USDT");
-        amendOrder.setCxlOnFail(false);
-        amendOrder.setOrdId("261905735181807620");
-        amendOrder.setClOrdId("");
+        amendOrder.setInstId("BTC-USD-210326");
+        amendOrder.setCxlOnFail(true);
+        amendOrder.setOrdId("294884456087826432");
+//        amendOrder.setClOrdId("");
         amendOrder.setReqId("");
-        amendOrder.setNewSz("12");
-        amendOrder.setNewPx("0.0275");
+        amendOrder.setNewSz("12.5");
+        amendOrder.setNewPx("52000");
 
         JSONObject result = tradeAPIService.amendOrder(amendOrder);
 
@@ -203,13 +203,16 @@ public class TradeAPITest extends TradeAPIBaseTest {
     public void closePositions(){
 
         ClosePositions closePositions =  new ClosePositions();
-        closePositions.setInstId("BTC-USDT-210326");
+        closePositions.setInstId("BTC-USD-SWAP");
         closePositions.setPosSide("long");
         closePositions.setMgnMode("cross");
         closePositions.setCcy("");
         JSONObject result = tradeAPIService.closePositions(closePositions);
 
         toResultString(LOG, "result", result);
+
+
+
     }
 
 
@@ -219,7 +222,7 @@ public class TradeAPITest extends TradeAPIBaseTest {
      */
     @Test
     public void getOrderDetails(){
-        JSONObject result = tradeAPIService.getOrderDetails("TRX-USDT","261888352392196096","");
+        JSONObject result = tradeAPIService.getOrderDetails("EOS-USDT",null,"0420aaa");
         toResultString(LOG, "result", result);
     }
 
@@ -230,7 +233,7 @@ public class TradeAPITest extends TradeAPIBaseTest {
      */
     @Test
     public void getOrderList(){
-        JSONObject result = tradeAPIService.getOrderList("","","","","","","","");
+        JSONObject result = tradeAPIService.getOrderList("FUTURES","","EOS-USDT-210924","","","","","");
         toResultString(LOG, "result", result);
     }
 
@@ -241,7 +244,7 @@ public class TradeAPITest extends TradeAPIBaseTest {
      */
     @Test
     public void getOrderHistory7days(){
-        JSONObject result = tradeAPIService.getOrderHistory7days("SPOT","","","","","","","");
+        JSONObject result = tradeAPIService.getOrderHistory7days("FUTURES","","","","","","","");
         toResultString(LOG, "result", result);
     }
 
@@ -252,7 +255,7 @@ public class TradeAPITest extends TradeAPIBaseTest {
      */
     @Test
     public void getOrderHistory3months(){
-        JSONObject result = tradeAPIService.getOrderHistory3months("FUTURES","","","","","","","");
+        JSONObject result = tradeAPIService.getOrderHistory3months("SWAP","","BTC-USDT-SWAP","","","","","");
         toResultString(LOG, "result", result);
     }
 
@@ -264,9 +267,9 @@ public class TradeAPITest extends TradeAPIBaseTest {
     @Test
     public void getTransactionDetails(){
 
-        JSONObject result = tradeAPIService.getTransactionDetails("SPOT",null,null,null,null,null,null);
-
+        JSONObject result = tradeAPIService.getTransactionDetails(null,null,null,null,null,null,null);
         toResultString(LOG, "result", result);
+
     }
 
     /**
@@ -276,24 +279,24 @@ public class TradeAPITest extends TradeAPIBaseTest {
     @Test
     public void placeAlgoOrder(){
         PlaceAlgoOrder placeAlgoOrder = new PlaceAlgoOrder();
-        placeAlgoOrder.setInstId("BTC-USDT");
+        placeAlgoOrder.setInstId("ALGO-USDT-SWAP");
         placeAlgoOrder.setTdMode("isolated");
 //        placeAlgoOrder.setCcy("");
-        placeAlgoOrder.setSide("sell");
-//        placeAlgoOrder.setPosSide("short");
-        placeAlgoOrder.setOrdType("conditional");
-        placeAlgoOrder.setSz("20");
+        placeAlgoOrder.setSide("buy");
+        placeAlgoOrder.setPosSide("long");
+        placeAlgoOrder.setOrdType("trigger");
+        placeAlgoOrder.setSz("1");
         placeAlgoOrder.setReduceOnly(false);
 
 //        止盈止损 Stop Order
-        placeAlgoOrder.setTpTriggerPx("23000");
-        placeAlgoOrder.setTpOrdPx("28500");
-//        placeAlgoOrder.setSlTriggerPx("17000");
-//        placeAlgoOrder.setSlOrdPx("16500");
+//        placeAlgoOrder.setTpTriggerPx("45000");
+//        placeAlgoOrder.setTpOrdPx("44000");
+//        placeAlgoOrder.setSlTriggerPx("60000");
+//        placeAlgoOrder.setSlOrdPx("65000");
 
 //        计划委托 Trigger Order
-//        placeAlgoOrder.setTriggerPx("");
-//        placeAlgoOrder.setOrderPx("");
+        placeAlgoOrder.setTriggerPx("1.1");
+        placeAlgoOrder.setOrderPx("0.7");
 
 
         JSONObject result = tradeAPIService.placeAlgoOrder(placeAlgoOrder);
@@ -311,7 +314,7 @@ public class TradeAPITest extends TradeAPIBaseTest {
         List<CancelAlgoOrder> list = new ArrayList<CancelAlgoOrder>();
         CancelAlgoOrder cancelAlgoOrder = new CancelAlgoOrder();
 
-        cancelAlgoOrder.setAlgoId("258548125464408064");
+        cancelAlgoOrder.setAlgoId("300338778946826240");
         cancelAlgoOrder.setInstId("BTC-USDT");
         list.add(cancelAlgoOrder);
 
@@ -325,7 +328,7 @@ public class TradeAPITest extends TradeAPIBaseTest {
      */
     @Test
     public void getAlgoOrderList(){
-        JSONObject result = tradeAPIService.getAlgoOrderList(null,null,"BTC-USDT","conditional",null,null,"10");
+        JSONObject result = tradeAPIService.getAlgoOrderList("300592229014450176",null,null,"trigger",null,null,"10");
         toResultString(LOG, "result", result);
     }
 
@@ -336,7 +339,7 @@ public class TradeAPITest extends TradeAPIBaseTest {
      */
     @Test
     public void getAlgoOrderHistory(){
-        JSONObject result = tradeAPIService.getAlgoOrderHistory("canceled",null,null,null,"conditional",null,null,"10");
+        JSONObject result = tradeAPIService.getAlgoOrderHistory("effective",null,null,null,"trigger",null,null,"10");
         toResultString(LOG, "result", result);
     }
 

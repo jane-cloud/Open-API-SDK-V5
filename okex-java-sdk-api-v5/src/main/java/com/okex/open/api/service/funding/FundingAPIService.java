@@ -9,7 +9,7 @@ public interface FundingAPIService {
     JSONObject getDepositAddress(String ccy);
 
     //获取资金账户余额信息
-    JSONObject getBalance();
+    JSONObject getBalance(String ccy);
 
     //资金划转  Funds Transfer
     JSONObject fundsTransfer(FundsTransfer fundsTransfer);

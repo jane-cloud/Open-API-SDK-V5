@@ -41,15 +41,10 @@ public class PrivateChannelTest {
         Map accountMap =new HashMap();
 
            accountMap.put("channel","account");
-           accountMap.put("ccy","BTC");
+           accountMap.put("ccy","USDT");
 
         channelList.add(accountMap);
 
-        try {
-            Thread.sleep(100);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
         //调用订阅方法
         WebSocketClient.subscribe(channelList);
         //为保证测试方法不停，需要让线程延迟
@@ -72,17 +67,36 @@ public class PrivateChannelTest {
         Map positionsMap =new HashMap();
 
         positionsMap.put("channel","positions");
-        positionsMap.put("instType","ANY");
-        positionsMap.put("uly","BTC-USDT");
-        positionsMap.put("instId","BTC-USDT-210625");
+        positionsMap.put("instType","SWAP");
+        positionsMap.put("uly","XRP-USDT");
+        positionsMap.put("instId","XRP-USDT-SWAP");
 
         channelList.add(positionsMap);
 
+        //调用订阅方法
+        WebSocketClient.subscribe(channelList);
+        //为保证测试方法不停，需要让线程延迟
         try {
-            Thread.sleep(100);
+            Thread.sleep(10000000);
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    /**
+     * 账户余额和持仓频道
+     * Balance and Position Channel
+     */
+    @Test
+    public void privateBalanceAndPositionChannel() {
+        //添加订阅频道
+        ArrayList<Map> channelList= new ArrayList<>();
+        Map orderMap =new HashMap();
+
+        orderMap.put("channel","balance_and_position");
+
+        channelList.add(orderMap);
+
         //调用订阅方法
         WebSocketClient.subscribe(channelList);
         //为保证测试方法不停，需要让线程延迟
@@ -105,17 +119,12 @@ public class PrivateChannelTest {
         Map orderMap =new HashMap();
 
         orderMap.put("channel","orders");
-        orderMap.put("instType","FUTURES");
-        orderMap.put("uly","BTC-USDT");
-//        orderMap.put("instId","BTC-USDT-210625");
+        orderMap.put("instType","SWAP");
+        orderMap.put("uly","XRP-USDT");
+        orderMap.put("instId","XRP-USDT-SWAP");
 
         channelList.add(orderMap);
 
-        try {
-            Thread.sleep(100);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
         //调用订阅方法
         WebSocketClient.subscribe(channelList);
         //为保证测试方法不停，需要让线程延迟
@@ -145,11 +154,6 @@ public class PrivateChannelTest {
 
         channelList.add(algoOrders);
 
-        try {
-            Thread.sleep(100);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
         //调用订阅方法
         WebSocketClient.subscribe(channelList);
         //为保证测试方法不停，需要让线程延迟
@@ -168,8 +172,8 @@ public class PrivateChannelTest {
         ArrayList<Map> channelList= new ArrayList<>();
 
         Map map =new HashMap();
-        map.put("channel","books");
-        map.put("instId","BTC-USD-201218");
+        map.put("channel","balance_and_position");
+        map.put("instId","BTC-USD-210924");
         channelList.add(map);
         WebSocketClient.unsubscribe(channelList);
         //为保证收到服务端返回的消息，需要让线程延迟

@@ -1,6 +1,10 @@
 package com.okex.open.api.test.marketData;
 
+import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.google.gson.JsonObject;
+import com.okex.open.api.bean.market.result.BinanceCandlestick;
+import com.okex.open.api.enums.BinanceInternal;
 import com.okex.open.api.service.marketData.MarketDataAPIService;
 import com.okex.open.api.service.marketData.impl.MarketDataAPIServiceImpl;
 import org.junit.Before;
@@ -8,10 +12,15 @@ import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
+
 public class MarketDataAPITest extends MarketDataAPIBaseTest {
 
     private static final Logger LOG = LoggerFactory.getLogger(MarketDataAPITest.class);
-    private MarketDataAPIService marketDataAPIService;
+    public MarketDataAPIService marketDataAPIService;
 
     @Before
     public void before() {
@@ -25,7 +34,7 @@ public class MarketDataAPITest extends MarketDataAPIBaseTest {
      */
     @Test
     public void getTickers() {
-        JSONObject result = this.marketDataAPIService.getTickers("SPOT",null);
+        JSONObject result = this.marketDataAPIService.getTickers("FUTURES","BTC-USDT");
         this.toResultString(MarketDataAPITest.LOG, "result", result);
     }
 
@@ -36,18 +45,18 @@ public class MarketDataAPITest extends MarketDataAPIBaseTest {
      */
     @Test
     public void getTicker() {
-        JSONObject result = this.marketDataAPIService.getTicker("BTC-USDT");
+        JSONObject result = this.marketDataAPIService.getTicker("BTC-USDT-SWAP");
         this.toResultString(MarketDataAPITest.LOG, "result", result);
     }
 
 
     /**
-     * 获取指数行情数据 Get Index Tickers
+     * 获取指数行情 Get Index Tickers
      * GET /api/v5/market/index-tickers
      */
     @Test
     public void getIndexTickers() {
-        JSONObject result = this.marketDataAPIService.getIndexTickers("BTC","");
+        JSONObject result = this.marketDataAPIService.getIndexTickers("USDT","XRP-USDT");
         this.toResultString(MarketDataAPITest.LOG, "result", result);
     }
 
@@ -58,7 +67,7 @@ public class MarketDataAPITest extends MarketDataAPIBaseTest {
      */
     @Test
     public void getOrderBook() {
-        JSONObject result = this.marketDataAPIService.getOrderBook("BTC-USD-SWAP","");
+        JSONObject result = this.marketDataAPIService.getOrderBook("BTC-USD-SWAP","400");
         this.toResultString(MarketDataAPITest.LOG, "result", result);
     }
 
@@ -69,7 +78,8 @@ public class MarketDataAPITest extends MarketDataAPIBaseTest {
      */
     @Test
     public void getCandlesticks() {
-        JSONObject result = this.marketDataAPIService.getCandlesticks("BTC-USDT","","","","");
+
+        JSONObject result = this.marketDataAPIService.getCandlesticks("BTC-USD-SWAP","1618468839819",null,"2H","20");
         this.toResultString(MarketDataAPITest.LOG, "result", result);
     }
 
@@ -80,7 +90,7 @@ public class MarketDataAPITest extends MarketDataAPIBaseTest {
      */
     @Test
     public void getCandlesticksHistory() {
-        JSONObject result = this.marketDataAPIService.getCandlesticksHistory("BTC-USDT","","","","");
+        JSONObject result = this.marketDataAPIService.getCandlesticksHistory("BTC-USDT-210625", null, null, "1m", "12");
         this.toResultString(MarketDataAPITest.LOG, "result", result);
     }
 
@@ -91,7 +101,7 @@ public class MarketDataAPITest extends MarketDataAPIBaseTest {
      */
     @Test
     public void getIndexCandlesticks() {
-        JSONObject result = this.marketDataAPIService.getIndexCandlesticks("BTC-USDT","","","","");
+        JSONObject result = this.marketDataAPIService.getIndexCandlesticks("BTC-USDT","","","1H","5");
         this.toResultString(MarketDataAPITest.LOG, "result", result);
     }
 
@@ -102,7 +112,7 @@ public class MarketDataAPITest extends MarketDataAPIBaseTest {
      */
     @Test
     public void getMarkPriceCandlesticks() {
-        JSONObject result = this.marketDataAPIService.getMarkPriceCandlesticks("BTC-USDT","","","","");
+        JSONObject result = this.marketDataAPIService.getMarkPriceCandlesticks("EOS-USDT",null,null,"15m","81");
         this.toResultString(MarketDataAPITest.LOG, "result", result);
     }
 
@@ -116,6 +126,17 @@ public class MarketDataAPITest extends MarketDataAPIBaseTest {
         JSONObject result = this.marketDataAPIService.getTrades("BTC-USDT-SWAP","");
         this.toResultString(MarketDataAPITest.LOG, "result", result);
     }
+
+    /**
+     * 获取平台24小时总成交量 Get total volume
+     * GET /api/v5/market/platform-24-volume
+     */
+    @Test
+    public void getTotalVolume() {
+        JSONObject result = this.marketDataAPIService.getTotalVolume();
+        this.toResultString(MarketDataAPITest.LOG, "result", result);
+    }
+
 
 
 

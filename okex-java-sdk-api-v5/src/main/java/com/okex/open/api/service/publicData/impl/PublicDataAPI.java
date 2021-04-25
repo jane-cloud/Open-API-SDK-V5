@@ -10,7 +10,7 @@ public interface PublicDataAPI {
 
     //获取交易产品基础信息 Get Instruments
     @GET("/api/v5/public/instruments")
-    Call<JSONObject> getInstruments(@Query("instType") String instType, @Query("uly")String uly, @Query("instId")String instId);
+    Call<JSONObject> getInstruments(@Query("instType") String instType, @Query("uly")String uly);
 
 
     //获取交割和行权记录 Get Delivery/Exercise History
@@ -67,5 +67,16 @@ public interface PublicDataAPI {
     //获取标记价格 Get Mark Price
     @GET("/api/v5/public/mark-price")
     Call<JSONObject> getMarkPrice(@Query("instType") String instType,@Query("uly") String uly,@Query("instId") String instId);
+
+
+    //获取合约衍生品仓位档位
+    @GET("/api/v5/public/tier")
+    Call<JSONObject> getTier(@Query("instType") String instType,
+                             @Query("uly")String uly,
+                             @Query("instId")String instId,
+                             @Query("tdMode")String tdMode,
+                             @Query("ccy")String ccy,
+                             @Query("tier")String tier);
+
 
 }
