@@ -54,3 +54,16 @@ class MarketAPI(Client):
     def get_trades(self, instId, limit=''):
         params = {'instId': instId, 'limit': limit}
         return self._request_with_params(GET, MARKET_TRADES, params)
+
+    # Get Volume
+    def get_volume(self):
+        return self._request_without_params(GET, VOLUMNE)
+
+    # Get Oracle
+    def get_oracle(self):
+        return self._request_without_params(GET, ORACLE)
+
+    # Get Tier
+    def get_tier(self, instType='', tdMode='', uly='', instId='', ccy='', tier=''):
+        params = {'instType': instType, 'tdMode': tdMode, 'uly': uly, 'instId': instId, 'ccy': ccy, 'tier': tier}
+        return self._request_with_params(GET, TIER, params)

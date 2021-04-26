@@ -384,16 +384,16 @@ secret_key = ""
 passphrase = ""
 
 
-# WebSocket公共频道
-# 实盘
+# WebSocket公共频道 public channels
+# 实盘 real trading
 # url = "wss://ws.okex.com:8443/ws/v5/public"
-# 模拟盘
+# 模拟盘 demo trading
 # url = "wss://ws.okex.com:8443/ws/v5/public?brokerId=9999"
 
-# WebSocket私有频道
-# 实盘
+# WebSocket私有频道 private channels
+# 实盘 real trading
 # url = "wss://ws.okex.com:8443/ws/v5/private"
-# 模拟盘
+# 模拟盘 demo trading
 # url = "wss://ws.okex.com:8443/ws/v5/private?brokerId=9999"
 
 '''
@@ -433,6 +433,8 @@ passphrase = ""
 # channels = [{"channel": "index-candle1m", "instId": "BTC-USDT"}]
 # 指数行情频道
 # channels = [{"channel": "index-tickers", "instId": "BTC-USDT"}]
+# status频道
+# channels = [{"channel": "status"}]
 
 '''
 私有频道
@@ -483,7 +485,7 @@ passphrase = ""
 loop = asyncio.get_event_loop()
 
 # 公共频道 不需要登录（行情，持仓总量，K线，标记价格，深度，资金费率等）
-loop.run_until_complete(subscribe_without_login(url, channels))
+# loop.run_until_complete(subscribe_without_login(url, channels))
 
 # 私有频道 需要登录（账户，持仓，订单等）
 # loop.run_until_complete(subscribe(url, api_key, passphrase, secret_key, channels))

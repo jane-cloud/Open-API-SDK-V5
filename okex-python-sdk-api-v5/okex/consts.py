@@ -19,6 +19,7 @@ POST = "POST"
 SERVER_TIMESTAMP_URL = '/api/v5/public/time'
 
 # account
+POSITION_RISK='/api/v5/account/account-position-risk'
 ACCOUNT_INFO = '/api/v5/account/balance'
 POSITION_INFO = '/api/v5/account/positions'
 BILLS_DETAIL = '/api/v5/account/bills'
@@ -33,6 +34,7 @@ GET_LEVERAGE = '/api/v5/account/leverage-info'
 MAX_LOAN = '/api/v5/account/max-loan'
 FEE_RATES = '/api/v5/account/trade-fee'
 INTEREST_ACCRUED = '/api/v5/account/interest-accrued'
+INTEREST_RATE = '/api/v5/account/interest-rate'
 SET_GREEKS = '/api/v5/account/set-greeks'
 MAX_WITHDRAWAL = '/api/v5/account/max-withdrawal'
 
@@ -57,6 +59,9 @@ HISTORY_CANDLES = '/api/v5/market/history-candles'
 INDEX_CANSLES = '/api/v5/market/index-candles'
 MARKPRICE_CANDLES = '/api/v5/market/mark-price-candles'
 MARKET_TRADES = '/api/v5/market/trades'
+VOLUMNE = '/api/v5/market/platform-24-volume'
+ORACLE = '/api/v5/market/oracle'
+TIER = '/api/v5/public/tier'
 
 # Public Data
 INSTRUMENT_INFO = '/api/v5/public/instruments'

@@ -4,7 +4,7 @@
 
 `WebSocketAPI： websockets package advise version 6.0`
 
-#### Step 1: Step 1: Download the SDK and install the necessary libraries
+#### Step 1: Download the SDK and install the necessary libraries
 
 1.1 Download python SDK 
 
