@@ -397,7 +397,7 @@ passphrase = ""
 # url = "wss://ws.okex.com:8443/ws/v5/private?brokerId=9999"
 
 '''
-公共频道
+公共频道 public channel
 :param channel: 频道名
 :param instType: 产品类型
 :param instId: 产品ID
@@ -407,9 +407,9 @@ passphrase = ""
 
 # 产品频道
 # channels = [{"channel": "instruments", "instType": "FUTURES"}]
-# 行情频道
+# 行情频道 tickers channel
 # channels = [{"channel": "tickers", "instId": "BTC-USD-210326"}]
-# 持仓总量频道
+# 持仓总量频道 
 # channels = [{"channel": "open-interest", "instId": "BTC-USD-210326"}]
 # K线频道
 # channels = [{"channel": "candle1m", "instId": "BTC-USD-210326"}]
@@ -437,7 +437,7 @@ passphrase = ""
 # channels = [{"channel": "status"}]
 
 '''
-私有频道
+私有频道 private channel
 :param channel: 频道名
 :param ccy: 币种
 :param instType: 产品类型
@@ -456,7 +456,7 @@ passphrase = ""
 # channels = [{"channel": "orders-algo", "instType": "FUTURES", "uly": "BTC-USD", "instId": "BTC-USD-201225"}]
 
 '''
-交易
+交易 trade
 '''
 
 # 下单

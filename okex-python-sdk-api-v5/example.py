@@ -74,7 +74,7 @@ if __name__ == '__main__':
     # 余币宝申购/赎回  PiggyBank Purchase/Redemption
     # result = fundingAPI.purchase_redempt('BTC', '1', 'purchase')
     # 资金流水查询  Asset Bills Details
-    # result = fundingAPI.get_bills('USDT', '130')
+    # result = fundingAPI.get_bills()
 
     # market api
     marketAPI = Market.MarketAPI(api_key, secret_key, passphrase, False, flag)
