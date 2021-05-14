@@ -13,10 +13,9 @@ Config::$debug=0;
 
 Config::$config=[
 
-    // v5 模拟环境 个人账户 key
-    "apiKey"=>"",
-    "apiSecret"=>"",
-    "passphrase"=>"",
-//    是否为模拟盘
-    "paper"=>1
+        "apiKey"=>"",
+        "apiSecret"=>"",
+        "passphrase"=>"",
+    //    是否为模拟盘
+        "paper"=>1
 ];

@@ -113,9 +113,9 @@ $coin = "EOS";
 //产品频道
 //$obj->subscribe($callbackTime,'{"channel":"instruments","instType":"FUTURES"}');
 //行情频道
-//$obj->subscribe($callbackTime,'{"channel":"tickers","instId":"XRP-USDT-210625"}');
+$obj->subscribe($callbackTime,'{"channel":"tickers","instId":"BTT-USDT"}');
 //持仓总理频道
-//$obj->subscribe($callbackTime,'{"channel":"open-interest","instId":"BTC-USD-SWAP"}');
+//$obj->subscribe($callbackTime,'{"channel":"open-interest","instId":"ADA-USDT-SWAP"}');
 //k线频道
 //$obj->subscribe($callbackTime,'{"channel":"candle30m","instId":"OKB-USDT"}');
 //交易频道
@@ -125,11 +125,11 @@ $coin = "EOS";
 //标记价格频道
 //$obj->subscribe($callbackTime,'{"channel":"mark-price","instId":"BTC-USD-SWAP"}');
 //标记价格K线频道
-//$obj->subscribe($callbackTime,'{"channel":"mark-price-candle1D","instId":"BTC-USD-SWAP"}');
+//$obj->subscribe($callbackTime,'{"channel":"mark-price-candle1D","instId":"BTC-USD-SWAP"},{"channel":"mark-price-candle1D","instId":"SHIB-USDT-SWAP"}');
 //限价频道
 //$obj->subscribe($callbackTime,'{"channel":"price-limit","instId":"BTC-USD-SWAP"}');
 //深度频道
-//$obj->subscribe($callbackTime,'{"channel":"books","instId":"BTC-USD-SWAP"}');
+//$obj->subscribe($callbackTime,'{"channel":"books-l2-tbt","instId":"SHIB-USDT"}');
 //期权定价频道
 //$obj->subscribe($callbackTime,'{"channel":"opt-summary","uly":"BTC-USD"}');
 //资金费率频道
@@ -148,11 +148,11 @@ $obj = new PrivateChannels(Config::$config);
 //账户频道
 //$obj->subscribe($callbackTime,'{"channel":"account"}');
 //持仓频道
-//$obj->subscribe($callbackTime,'{"channel":"positions","instType":"ANY"},{"channel":"orders","instType":"ANY"}');
+$obj->subscribe($callbackTime,'{"channel":"positions","instType":"ANY"}');
 //账户余额和持仓频道
 //$obj->subscribe($callbackTime,'{"channel":"balance_and_position"}');
 //订单频道
-//$obj->subscribe($callbackTime,'{"channel":"orders","instType":"ANY"}');
+//$obj->subscribe($callbackTime,'{"channel":"orders","instType":"ANY"},{"channel":"orders-algo","instType":"MARGIN","uly":"","instId":"BTC-USDT-SWAP"}');
 //策略委托订单频道
 //$obj->subscribe($callbackTime,'{"channel":"orders-algo","instType":"SWAP","uly":"BTC-USDT","instId":"BTC-USDT-SWAP"}');
 
@@ -161,7 +161,7 @@ $obj = new PrivateChannels(Config::$config);
  */
 $obj = new TradeChannels(Config::$config);
 //下单
-$obj->subscribe($callbackTime,'{"id": "2095109", "op": "order", "args": [{"side": "buy", "instId": "BTC-USDT-SWAP","ccy":"", "tdMode": "isolated", "ordType": "limit", "px": "39580.5", "sz": "1","clOrdId":"","posSide":"long"}]}');
+//$obj->subscribe($callbackTime,'{"id": "2095109", "op": "order", "args": [{"side": "buy", "instId": "SHIB-USDT","ccy":"", "tdMode": "cash", "ordType": "limit", "px": "0.00001474", "sz": "1000000","clOrdId":"","posSide":""}]}');
 //批量下单
 //$obj->subscribe($callbackTime,'{"id":  "1512", "op": "batch-orders", "args": [{"side": "buy", "instId": "BTC-USDT", "tdMode": "isolated", "ordType": "limit", "px": "19777", "sz": "1"},{"side": "buy", "instId": "BTC-USDT", "tdMode": "isolated", "ordType": "limit", "px": "19778", "sz": "1"}]}');
 //撤单

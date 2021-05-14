@@ -28,7 +28,7 @@ class Utils
         }
 
         $url = self::FUTURE_API_URL.$requestPath;
-        echo $url;
+
         $ch= curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
 
@@ -37,6 +37,8 @@ class Utils
 
         $sign = self::signature($timestamp, $method, $requestPath, $body, self::$apiSecret);
         $headers = self::getHeader(self::$apiKey, self::$paper,$sign, $timestamp, self::$passphrase, self::$textToSign);
+        echo $url;
+        echo "请求头";
         print_r($headers);
 
         if($method == "POST") {
@@ -153,14 +155,13 @@ class Utils
     {
         $message = (string) $timestamp . strtoupper($method) . $requestPath . (string) $body;
         self::$textToSign = $message;
-        echo $message;
         return base64_encode(hash_hmac('sha256', $message, $secretKey, true));
     }
 
     public static function wsSignature($timestamp, $method, $requestPath, $body, $secretKey)
     {
         $message = (string) $timestamp . strtoupper($method) . $requestPath . (string) $body;
-
+        echo  $message;
         $ntime = self::getTimestamp();
         print_r($ntime." TEXT-TO-SIGN:$message\n");
 

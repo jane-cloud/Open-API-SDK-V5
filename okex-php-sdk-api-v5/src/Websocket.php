@@ -45,7 +45,8 @@ class Websocket extends Utils{
         $GLOBALS['callback'] = $callback;
         $worker = new Worker();
         if(isset(Config::$config['paper'])){
-            $url = "ws://ws.okex.com:8443/ws/v5/public?brokerId=9999";
+//            $url = "ws://ws.okex.com:8443/ws/v5/public?brokerId=9999";
+            $url = "ws://wspap.okex.com:8443/ws/v5/public?brokerId=9999";
         }else{
             $url = "ws://ws.okex.com:8443/ws/v5/public";
         }
