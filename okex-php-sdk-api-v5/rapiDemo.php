@@ -26,7 +26,7 @@ use okv5\StatusApi;
  */
 $obj = new AccountApi(Config::$config);
 $coin = "XMR";
-//查看账户持仓风险 Get Account  
+//查看账户持仓风险 Get Account
 //$res = $obj -> getAccountPositionRisk('SWAP');
 // 查看账户余额 Get Balance
 //$res = $obj -> getBalance('');
