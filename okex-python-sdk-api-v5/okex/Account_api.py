@@ -7,6 +7,13 @@ class AccountAPI(Client):
     def __init__(self, api_key, api_secret_key, passphrase, use_server_time=False, flag='1'):
         Client.__init__(self, api_key, api_secret_key, passphrase, use_server_time, flag)
 
+    # Get Positions
+    def get_position_risk(self, instType=''):
+        params = {}
+        if instType:
+            params['instType'] = instType
+        return self._request_with_params(GET, POSITION_RISK, params)
+
     # Get Balance
     def get_account(self, ccy=''):
         params = {}
@@ -81,6 +88,11 @@ class AccountAPI(Client):
     def get_interest_accrued(self, instId='', ccy='', mgnMode='', after='', before='', limit=''):
         params = {'instId': instId, 'ccy': ccy, 'mgnMode': mgnMode, 'after': after, 'before': before, 'limit': limit}
         return self._request_with_params(GET, INTEREST_ACCRUED, params)
+
+    # Get interest-accrued
+    def get_interest_rate(self, ccy=''):
+        params = {'ccy': ccy}
+        return self._request_with_params(GET, INTEREST_RATE, params)
 
     # Set Greeks (PA/BS)
     def set_greeks(self, greeksType):

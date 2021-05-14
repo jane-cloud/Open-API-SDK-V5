@@ -48,6 +48,6 @@ class FundingAPI(Client):
         return self._request_with_params(POST, PURCHASE_REDEMPT, params)
 
     # Get Withdrawal History
-    def get_bills(self, ccy, type='', after='', before='', limit=''):
+    def get_bills(self, ccy='', type='', after='', before='', limit=''):
         params = {'ccy': ccy, 'type': type, 'after': after, 'before': before, 'limit': limit}
         return self._request_with_params(GET, BILLS_INFO, params)

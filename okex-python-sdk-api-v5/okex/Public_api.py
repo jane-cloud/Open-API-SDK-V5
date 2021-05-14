@@ -5,7 +5,7 @@ from .consts import *
 class PublicAPI(Client):
 
     def __init__(self, api_key, api_secret_key, passphrase, use_server_time=False, flag='1'):
-        Client.__init__(self, api_key, api_secret_key, passphrase, use_server_time,flag)
+        Client.__init__(self, api_key, api_secret_key, passphrase, use_server_time, flag)
 
     # Get Instruments
     def get_instruments(self, instType, uly='', instId=''):
@@ -66,4 +66,9 @@ class PublicAPI(Client):
     # Get Mark Price
     def get_mark_price(self, instType, uly='', instId=''):
         params = {'instType': instType, 'uly': uly, 'instId': instId}
+        return self._request_with_params(GET, MARK_PRICE, params)
+
+    # Get Tier
+    def get_tier(self, instType, tdMode, uly='', instId='', ccy='', tier=''):
+        params = {'instType': instType, 'tdMode': tdMode, 'uly': uly, 'instId': instId, 'ccy': ccy, 'tier': tier}
         return self._request_with_params(GET, MARK_PRICE, params)

@@ -7,16 +7,19 @@ import okex.subAccount_api as SubAccount
 import okex.status_api as Status
 import json
 
+
 if __name__ == '__main__':
     api_key = ""
     secret_key = ""
     passphrase = ""
-    # flag是实盘与模拟盘的切换参数
-    # flag = '1'  # 模拟盘
-    flag = '0'  # 实盘
+    # flag是实盘与模拟盘的切换参数 flag is the key parameter which can help you to change between demo and real trading.
+    # flag = '1'  # 模拟盘 demo trading
+    flag = '0'  # 实盘 real trading
 
     # account api
     accountAPI = Account.AccountAPI(api_key, secret_key, passphrase, False, flag)
+    # 查看账户持仓风险 GET Position_risk
+    # result = accountAPI.get_position_risk('SWAP')
     # 查看账户余额  Get Balance
     # result = accountAPI.get_account('BTC')
     # 查看持仓信息  Get Positions
@@ -45,6 +48,8 @@ if __name__ == '__main__':
     # result = accountAPI.get_fee_rates('FUTURES', '', category='1')
     # 获取计息记录  Get interest-accrued
     # result = accountAPI.get_interest_accrued('BTC-USDT', 'BTC', 'isolated', '', '', '10')
+    # 获取用户当前杠杆借币利率 Get Interest-accrued
+    # result = accountAPI.get_interest_rate()
     # 期权希腊字母PA / BS切换  Set Greeks (PA/BS)
     # result = accountAPI.set_greeks('BS')
     # 查看账户最大可转余额  Get Maximum Withdrawals
@@ -69,7 +74,7 @@ if __name__ == '__main__':
     # 余币宝申购/赎回  PiggyBank Purchase/Redemption
     # result = fundingAPI.purchase_redempt('BTC', '1', 'purchase')
     # 资金流水查询  Asset Bills Details
-    # result = fundingAPI.get_bills('USDT', '130')
+    # result = fundingAPI.get_bills()
 
     # market api
     marketAPI = Market.MarketAPI(api_key, secret_key, passphrase, False, flag)
@@ -91,6 +96,10 @@ if __name__ == '__main__':
     # result = marketAPI.get_markprice_candlesticks('BTC-USDT')
     # 获取交易产品公共成交数据  Get Trades
     # result = marketAPI.get_trades('BTC-USDT', '400')
+    # 获取平台24小时成交总量  Get Platform 24 Volume
+    # result = marketAPI.get_volume()
+    # Oracle 上链交易数据 GET Oracle
+    # result = marketAPI.get_oracle()
 
     # public api
     publicAPI = Public.PublicAPI(api_key, secret_key, passphrase, False, flag)
@@ -118,6 +127,8 @@ if __name__ == '__main__':
     # result = publicAPI.get_liquidation_orders('FUTURES', uly='BTC-USDT', alias='next_quarter', state='filled')
     # 获取标记价格  Get Mark Price
     # result = publicAPI.get_mark_price('FUTURES')
+    # 获取合约衍生品仓位档位 Get Tier
+    # result = publicAPI.get_tier(instType='MARGIN', instId='BTC-USDT', tdMode='cross')
 
     # trade api
     tradeAPI = Trade.TradeAPI(api_key, secret_key, passphrase, False, flag)
@@ -164,7 +175,7 @@ if __name__ == '__main__':
     # result = tradeAPI.get_fills()
     # 策略委托下单  Place Algo Order
     # result = tradeAPI.place_algo_order('BTC-USDT-210409', 'isolated', 'buy', ordType='conditional',
-                                       # sz='100',posSide='long', tpTriggerPx='60000', tpOrdPx='59999')
+    #                                    sz='100',posSide='long', tpTriggerPx='60000', tpOrdPx='59999')
     # 撤销策略委托订单  Cancel Algo Order
     # result = tradeAPI.cancel_algo_order([{'algoId': '297394002194735104', 'instId': 'BTC-USDT-210409'}])
     # 获取未完成策略委托单列表  Get Algo Order List
@@ -193,5 +204,4 @@ if __name__ == '__main__':
     Status = Status.StatusAPI(api_key, secret_key, passphrase, False, flag)
     # 查看系统的升级状态
     # result = Status.status()
-
     print(json.dumps(result))
