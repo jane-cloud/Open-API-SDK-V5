@@ -75,11 +75,11 @@ class SubaccountApi extends Utils
         return $this->request('/api/v5/users/subaccount/list', $params, 'GET');
     }
 
-    public function transfer($ccy,$amt,$form,$to,$fromSubAccount,$toSubAccount){
+    public function transfer($ccy,$amt,$from,$to,$fromSubAccount,$toSubAccount){
         $params = [
             'ccy' => $ccy,
             'amt' => $amt,
-            'form' => $form,
+            'form' => $from,
             'to' => $to,
             'fromSubAccount' => $fromSubAccount,
             'toSubAccount' => $toSubAccount,
