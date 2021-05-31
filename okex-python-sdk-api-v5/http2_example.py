@@ -1,0 +1,285 @@
+import asyncio
+import json
+import time
+
+import okex_http2.Account_api as Account
+import okex_http2.Funding_api as Funding
+import okex_http2.Market_api as Market
+import okex_http2.Public_api as Public
+import okex_http2.Trade_api as Trade
+import okex_http2.subAccount_api as SubAccount
+
+
+async def http2_request(request, parameters):
+    while 1:
+        begin = time.time()
+        if type(parameters) is list:
+            result = request(*parameters)
+        else:
+            result = request(**parameters)
+        end = time.time()
+        cost = end - begin
+        print(f'request_cost:{cost}  response_body:{json.dumps(result)}')
+
+
+api_key = ""
+secret_key = ""
+passphrase = ""
+# flag是实盘与模拟盘的切换参数 flag is the key parameter which can help you to change between demo and real trading.
+# flag = '1'  # 模拟盘 demo trading
+flag = '0'  # 实盘 real tradiang
+
+if __name__ == '__main__':
+    # account api
+    accountAPI = Account.AccountAPI(api_key, secret_key, passphrase, False, flag)
+    # 查看账户持仓风险 GET Position_risk
+    # request = accountAPI.get_position_risk
+    # parameters = ['SWAP']
+    # 查看账户余额  Get Balance
+    # request = accountAPI.get_account
+    # parameters = ['BTC']
+    # 查看持仓信息  Get Positions
+    # request = accountAPI.get_positions
+    # parameters = ['FUTURES', 'BTC-USD-210402']
+    # 账单流水查询（近七天） Get Bills Details (recent 7 days)
+    # request = accountAPI.get_bills_detail
+    # parameters = ['FUTURES', 'BTC', 'cross']
+    # 账单流水查询（近三个月） Get Bills Details (recent 3 months)
+    # request = accountAPI.get_bills_details
+    # parameters = ['FUTURES', 'BTC','cross']
+    # 查看账户配置  Get Account Configuration
+    # request = accountAPI.get_account_config
+    # parameters = []
+    # 设置持仓模式  Set Position mode
+    # request = accountAPI.get_position_mode
+    # parameters = ['long_short_mode']
+    # 设置杠杆倍数  Set Leverage
+    # request = accountAPI.set_leverage
+    # parameters = {'instId': 'BTC-USDT', 'lever': '10', 'mgnMode': 'cross'}
+    # 获取最大可交易数量  Get Maximum Tradable Size For Instrument
+    # request = accountAPI.get_maximum_trade_size
+    # parameters = ['BTC-USDT-210402', 'cross', 'USDT']
+    # 获取最大可用数量  Get Maximum Available Tradable Amount
+    # request = accountAPI.get_max_avail_size
+    # parameters = ['BTC-USDT-210402', 'isolated', 'BTC']
+    # 调整保证金  Increase/Decrease margint
+    # request = accountAPI.Adjustment_margin
+    # parameters = ['BTC-USDT-210409', 'long', 'add', '100']
+    # 获取杠杆倍数 Get Leverage
+    # request = accountAPI.get_leverage
+    # parameters = ['BTC-USDT', 'isolated']
+    # 获取币币逐仓杠杆最大可借  Get the maximum loan of isolated MARGIN
+    # request = accountAPI.get_max_load
+    # parameters = ['BTC-USDT', 'cross', 'BTC']
+    # 获取当前账户交易手续费费率  Get Fee Rates
+    # request = accountAPI.get_fee_rates
+    # parameters = {'instType': 'FUTURES', 'category': '1'}
+    # 获取计息记录  Get interest-accrued
+    # request = accountAPI.get_interest_accrued
+    # parameters = ['BTC-USDT', 'BTC', 'isolated', '', '', '10']
+    # 获取用户当前杠杆借币利率 Get Interest-accrued
+    # request = accountAPI.get_interest_rate
+    # parameters = []
+    # 期权希腊字母PA / BS切换  Set Greeks (PA/BS)
+    # request = accountAPI.set_greeks
+    # parameters = ['BS']
+    # 查看账户最大可转余额  Get Maximum Withdrawals
+    # request = accountAPI.get_max_withdrawal
+    # parameters = []
+
+    # funding api
+    fundingAPI = Funding.FundingAPI(api_key, secret_key, passphrase, False, flag)
+    # 获取充值地址信息  Get Deposit Address
+    # request = fundingAPI.get_deposit_address
+    # parameters = []
+    # 获取资金账户余额信息  Get Balance
+    # request = fundingAPI.get_balances
+    # parameters = ['BTC']
+    # 资金划转  Funds Transfer
+    # request = fundingAPI.funds_transfer
+    # parameters = {'ccy': '', 'amt': '', 'type': '', 'from': '', 'to': '', 'subAcct': ''}
+    # 提币  Withdrawal
+    # request = fundingAPI.coin_withdraw
+    # parameters = ['usdt', '2', '3', '', '', '0']
+    # 充值记录  Get Deposit History
+    # request = fundingAPI.get_deposit_history
+    # parameters = []
+    # 提币记录  Get Withdrawal History
+    # request = fundingAPI.get_withdrawal_history
+    # parameters = []
+    # 获取币种列表  Get Currencies
+    # request = fundingAPI.get_currency
+    # parameters = []
+    # 余币宝申购/赎回  PiggyBank Purchase/Redemption
+    # request = fundingAPI.purchase_redempt
+    # parameters = ['BTC', '1', 'purchase']
+    # 资金流水查询  Asset Bills Details
+    # request = fundingAPI.get_bills
+    # parameters = []
+
+    # market api
+    marketAPI = Market.MarketAPI(api_key, secret_key, passphrase, False, flag)
+    # 获取所有产品行情信息  Get Tickers
+    # request = marketAPI.get_tickers
+    # parameters = ['SPOT']
+    # 获取单个产品行情信息  Get Ticker
+    # request = marketAPI.get_ticker
+    # parameters = ['BTC-USDT']
+    # 获取指数行情  Get Index Tickers
+    # request = marketAPI.get_index_ticker
+    # parameters = ['BTC', 'BTC-USD']
+    # 获取产品深度  Get Order Book
+    # request = marketAPI.get_orderbook
+    # parameters = ['BTC-USDT', '400']
+    # 获取所有交易产品K线数据  Get Candlesticks
+    # request = marketAPI.get_candlesticks
+    # parameters = ['BTC-USDT-210924']
+    # 获取交易产品历史K线数据（仅主流币实盘数据）  Get Candlesticks History（top currencies in real-trading only）
+    # request = marketAPI.get_history_candlesticks
+    # parameters = ['BTC-USDT']
+    # 获取指数K线数据  Get Index Candlesticks
+    # request = marketAPI.get_index_candlesticks
+    # parameters = ['BTC-USDT']
+    # 获取标记价格K线数据  Get Mark Price Candlesticks
+    # request = marketAPI.get_markprice_candlesticks
+    # parameters = ['BTC-USDT']
+    # 获取交易产品公共成交数据  Get Trades
+    # request = marketAPI.get_trades
+    # parameters = ['BTC-USDT', '400']
+    # 获取平台24小时成交总量  Get Platform 24 Volume
+    # request = marketAPI.get_volume
+    # parameters = []a
+    # Oracle 上链交易数据 GET Oracle
+    # request = marketAPI.get_oracle
+    # parameters = []
+
+    # public api
+    publicAPI = Public.PublicAPI(api_key, secret_key, passphrase, False, flag)
+    # 获取交易产品基础信息  Get instrument
+    # request = publicAPI.get_instruments
+    # parameters = ['FUTURES', 'BTC-USDT']
+    # 获取交割和行权记录  Get Delivery/Exercise History
+    # request = publicAPI.get_deliver_history
+    # parameters = ['FUTURES', 'BTC-USD']
+    # 获取持仓总量  Get Open Interest
+    # request = publicAPI.get_open_interest
+    # parameters = ['SWAP']
+    # 获取永续合约当前资金费率  Get Funding Rate
+    # request = publicAPI.get_funding_rate
+    # parameters = ['BTC-USD-SWAP']
+    # 获取永续合约历史资金费率  Get Funding Rate History
+    # request = publicAPI.funding_rate_history
+    # parameters = ['BTC-USD-SWAP']
+    # 获取限价  Get Limit Price
+    # request = publicAPI.get_price_limit
+    # parameters = ['BTC-USDT']
+    # 获取期权定价  Get Option Market Data
+    # request = publicAPI.get_opt_summary
+    # parameters = ['BTC-USD']
+    # 获取预估交割/行权价格  Get Estimated Delivery/Excercise Price
+    # request = publicAPI.get_estimated_price
+    # parameters = ['ETH-USD-210611']
+    # 获取免息额度和币种折算率  Get Discount Rate And Interest-Free Quota
+    # request = publicAPI.discount_interest_free_quota
+    # parameters = []
+    # 获取系统时间  Get System Time
+    # request = publicAPI.get_system_time
+    # parameters = []
+    # 获取平台公共爆仓单信息  Get Liquidation Orders
+    # request = publicAPI.get_liquidation_orders
+    # parameters = {'instType': 'FUTURES', 'uly': 'BTC-USDT', 'alias': 'next_quarter', 'state': 'filled'}
+    # 获取标记价格  Get Mark Price
+    # request = publicAPI.get_mark_price
+    # parameters = ['FUTURES']
+    # 获取合约衍生品仓位档位 Get Tier
+    # request = publicAPI.get_tier(instType='MARGIN', instId='BTC-USDT', tdMode='cross')
+
+    # trade api
+    tradeAPI = Trade.TradeAPI(api_key, secret_key, passphrase, False, flag)
+    # 下单  Place Order
+    # request = tradeAPI.place_order
+    # parameters = {'instId': 'BTC-USDT', 'tdMode': 'cash', 'side': 'buy', 'ordType': 'limit', 'px': '1', 'sz': '0.001'}
+    # 批量下单  Place Multiple Orders
+    # request = tradeAPI.place_multiple_orders
+    # parameters = [[
+    #     {'instId': 'BTC-USD-210402', 'tdMode': 'isolated', 'side': 'buy', 'ordType': 'limit', 'sz': '1', 'px': '17400',
+    #      'posSide': 'long',
+    #      'clOrdId': 'a12344', 'tag': 'test1210'},
+    #     {'instId': 'BTC-USD-210409', 'tdMode': 'isolated', 'side': 'buy', 'ordType': 'limit', 'sz': '1', 'px': '17359',
+    #      'posSide': 'long',
+    #      'clOrdId': 'a12344444', 'tag': 'test1211'}
+    # ]]
+
+    # 撤单  Cancel Order
+    # request = tradeAPI.cancel_order
+    # parameters = ['BTC-USD-201225', '257164323454332928']
+    # 批量撤单  Cancel Multiple Orders
+    # request = tradeAPI.cancel_multiple_orders
+    # parameters = [[
+    #     {"instId": "BTC-USD-210402", "ordId": "297389358169071616"},
+    #     {"instId": "BTC-USD-210409", "ordId": "297389358169071617"}
+    # ]]
+
+    # 修改订单  Amend Order
+    # request = tradeAPI.amend_order
+    # parameters = ['BTC-USDT']
+    # 批量修改订单  Amend Multiple Orders
+    # request = tradeAPI.amend_multiple_orders
+    # parameters = [[{'instId': 'BTC-USD-201225', 'cxlOnFail': 'false', 'ordId': '257551616434384896', 'newPx': '17880'},
+    #                {'instId': 'BTC-USD-201225', 'cxlOnFail': 'false', 'ordId': '257551616652488704', 'newPx': '17882'}
+    #                ]]
+    # 市价仓位全平  Close Positions
+    # request = tradeAPI.close_positions
+    # parameters = ['BTC-USDT-210409', 'isolated', 'long']
+    # 获取订单信息  Get Order Details
+    # request = tradeAPI.get_orders
+    # parameters = ['BTC-USD-201225', '257173039968825345']
+    # 获取未成交订单列表  Get Order List
+    # request = tradeAPI.get_order_list
+    # parameters = []
+    # 获取历史订单记录（近七天） Get Order History (last 7 days）
+    # request = tradeAPI.get_orders_history
+    # parameters = ['FUTURES']
+    # 获取历史订单记录（近三个月） Get Order History (last 3 months)
+    # request = tradeAPI.orders_history_archive
+    # parameters = ['FUTURES']
+    # 获取成交明细  Get Transaction Details
+    # request = tradeAPI.get_fills
+    # parameters = []
+    # 策略委托下单  Place Algo Order
+    # request = tradeAPI.place_algo_order
+    # parameters = {'instId': 'BTC-USDT', 'side': 'buy', 'ordType': 'conditional', 'sz': '1', 'tpTriggerPx': '1','tdMode':'cash'
+    #               ,'tpOrdPx': '1'}
+    # 撤销策略委托订单  Cancel Algo Order
+    # request = tradeAPI.cancel_algo_order
+    # parameters = [[{'algoId': '297394002194735104', 'instId': 'BTC-USDT-210409'}]]
+    # 获取未完成策略委托单列表  Get Algo Order List
+    # request = tradeAPI.order_algos_list
+    # parameters = {'ordType': 'conditional', 'instType': 'FUTURES'}
+    # 获取历史策略委托单列表  Get Algo Order History
+    # request = tradeAPI.order_algos_history
+    # parameters = {'ordType': 'conditional', 'instType': 'FUTURES', 'state': 'canceled'}
+
+    # 子账户API subAccount
+    subAccountAPI = SubAccount.SubAccountAPI(api_key, secret_key, passphrase, False, flag)
+    # 查询子账户的交易账户余额(适用于母账户) Query detailed balance info of Trading Account of a sub-account via the master account
+    # request = subAccountAPI.balances
+    # parameters = {'subAcct': ''}
+    # 查询子账户转账记录(仅适用于母账户) History of sub-account transfer(applies to master accounts only)
+    # request = subAccountAPI.bills
+    # parameters = []
+    # 删除子账户APIKey(仅适用于母账户) Delete the APIkey of sub-accounts (applies to master accounts only)
+    # request = subAccountAPI.delete
+    # parameters = {'pwd': '', 'subAcct': '', 'apiKey': ''}
+    # 重置子账户的APIKey(仅适用于母账户) Reset the APIkey of a sub-account(applies to master accounts only)
+    # request = subAccountAPI.reset
+    # parameters = {'pwd': '', 'subAcct': '', 'label': '', 'perm': '', 'apiKey': ''}
+    # 创建子账户的APIKey(仅适用于母账户) Create an APIkey for a sub-account(applies to master accounts only)
+    # request = subAccountAPI.create
+    # parameters = {'pwd': '', 'subAcct': '', 'label': '', 'Passphrase': ''}
+    # 查看子账户列表(仅适用于母账户) View sub-account list(applies to master accounts only)
+    # request = subAccountAPI.view_list
+    # parameters = []
+    loop = asyncio.get_event_loop()
+    loop.run_until_complete(http2_request(request, parameters))
+    loop.close()

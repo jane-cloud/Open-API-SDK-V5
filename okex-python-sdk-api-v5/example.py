@@ -1,12 +1,12 @@
+import json
+
 import okex.Account_api as Account
 import okex.Funding_api as Funding
 import okex.Market_api as Market
 import okex.Public_api as Public
 import okex.Trade_api as Trade
-import okex.subAccount_api as SubAccount
 import okex.status_api as Status
-import json
-
+import okex.subAccount_api as SubAccount
 
 if __name__ == '__main__':
     api_key = ""
@@ -194,11 +194,9 @@ if __name__ == '__main__':
     # 重置子账户的APIKey(仅适用于母账户) Reset the APIkey of a sub-account(applies to master accounts only)
     # result = subAccountAPI.reset(pwd='', subAcct='', label='', apiKey='', perm='')
     # 创建子账户的APIKey(仅适用于母账户) Create an APIkey for a sub-account(applies to master accounts only)
-    # result = subAccountAPI.create(pwd='123456', subAcct='', label='', Passphrase='')
+    # result = subAccountAPI.create(pwd='', subAcct='', label='trade1', Passphrase='')
     # 查看子账户列表(仅适用于母账户) View sub-account list(applies to master accounts only)
     # result = subAccountAPI.view_list()
-    # 母账户控制子账户与子账户之间划转（仅适用于母账户）manage the transfers between sub-accounts(applies to master accounts only)
-    # result = subAccountAPI.control_transfer(ccy='', amt='', froms='', to='', fromSubAccount='', toSubAccount='')
 
     # 系统状态API(仅适用于实盘) system status
     Status = Status.StatusAPI(api_key, secret_key, passphrase, False, flag)
