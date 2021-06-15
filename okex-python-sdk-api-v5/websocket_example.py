@@ -1,12 +1,13 @@
 import asyncio
-import websockets
-import json
-import requests
-import hmac
 import base64
-import zlib
 import datetime
+import hmac
+import json
 import time
+import zlib
+
+import requests
+import websockets
 
 
 def get_timestamp():
@@ -122,10 +123,10 @@ def check(bids, asks):
     while count_bid <= 25:
         if count_bid > len(bids):
             break
-        bids_l.append(bids[count_bid-1])
+        bids_l.append(bids[count_bid - 1])
         count_bid += 1
     for j in bids_l:
-        str_bid = ':'.join(j[0 : 2])
+        str_bid = ':'.join(j[0: 2])
         bid_l.append(str_bid)
     # 获取ask档str
     asks_l = []
@@ -134,10 +135,10 @@ def check(bids, asks):
     while count_ask <= 25:
         if count_ask > len(asks):
             break
-        asks_l.append(asks[count_ask-1])
+        asks_l.append(asks[count_ask - 1])
         count_ask += 1
     for k in asks_l:
-        str_ask = ':'.join(k[0 : 2])
+        str_ask = ':'.join(k[0: 2])
         ask_l.append(str_ask)
     # 拼接str
     num = ''
@@ -383,7 +384,6 @@ api_key = ""
 secret_key = ""
 passphrase = ""
 
-
 # WebSocket公共频道 public channels
 # 实盘 real trading
 # url = "wss://ws.okex.com:8443/ws/v5/public"
@@ -405,35 +405,35 @@ passphrase = ""
 
 '''
 
-# 产品频道
+# 产品频道  Instruments Channel
 # channels = [{"channel": "instruments", "instType": "FUTURES"}]
 # 行情频道 tickers channel
 # channels = [{"channel": "tickers", "instId": "BTC-USD-210326"}]
-# 持仓总量频道 
+# 持仓总量频道 Open interest Channel
 # channels = [{"channel": "open-interest", "instId": "BTC-USD-210326"}]
-# K线频道
+# K线频道 Candlesticks Channel
 # channels = [{"channel": "candle1m", "instId": "BTC-USD-210326"}]
-# 交易频道
+# 交易频道 Trades Channel
 # channels = [{"channel": "trades", "instId": "BTC-USD-201225"}]
-# 预估交割/行权价格频道
+# 预估交割/行权价格频道 Estimated delivery/exercise Price Channel
 # channels = [{"channel": "estimated-price", "instType": "FUTURES", "uly": "BTC-USD"}]
-# 标记价格频道
+# 标记价格频道 Mark Price Channel
 # channels = [{"channel": "mark-price", "instId": "BTC-USDT-210326"}]
-# 标记价格K线频道
+# 标记价格K线频道 Mark Price Candlesticks Channel
 # channels = [{"channel": "mark-price-candle1D", "instId": "BTC-USD-201225"}]
-# 限价频道
+# 限价频道 Price Limit Channel
 # channels = [{"channel": "price-limit", "instId": "BTC-USD-201225"}]
-# 深度频道
+# 深度频道 Order Book Channel
 # channels = [{"channel": "books", "instId": "BTC-USD-SWAP"}]
-# 期权定价频道
+# 期权定价频道 OPTION Summary Channel
 # channels = [{"channel": "opt-summary", "uly": "BTC-USD"}]
-# 资金费率频道
+# 资金费率频道 Funding Rate Channel
 # channels = [{"channel": "funding-rate", "instId": "BTC-USD-SWAP"}]
-# 指数K线频道
+# 指数K线频道 Index Candlesticks Channel
 # channels = [{"channel": "index-candle1m", "instId": "BTC-USDT"}]
-# 指数行情频道
+# 指数行情频道 Index Tickers Channel
 # channels = [{"channel": "index-tickers", "instId": "BTC-USDT"}]
-# status频道
+# status频道 Status Channel
 # channels = [{"channel": "status"}]
 
 '''
@@ -446,36 +446,38 @@ passphrase = ""
 
 '''
 
-# 账户频道
+# 账户频道 Account Channel
 # channels = [{"channel": "account", "ccy": "BTC"}]
-# 持仓频道
+# 持仓频道 Positions Channel
 # channels = [{"channel": "positions", "instType": "FUTURES", "uly": "BTC-USDT", "instId": "BTC-USDT-210326"}]
-# 订单频道
+# 余额和持仓频道 Balance and Position Channel
+# channels = [{"channel": "balance_and_position"}]
+# 订单频道 Order Channel
 # channels = [{"channel": "orders", "instType": "FUTURES", "uly": "BTC-USD", "instId": "BTC-USD-201225"}]
-# 策略委托订单频道
+# 策略委托订单频道 Algo Orders Channel
 # channels = [{"channel": "orders-algo", "instType": "FUTURES", "uly": "BTC-USD", "instId": "BTC-USD-201225"}]
 
 '''
 交易 trade
 '''
 
-# 下单
+# 下单 Place Order
 # trade_param = {"id": "1512", "op": "order", "args": [{"side": "buy", "instId": "BTC-USDT", "tdMode": "isolated", "ordType": "limit", "px": "19777", "sz": "1"}]}
-# 批量下单
+# 批量下单 Place Multiple Orders
 # trade_param = {"id": "1512", "op": "batch-orders", "args": [
 #         {"side": "buy", "instId": "BTC-USDT", "tdMode": "isolated", "ordType": "limit", "px": "19666", "sz": "1"},
 #         {"side": "buy", "instId": "BTC-USDT", "tdMode": "isolated", "ordType": "limit", "px": "19633", "sz": "1"}
 #     ]}
-# 撤单
+# 撤单 Cancel Order
 # trade_param = {"id": "1512", "op": "cancel-order", "args": [{"instId": "BTC-USDT", "ordId": "259424589042823169"}]}
-# 批量撤单
+# 批量撤单 Cancel Multiple Orders
 # trade_param = {"id": "1512", "op": "batch-cancel-orders", "args": [
 #         {"instId": "BTC-USDT", "ordId": "259432098826694656"},
 #         {"instId": "BTC-USDT", "ordId": "259432098826694658"}
 #     ]}
-# 改单
+# 改单 Amend Order
 # trade_param = {"id": "1512", "op": "amend-order", "args": [{"instId": "BTC-USDT", "ordId": "259432767558135808", "newSz": "2"}]}
-# 批量改单
+# 批量改单 Amend Multiple Orders
 # trade_param = {"id": "1512", "op": "batch-amend-orders", "args": [
 #         {"instId": "BTC-USDT", "ordId": "259435442492289024", "newSz": "2"},
 #         {"instId": "BTC-USDT", "ordId": "259435442496483328", "newSz": "3"}
@@ -484,13 +486,13 @@ passphrase = ""
 
 loop = asyncio.get_event_loop()
 
-# 公共频道 不需要登录（行情，持仓总量，K线，标记价格，深度，资金费率等）
+# 公共频道 不需要登录（行情，持仓总量，K线，标记价格，深度，资金费率等）subscribe public channel
 # loop.run_until_complete(subscribe_without_login(url, channels))
 
-# 私有频道 需要登录（账户，持仓，订单等）
+# 私有频道 需要登录（账户，持仓，订单等）subscribe private channel
 # loop.run_until_complete(subscribe(url, api_key, passphrase, secret_key, channels))
 
-# 交易（下单，撤单，改单等）
+# 交易（下单，撤单，改单等）trade
 # loop.run_until_complete(trade(url, api_key, passphrase, secret_key, trade_param))
 
 loop.close()

@@ -30,3 +30,8 @@ class SubAccountAPI(Client):
         params = {'enable': enable, 'subAcct': subAcct, 'after': after, 'before': before, 'limit': limit}
         return self._request_with_params(GET, VIEW_LIST, params)
 
+    def subAccount_transfer(self, ccy, amt, froms, to, fromSubAccount,toSubAccount):
+        params = {'ccy': ccy, 'amt': amt, 'from': froms, 'to': to, 'fromSubAccount': fromSubAccount, 'toSubAccount': toSubAccount}
+        return self._request_with_params(POST, SUBACCOUNT_TRANSFER, params)
+
+

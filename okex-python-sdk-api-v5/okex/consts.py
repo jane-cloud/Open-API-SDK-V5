@@ -76,6 +76,8 @@ DICCOUNT_INTETEST_INFO = '/api/v5/public/discount-rate-interest-free-quota'
 SYSTEM_TIME = '/api/v5/public/time'
 LIQUIDATION_ORDERS = '/api/v5/public/liquidation-orders'
 MARK_PRICE = '/api/v5/public/mark-price'
+INTEREST_LOAN = '/api/v5/public/interest-rate-loan-quota'
+UNDERLYING = '/api/v5/public/underlying'
 
 # TRADE
 PLACR_ORDER = '/api/v5/trade/order'
@@ -102,7 +104,7 @@ DELETE = '/api/v5/users/subaccount/delete-apikey'
 RESET = '/api/v5/users/subaccount/modify-apikey'
 CREATE = '/api/v5/users/subaccount/apikey'
 VIEW_LIST = '/api/v5/users/subaccount/list'
-CONTROL_TRANSFER = '/api/v5/asset/subaccount/transfer'
+SUBACCOUNT_TRANSFER = '/api/v5/asset/subaccount/transfer'
 
 # status
 STATUS = '/api/v5/system/status'

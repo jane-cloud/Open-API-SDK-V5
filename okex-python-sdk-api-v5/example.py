@@ -9,9 +9,9 @@ import okex.status_api as Status
 import okex.subAccount_api as SubAccount
 
 if __name__ == '__main__':
-    api_key = ""
-    secret_key = ""
-    passphrase = ""
+    api_key = "b604f3f7-66df-485c-8318-465873905890"
+    secret_key = "B09118A8653BDEB2725B5A0948B3A87A"
+    passphrase = "1590309Lyc"
     # flag是实盘与模拟盘的切换参数 flag is the key parameter which can help you to change between demo and real trading.
     # flag = '1'  # 模拟盘 demo trading
     flag = '0'  # 实盘 real trading
@@ -25,9 +25,9 @@ if __name__ == '__main__':
     # 查看持仓信息  Get Positions
     # result = accountAPI.get_positions('FUTURES', 'BTC-USD-210402')
     # 账单流水查询（近七天） Get Bills Details (recent 7 days)
-    # result = accountAPI.get_bills_detail('FUTURES', 'BTC','cross')
+    # result = accountAPI.get_bills_detail('FUTURES', 'BTC', 'cross')
     # 账单流水查询（近三个月） Get Bills Details (recent 3 months)
-    # result = accountAPI.get_bills_details('FUTURES', 'BTC','cross')
+    # result = accountAPI.get_bills_details('FUTURES', 'BTC', 'cross')
     # 查看账户配置  Get Account Configuration
     # result = accountAPI.get_account_config()
     # 设置持仓模式  Set Position mode
@@ -42,13 +42,13 @@ if __name__ == '__main__':
     # result = accountAPI.Adjustment_margin('BTC-USDT-210409', 'long', 'add', '100')
     # 获取杠杆倍数 Get Leverage
     # result = accountAPI.get_leverage('BTC-USDT-210409', 'isolated')
-    # 获取币币逐仓杠杆最大可借  Get the maximum loan of isolated MARGIN
+    # 获取交易产品最大可借  Get the maximum loan of instrument
     # result = accountAPI.get_max_load('BTC-USDT', 'cross', 'BTC')
     # 获取当前账户交易手续费费率  Get Fee Rates
     # result = accountAPI.get_fee_rates('FUTURES', '', category='1')
     # 获取计息记录  Get interest-accrued
     # result = accountAPI.get_interest_accrued('BTC-USDT', 'BTC', 'isolated', '', '', '10')
-    # 获取用户当前杠杆借币利率 Get Interest-accrued
+    # 获取用户当前杠杆借币利率 Get interest rate
     # result = accountAPI.get_interest_rate()
     # 期权希腊字母PA / BS切换  Set Greeks (PA/BS)
     # result = accountAPI.set_greeks('BS')
@@ -127,8 +127,12 @@ if __name__ == '__main__':
     # result = publicAPI.get_liquidation_orders('FUTURES', uly='BTC-USDT', alias='next_quarter', state='filled')
     # 获取标记价格  Get Mark Price
     # result = publicAPI.get_mark_price('FUTURES')
-    # 获取合约衍生品仓位档位 Get Tier
+    # 获取合约衍生品仓位档位 Get Position Tiers
     # result = publicAPI.get_tier(instType='MARGIN', instId='BTC-USDT', tdMode='cross')
+    # 获取杠杆利率和借币限额公共信息 Get Interest Rate and Loan Quota
+    # result = publicAPI.get_interest_loan()
+    # 获取合约衍生品标的指数 Get underlying
+    # result = publicAPI.get_underlying(instType='FUTURES')
 
     # trade api
     tradeAPI = Trade.TradeAPI(api_key, secret_key, passphrase, False, flag)
@@ -197,6 +201,9 @@ if __name__ == '__main__':
     # result = subAccountAPI.create(pwd='', subAcct='', label='trade1', Passphrase='')
     # 查看子账户列表(仅适用于母账户) View sub-account list(applies to master accounts only)
     # result = subAccountAPI.view_list()
+    # 子账户间划转 Transfer between subAccounts
+    # result = subAccountAPI.subAccount_transfer(ccy='USDT', amt='1', froms='6', to='6', fromSubAccount='1',
+    #                                            toSubAccount='2')
 
     # 系统状态API(仅适用于实盘) system status
     Status = Status.StatusAPI(api_key, secret_key, passphrase, False, flag)
