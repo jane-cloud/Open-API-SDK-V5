@@ -9,9 +9,9 @@ import okex.status_api as Status
 import okex.subAccount_api as SubAccount
 
 if __name__ == '__main__':
-    api_key = "b604f3f7-66df-485c-8318-465873905890"
-    secret_key = "B09118A8653BDEB2725B5A0948B3A87A"
-    passphrase = "1590309Lyc"
+    api_key = ""
+    secret_key = ""
+    passphrase = ""
     # flag是实盘与模拟盘的切换参数 flag is the key parameter which can help you to change between demo and real trading.
     # flag = '1'  # 模拟盘 demo trading
     flag = '0'  # 实盘 real trading
