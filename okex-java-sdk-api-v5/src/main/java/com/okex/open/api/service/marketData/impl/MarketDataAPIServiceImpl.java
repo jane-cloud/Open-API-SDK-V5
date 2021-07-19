@@ -78,4 +78,10 @@ public class MarketDataAPIServiceImpl implements MarketDataAPIService {
         return this.client.executeSync(this.marketDataAPI.getTotalVolume());
     }
 
+    //Oracle 上链交易数据 Get Oracle
+    @Override
+    public JSONObject getOracle() {
+        return this.client.executeSync(this.marketDataAPI.getOracle());
+    }
+
 }

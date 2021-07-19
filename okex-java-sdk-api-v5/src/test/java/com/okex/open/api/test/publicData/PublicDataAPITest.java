@@ -164,6 +164,27 @@ public class PublicDataAPITest extends PublicDataAPIBaseTest {
         toResultString(LOG, "result", result);
     }
 
+    /**
+     * 获取杠杆利率和借币限额
+     * GET /api/v5/public/interest-rate-loan-quota
+     */
+    @Test
+    public void getInterestRateLoanQuota(){
+        JSONObject result = publicDataAPIService.getInterestRateLoanQuota();
+        toResultString(LOG, "result", result);
+    }
+
+
+    /**
+     * 获取衍生品标的指数
+     * GET /api/v5/public/underlying
+     */
+    @Test
+    public void getUnderlying(){
+        JSONObject result = publicDataAPIService.getUnderlying("SWAP");
+        toResultString(LOG, "result", result);
+    }
+
 
 
 

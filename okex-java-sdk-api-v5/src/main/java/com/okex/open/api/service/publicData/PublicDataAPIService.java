@@ -2,9 +2,11 @@ package com.okex.open.api.service.publicData;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import retrofit2.Call;
+import retrofit2.http.GET;
 import retrofit2.http.Query;
 
-public interface PublicDataAPIService {
+public interface    PublicDataAPIService {
 
     //获取交易产品基础信息 Get Instruments
     JSONObject getInstruments(String instType,String uly);
@@ -44,4 +46,10 @@ public interface PublicDataAPIService {
 
     //获取合约衍生品仓位档位
     JSONObject getTier(String instType, String uly, String instId, String tdMode, String ccy, String tier);
+
+    //获取杠杆利率和借币限额
+    JSONObject getInterestRateLoanQuota();
+
+    //获取衍生品标的指数
+    JSONObject getUnderlying(String instType);
 }

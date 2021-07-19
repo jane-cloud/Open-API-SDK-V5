@@ -2,7 +2,7 @@ package com.okex.open.api.test.ws.publicChannel.config;
 
 public class WebSocketConfig {
     //ws  模拟盘
-//    private static final String SERVICE_URL = "wss://ws.okex.com:8443/ws/v5/public?brokerId=9999";
+//    private static final String SERVICE_URL = "wss://wspap.okex.com:8443/ws/v5/public?brokerId=9999";
     //ws  实盘
     private static final String SERVICE_URL = "wss://ws.okex.com:8443/ws/v5/public";
 

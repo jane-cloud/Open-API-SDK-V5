@@ -37,7 +37,6 @@ public interface PublicDataAPI {
     @GET("/api/v5/public/opt-summary")
     Call<JSONObject> getOptionMarketData(@Query("uly") String uly,@Query("expTime") String expTime);
 
-
     //获取预估交割/行权价格 Get Estimated Delivery/Excercise Price
     @GET("/api/v5/public/estimated-price")
     Call<JSONObject> getEstimatedDeliveryExcercisePrice(@Query("instId") String instId);
@@ -77,6 +76,15 @@ public interface PublicDataAPI {
                              @Query("tdMode")String tdMode,
                              @Query("ccy")String ccy,
                              @Query("tier")String tier);
+
+    //获取杠杆利率和借币限额
+    @GET("/api/v5/public/interest-rate-loan-quota")
+    Call<JSONObject> getInterestRateLoanQuota();
+
+    //获取衍生品标的指数
+    @GET("/api/v5/public/underlying")
+    Call<JSONObject> getUnderlying(@Query("instType") String instType);
+
 
 
 }

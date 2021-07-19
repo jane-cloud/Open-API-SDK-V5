@@ -18,11 +18,6 @@ public class AccountAPIServiceImpl implements AccountAPIService {
         this.api = client.createService(AccountAPI.class);
     }
 
-    //查看账户持仓风险 Get account and position risk
-    @Override
-    public JSONObject getAccountAndPosition(String instType) {
-        return this.client.executeSync(this.api.getAccountAndPosition(instType));
-    }
 
     //查看账户余额 Get Balance
     @Override
@@ -34,6 +29,12 @@ public class AccountAPIServiceImpl implements AccountAPIService {
     @Override
     public JSONObject getPositions(String instType, String instId,String posId) {
         return this.client.executeSync(this.api.getPositions(instType,instId,posId));
+    }
+
+    //查看账户持仓风险 Get account and position risk
+    @Override
+    public JSONObject getAccountAndPosition(String instType) {
+        return this.client.executeSync(this.api.getAccountAndPosition(instType));
     }
 
     //账单流水查询（近七天） Get Bills Details (last 7 days)

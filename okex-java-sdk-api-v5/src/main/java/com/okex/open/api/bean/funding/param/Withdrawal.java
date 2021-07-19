@@ -2,10 +2,25 @@ package com.okex.open.api.bean.funding.param;
 
 public class Withdrawal {
     private String ccy;
+    private String chain;
     private String amt;
     private String dest;
     private String toAddr;
     private String pwd;
+
+    @Override
+    public String toString() {
+        return "Withdrawal{" +
+                "ccy='" + ccy + '\'' +
+                ", chain='" + chain + '\'' +
+                ", amt='" + amt + '\'' +
+                ", dest='" + dest + '\'' +
+                ", toAddr='" + toAddr + '\'' +
+                ", pwd='" + pwd + '\'' +
+                ", fee='" + fee + '\'' +
+                '}';
+    }
+
     private String fee;
 
     public String getCcy() {
@@ -14,6 +29,14 @@ public class Withdrawal {
 
     public void setCcy(String ccy) {
         this.ccy = ccy;
+    }
+
+    public String getChain() {
+        return chain;
+    }
+
+    public void setChain(String chain) {
+        this.chain = chain;
     }
 
     public String getAmt() {
@@ -56,15 +79,5 @@ public class Withdrawal {
         this.fee = fee;
     }
 
-    @Override
-    public String toString() {
-        return "Withdrawal{" +
-                "ccy='" + ccy + '\'' +
-                ", amt='" + amt + '\'' +
-                ", dest='" + dest + '\'' +
-                ", toAddr='" + toAddr + '\'' +
-                ", pwd='" + pwd + '\'' +
-                ", fee='" + fee + '\'' +
-                '}';
-    }
+
 }

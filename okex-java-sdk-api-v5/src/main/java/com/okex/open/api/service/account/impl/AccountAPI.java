@@ -7,19 +7,18 @@ import retrofit2.http.*;
 
 public interface AccountAPI {
 
-    //查看账户持仓风险 Get account and position risk
-    @GET("/api/v5/account/account-position-risk")
-    Call<JSONObject> getAccountAndPosition(@Query("instType") String instType);
-
 
     //查看账户余额 Get Balance
     @GET("/api/v5/account/balance")
     Call<JSONObject> getBalance(@Query("ccy") String ccy);
 
-
     //查看持仓信息 Get Positions
     @GET("/api/v5/account/positions")
     Call<JSONObject> getPositions(@Query("instType") String instType,@Query("instId") String instId,@Query("posId") String posId);
+
+    //查看账户持仓风险 Get account and position risk
+    @GET("/api/v5/account/account-position-risk")
+    Call<JSONObject> getAccountAndPosition(@Query("instType") String instType);
 
     //账单流水查询（近七天） Get Bills Details (last 7 days)
     @GET("/api/v5/account/bills")

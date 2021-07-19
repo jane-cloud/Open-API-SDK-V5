@@ -21,16 +21,6 @@ public class AccountAPITests extends  AccountAPIBaseTests {
         this.accountAPIService = new AccountAPIServiceImpl(this.config);
     }
 
-    /**
-     * 查看账户持仓风险 Get account and position risk
-     * GET /api/v5/account/account-position-risk
-     */
-    @Test
-    public void getAccountAndPosition(){
-        JSONObject result = this.accountAPIService.getAccountAndPosition("SWAP");
-        toResultString(LOG, "result", result);
-    }
-
 
     /**
      * 查看账户余额 Get Balance
@@ -55,12 +45,23 @@ public class AccountAPITests extends  AccountAPIBaseTests {
 
 
     /**
+     * 查看账户持仓风险 Get account and position risk
+     * GET /api/v5/account/account-position-risk
+     */
+    @Test
+    public void getAccountAndPosition(){
+        JSONObject result = this.accountAPIService.getAccountAndPosition("SWAP");
+        toResultString(LOG, "result", result);
+    }
+
+
+    /**
      * 账单流水查询（近七天） Get Bills Details (last 7 days)
      * GET /api/v5/account/bills
      */
     @Test
     public void getBillsDetails7Days(){
-        JSONObject result = this.accountAPIService.getBillsDetails7Days("FUTERES","","","","","","","","");
+        JSONObject result = this.accountAPIService.getBillsDetails7Days("FUTURES","","","","","","","","");
         toResultString(LOG, "result", result);
     }
 
@@ -135,7 +136,7 @@ public class AccountAPITests extends  AccountAPIBaseTests {
      */
     @Test
     public void getMaximumAvailableTradableAmount(){
-        JSONObject result = this.accountAPIService.getMaximumAvailableTradableAmount("BTC-USDT-210924","isolated","","");
+        JSONObject result = this.accountAPIService.getMaximumAvailableTradableAmount("BTC-USDT-211231","isolated","","");
         toResultString(LOG, "result", result);
     }
 
@@ -148,7 +149,7 @@ public class AccountAPITests extends  AccountAPIBaseTests {
     public void increaseDecreaseMargin(){
         IncreaseDecreaseMargin increaseDecreaseMargin = new IncreaseDecreaseMargin();
 
-        increaseDecreaseMargin.setInstId("BTC-USDT-210924");
+        increaseDecreaseMargin.setInstId("BTC-USDT-211231");
         increaseDecreaseMargin.setPosSide("long");
         increaseDecreaseMargin.setType("add");
         increaseDecreaseMargin.setAmt("100");
@@ -165,7 +166,7 @@ public class AccountAPITests extends  AccountAPIBaseTests {
      */
     @Test
     public void getLeverage(){
-        JSONObject result = this.accountAPIService.getLeverage("BTC-USDT-210924","cross");
+        JSONObject result = this.accountAPIService.getLeverage("BTC-USDT-211231 ","cross");
         toResultString(LOG, "result", result);
     }
 

@@ -137,7 +137,15 @@ public class MarketDataAPITest extends MarketDataAPIBaseTest {
         this.toResultString(MarketDataAPITest.LOG, "result", result);
     }
 
-
+    /**
+     * Oracle 上链交易数据
+     * GET /api/v5/market/open-oracle
+     */
+    @Test
+    public void getOracle(){
+        JSONObject result = this.marketDataAPIService.getOracle();
+        this.toResultString(MarketDataAPITest.LOG,"result",result);
+    }
 
 
 }

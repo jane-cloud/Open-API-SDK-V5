@@ -7,14 +7,14 @@ import retrofit2.http.Query;
 
 public interface AccountAPIService {
 
-    //查看账户持仓风险 Get account and position risk
-    JSONObject getAccountAndPosition(String instType);
-
     //查看账户余额 Get Balance
     JSONObject getBalance(String ccy);
 
     //查看持仓信息 Get Positions
     JSONObject getPositions(String instType,String instId,String posId);
+
+    //查看账户持仓风险 Get account and position risk
+    JSONObject getAccountAndPosition(String instType);
 
     //账单流水查询（近七天） Get Bills Details (last 7 days)
     JSONObject getBillsDetails7Days(String instType,String ccy,String mgnMode,String ctType,String type,String subType,String after,String before,String limit);

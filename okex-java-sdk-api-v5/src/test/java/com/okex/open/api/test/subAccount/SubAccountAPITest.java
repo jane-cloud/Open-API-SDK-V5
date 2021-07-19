@@ -25,45 +25,37 @@ public class SubAccountAPITest extends SubAccountAPIBaseTest{
         this.subAccountAPIService = new SubAccountAPIServiceImpl(this.config);
     }
 
-
     /**
-     * 母账户查询子账户的交易账户详细资产余额（适用于母账户） Query detailed balance info of Trading Account of a sub-account via the master account (applies to master accounts only)
-     * GET /api/v5/account/subaccount/balances
+     * 查看子账户列表 View sub-account list
+     * GET /api/v5/users/subaccount/list
      */
     @Test
-    public void testGetSubAccountBalances(){
-        JSONObject result = this.subAccountAPIService.getSubAccountBalances("ctt042501");
+    public void testGetSubAccountList(){
+        JSONObject result = this.subAccountAPIService.getSubAccountList("","","","","");
+        toResultString(LOG,"result",result);
+    }
+
+    /**
+     * 创建子账户的APIkey Create an APIkey for a sub-account
+     * POST /api/v5/users/subaccount/apikey
+     */
+    @Test
+    public void testCreateSubAccountApikey(){
+        CreateSubAccountApikey createSubAccountApikey = new CreateSubAccountApikey();
+
+        createSubAccountApikey.setPwd("");
+        createSubAccountApikey.setSubAcct("");
+        createSubAccountApikey.setLabel("create1234");
+        createSubAccountApikey.setPassphrase("");
+        createSubAccountApikey.setPerm("read_only");
+        createSubAccountApikey.setIp(null);
+
+        JSONObject result = this.subAccountAPIService.createSubAccountAPIKey(createSubAccountApikey);
         toResultString(LOG, "result", result);
     }
 
     /**
-     * 子账户转账记录（仅适用于母账户） View sub-account list(applies to master accounts only)
-     * GET /api/v5/asset/subaccount/bills
-     */
-    @Test
-    public void testGetSubAccountBills(){
-        JSONObject result = this.subAccountAPIService.getSubAccountBills("OKB","0","ctt042501",null,null,null);
-        toResultString(LOG, "result", result);
-    }
-
-    /**
-     * 删除子账户的APIkey（仅适用于母账户） Delete the APIkey of sub-accounts (applies to master accounts only)
-     * POST /api/v5/users/subaccount/delete-apikey
-     */
-    @Test
-    public void testDelSubAccountApikey(){
-        DelSunAccountApikey delSunAccountApikey = new DelSunAccountApikey();
-
-        delSunAccountApikey.setPwd("");
-        delSunAccountApikey.setSubAcct("");
-        delSunAccountApikey.setApiKey("");
-        JSONObject result = this.subAccountAPIService.delSubAccountAPIKey(delSunAccountApikey);
-        toResultString(LOG, "result", result);
-
-    }
-
-    /**
-     * 重置子账户的APIkey（仅适用于母账户） Reset the APIkey of a sub-account(applies to master accounts only)
+     * 重置子账户的APIkey Reset the APIkey of a sub-account
      * POST /api/v5/users/subaccount/modify-apikey
      */
     @Test
@@ -83,36 +75,43 @@ public class SubAccountAPITest extends SubAccountAPIBaseTest{
     }
 
     /**
-     * 创建子账户的APIkey（仅适用于母账户）Create an APIkey for a sub-account(applies to master accounts only)
-     * POST /api/v5/users/subaccount/apikey
+     * 删除子账户的APIkey Delete the APIkey of sub-accounts
+     * POST /api/v5/users/subaccount/delete-apikey
      */
     @Test
-    public void testCreateSubAccountApikey(){
-        CreateSubAccountApikey createSubAccountApikey = new CreateSubAccountApikey();
+    public void testDelSubAccountApikey(){
+        DelSunAccountApikey delSunAccountApikey = new DelSunAccountApikey();
 
-        createSubAccountApikey.setPwd("");
-        createSubAccountApikey.setSubAcct("");
-        createSubAccountApikey.setLabel("create123");
-        createSubAccountApikey.setPassphrase("");
-        createSubAccountApikey.setPerm("read_only");
-        createSubAccountApikey.setIp(null);
+        delSunAccountApikey.setPwd("");
+        delSunAccountApikey.setSubAcct("");
+        delSunAccountApikey.setApiKey("");
+        JSONObject result = this.subAccountAPIService.delSubAccountAPIKey(delSunAccountApikey);
+        toResultString(LOG, "result", result);
 
-        JSONObject result = this.subAccountAPIService.createSubAccountAPIKey(createSubAccountApikey);
+    }
+
+    /**
+     * 获取子账户资产余额 Get Sub-account Balance
+     * GET /api/v5/account/subaccount/balances
+     */
+    @Test
+    public void testGetSubAccountBalances(){
+        JSONObject result = this.subAccountAPIService.getSubAccountBalances("ctt042501");
         toResultString(LOG, "result", result);
     }
 
     /**
-     * 查看子账户列表（仅适用于母账户） View sub-account list(applies to master accounts only)
-     * GET /api/v5/users/subaccount/list
+     * 查询子账户转账记录 History of sub-account transfer
+     * GET /api/v5/asset/subaccount/bills
      */
     @Test
-    public void testGetSubAccountList(){
-        JSONObject result = this.subAccountAPIService.getSubAccountList("","","","","");
-        toResultString(LOG,"result",result);
+    public void testGetSubAccountBills(){
+        JSONObject result = this.subAccountAPIService.getSubAccountBills("OKB","0","ctt042501",null,null,null);
+        toResultString(LOG, "result", result);
     }
 
     /**
-     * 母账户控制子账户与子账户之间划转（仅适用于母账户） Master accounts manage the transfers between sub-accounts(applies to master accounts only)
+     * 子账户间资金划转 Master accounts manage the transfers between sub-accounts
      * POST /api/v5/asset/subaccount/transfer
      */
     @Test

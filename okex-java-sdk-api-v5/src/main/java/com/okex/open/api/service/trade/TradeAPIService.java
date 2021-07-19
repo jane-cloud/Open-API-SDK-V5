@@ -40,7 +40,7 @@ public interface TradeAPIService {
     //获取历史订单记录（近三个月） Get Order History (last 3 months)
     JSONObject getOrderHistory3months(String instType,String uly,String instId,String ordType,String state,String after,String before,String limit);
 
-    //获取成交明细 Get Transaction Details
+    //获取成交明细（近三天） Get Transaction Details(last 3 days）
     JSONObject getTransactionDetails(String instType,String uly,String instId,String ordId,String after,String before,String limit);
 
     //委托策略下单 Place Algo Order

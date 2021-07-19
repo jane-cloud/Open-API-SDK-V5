@@ -92,4 +92,16 @@ public class PublicDataAPIServiceImpl implements PublicDataAPIService {
     public JSONObject getTier(String instType, String uly, String instId, String tdMode, String ccy, String tier) {
         return this.client.executeSync(this.api.getTier(instType, uly, instId, tdMode, ccy, tier));
     }
+
+    //获取杠杆利率和借币限额
+    @Override
+    public JSONObject getInterestRateLoanQuota() {
+        return this.client.executeSync(this.api.getInterestRateLoanQuota());
+    }
+
+    //获取衍生品标的指数
+    @Override
+    public JSONObject getUnderlying(String instType) {
+        return this.client.executeSync(this.api.getUnderlying(instType));
+    }
 }

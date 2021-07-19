@@ -41,4 +41,7 @@ public interface MarketDataAPIService {
     //获取平台24小时总成交量 Get total volume
     JSONObject getTotalVolume();
 
+    //Oracle 上链交易数据 Get Oracle
+    JSONObject getOracle();
+
 }

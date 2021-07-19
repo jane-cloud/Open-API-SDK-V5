@@ -85,7 +85,7 @@ public class TradeAPIServiceImpl implements TradeAPIService {
         return this.client.executeSync(this.tradeAPI.getOrderHistory3months(instType, uly, instId, ordType, state, after, before, limit));
     }
 
-    //获取成交明细 Get Transaction Details
+    //获取成交明细（近三天） Get Transaction Details(last 3 days）
     @Override
     public JSONObject getTransactionDetails(String instType, String uly, String instId, String ordId, String after, String before, String limit) {
         return this.client.executeSync(this.tradeAPI.getTransactionDetails(instType, uly, instId, ordId, after, before, limit));

@@ -26,22 +26,22 @@ public class FundingAPITests extends FundingAPIBaseTests {
 
 
     /**
-     * 获取充值地址信息 Get Deposit Address
-     * GET /api/v5/asset/deposit-address
+     * 获取币种列表 Get Currencies
+     * GET /api/v5/asset/currencies
      */
     @Test
-    public void getDepositAddress() {
-        JSONObject result = fundingAPIService.getDepositAddress("BTC");
+    public void getCurrencies() {
+        JSONObject result = fundingAPIService.getCurrencies();
         toResultString(LOG, "result", result);
     }
 
     /**
-     * 获取资金账户余额信息 Get Balance
+     * 获取资金账户余额 Get Balance
      * GET /api/v5/asset/balances
      */
     @Test
     public void getBalance() {
-        JSONObject result = fundingAPIService.getBalance("USDT");
+        JSONObject result = fundingAPIService.getBalance("EOS");
         toResultString(LOG, "result", result);
     }
 
@@ -64,6 +64,35 @@ public class FundingAPITests extends FundingAPIBaseTests {
         toResultString(LOG, "result", result);
     }
 
+    /**
+     * 资金流水查询 Asset Bills Details
+     * GET /api/v5/asset/bills
+     */
+    @Test
+    public void assetBillsDetails() {
+        JSONObject result = fundingAPIService.assetBillsDetails("BTC",null,null,null,null);
+        toResultString(LOG, "result", result);
+    }
+
+    /**
+     * 获取充值地址信息 Get Deposit Address
+     * GET /api/v5/asset/deposit-address
+     */
+    @Test
+    public void getDepositAddress() {
+        JSONObject result = fundingAPIService.getDepositAddress("EOS");
+        toResultString(LOG, "result", result);
+    }
+
+    /**
+     * 获取充值记录 Get Deposit History
+     * GET /api/v5/asset/deposit-history
+     */
+    @Test
+    public void getDepositHistory() {
+        JSONObject result = fundingAPIService.getDepositHistory("BTC", "", "", "", "");
+        toResultString(LOG, "result", result);
+    }
 
     /**
      * 提币 withdrawal
@@ -73,6 +102,7 @@ public class FundingAPITests extends FundingAPIBaseTests {
     public void Withdrawal() {
         Withdrawal withdrawal = new Withdrawal();
         withdrawal.setCcy("USDT");
+        withdrawal.setChain("");
         withdrawal.setAmt("100");
         withdrawal.setDest("3");
         withdrawal.setToAddr("46674851");
@@ -82,20 +112,8 @@ public class FundingAPITests extends FundingAPIBaseTests {
         toResultString(LOG, "result", result);
     }
 
-
     /**
-     * 充值记录 Get Deposit History
-     * GET /api/v5/asset/deposit-history
-     */
-    @Test
-    public void getDepositHistory() {
-        JSONObject result = fundingAPIService.getDepositHistory("BTC", "", "", "", "");
-        toResultString(LOG, "result", result);
-    }
-
-
-    /**
-     * 提币记录 Get Withdrawal History
+     * 获取提币记录 Get Withdrawal History
      * GET /api/v5/asset/withdrawal-history
      */
     @Test
@@ -103,18 +121,6 @@ public class FundingAPITests extends FundingAPIBaseTests {
         JSONObject result = fundingAPIService.getWithdrawalHistory("BTC", "", "", "", "");
         toResultString(LOG, "result", result);
     }
-
-
-    /**
-     * 获取币种列表 Get Currencies
-     * GET /api/v5/asset/currencies
-     */
-    @Test
-    public void getCurrencies() {
-        JSONObject result = fundingAPIService.getCurrencies();
-        toResultString(LOG, "result", result);
-    }
-
 
     /**
      * 余币宝申购/赎回 PiggyBank Purchase/Redemption
@@ -130,16 +136,18 @@ public class FundingAPITests extends FundingAPIBaseTests {
         toResultString(LOG, "result", result);
     }
 
-
     /**
-     * 资金流水查询 Asset Bills Details
-     * GET /api/v5/asset/bills
+     * 获取余币宝余额 Get PiggyBank Balance
+     * GET /api/v5/asset/piggy-balance
      */
     @Test
-    public void assetBillsDetails() {
-        JSONObject result = fundingAPIService.assetBillsDetails("BTC",null,null,null,null);
-        toResultString(LOG, "result", result);
+    public void getPiggyBalance(){
+        JSONObject result = fundingAPIService.piggyBalance("USDT");
+        toResultString(LOG,"result",result);
     }
+
+
+
 
 
 

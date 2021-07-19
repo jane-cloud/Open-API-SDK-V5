@@ -71,7 +71,7 @@ public class TradeAPITest extends TradeAPIBaseTest {
 
 
         PlaceOrder placeOrder2=new PlaceOrder();
-        placeOrder2.setInstId("BTC-USDT-210625");
+        placeOrder2.setInstId("BTC-USDT-211231");
         placeOrder2.setTdMode("cross");
         placeOrder2.setClOrdId("testfutures07");
         placeOrder2.setTag("");
@@ -100,7 +100,7 @@ public class TradeAPITest extends TradeAPIBaseTest {
     @Test
     public void cancelOrder(){
         CancelOrder cancelOrder = new CancelOrder();
-        cancelOrder.setInstId("BTC-USDT-210625");
+        cancelOrder.setInstId("BTC-USDT-211231");
         cancelOrder.setOrdId("261896498091274242");
         cancelOrder.setClOrdId("");
         JSONObject result = tradeAPIService.cancelOrder(cancelOrder);
@@ -123,7 +123,7 @@ public class TradeAPITest extends TradeAPIBaseTest {
         cancelOrder1.setOrdId("261904614430224384");
 
         CancelOrder cancelOrder2 = new CancelOrder();
-        cancelOrder2.setInstId("BTC-USDT-210625");
+        cancelOrder2.setInstId("BTC-USDT-211231");
         cancelOrder2.setClOrdId("");
         cancelOrder2.setOrdId("261904614430224386");
 
@@ -144,7 +144,7 @@ public class TradeAPITest extends TradeAPIBaseTest {
     public void amendOrder(){
 
         AmendOrder amendOrder = new AmendOrder();
-        amendOrder.setInstId("BTC-USD-210326");
+        amendOrder.setInstId("BTC-USD-211231");
         amendOrder.setCxlOnFail(true);
         amendOrder.setOrdId("294884456087826432");
 //        amendOrder.setClOrdId("");
@@ -178,7 +178,7 @@ public class TradeAPITest extends TradeAPIBaseTest {
         amendOrder1.setNewPx("0.0272");
 
         AmendOrder amendOrder2 = new AmendOrder();
-        amendOrder2.setInstId("BTC-USDT-210625");
+        amendOrder2.setInstId("BTC-USDT-211231");
         amendOrder2.setCxlOnFail(false);
         amendOrder2.setOrdId("261905735181807623");
         amendOrder2.setClOrdId("");
@@ -211,8 +211,6 @@ public class TradeAPITest extends TradeAPIBaseTest {
 
         toResultString(LOG, "result", result);
 
-
-
     }
 
 
@@ -233,7 +231,7 @@ public class TradeAPITest extends TradeAPIBaseTest {
      */
     @Test
     public void getOrderList(){
-        JSONObject result = tradeAPIService.getOrderList("FUTURES","","EOS-USDT-210924","","","","","");
+        JSONObject result = tradeAPIService.getOrderList("FUTURES","","EOS-USDT-211231","","","","","");
         toResultString(LOG, "result", result);
     }
 
@@ -261,7 +259,7 @@ public class TradeAPITest extends TradeAPIBaseTest {
 
 
     /**
-     * 获取成交明细 Get Transaction Details
+     * 获取成交明细（近三天） Get Transaction Details(last 3 days）
      * GET /api/v5/trade/fills
      */
     @Test

@@ -54,6 +54,12 @@ interface MarketDataAPI {
     @GET("/api/v5/market/platform-24-volume")
     Call<JSONObject> getTotalVolume();
 
+    //Oracle 上链交易数据 Get Oracle
+    @GET("/api/v5/market/open-oracle")
+    Call<JSONObject> getOracle();
+
+
+
 
 
 }

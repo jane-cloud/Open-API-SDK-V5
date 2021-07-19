@@ -77,7 +77,7 @@ interface TradeAPI {
                                             @Query("before")String before,
                                             @Query("limit")String limit);
 
-    //获取成交明细 Get Transaction Details
+    //获取成交明细（近三天） Get Transaction Details(last 3 days）
     @GET("/api/v5/trade/fills")
     Call<JSONObject> getTransactionDetails(@Query("instType") String instType,
                                            @Query("uly")String uly,
