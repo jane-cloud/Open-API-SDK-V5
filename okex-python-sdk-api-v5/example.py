@@ -76,7 +76,7 @@ if __name__ == '__main__':
     # 资金流水查询  Asset Bills Details
     # result = fundingAPI.get_bills()
     #获取余币宝余额 PIGGY BALABCE
-    result = fundingAPI.get_piggy_balance()
+    # result = fundingAPI.get_piggy_balance()
 
     # market api
     marketAPI = Market.MarketAPI(api_key, secret_key, passphrase, False, flag)
@@ -177,8 +177,10 @@ if __name__ == '__main__':
     # result = tradeAPI.get_orders_history('FUTURES')
     # 获取历史订单记录（近三个月） Get Order History (last 3 months)
     # result = tradeAPI.orders_history_archive('FUTURES')
-    # 获取成交明细  Get Transaction Details
-    # result = tradeAPI.get_fills()
+    # 获取成交明细(三天)  Get Transaction Details
+    # result = tradeAPI.get_fills
+    # 获取成交明细(三个月)  Get Transaction Details History
+    # result = tradeAPI.get_fills_history(instType='SPOT')
     # 策略委托下单  Place Algo Order
     # result = tradeAPI.place_algo_order('BTC-USDT-210409', 'isolated', 'buy', ordType='conditional',
     #                                    sz='100',posSide='long', tpTriggerPx='60000', tpOrdPx='59999')

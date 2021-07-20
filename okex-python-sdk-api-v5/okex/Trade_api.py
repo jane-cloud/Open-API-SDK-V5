@@ -95,3 +95,9 @@ class TradeAPI(Client):
         params = {'ordType': ordType, 'state': state, 'algoId': algoId, 'instType': instType, 'instId': instId,
                   'after': after, 'before': before, 'limit': limit}
         return self._request_with_params(GET, ORDERS_ALGO_HISTORY, params)
+
+    # Get Transaction Details History
+    def get_fills_history(self, instType, uly='', instId='', ordId='', after='', before='', limit=''):
+        params = {'instType': instType, 'uly': uly, 'instId': instId, 'ordId': ordId, 'after': after, 'before': before,
+                  'limit': limit}
+        return self._request_with_params(GET, ORDERS_FILLS_HISTORY, params)

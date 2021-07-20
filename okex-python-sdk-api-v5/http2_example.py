@@ -203,8 +203,8 @@ if __name__ == '__main__':
     # trade api
     tradeAPI = Trade.TradeAPI(api_key, secret_key, passphrase, False, flag)
     # 下单  Place Order
-    request = tradeAPI.place_order
-    parameters = {'instId': 'BTC-USDT-SWAP', 'tdMode': 'cross', 'side': 'buy', 'ordType': 'limit', 'px': '30000.0','posSide':'long', 'sz': '1','clOrdId':40012}
+    # request = tradeAPI.place_order
+    # parameters = {'instId': '', 'tdMode': '', 'side': '', 'ordType': '', 'px': '','posSide':'', 'sz': ''}
     # 批量下单  Place Multiple Orders
     # request = tradeAPI.place_multiple_orders
     # parameters = [[
@@ -249,9 +249,12 @@ if __name__ == '__main__':
     # 获取历史订单记录（近三个月） Get Order History (last 3 months)
     # request = tradeAPI.orders_history_archive
     # parameters = ['FUTURES']
-    # 获取成交明细  Get Transaction Details
+    # 获取成交明细(三天)  Get Transaction Details
     # request = tradeAPI.get_fills
     # parameters = []
+    # 获取成交明细(三个月)  Get Transaction Details History
+    result = tradeAPI.get_fills_history
+    parameters = ['SPOT']
     # 策略委托下单  Place Algo Order
     # request = tradeAPI.place_algo_order
     # parameters = {'instId': 'BTC-USDT', 'side': 'buy', 'ordType': 'conditional', 'sz': '1', 'tpTriggerPx': '1','tdMode':'cash'
