@@ -76,7 +76,7 @@ $obj = new FundingApi(Config::$config);
 // 资金划转 Funds Transfer
 //$res = $obj -> transfer('BTC','0.00000394','0','1','18','','','');
 // 提币 Withdrawal
-//$res = $obj -> withdrawal('ETH','1','4','0xa3e2f08f9eeab50ea053bb334c0266aef57a4168','5323','1');
+//$res = $obj -> withdrawal('ETH','','1','4','0xa3e2f08f9eeab50ea053bb334c0266aef57a4168','5323','1');
 // 充值记录 Get Deposit History
 //$res = $obj -> getDepositHistory('','','','','');
 // 提币记录 Get Withdrawal History
@@ -87,6 +87,8 @@ $obj = new FundingApi(Config::$config);
 //$res = $obj -> PurchaseRedempt('BTC','1','purchase');
 // 资金流水查询 PiggyBank Purchase/Redemption
 //$res = $obj -> getBills('','','','','');
+//获取余币宝余额
+//$res = $obj -> getPiggyBalance('','','','','');
 
 
 /**
@@ -185,6 +187,7 @@ $obj = new TradeAPI(Config::$config);
 //$res = $obj -> getOrdersHistoryArchive('FUTURES','','','','','','','','');
 // 获取成交明细 Get Transaction Details
 //$res = $obj -> getFills('','','','','297793186030845953','','');
+//$res = $obj -> getFillsHistory('','','','','297793186030845953','','');
 // 策略委托下单 Place Algo Order
 //$res = $obj -> orderAlgo('DOGE-USDT','cross','USDT','sell','','oco','10','','','','0.385577','-1','0.379366','-1');
 // 撤销策略委托订单 Cancel Algo Order

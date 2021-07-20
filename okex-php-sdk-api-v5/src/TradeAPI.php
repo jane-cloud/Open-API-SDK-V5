@@ -189,6 +189,21 @@ class TradeAPI extends Utils
         return $this->request('/api/v5/trade/fills', $params, 'GET');
     }
 
+    public function getFillsHistory($instType='',$uly='',$instId='',$ordId='',$after='',$before='',$limit='')
+    {
+        $params = [
+            'instType' => $instType,
+            'uly' => $uly,
+            'instId' => $instId,
+            'ordId' => $ordId,
+            'after' => $after,
+            'before' => $before,
+            'limit' => $limit,
+        ];
+
+        return $this->request('/api/v5/trade/fills-history', $params, 'GET');
+    }
+
     public function orderAlgo($instId,$tdMode,$ccy='',$side,$posSide='',$ordType,$sz,$reduceOnly='',$triggerPx='',$orderPx='',$tpTriggerPx='',$tpOrdPx='',$slTriggerPx='',$slOrdPx='')
     {
         $params = [

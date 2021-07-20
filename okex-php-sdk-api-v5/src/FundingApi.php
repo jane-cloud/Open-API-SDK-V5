@@ -42,10 +42,11 @@ class FundingApi extends Utils
         return $this->request('/api/v5/asset/transfer',$params, 'POST');
     }
 
-    public function withdrawal($ccy,$amt,$dest,$toAddr,$pwd,$fee)
+    public function withdrawal($ccy,$chain='',$amt,$dest,$toAddr,$pwd,$fee)
     {
         $params = [
             'ccy' => $ccy,
+            'chain' => $chain,
             'amt' => $amt,
             'dest' => $dest,
             'toAddr' => $toAddr,
@@ -109,5 +110,14 @@ class FundingApi extends Utils
         ];
 
         return $this->request('/api/v5/asset/bills',$params, 'GET');
+    }
+
+    public function getPiggyBalance($ccy='')
+    {
+        $params = [
+            'ccy' => $ccy,
+        ];
+
+        return $this->request('/api/v5/asset/piggy-balance',$params, 'GET');
     }
 }
