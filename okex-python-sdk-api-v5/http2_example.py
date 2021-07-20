@@ -17,17 +17,19 @@ async def http2_request(request, parameters):
             result = request(*parameters)
         else:
             result = request(**parameters)
+
         end = time.time()
         cost = end - begin
-        print(f'request_cost:{cost}  response_body:{json.dumps(result)}')
+        print(f'request_cost:{cost}\nresponse_body:{json.dumps(result)}')
+
 
 
 api_key = ""
 secret_key = ""
 passphrase = ""
 # flag是实盘与模拟盘的切换参数 flag is the key parameter which can help you to change between demo and real trading.
-# flag = '1'  # 模拟盘 demo trading
-flag = '0'  # 实盘 real tradiang
+flag = '1'  # 模拟盘 demo trading
+# flag = '0'  # 实盘 real tradiang
 
 if __name__ == '__main__':
     # account api
@@ -116,6 +118,10 @@ if __name__ == '__main__':
     # 资金流水查询  Asset Bills Details
     # request = fundingAPI.get_bills
     # parameters = []
+    #获取余币宝余额 PIGGY BALABCE
+    # result = fundingAPI.get_piggy_balance
+    # parameters = []
+
 
     # market api
     marketAPI = Market.MarketAPI(api_key, secret_key, passphrase, False, flag)
@@ -197,8 +203,8 @@ if __name__ == '__main__':
     # trade api
     tradeAPI = Trade.TradeAPI(api_key, secret_key, passphrase, False, flag)
     # 下单  Place Order
-    # request = tradeAPI.place_order
-    # parameters = {'instId': 'BTC-USDT', 'tdMode': 'cash', 'side': 'buy', 'ordType': 'limit', 'px': '1', 'sz': '0.001'}
+    request = tradeAPI.place_order
+    parameters = {'instId': 'BTC-USDT-SWAP', 'tdMode': 'cross', 'side': 'buy', 'ordType': 'limit', 'px': '30000.0','posSide':'long', 'sz': '1','clOrdId':40012}
     # 批量下单  Place Multiple Orders
     # request = tradeAPI.place_multiple_orders
     # parameters = [[

@@ -51,3 +51,10 @@ class FundingAPI(Client):
     def get_bills(self, ccy='', type='', after='', before='', limit=''):
         params = {'ccy': ccy, 'type': type, 'after': after, 'before': before, 'limit': limit}
         return self._request_with_params(GET, BILLS_INFO, params)
+
+    #Get Piggy Balance
+    def get_piggy_balance(self, ccy=''):
+        params = {}
+        if ccy:
+            params = {'ccy':ccy}
+        return self._request_with_params(GET, PIGGY_BALANCE, params)

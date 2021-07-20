@@ -75,6 +75,8 @@ if __name__ == '__main__':
     # result = fundingAPI.purchase_redempt('BTC', '1', 'purchase')
     # 资金流水查询  Asset Bills Details
     # result = fundingAPI.get_bills()
+    #获取余币宝余额 PIGGY BALABCE
+    result = fundingAPI.get_piggy_balance()
 
     # market api
     marketAPI = Market.MarketAPI(api_key, secret_key, passphrase, False, flag)

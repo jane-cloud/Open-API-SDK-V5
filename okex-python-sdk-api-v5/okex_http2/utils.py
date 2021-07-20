@@ -12,6 +12,7 @@ def sign(message, secretKey):
 
 
 def pre_hash(timestamp, method, request_path, body):
+    print('body: ',body)
     return str(timestamp) + str.upper(method) + request_path + body
 
 
@@ -23,6 +24,7 @@ def get_header(api_key, sign, timestamp, passphrase, flag):
     header[c.OK_ACCESS_TIMESTAMP] = str(timestamp)
     header[c.OK_ACCESS_PASSPHRASE] = passphrase
     header['x-simulated-trading'] = flag
+    print('header: ',header)
     return header
 
 
@@ -30,6 +32,7 @@ def parse_params_to_str(params):
     url = '?'
     for key, value in params.items():
         url = url + str(key) + '=' + str(value) + '&'
+    print('url:',url)
     return url[0:-1]
 
 
