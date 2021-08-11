@@ -23,7 +23,6 @@ async def http2_request(request, parameters):
         print(f'request_cost:{cost}\nresponse_body:{json.dumps(result)}')
 
 
-
 api_key = ""
 secret_key = ""
 passphrase = ""
@@ -118,10 +117,9 @@ if __name__ == '__main__':
     # 资金流水查询  Asset Bills Details
     # request = fundingAPI.get_bills
     # parameters = []
-    #获取余币宝余额 PIGGY BALABCE
+    # 获取余币宝余额 PIGGY BALABCE
     # result = fundingAPI.get_piggy_balance
     # parameters = []
-
 
     # market api
     marketAPI = Market.MarketAPI(api_key, secret_key, passphrase, False, flag)
@@ -198,7 +196,9 @@ if __name__ == '__main__':
     # request = publicAPI.get_mark_price
     # parameters = ['FUTURES']
     # 获取合约衍生品仓位档位 Get Tier
-    # request = publicAPI.get_tier(instType='MARGIN', instId='BTC-USDT', tdMode='cross')
+    request = publicAPI.get_tier
+    parameters = {'instType': 'MARGIN', 'instId': 'BTC-USDT', 'tdMode': 'cross'}
+
 
     # trade api
     tradeAPI = Trade.TradeAPI(api_key, secret_key, passphrase, False, flag)
@@ -253,8 +253,8 @@ if __name__ == '__main__':
     # request = tradeAPI.get_fills
     # parameters = []
     # 获取成交明细(三个月)  Get Transaction Details History
-    result = tradeAPI.get_fills_history
-    parameters = ['SPOT']
+    # result = tradeAPI.get_fills_history
+    # parameters = ['SPOT']
     # 策略委托下单  Place Algo Order
     # request = tradeAPI.place_algo_order
     # parameters = {'instId': 'BTC-USDT', 'side': 'buy', 'ordType': 'conditional', 'sz': '1', 'tpTriggerPx': '1','tdMode':'cash'

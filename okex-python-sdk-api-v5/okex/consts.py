@@ -62,7 +62,7 @@ MARKPRICE_CANDLES = '/api/v5/market/mark-price-candles'
 MARKET_TRADES = '/api/v5/market/trades'
 VOLUMNE = '/api/v5/market/platform-24-volume'
 ORACLE = '/api/v5/market/oracle'
-TIER = '/api/v5/public/tier'
+
 
 # Public Data
 INSTRUMENT_INFO = '/api/v5/public/instruments'
@@ -77,6 +77,7 @@ DICCOUNT_INTETEST_INFO = '/api/v5/public/discount-rate-interest-free-quota'
 SYSTEM_TIME = '/api/v5/public/time'
 LIQUIDATION_ORDERS = '/api/v5/public/liquidation-orders'
 MARK_PRICE = '/api/v5/public/mark-price'
+TIER = '/api/v5/public/position-tiers'
 INTEREST_LOAN = '/api/v5/public/interest-rate-loan-quota'
 UNDERLYING = '/api/v5/public/underlying'
 
