@@ -9,7 +9,15 @@ public class PlaceAlgoOrder {
     private String ordType;
     private String sz;
     private Boolean reduceOnly;
+    private String tgtCcy;
 
+    public String getTgtCcy() {
+        return tgtCcy;
+    }
+
+    public void setTgtCcy(String tgtCcy) {
+        this.tgtCcy = tgtCcy;
+    }
 
     private String tpTriggerPx;
     private String tpOrdPx;

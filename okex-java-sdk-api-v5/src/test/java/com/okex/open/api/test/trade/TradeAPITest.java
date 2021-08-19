@@ -42,6 +42,8 @@ public class TradeAPITest extends TradeAPIBaseTest {
         placeOrder.setSz("1");
 //        placeOrder.setPx("60000");
 //        placeOrder.setReduceOnly(false);
+//        placeOrder.setTgtCcy("");
+
         JSONObject result = tradeAPIService.placeOrder(placeOrder);
 
         toResultString(LOG, "result", result);
@@ -68,6 +70,7 @@ public class TradeAPITest extends TradeAPIBaseTest {
         placeOrder1.setSz("10");
         placeOrder1.setPx("0.09");
         placeOrder1.setReduceOnly(null);
+//        placeOrder1.setTgtCcy("");
 
 
         PlaceOrder placeOrder2=new PlaceOrder();
@@ -81,6 +84,7 @@ public class TradeAPITest extends TradeAPIBaseTest {
         placeOrder2.setSz("2");
         placeOrder2.setPx("24633");
         placeOrder2.setReduceOnly(null);
+//        placeOrder2.setTgtCcy("");
 
 
         placeOrders.add(placeOrder1);
@@ -242,7 +246,7 @@ public class TradeAPITest extends TradeAPIBaseTest {
      */
     @Test
     public void getOrderHistory7days(){
-        JSONObject result = tradeAPIService.getOrderHistory7days("FUTURES","","","","","","","");
+        JSONObject result = tradeAPIService.getOrderHistory7days("FUTURES","","","","","","","","");
         toResultString(LOG, "result", result);
     }
 
@@ -253,7 +257,7 @@ public class TradeAPITest extends TradeAPIBaseTest {
      */
     @Test
     public void getOrderHistory3months(){
-        JSONObject result = tradeAPIService.getOrderHistory3months("SWAP","","BTC-USDT-SWAP","","","","","");
+        JSONObject result = tradeAPIService.getOrderHistory3months("SWAP","","BTC-USDT-SWAP","","","","","","");
         toResultString(LOG, "result", result);
     }
 
@@ -265,7 +269,19 @@ public class TradeAPITest extends TradeAPIBaseTest {
     @Test
     public void getTransactionDetails(){
 
-        JSONObject result = tradeAPIService.getTransactionDetails(null,null,null,null,null,null,null);
+        JSONObject result = tradeAPIService.getTransactionDetails("SPOT",null,null,null,null,null,null);
+        toResultString(LOG, "result", result);
+
+    }
+
+    /**
+     * 获取成交明细（近三个月） Get Transaction Details(last 3 months）
+     * GET /api/v5/trade/fills-history
+     */
+    @Test
+    public void getTransactionDetailsForThreeMonths(){
+
+        JSONObject result = tradeAPIService.getTransactionDetailsForThreeMonths("SPOT",null,null,null,null,null,null);
         toResultString(LOG, "result", result);
 
     }
@@ -285,6 +301,7 @@ public class TradeAPITest extends TradeAPIBaseTest {
         placeAlgoOrder.setOrdType("trigger");
         placeAlgoOrder.setSz("1");
         placeAlgoOrder.setReduceOnly(false);
+//        placeAlgoOrder.setTgtCcy("");
 
 //        止盈止损 Stop Order
 //        placeAlgoOrder.setTpTriggerPx("45000");
