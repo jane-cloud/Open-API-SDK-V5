@@ -139,16 +139,16 @@ if __name__ == '__main__':
     # trade api
     tradeAPI = Trade.TradeAPI(api_key, secret_key, passphrase, False, flag)
     # 下单  Place Order
-    # result = tradeAPI.place_order(instId='BTC-USDT-210326', tdMode='cross', side='sell', posSide='short',
-    #                               ordType='market', sz='100')
+    result = tradeAPI.place_order(instId='BTC-USDT-210326', tdMode='cross', side='sell', posSide='short',
+    #                               ordType='market', sz='100',tgtCcy='')
     # 批量下单  Place Multiple Orders
     # result = tradeAPI.place_multiple_orders([
     #     {'instId': 'BTC-USD-210402', 'tdMode': 'isolated', 'side': 'buy', 'ordType': 'limit', 'sz': '1', 'px': '17400',
     #      'posSide': 'long',
-    #      'clOrdId': 'a12344', 'tag': 'test1210'},
+    #      'clOrdId': 'a12344', 'tag': 'test1210','tgtCcy':''},
     #     {'instId': 'BTC-USD-210409', 'tdMode': 'isolated', 'side': 'buy', 'ordType': 'limit', 'sz': '1', 'px': '17359',
     #      'posSide': 'long',
-    #      'clOrdId': 'a12344444', 'tag': 'test1211'}
+    #      'clOrdId': 'a12344444', 'tag': 'test1211','tgtCcy':''}
     # ])
 
     # 撤单  Cancel Order
@@ -183,7 +183,7 @@ if __name__ == '__main__':
     # result = tradeAPI.get_fills_history(instType='SPOT')
     # 策略委托下单  Place Algo Order
     # result = tradeAPI.place_algo_order('BTC-USDT-210409', 'isolated', 'buy', ordType='conditional',
-    #                                    sz='100',posSide='long', tpTriggerPx='60000', tpOrdPx='59999')
+    #                                    sz='100',posSide='long', tpTriggerPx='60000', tpOrdPx='59999','tgtCcy':'')
     # 撤销策略委托订单  Cancel Algo Order
     # result = tradeAPI.cancel_algo_order([{'algoId': '297394002194735104', 'instId': 'BTC-USDT-210409'}])
     # 获取未完成策略委托单列表  Get Algo Order List
