@@ -139,7 +139,7 @@ if __name__ == '__main__':
     # trade api
     tradeAPI = Trade.TradeAPI(api_key, secret_key, passphrase, False, flag)
     # 下单  Place Order
-    result = tradeAPI.place_order(instId='BTC-USDT-210326', tdMode='cross', side='sell', posSide='short',
+    # result = tradeAPI.place_order(instId='BTC-USDT-210326', tdMode='cross', side='sell', posSide='short',
     #                               ordType='market', sz='100',tgtCcy='')
     # 批量下单  Place Multiple Orders
     # result = tradeAPI.place_multiple_orders([
