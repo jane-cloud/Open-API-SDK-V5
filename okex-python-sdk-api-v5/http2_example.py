@@ -102,10 +102,10 @@ if __name__ == '__main__':
     # 提币  Withdrawal
     # request = fundingAPI.coin_withdraw
     # parameters = ['usdt', '2', '3', '', '', '0']
-    # 充值记录  Get Deposit History
+    # 获取充值记录  Get Deposit History
     # request = fundingAPI.get_deposit_history
     # parameters = []
-    # 提币记录  Get Withdrawal History
+    # 获取提币记录  Get Withdrawal History
     # request = fundingAPI.get_withdrawal_history
     # parameters = []
     # 获取币种列表  Get Currencies
