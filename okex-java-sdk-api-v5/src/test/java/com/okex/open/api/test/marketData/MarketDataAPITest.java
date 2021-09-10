@@ -138,12 +138,22 @@ public class MarketDataAPITest extends MarketDataAPIBaseTest {
     }
 
     /**
-     * Oracle 上链交易数据
+     * Oracle 上链交易数据  Get Oracle
      * GET /api/v5/market/open-oracle
      */
     @Test
     public void getOracle(){
         JSONObject result = this.marketDataAPIService.getOracle();
+        this.toResultString(MarketDataAPITest.LOG,"result",result);
+    }
+
+    /**
+     * 获取指数成分数据  Get index components
+     * GET /api/v5/market/index-components
+     */
+    @Test
+    public void getIndexComponents(){
+        JSONObject result = this.marketDataAPIService.getIndexComponents("BTC-USDT");
         this.toResultString(MarketDataAPITest.LOG,"result",result);
     }
 

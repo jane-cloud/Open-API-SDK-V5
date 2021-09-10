@@ -21,13 +21,13 @@ public interface FundingAPIService {
     JSONObject getDepositAddress(String ccy);
 
     //获取充值记录 Get Deposit History
-    JSONObject getDepositHistory(String ccy,String state,String after,String before,String limit);
+    JSONObject getDepositHistory(String ccy,String txId,String state,String after,String before,String limit);
 
     //提币 Withdrawal
     JSONObject Withdrawal(Withdrawal withdrawal);
 
     //获取提币记录 Get Withdrawal History
-    JSONObject getWithdrawalHistory(String ccy,String state,String after,String before,String limit);
+    JSONObject getWithdrawalHistory(String ccy,String txId,String state,String after,String before,String limit);
 
     //余币宝申购/赎回 PiggyBank Purchase/Redemption
     JSONObject piggyBankPurchaseRedemption(PiggyBankPurchaseRedemption piggyBankPurchaseRedemption);

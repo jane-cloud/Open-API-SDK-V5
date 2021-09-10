@@ -44,4 +44,7 @@ public interface MarketDataAPIService {
     //Oracle 上链交易数据 Get Oracle
     JSONObject getOracle();
 
+    //获取指数成分数据  Get index components
+    JSONObject getIndexComponents(String index);
+
 }

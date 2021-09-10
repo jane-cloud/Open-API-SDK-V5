@@ -108,6 +108,10 @@ interface TradeAPI {
     @POST("/api/v5/trade/cancel-algos")
     Call<JSONObject> cancelAlgoOrders(@Body List<CancelAlgoOrder> cancelAlgoOrder);
 
+    //撤销高级策略委托订单 Cancel Advance Algo Order
+    @POST("/api/v5/trade/cancel-advance-algos")
+    Call<JSONObject> cancelAdvanceAlgoOrders(@Body List<CancelAlgoOrder> cancelAlgoOrder);
+
     //获取未完成策略委托单列表 Get Algo Order List
     @GET("/api/v5/trade/orders-algo-pending")
     Call<JSONObject> getAlgoOrderList(@Query("algoId") String algoId,

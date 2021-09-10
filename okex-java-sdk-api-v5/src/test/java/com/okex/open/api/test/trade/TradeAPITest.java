@@ -304,14 +304,28 @@ public class TradeAPITest extends TradeAPIBaseTest {
 //        placeAlgoOrder.setTgtCcy("");
 
 //        止盈止损 Stop Order
-//        placeAlgoOrder.setTpTriggerPx("45000");
-//        placeAlgoOrder.setTpOrdPx("44000");
-//        placeAlgoOrder.setSlTriggerPx("60000");
-//        placeAlgoOrder.setSlOrdPx("65000");
+        placeAlgoOrder.setTpTriggerPx("45000");
+        placeAlgoOrder.setTpOrdPx("44000");
+        placeAlgoOrder.setSlTriggerPx("60000");
+        placeAlgoOrder.setSlOrdPx("65000");
 
 //        计划委托 Trigger Order
-        placeAlgoOrder.setTriggerPx("1.1");
+        /*placeAlgoOrder.setTriggerPx("1.1");
         placeAlgoOrder.setOrderPx("0.7");
+*/
+
+        //冰山委托
+        /*placeAlgoOrder.setPxVar("");
+        placeAlgoOrder.setPxSpread("");
+        placeAlgoOrder.setSzLimit("");
+        placeAlgoOrder.setPxLimit("");*/
+
+        //时间加权
+        /*placeAlgoOrder.setPxVar("");
+        placeAlgoOrder.setPxSpread("");
+        placeAlgoOrder.setSzLimit("");
+        placeAlgoOrder.setPxLimit("");
+        placeAlgoOrder.setTimeInterval("");*/
 
 
         JSONObject result = tradeAPIService.placeAlgoOrder(placeAlgoOrder);
@@ -334,6 +348,24 @@ public class TradeAPITest extends TradeAPIBaseTest {
         list.add(cancelAlgoOrder);
 
         JSONObject result = tradeAPIService.cancelAlgoOrder(list);
+        toResultString(LOG, "result", result);
+    }
+
+    /**
+     * 撤销高级策略委托订单 Cancel Advance Algo Order
+     * POST /api/v5/trade/cancel-advance-algos
+     */
+    @Test
+    public void cancelAdvanceAlgoOrders(){
+
+        List<CancelAlgoOrder> list = new ArrayList<CancelAlgoOrder>();
+        CancelAlgoOrder cancelAlgoOrder = new CancelAlgoOrder();
+
+        cancelAlgoOrder.setAlgoId("300338778946826240");
+        cancelAlgoOrder.setInstId("BTC-USDT");
+        list.add(cancelAlgoOrder);
+
+        JSONObject result = tradeAPIService.cancelAdvanceAlgoOrders(list);
         toResultString(LOG, "result", result);
     }
 

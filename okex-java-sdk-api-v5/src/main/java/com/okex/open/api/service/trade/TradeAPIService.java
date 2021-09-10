@@ -53,6 +53,9 @@ public interface TradeAPIService {
     //撤销策略委托订单 Cancel Algo Order
     JSONObject cancelAlgoOrder(List<CancelAlgoOrder> cancelAlgoOrder);
 
+    //撤销高级策略委托订单 Cancel Advance Algo Order
+    JSONObject cancelAdvanceAlgoOrders(List<CancelAlgoOrder> cancelAlgoOrder);
+
     //获取未完成策略委托单列表 Get Algo Order List
     JSONObject getAlgoOrderList(String algoId, String instType, String instId, String ordType, String after, String before, String limit);
 

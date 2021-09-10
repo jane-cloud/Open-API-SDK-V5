@@ -58,6 +58,10 @@ interface MarketDataAPI {
     @GET("/api/v5/market/open-oracle")
     Call<JSONObject> getOracle();
 
+    //获取指数成分数据  Get index components
+    @GET("/api/v5/market/index-components")
+    Call<JSONObject> getIndexComponents(@Query("index") String index);
+
 
 
 

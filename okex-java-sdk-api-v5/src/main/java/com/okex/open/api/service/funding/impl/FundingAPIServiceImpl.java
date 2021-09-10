@@ -49,8 +49,8 @@ public class FundingAPIServiceImpl implements FundingAPIService {
 
     //获取充值记录 Get Deposit History
     @Override
-    public JSONObject getDepositHistory(String ccy, String state, String after, String before, String limit) {
-        return this.client.executeSync(this.api.getDepositHistory(ccy,state,after,before,limit));
+    public JSONObject getDepositHistory(String ccy, String txId, String state, String after, String before, String limit) {
+        return this.client.executeSync(this.api.getDepositHistory(ccy,txId,state,after,before,limit));
     }
 
     //提币 Withdrawal
@@ -61,8 +61,8 @@ public class FundingAPIServiceImpl implements FundingAPIService {
 
     //获取提币记录 Get Withdrawal History
     @Override
-    public JSONObject getWithdrawalHistory(String ccy, String state, String after, String before, String limit) {
-        return this.client.executeSync(this.api.getWithdrawalHistory(ccy,state,after,before,limit));
+    public JSONObject getWithdrawalHistory(String ccy, String txId, String state, String after, String before, String limit) {
+        return this.client.executeSync(this.api.getWithdrawalHistory(ccy,txId,state,after,before,limit));
     }
 
     //余币宝申购/赎回 PiggyBank Purchase/Redemption

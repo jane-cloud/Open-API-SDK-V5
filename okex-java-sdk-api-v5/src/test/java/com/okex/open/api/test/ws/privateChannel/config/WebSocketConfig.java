@@ -13,6 +13,7 @@ public class WebSocketConfig {
     private static final String PASSPHRASE = "";
 
 
+
     public static void publicConnect(WebSocketClient webSocketClient) {
         WebSocketClient.connection(SERVICE_URL);
     }
