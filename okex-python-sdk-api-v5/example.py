@@ -7,6 +7,7 @@ import okex.Public_api as Public
 import okex.Trade_api as Trade
 import okex.status_api as Status
 import okex.subAccount_api as SubAccount
+import okex.TradingData_api as TradingData
 
 if __name__ == '__main__':
     api_key = ""
@@ -69,7 +70,7 @@ if __name__ == '__main__':
     # 获取充值记录  Get Deposit History
     # result = fundingAPI.get_deposit_history()
     # 获取提币记录  Get Withdrawal History
-    result = fundingAPI.get_withdrawal_history()
+    # result = fundingAPI.get_withdrawal_history()
     # 获取币种列表  Get Currencies
     # result = fundingAPI.get_currency()
     # 余币宝申购/赎回  PiggyBank Purchase/Redemption
@@ -136,6 +137,29 @@ if __name__ == '__main__':
     # result = publicAPI.get_interest_loan()
     # 获取合约衍生品标的指数 Get underlying
     # result = publicAPI.get_underlying(instType='FUTURES')
+
+    # trading data
+    tradingDataAPI = TradingData.TradingDataAPI(api_key, secret_key, passphrase, False, flag)
+    # 获取支持币种 Get support coin
+    # result = tradingDataAPI.get_support_coin()
+    # 获取币币或衍生品主动买入/卖出情况 Get taker volume
+    # result = tradingDataAPI.get_taker_volume(ccy='BTC', instType='SPOT')
+    # 获取杠杆多空比 Get Margin lending ratio
+    # result = tradingDataAPI.get_margin_lending_ratio('BTC')
+    # 获取多空持仓人数比 Get Long/Short ratio
+    # result = tradingDataAPI.get_long_short_ratio('BTC')
+    # 获取持仓总量及交易量 Get contracts open interest and volume
+    # result = tradingDataAPI.get_contracts_interest_volume('BTC')
+    # 获取期权合约持仓总量及交易量 Get Options open interest and volume
+    # result = tradingDataAPI.get_options_interest_volume('BTC')
+    # 看涨/看跌期权合约 持仓总量比/交易总量比 Get Put/Call ratio
+    # result = tradingDataAPI.get_put_call_ratio('BTC')
+    # 看涨看跌持仓总量及交易总量（按到期日分） Get open interest and volume (expiry)
+    # result = tradingDataAPI.get_interest_volume_expiry('BTC')
+    # 看涨看跌持仓总量及交易总量（按执行价格分）Get open interest and volume (strike)
+    # result = tradingDataAPI.get_interest_volume_strike('BTC', '20210924')
+    # 看跌/看涨期权合约 主动买入/卖出量  Get Taker flow
+    # result = tradingDataAPI.get_taker_flow('BTC')
 
     # trade api
     tradeAPI = Trade.TradeAPI(api_key, secret_key, passphrase, False, flag)

@@ -7,6 +7,7 @@ import okex_http2.Funding_api as Funding
 import okex_http2.Market_api as Market
 import okex_http2.Public_api as Public
 import okex_http2.Trade_api as Trade
+import okex_http2.TradingData_api as TradingData
 import okex_http2.subAccount_api as SubAccount
 
 
@@ -196,9 +197,41 @@ if __name__ == '__main__':
     # request = publicAPI.get_mark_price
     # parameters = ['FUTURES']
     # 获取合约衍生品仓位档位 Get Tier
-    request = publicAPI.get_tier
-    parameters = {'instType': 'MARGIN', 'instId': 'BTC-USDT', 'tdMode': 'cross'}
+    # request = publicAPI.get_tier
+    # parameters = {'instType': 'MARGIN', 'instId': 'BTC-USDT', 'tdMode': 'cross'}
 
+    # 交易数据API Trading data API
+    tradingDataAPI = TradingData.TradingDataAPI(api_key, secret_key, passphrase, False, flag)
+    # 获取支持币种 Get support coin
+    # request = tradingDataAPI.get_support_coin
+    # parameters ={}
+    # 获取币币或衍生品主动买入/卖出情况 Get taker volume
+    # request = tradingDataAPI.get_taker_volume
+    # parameters = {'ccy': 'BTC', 'instType': 'SPOT', 'period': '5m'}
+    # 获取杠杆多空比 Get Margin lending ratio
+    # request = tradingDataAPI.get_margin_lending_ratio
+    # parameters = {'ccy': 'BTC', 'period': '5m'}
+    # 获取多空持仓人数比 Get Long/Short ratio
+    # request = tradingDataAPI.get_long_short_ratio
+    # parameters = ['BTC']
+    # 获取持仓总量及交易量 Get contracts open interest and volume
+    # request = tradingDataAPI.get_contracts_interest_volume
+    # parameters = ['BTC']
+    # 获取期权合约持仓总量及交易量 Get Options open interest and volume
+    # request = tradingDataAPI.get_options_interest_volume
+    # parameters = ['BTC']
+    # 看涨/看跌期权合约 持仓总量比/交易总量比 Get Put/Call ratio
+    # request = tradingDataAPI.get_put_call_ratio
+    # parameters = ['BTC']
+    # 看涨看跌持仓总量及交易总量（按到期日分） Get open interest and volume (expiry)
+    # request = tradingDataAPI.get_interest_volume_expiry
+    # parameters = ['BTC']
+    # 看涨看跌持仓总量及交易总量（按执行价格分）Get open interest and volume (strike)
+    # request = tradingDataAPI.get_interest_volume_strike
+    # parameters = ['BTC', '20210924']
+    # 看跌/看涨期权合约 主动买入/卖出量  Get Taker flow
+    # request = tradingDataAPI.get_taker_flow
+    # parameters = ['BTC']
 
     # trade api
     tradeAPI = Trade.TradeAPI(api_key, secret_key, passphrase, False, flag)

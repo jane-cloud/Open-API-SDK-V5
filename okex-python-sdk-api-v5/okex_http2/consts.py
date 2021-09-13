@@ -63,7 +63,6 @@ MARKET_TRADES = '/api/v5/market/trades'
 VOLUMNE = '/api/v5/market/platform-24-volume'
 ORACLE = '/api/v5/market/oracle'
 
-
 # Public Data
 INSTRUMENT_INFO = '/api/v5/public/instruments'
 DELIVERY_EXERCISE = '/api/v5/public/delivery-exercise-history'
@@ -78,6 +77,21 @@ SYSTEM_TIME = '/api/v5/public/time'
 LIQUIDATION_ORDERS = '/api/v5/public/liquidation-orders'
 MARK_PRICE = '/api/v5/public/mark-price'
 TIER = '/api/v5/public/position-tiers'
+INTEREST_LOAN = '/api/v5/public/interest-rate-loan-quota'
+UNDERLYING = '/api/v5/public/underlying'
+
+
+# TRADING DATA
+SUPPORT_COIN = '/api/v5/rubik/stat/trading-data/support-coin'
+TAKER_VOLUME = '/api/v5/rubik/stat/taker-volume'
+MARGIN_LENDING_RATIO = '/api/v5/rubik/stat/margin/loan-ratio'
+LONG_SHORT_RATIO = '/api/v5/rubik/stat/contracts/long-short-account-ratio'
+CONTRACTS_INTEREST_VOLUME = '/api/v5/rubik/stat/contracts/open-interest-volume'
+OPTIONS_INTEREST_VOLUME = '/api/v5/rubik/stat/option/open-interest-volume'
+PUT_CALL_RATIO = '/api/v5/rubik/stat/option/open-interest-volume-ratio'
+OPEN_INTEREST_VOLUME_EXPIRY = '/api/v5/rubik/stat/option/open-interest-volume-expiry'
+INTEREST_VOLUME_STRIKE = '/api/v5/rubik/stat/option/open-interest-volume-strike'
+TAKER_FLOW = '/api/v5/rubik/stat/option/taker-block-volume'
 
 # TRADE
 PLACR_ORDER = '/api/v5/trade/order'
@@ -105,7 +119,7 @@ DELETE = '/api/v5/users/subaccount/delete-apikey'
 RESET = '/api/v5/users/subaccount/modify-apikey'
 CREATE = '/api/v5/users/subaccount/apikey'
 VIEW_LIST = '/api/v5/users/subaccount/list'
-CONTROL_TRANSFER = '/api/v5/asset/subaccount/transfer'
+SUBACCOUNT_TRANSFER = '/api/v5/asset/subaccount/transfer'
 
 # status
 STATUS = '/api/v5/system/status'
