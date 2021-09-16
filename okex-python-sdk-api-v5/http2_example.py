@@ -28,8 +28,8 @@ api_key = ""
 secret_key = ""
 passphrase = ""
 # flag是实盘与模拟盘的切换参数 flag is the key parameter which can help you to change between demo and real trading.
-flag = '1'  # 模拟盘 demo trading
-# flag = '0'  # 实盘 real tradiang
+# flag = '1'  # 模拟盘 demo trading
+flag = '0'  # 实盘 real tradiang
 
 if __name__ == '__main__':
     # account api

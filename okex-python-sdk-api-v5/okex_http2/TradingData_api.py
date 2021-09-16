@@ -19,11 +19,11 @@ class TradingDataAPI(Client):
         return self._request_with_params(GET, MARGIN_LENDING_RATIO, params)
 
     def get_long_short_ratio(self, ccy, begin='', end='', period=''):
-        params = {'ccy': ccy, 'begin': begin, end: 'end', period: 'period'}
+        params = {'ccy': ccy, 'begin': begin, 'end': end, 'period': period}
         return self._request_with_params(GET, LONG_SHORT_RATIO, params)
 
     def get_contracts_interest_volume(self, ccy, begin='', end='', period=''):
-        params = {'ccy': ccy, 'begin': begin, end: 'end', period: 'period'}
+        params = {'ccy': ccy, 'begin': begin, 'end': end, 'period': period}
         return self._request_with_params(GET, CONTRACTS_INTEREST_VOLUME, params)
 
     def get_options_interest_volume(self, ccy, period=''):
@@ -42,7 +42,7 @@ class TradingDataAPI(Client):
         params = {'ccy': ccy, 'expTime': expTime, 'period': period}
         return self._request_with_params(GET, INTEREST_VOLUME_STRIKE, params)
 
-    def get_taker_flow(self,ccy, period=''):
+    def get_taker_flow(self, ccy, period=''):
         params = {'ccy': ccy, 'period': period}
         return self._request_with_params(GET, TAKER_FLOW, params)
 
