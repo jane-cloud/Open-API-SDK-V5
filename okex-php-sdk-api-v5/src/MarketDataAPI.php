@@ -123,4 +123,13 @@ class MarketDataAPI extends Utils
 
         return $this->request('/api/v5/market/oracle',$params, 'GET');
     }
+
+    public function indexComponents($index)
+    {
+        $params = [
+            'index' => $index,
+        ];
+
+        return $this->request('/api/v5/market/index-components',$params, 'GET');
+    }
 }

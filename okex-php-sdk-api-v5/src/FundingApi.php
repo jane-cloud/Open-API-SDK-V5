@@ -57,7 +57,7 @@ class FundingApi extends Utils
         return $this->request('/api/v5/asset/withdrawal',$params, 'POST');
     }
 
-    public function getDepositHistory($ccy='',$state='',$after='',$before='',$limit='')
+    public function getDepositHistory($ccy='',$state='',$after='',$before='',$limit='',$txId='')
     {
         $params = [
             'ccy' => $ccy,
@@ -65,12 +65,13 @@ class FundingApi extends Utils
             'after' => $after,
             'before' => $before,
             'limit' => $limit,
+            'txId' => $txId,
         ];
 
         return $this->request('/api/v5/asset/deposit-history',$params, 'GET');
     }
 
-    public function getWithdrawalHistory($ccy='',$state='',$after='',$before='',$limit='')
+    public function getWithdrawalHistory($ccy='',$state='',$after='',$before='',$limit='',$txId='')
     {
         $params = [
             'ccy' => $ccy,
@@ -78,6 +79,7 @@ class FundingApi extends Utils
             'after' => $after,
             'before' => $before,
             'limit' => $limit,
+            'txId' => $txId,
         ];
 
         return $this->request('/api/v5/asset/withdrawal-history',$params, 'GET');

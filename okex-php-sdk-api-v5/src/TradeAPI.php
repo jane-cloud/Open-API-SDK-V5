@@ -204,7 +204,7 @@ class TradeAPI extends Utils
         return $this->request('/api/v5/trade/fills-history', $params, 'GET');
     }
 
-    public function orderAlgo($instId,$tdMode,$ccy='',$side,$posSide='',$ordType,$sz,$reduceOnly='',$triggerPx='',$orderPx='',$tpTriggerPx='',$tpOrdPx='',$slTriggerPx='',$slOrdPx='')
+    public function orderAlgo($instId,$tdMode,$ccy='',$side,$posSide='',$ordType,$sz,$reduceOnly='',$triggerPx='',$orderPx='',$tpTriggerPx='',$tpOrdPx='',$slTriggerPx='',$slOrdPx='',$pxVar='',$pxSpread='',$szLimit='',$pxLimit='',$timeInterval='')
     {
         $params = [
             'instId' => $instId,
@@ -220,6 +220,11 @@ class TradeAPI extends Utils
             'tpOrdPx' => $tpOrdPx,
             'slTriggerPx' => $slTriggerPx,
             'slOrdPx' => $slOrdPx,
+            'pxVar' => $pxVar,
+            'pxSpread' => $pxSpread,
+            'szLimit' => $szLimit,
+            'pxLimit' => $pxLimit,
+            'timeInterval' => $timeInterval,
         ];
 
         return $this->request('/api/v5/trade/order-algo', $params, 'POST');
@@ -267,5 +272,15 @@ class TradeAPI extends Utils
         ];
 
         return $this->request('/api/v5/trade/orders-algo-history', $params, 'GET');
+    }
+
+    public function cancelAdvanceAlgos($algoId,$instId)
+    {
+        $params = [
+            'algoId' => $algoId,
+            'instId' => $instId,
+        ];
+
+        return $this->request('/api/v5/trade/cancel-advance-algos', $params, 'GET');
     }
 }
