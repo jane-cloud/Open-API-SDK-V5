@@ -9,15 +9,78 @@ public class PlaceAlgoOrder {
     private String ordType;
     private String sz;
     private Boolean reduceOnly;
+    private String tgtCcy;
 
-
+    //止盈止损
     private String tpTriggerPx;
     private String tpOrdPx;
     private String slTriggerPx;
     private String slOrdPx;
 
+    //计划委托
     private String triggerPx;
     private String orderPx;
+
+    //冰山委托
+    private String pxVar;
+    private String pxSpread;
+    private String szLimit;
+    private String pxLimit;
+
+    //时间加权（其他参数跟冰山委托一致）
+    private String timeInterval;
+
+    public String getPxVar() {
+        return pxVar;
+    }
+
+    public void setPxVar(String pxVar) {
+        this.pxVar = pxVar;
+    }
+
+    public String getPxSpread() {
+        return pxSpread;
+    }
+
+    public void setPxSpread(String pxSpread) {
+        this.pxSpread = pxSpread;
+    }
+
+    public String getSzLimit() {
+        return szLimit;
+    }
+
+    public void setSzLimit(String szLimit) {
+        this.szLimit = szLimit;
+    }
+
+    public String getPxLimit() {
+        return pxLimit;
+    }
+
+    public void setPxLimit(String pxLimit) {
+        this.pxLimit = pxLimit;
+    }
+
+    public String getTimeInterval() {
+        return timeInterval;
+    }
+
+    public void setTimeInterval(String timeInterval) {
+        this.timeInterval = timeInterval;
+    }
+
+
+
+    public String getTgtCcy() {
+        return tgtCcy;
+    }
+
+    public void setTgtCcy(String tgtCcy) {
+        this.tgtCcy = tgtCcy;
+    }
+
+
 
     public String getInstId() {
         return instId;

@@ -165,6 +165,34 @@ public class PrivateChannelTest {
     }
 
 
+    /**
+     * 高级策略委托订单频道
+     * Advance Algo Orders Channel
+     */
+    @Test
+    public void privateAlgoAdvanceOrdersChannel() {
+        //添加订阅频道
+        ArrayList<Map> channelList= new ArrayList<>();
+        Map algoOrders =new HashMap();
+
+        algoOrders.put("channel","algo-advance");
+        algoOrders.put("instType","SWAP");
+        algoOrders.put("instId","BTC-USDT-SWAP");
+//        algoOrders.put("algoId","");
+
+        channelList.add(algoOrders);
+
+        //调用订阅方法
+        WebSocketClient.subscribe(channelList);
+        //为保证测试方法不停，需要让线程延迟
+        try {
+            Thread.sleep(10000000);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
 
     //取消订阅
     @Test

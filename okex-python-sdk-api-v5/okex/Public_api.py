@@ -71,7 +71,7 @@ class PublicAPI(Client):
     # Get Tier
     def get_tier(self, instType, tdMode, uly='', instId='', ccy='', tier=''):
         params = {'instType': instType, 'tdMode': tdMode, 'uly': uly, 'instId': instId, 'ccy': ccy, 'tier': tier}
-        return self._request_with_params(GET, MARK_PRICE, params)
+        return self._request_with_params(GET, TIER, params)
 
     # Get Interest Rate and Loan Quota
     def get_interest_loan(self):

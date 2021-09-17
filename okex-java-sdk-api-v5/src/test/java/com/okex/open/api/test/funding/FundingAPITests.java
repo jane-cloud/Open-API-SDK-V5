@@ -90,7 +90,7 @@ public class FundingAPITests extends FundingAPIBaseTests {
      */
     @Test
     public void getDepositHistory() {
-        JSONObject result = fundingAPIService.getDepositHistory("BTC", "", "", "", "");
+        JSONObject result = fundingAPIService.getDepositHistory("BTC", "", "", "", "","");
         toResultString(LOG, "result", result);
     }
 
@@ -118,7 +118,7 @@ public class FundingAPITests extends FundingAPIBaseTests {
      */
     @Test
     public void getWithdrawalHistory() {
-        JSONObject result = fundingAPIService.getWithdrawalHistory("BTC", "", "", "", "");
+        JSONObject result = fundingAPIService.getWithdrawalHistory("USDT", "", "", "", "","");
         toResultString(LOG, "result", result);
     }
 

@@ -1,6 +1,5 @@
 import hmac
 import base64
-import time
 import datetime
 from . import consts as c
 

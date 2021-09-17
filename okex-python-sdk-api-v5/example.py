@@ -7,11 +7,13 @@ import okex.Public_api as Public
 import okex.Trade_api as Trade
 import okex.status_api as Status
 import okex.subAccount_api as SubAccount
+import okex.TradingData_api as TradingData
 
 if __name__ == '__main__':
     api_key = ""
     secret_key = ""
     passphrase = ""
+
     # flag是实盘与模拟盘的切换参数 flag is the key parameter which can help you to change between demo and real trading.
     # flag = '1'  # 模拟盘 demo trading
     flag = '0'  # 实盘 real trading
@@ -65,9 +67,9 @@ if __name__ == '__main__':
     # result = fundingAPI.funds_transfer(ccy='', amt='', type='1', froms="", to="",subAcct='')
     # 提币  Withdrawal
     # result = fundingAPI.coin_withdraw('usdt', '2', '3', '', '', '0')
-    # 充值记录  Get Deposit History
+    # 获取充值记录  Get Deposit History
     # result = fundingAPI.get_deposit_history()
-    # 提币记录  Get Withdrawal History
+    # 获取提币记录  Get Withdrawal History
     # result = fundingAPI.get_withdrawal_history()
     # 获取币种列表  Get Currencies
     # result = fundingAPI.get_currency()
@@ -136,19 +138,42 @@ if __name__ == '__main__':
     # 获取合约衍生品标的指数 Get underlying
     # result = publicAPI.get_underlying(instType='FUTURES')
 
+    # trading data
+    tradingDataAPI = TradingData.TradingDataAPI(api_key, secret_key, passphrase, False, flag)
+    # 获取支持币种 Get support coin
+    # result = tradingDataAPI.get_support_coin()
+    # 获取币币或衍生品主动买入/卖出情况 Get taker volume
+    # result = tradingDataAPI.get_taker_volume(ccy='BTC', instType='SPOT')
+    # 获取杠杆多空比 Get Margin lending ratio
+    # result = tradingDataAPI.get_margin_lending_ratio('BTC')
+    # 获取多空持仓人数比 Get Long/Short ratio
+    # result = tradingDataAPI.get_long_short_ratio('BTC')
+    # 获取持仓总量及交易量 Get contracts open interest and volume
+    # result = tradingDataAPI.get_contracts_interest_volume('BTC')
+    # 获取期权合约持仓总量及交易量 Get Options open interest and volume
+    # result = tradingDataAPI.get_options_interest_volume('BTC')
+    # 看涨/看跌期权合约 持仓总量比/交易总量比 Get Put/Call ratio
+    # result = tradingDataAPI.get_put_call_ratio('BTC')
+    # 看涨看跌持仓总量及交易总量（按到期日分） Get open interest and volume (expiry)
+    # result = tradingDataAPI.get_interest_volume_expiry('BTC')
+    # 看涨看跌持仓总量及交易总量（按执行价格分）Get open interest and volume (strike)
+    # result = tradingDataAPI.get_interest_volume_strike('BTC', '20210924')
+    # 看跌/看涨期权合约 主动买入/卖出量  Get Taker flow
+    # result = tradingDataAPI.get_taker_flow('BTC')
+
     # trade api
     tradeAPI = Trade.TradeAPI(api_key, secret_key, passphrase, False, flag)
     # 下单  Place Order
     # result = tradeAPI.place_order(instId='BTC-USDT-210326', tdMode='cross', side='sell', posSide='short',
-    #                               ordType='market', sz='100')
+    #                               ordType='market', sz='100',tgtCcy='')
     # 批量下单  Place Multiple Orders
     # result = tradeAPI.place_multiple_orders([
     #     {'instId': 'BTC-USD-210402', 'tdMode': 'isolated', 'side': 'buy', 'ordType': 'limit', 'sz': '1', 'px': '17400',
     #      'posSide': 'long',
-    #      'clOrdId': 'a12344', 'tag': 'test1210'},
+    #      'clOrdId': 'a12344', 'tag': 'test1210','tgtCcy':''},
     #     {'instId': 'BTC-USD-210409', 'tdMode': 'isolated', 'side': 'buy', 'ordType': 'limit', 'sz': '1', 'px': '17359',
     #      'posSide': 'long',
-    #      'clOrdId': 'a12344444', 'tag': 'test1211'}
+    #      'clOrdId': 'a12344444', 'tag': 'test1211','tgtCcy':''}
     # ])
 
     # 撤单  Cancel Order
@@ -183,7 +208,7 @@ if __name__ == '__main__':
     # result = tradeAPI.get_fills_history(instType='SPOT')
     # 策略委托下单  Place Algo Order
     # result = tradeAPI.place_algo_order('BTC-USDT-210409', 'isolated', 'buy', ordType='conditional',
-    #                                    sz='100',posSide='long', tpTriggerPx='60000', tpOrdPx='59999')
+    #                                    sz='100',posSide='long', tpTriggerPx='60000', tpOrdPx='59999','tgtCcy':'')
     # 撤销策略委托订单  Cancel Algo Order
     # result = tradeAPI.cancel_algo_order([{'algoId': '297394002194735104', 'instId': 'BTC-USDT-210409'}])
     # 获取未完成策略委托单列表  Get Algo Order List

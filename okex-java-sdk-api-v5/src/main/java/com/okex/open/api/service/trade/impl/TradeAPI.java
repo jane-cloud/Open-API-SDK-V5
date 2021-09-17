@@ -62,6 +62,7 @@ interface TradeAPI {
                                           @Query("instId")String instId,
                                           @Query("ordType")String ordType,
                                           @Query("state")String state,
+                                          @Query("category")String category,
                                           @Query("after")String after,
                                           @Query("before")String before,
                                           @Query("limit")String limit);
@@ -73,6 +74,7 @@ interface TradeAPI {
                                             @Query("instId")String instId,
                                             @Query("ordType")String ordType,
                                             @Query("state")String state,
+                                            @Query("category")String category,
                                             @Query("after")String after,
                                             @Query("before")String before,
                                             @Query("limit")String limit);
@@ -80,6 +82,16 @@ interface TradeAPI {
     //获取成交明细（近三天） Get Transaction Details(last 3 days）
     @GET("/api/v5/trade/fills")
     Call<JSONObject> getTransactionDetails(@Query("instType") String instType,
+                                           @Query("uly")String uly,
+                                           @Query("instId")String instId,
+                                           @Query("ordId")String ordId,
+                                           @Query("after")String after,
+                                           @Query("before")String before,
+                                           @Query("limit")String limit);
+
+    //获取成交明细（近三个月） Get Transaction Details(last 3 months）
+    @GET("/api/v5/trade/fills-history")
+    Call<JSONObject> getTransactionDetailsForThreeMonths(@Query("instType") String instType,
                                            @Query("uly")String uly,
                                            @Query("instId")String instId,
                                            @Query("ordId")String ordId,
@@ -95,6 +107,10 @@ interface TradeAPI {
     //撤销策略委托订单 Cancel Algo Order
     @POST("/api/v5/trade/cancel-algos")
     Call<JSONObject> cancelAlgoOrders(@Body List<CancelAlgoOrder> cancelAlgoOrder);
+
+    //撤销高级策略委托订单 Cancel Advance Algo Order
+    @POST("/api/v5/trade/cancel-advance-algos")
+    Call<JSONObject> cancelAdvanceAlgoOrders(@Body List<CancelAlgoOrder> cancelAlgoOrder);
 
     //获取未完成策略委托单列表 Get Algo Order List
     @GET("/api/v5/trade/orders-algo-pending")

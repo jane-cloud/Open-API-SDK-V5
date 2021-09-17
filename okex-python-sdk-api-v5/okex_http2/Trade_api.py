@@ -9,9 +9,10 @@ class TradeAPI(Client):
 
     # Place Order
     def place_order(self, instId, tdMode, side, ordType, sz, ccy='', clOrdId='', tag='', posSide='', px='',
-                    reduceOnly=''):
+                    reduceOnly='', tgtCcy=''):
         params = {'instId': instId, 'tdMode': tdMode, 'side': side, 'ordType': ordType, 'sz': sz, 'ccy': ccy,
-                  'clOrdId': clOrdId, 'tag': tag, 'posSide': posSide, 'px': px, 'reduceOnly': reduceOnly}
+                  'clOrdId': clOrdId, 'tag': tag, 'posSide': posSide, 'px': px, 'reduceOnly': reduceOnly,
+                  'tgtCcy': 'tgtCcy'}
         return self._request_with_params(POST, PLACR_ORDER, params)
 
     # Place Multiple Orders
@@ -74,10 +75,10 @@ class TradeAPI(Client):
 
     # Place Algo Order
     def place_algo_order(self, instId, tdMode, side, ordType, sz, ccy='', posSide='', reduceOnly='', tpTriggerPx='',
-                         tpOrdPx='', slTriggerPx='', slOrdPx='', triggerPx='', orderPx=''):
+                         tpOrdPx='', slTriggerPx='', slOrdPx='', triggerPx='', orderPx='', tgtCcy=''):
         params = {'instId': instId, 'tdMode': tdMode, 'side': side, 'ordType': ordType, 'sz': sz, 'ccy': ccy,
                   'posSide': posSide, 'reduceOnly': reduceOnly, 'tpTriggerPx': tpTriggerPx, 'tpOrdPx': tpOrdPx,
-                  'slTriggerPx': slTriggerPx, 'slOrdPx': slOrdPx, 'triggerPx': triggerPx, 'orderPx': orderPx}
+                  'slTriggerPx': slTriggerPx, 'slOrdPx': slOrdPx, 'triggerPx': triggerPx, 'orderPx': orderPx, 'tgtCcy': tgtCcy}
         return self._request_with_params(POST, PLACE_ALGO_ORDER, params)
 
     # Cancel Algo Order

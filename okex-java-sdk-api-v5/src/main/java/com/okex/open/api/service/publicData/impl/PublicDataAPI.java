@@ -69,7 +69,7 @@ public interface PublicDataAPI {
 
 
     //获取合约衍生品仓位档位
-    @GET("/api/v5/public/tier")
+    @GET("/api/v5/public/position-tiers")
     Call<JSONObject> getTier(@Query("instType") String instType,
                              @Query("uly")String uly,
                              @Query("instId")String instId,
