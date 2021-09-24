@@ -295,6 +295,9 @@ if __name__ == '__main__':
     # 撤销策略委托订单  Cancel Algo Order
     # request = tradeAPI.cancel_algo_order
     # parameters = [[{'algoId': '297394002194735104', 'instId': 'BTC-USDT-210409'}]]
+    #撤销高级策略委托订单
+    # result = tradeAPI.cancel_advance_algos
+    # parameters = [{"algoId":"198273485","instId":"BTC-USDT"}]
     # 获取未完成策略委托单列表  Get Algo Order List
     # request = tradeAPI.order_algos_list
     # parameters = {'ordType': 'conditional', 'instType': 'FUTURES'}

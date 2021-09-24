@@ -62,6 +62,7 @@ MARKPRICE_CANDLES = '/api/v5/market/mark-price-candles'
 MARKET_TRADES = '/api/v5/market/trades'
 VOLUMNE = '/api/v5/market/platform-24-volume'
 ORACLE = '/api/v5/market/oracle'
+Components = ''/api/v5/market/index-components''
 
 # Public Data
 INSTRUMENT_INFO = '/api/v5/public/instruments'
@@ -109,6 +110,7 @@ ORDER_FILLS = '/api/v5/trade/fills'
 ORDERS_FILLS_HISTORY = '/api/v5/trade/fills-history'
 PLACE_ALGO_ORDER = '/api/v5/trade/order-algo'
 CANCEL_ALGOS = '/api/v5/trade/cancel-algos'
+Cancel_Advance_Algos = '/api/v5/trade/cancel-advance-algos'
 ORDERS_ALGO_OENDING = '/api/v5/trade/orders-algo-pending'
 ORDERS_ALGO_HISTORY = '/api/v5/trade/orders-algo-history'
 

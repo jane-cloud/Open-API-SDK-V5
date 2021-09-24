@@ -104,6 +104,8 @@ if __name__ == '__main__':
     # result = marketAPI.get_volume()
     # Oracle 上链交易数据 GET Oracle
     # result = marketAPI.get_oracle()
+    # 获取指数成分数据 GET Index Components
+    # result = marketAPI.get_index_components(index='')
 
     # public api
     publicAPI = Public.PublicAPI(api_key, secret_key, passphrase, False, flag)
@@ -207,10 +209,12 @@ if __name__ == '__main__':
     # 获取成交明细(三个月)  Get Transaction Details History
     # result = tradeAPI.get_fills_history(instType='SPOT')
     # 策略委托下单  Place Algo Order
-    # result = tradeAPI.place_algo_order('BTC-USDT-210409', 'isolated', 'buy', ordType='conditional',
-    #                                    sz='100',posSide='long', tpTriggerPx='60000', tpOrdPx='59999','tgtCcy':'')
+    result = tradeAPI.place_algo_order('BTC-USDT-210409', 'isolated', 'buy', ordType='conditional',
+                                       sz='100',posSide='long', tpTriggerPx='60000', tpOrdPx='59999','tgtCcy':'')
     # 撤销策略委托订单  Cancel Algo Order
     # result = tradeAPI.cancel_algo_order([{'algoId': '297394002194735104', 'instId': 'BTC-USDT-210409'}])
+    #撤销高级策略委托订单
+    # result = tradeAPI.cancel_advance_algos([ {"algoId":"198273485","instId":"BTC-USDT"}])
     # 获取未完成策略委托单列表  Get Algo Order List
     # result = tradeAPI.order_algos_list('conditional', instType='FUTURES')
     # 获取历史策略委托单列表  Get Algo Order History
