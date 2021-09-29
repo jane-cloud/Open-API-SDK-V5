@@ -201,7 +201,7 @@ if __name__ == '__main__':
     # 获取未成交订单列表  Get Order List
     # result = tradeAPI.get_order_list()
     # 获取历史订单记录（近七天） Get Order History (last 7 days）
-    # result = tradeAPI.get_orders_history('FUTURES')
+    # result = tradeAPI.get_orders_history('FUTURES')d
     # 获取历史订单记录（近三个月） Get Order History (last 3 months)
     # result = tradeAPI.orders_history_archive('FUTURES')
     # 获取成交明细(三天)  Get Transaction Details
@@ -209,8 +209,8 @@ if __name__ == '__main__':
     # 获取成交明细(三个月)  Get Transaction Details History
     # result = tradeAPI.get_fills_history(instType='SPOT')
     # 策略委托下单  Place Algo Order
-    result = tradeAPI.place_algo_order('BTC-USDT-210409', 'isolated', 'buy', ordType='conditional',
-                                       sz='100',posSide='long', tpTriggerPx='60000', tpOrdPx='59999','tgtCcy':'')
+    # result = tradeAPI.place_algo_order('BTC-USDT-210409', 'isolated', 'buy', ordType='conditional',
+    #                                    sz='100',posSide='long', tpTriggerPx='60000', tpOrdPx='59999','tgtCcy':'')
     # 撤销策略委托订单  Cancel Algo Order
     # result = tradeAPI.cancel_algo_order([{'algoId': '297394002194735104', 'instId': 'BTC-USDT-210409'}])
     #撤销高级策略委托订单

@@ -62,7 +62,7 @@ MARKPRICE_CANDLES = '/api/v5/market/mark-price-candles'
 MARKET_TRADES = '/api/v5/market/trades'
 VOLUMNE = '/api/v5/market/platform-24-volume'
 ORACLE = '/api/v5/market/oracle'
-Components = ''/api/v5/market/index-components''
+Components = '/api/v5/market/index-components'
 
 # Public Data
 INSTRUMENT_INFO = '/api/v5/public/instruments'
