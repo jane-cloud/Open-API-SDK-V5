@@ -49,6 +49,8 @@ CURRENCY_INFO = '/api/v5/asset/currencies'
 PURCHASE_REDEMPT = '/api/v5/asset/purchase_redempt'
 BILLS_INFO = '/api/v5/asset/bills'
 PIGGY_BALANCE = '/api/v5/asset/piggy-balance'
+DEPOSIT_LIGHTNING = '/api/v5/asset/deposit-lightning'
+WITHDRAWAL_LIGHTNING = '/api/v5/asset/withdrawal-lightning'
 
 # Market Data
 TICKERS_INFO = '/api/v5/market/tickers'
@@ -62,7 +64,7 @@ MARKPRICE_CANDLES = '/api/v5/market/mark-price-candles'
 MARKET_TRADES = '/api/v5/market/trades'
 VOLUMNE = '/api/v5/market/platform-24-volume'
 ORACLE = '/api/v5/market/oracle'
-Components = '/api/v5/market/index-components'
+Components = ''/api/v5/market/index-components''
 
 # Public Data
 INSTRUMENT_INFO = '/api/v5/public/instruments'

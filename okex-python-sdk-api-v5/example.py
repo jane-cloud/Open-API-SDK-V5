@@ -74,11 +74,15 @@ if __name__ == '__main__':
     # 获取币种列表  Get Currencies
     # result = fundingAPI.get_currency()
     # 余币宝申购/赎回  PiggyBank Purchase/Redemption
-    # result = fundingAPI.purchase_redempt('BTC', '1', 'purchase')
+    result = fundingAPI.purchase_redempt('BTC', '1', 'purchase')
     # 资金流水查询  Asset Bills Details
     # result = fundingAPI.get_bills()
     #获取余币宝余额 PIGGY BALABCE
     # result = fundingAPI.get_piggy_balance()
+    # 闪电网络充币
+    result = fundingAPI.get_deposit_lightning(ccy='BTC',amt='0.01')
+    # 闪电网络提币
+    result = fundingAPI.withdrawal_lightning(ccy='BTC',amt='0.01')
 
     # market api
     marketAPI = Market.MarketAPI(api_key, secret_key, passphrase, False, flag)
@@ -201,7 +205,7 @@ if __name__ == '__main__':
     # 获取未成交订单列表  Get Order List
     # result = tradeAPI.get_order_list()
     # 获取历史订单记录（近七天） Get Order History (last 7 days）
-    # result = tradeAPI.get_orders_history('FUTURES')d
+    # result = tradeAPI.get_orders_history('FUTURES')
     # 获取历史订单记录（近三个月） Get Order History (last 3 months)
     # result = tradeAPI.orders_history_archive('FUTURES')
     # 获取成交明细(三天)  Get Transaction Details
