@@ -111,15 +111,15 @@ $obj = new PublicChannels(Config::$config);
 $instrumentId = "BTC-USDC";
 $coin = "EOS";
 //产品频道
-//$obj->subscribe($callbackTime,'{"channel":"instruments","instType":"SPOT"}');
+$obj->subscribe($callbackTime,'{"channel":"instruments","instType":"SPOT"}');
 //行情频道
 //$obj->subscribe($callbackTime,'{"channel":"tickers","instId":"OKB-USDT"}');
 //持仓总理频道
 //$obj->subscribe($callbackTime,'{"channel":"open-interest","instId":"ADA-USDT-SWAP"}');
 //k线频道
-//$obj->subscribe($callbackTime,'{"channel":"candle30m","instId":"OKB-USDT"}');
+//$obj->subscribe($callbackTime,'{"channel" :"candle1m","instId" :"BTC-USDT"}');
 //交易频道
-//$obj->subscribe($callbackTime,'{"channel":"trades","instId":"LTC-USDT"}');
+//$obj->subscribe($callbackTime,'{"channel":"trades","instId":"BTC-USDT"}');
 //预估交割/行权价格频道
 //$obj->subscribe($callbackTime,'{"channel":"estimated-price","instType":"FUTURES","uly":"BTC-USD"}');
 //标记价格频道
@@ -129,7 +129,7 @@ $coin = "EOS";
 //限价频道
 //$obj->subscribe($callbackTime,'{"channel":"price-limit","instId":"BTC-USD-SWAP"}');
 //深度频道
-//$obj->subscribe($callbackTime,'{"channel":"books","instId":"ETH-USDT"}');
+//$obj->subscribe($callbackTime,'{"channel":"books50-l2-tbt","instId":"BTT-USDT-SWAP"}');
 //期权定价频道
 //$obj->subscribe($callbackTime,'{"channel":"opt-summary","uly":"BTC-USD"}');
 //资金费率频道
@@ -148,7 +148,7 @@ $obj = new PrivateChannels(Config::$config);
 //账户频道
 //$obj->subscribe($callbackTime,'{"channel":"account","ccy":"USDT"}');
 //持仓频道
-$obj->subscribe($callbackTime,'{"channel":"positions","instType":"SWAP"}');
+//$obj->subscribe($callbackTime,'{"channel":"positions","instType":"ANY"}');
 //账户余额和持仓频道
 //$obj->subscribe($callbackTime,'{"channel":"balance_and_position"}');
 //订单频道

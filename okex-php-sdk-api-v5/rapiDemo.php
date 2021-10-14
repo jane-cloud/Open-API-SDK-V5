@@ -44,9 +44,9 @@ $coin = "XMR";
 // 设置杠杆倍数 Set Leverage
 //$res = $obj -> setLeverage('EGLD-USDT-SWAP','','10','cross','');
 // 获取最大可交易数量 Get Maximum Tradable Size For Instrument
-//$res = $obj -> getMaxSize('BTC-USDT-SWAP','isolated','USDT','');
+//$res = $obj -> getMaxSize('BTC-USDT','cash','','');
 // 获取最大可用数量 Get Maximum Available Tradable Amount
-//$res = $obj -> getMaxAvailSize('BTC-USDT-SWAP','','cross','');
+//$res = $obj -> getMaxAvailSize('BTC-USDT','','cash','');
 // 调整保证金 Increase/Decrease margin
 //$res = $obj -> marginBalance('BTC-USD-210402','long','reduce','0.5');
 // 获取杠杆倍数 Get Leverage
@@ -62,7 +62,7 @@ $coin = "XMR";
 // 期权希腊字母PA/BS切换 Set Greeks (PA/BS)
 //$res = $obj -> setGreeks('PA');
 // 查看账户最大可转余额 Get Maximum Withdrawals
-//$res = $obj -> getMaxWithdrawal('');
+//$res = $obj -> getMaxWithdrawal('OKT');
 
 /**
  * 资金 Funding
@@ -71,13 +71,13 @@ $instrumentId = "EOS-USDT";
 $currency = "EOS";
 $obj = new FundingApi(Config::$config);
 // 获取充值地址信息 Get Deposit Address
-//$res = $obj -> getDepositAddress('BTC');
+//$res = $obj -> getDepositAddress('USDT');
 // 获取资金账户余额信息 Get Balance
 //$res = $obj -> getBalance('BTC');
 // 资金划转 Funds Transfer
 //$res = $obj -> transfer('BTC','0.00000394','0','1','18','','','');
 // 提币 Withdrawal
-//$res = $obj -> withdrawal('USDT','','1','3','15172534459','Sgl1997','0');
+//$res = $obj -> withdrawal('USDT','USDT-ERC20','0.1','4','0x634f6bcdefaba105358652a75f2f5c05383a7f33','Sgl1997','0');
 // 充值记录 Get Deposit History
 //$res = $obj -> getDepositHistory('','','','','');
 // 提币记录 Get Withdrawal History
@@ -101,7 +101,7 @@ $coin = "EOS";
 $obj = new MarketDataAPI(Config::$config);
 // 获取所有产品行情信息 Get Tickers
 
-//$res = $obj->getTickers('OPTION','ETH-USD');
+$res = $obj->getTickers('SWAP','ETH-USD');
 // 获取单个产品行情信息 Get Ticker
 //$res = $obj->getTicker('ETH-USDT');
 // 获取指数行情 Get Index Tickers
@@ -111,7 +111,7 @@ $obj = new MarketDataAPI(Config::$config);
 // 获取所有交易产品K线数据 Get Candlesticksinstruments
 //$res = $obj->getCandles('BTC-USDT','','','1m','');
 // 获取交易产品历史K线数据（仅主流币） Get Candlesticks History（top currencies only）
-//$res = $obj->getHistoryCandles('BTC-USDT-SWAP','1621440600000','1621440000000','5m','3');
+//$res = $obj->getHistoryCandles('BTC-USD-211231','','','','');
 // 获取指数K线数据 Get Index Candlesticks
 //$res = $obj->getIndexCandles('ETH-USDT-SWAP','','','1m','');
 // 获取标记价格K线数据 Get Mark Price Candlesticks
@@ -169,7 +169,7 @@ $obj = new PublicDataAPI(Config::$config);
  */
 $obj = new TradeAPI(Config::$config);
 // 下单 Place Order
-//$res = $obj -> order('OKB-USDT','cash','','','','sell','','limit','1','25','');
+//$res = $obj -> order('BTC-USDT','cash','','','','buy','','market','100','','');
 //批量下单 Batch Order
 //$res = $obj -> batchOrders([['BTC-USDT-210625','isolated','','b15','','buy','long','limit','1','60000',''],['BTC-USDT-210924','isolated','','b15','','buy','long','limit','1','60000','']]);
 // 撤单 Cancel Order
@@ -183,11 +183,11 @@ $obj = new TradeAPI(Config::$config);
 // 市价仓位全平 Close Positions
 //$res = $obj -> closePosition('LTC-USDT-210514','long','cross','');
 // 获取订单信息 Get Order Details
-//$res = $obj -> getOrder('BTC-USDT-210924','307588799475884032','');
+//$res = $obj -> getOrder('OKB-USDT','359112977169129480','');
 // 获取未成交订单列表 Get Order List
 //$res = $obj -> getOrderPending('SWAP','','BTC-USDT-SWAP','','','','','1');
 // 获取历史订单记录（近七天） Get Order History (last 7 days）
-//$res = $obj -> getOrdersHistory('SPOT','','','','','','','','');
+//$res = $obj -> getOrdersHistory('FUTURES','','','','','delivery','','','');
 // 获取历史订单记录（近三个月） Get Order History (last 3 months)
 //$res = $obj -> getOrdersHistoryArchive('FUTURES','','','','','','','','');
 // 获取成交明细 Get Transaction Details
@@ -200,7 +200,7 @@ $obj = new TradeAPI(Config::$config);
 // 获取未完成策略委托单列表 Get Algo Order List
 //$res = $obj -> getAlgoPending('','SWAP','BTC-USDT-SWAP','','','','');
 // 获取历史策略委托单列表 Get Algo Order History
-$res = $obj -> getAlgoHistory('','314738893715283968','FUTURES','','trigger','','','');
+//$res = $obj -> getAlgoHistory('','314738893715283968','FUTURES','','trigger','','','');
 //$res = $obj -> cancelAdvanceAlgos('','314738893715283968','FUTURES','','trigger','','','');
 
 
@@ -227,7 +227,7 @@ $obj = new SubaccountApi(Config::$config);
  * Status Status
  */
 $obj = new StatusApi(Config::$config);
-//$res = $obj -> getStatus('');
+//$res = $obj -> getStatus('completed');
 /**
  *交易大数据
  */

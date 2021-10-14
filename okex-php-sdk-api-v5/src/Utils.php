@@ -37,8 +37,8 @@ class Utils
 
         $sign = self::signature($timestamp, $method, $requestPath, $body, self::$apiSecret);
         $headers = self::getHeader(self::$apiKey, self::$paper,$sign, $timestamp, self::$passphrase, self::$textToSign);
-        echo $url;
-        echo "请求头";
+//        echo $url;
+//        echo "请求头";
         print_r($headers);
 
         if($method == "POST") {
@@ -112,7 +112,7 @@ class Utils
 //        print_r("headerTotal:".$headerTotal."\n");
 //        print_r("bodySize:".$bodySize."\n");
 
-        $body = json_decode($body,true);
+//        $body = json_decode($body,true);
 
         return $body;
     }
