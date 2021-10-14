@@ -74,11 +74,15 @@ if __name__ == '__main__':
     # 获取币种列表  Get Currencies
     # result = fundingAPI.get_currency()
     # 余币宝申购/赎回  PiggyBank Purchase/Redemption
-    # result = fundingAPI.purchase_redempt('BTC', '1', 'purchase')
+    result = fundingAPI.purchase_redempt('BTC', '1', 'purchase')
     # 资金流水查询  Asset Bills Details
     # result = fundingAPI.get_bills()
     #获取余币宝余额 PIGGY BALABCE
     # result = fundingAPI.get_piggy_balance()
+    # 闪电网络充币
+    result = fundingAPI.get_deposit_lightning(ccy='BTC',amt='0.01')
+    # 闪电网络提币
+    result = fundingAPI.withdrawal_lightning(ccy='BTC',amt='0.01')
 
     # market api
     marketAPI = Market.MarketAPI(api_key, secret_key, passphrase, False, flag)
@@ -104,6 +108,8 @@ if __name__ == '__main__':
     # result = marketAPI.get_volume()
     # Oracle 上链交易数据 GET Oracle
     # result = marketAPI.get_oracle()
+    # 获取指数成分数据 GET Index Components
+    # result = marketAPI.get_index_components(index='')
 
     # public api
     publicAPI = Public.PublicAPI(api_key, secret_key, passphrase, False, flag)
@@ -211,6 +217,8 @@ if __name__ == '__main__':
     #                                    sz='100',posSide='long', tpTriggerPx='60000', tpOrdPx='59999','tgtCcy':'')
     # 撤销策略委托订单  Cancel Algo Order
     # result = tradeAPI.cancel_algo_order([{'algoId': '297394002194735104', 'instId': 'BTC-USDT-210409'}])
+    #撤销高级策略委托订单
+    # result = tradeAPI.cancel_advance_algos([ {"algoId":"198273485","instId":"BTC-USDT"}])
     # 获取未完成策略委托单列表  Get Algo Order List
     # result = tradeAPI.order_algos_list('conditional', instType='FUTURES')
     # 获取历史策略委托单列表  Get Algo Order History

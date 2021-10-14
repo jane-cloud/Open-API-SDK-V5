@@ -24,8 +24,8 @@ class FundingAPI(Client):
         return self._request_with_params(POST, FUNDS_TRANSFER, params)
 
     # Withdrawal
-    def coin_withdraw(self, ccy, amt, dest, toAddr, pwd, fee):
-        params = {'ccy': ccy, 'amt': amt, 'dest': dest, 'toAddr': toAddr, 'pwd': pwd, 'fee': fee}
+    def coin_withdraw(self, ccy, amt, dest, toAddr, pwd, fee,chain=''):
+        params = {'ccy': ccy, 'amt': amt, 'dest': dest, 'toAddr': toAddr, 'pwd': pwd, 'fee': fee,'chain': chain}
         return self._request_with_params(POST, WITHDRAWAL_COIN, params)
 
     # Get Deposit History
@@ -52,9 +52,23 @@ class FundingAPI(Client):
         params = {'ccy': ccy, 'type': type, 'after': after, 'before': before, 'limit': limit}
         return self._request_with_params(GET, BILLS_INFO, params)
 
+
     #Get Piggy Balance
     def get_piggy_balance(self, ccy=''):
         params = {}
         if ccy:
             params = {'ccy':ccy}
         return self._request_with_params(GET, PIGGY_BALANCE, params)
+
+
+    #Get Deposit Lightning
+    def get_deposit_lightning(self, ccy,amt,to=""):
+        params = {'ccy':ccy,'amt':amt}
+        if to:
+            params = {'to':to}
+        return self._request_with_params(GET, DEPOSIT_LIGHTNING, params)
+
+    # Withdrawal Lightning
+    def withdrawal_lightning(self, ccy,invoice,pwd):
+        params = {'ccy':ccy, 'invoice':invoice, 'pwd':pwd}
+        return self._request_with_params(POST, WITHDRAWAL_LIGHTNING, params)
