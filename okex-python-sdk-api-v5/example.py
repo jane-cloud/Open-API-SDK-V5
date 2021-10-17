@@ -74,13 +74,13 @@ if __name__ == '__main__':
     # 获取币种列表  Get Currencies
     # result = fundingAPI.get_currency()
     # 余币宝申购/赎回  PiggyBank Purchase/Redemption
-    result = fundingAPI.purchase_redempt('BTC', '1', 'purchase')
+    # result = fundingAPI.purchase_redempt('BTC', '1', 'purchase')
     # 资金流水查询  Asset Bills Details
     # result = fundingAPI.get_bills()
     #获取余币宝余额 PIGGY BALABCE
     # result = fundingAPI.get_piggy_balance()
     # 闪电网络充币
-    result = fundingAPI.get_deposit_lightning(ccy='BTC',amt='0.01')
+    # result = fundingAPI.get_deposit_lightning(ccy='BTC',amt='0.01')
     # 闪电网络提币
     result = fundingAPI.withdrawal_lightning(ccy='BTC',amt='0.01')
 

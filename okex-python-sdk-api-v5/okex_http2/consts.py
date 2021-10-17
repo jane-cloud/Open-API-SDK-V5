@@ -49,6 +49,8 @@ CURRENCY_INFO = '/api/v5/asset/currencies'
 PURCHASE_REDEMPT = '/api/v5/asset/purchase_redempt'
 BILLS_INFO = '/api/v5/asset/bills'
 PIGGY_BALANCE = '/api/v5/asset/piggy-balance'
+DEPOSIT_LIGHTNING = '/api/v5/asset/deposit-lightning'
+WITHDRAWAL_LIGHTNING = '/api/v5/asset/withdrawal-lightning'
 
 # Market Data
 TICKERS_INFO = '/api/v5/market/tickers'

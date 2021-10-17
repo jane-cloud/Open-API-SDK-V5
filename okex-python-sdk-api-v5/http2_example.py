@@ -119,8 +119,13 @@ if __name__ == '__main__':
     # request = fundingAPI.get_bills
     # parameters = []
     # 获取余币宝余额 PIGGY BALABCE
-    # result = fundingAPI.get_piggy_balance
+    result = fundingAPI.get_piggy_balance
     # parameters = []
+    # 闪电网络充币
+    # result = fundingAPI.get_deposit_lightning
+    # 闪电网络提币
+    # result = fundingAPI.withdrawal_lightning
+    # parameters =[]
 
     # market api
     marketAPI = Market.MarketAPI(api_key, secret_key, passphrase, False, flag)
