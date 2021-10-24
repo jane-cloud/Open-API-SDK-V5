@@ -6,7 +6,7 @@ namespace okv5;
 
 class TradeAPI extends Utils
 {
-    public function order($instId,$tdMode,$ccy='',$clOrdId='',$tag='',$side,$posSide='',$ordType,$sz,$px='',$reduceOnly='')
+    public function order($instId,$tdMode,$ccy='',$clOrdId='',$tag='',$side,$posSide='',$ordType,$sz,$px='',$reduceOnly='',$tgtCcy='')
     {
         $params = [
             'instId' => $instId,
@@ -20,6 +20,7 @@ class TradeAPI extends Utils
             'sz' => $sz,
             'px' => $px,
             'reduceOnly' => $reduceOnly,
+            'tgtCcy' => $tgtCcy,
         ];
 
         return $this->request('/api/v5/trade/order', $params, 'POST');

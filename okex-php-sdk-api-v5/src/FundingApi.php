@@ -42,6 +42,16 @@ class FundingApi extends Utils
         return $this->request('/api/v5/asset/transfer',$params, 'POST');
     }
 
+    public function transferState($transId,$type='')
+    {
+        $params = [
+            'transId' => $transId,
+            'type' => $type,
+        ];
+
+        return $this->request('/api/v5/asset/transfer-state',$params, 'GET');
+    }
+
     public function withdrawal($ccy,$chain='',$amt,$dest,$toAddr,$pwd,$fee)
     {
         $params = [
@@ -121,5 +131,27 @@ class FundingApi extends Utils
         ];
 
         return $this->request('/api/v5/asset/piggy-balance',$params, 'GET');
+    }
+
+    public function depositLightning($ccy,$amt,$to='')
+    {
+        $params = [
+            'ccy' => $ccy,
+            'amt' => $amt,
+            'to' => $to,
+        ];
+
+        return $this->request('/api/v5/asset/deposit-lightning',$params, 'GET');
+    }
+
+    public function withdrawalLightning($ccy,$invoice,$pwd)
+    {
+        $params = [
+            'ccy' => $ccy,
+            'invoice' => $invoice,
+            'pwd' => $pwd,
+        ];
+
+        return $this->request('/api/v5/asset/withdrawal-lightning',$params, 'POST');
     }
 }

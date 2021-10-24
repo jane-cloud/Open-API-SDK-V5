@@ -76,8 +76,11 @@ $obj = new FundingApi(Config::$config);
 //$res = $obj -> getBalance('BTC');
 // 资金划转 Funds Transfer
 //$res = $obj -> transfer('BTC','0.00000394','0','1','18','','','');
+//获取资金划转状态
+//$res = $obj -> transferState('','');
+
 // 提币 Withdrawal
-//$res = $obj -> withdrawal('USDT','USDT-ERC20','0.1','4','0x634f6bcdefaba105358652a75f2f5c05383a7f33','Sgl1997','0');
+//$res = $obj -> withdrawal('USDT','USDT-ERC20','0.1','4','0x634f6bcdefaba105358652a75f2f5c05383a7f33','','0');
 // 充值记录 Get Deposit History
 //$res = $obj -> getDepositHistory('','','','','');
 // 提币记录 Get Withdrawal History
@@ -89,7 +92,11 @@ $obj = new FundingApi(Config::$config);
 // 资金流水查询 PiggyBank Purchase/Redemption
 //$res = $obj -> getBills('','','','','');
 //获取余币宝余额
-//$res = $obj -> getPiggyBalance('','','','','');
+//$res = $obj -> getPiggyBalance('');
+//闪电网络充币
+//$res = $obj -> depositLightning('','','');
+//闪电网络提币
+//$res = $obj -> withdrawalLightning('','','');
 
 
 /**
@@ -101,7 +108,7 @@ $coin = "EOS";
 $obj = new MarketDataAPI(Config::$config);
 // 获取所有产品行情信息 Get Tickers
 
-$res = $obj->getTickers('SWAP','ETH-USD');
+//$res = $obj->getTickers('SWAP','ETH-USD');
 // 获取单个产品行情信息 Get Ticker
 //$res = $obj->getTicker('ETH-USDT');
 // 获取指数行情 Get Index Tickers
@@ -111,7 +118,7 @@ $res = $obj->getTickers('SWAP','ETH-USD');
 // 获取所有交易产品K线数据 Get Candlesticksinstruments
 //$res = $obj->getCandles('BTC-USDT','','','1m','');
 // 获取交易产品历史K线数据（仅主流币） Get Candlesticks History（top currencies only）
-//$res = $obj->getHistoryCandles('BTC-USD-211231','','','','');
+//$res = $obj->getHistoryCandles('ETH-USDT-SWAP','1629174900000','1629189900000','5m','');
 // 获取指数K线数据 Get Index Candlesticks
 //$res = $obj->getIndexCandles('ETH-USDT-SWAP','','','1m','');
 // 获取标记价格K线数据 Get Mark Price Candlesticks
@@ -169,7 +176,7 @@ $obj = new PublicDataAPI(Config::$config);
  */
 $obj = new TradeAPI(Config::$config);
 // 下单 Place Order
-//$res = $obj -> order('BTC-USDT','cash','','','','buy','','market','100','','');
+//$res = $obj -> order('BTC-USDT','cross','','','','sell','','market','4000','','','quote_ccy');
 //批量下单 Batch Order
 //$res = $obj -> batchOrders([['BTC-USDT-210625','isolated','','b15','','buy','long','limit','1','60000',''],['BTC-USDT-210924','isolated','','b15','','buy','long','limit','1','60000','']]);
 // 撤单 Cancel Order
@@ -198,9 +205,10 @@ $obj = new TradeAPI(Config::$config);
 // 撤销策略委托订单 Cancel Algo Order
 //$res = $obj -> cancelAlgos([['307913429122170880','BTC-USDT-210625'],['307913525461139456','BTC-USDT-210625']]);
 // 获取未完成策略委托单列表 Get Algo Order List
-//$res = $obj -> getAlgoPending('','SWAP','BTC-USDT-SWAP','','','','');
+//$res = $obj -> getAlgoPending('','SWAP','BTC-USDT-SWAP','conditional','','','');
 // 获取历史策略委托单列表 Get Algo Order History
 //$res = $obj -> getAlgoHistory('','314738893715283968','FUTURES','','trigger','','','');
+//撤销高级策略委托订单
 //$res = $obj -> cancelAdvanceAlgos('','314738893715283968','FUTURES','','trigger','','','');
 
 
