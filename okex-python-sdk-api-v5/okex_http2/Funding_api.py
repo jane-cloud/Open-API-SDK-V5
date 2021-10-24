@@ -58,3 +58,15 @@ class FundingAPI(Client):
         if ccy:
             params = {'ccy':ccy}
         return self._request_with_params(GET, PIGGY_BALANCE, params)
+
+    #Get Deposit Lightning
+    def get_deposit_lightning(self, ccy,amt,to=""):
+        params = {'ccy':ccy,'amt':amt}
+        if to:
+            params = {'to':to}
+        return self._request_with_params(GET, DEPOSIT_LIGHTNING, params)
+
+    # Withdrawal Lightning
+    def withdrawal_lightning(self, ccy,invoice,pwd):
+        params = {'ccy':ccy, 'invoice':invoice, 'pwd':pwd}
+        return self._request_with_params(POST, WITHDRAWAL_LIGHTNING, params)
