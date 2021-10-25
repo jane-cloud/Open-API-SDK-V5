@@ -35,4 +35,12 @@ public interface FundingAPIService {
     //获取余币宝余额
     JSONObject piggyBalance(String ccy);
 
+    //闪电网络充币 Deposit Lightning
+    JSONObject depositLightning(String ccy, String amt, String to);
+
+    //闪电网络提币 Withdrawal Lightning
+    JSONObject withdrawalLightning(Withdrawal withdrawal);
+
+    //获取资金划转状态 Transfer State
+    JSONObject transferState(String transId, String type);
 }
