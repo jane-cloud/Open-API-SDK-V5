@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="INFO" shutdownHook="disable">
+
+    <Properties>
+        <Property name="environment.target" value="DEV"/>
+        <Property name="logging.dir" value="./"/>
+    </Properties>
+
+
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n" />
+        </Console>
+
+        <RollingFile name="FILE_INFO"
+                     fileName="${logging.dir}/logs/info.log"	filePattern="${logging.dir}/logs/history/info-%d{yyyy-MM-dd}-%i.log">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n" />
+            <!-- TODO:Change to time based policy -->
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="1"	modulate="true" />
+                <SizeBasedTriggeringPolicy size="100 MB" />
+            </Policies>
+            <DefaultRolloverStrategy max="4" />
+        </RollingFile>
+        <RollingRandomAccessFile name="FILE_ERROR"
+                                 fileName="${logging.dir}/logs/error.log"
+                                 immediateFlush="true">
+                                 filePattern="${logging.dir}/logs/history/error-%d{yyyy-MM-dd}-%i.log">
+            <!--<Filters>-->
+                <!--<ThresholdFilter level="WARN" onMatch="ACCEPT" onMismatch="DENY"/>-->
+            <!--</Filters>-->
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+                <SizeBasedTriggeringPolicy size="100 MB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="4"/>
+        </RollingRandomAccessFile>
+    </Appenders>
+
+    <Loggers>
+        <Logger name="ASYNC_FILE_ERROR">
+            <appender-ref ref="FILE_ERROR"/>
+        </Logger>
+        <Root level="INFO">
+            <AppenderRef ref="Console" />
+            <!-- <AppenderRef ref="file" /> -->
+            <AppenderRef ref="FILE_INFO" />
+        </Root>
+    </Loggers>
+</Configuration>
