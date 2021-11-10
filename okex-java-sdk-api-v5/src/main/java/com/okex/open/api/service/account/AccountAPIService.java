@@ -32,7 +32,7 @@ public interface AccountAPIService {
     JSONObject setLeverage(SetLeverage setLeverage);
 
     //获取最大可买卖/开仓数量 Get maximum buy/sell amount or open amount
-    JSONObject getMaximumTradableSizeForInstrument(String instId,String tdMode,String ccy,String px);
+    JSONObject getMaximumTradableSizeForInstrument(String instId,String tdMode,String ccy,String px,String leverage);
 
     //获取最大可用数量 Get Maximum Tradable Size For Instrument
     JSONObject getMaximumAvailableTradableAmount(String instId,String tdMode,String ccy,String reduceOnly);
@@ -59,4 +59,7 @@ public interface AccountAPIService {
 
     //查看账户最大可转余额 Get Maximum Withdrawals
     JSONObject getMaximumWithdrawals(String ccy);
+
+    //查看账户特定风险状态 Get account risk state
+    JSONObject getRiskState();
 }

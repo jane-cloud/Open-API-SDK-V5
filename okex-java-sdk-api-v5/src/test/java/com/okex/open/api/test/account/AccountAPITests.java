@@ -125,7 +125,7 @@ public class AccountAPITests extends  AccountAPIBaseTests {
      */
     @Test
     public void getMaximumTradableSizeForInstrument(){
-        JSONObject result = this.accountAPIService.getMaximumTradableSizeForInstrument("BTC-USDT","cross","BTC","");
+        JSONObject result = this.accountAPIService.getMaximumTradableSizeForInstrument("BTC-USDT","cross","BTC","","");
         toResultString(LOG, "result", result);
     }
 
@@ -228,7 +228,6 @@ public class AccountAPITests extends  AccountAPIBaseTests {
         toResultString(LOG, "result", result);
     }
 
-
     /**
      * 查看账户最大可转余额  Get Maximum Withdrawals
      * GET /api/v5/account/max-withdrawal
@@ -236,6 +235,16 @@ public class AccountAPITests extends  AccountAPIBaseTests {
     @Test
     public void getMaximumWithdrawals(){
         JSONObject result = this.accountAPIService.getMaximumWithdrawals("USDT");
+        toResultString(LOG, "result", result);
+    }
+
+    /**
+     * 查看账户特定风险状态  Get account risk state
+     * GET /api/v5/account/risk-state
+     */
+    @Test
+    public void getRiskState(){
+        JSONObject result = this.accountAPIService.getRiskState();
         toResultString(LOG, "result", result);
     }
 

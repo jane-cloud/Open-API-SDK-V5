@@ -58,7 +58,7 @@ public interface AccountAPI {
 
     //获取最大可买卖/开仓数量 Get maximum buy/sell amount or open amount
     @GET("/api/v5/account/max-size")
-    Call<JSONObject> getMaximumTradableSizeForInstrument(@Query("instId") String instId,@Query("tdMode") String tdMode,@Query("ccy") String ccy,@Query("px") String px);
+    Call<JSONObject> getMaximumTradableSizeForInstrument(@Query("instId") String instId,@Query("tdMode") String tdMode,@Query("ccy") String ccy,@Query("px") String px,@Query("leverage") String leverage);
 
     //获取最大可用数量 Get Maximum Tradable Size For Instrument
     @GET("/api/v5/account/max-avail-size")
@@ -95,4 +95,8 @@ public interface AccountAPI {
     //查看账户最大可转余额 Get Maximum Withdrawals
     @GET("/api/v5/account/max-withdrawal")
     Call<JSONObject> getMaximumWithdrawals(@Query("ccy") String ccy);
+
+    //查看账户特定风险状态 Get account risk state
+    @GET("/api/v5/account/risk-state")
+    Call<JSONObject> getRiskState();
 }
