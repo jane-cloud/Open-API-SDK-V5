@@ -44,7 +44,7 @@ $coin = "XMR";
 // 设置杠杆倍数 Set Leverage
 //$res = $obj -> setLeverage('EGLD-USDT-SWAP','','10','cross','');
 // 获取最大可交易数量 Get Maximum Tradable Size For Instrument
-//$res = $obj -> getMaxSize('BTC-USDT','cash','','');
+//$res = $obj -> getMaxSize('BTC-USDT','cash','','','');
 // 获取最大可用数量 Get Maximum Available Tradable Amount
 //$res = $obj -> getMaxAvailSize('BTC-USDT','','cash','');
 // 调整保证金 Increase/Decrease margin
@@ -63,6 +63,8 @@ $coin = "XMR";
 //$res = $obj -> setGreeks('PA');
 // 查看账户最大可转余额 Get Maximum Withdrawals
 //$res = $obj -> getMaxWithdrawal('OKT');
+//查看账户特定风险状态
+//$res = $obj -> riskState();
 
 /**
  * 资金 Funding
@@ -75,9 +77,9 @@ $obj = new FundingApi(Config::$config);
 // 获取资金账户余额信息 Get Balance
 //$res = $obj -> getBalance('BTC');
 // 资金划转 Funds Transfer
-//$res = $obj -> transfer('BTC','0.00000394','0','1','18','','','');
+//$res = $obj -> transfer('USDT','8','1','18','18','shangguanlin123','','');
 //获取资金划转状态
-//$res = $obj -> transferState('','');
+//$res = $obj -> transferState('203950','');
 
 // 提币 Withdrawal
 //$res = $obj -> withdrawal('USDT','USDT-ERC20','0.1','4','0x634f6bcdefaba105358652a75f2f5c05383a7f33','','0');
@@ -116,7 +118,7 @@ $obj = new MarketDataAPI(Config::$config);
 // 获取产品深度 Get Order Book
 //$res = $obj->getBooks('ETC-USDT','10');
 // 获取所有交易产品K线数据 Get Candlesticksinstruments
-//$res = $obj->getCandles('BTC-USDT','','','1m','');
+//$res = $obj->getCandles('FIL-USD-220325','','','1m','');
 // 获取交易产品历史K线数据（仅主流币） Get Candlesticks History（top currencies only）
 //$res = $obj->getHistoryCandles('ETH-USDT-SWAP','1629174900000','1629189900000','5m','');
 // 获取指数K线数据 Get Index Candlesticks
@@ -192,7 +194,7 @@ $obj = new TradeAPI(Config::$config);
 // 获取订单信息 Get Order Details
 //$res = $obj -> getOrder('OKB-USDT','359112977169129480','');
 // 获取未成交订单列表 Get Order List
-//$res = $obj -> getOrderPending('SWAP','','BTC-USDT-SWAP','','','','','1');
+//$res = $obj -> getOrderPending('SWAP','','TRX-USDT-SWAP','limit','','','','');
 // 获取历史订单记录（近七天） Get Order History (last 7 days）
 //$res = $obj -> getOrdersHistory('FUTURES','','','','','delivery','','','');
 // 获取历史订单记录（近三个月） Get Order History (last 3 months)
@@ -201,7 +203,7 @@ $obj = new TradeAPI(Config::$config);
 //$res = $obj -> getFills('','','','','297793186030845953','','');
 //$res = $obj -> getFillsHistory('','','','','297793186030845953','','');
 // 策略委托下单 Place Algo Order
-//$res = $obj -> orderAlgo('TRX-USDT-SWAP','cross','','buy','long','conditional','1','','','','','','0.04','-1','','','','','');
+$res = $obj -> orderAlgo('TRX-USDT-SWAP','cross','','buy','long','conditional','1','','','','','','0.04','','-1','','','','','');
 // 撤销策略委托订单 Cancel Algo Order
 //$res = $obj -> cancelAlgos([['307913429122170880','BTC-USDT-210625'],['307913525461139456','BTC-USDT-210625']]);
 // 获取未完成策略委托单列表 Get Algo Order List

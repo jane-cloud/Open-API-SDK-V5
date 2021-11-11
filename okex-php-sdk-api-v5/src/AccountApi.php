@@ -101,13 +101,14 @@ class AccountApi extends Utils
         return $this->request('/api/v5/account/set-leverage', $params, 'POST');
     }
 
-    public function getMaxSize($instId,$tdMode,$ccy='',$px='')
+    public function getMaxSize($instId,$tdMode,$ccy='',$px='',$leverage='')
     {
         $params = [
             'instId' => $instId,
             'tdMode' => $tdMode,
             'ccy' => $ccy,
             'px' => $px,
+            'leverage' => $leverage,
         ];
 
         return $this->request('/api/v5/account/max-size', $params, 'GET');
@@ -209,5 +210,13 @@ class AccountApi extends Utils
         ];
 
         return $this->request('/api/v5/account/max-withdrawal', $params, 'GET');
+    }
+
+    public function riskState()
+    {
+        $params = [
+        ];
+
+        return $this->request('/api/v5/account/risk-state', $params, 'GET');
     }
 }

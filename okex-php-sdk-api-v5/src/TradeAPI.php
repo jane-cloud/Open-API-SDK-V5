@@ -205,7 +205,7 @@ class TradeAPI extends Utils
         return $this->request('/api/v5/trade/fills-history', $params, 'GET');
     }
 
-    public function orderAlgo($instId,$tdMode,$ccy='',$side,$posSide='',$ordType,$sz,$reduceOnly='',$triggerPx='',$orderPx='',$tpTriggerPx='',$tpOrdPx='',$slTriggerPx='',$slOrdPx='',$pxVar='',$pxSpread='',$szLimit='',$pxLimit='',$timeInterval='')
+    public function orderAlgo($instId,$tdMode,$ccy='',$side,$posSide='',$ordType,$sz,$reduceOnly='',$triggerPx='',$orderPx='',$tpTriggerPx='',$tpOrdPx='',$slTriggerPx='',$slTriggerPxType='',$slOrdPx='',$pxVar='',$pxSpread='',$szLimit='',$pxLimit='',$timeInterval='')
     {
         $params = [
             'instId' => $instId,
@@ -226,6 +226,8 @@ class TradeAPI extends Utils
             'szLimit' => $szLimit,
             'pxLimit' => $pxLimit,
             'timeInterval' => $timeInterval,
+            'reduceOnly' => $reduceOnly,
+            'slTriggerPxType' => $slTriggerPxType,
         ];
 
         return $this->request('/api/v5/trade/order-algo', $params, 'POST');
