@@ -16,7 +16,8 @@ public class PlaceAlgoOrder {
     private String tpOrdPx;
     private String slTriggerPx;
     private String slOrdPx;
-
+    private String tpTriggerPxType;
+    private String slTriggerPxType;
     //计划委托
     private String triggerPx;
     private String orderPx;
@@ -192,5 +193,21 @@ public class PlaceAlgoOrder {
 
     public void setOrderPx(String orderPx) {
         this.orderPx = orderPx;
+    }
+
+    public String getTpTriggerPxType() {
+        return tpTriggerPxType;
+    }
+
+    public void setTpTriggerPxType(String tpTriggerPxType) {
+        this.tpTriggerPxType = tpTriggerPxType;
+    }
+
+    public String getSlTriggerPxType() {
+        return slTriggerPxType;
+    }
+
+    public void setSlTriggerPxType(String slTriggerPxType) {
+        this.slTriggerPxType = slTriggerPxType;
     }
 }
