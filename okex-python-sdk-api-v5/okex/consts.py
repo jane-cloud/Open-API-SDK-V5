@@ -37,6 +37,7 @@ INTEREST_ACCRUED = '/api/v5/account/interest-accrued'
 INTEREST_RATE = '/api/v5/account/interest-rate'
 SET_GREEKS = '/api/v5/account/set-greeks'
 MAX_WITHDRAWAL = '/api/v5/account/max-withdrawal'
+ACCOUNT_RISK = '/api/v5/account/risk-state'
 
 # funding
 DEPOSIT_ADDRESS = '/api/v5/asset/deposit-address'
