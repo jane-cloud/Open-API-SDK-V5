@@ -7,7 +7,8 @@ public class Withdrawal {
     private String dest;
     private String toAddr;
     private String pwd;
-
+    private String invoice;
+    
     @Override
     public String toString() {
         return "Withdrawal{" +
@@ -79,5 +80,11 @@ public class Withdrawal {
         this.fee = fee;
     }
 
+    public String getInvoice() {
+        return invoice;
+    }
 
+    public void setInvoice(String invoice) {
+        this.invoice = invoice;
+    }
 }

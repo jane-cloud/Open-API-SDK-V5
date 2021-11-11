@@ -146,6 +146,39 @@ public class FundingAPITests extends FundingAPIBaseTests {
         toResultString(LOG,"result",result);
     }
 
+    /**
+     * 闪电网络充币
+     * GET /api/v5/asset/deposit-lightning
+     */
+    @Test
+    public void depositLightning() {
+        JSONObject result = fundingAPIService.depositLightning("BTC","1","6");
+        toResultString(LOG, "result", result);
+    }
+
+    /**
+     * 闪电网络提币
+     * POST /api/v5/asset/withdrawal-lightning
+     */
+    @Test
+    public void withdrawalLightning() {
+        Withdrawal withdrawal = new Withdrawal();
+        withdrawal.setCcy("");
+        withdrawal.setInvoice("");
+        withdrawal.setPwd("");
+        JSONObject result = fundingAPIService.withdrawalLightning(withdrawal);
+        toResultString(LOG, "result", result);
+    }
+
+    /**
+     * 获取资金划转状态
+     * GET /api/v5/asset/transfer-state
+     */
+    @Test
+    public void transferState() {
+        JSONObject result = fundingAPIService.transferState("1234","0");
+        toResultString(LOG, "result", result);
+    }
 
 
 

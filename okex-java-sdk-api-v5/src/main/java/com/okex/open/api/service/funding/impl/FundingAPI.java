@@ -47,5 +47,17 @@ interface FundingAPI {
     @GET("/api/v5/asset/piggy-balance")
     Call<JSONObject> piggyBalance(@Query("ccy") String ccy);
 
+    //闪电网络充币 Deposit Lightning
+    @GET("/api/v5/asset/deposit-lightning")
+    Call<JSONObject> depositLightning(@Query("ccy")String ccy, @Query("amt")String amt, @Query("to")String to);
+
+    //闪电网络提币 Withdrawal Lightning
+    @POST("/api/v5/asset/withdrawal-lightning")
+    Call<JSONObject>  withdrawalLightning(@Body JSONObject jsonObject);
+
+    //获取资金划转状态 Transfer State
+    @GET("/api/v5/asset/transfer-state")
+    Call<JSONObject> transferState(@Query("transId")String transId, @Query("type")String type);
+
 
 }

@@ -69,8 +69,8 @@ public class AccountAPIServiceImpl implements AccountAPIService {
 
     //获取最大可买卖/开仓数量 Get maximum buy/sell amount or open amount
     @Override
-    public JSONObject getMaximumTradableSizeForInstrument(String instId, String tdMode, String ccy, String px) {
-        return this.client.executeSync(this.api.getMaximumTradableSizeForInstrument(instId,tdMode,ccy,px));
+    public JSONObject getMaximumTradableSizeForInstrument(String instId, String tdMode, String ccy, String px,String leverage) {
+        return this.client.executeSync(this.api.getMaximumTradableSizeForInstrument(instId,tdMode,ccy,px,leverage));
     }
 
     //获取最大可用数量 Get Maximum Available Tradable Amount
@@ -126,5 +126,11 @@ public class AccountAPIServiceImpl implements AccountAPIService {
     @Override
     public JSONObject getMaximumWithdrawals(String ccy) {
         return this.client.executeSync(this.api.getMaximumWithdrawals(ccy));
+    }
+
+    //查看账户特定风险状态 Get account risk state
+    @Override
+    public JSONObject getRiskState() {
+        return this.client.executeSync(this.api.getRiskState());
     }
 }

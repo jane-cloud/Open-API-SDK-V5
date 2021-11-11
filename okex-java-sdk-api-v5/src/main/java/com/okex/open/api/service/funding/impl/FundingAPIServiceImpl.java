@@ -77,5 +77,21 @@ public class FundingAPIServiceImpl implements FundingAPIService {
         return this.client.executeSync(this.api.piggyBalance(ccy));
     }
 
+    //闪电网络充币 Deposit Lightning
+    @Override
+    public JSONObject depositLightning(String ccy, String amt, String to) {
+        return this.client.executeSync(this.api.depositLightning(ccy,amt,to));
+    }
 
+    //闪电网络提币 Withdrawal Lightning
+    @Override
+    public JSONObject withdrawalLightning(Withdrawal withdrawal) {
+        return this.client.executeSync(this.api.withdrawalLightning(JSONObject.parseObject(JSON.toJSONString(withdrawal))));
+    }
+
+    //获取资金划转状态 Transfer State
+    @Override
+    public JSONObject transferState(String transId, String type) {
+        return this.client.executeSync(this.api.transferState(transId,type));
+    }
 }

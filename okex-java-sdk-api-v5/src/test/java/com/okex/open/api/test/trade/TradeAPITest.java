@@ -308,7 +308,8 @@ public class TradeAPITest extends TradeAPIBaseTest {
         placeAlgoOrder.setTpOrdPx("44000");
         placeAlgoOrder.setSlTriggerPx("60000");
         placeAlgoOrder.setSlOrdPx("65000");
-
+        placeAlgoOrder.setSlTriggerPxType("");
+        placeAlgoOrder.setTpTriggerPxType("");
 //        计划委托 Trigger Order
         /*placeAlgoOrder.setTriggerPx("1.1");
         placeAlgoOrder.setOrderPx("0.7");
