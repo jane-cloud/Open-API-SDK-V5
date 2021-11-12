@@ -294,9 +294,9 @@ if __name__ == '__main__':
     # result = tradeAPI.get_fills_history
     # parameters = ['SPOT']
     # 策略委托下单  Place Algo Order
-    # request = tradeAPI.place_algo_order
-    # parameters = {'instId': 'BTC-USDT', 'side': 'buy', 'ordType': 'conditional', 'sz': '1', 'tpTriggerPx': '1','tdMode':'cash'
-    #               ,'tpOrdPx': '1','tgtCcy':''}
+    request = tradeAPI.place_algo_order
+    parameters = {'instId': 'BTC-USDT', 'side': 'buy', 'ordType': 'conditional', 'sz': '1', 'tpTriggerPx': '1','tdMode':'cash'
+                   ,'tpOrdPx': '1','tgtCcy':'', 'tpTriggerPxType':'last', 'slTriggerPxType':'last'}
     # 撤销策略委托订单  Cancel Algo Order
     # request = tradeAPI.cancel_algo_order
     # parameters = [[{'algoId': '297394002194735104', 'instId': 'BTC-USDT-210409'}]]
