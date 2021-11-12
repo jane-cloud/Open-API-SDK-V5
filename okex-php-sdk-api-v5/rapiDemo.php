@@ -203,7 +203,7 @@ $obj = new TradeAPI(Config::$config);
 //$res = $obj -> getFills('','','','','297793186030845953','','');
 //$res = $obj -> getFillsHistory('','','','','297793186030845953','','');
 // 策略委托下单 Place Algo Order
-$res = $obj -> orderAlgo('TRX-USDT-SWAP','cross','','buy','long','conditional','1','','','','','','0.04','','-1','','','','','');
+$res = $obj -> orderAlgo('TRX-USDT-SWAP','cross','','buy','long','conditional','1','','','','','','','0.04','','-1','','','','','');
 // 撤销策略委托订单 Cancel Algo Order
 //$res = $obj -> cancelAlgos([['307913429122170880','BTC-USDT-210625'],['307913525461139456','BTC-USDT-210625']]);
 // 获取未完成策略委托单列表 Get Algo Order List
