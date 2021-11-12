@@ -15,8 +15,8 @@ if __name__ == '__main__':
     passphrase = ""
 
     # flag是实盘与模拟盘的切换参数 flag is the key parameter which can help you to change between demo and real trading.
-    # flag = '1'  # 模拟盘 demo trading
-    flag = '0'  # 实盘 real trading
+    flag = '1'  # 模拟盘 demo trading
+    # flag = '0'  # 实盘 real trading
 
     # account api
     accountAPI = Account.AccountAPI(api_key, secret_key, passphrase, False, flag)
@@ -37,7 +37,7 @@ if __name__ == '__main__':
     # 设置杠杆倍数  Set Leverage
     # result = accountAPI.set_leverage(instId='BTC-USD-210402', lever='10', mgnMode='cross')
     # 获取最大可交易数量  Get Maximum Tradable Size For Instrument
-    # result = accountAPI.get_maximum_trade_size('BTC-USDT-210402', 'cross', 'USDT')
+    # result = accountAPI.get_maximum_trade_size('BTC-USDT-SWAP', 'cross', leverage='10')
     # 获取最大可用数量  Get Maximum Available Tradable Amount
     # result = accountAPI.get_max_avail_size('BTC-USDT-210402', 'isolated', 'BTC')
     # 调整保证金  Increase/Decrease margint
@@ -56,6 +56,8 @@ if __name__ == '__main__':
     # result = accountAPI.set_greeks('BS')
     # 查看账户最大可转余额  Get Maximum Withdrawals
     # result = accountAPI.get_max_withdrawal('')
+    # 查看账户特定风险状态 Get account risk state (Only applicable to Portfolio margin account)
+    # result = accountAPI.get_account_risk()
 
     # funding api
     fundingAPI = Funding.FundingAPI(api_key, secret_key, passphrase, False, flag)
@@ -77,12 +79,12 @@ if __name__ == '__main__':
     # result = fundingAPI.purchase_redempt('BTC', '1', 'purchase')
     # 资金流水查询  Asset Bills Details
     # result = fundingAPI.get_bills()
-    #获取余币宝余额 PIGGY BALABCE
+    # 获取余币宝余额 PIGGY BALABCE
     # result = fundingAPI.get_piggy_balance()
     # 闪电网络充币
     # result = fundingAPI.get_deposit_lightning(ccy='BTC',amt='0.01')
     # 闪电网络提币
-    result = fundingAPI.withdrawal_lightning(ccy='BTC',amt='0.01')
+    # result = fundingAPI.withdrawal_lightning(ccy='BTC',amt='0.01')
 
     # market api
     marketAPI = Market.MarketAPI(api_key, secret_key, passphrase, False, flag)
@@ -214,10 +216,10 @@ if __name__ == '__main__':
     # result = tradeAPI.get_fills_history(instType='SPOT')
     # 策略委托下单  Place Algo Order
     # result = tradeAPI.place_algo_order('BTC-USDT-210409', 'isolated', 'buy', ordType='conditional',
-    #                                    sz='100',posSide='long', tpTriggerPx='60000', tpOrdPx='59999','tgtCcy':'')
+    #                                    sz='100',posSide='long', tpTriggerPx='60000', tpOrdPx='59999')
     # 撤销策略委托订单  Cancel Algo Order
     # result = tradeAPI.cancel_algo_order([{'algoId': '297394002194735104', 'instId': 'BTC-USDT-210409'}])
-    #撤销高级策略委托订单
+    # 撤销高级策略委托订单
     # result = tradeAPI.cancel_advance_algos([ {"algoId":"198273485","instId":"BTC-USDT"}])
     # 获取未完成策略委托单列表  Get Algo Order List
     # result = tradeAPI.order_algos_list('conditional', instType='FUTURES')

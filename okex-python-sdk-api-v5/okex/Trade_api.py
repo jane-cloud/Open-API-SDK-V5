@@ -9,9 +9,10 @@ class TradeAPI(Client):
 
     # Place Order
     def place_order(self, instId, tdMode, side, ordType, sz, ccy='', clOrdId='', tag='', posSide='', px='',
-                    reduceOnly='',tgtCcy=''):
+                    reduceOnly='', tgtCcy=''):
         params = {'instId': instId, 'tdMode': tdMode, 'side': side, 'ordType': ordType, 'sz': sz, 'ccy': ccy,
-                  'clOrdId': clOrdId, 'tag': tag, 'posSide': posSide, 'px': px, 'reduceOnly': reduceOnly,'tgtCcy':tgtCcy}
+                  'clOrdId': clOrdId, 'tag': tag, 'posSide': posSide, 'px': px, 'reduceOnly': reduceOnly,
+                  'tgtCcy': tgtCcy}
         return self._request_with_params(POST, PLACR_ORDER, params)
 
     # Place Multiple Orders
@@ -73,14 +74,18 @@ class TradeAPI(Client):
         return self._request_with_params(GET, ORDER_FILLS, params)
 
     # Place Algo Order
-    def place_algo_order(self, instId, tdMode, side, ordType, sz, ccy='', posSide='', reduceOnly='', tpTriggerPx='',
-                         tpOrdPx='', slTriggerPx='', slOrdPx='', triggerPx='', orderPx='', tgtCcy='', pxVar='', pxSpread='',
-                         szLimit='', pxLimit='', timeInterval='',):
+    def place_algo_order(self, instId, tdMode, side, ordType, sz, ccy='',
+                         posSide='', reduceOnly='', tpTriggerPx='',
+                         tpOrdPx='', slTriggerPx='', slOrdPx='',
+                         triggerPx='', orderPx='', tgtCcy='', pxVar='',
+                         pxSpread='',
+                         szLimit='', pxLimit='', timeInterval='', tpTriggerPxType='', slTriggerPxType=''):
         params = {'instId': instId, 'tdMode': tdMode, 'side': side, 'ordType': ordType, 'sz': sz, 'ccy': ccy,
                   'posSide': posSide, 'reduceOnly': reduceOnly, 'tpTriggerPx': tpTriggerPx, 'tpOrdPx': tpOrdPx,
                   'slTriggerPx': slTriggerPx, 'slOrdPx': slOrdPx, 'triggerPx': triggerPx, 'orderPx': orderPx,
-                  'tgtCcy': tgtCcy,'pxVar': pxVar,'szLimit': szLimit,'pxLimit': pxLimit,'timeInterval': timeInterval,
-                  'pxSpread': pxSpread}
+                  'tgtCcy': tgtCcy, 'pxVar': pxVar, 'szLimit': szLimit, 'pxLimit': pxLimit,
+                  'timeInterval': timeInterval,
+                  'pxSpread': pxSpread, 'tpTriggerPxType': tpTriggerPxType, 'slTriggerPxType': slTriggerPxType}
         return self._request_with_params(POST, PLACE_ALGO_ORDER, params)
 
     # Cancel Algo Order
@@ -88,9 +93,8 @@ class TradeAPI(Client):
         return self._request_with_params(POST, CANCEL_ALGOS, params)
 
     # Cancel Advance Algos
-    def cancel_advance_algos(self,params):
+    def cancel_advance_algos(self, params):
         return self._request_with_params(POST, Cancel_Advance_Algos, params)
-
 
     # Get Algo Order List
     def order_algos_list(self, ordType, algoId='', instType='', instId='', after='', before='', limit=''):

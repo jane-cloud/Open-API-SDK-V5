@@ -55,8 +55,8 @@ class AccountAPI(Client):
         return self._request_with_params(POST, SET_LEVERAGE, params)
 
     # Get Maximum Tradable Size For Instrument
-    def get_maximum_trade_size(self, instId, tdMode, ccy='', px=''):
-        params = {'instId': instId, 'tdMode': tdMode, 'ccy': ccy, 'px': px}
+    def get_maximum_trade_size(self, instId, tdMode, ccy='', px='', leverage=''):
+        params = {'instId': instId, 'tdMode': tdMode, 'ccy': ccy, 'px': px, 'leverage':leverage}
         return self._request_with_params(GET, MAX_TRADE_SIZE, params)
 
     # Get Maximum Available Tradable Amount
@@ -103,3 +103,7 @@ class AccountAPI(Client):
     def get_max_withdrawal(self, ccy=''):
         params = {'ccy': ccy}
         return self._request_with_params(GET, MAX_WITHDRAWAL, params)
+
+    # Get account risk state
+    def get_account_risk(self):
+        return self._request_without_params(GET, ACCOUNT_RISK)
