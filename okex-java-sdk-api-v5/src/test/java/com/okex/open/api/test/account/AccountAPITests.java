@@ -61,7 +61,7 @@ public class AccountAPITests extends  AccountAPIBaseTests {
      */
     @Test
     public void getBillsDetails7Days(){
-        JSONObject result = this.accountAPIService.getBillsDetails7Days("FUTURES","","","","","","","","");
+        JSONObject result = this.accountAPIService.getBillsDetails7Days("SWAP","","","","","","","","");
         toResultString(LOG, "result", result);
     }
 
@@ -199,7 +199,7 @@ public class AccountAPITests extends  AccountAPIBaseTests {
      */
     @Test
     public void getInterestAccrued(){
-        JSONObject result = this.accountAPIService.getInterestAccrued("BTC-USDT","USDT","","","","");
+        JSONObject result = this.accountAPIService.getInterestAccrued("1","BTC-USDT","","","","","");
         toResultString(LOG, "result", result);
     }
 
@@ -247,5 +247,36 @@ public class AccountAPITests extends  AccountAPIBaseTests {
         JSONObject result = this.accountAPIService.getRiskState();
         toResultString(LOG, "result", result);
     }
+    /**
+     * 尊享借币还币  borrow repay
+     * POST /api/v5/account/borrow-repay
+     */
+    @Test
+    public void borrowRepay(){
+        AccountBorrowRepay accountBorrowRepay = new AccountBorrowRepay();
+        accountBorrowRepay.setCcy("BTC");
+        accountBorrowRepay.setSide("repay");
+        accountBorrowRepay.setAmt("0.1");
+        JSONObject result = this.accountAPIService.borrowRepay(accountBorrowRepay);
+        toResultString(LOG, "result", result);
+    }
+    /**
+     * 获取尊享借币借还历史  get borrow repay history
+     * GET /api/v5/account/borrow-repay-history
+     */
+    @Test
+    public void getBorrowRepayHistory(){
+        JSONObject result = this.accountAPIService.getBorrowRepayHistory("BTC",null,null,"100");
+        toResultString(LOG, "result", result);
+    }
 
+    /**
+     * 获取借币利率与限额  get interest limits
+     * GET /api/v5/account/interest-limits
+     */
+    @Test
+    public void getInterestLimits(){
+        JSONObject result = this.accountAPIService.getInterestLimits("1","BTC");
+        toResultString(LOG, "result", result);
+    }
 }

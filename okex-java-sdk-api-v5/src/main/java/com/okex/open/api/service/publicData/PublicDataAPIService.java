@@ -52,4 +52,7 @@ public interface    PublicDataAPIService {
 
     //获取衍生品标的指数
     JSONObject getUnderlying(String instType);
+
+    //获取尊享借币杠杆利率和借币限额
+    JSONObject getVipInterestRateLoanQuota();
 }

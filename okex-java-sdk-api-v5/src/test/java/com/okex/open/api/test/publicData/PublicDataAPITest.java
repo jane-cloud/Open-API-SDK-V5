@@ -185,6 +185,15 @@ public class PublicDataAPITest extends PublicDataAPIBaseTest {
         toResultString(LOG, "result", result);
     }
 
+    /**
+     * 获取尊享借币杠杆利率和借币限额
+     * GET /api/v5/public/vip-interest-rate-loan-quota
+     */
+    @Test
+    public void getVipInterestRateLoanQuota(){
+        JSONObject result = publicDataAPIService.getVipInterestRateLoanQuota();
+        toResultString(LOG, "result", result);
+    }
 
 
 
