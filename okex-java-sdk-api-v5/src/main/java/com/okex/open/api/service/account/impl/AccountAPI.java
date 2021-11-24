@@ -82,7 +82,7 @@ public interface AccountAPI {
 
     //获取计息记录 Get interest-accrued
     @GET("/api/v5/account/interest-accrued")
-    Call<JSONObject> getInterestAccrued(@Query("instId")String instId,@Query("ccy")String ccy,@Query("mgnMode")String mgnMode,@Query("after")String after,@Query("before")String before,@Query("limit")String limit);
+    Call<JSONObject> getInterestAccrued(@Query("type")String type,@Query("instId")String instId,@Query("ccy")String ccy,@Query("mgnMode")String mgnMode,@Query("after")String after,@Query("before")String before,@Query("limit")String limit);
 
     //获取用户当前杠杆借币利率 Get interest rate
     @GET("/api/v5/account/interest-rate")
@@ -99,4 +99,16 @@ public interface AccountAPI {
     //查看账户特定风险状态 Get account risk state
     @GET("/api/v5/account/risk-state")
     Call<JSONObject> getRiskState();
+
+    //尊享借币还币  borrow repay
+    @POST("/api/v5/account/borrow-repay")
+    Call<JSONObject> borrowRepay(@Body JSONObject parseObject);
+
+    //获取尊享借币借还历史
+    @GET("/api/v5/account/borrow-repay-history")
+    Call<JSONObject> getBorrowRepayHistory(@Query("ccy") String ccy,@Query("after") String after,@Query("before") String before,@Query("limit") String limit);
+
+    //获取借币利率与限额
+    @GET("/api/v5/account/interest-limits")
+    Call<JSONObject> getInterestLimits(@Query("type") String type,@Query("ccy") String ccy);
 }

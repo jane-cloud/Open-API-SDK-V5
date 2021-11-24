@@ -85,6 +85,7 @@ public interface PublicDataAPI {
     @GET("/api/v5/public/underlying")
     Call<JSONObject> getUnderlying(@Query("instType") String instType);
 
-
-
+    //获取尊享借币杠杆利率和借币限额
+    @GET("/api/v5/public/vip-interest-rate-loan-quota")
+    Call<JSONObject> getVipInterestRateLoanQuota();
 }

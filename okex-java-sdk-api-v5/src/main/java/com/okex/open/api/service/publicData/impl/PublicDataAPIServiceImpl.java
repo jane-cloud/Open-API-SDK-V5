@@ -104,4 +104,10 @@ public class PublicDataAPIServiceImpl implements PublicDataAPIService {
     public JSONObject getUnderlying(String instType) {
         return this.client.executeSync(this.api.getUnderlying(instType));
     }
+
+    //获取尊享借币杠杆利率和借币限额
+    @Override
+    public JSONObject getVipInterestRateLoanQuota() {
+        return this.client.executeSync(this.api.getVipInterestRateLoanQuota());
+    }
 }

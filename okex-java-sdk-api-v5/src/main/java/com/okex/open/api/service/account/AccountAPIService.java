@@ -50,7 +50,7 @@ public interface AccountAPIService {
     JSONObject getFeeRates(String instType,String instId,String uly,String category);
 
     //获取计息记录 Get interest-accrued
-    JSONObject getInterestAccrued(String instId,String ccy,String mgnMode,String after,String before,String limit);
+    JSONObject getInterestAccrued(String type,String instId,String ccy,String mgnMode,String after,String before,String limit);
 
     //获取用户当前杠杆借币利率 Get interest rate
     JSONObject getInterestRate(String ccy);
@@ -62,4 +62,13 @@ public interface AccountAPIService {
 
     //查看账户特定风险状态 Get account risk state
     JSONObject getRiskState();
+
+    //尊享借币还币  borrow repay
+    JSONObject borrowRepay(AccountBorrowRepay accountBorrowRepay);
+
+    //获取尊享借币借还历史
+    JSONObject getBorrowRepayHistory(String ccy, String after, String before, String limit);
+
+    //获取借币利率与限额
+    JSONObject getInterestLimits(String type, String ccy);
 }

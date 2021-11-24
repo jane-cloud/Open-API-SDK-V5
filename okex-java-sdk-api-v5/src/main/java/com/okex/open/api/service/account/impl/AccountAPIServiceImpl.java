@@ -106,8 +106,8 @@ public class AccountAPIServiceImpl implements AccountAPIService {
 
     //获取计息记录 Get interest-accrued
     @Override
-    public JSONObject getInterestAccrued(String instId, String ccy, String mgnMode, String after, String before, String limit) {
-        return this.client.executeSync(this.api.getInterestAccrued(instId,ccy,mgnMode,after,before,limit));
+    public JSONObject getInterestAccrued(String type,String instId, String ccy, String mgnMode, String after, String before, String limit) {
+        return this.client.executeSync(this.api.getInterestAccrued(type,instId,ccy,mgnMode,after,before,limit));
     }
 
     //获取用户当前杠杆借币利率 Get interest rate
@@ -132,5 +132,23 @@ public class AccountAPIServiceImpl implements AccountAPIService {
     @Override
     public JSONObject getRiskState() {
         return this.client.executeSync(this.api.getRiskState());
+    }
+
+    //尊享借币还币  borrow repay
+    @Override
+    public JSONObject borrowRepay(AccountBorrowRepay accountBorrowRepay) {
+        return this.client.executeSync(this.api.borrowRepay(JSONObject.parseObject(JSON.toJSONString(accountBorrowRepay))));
+    }
+
+    //获取尊享借币借还历史
+    @Override
+    public JSONObject getBorrowRepayHistory(String ccy, String after, String before, String limit) {
+        return this.client.executeSync(this.api.getBorrowRepayHistory(ccy,after,before,limit));
+    }
+
+    //获取借币利率与限额
+    @Override
+    public JSONObject getInterestLimits(String type, String ccy) {
+        return this.client.executeSync(this.api.getInterestLimits(type,ccy));
     }
 }
