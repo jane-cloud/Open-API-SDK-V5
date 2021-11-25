@@ -248,7 +248,7 @@ public class AccountAPITests extends  AccountAPIBaseTests {
         toResultString(LOG, "result", result);
     }
     /**
-     * 尊享借币还币  borrow repay
+     * 尊享借币还币  VIP loans borrow and repay
      * POST /api/v5/account/borrow-repay
      */
     @Test
@@ -261,7 +261,7 @@ public class AccountAPITests extends  AccountAPIBaseTests {
         toResultString(LOG, "result", result);
     }
     /**
-     * 获取尊享借币借还历史  get borrow repay history
+     * 获取尊享借币借还历史  Get borrow and repay history for VIP loans
      * GET /api/v5/account/borrow-repay-history
      */
     @Test
@@ -271,7 +271,7 @@ public class AccountAPITests extends  AccountAPIBaseTests {
     }
 
     /**
-     * 获取借币利率与限额  get interest limits
+     * 获取借币利率与限额   Get borrow interest and limit
      * GET /api/v5/account/interest-limits
      */
     @Test

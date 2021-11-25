@@ -100,15 +100,15 @@ public interface AccountAPI {
     @GET("/api/v5/account/risk-state")
     Call<JSONObject> getRiskState();
 
-    //尊享借币还币  borrow repay
+    //尊享借币还币  VIP loans borrow and repay
     @POST("/api/v5/account/borrow-repay")
     Call<JSONObject> borrowRepay(@Body JSONObject parseObject);
 
-    //获取尊享借币借还历史
+    //获取尊享借币借还历史  Get borrow and repay history for VIP loans
     @GET("/api/v5/account/borrow-repay-history")
     Call<JSONObject> getBorrowRepayHistory(@Query("ccy") String ccy,@Query("after") String after,@Query("before") String before,@Query("limit") String limit);
 
-    //获取借币利率与限额
+    //获取借币利率与限额  Get borrow interest and limit
     @GET("/api/v5/account/interest-limits")
     Call<JSONObject> getInterestLimits(@Query("type") String type,@Query("ccy") String ccy);
 }

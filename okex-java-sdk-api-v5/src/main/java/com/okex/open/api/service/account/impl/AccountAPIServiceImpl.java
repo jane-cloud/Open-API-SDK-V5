@@ -134,19 +134,19 @@ public class AccountAPIServiceImpl implements AccountAPIService {
         return this.client.executeSync(this.api.getRiskState());
     }
 
-    //尊享借币还币  borrow repay
+    //尊享借币还币  VIP loans borrow and repay
     @Override
     public JSONObject borrowRepay(AccountBorrowRepay accountBorrowRepay) {
         return this.client.executeSync(this.api.borrowRepay(JSONObject.parseObject(JSON.toJSONString(accountBorrowRepay))));
     }
 
-    //获取尊享借币借还历史
+    //获取尊享借币借还历史  Get borrow and repay history for VIP loans
     @Override
     public JSONObject getBorrowRepayHistory(String ccy, String after, String before, String limit) {
         return this.client.executeSync(this.api.getBorrowRepayHistory(ccy,after,before,limit));
     }
 
-    //获取借币利率与限额
+    //获取借币利率与限额  Get borrow interest and limit
     @Override
     public JSONObject getInterestLimits(String type, String ccy) {
         return this.client.executeSync(this.api.getInterestLimits(type,ccy));

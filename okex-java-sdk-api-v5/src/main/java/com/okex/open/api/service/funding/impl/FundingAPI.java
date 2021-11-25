@@ -59,5 +59,9 @@ interface FundingAPI {
     @GET("/api/v5/asset/transfer-state")
     Call<JSONObject> transferState(@Query("transId")String transId, @Query("type")String type);
 
+    //获取账户资产估值 Get account asset valuation
+    @GET("/api/v5/asset/asset-valuation")
+    Call<JSONObject> assetValuation(@Query("ccy") String ccy);
+
 
 }

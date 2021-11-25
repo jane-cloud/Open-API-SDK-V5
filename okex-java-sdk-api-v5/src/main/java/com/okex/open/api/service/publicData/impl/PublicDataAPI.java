@@ -10,7 +10,7 @@ public interface PublicDataAPI {
 
     //获取交易产品基础信息 Get Instruments
     @GET("/api/v5/public/instruments")
-    Call<JSONObject> getInstruments(@Query("instType") String instType, @Query("uly")String uly);
+    Call<JSONObject> getInstruments(@Query("instType") String instType, @Query("uly")String uly, @Query("instId")String instId);
 
 
     //获取交割和行权记录 Get Delivery/Exercise History
@@ -68,7 +68,7 @@ public interface PublicDataAPI {
     Call<JSONObject> getMarkPrice(@Query("instType") String instType,@Query("uly") String uly,@Query("instId") String instId);
 
 
-    //获取合约衍生品仓位档位
+    //获取合约衍生品仓位档位  Get Position Tiers
     @GET("/api/v5/public/position-tiers")
     Call<JSONObject> getTier(@Query("instType") String instType,
                              @Query("uly")String uly,
@@ -77,15 +77,15 @@ public interface PublicDataAPI {
                              @Query("ccy")String ccy,
                              @Query("tier")String tier);
 
-    //获取杠杆利率和借币限额
+    //获取杠杆利率和借币限额  Get Interest Rate and Loan Quota
     @GET("/api/v5/public/interest-rate-loan-quota")
     Call<JSONObject> getInterestRateLoanQuota();
 
-    //获取衍生品标的指数
+    //获取衍生品标的指数  Get Underlying
     @GET("/api/v5/public/underlying")
     Call<JSONObject> getUnderlying(@Query("instType") String instType);
 
-    //获取尊享借币杠杆利率和借币限额
+    //获取尊享借币杠杆利率和借币限额  Get Interest Rate and Loan Quota for VIP loans
     @GET("/api/v5/public/vip-interest-rate-loan-quota")
     Call<JSONObject> getVipInterestRateLoanQuota();
 }

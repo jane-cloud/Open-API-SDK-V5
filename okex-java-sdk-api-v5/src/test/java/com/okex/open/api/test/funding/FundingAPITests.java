@@ -180,6 +180,16 @@ public class FundingAPITests extends FundingAPIBaseTests {
         toResultString(LOG, "result", result);
     }
 
+    /**
+     * 获取账户资产估值 Get account asset valuation
+     * GET /api/v5/asset/asset-valuation
+     */
+    @Test
+    public void assetValuation(){
+        JSONObject result = fundingAPIService.assetValuation(null);
+        toResultString(LOG,"result",result);
+    }
+
 
 
 

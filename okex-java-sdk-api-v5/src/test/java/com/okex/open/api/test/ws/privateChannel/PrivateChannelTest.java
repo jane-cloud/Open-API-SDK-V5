@@ -192,6 +192,34 @@ public class PrivateChannelTest {
         }
     }
 
+    /**
+     * 爆仓风险预警推送频道
+     * Position risk warning
+     */
+    @Test
+    public void positionRiskWarningChannel() {
+        //添加订阅频道
+        ArrayList<Map> channelList= new ArrayList<>();
+        Map liquidationWarning =new HashMap();
+
+        liquidationWarning.put("channel","liquidation-warning");
+        liquidationWarning.put("instType","SWAP");
+        liquidationWarning.put("uly","BTC-USDT");
+        liquidationWarning.put("instId","BTC-USDT-SWAP");
+
+        channelList.add(liquidationWarning);
+
+        //调用订阅方法
+        WebSocketClient.subscribe(channelList);
+        //为保证测试方法不停，需要让线程延迟
+        try {
+            Thread.sleep(10000000);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
 
 
     //取消订阅
@@ -211,5 +239,7 @@ public class PrivateChannelTest {
             e.printStackTrace();
         }
     }
+
+
 
 }

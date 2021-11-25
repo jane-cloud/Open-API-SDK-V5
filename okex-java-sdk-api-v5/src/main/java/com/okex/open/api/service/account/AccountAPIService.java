@@ -63,12 +63,12 @@ public interface AccountAPIService {
     //查看账户特定风险状态 Get account risk state
     JSONObject getRiskState();
 
-    //尊享借币还币  borrow repay
+    //尊享借币还币  VIP loans borrow and repay
     JSONObject borrowRepay(AccountBorrowRepay accountBorrowRepay);
 
-    //获取尊享借币借还历史
+    //获取尊享借币借还历史  Get borrow and repay history for VIP loans
     JSONObject getBorrowRepayHistory(String ccy, String after, String before, String limit);
 
-    //获取借币利率与限额
+    //获取借币利率与限额  Get borrow interest and limit
     JSONObject getInterestLimits(String type, String ccy);
 }

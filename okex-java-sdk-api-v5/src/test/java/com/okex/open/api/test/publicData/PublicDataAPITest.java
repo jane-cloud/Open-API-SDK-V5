@@ -28,7 +28,7 @@ public class PublicDataAPITest extends PublicDataAPIBaseTest {
      */
     @Test
     public void getInstruments(){
-        JSONObject result = publicDataAPIService.getInstruments("SPOT",null);
+        JSONObject result = publicDataAPIService.getInstruments("SPOT",null,null);
         toResultString(LOG, "result", result);
 
     }
@@ -155,7 +155,7 @@ public class PublicDataAPITest extends PublicDataAPIBaseTest {
     }
 
     /**
-     * 获取合约衍生品仓位档位 Get Mark Price
+     * 获取合约衍生品仓位档位   Get Position Tiers
      * GET /api/v5/public/tier
      */
     @Test
@@ -165,7 +165,7 @@ public class PublicDataAPITest extends PublicDataAPIBaseTest {
     }
 
     /**
-     * 获取杠杆利率和借币限额
+     * 获取杠杆利率和借币限额  Get Interest Rate and Loan Quota
      * GET /api/v5/public/interest-rate-loan-quota
      */
     @Test
@@ -176,7 +176,7 @@ public class PublicDataAPITest extends PublicDataAPIBaseTest {
 
 
     /**
-     * 获取衍生品标的指数
+     * 获取衍生品标的指数  Get Underlying
      * GET /api/v5/public/underlying
      */
     @Test
@@ -186,7 +186,7 @@ public class PublicDataAPITest extends PublicDataAPIBaseTest {
     }
 
     /**
-     * 获取尊享借币杠杆利率和借币限额
+     * 获取尊享借币杠杆利率和借币限额  Get Interest Rate and Loan Quota for VIP loans
      * GET /api/v5/public/vip-interest-rate-loan-quota
      */
     @Test
