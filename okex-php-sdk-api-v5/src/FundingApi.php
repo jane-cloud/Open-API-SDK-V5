@@ -154,4 +154,13 @@ class FundingApi extends Utils
 
         return $this->request('/api/v5/asset/withdrawal-lightning',$params, 'POST');
     }
+
+    public function assetValuation($ccy='')
+    {
+        $params = [
+            'ccy' => $ccy,
+        ];
+
+        return $this->request('/api/v5/asset/asset-valuation',$params, 'GET');
+    }
 }

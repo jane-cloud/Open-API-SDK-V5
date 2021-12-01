@@ -180,9 +180,10 @@ class AccountApi extends Utils
         return $this->request('/api/v5/account/interest-rate', $params, 'GET');
     }
 
-    public function getInterestAccrued($instId='',$ccy='',$mgnMode='',$after='',$before='',$limit='')
+    public function getInterestAccrued($type='',$instId='',$ccy='',$mgnMode='',$after='',$before='',$limit='')
     {
         $params = [
+            'type' => $type,
             'instId' => $instId,
             'ccy' => $ccy,
             'mgnMode' => $mgnMode,
@@ -218,5 +219,39 @@ class AccountApi extends Utils
         ];
 
         return $this->request('/api/v5/account/risk-state', $params, 'GET');
+    }
+
+    public function borrowRepay($ccy,$side,$amt)
+    {
+        $params = [
+            'ccy' => $ccy,
+            'side' => $side,
+            'amt' => $amt,
+        ];
+
+        return $this->request('/api/v5/account/borrow-repay', $params, 'POST');
+    }
+
+    public function borrowRepayHistory($ccy='',$after='',$before='',$limit='')
+    {
+        $params = [
+            'ccy' => $ccy,
+            'after' => $after,
+            'before' => $before,
+            'limit' => $limit,
+        ];
+
+        return $this->request('/api/v5/account/borrow-repay-history', $params, 'GET');
+    }
+
+    public function interestLimits($type='',$ccy='')
+    {
+        $params = [
+            'type' => $type,
+            'ccy' => $ccy,
+
+        ];
+
+        return $this->request('/api/v5/account/interest-limits', $params, 'GET');
     }
 }

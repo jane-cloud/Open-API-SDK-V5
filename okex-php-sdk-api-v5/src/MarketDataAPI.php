@@ -124,6 +124,13 @@ class MarketDataAPI extends Utils
         return $this->request('/api/v5/market/oracle',$params, 'GET');
     }
 
+    public function exchangerate()
+    {
+        $params = [];
+
+        return $this->request('/api/v5/market/exchange-rate',$params, 'GET');
+    }
+
     public function indexComponents($index)
     {
         $params = [

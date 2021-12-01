@@ -154,6 +154,13 @@ class PublicDataAPI extends Utils
         return $this->request('/api/v5/public/interest-rate-loan-quota',$params, 'GET');
     }
 
+    public function vipInterestRateLoanQuota()
+    {
+        $params = [];
+
+        return $this->request('/api/v5/public/vip-interest-rate-loan-quota',$params, 'GET');
+    }
+
     public function getUnderlying($instType)
     {
         $params = [
