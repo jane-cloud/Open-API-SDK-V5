@@ -94,4 +94,10 @@ public class FundingAPIServiceImpl implements FundingAPIService {
     public JSONObject transferState(String transId, String type) {
         return this.client.executeSync(this.api.transferState(transId,type));
     }
+
+    //获取账户资产估值 Get account asset valuation
+    @Override
+    public JSONObject assetValuation(String ccy) {
+        return this.client.executeSync(this.api.assetValuation(ccy));
+    }
 }

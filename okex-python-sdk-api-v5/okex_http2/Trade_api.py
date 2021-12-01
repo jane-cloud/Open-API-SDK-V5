@@ -76,12 +76,12 @@ class TradeAPI(Client):
     # Place Algo Order
     def place_algo_order(self, instId, tdMode, side, ordType, sz, ccy='', posSide='', reduceOnly='', tpTriggerPx='',
                          tpOrdPx='', slTriggerPx='', slOrdPx='', triggerPx='', orderPx='', tgtCcy='', pxVar='', pxSpread='',
-                         szLimit='', pxLimit='', timeInterval='',):
+                         szLimit='', pxLimit='', timeInterval='',tpTriggerPxType = '', slTriggerPxType = ''):
         params = {'instId': instId, 'tdMode': tdMode, 'side': side, 'ordType': ordType, 'sz': sz, 'ccy': ccy,
                   'posSide': posSide, 'reduceOnly': reduceOnly, 'tpTriggerPx': tpTriggerPx, 'tpOrdPx': tpOrdPx,
                   'slTriggerPx': slTriggerPx, 'slOrdPx': slOrdPx, 'triggerPx': triggerPx, 'orderPx': orderPx,
                   'tgtCcy': tgtCcy,'pxVar': pxVar,'szLimit': szLimit,'pxLimit': pxLimit,'timeInterval': timeInterval,
-                  'pxSpread': pxSpread}
+                  'pxSpread': pxSpread, 'tpTriggerPxType':tpTriggerPxType, 'slTriggerPxType':slTriggerPxType}
         return self._request_with_params(POST, PLACE_ALGO_ORDER, params)
 
 

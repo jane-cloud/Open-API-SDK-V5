@@ -17,8 +17,8 @@ public class PublicDataAPIServiceImpl implements PublicDataAPIService {
 
     //获取交易产品基础信息 Get Instruments
     @Override
-    public JSONObject getInstruments(String instType, String uly) {
-        return this.client.executeSync(this.api.getInstruments(instType, uly));
+    public JSONObject getInstruments(String instType, String uly, String instId) {
+        return this.client.executeSync(this.api.getInstruments(instType, uly, instId));
     }
 
     //获取交割和行权记录 Get Delivery/Exercise History
@@ -87,21 +87,27 @@ public class PublicDataAPIServiceImpl implements PublicDataAPIService {
         return this.client.executeSync(this.api.getMarkPrice(instType,uly,instId));
     }
 
-    //获取合约衍生品仓位档位
+    //获取合约衍生品仓位档位  Get Position Tiers
     @Override
     public JSONObject getTier(String instType, String uly, String instId, String tdMode, String ccy, String tier) {
         return this.client.executeSync(this.api.getTier(instType, uly, instId, tdMode, ccy, tier));
     }
 
-    //获取杠杆利率和借币限额
+    //获取杠杆利率和借币限额  Get Interest Rate and Loan Quota
     @Override
     public JSONObject getInterestRateLoanQuota() {
         return this.client.executeSync(this.api.getInterestRateLoanQuota());
     }
 
-    //获取衍生品标的指数
+    //获取衍生品标的指数  Get Underlying
     @Override
     public JSONObject getUnderlying(String instType) {
         return this.client.executeSync(this.api.getUnderlying(instType));
+    }
+
+    //获取尊享借币杠杆利率和借币限额  Get Interest Rate and Loan Quota for VIP loans
+    @Override
+    public JSONObject getVipInterestRateLoanQuota() {
+        return this.client.executeSync(this.api.getVipInterestRateLoanQuota());
     }
 }

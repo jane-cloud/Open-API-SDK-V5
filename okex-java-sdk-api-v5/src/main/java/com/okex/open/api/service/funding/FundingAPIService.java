@@ -43,4 +43,7 @@ public interface FundingAPIService {
 
     //获取资金划转状态 Transfer State
     JSONObject transferState(String transId, String type);
+
+    //获取账户资产估值 Get account asset valuation
+    JSONObject assetValuation(String ccy);
 }
