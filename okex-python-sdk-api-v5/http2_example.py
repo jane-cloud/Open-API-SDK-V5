@@ -9,7 +9,7 @@ import okex_http2.Public_api as Public
 import okex_http2.Trade_api as Trade
 import okex_http2.TradingData_api as TradingData
 import okex_http2.subAccount_api as SubAccount
-
+import okex.Broker_api as Broker
 
 async def http2_request(request, parameters):
     while 1:
@@ -88,6 +88,15 @@ if __name__ == '__main__':
     # 查看账户最大可转余额  Get Maximum Withdrawals
     # request = accountAPI.get_max_withdrawal
     # parameters = []
+    # 尊享借币还币 GET Enjoy borrowing and returning money
+    # request = accountAPI.borrow_repay
+    # parameters = []
+    # 获取尊享借币还币历史 Get the privileged currency borrowing and repayment history
+    # request = accountAPI.get_borrow_repay_history
+    # parameters = []
+    # 获取借币利率与限额 GET Obtain borrowing rate and limit
+    # request = accountAPI.get_interest_limits
+    # parameters = []
 
     # funding api
     fundingAPI = Funding.FundingAPI(api_key, secret_key, passphrase, False, flag)
@@ -119,12 +128,15 @@ if __name__ == '__main__':
     # request = fundingAPI.get_bills
     # parameters = []
     # 获取余币宝余额 PIGGY BALABCE
-    result = fundingAPI.get_piggy_balance
+    # result = fundingAPI.get_piggy_balance
     # parameters = []
     # 闪电网络充币
     # result = fundingAPI.get_deposit_lightning
     # 闪电网络提币
     # result = fundingAPI.withdrawal_lightning
+    # parameters =[]
+    # 获取账户资产估值 GET Obtain account asset valuation
+    # result = fundingAPI.get_asset_valuation
     # parameters =[]
 
     # market api
@@ -161,6 +173,9 @@ if __name__ == '__main__':
     # parameters = []a
     # Oracle 上链交易数据 GET Oracle
     # request = marketAPI.get_oracle
+    # parameters = []
+    # 获取法币汇率 GET exchange rate in legal currency
+    # request = marketAPI.get_exchange_rate
     # parameters = []
 
     # public api
@@ -204,6 +219,9 @@ if __name__ == '__main__':
     # 获取合约衍生品仓位档位 Get Tier
     # request = publicAPI.get_tier
     # parameters = {'instType': 'MARGIN', 'instId': 'BTC-USDT', 'tdMode': 'cross'}
+    # 获取尊享借币杠杆利率和借币限额 GET Obtain the privileged currency borrowing leverage rate and currency borrowing limit
+    # request = publicAPI.get_vip_interest_rate_loan_quota
+    # parameters = {}
 
     # 交易数据API Trading data API
     tradingDataAPI = TradingData.TradingDataAPI(api_key, secret_key, passphrase, False, flag)
@@ -330,6 +348,37 @@ if __name__ == '__main__':
     # 查看子账户列表(仅适用于母账户) View sub-account list(applies to master accounts only)
     # request = subAccountAPI.view_list
     # parameters = []
+
+    # BrokerAPI
+    BrokerAPI = Broker.BrokerAPI(api_key, secret_key, passphrase, False, flag)
+    # 获取独立经纪商账户信息 GET Obtain independent broker account information
+    # request = BrokerAPI.broker_info
+    # parameters = []
+    # 创建子账户 Create sub account
+    # request = BrokerAPI.create_subaccount
+    # parameters = []
+    # 删除子账户 Delete sub account
+    # request = BrokerAPI.delete_subaccount
+    # parameters = []
+    # 获取子账户列表 Get sub account list
+    # request = BrokerAPI.subaccount_info
+    # parameters = []
+    # 设置子账户的账户等级 Set account level of sub account
+    # request = BrokerAPI.set_subaccount_level
+    # parameters = []
+    # 设置子账户的交易手续费费率 Set transaction fee rate of sub account
+    # request = BrokerAPI.set_subaccount_fee_rate
+    # parameters = []
+    # 创建子账户充值地址 Create sub account recharge address
+    # request = BrokerAPI.subaccount_deposit_address
+    # parameters = []
+    # 获取子账户获取充值记录 Get sub account recharge record
+    # request = BrokerAPI.subaccount_deposit_history
+    # parameters = []
+    # 获取子账户返佣记录 Get rebate record of sub account
+    # request = BrokerAPI.rebate_daily
+    # parameters = []
+
     loop = asyncio.get_event_loop()
     loop.run_until_complete(http2_request(request, parameters))
     loop.close()

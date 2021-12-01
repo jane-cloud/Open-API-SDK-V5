@@ -72,3 +72,8 @@ class MarketAPI(Client):
     def get_tier(self, instType='', tdMode='', uly='', instId='', ccy='', tier=''):
         params = {'instType': instType, 'tdMode': tdMode, 'uly': uly, 'instId': instId, 'ccy': ccy, 'tier': tier}
         return self._request_with_params(GET, TIER, params)
+
+    # Get exchange rate
+    def get_exchange_rate(self):
+        params = {}
+        return self._request_with_params(GET, BORROW_REPAY, params)

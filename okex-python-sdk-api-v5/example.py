@@ -8,11 +8,13 @@ import okex.Trade_api as Trade
 import okex.status_api as Status
 import okex.subAccount_api as SubAccount
 import okex.TradingData_api as TradingData
+import okex.Broker_api as Broker
 
 if __name__ == '__main__':
     api_key = ""
     secret_key = ""
     passphrase = ""
+
 
     # flag是实盘与模拟盘的切换参数 flag is the key parameter which can help you to change between demo and real trading.
     flag = '1'  # 模拟盘 demo trading
@@ -49,7 +51,7 @@ if __name__ == '__main__':
     # 获取当前账户交易手续费费率  Get Fee Rates
     # result = accountAPI.get_fee_rates('FUTURES', '', category='1')
     # 获取计息记录  Get interest-accrued
-    # result = accountAPI.get_interest_accrued('BTC-USDT', 'BTC', 'isolated', '', '', '10')
+    # result = accountAPI.get_interest_accrued('BTC-USDT', 'BTC', 'isolated', '', '', '10', '')
     # 获取用户当前杠杆借币利率 Get interest rate
     # result = accountAPI.get_interest_rate()
     # 期权希腊字母PA / BS切换  Set Greeks (PA/BS)
@@ -58,6 +60,12 @@ if __name__ == '__main__':
     # result = accountAPI.get_max_withdrawal('')
     # 查看账户特定风险状态 Get account risk state (Only applicable to Portfolio margin account)
     # result = accountAPI.get_account_risk()
+    # 尊享借币还币 GET Enjoy borrowing and returning money
+    # result = accountAPI.borrow_repay('BTC', 'borrow', '10')
+    # 获取尊享借币还币历史 Get the privileged currency borrowing and repayment history
+    # result = accountAPI.get_borrow_repay_history(ccy = '', after = '', before = '', limit = '')
+    # 获取借币利率与限额 GET Obtain borrowing rate and limit
+    # result = accountAPI.get_interest_limits(type = '2', ccy = 'ETH')
 
     # funding api
     fundingAPI = Funding.FundingAPI(api_key, secret_key, passphrase, False, flag)
@@ -85,6 +93,8 @@ if __name__ == '__main__':
     # result = fundingAPI.get_deposit_lightning(ccy='BTC',amt='0.01')
     # 闪电网络提币
     # result = fundingAPI.withdrawal_lightning(ccy='BTC',amt='0.01')
+    # 获取账户资产估值 GET Obtain account asset valuation
+    # result = fundingAPI.get_asset_valuation(ccy = 'USDT')
 
     # market api
     marketAPI = Market.MarketAPI(api_key, secret_key, passphrase, False, flag)
@@ -112,6 +122,8 @@ if __name__ == '__main__':
     # result = marketAPI.get_oracle()
     # 获取指数成分数据 GET Index Components
     # result = marketAPI.get_index_components(index='')
+    # 获取法币汇率 GET exchange rate in legal currency
+    # result = marketAPI.get_exchange_rate()
 
     # public api
     publicAPI = Public.PublicAPI(api_key, secret_key, passphrase, False, flag)
@@ -145,6 +157,8 @@ if __name__ == '__main__':
     # result = publicAPI.get_interest_loan()
     # 获取合约衍生品标的指数 Get underlying
     # result = publicAPI.get_underlying(instType='FUTURES')
+    # 获取尊享借币杠杆利率和借币限额 GET Obtain the privileged currency borrowing leverage rate and currency borrowing limit
+    # result = publicAPI.get_vip_interest_rate_loan_quota()
 
     # trading data
     tradingDataAPI = TradingData.TradingDataAPI(api_key, secret_key, passphrase, False, flag)
@@ -244,6 +258,28 @@ if __name__ == '__main__':
     # 子账户间划转 Transfer between subAccounts
     # result = subAccountAPI.subAccount_transfer(ccy='USDT', amt='1', froms='6', to='6', fromSubAccount='1',
     #                                            toSubAccount='2')
+
+    # BrokerAPI
+    BrokerAPI = Broker.BrokerAPI(api_key, secret_key, passphrase, False, flag)
+    # 获取独立经纪商账户信息 GET Obtain independent broker account information
+    # result = BrokerAPI.broker_info()
+    # 创建子账户 Create sub account
+    # result = BrokerAPI.create_subaccount(pwd = '123456', subAcct = 'qwerty', label = '', acctLv = '1')
+    # 删除子账户 Delete sub account
+    # result = BrokerAPI.delete_subaccount(pwd = '123456', subAcct = 'qwerty')
+    # 获取子账户列表 Get sub account list
+    # result = BrokerAPI.subaccount_info(page = '', subAcct = '', limit = '')
+    # 设置子账户的账户等级 Set account level of sub account
+    # result = BrokerAPI.set_subaccount_level(subAcct = 'qwerty', acctLv = '1')
+    # 设置子账户的交易手续费费率 Set transaction fee rate of sub account
+    # result = BrokerAPI.set_subaccount_fee_rate(subAcct = 'qwerty', instType = 'SPOT', chgType = 'absolute', chgTaker = '0.1bp', chgMaker = '', effDate = '')
+    # 创建子账户充值地址 Create sub account recharge address
+    # result = BrokerAPI.subaccount_deposit_address(subAcct = 'qwerty', ccy = 'BTC', chain = '', addrType = '', to = '')
+    # 获取子账户获取充值记录 Get sub account recharge record
+    # result = BrokerAPI.subaccount_deposit_history(subAcct = 'qwerty', ccy = 'BTC', txId = '', state = '', after = '', before = '', limit = '')
+    # 获取子账户返佣记录 Get rebate record of sub account
+    # result = BrokerAPI.rebate_daily(subAcct = 'qwerty', begin = '', end = '', page = '', limit = '')
+
 
     # 系统状态API(仅适用于实盘) system status
     Status = Status.StatusAPI(api_key, secret_key, passphrase, False, flag)

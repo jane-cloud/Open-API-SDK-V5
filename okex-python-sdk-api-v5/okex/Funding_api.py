@@ -72,3 +72,8 @@ class FundingAPI(Client):
     def withdrawal_lightning(self, ccy,invoice,pwd):
         params = {'ccy':ccy, 'invoice':invoice, 'pwd':pwd}
         return self._request_with_params(POST, WITHDRAWAL_LIGHTNING, params)
+
+    # GET Obtain account asset valuation
+    def get_asset_valuation(self, ccy):
+        params = {'ccy':ccy}
+        return self._request_with_params(GET, ASSET_VALUATION, params)

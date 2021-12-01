@@ -38,6 +38,9 @@ INTEREST_RATE = '/api/v5/account/interest-rate'
 SET_GREEKS = '/api/v5/account/set-greeks'
 MAX_WITHDRAWAL = '/api/v5/account/max-withdrawal'
 ACCOUNT_RISK = '/api/v5/account/risk-state'
+BORROW_REPAY = '/api/v5/account/borrow-repay'
+BORROW_REPAY_HISTORY = '/api/v5/account/borrow-repay-history'
+INTEREST_LIMITS = '/api/v5/account/interest-limits'
 
 # funding
 DEPOSIT_ADDRESS = '/api/v5/asset/deposit-address'
@@ -52,6 +55,7 @@ BILLS_INFO = '/api/v5/asset/bills'
 PIGGY_BALANCE = '/api/v5/asset/piggy-balance'
 DEPOSIT_LIGHTNING = '/api/v5/asset/deposit-lightning'
 WITHDRAWAL_LIGHTNING = '/api/v5/asset/withdrawal-lightning'
+ASSET_VALUATION = '/api/v5/asset/asset-valuation'
 
 # Market Data
 TICKERS_INFO = '/api/v5/market/tickers'
@@ -66,6 +70,7 @@ MARKET_TRADES = '/api/v5/market/trades'
 VOLUMNE = '/api/v5/market/platform-24-volume'
 ORACLE = '/api/v5/market/oracle'
 Components = '/api/v5/market/index-components'
+EXCHANGE_RATE = '/api/v5/market/exchange-rate'
 
 # Public Data
 INSTRUMENT_INFO = '/api/v5/public/instruments'
@@ -83,6 +88,7 @@ MARK_PRICE = '/api/v5/public/mark-price'
 TIER = '/api/v5/public/position-tiers'
 INTEREST_LOAN = '/api/v5/public/interest-rate-loan-quota'
 UNDERLYING = '/api/v5/public/underlying'
+VIP_INTEREST_RATE_LOAN_QUOTA = '/api/v5/public/vip-interest-rate-loan-quota'
 
 
 # TRADING DATA
@@ -125,6 +131,18 @@ RESET = '/api/v5/users/subaccount/modify-apikey'
 CREATE = '/api/v5/users/subaccount/apikey'
 VIEW_LIST = '/api/v5/users/subaccount/list'
 SUBACCOUNT_TRANSFER = '/api/v5/asset/subaccount/transfer'
+
+# Broker
+BROKER_INFO = '/api/v5/broker/nd/info'
+CREATE_SUBACCOUNT = '/api/v5/broker/nd/create-subaccount'
+DELETE_SUBACCOUNT = '/api/v5/broker/nd/delete-subaccount'
+SUBACCOUNT_INFO = '/api/v5/broker/nd/subaccount-info'
+SET_SUBACCOUNT_LEVEL = '/api/v5/broker/nd/set-subaccount-level'
+SET_SUBACCOUNT_FEE_REAT = '/api/v5/broker/nd/set-subaccount-fee-rate'
+SUBACCOUNT_DEPOSIT_ADDRESS = '/api/v5/asset/broker/nd/subaccount-deposit-address'
+SUBACCOUNT_DEPOSIT_HISTORY = '/api/v5/asset/broker/nd/subaccount-deposit-history'
+REBATE_DAILY = '/api/v5/broker/nd/rebate-daily'
+# BROKER_INFO = '/api/v5/broker/nd/info' Broker 获取充值地址文档无法打开，预留位置
 
 # status
 STATUS = '/api/v5/system/status'

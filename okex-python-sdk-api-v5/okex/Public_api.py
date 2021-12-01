@@ -82,3 +82,8 @@ class PublicAPI(Client):
     def get_underlying(self, instType):
         params = {'instType': instType}
         return self._request_with_params(GET, UNDERLYING, params)
+
+    # GET Obtain the privileged currency borrowing leverage rate and currency borrowing limit
+    def get_vip_interest_rate_loan_quota(self):
+        params = {}
+        return self._request_with_params(GET, VIP_INTEREST_RATE_LOAN_QUOTA, params)

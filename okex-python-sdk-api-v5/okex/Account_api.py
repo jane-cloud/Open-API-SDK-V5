@@ -85,8 +85,8 @@ class AccountAPI(Client):
         return self._request_with_params(GET, FEE_RATES, params)
 
     # Get interest-accrued
-    def get_interest_accrued(self, instId='', ccy='', mgnMode='', after='', before='', limit=''):
-        params = {'instId': instId, 'ccy': ccy, 'mgnMode': mgnMode, 'after': after, 'before': before, 'limit': limit}
+    def get_interest_accrued(self, instId='', ccy='', mgnMode='', after='', before='', limit='', type=''):
+        params = {'instId': instId, 'ccy': ccy, 'mgnMode': mgnMode, 'after': after, 'before': before, 'limit': limit, 'type':type}
         return self._request_with_params(GET, INTEREST_ACCRUED, params)
 
     # Get interest-accrued
@@ -107,3 +107,18 @@ class AccountAPI(Client):
     # Get account risk state
     def get_account_risk(self):
         return self._request_without_params(GET, ACCOUNT_RISK)
+
+    # Get borrow repay
+    def borrow_repay(self, ccy='', side='', amt=''):
+        params = {'ccy': ccy, 'side': side, 'amt': amt}
+        return self._request_with_params(POST, BORROW_REPAY, params)
+
+    # Get borrow repay history
+    def get_borrow_repay_history(self, ccy='', after='', before='', limit=''):
+        params = {'ccy': ccy, 'after': after, 'before': before, 'limit':limit}
+        return self._request_with_params(GET, BORROW_REPAY_HISTORY, params)   
+
+    # Get Obtain borrowing rate and limit
+    def get_interest_limits(self, type='',ccy=''):
+        params = {'type': type, 'ccy': ccy}
+        return self._request_with_params(GET, INTEREST_LIMITS, params) 
