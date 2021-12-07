@@ -18,9 +18,9 @@ class FundingAPI(Client):
         return self._request_with_params(GET, GET_BALANCES, params)
 
     # Get Account Configuration
-    def funds_transfer(self, ccy, amt, froms, to, type='0', subAcct='', instId='', toInstId=''):
+    def funds_transfer(self, ccy, amt, froms, to, type='0', subAcct='', instId='', toInstId='',loanTrans=''):
         params = {'ccy': ccy, 'amt': amt, 'from': froms, 'to': to, 'type': type, 'subAcct': subAcct, 'instId': instId,
-                  'toInstId': toInstId}
+                  'toInstId': toInstId,'loanTrans':loanTrans}
         return self._request_with_params(POST, FUNDS_TRANSFER, params)
 
     # Withdrawal
@@ -70,3 +70,27 @@ class FundingAPI(Client):
     def withdrawal_lightning(self, ccy,invoice,pwd):
         params = {'ccy':ccy, 'invoice':invoice, 'pwd':pwd}
         return self._request_with_params(POST, WITHDRAWAL_LIGHTNING, params)
+
+
+    # POST SET LENDING RATE
+    def set_lending_rate(self, ccy, rate):
+        params = {'ccy': ccy, 'rate': rate}
+        return self._request_with_params(POST, SET_LENDING_RATE, params)
+
+
+    # GET LENDING HISTORY
+    def get_lending_rate(self, ccy='', before='', after='', limit='', ):
+        params = {'ccy': ccy, 'after': after, 'before': before, 'limit': limit, }
+        return self._request_with_params(GET, LENDING_HISTORY, params)
+
+
+    # GET LENDING RATE HISTORY
+    def get_lending_rate_history(self, ccy='', ):
+        params = {'ccy': ccy, }
+        return self._request_with_params(GET, LENDING_RATE_HISTORY, params)
+
+
+    # GET LENDING RATE SUMMARY
+    def get_lending_rate_summary(self, ccy='', before='', after='', limit='', ):
+        params = {'ccy': ccy, 'after': after, 'before': before, 'limit': limit, }
+        return self._request_with_params(GET, LENDING_RATE_SUMMARY, params)

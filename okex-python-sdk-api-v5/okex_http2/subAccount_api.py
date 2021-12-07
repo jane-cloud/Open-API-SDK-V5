@@ -26,6 +26,10 @@ class SubAccountAPI(Client):
         params = {'pwd': pwd, 'subAcct': subAcct, 'label': label, 'Passphrase': Passphrase, 'perm': perm, 'ip': ip}
         return self._request_with_params(POST, CREATE, params)
 
+    def watch(self, subAcct,apiKey=''):
+        params = {'subAcct': subAcct,'apiKey':apiKey}
+        return self._request_with_params(GET, WATCH, params)
+
     def view_list(self, enable='', subAcct='', after='', before='', limit=''):
         params = {'enable': enable, 'subAcct': subAcct, 'after': after, 'before': before, 'limit': limit}
         return self._request_with_params(GET, VIEW_LIST, params)
@@ -34,3 +38,7 @@ class SubAccountAPI(Client):
         params = {'ccy': ccy, 'amt': amt, 'from': froms, 'to': to, 'fromSubAccount': fromSubAccount,
                   'toSubAccount': toSubAccount}
         return self._request_with_params(POST, CONTROL_TRANSFER, params)
+
+    def subAccount_transfer(self, ccy, amt, froms, to, fromSubAccount,toSubAccount,loanTrans=''):
+        params = {'ccy': ccy, 'amt': amt, 'from': froms, 'to': to, 'fromSubAccount': fromSubAccount, 'toSubAccount': toSubAccount,'loanTrans':loanTrans}
+        return self._request_with_params(POST, SUBACCOUNT_TRANSFER, params)

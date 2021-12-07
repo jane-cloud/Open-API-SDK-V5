@@ -56,6 +56,10 @@ PIGGY_BALANCE = '/api/v5/asset/piggy-balance'
 DEPOSIT_LIGHTNING = '/api/v5/asset/deposit-lightning'
 WITHDRAWAL_LIGHTNING = '/api/v5/asset/withdrawal-lightning'
 ASSET_VALUATION = '/api/v5/asset/asset-valuation'
+SET_LENDING_RATE = '/api/v5/asset/set-lending-rate'
+LENDING_HISTORY = '/api/v5/asset/lending-history'
+LENDING_RATE_HISTORY = '/api/v5/asset/lending-rate-history'
+LENDING_RATE_SUMMARY = '/api/v5/asset/lending-rate-summary'
 
 # Market Data
 TICKERS_INFO = '/api/v5/market/tickers'
@@ -129,6 +133,7 @@ BILLs = '/api/v5/asset/subaccount/bills'
 DELETE = '/api/v5/users/subaccount/delete-apikey'
 RESET = '/api/v5/users/subaccount/modify-apikey'
 CREATE = '/api/v5/users/subaccount/apikey'
+WATCH = '/api/v5/users/subaccount/apikey'
 VIEW_LIST = '/api/v5/users/subaccount/list'
 SUBACCOUNT_TRANSFER = '/api/v5/asset/subaccount/transfer'
 

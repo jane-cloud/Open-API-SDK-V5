@@ -95,6 +95,14 @@ if __name__ == '__main__':
     # result = fundingAPI.withdrawal_lightning(ccy='BTC',amt='0.01')
     # 获取账户资产估值 GET Obtain account asset valuation
     # result = fundingAPI.get_asset_valuation(ccy = 'USDT')
+    # 设置余币宝借贷利率 POST SET LENDING RATE
+    # result = fundingAPI.set_lending_rate(ccy = 'USDT',rate='')
+    # 获取余币宝出借明细 GET LENDING HISTORY
+    # result = fundingAPI.get_lending_rate(ccy = '')
+    # 获取市场借贷信息（公共) GET LENDING RATE HISTORY
+    result = fundingAPI.get_lending_rate_history(ccy = '')
+    # 获取市场借贷历史（公共）GET LENDING RATE SUMMARY
+    result = fundingAPI.get_lending_rate_summary(ccy = '')
 
     # market api
     marketAPI = Market.MarketAPI(api_key, secret_key, passphrase, False, flag)
@@ -253,6 +261,8 @@ if __name__ == '__main__':
     # result = subAccountAPI.reset(pwd='', subAcct='', label='', apiKey='', perm='')
     # 创建子账户的APIKey(仅适用于母账户) Create an APIkey for a sub-account(applies to master accounts only)
     # result = subAccountAPI.create(pwd='', subAcct='', label='trade1', Passphrase='')
+    # 查询子账户的APIKey(仅适用于母账户) Create an APIkey for a sub-account(applies to master accounts only)
+    # result = subAccountAPI.watch()
     # 查看子账户列表(仅适用于母账户) View sub-account list(applies to master accounts only)
     # result = subAccountAPI.view_list()
     # 子账户间划转 Transfer between subAccounts

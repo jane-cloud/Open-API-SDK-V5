@@ -107,7 +107,7 @@ if __name__ == '__main__':
     # request = fundingAPI.get_balances
     # parameters = ['BTC']
     # 资金划转  Funds Transfer
-    # request = fundingAPI.funds_transfer
+    request = fundingAPI.funds_transfer
     # parameters = {'ccy': '', 'amt': '', 'type': '', 'from': '', 'to': '', 'subAcct': ''}
     # 提币  Withdrawal
     # request = fundingAPI.coin_withdraw
@@ -137,6 +137,18 @@ if __name__ == '__main__':
     # parameters =[]
     # 获取账户资产估值 GET Obtain account asset valuation
     # result = fundingAPI.get_asset_valuation
+    # parameters =[]
+    # 设置余币宝借贷利率 POST SET LENDING RATE
+    # result = fundingAPI.set_lending_rate
+    # parameters =[]
+    # 获取余币宝出借明细 GET LENDING HISTORY
+    # result = fundingAPI.get_lending_rate
+    # parameters =[]
+    # 获取市场借贷信息（公共) GET LENDING RATE HISTORY
+    # result = fundingAPI.get_lending_rate_history
+    # parameters =[]
+    # 获取市场借贷历史（公共）GET LENDING RATE SUMMARY
+    # result = fundingAPI.get_lending_rate_summary
     # parameters =[]
 
     # market api
@@ -312,9 +324,9 @@ if __name__ == '__main__':
     # result = tradeAPI.get_fills_history
     # parameters = ['SPOT']
     # 策略委托下单  Place Algo Order
-    request = tradeAPI.place_algo_order
-    parameters = {'instId': 'BTC-USDT', 'side': 'buy', 'ordType': 'conditional', 'sz': '1', 'tpTriggerPx': '1','tdMode':'cash'
-                   ,'tpOrdPx': '1','tgtCcy':'', 'tpTriggerPxType':'last', 'slTriggerPxType':'last'}
+    # request = tradeAPI.place_algo_order
+    # parameters = {'instId': 'BTC-USDT', 'side': 'buy', 'ordType': 'conditional', 'sz': '1', 'tpTriggerPx': '1','tdMode':'cash'
+    #                ,'tpOrdPx': '1','tgtCcy':'', 'tpTriggerPxType':'last', 'slTriggerPxType':'last'}
     # 撤销策略委托订单  Cancel Algo Order
     # request = tradeAPI.cancel_algo_order
     # parameters = [[{'algoId': '297394002194735104', 'instId': 'BTC-USDT-210409'}]]
@@ -345,8 +357,14 @@ if __name__ == '__main__':
     # 创建子账户的APIKey(仅适用于母账户) Create an APIkey for a sub-account(applies to master accounts only)
     # request = subAccountAPI.create
     # parameters = {'pwd': '', 'subAcct': '', 'label': '', 'Passphrase': ''}
+    # 查询子账户的APIKey(仅适用于母账户) Create an APIkey for a sub-account(applies to master accounts only)
+    # result = subAccountAPI.watch
+    # parameters = []
     # 查看子账户列表(仅适用于母账户) View sub-account list(applies to master accounts only)
     # request = subAccountAPI.view_list
+    # parameters = []
+    # 子账户间划转 Transfer between subAccounts
+    # result = subAccountAPI.subAccount_transfer
     # parameters = []
 
     # BrokerAPI
