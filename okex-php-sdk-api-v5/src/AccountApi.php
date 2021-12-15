@@ -126,13 +126,14 @@ class AccountApi extends Utils
         return $this->request('/api/v5/account/max-avail-size', $params, 'GET');
     }
 
-    public function marginBalance($instId,$posSide,$type,$amt)
+    public function marginBalance($instId,$posSide,$type,$amt,$loanTrans='')
     {
         $params = [
             'instId' => $instId,
             'posSide' => $posSide,
             'type' => $type,
             'amt' => $amt,
+            'loanTrans' => $loanTrans,
         ];
 
         return $this->request('/api/v5/account/position/margin-balance', $params, 'POST');

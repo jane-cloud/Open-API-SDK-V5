@@ -26,7 +26,7 @@ class FundingApi extends Utils
     }
 
     //
-    public function transfer($ccy,$amt,$type='',$from,$to,$subAcct='',$instId='',$toInstId='')
+    public function transfer($ccy,$amt,$type='',$from,$to,$subAcct='',$instId='',$toInstId='',$loanTrans='')
     {
         $params = [
             'ccy' => $ccy,
@@ -37,6 +37,7 @@ class FundingApi extends Utils
             'subAcct' => $subAcct,
             'instId' => $instId,
             'toInstId' => $toInstId,
+            'loanTrans' => $loanTrans,
         ];
 
         return $this->request('/api/v5/asset/transfer',$params, 'POST');
@@ -100,12 +101,13 @@ class FundingApi extends Utils
         return $this->request('/api/v5/asset/currencies','', 'GET');
     }
 
-    public function PurchaseRedempt($ccy,$amt,$side)
+    public function PurchaseRedempt($ccy,$amt,$side,$rate='')
     {
         $params = [
             'ccy' => $ccy,
             'amt' => $amt,
             'side' => $side,
+            'rate' => $rate,
         ];
 
         return $this->request('/api/v5/asset/purchase_redempt',$params, 'POST');
@@ -162,5 +164,48 @@ class FundingApi extends Utils
         ];
 
         return $this->request('/api/v5/asset/asset-valuation',$params, 'GET');
+    }
+
+    public function setLendingRate($ccy,$rate)
+    {
+        $params = [
+            'ccy' => $ccy,
+            'rate' => $rate,
+        ];
+
+        return $this->request('/api/v5/asset/set-lending-rate',$params, 'POST');
+    }
+
+    public function lendingHistory($ccy='',$after='',$before='',$limit='')
+    {
+        $params = [
+            'ccy' => $ccy,
+            'after' => $after,
+            'before' => $before,
+            'limit' => $limit,
+        ];
+
+        return $this->request('/api/v5/asset/lending-history',$params, 'GET');
+    }
+
+    public function lendingRateSummary($ccy='')
+    {
+        $params = [
+            'ccy' => $ccy,
+        ];
+
+        return $this->request('/api/v5/asset/lending-rate-summary',$params, 'GET');
+    }
+
+    public function lendingRateHistory($ccy='',$after='',$before='',$limit='')
+    {
+        $params = [
+            'ccy' => $ccy,
+            'after' => $after,
+            'before' => $before,
+            'limit' => $limit,
+        ];
+
+        return $this->request('/api/v5/asset/lending-rate-history',$params, 'GET');
     }
 }
