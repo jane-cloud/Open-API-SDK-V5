@@ -12,9 +12,9 @@ public class FundingAPIBaseTests extends BaseTests {
 
         config.setEndpoint("https://www.okex.com/");
 
-//        config.setApiKey("");
-//        config.setSecretKey("");
-//        config.setPassphrase("");
+        config.setApiKey("");
+        config.setSecretKey("");
+        config.setPassphrase("");
 
 
 

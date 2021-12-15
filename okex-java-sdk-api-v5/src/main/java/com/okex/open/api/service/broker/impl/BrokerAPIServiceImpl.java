@@ -61,8 +61,8 @@ public class BrokerAPIServiceImpl implements BrokerAPIService {
 
     //查看充值地址  Get sub-account deposit address
     @Override
-    public JSONObject getSubAccountDepositAddress(String subAcct, String ccy,String chain,String addrType,String to) {
-        return this.client.executeSync(this.api.getSubAccountDepositAddress(subAcct,ccy,chain,addrType,to));
+    public JSONObject getSubAccountDepositAddress(String subAcct, String ccy) {
+        return this.client.executeSync(this.api.getSubAccountDepositAddress(subAcct,ccy));
     }
 
     //查询子账户获取充值记录  Get sub-account deposit history

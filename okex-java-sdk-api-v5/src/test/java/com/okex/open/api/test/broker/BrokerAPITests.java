@@ -121,7 +121,7 @@ public class BrokerAPITests extends BrokerAPIBaseTests{
      */
     @Test
     public void getSubAccountDepositAddress(){
-        JSONObject result = this.brokerAPIService.getSubAccountDepositAddress("","BTC","","","");
+        JSONObject result = this.brokerAPIService.getSubAccountDepositAddress("","BTC");
         toResultString(LOG, "result", result);
     }
 
