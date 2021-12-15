@@ -148,6 +148,16 @@ public class MarketDataAPITest extends MarketDataAPIBaseTest {
     }
 
     /**
+     * 获取法币汇率  Get exchange rate
+     * GET /api/v5/market/exchange-rate
+     */
+    @Test
+    public void getExchangeRate(){
+        JSONObject result = this.marketDataAPIService.getExchangeRate();
+        this.toResultString(MarketDataAPITest.LOG,"result",result);
+    }
+
+    /**
      * 获取指数成分数据  Get index components
      * GET /api/v5/market/index-components
      */

@@ -5,6 +5,15 @@ public class IncreaseDecreaseMargin {
     private String posSide;
     private String type;
     private String amt;
+    private Boolean loanTrans;
+
+    public Boolean getLoanTrans() {
+        return loanTrans;
+    }
+
+    public void setLoanTrans(Boolean loanTrans) {
+        this.loanTrans = loanTrans;
+    }
 
     public String getInstId() {
         return instId;
@@ -45,6 +54,7 @@ public class IncreaseDecreaseMargin {
                 ", posSide='" + posSide + '\'' +
                 ", type='" + type + '\'' +
                 ", amt='" + amt + '\'' +
+                ", loanTrans=" + loanTrans +
                 '}';
     }
 }

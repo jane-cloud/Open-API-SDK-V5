@@ -18,6 +18,9 @@ public interface SubAccountAPIService {
     //创建子账户的APIkey Create an APIkey for a sub-account
     JSONObject createSubAccountAPIKey(CreateSubAccountApikey createSubAccountApikey);
 
+    //查询子账户的APIKey  Query the APIKey of a sub-account
+    JSONObject getSubAccountApikeyList(String subAcct, String apiKey);
+
     //重置子账户的APIkey Reset the APIkey of a sub-account
     JSONObject reSetSubAccountAPIKey(ReSetSubAccountApikey reSetSubAccountApikey);
 

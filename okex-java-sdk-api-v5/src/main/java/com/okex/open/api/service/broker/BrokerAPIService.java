@@ -2,6 +2,7 @@ package com.okex.open.api.service.broker;
 
 import com.alibaba.fastjson.JSONObject;
 import com.okex.open.api.bean.broker.param.*;
+import retrofit2.http.Query;
 
 public interface BrokerAPIService {
 
@@ -27,7 +28,7 @@ public interface BrokerAPIService {
     JSONObject subAccountDepositAddress(SubAccountDepositAddress subAccountDepositAddress);
 
     //查看充值地址  Get sub-account deposit address
-    JSONObject getSubAccountDepositAddress(String subAcct, String ccy);
+    JSONObject getSubAccountDepositAddress(String subAcct, String ccy,String chain,String addrType,String to);
 
     //查询子账户获取充值记录  Get sub-account deposit history
     JSONObject getSubAccountDepositHistory(String subAcct, String ccy, String txId, String state, String after, String before, String limit);

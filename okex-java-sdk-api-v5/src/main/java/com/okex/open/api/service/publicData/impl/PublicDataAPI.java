@@ -43,7 +43,7 @@ public interface PublicDataAPI {
 
     //获取免息额度和币种折算率 Get Discount Rate And Interest-Free Quota
     @GET("/api/v5/public/discount-rate-interest-free-quota")
-    Call<JSONObject> getDiscountRateAndInterestFreeQuota(@Query("ccy") String ccy);
+    Call<JSONObject> getDiscountRateAndInterestFreeQuota(@Query("ccy") String ccy,@Query("discountLv") String discountLv);
 
     //获取系统时间 Get System Time
     @GET("/api/v5/public/time")
@@ -74,7 +74,6 @@ public interface PublicDataAPI {
                              @Query("uly")String uly,
                              @Query("instId")String instId,
                              @Query("tdMode")String tdMode,
-                             @Query("ccy")String ccy,
                              @Query("tier")String tier);
 
     //获取杠杆利率和借币限额  Get Interest Rate and Loan Quota

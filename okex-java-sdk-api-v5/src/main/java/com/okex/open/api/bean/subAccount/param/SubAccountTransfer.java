@@ -7,6 +7,15 @@ public class SubAccountTransfer {
     private String to;
     private String fromSubAccount;
     private String toSubAccount;
+    private Boolean loanTrans;
+
+    public Boolean getLoanTrans() {
+        return loanTrans;
+    }
+
+    public void setLoanTrans(Boolean loanTrans) {
+        this.loanTrans = loanTrans;
+    }
 
     public String getCcy() {
         return ccy;
@@ -65,6 +74,7 @@ public class SubAccountTransfer {
                 ", to='" + to + '\'' +
                 ", fromSubAccount='" + fromSubAccount + '\'' +
                 ", toSubAccount='" + toSubAccount + '\'' +
+                ", loanTrans=" + loanTrans +
                 '}';
     }
 }

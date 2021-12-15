@@ -41,7 +41,11 @@ public interface BrokerAPI {
 
     //查看充值地址  Get sub-account deposit address
      @GET("/api/v5/asset/broker/nd/subaccount-deposit-address")
-     Call<JSONObject> getSubAccountDepositAddress(@Query("subAcct") String subAcct, @Query("ccy") String ccy);
+     Call<JSONObject> getSubAccountDepositAddress(@Query("subAcct") String subAcct,
+                                                  @Query("ccy") String ccy,
+                                                  @Query("chain") String chain,
+                                                  @Query("addrType") String addrType,
+                                                  @Query("to") String to);
 
     //查询子账户获取充值记录  Get sub-account deposit history
      @GET("/api/v5/asset/broker/nd/subaccount-deposit-history")

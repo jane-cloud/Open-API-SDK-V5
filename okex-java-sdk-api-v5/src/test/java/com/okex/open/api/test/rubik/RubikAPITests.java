@@ -82,7 +82,7 @@ public class RubikAPITests extends RubikAPIBaseTests{
     }
 
     /**
-     * 看涨/看跌期权合约 持仓总量比/交易总量比 Get Put/Call ratio
+     * 获取期权持仓量及交易量 Get Put/Call ratio
      * GET /api/v5/rubik/stat/option/open-interest-volume-ratio
      */
     @Test

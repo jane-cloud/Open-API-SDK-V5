@@ -117,7 +117,7 @@ public class PublicDataAPITest extends PublicDataAPIBaseTest {
      */
     @Test
     public void getDiscountRateAndInterestFreeQuota(){
-        JSONObject result = publicDataAPIService.getDiscountRateAndInterestFreeQuota(null);
+        JSONObject result = publicDataAPIService.getDiscountRateAndInterestFreeQuota(null,"");
         toResultString(LOG, "result", result);
     }
 
@@ -160,7 +160,7 @@ public class PublicDataAPITest extends PublicDataAPIBaseTest {
      */
     @Test
     public void getTier(){
-        JSONObject result = publicDataAPIService.getTier("FUTURES","BTC-USDT",null,"isolated",null,null);
+        JSONObject result = publicDataAPIService.getTier("FUTURES","BTC-USDT",null,"isolated",null);
         toResultString(LOG, "result", result);
     }
 

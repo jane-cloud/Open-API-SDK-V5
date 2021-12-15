@@ -2,6 +2,7 @@ package com.okex.open.api.service.funding;
 
 import com.alibaba.fastjson.JSONObject;
 import com.okex.open.api.bean.funding.param.*;
+import retrofit2.http.Query;
 
 public interface FundingAPIService {
 
@@ -46,4 +47,16 @@ public interface FundingAPIService {
 
     //获取账户资产估值 Get account asset valuation
     JSONObject assetValuation(String ccy);
+
+    //设置余币宝借贷利率 Set lending rate
+    JSONObject SetLendingRate(SetLendingRate setLendingRate);
+
+    //获取余币宝出借明细  Get lending history
+    JSONObject lendingHistory(String ccy, String after, String before,String limit);
+
+    //获取市场借贷信息（公共） Get public borrow info (public)
+    JSONObject lendingRateSummary(String ccy);
+
+    //获取市场借贷历史（公共）  Get public borrow history (public)
+    JSONObject lendingRateHistory(String ccy, String after, String before,String limit);
 }

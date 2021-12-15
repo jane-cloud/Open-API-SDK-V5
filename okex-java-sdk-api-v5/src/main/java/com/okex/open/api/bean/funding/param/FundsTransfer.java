@@ -9,6 +9,15 @@ public class FundsTransfer {
     private String subAcct;
     private String instId;
     private String toInstId;
+    private Boolean loanTrans;
+
+    public Boolean getLoanTrans() {
+        return loanTrans;
+    }
+
+    public void setLoanTrans(Boolean loanTrans) {
+        this.loanTrans = loanTrans;
+    }
 
     public String getCcy() {
         return ccy;
@@ -85,6 +94,7 @@ public class FundsTransfer {
                 ", subAcct='" + subAcct + '\'' +
                 ", instId='" + instId + '\'' +
                 ", toInstId='" + toInstId + '\'' +
+                ", loanTrans=" + loanTrans +
                 '}';
     }
 }

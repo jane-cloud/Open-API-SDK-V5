@@ -55,6 +55,16 @@ public class SubAccountAPITest extends SubAccountAPIBaseTest{
     }
 
     /**
+     * 查询子账户的APIKey  Query the APIKey of a sub-account
+     * GET /api/v5/users/subaccount/apikey
+     */
+    @Test
+    public void getSubAccountApikeyList(){
+        JSONObject result = this.subAccountAPIService.getSubAccountApikeyList("ctt0425pl","");
+    }
+
+
+    /**
      * 重置子账户的APIkey Reset the APIkey of a sub-account
      * POST /api/v5/users/subaccount/modify-apikey
      */
@@ -96,7 +106,7 @@ public class SubAccountAPITest extends SubAccountAPIBaseTest{
      */
     @Test
     public void testGetSubAccountBalances(){
-        JSONObject result = this.subAccountAPIService.getSubAccountBalances("ctt042501");
+        JSONObject result = this.subAccountAPIService.getSubAccountBalances("");
         toResultString(LOG, "result", result);
     }
 
@@ -106,7 +116,7 @@ public class SubAccountAPITest extends SubAccountAPIBaseTest{
      */
     @Test
     public void testGetSubAccountBills(){
-        JSONObject result = this.subAccountAPIService.getSubAccountBills("OKB","0","ctt042501",null,null,null);
+        JSONObject result = this.subAccountAPIService.getSubAccountBills("OKB","0","",null,null,null);
         toResultString(LOG, "result", result);
     }
 
@@ -123,6 +133,7 @@ public class SubAccountAPITest extends SubAccountAPIBaseTest{
         subAccountTransfer.setTo("6");
         subAccountTransfer.setFromSubAccount("");
         subAccountTransfer.setToSubAccount("");
+        subAccountTransfer.setLoanTrans(false);
 
         JSONObject result = this.subAccountAPIService.subAccountTransfer(subAccountTransfer);
         toResultString(LOG,"result",result);

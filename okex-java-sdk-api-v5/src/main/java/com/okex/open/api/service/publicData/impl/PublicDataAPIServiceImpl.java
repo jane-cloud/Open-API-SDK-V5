@@ -65,8 +65,8 @@ public class PublicDataAPIServiceImpl implements PublicDataAPIService {
 
     //获取免息额度和币种折算率 Get Discount Rate And Interest-Free Quota
     @Override
-    public JSONObject getDiscountRateAndInterestFreeQuota(String ccy) {
-        return this.client.executeSync(this.api.getDiscountRateAndInterestFreeQuota(ccy));
+    public JSONObject getDiscountRateAndInterestFreeQuota(String ccy,String discountLv) {
+        return this.client.executeSync(this.api.getDiscountRateAndInterestFreeQuota(ccy,discountLv));
     }
 
     //获取系统时间 Get System Time
@@ -89,8 +89,8 @@ public class PublicDataAPIServiceImpl implements PublicDataAPIService {
 
     //获取合约衍生品仓位档位  Get Position Tiers
     @Override
-    public JSONObject getTier(String instType, String uly, String instId, String tdMode, String ccy, String tier) {
-        return this.client.executeSync(this.api.getTier(instType, uly, instId, tdMode, ccy, tier));
+    public JSONObject getTier(String instType, String uly, String instId, String tdMode, String tier) {
+        return this.client.executeSync(this.api.getTier(instType, uly, instId, tdMode, tier));
     }
 
     //获取杠杆利率和借币限额  Get Interest Rate and Loan Quota

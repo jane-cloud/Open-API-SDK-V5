@@ -33,7 +33,7 @@ public interface    PublicDataAPIService {
     JSONObject getEstimatedDeliveryExcercisePrice(String instId);
 
     //获取免息额度和币种折算率 Get Discount Rate And Interest-Free Quota
-    JSONObject getDiscountRateAndInterestFreeQuota(String ccy);
+    JSONObject getDiscountRateAndInterestFreeQuota(String ccy,String discountLv);
 
     //获取系统时间 Get System Time
     JSONObject getSystemTime();
@@ -45,7 +45,7 @@ public interface    PublicDataAPIService {
     JSONObject getMarkPrice(String instType,String uly,String instId);
 
     //获取合约衍生品仓位档位  Get Position Tiers
-    JSONObject getTier(String instType, String uly, String instId, String tdMode, String ccy, String tier);
+    JSONObject getTier(String instType, String uly, String instId, String tdMode, String tier);
 
     //获取杠杆利率和借币限额  Get Interest Rate and Loan Quota
     JSONObject getInterestRateLoanQuota();
