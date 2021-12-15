@@ -133,14 +133,13 @@ class PublicDataAPI extends Utils
         return $this->request('/api/v5/public/mark-price',$params, 'GET');
     }
 
-    public function getTier($instType,$uly='',$instId='',$tdMode,$ccy='',$tier='')
+    public function getTier($instType,$uly='',$instId='',$tdMode,$tier='')
     {
         $params = [
             'instType' => $instType,
             'uly' => $uly,
             'instId' => $instId,
             'tdMode' => $tdMode,
-            'ccy' => $ccy,
             'tier' => $tier,
         ];
 

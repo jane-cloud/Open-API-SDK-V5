@@ -147,7 +147,7 @@ $obj = new MarketDataAPI(Config::$config);
 //$res = $obj->getPlatformVolume();
 //Oracle 上链交易数据
 //$res = $obj->getOracle();
-//Oracle 上链交易数据
+//获取法币汇率
 //$res = $obj->exchangerate();
 //获取指数成分数据
 //$res = $obj->indexComponents('');
@@ -184,7 +184,7 @@ $obj = new PublicDataAPI(Config::$config);
 // 获取标记价格 Get Mark Price
 //$res = $obj->getMarkPrice('MARGIN','','');
 //获取合约衍生品仓位档位
-//$res = $obj->getTier('','','','','','');
+//$res = $obj->getTier('','','','','');
 //获取杠杆利率和借币限额公共信息接口
 //$res = $obj->getInterestRateLoanQuota();
 //获取尊享借币杠杆利率和借币限额
@@ -248,6 +248,9 @@ $obj = new SubaccountApi(Config::$config);
 //$res = $obj -> modifyApikey('','','','','','');
 //创建子账户的APIkey（仅适用于母账户）
 //$res = $obj -> apikey('','','','','','');
+//查询子账户的APIKey
+//$res = $obj -> getapikey('','');
+//查看子账户列表（仅适用于母账户）
 //查看子账户列表（仅适用于母账户）
 //$res = $obj -> subaccountList('','','','','');
 //母账户控制子账户与子账户之间划转（仅适用于母账户）
