@@ -62,6 +62,7 @@ public class TradeAPITest extends TradeAPIBaseTest {
         PlaceOrder placeOrder1 =new PlaceOrder();
         placeOrder1.setInstId("TRX-USDT");
         placeOrder1.setTdMode("isolated");
+        placeOrder1.setCcy("");
         placeOrder1.setClOrdId("123testspot07");
         placeOrder1.setTag("");
         placeOrder1.setSide("sell");
@@ -76,6 +77,7 @@ public class TradeAPITest extends TradeAPIBaseTest {
         PlaceOrder placeOrder2=new PlaceOrder();
         placeOrder2.setInstId("BTC-USDT-211231");
         placeOrder2.setTdMode("cross");
+        placeOrder2.setCcy("");
         placeOrder2.setClOrdId("testfutures07");
         placeOrder2.setTag("");
         placeOrder2.setSide("buy");
@@ -310,6 +312,7 @@ public class TradeAPITest extends TradeAPIBaseTest {
         placeAlgoOrder.setSlOrdPx("65000");
         placeAlgoOrder.setSlTriggerPxType("");
         placeAlgoOrder.setTpTriggerPxType("");
+
 //        计划委托 Trigger Order
         /*placeAlgoOrder.setTriggerPx("1.1");
         placeAlgoOrder.setOrderPx("0.7");

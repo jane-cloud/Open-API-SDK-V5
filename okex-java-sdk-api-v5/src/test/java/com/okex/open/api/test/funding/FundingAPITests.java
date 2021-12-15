@@ -3,6 +3,7 @@ package com.okex.open.api.test.funding;
 import com.alibaba.fastjson.JSONObject;
 import com.okex.open.api.bean.funding.param.FundsTransfer;
 import com.okex.open.api.bean.funding.param.PiggyBankPurchaseRedemption;
+import com.okex.open.api.bean.funding.param.SetLendingRate;
 import com.okex.open.api.bean.funding.param.Withdrawal;
 import com.okex.open.api.service.funding.FundingAPIService;
 import com.okex.open.api.service.funding.impl.FundingAPIServiceImpl;
@@ -46,6 +47,17 @@ public class FundingAPITests extends FundingAPIBaseTests {
     }
 
     /**
+     * 获取账户资产估值 Get account asset valuation
+     * GET /api/v5/asset/asset-valuation
+     */
+    @Test
+    public void assetValuation(){
+        JSONObject result = fundingAPIService.assetValuation(null);
+        toResultString(LOG,"result",result);
+    }
+
+
+    /**
      * 资金划转 Funds Transfer
      * POST /api/v5/asset/transfer
      */
@@ -60,7 +72,18 @@ public class FundingAPITests extends FundingAPIBaseTests {
 //        fundsTransfer.setSubAcct("");
         fundsTransfer.setInstId("EOS-USD");
         fundsTransfer.setToInstId("EOS-USD");
+        fundsTransfer.setLoanTrans(false);
         JSONObject result = fundingAPIService.fundsTransfer(fundsTransfer);
+        toResultString(LOG, "result", result);
+    }
+
+    /**
+     * 获取资金划转状态
+     * GET /api/v5/asset/transfer-state
+     */
+    @Test
+    public void transferState() {
+        JSONObject result = fundingAPIService.transferState("1234","0");
         toResultString(LOG, "result", result);
     }
 
@@ -132,6 +155,7 @@ public class FundingAPITests extends FundingAPIBaseTests {
         piggyBankPurchaseRedemption.setCcy("USDT");
         piggyBankPurchaseRedemption.setAmt("1");
         piggyBankPurchaseRedemption.setSide("purchase");
+        piggyBankPurchaseRedemption.setRate(null);
         JSONObject result = fundingAPIService.piggyBankPurchaseRedemption(piggyBankPurchaseRedemption);
         toResultString(LOG, "result", result);
     }
@@ -147,7 +171,7 @@ public class FundingAPITests extends FundingAPIBaseTests {
     }
 
     /**
-     * 闪电网络充币
+     * 闪电网络充币  Lightning deposits
      * GET /api/v5/asset/deposit-lightning
      */
     @Test
@@ -157,7 +181,7 @@ public class FundingAPITests extends FundingAPIBaseTests {
     }
 
     /**
-     * 闪电网络提币
+     * 闪电网络提币  Lightning withdrawals
      * POST /api/v5/asset/withdrawal-lightning
      */
     @Test
@@ -171,24 +195,50 @@ public class FundingAPITests extends FundingAPIBaseTests {
     }
 
     /**
-     * 获取资金划转状态
-     * GET /api/v5/asset/transfer-state
+     * 设置余币宝借贷利率  Set lending rate
+     * POST /api/v5/asset/set-lending-rate
      */
     @Test
-    public void transferState() {
-        JSONObject result = fundingAPIService.transferState("1234","0");
+    public void SetLendingRate() {
+        SetLendingRate setLendingRate = new SetLendingRate();
+        setLendingRate.setCcy("BTC");
+        setLendingRate.setRate("0.03");
+        JSONObject result = fundingAPIService.SetLendingRate(setLendingRate);
         toResultString(LOG, "result", result);
     }
 
     /**
-     * 获取账户资产估值 Get account asset valuation
-     * GET /api/v5/asset/asset-valuation
+     * 获取余币宝出借明细  Get lending history
+     * GET /api/v5/asset/lending-history
      */
     @Test
-    public void assetValuation(){
-        JSONObject result = fundingAPIService.assetValuation(null);
-        toResultString(LOG,"result",result);
+    public void lendingHistory() {
+        JSONObject result = fundingAPIService.lendingHistory(null,null,null,null);
+        toResultString(LOG, "result", result);
     }
+
+    /**
+     * 获取市场借贷信息（公共） Get public borrow info (public)
+     * GET /api/v5/asset/lending-history
+     */
+    @Test
+    public void lendingRateSummary() {
+        JSONObject result = fundingAPIService.lendingRateSummary(null);
+        toResultString(LOG, "result", result);
+    }
+
+    /**
+     * 获取市场借贷历史（公共）  Get public borrow history (public)
+     * GET /api/v5/asset/lending-history
+     */
+    @Test
+    public void lendingRateHistory() {
+        JSONObject result = fundingAPIService.lendingRateHistory(null,null,null,null);
+        toResultString(LOG, "result", result);
+    }
+
+
+
 
 
 

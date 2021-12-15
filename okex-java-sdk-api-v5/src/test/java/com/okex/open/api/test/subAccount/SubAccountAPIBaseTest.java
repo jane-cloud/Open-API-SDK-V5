@@ -18,6 +18,7 @@ public class SubAccountAPIBaseTest extends BaseTests {
         config.setPassphrase("");
 
 
+
         config.setPrint(true);
         /* config.setI18n(I18nEnum.SIMPLIFIED_CHINESE);*/
         config.setI18n(I18nEnum.ENGLISH);

@@ -65,8 +65,8 @@ class AccountAPI(Client):
         return self._request_with_params(GET, MAX_AVAIL_SIZE, params)
 
     # Increase / Decrease margin
-    def Adjustment_margin(self, instId, posSide, type, amt):
-        params = {'instId': instId, 'posSide': posSide, 'type': type, 'amt': amt}
+    def Adjustment_margin(self, instId, posSide, type, amt,loanTrans=''):
+        params = {'instId': instId, 'posSide': posSide, 'type': type, 'amt': amt,'loanTrans':loanTrans}
         return self._request_with_params(POST, ADJUSTMENT_MARGIN, params)
 
     # Get Leverage

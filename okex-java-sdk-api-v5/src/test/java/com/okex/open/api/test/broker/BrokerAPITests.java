@@ -22,7 +22,7 @@ public class BrokerAPITests extends BrokerAPIBaseTests{
     }
 
     /**
-     * Broker账户信息  Get broker account information
+     * 获取独立经纪商账户信息  Get broker account information
      * GET /api/v5/broker/nd/info
      */
     @Test

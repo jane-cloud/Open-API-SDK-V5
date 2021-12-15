@@ -25,6 +25,10 @@ public interface SubAccountAPI {
     @POST("/api/v5/users/subaccount/apikey")
     Call<JSONObject> createSubAccountAPIKey(@Body CreateSubAccountApikey createSubAccountApikey);
 
+    //查询子账户的APIKey  Query the APIKey of a sub-account
+    @GET("/api/v5/users/subaccount/apikey")
+    Call<JSONObject> getSubAccountApikeyList(@Query("subAcct") String subAcct, @Query("apiKey") String apiKey);
+
     //重置子账户的APIkey Reset the APIkey of a sub-account
     @POST("/api/v5/users/subaccount/modify-apikey")
     Call<JSONObject> reSetSubAccountAPIKey(@Body ReSetSubAccountApikey reSetSubAccountApikey);

@@ -458,6 +458,8 @@ passphrase = ""
 # channels = [{"channel": "orders-algo", "instType": "FUTURES", "uly": "BTC-USD", "instId": "BTC-USD-201225"}]
 #高级策略委托订单频道 Cancel Advance Algos
 # channels = [{"channel": "algo-advance", "instType": "SPOT","instId": "BTC-USD-201225","algoId":"12345678"}]
+# 爆仓风险预警推送频道
+# channels = [{"channel": "liquidation-warning", "instType": "SWAP","instType": "","uly":"","instId":""}]
 
 '''
 交易 trade

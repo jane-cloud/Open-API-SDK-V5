@@ -100,4 +100,28 @@ public class FundingAPIServiceImpl implements FundingAPIService {
     public JSONObject assetValuation(String ccy) {
         return this.client.executeSync(this.api.assetValuation(ccy));
     }
+
+    //设置余币宝借贷利率 Set lending rate
+    @Override
+    public JSONObject SetLendingRate(SetLendingRate setLendingRate) {
+        return this.client.executeSync(this.api.SetLendingRate(JSONObject.parseObject(JSON.toJSONString(setLendingRate))));
+    }
+
+    //获取余币宝出借明细  Get lending history
+    @Override
+    public JSONObject lendingHistory(String ccy, String after, String before, String limit) {
+        return this.client.executeSync(this.api.lendingHistory(ccy,after,before,limit));
+    }
+
+    //获取市场借贷信息（公共） Get public borrow info (public)
+    @Override
+    public JSONObject lendingRateSummary(String ccy) {
+        return this.client.executeSync(this.api.lendingRateSummary(ccy));
+    }
+
+    //获取市场借贷历史（公共）  Get public borrow history (public)
+    @Override
+    public JSONObject lendingRateHistory(String ccy, String after, String before, String limit) {
+        return this.client.executeSync(this.api.lendingRateHistory(ccy,after,before,limit));
+    }
 }

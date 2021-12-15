@@ -2,6 +2,7 @@ package com.okex.open.api.service.broker;
 
 import com.alibaba.fastjson.JSONObject;
 import com.okex.open.api.bean.broker.param.*;
+import retrofit2.http.Query;
 
 public interface BrokerAPIService {
 

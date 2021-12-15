@@ -4,6 +4,15 @@ public class PiggyBankPurchaseRedemption {
     private String ccy;
     private String amt;
     private String side;
+    private String rate;
+
+    public String getRate() {
+        return rate;
+    }
+
+    public void setRate(String rate) {
+        this.rate = rate;
+    }
 
     public String getCcy() {
         return ccy;
@@ -35,6 +44,7 @@ public class PiggyBankPurchaseRedemption {
                 "ccy='" + ccy + '\'' +
                 ", amt='" + amt + '\'' +
                 ", side='" + side + '\'' +
+                ", rate='" + rate + '\'' +
                 '}';
     }
 }

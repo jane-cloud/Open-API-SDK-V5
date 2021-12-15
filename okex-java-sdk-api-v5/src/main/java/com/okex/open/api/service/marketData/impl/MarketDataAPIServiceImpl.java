@@ -84,6 +84,12 @@ public class MarketDataAPIServiceImpl implements MarketDataAPIService {
         return this.client.executeSync(this.marketDataAPI.getOracle());
     }
 
+    ////获取法币汇率  Get exchange rate
+    @Override
+    public JSONObject getExchangeRate() {
+        return this.client.executeSync(this.marketDataAPI.getExchangeRate());
+    }
+
     //获取指数成分数据  Get index components
     @Override
     public JSONObject getIndexComponents(String index) {

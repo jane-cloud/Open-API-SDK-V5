@@ -63,5 +63,21 @@ interface FundingAPI {
     @GET("/api/v5/asset/asset-valuation")
     Call<JSONObject> assetValuation(@Query("ccy") String ccy);
 
+    //设置余币宝借贷利率 Set lending rate
+    @POST("/api/v5/asset/set-lending-rate")
+    Call<JSONObject>  SetLendingRate(@Body JSONObject jsonObject);
+
+    //获取余币宝出借明细  Get lending history
+    @GET("/api/v5/asset/lending-history")
+    Call<JSONObject> lendingHistory(@Query("ccy") String ccy,@Query("after") String after,@Query("before") String before,@Query("limit") String limit);
+
+    //获取市场借贷信息（公共） Get public borrow info (public)
+    @GET("/api/v5/asset/lending-rate-summary")
+    Call<JSONObject> lendingRateSummary(@Query("ccy") String ccy);
+
+    //获取市场借贷历史（公共）  Get public borrow history (public)
+    @GET("/api/v5/asset/lending-rate-history")
+    Call<JSONObject> lendingRateHistory(@Query("ccy") String ccy,@Query("after") String after,@Query("before") String before,@Query("limit") String limit);
+
 
 }

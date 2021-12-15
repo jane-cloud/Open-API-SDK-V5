@@ -31,6 +31,13 @@ public class SubAccountAPIServiceImpl implements SubAccountAPIService {
         return this.client.executeSync(this.api.createSubAccountAPIKey(createSubAccountApikey));
     }
 
+    //查询子账户的APIKey  Query the APIKey of a sub-account
+    @Override
+    public JSONObject getSubAccountApikeyList(String subAcct, String apiKey) {
+        return this.client.executeSync(this.api.getSubAccountApikeyList(subAcct, apiKey));
+    }
+
+
     //重置子账户的APIkey Reset the APIkey of a sub-account
     @Override
     public JSONObject reSetSubAccountAPIKey(ReSetSubAccountApikey reSetSubAccountApikey) {

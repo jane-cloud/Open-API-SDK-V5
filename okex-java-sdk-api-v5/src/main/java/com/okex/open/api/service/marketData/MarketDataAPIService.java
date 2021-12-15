@@ -44,6 +44,9 @@ public interface MarketDataAPIService {
     //Oracle 上链交易数据 Get Oracle
     JSONObject getOracle();
 
+    //获取法币汇率  Get exchange rate
+    JSONObject getExchangeRate();
+
     //获取指数成分数据  Get index components
     JSONObject getIndexComponents(String index);
 

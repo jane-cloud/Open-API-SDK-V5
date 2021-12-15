@@ -153,6 +153,7 @@ public class AccountAPITests extends  AccountAPIBaseTests {
         increaseDecreaseMargin.setPosSide("long");
         increaseDecreaseMargin.setType("add");
         increaseDecreaseMargin.setAmt("100");
+        increaseDecreaseMargin.setLoanTrans(false);
 
         JSONObject result = this.accountAPIService.increaseDecreaseMargin(increaseDecreaseMargin);
         toResultString(LOG, "result", result);
