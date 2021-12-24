@@ -55,15 +55,15 @@ if __name__ == '__main__':
     # 获取用户当前杠杆借币利率 Get interest rate
     # result = accountAPI.get_interest_rate()
     # 期权希腊字母PA / BS切换  Set Greeks (PA/BS)
-    result = accountAPI.set_greeks('BS')
+    # result = accountAPI.set_greeks('BS')
     # 逐仓交易设置 Set Isolated Mode
-    # result = accountAPI.set_isolated_mode()
+    result = accountAPI.set_isolated_mode()
     # 查看账户最大可转余额  Get Maximum Withdrawals
     # result = accountAPI.get_max_withdrawal('')
     # 查看账户特定风险状态 Get account risk state (Only applicable to Portfolio margin account)
-    # result = accountAPI.get_account_risk()
+    result = accountAPI.get_account_risk()
     # 尊享借币还币 GET Enjoy borrowing and returning money
-    # result = accountAPI.borrow_repay('BTC', 'borrow', '10')
+    result = accountAPI.borrow_repay('BTC', 'borrow', '10')
     # 获取尊享借币还币历史 Get the privileged currency borrowing and repayment history
     # result = accountAPI.get_borrow_repay_history(ccy = '', after = '', before = '', limit = '')
     # 获取借币利率与限额 GET Obtain borrowing rate and limit

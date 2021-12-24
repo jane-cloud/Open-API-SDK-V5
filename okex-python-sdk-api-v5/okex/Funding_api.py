@@ -26,7 +26,7 @@ class FundingAPI(Client):
     # Get Transfer State
     def transfer_state(self, transId,type=''):
         params = {'transId': transId, 'type': type}
-        return self._request_with_params(POST, Transfer_State, params)
+        return self._request_with_params(POST, TRANSFER_STATE, params)
 
     # Withdrawal
     def coin_withdraw(self, ccy, amt, dest, toAddr, pwd, fee,chain=''):

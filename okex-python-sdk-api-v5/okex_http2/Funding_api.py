@@ -12,6 +12,11 @@ class FundingAPI(Client):
         params = {'ccy': ccy}
         return self._request_with_params(GET, DEPOSIT_ADDRESS, params)
 
+    # Get Transfer State
+    def transfer_state(self, transId,type=''):
+        params = {'transId': transId, 'type': type}
+        return self._request_with_params(POST, TRANSFER_STATE, params)
+
     # Get Balance
     def get_balances(self, ccy=''):
         params = {'ccy': ccy}
