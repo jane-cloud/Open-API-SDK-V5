@@ -55,7 +55,9 @@ if __name__ == '__main__':
     # 获取用户当前杠杆借币利率 Get interest rate
     # result = accountAPI.get_interest_rate()
     # 期权希腊字母PA / BS切换  Set Greeks (PA/BS)
-    # result = accountAPI.set_greeks('BS')
+    result = accountAPI.set_greeks('BS')
+    # 逐仓交易设置 Set Isolated Mode
+    # result = accountAPI.set_isolated_mode()
     # 查看账户最大可转余额  Get Maximum Withdrawals
     # result = accountAPI.get_max_withdrawal('')
     # 查看账户特定风险状态 Get account risk state (Only applicable to Portfolio margin account)
@@ -66,6 +68,9 @@ if __name__ == '__main__':
     # result = accountAPI.get_borrow_repay_history(ccy = '', after = '', before = '', limit = '')
     # 获取借币利率与限额 GET Obtain borrowing rate and limit
     # result = accountAPI.get_interest_limits(type = '2', ccy = 'ETH')
+    # 组合保证金的虚拟持仓保证金计算 POST Simulated Margin
+    # result = accountAPI.get_simulated_margin()
+
 
     # funding api
     fundingAPI = Funding.FundingAPI(api_key, secret_key, passphrase, False, flag)
@@ -75,6 +80,8 @@ if __name__ == '__main__':
     # result = fundingAPI.get_balances('BTC')
     # 资金划转  Funds Transfer
     # result = fundingAPI.funds_transfer(ccy='', amt='', type='1', froms="", to="",subAcct='')
+    # 获取资金划转状态 Transfer State
+    # result = fundingAPI.transfer_state(transId='', type='')
     # 提币  Withdrawal
     # result = fundingAPI.coin_withdraw('usdt', '2', '3', '', '', '0')
     # 获取充值记录  Get Deposit History
