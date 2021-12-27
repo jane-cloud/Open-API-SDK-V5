@@ -11,13 +11,14 @@ import okex_http2.TradingData_api as TradingData
 import okex_http2.subAccount_api as SubAccount
 import okex.Broker_api as Broker
 
+
 async def http2_request(request, parameters):
     while 1:
         begin = time.time()
         if type(parameters) is list:
-            result = request(*parameters)
+            result = await request(*parameters)
         else:
-            result = request(**parameters)
+            result = await request(**parameters)
 
         end = time.time()
         cost = end - begin
@@ -86,19 +87,19 @@ if __name__ == '__main__':
     # request = accountAPI.set_greeks
     # parameters = ['BS']
     # 逐仓交易设置 Set Isolated Mode
-    result = accountAPI.set_isolated_mode
+    # result = accountAPI.set_isolated_mode
     # parameters = []
     # 查看账户最大可转余额  Get Maximum Withdrawals
-    request = accountAPI.get_max_withdrawal
+    # request = accountAPI.get_max_withdrawal
     # parameters = []
     # 尊享借币还币 GET Enjoy borrowing and returning money
-    request = accountAPI.borrow_repay
+    # request = accountAPI.borrow_repay
     # parameters = []
     # 获取尊享借币还币历史 Get the privileged currency borrowing and repayment history
-    request = accountAPI.get_borrow_repay_history
+    # request = accountAPI.get_borrow_repay_history
     # parameters = []
     # 获取借币利率与限额 GET Obtain borrowing rate and limit
-    request = accountAPI.get_interest_limits
+    # request = accountAPI.get_interest_limits
     # parameters = []
     # 组合保证金的虚拟持仓保证金计算 POST Simulated Margin
     # result = accountAPI.get_simulated_margin
@@ -166,8 +167,8 @@ if __name__ == '__main__':
     # request = marketAPI.get_tickers
     # parameters = ['SPOT']
     # 获取单个产品行情信息  Get Ticker
-    # request = marketAPI.get_ticker
-    # parameters = ['BTC-USDT']
+    request = marketAPI.get_ticker
+    parameters = ['BTC-USDT']
     # 获取指数行情  Get Index Tickers
     # request = marketAPI.get_index_ticker
     # parameters = ['BTC', 'BTC-USD']

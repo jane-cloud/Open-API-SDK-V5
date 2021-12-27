@@ -1,10 +1,8 @@
-[TOC]
-
 ### 如何使用？
 
-`python版本：3.6+`
+`python版本：3.7+`
 
-`WebSocketAPI：建议websockets库版本为6.0`
+`WebSocketAPI：建议websockets库版本为10.1`
 
 #### 第一步：下载SDK，安装相关所需库
 
@@ -16,7 +14,8 @@
 
 ```python
 pip install requests
-pip install websockets==6.0
+pip install websockets
+pip install httpx[http2]
 ```
 
 #### 第二步：配置个人信息
@@ -53,16 +52,23 @@ passphrase = ""
   url = "wss://ws.okex.com:8443/ws/v5/private?brokerId=9999"
   ```
 
-  ```python
-  # 公共频道 不需要登录（行情，持仓总量，K线，标记价格，深度，资金费率等）
-  loop.run_until_complete(subscribe_without_login(url, channels))
-  
-  # 私有频道 需要登录（账户，持仓，订单等）
-  loop.run_until_complete(subscribe(url, api_key, passphrase, seceret_key, channels))
-  
-  # 交易（下单，撤单，改单等）
-  loop.run_until_complete(trade(url, api_key, passphrase, seceret_key, trade_param))
-  ```
+```python
+async def your_func(async_generator, *args):
+    async for item in async_generator(*args):
+        print(item)
+        # 处理推送数据
+
+loop = asyncio.get_event_loop()
+
+# 公共频道 不需要登录（行情，持仓总量，K线，标记价格，深度，资金费率等）
+loop.run_until_complete(your_func(subscribe_without_login, url, channels))
+
+# 私有频道 需要登录（账户，持仓，订单等）
+loop.run_until_complete(your_func(subscribe, url, api_key, passphrase, seceret_key, channels))
+
+# 交易（下单，撤单，改单等）
+loop.run_until_complete(your_func(trade, url, api_key, passphrase, seceret_key, trade_param))
+```
 
 附言：
 
@@ -91,9 +97,9 @@ passphrase = ""
 
 ### How to use ?
 
-`python version：3.6+`
+`python version：3.7+`
 
-`WebSocketAPI： websockets package advise version 6.0`
+`WebSocketAPI： websockets package advise version 10.1`
 
 #### Step 1: Download the SDK and install the necessary libraries
 
@@ -105,7 +111,8 @@ passphrase = ""
 
 ```python
 pip install requests
-pip install websockets==6.0
+pip install websockets
+pip install httpx[http2]
 ```
 
 #### Step 2: Configure Personal Information
@@ -138,14 +145,21 @@ url = "wss://ws.okex.com:8443/ws/v5/private?brokerId=9999"
 ```
 
 ```Python
+async def your_func(async_generator, *args):
+    async for item in async_generator(*args):
+        print(item)
+        # Procss streamed data
+
+loop = asyncio.get_event_loop()
+
 # Not necessary for public channel to login （Instrument, Tickers, Index, Mark price, Order Book, Funding rate, etc）
-loop.run_until_complete(subscribe_without_login(url, channels))
+loop.run_until_complete(your_func(subscribe_without_login, url, channels))
 
 # necessary for private channel to login（Account,Positions, Order, etc）
-loop.run_until_complete(subscribe(url, api_key, passphrase, seceret_key, channels))
+loop.run_until_complete(your_func(subscribe, url, api_key, passphrase, seceret_key, channels))
 
 # trade（Place Order, Cancel Order, Amend Order, etc）
-loop.run_until_complete(trade(url, api_key, passphrase, seceret_key, trade_param))
+loop.run_until_complete(your_func(trade, url, api_key, passphrase, seceret_key, trade_param))
 ```
 
 P.S. 

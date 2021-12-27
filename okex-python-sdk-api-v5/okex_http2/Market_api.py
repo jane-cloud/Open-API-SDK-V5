@@ -8,62 +8,62 @@ class MarketAPI(Client):
         Client.__init__(self, api_key, api_secret_key, passphrase, use_server_time, flag)
 
     # Get Tickers
-    def get_tickers(self, instType, uly=''):
+    async def get_tickers(self, instType, uly=''):
         if uly:
             params = {'instType': instType, 'uly': uly}
         else:
             params = {'instType': instType}
-        return self._request_with_params(GET, TICKERS_INFO, params)
+        return await self._request_with_params(GET, TICKERS_INFO, params)
 
     # Get Ticker
-    def get_ticker(self, instId):
+    async def get_ticker(self, instId):
         params = {'instId': instId}
-        return self._request_with_params(GET, TICKER_INFO, params)
+        return await self._request_with_params(GET, TICKER_INFO, params)
 
     # Get Index Tickers
-    def get_index_ticker(self, quoteCcy='', instId=''):
+    async def get_index_ticker(self, quoteCcy='', instId=''):
         params = {'quoteCcy': quoteCcy, 'instId': instId}
-        return self._request_with_params(GET, INDEX_TICKERS, params)
+        return await self._request_with_params(GET, INDEX_TICKERS, params)
 
     # Get Order Book
-    def get_orderbook(self, instId, sz=''):
+    async def get_orderbook(self, instId, sz=''):
         params = {'instId': instId, 'sz': sz}
-        return self._request_with_params(GET, ORDER_BOOKS, params)
+        return await self._request_with_params(GET, ORDER_BOOKS, params)
 
     # Get Candlesticks
-    def get_candlesticks(self, instId, after='', before='', bar='', limit=''):
+    async def get_candlesticks(self, instId, after='', before='', bar='', limit=''):
         params = {'instId': instId, 'after': after, 'before': before, 'bar': bar, 'limit': limit}
-        return self._request_with_params(GET, MARKET_CANDLES, params)
+        return await self._request_with_params(GET, MARKET_CANDLES, params)
 
     # GGet Candlesticks History（top currencies only）
-    def get_history_candlesticks(self, instId, after='', before='', bar='', limit=''):
+    async def get_history_candlesticks(self, instId, after='', before='', bar='', limit=''):
         params = {'instId': instId, 'after': after, 'before': before, 'bar': bar, 'limit': limit}
-        return self._request_with_params(GET, HISTORY_CANDLES, params)
+        return await self._request_with_params(GET, HISTORY_CANDLES, params)
 
     # Get Index Candlesticks
-    def get_index_candlesticks(self, instId, after='', before='', bar='', limit=''):
+    async def get_index_candlesticks(self, instId, after='', before='', bar='', limit=''):
         params = {'instId': instId, 'after': after, 'before': before, 'bar': bar, 'limit': limit}
-        return self._request_with_params(GET, INDEX_CANSLES, params)
+        return await self._request_with_params(GET, INDEX_CANSLES, params)
 
     # Get Mark Price Candlesticks
-    def get_markprice_candlesticks(self, instId, after='', before='', bar='', limit=''):
+    async def get_markprice_candlesticks(self, instId, after='', before='', bar='', limit=''):
         params = {'instId': instId, 'after': after, 'before': before, 'bar': bar, 'limit': limit}
-        return self._request_with_params(GET, MARKPRICE_CANDLES, params)
+        return await self._request_with_params(GET, MARKPRICE_CANDLES, params)
 
     # Get Index Candlesticks
-    def get_trades(self, instId, limit=''):
+    async def get_trades(self, instId, limit=''):
         params = {'instId': instId, 'limit': limit}
-        return self._request_with_params(GET, MARKET_TRADES, params)
+        return await self._request_with_params(GET, MARKET_TRADES, params)
 
     # Get Volume
-    def get_volume(self):
-        return self._request_without_params(GET, VOLUMNE)
+    async def get_volume(self):
+        return await self._request_without_params(GET, VOLUMNE)
 
     # Get Oracle
-    def get_oracle(self):
-        return self._request_without_params(GET, ORACLE)
+    async def get_oracle(self):
+        return await self._request_without_params(GET, ORACLE)
 
     # Get Tier
-    def get_tier(self, instType='', tdMode='', uly='', instId='', ccy='', tier=''):
+    async def get_tier(self, instType='', tdMode='', uly='', instId='', ccy='', tier=''):
         params = {'instType': instType, 'tdMode': tdMode, 'uly': uly, 'instId': instId, 'ccy': ccy, 'tier': tier}
-        return self._request_with_params(GET, TIER, params)
+        return await self._request_with_params(GET, TIER, params)
