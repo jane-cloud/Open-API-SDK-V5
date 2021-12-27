@@ -5,7 +5,6 @@ import hmac
 import json
 import time
 import zlib
-
 import requests
 import websockets
 
@@ -174,102 +173,90 @@ def change(num_old):
 
 
 # subscribe channels un_need login
-async def subscribe_without_login(url, channels):
-    l = []
+async def subscribe_without_login(url, channels, verbose=False):
+    depth_list = []
     while True:
         try:
             async with websockets.connect(url) as ws:
                 sub_param = {"op": "subscribe", "args": channels}
                 sub_str = json.dumps(sub_param)
                 await ws.send(sub_str)
-                print(f"send: {sub_str}")
+                if verbose:
+                    print(f"send: {sub_str}")
 
                 while True:
                     try:
                         res = await asyncio.wait_for(ws.recv(), timeout=25)
-                    except (asyncio.TimeoutError, websockets.exceptions.ConnectionClosed) as e:
+                    except (asyncio.TimeoutError, websockets.ConnectionClosed) as e:
                         try:
                             await ws.send('ping')
                             res = await ws.recv()
-                            print(res)
+                            if verbose:
+                                print(res)
                             continue
                         except Exception as e:
                             print("连接关闭，正在重连……")
                             break
 
-                    print(get_timestamp() + res)
+                    # if verbose:
+                    #     print(get_timestamp() + res)
                     res = eval(res)
+
                     if 'event' in res:
                         continue
                     for i in res['arg']:
                         if 'books' in res['arg'][i] and 'books5' not in res['arg'][i]:
                             # 订阅频道是深度频道
                             if res['action'] == 'snapshot':
-                                for m in l:
-                                    if res['arg']['instId'] == m['instrument_id']:
-                                        l.remove(m)
+                                for depth in depth_list:
+                                    if res['arg']['instId'] == depth['instrument_id']:
+                                        depth_list.remove(depth)
                                 # 获取首次全量深度数据
                                 bids_p, asks_p, instrument_id = partial(res)
-                                d = {}
-                                d['instrument_id'] = instrument_id
-                                d['bids_p'] = bids_p
-                                d['asks_p'] = asks_p
-                                l.append(d)
-
-                                # 校验checksum
-                                checksum = res['data'][0]['checksum']
-                                # print('推送数据的checksum为：' + str(checksum))
-                                check_num = check(bids_p, asks_p)
-                                # print('校验后的checksum为：' + str(check_num))
-                                if check_num == checksum:
-                                    print("校验结果为：True")
-                                else:
-                                    print("校验结果为：False，正在重新订阅……")
-
-                                    # 取消订阅
-                                    await unsubscribe_without_login(url, channels)
-                                    # 发送订阅
-                                    async with websockets.connect(url) as ws:
-                                        sub_param = {"op": "subscribe", "args": channels}
-                                        sub_str = json.dumps(sub_param)
-                                        await ws.send(sub_str)
-                                        print(f"send: {sub_str}")
+                                depth = {'instrument_id': instrument_id, 'bids_p': bids_p, 'asks_p': asks_p}
+                                depth_list.append(depth)
 
                             elif res['action'] == 'update':
-                                for j in l:
-                                    if res['arg']['instId'] == j['instrument_id']:
+                                for depth in depth_list:
+                                    if res['arg']['instId'] == depth['instrument_id']:
                                         # 获取全量数据
-                                        bids_p = j['bids_p']
-                                        asks_p = j['asks_p']
+                                        bids_p = depth['bids_p']
+                                        asks_p = depth['asks_p']
                                         # 获取合并后数据
                                         bids_p = update_bids(res, bids_p)
                                         asks_p = update_asks(res, asks_p)
 
-                                        # 校验checksum
-                                        checksum = res['data'][0]['checksum']
-                                        # print('推送数据的checksum为：' + str(checksum))
-                                        check_num = check(bids_p, asks_p)
-                                        # print('校验后的checksum为：' + str(check_num))
-                                        if check_num == checksum:
-                                            print("校验结果为：True")
-                                        else:
-                                            print("校验结果为：False，正在重新订阅……")
+                            # 校验checksum
+                            checksum = res['data'][0]['checksum']
+                            # print('推送数据的checksum为：' + str(checksum))
+                            check_num = check(bids_p, asks_p)
+                            # print('校验后的checksum为：' + str(check_num))
+                            if check_num == checksum:
+                                if verbose:
+                                    print("校验结果为：True")
+                            else:
+                                if verbose:
+                                    print("校验结果为：False，正在重新订阅……")
+                                # 取消订阅
+                                await unsubscribe_without_login(url, channels)
+                                # 发送订阅
+                                async with websockets.connect(url) as ws:
+                                    sub_param = {"op": "subscribe", "args": channels}
+                                    sub_str = json.dumps(sub_param)
+                                    await ws.send(sub_str)
+                                    if verbose:
+                                        print(f"send: {sub_str}")
 
-                                            # 取消订阅
-                                            await unsubscribe_without_login(url, channels)
-                                            # 发送订阅
-                                            async with websockets.connect(url) as ws:
-                                                sub_param = {"op": "subscribe", "args": channels}
-                                                sub_str = json.dumps(sub_param)
-                                                await ws.send(sub_str)
-                                                print(f"send: {sub_str}")
+                    # Generate the latest result
+                    yield res
         except Exception as e:
-            print("连接断开，正在重连……")
+            if verbose:
+                print("连接断开，正在重连……")
             continue
 
 
 # subscribe channels need login
-async def subscribe(url, api_key, passphrase, secret_key, channels):
+async def subscribe(url, api_key, passphrase, secret_key, channels, verbose=False):
     while True:
         try:
             async with websockets.connect(url) as ws:
@@ -277,38 +264,47 @@ async def subscribe(url, api_key, passphrase, secret_key, channels):
                 timestamp = str(get_local_timestamp())
                 login_str = login_params(timestamp, api_key, passphrase, secret_key)
                 await ws.send(login_str)
-                # print(f"send: {login_str}")
+                if verbose:
+                    print(f"send: {login_str}")
                 res = await ws.recv()
-                print(res)
+                if verbose:
+                    print(res)
 
                 # subscribe
                 sub_param = {"op": "subscribe", "args": channels}
                 sub_str = json.dumps(sub_param)
                 await ws.send(sub_str)
-                print(f"send: {sub_str}")
+                if verbose:
+                    print(f"send: {sub_str}")
 
                 while True:
                     try:
                         res = await asyncio.wait_for(ws.recv(), timeout=25)
-                    except (asyncio.TimeoutError, websockets.exceptions.ConnectionClosed) as e:
+                    except (asyncio.TimeoutError, websockets.ConnectionClosed) as e:
                         try:
                             await ws.send('ping')
                             res = await ws.recv()
-                            print(res)
+                            if verbose:
+                                print(res)
                             continue
                         except Exception as e:
-                            print("连接关闭，正在重连……")
+                            if verbose:
+                                print("连接关闭，正在重连……")
                             break
 
-                    print(get_timestamp() + res)
+                    # if verbose:
+                    #     print(get_timestamp() + res)
+                    # Generate the latest result
+                    yield res
 
         except Exception as e:
-            print("连接断开，正在重连……")
+            if verbose:
+                print("连接断开，正在重连……")
             continue
 
 
 # trade
-async def trade(url, api_key, passphrase, secret_key, trade_param):
+async def trade(url, api_key, passphrase, secret_key, trade_param, verbose=False):
     while True:
         try:
             async with websockets.connect(url) as ws:
@@ -316,68 +312,83 @@ async def trade(url, api_key, passphrase, secret_key, trade_param):
                 timestamp = str(get_local_timestamp())
                 login_str = login_params(timestamp, api_key, passphrase, secret_key)
                 await ws.send(login_str)
-                # print(f"send: {login_str}")
+                if verbose:
+                    print(f"send: {login_str}")
                 res = await ws.recv()
-                print(res)
+                if verbose:
+                    print(res)
 
                 # trade
                 sub_str = json.dumps(trade_param)
                 await ws.send(sub_str)
-                print(f"send: {sub_str}")
+                if verbose:
+                    print(f"send: {sub_str}")
 
                 while True:
                     try:
                         res = await asyncio.wait_for(ws.recv(), timeout=25)
-                    except (asyncio.TimeoutError, websockets.exceptions.ConnectionClosed) as e:
+                    except (asyncio.TimeoutError, websockets.ConnectionClosed) as e:
                         try:
                             await ws.send('ping')
                             res = await ws.recv()
-                            print(res)
+                            if verbose:
+                                print(res)
                             continue
                         except Exception as e:
-                            print("连接关闭，正在重连……")
+                            if verbose:
+                                print("连接关闭，正在重连……")
                             break
 
-                    print(get_timestamp() + res)
+                    # if verbose:
+                    #     print(get_timestamp() + res)
+                    # Generate the latest result
+                    yield res
 
         except Exception as e:
-            print("连接断开，正在重连……")
+            if verbose:
+                print("连接断开，正在重连……")
             continue
 
 
 # unsubscribe channels
-async def unsubscribe(url, api_key, passphrase, secret_key, channels):
+async def unsubscribe(url, api_key, passphrase, secret_key, channels, verbose=False):
     async with websockets.connect(url) as ws:
         # login
         timestamp = str(get_local_timestamp())
         login_str = login_params(timestamp, api_key, passphrase, secret_key)
         await ws.send(login_str)
-        # print(f"send: {login_str}")
+        if verbose:
+            print(f"send: {login_str}")
 
         res = await ws.recv()
-        print(f"recv: {res}")
+        if verbose:
+            print(f"recv: {res}")
 
         # unsubscribe
         sub_param = {"op": "unsubscribe", "args": channels}
         sub_str = json.dumps(sub_param)
         await ws.send(sub_str)
-        print(f"send: {sub_str}")
+        if verbose:
+            print(f"send: {sub_str}")
 
         res = await ws.recv()
-        print(f"recv: {res}")
+        if verbose:
+            print(f"recv: {res}")
 
 
 # unsubscribe channels
-async def unsubscribe_without_login(url, channels):
+async def unsubscribe_without_login(url, channels, verbose=False):
     async with websockets.connect(url) as ws:
         # unsubscribe
         sub_param = {"op": "unsubscribe", "args": channels}
         sub_str = json.dumps(sub_param)
         await ws.send(sub_str)
-        print(f"send: {sub_str}")
+        if verbose:
+            print(f"send: {sub_str}")
 
         res = await ws.recv()
-        print(f"recv: {res}")
+        if verbose:
+            print(f"recv: {res}")
 
 
 api_key = ""
@@ -386,7 +397,7 @@ passphrase = ""
 
 # WebSocket公共频道 public channels
 # 实盘 real trading
-# url = "wss://ws.okex.com:8443/ws/v5/public"
+url = "wss://ws.okex.com:8443/ws/v5/public"
 # 模拟盘 demo trading
 # url = "wss://ws.okex.com:8443/ws/v5/public?brokerId=9999"
 
@@ -408,7 +419,7 @@ passphrase = ""
 # 产品频道  Instruments Channel
 # channels = [{"channel": "instruments", "instType": "FUTURES"}]
 # 行情频道 tickers channel
-# channels = [{"channel": "tickers", "instId": "BTC-USD-210326"}]
+channels = [{"channel": "tickers", "instId": "BTC-USDT"}, {"channel": "tickers", "instId": "BTC-USDT-SWAP"}]
 # 持仓总量频道 Open interest Channel
 # channels = [{"channel": "open-interest", "instId": "BTC-USD-210326"}]
 # K线频道 Candlesticks Channel
@@ -488,15 +499,25 @@ passphrase = ""
 #     ]}
 
 
-loop = asyncio.get_event_loop()
+# 输出频道推送
+async def print_yield(async_generator, *args):
+    # async_generator为异步生成器，当频道推送时迭代
+    async for item in async_generator(*args):
+        print(item)
+        # 其他相应操作如判断、储存
 
-# 公共频道 不需要登录（行情，持仓总量，K线，标记价格，深度，资金费率等）subscribe public channel
-# loop.run_until_complete(subscribe_without_login(url, channels))
 
-# 私有频道 需要登录（账户，持仓，订单等）subscribe private channel
-# loop.run_until_complete(subscribe(url, api_key, passphrase, secret_key, channels))
+if __name__ == '__main__':
+    loop = asyncio.get_event_loop()
 
-# 交易（下单，撤单，改单等）trade
-# loop.run_until_complete(trade(url, api_key, passphrase, secret_key, trade_param))
+    # 公共频道 不需要登录（行情，持仓总量，K线，标记价格，深度，资金费率等）subscribe public channel
+    loop.run_until_complete(print_yield(subscribe_without_login, url, channels, True))
 
-loop.close()
+    # 私有频道 需要登录（账户，持仓，订单等）subscribe private channel
+    loop.run_until_complete(print_yield(subscribe, url, api_key, passphrase, secret_key, channels, True))
+
+    # 交易（下单，撤单，改单等）trade
+    trade_param = {}
+    loop.run_until_complete(print_yield(trade, url, api_key, passphrase, secret_key, trade_param, True))
+
+    loop.close()

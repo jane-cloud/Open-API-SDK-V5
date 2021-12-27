@@ -1,7 +1,6 @@
 import json
-
 import httpx
-
+import asyncio
 from . import consts as c, utils, exceptions
 
 
@@ -14,9 +13,16 @@ class Client(object):
         self.PASSPHRASE = passphrase
         self.use_server_time = use_server_time
         self.flag = flag
-        self.client = httpx.Client(base_url='https://www.okex.com', http2=True)
+        self.client = httpx.AsyncClient(base_url=c.API_URL, http2=True)
 
-    def _request(self, method, request_path, params):
+    def __del__(self):
+        loop = asyncio.get_event_loop()
+        if loop.is_running():
+            loop.create_task(self.client.aclose())
+        else:
+            loop.run_until_complete(self.client.aclose())
+
+    async def _request(self, method, request_path, params):
         if method == c.GET:
             request_path = request_path + utils.parse_params_to_str(params)
         timestamp = utils.get_timestamp()
@@ -27,22 +33,25 @@ class Client(object):
         header = utils.get_header(self.API_KEY, sign, timestamp, self.PASSPHRASE, self.flag)
         response = None
         if method == c.GET:
-            response = self.client.get(request_path, headers=header)
+            response = await self.client.get(request_path, headers=header)
         elif method == c.POST:
-            response = self.client.post(request_path, data=body, headers=header)
+            response = await self.client.post(request_path, data=body, headers=header)
         if not str(response.status_code).startswith('2'):
             raise exceptions.OkexAPIException(response)
-        return response.json()
+        try:
+            return response.json()
+        except ValueError:
+            raise exceptions.OkexRequestException('Invalid Response: %s' % response.text)
 
-    def _request_without_params(self, method, request_path):
-        return self._request(method, request_path, {})
+    async def _request_without_params(self, method, request_path):
+        return await self._request(method, request_path, {})
 
-    def _request_with_params(self, method, request_path, params):
-        return self._request(method, request_path, params)
+    async def _request_with_params(self, method, request_path, params):
+        return await self._request(method, request_path, params)
 
-    def _get_timestamp(self):
+    async def _get_timestamp(self):
         request_path = c.API_URL + c.SERVER_TIMESTAMP_URL
-        response = self.client.get(request_path)
+        response = await self.client.get(request_path)
         if response.status_code == 200:
             return response.json()['ts']
         else:

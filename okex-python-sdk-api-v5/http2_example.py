@@ -11,17 +11,19 @@ import okex_http2.TradingData_api as TradingData
 import okex_http2.subAccount_api as SubAccount
 import okex.Broker_api as Broker
 
+
 async def http2_request(request, parameters):
     while 1:
         begin = time.time()
         if type(parameters) is list:
-            result = request(*parameters)
+            result = await request(*parameters)
         else:
-            result = request(**parameters)
+            result = await request(**parameters)
 
         end = time.time()
         cost = end - begin
         print(f'request_cost:{cost}\nresponse_body:{json.dumps(result)}')
+        await asyncio.sleep(1 - cost)
 
 
 api_key = ""
@@ -86,19 +88,19 @@ if __name__ == '__main__':
     # request = accountAPI.set_greeks
     # parameters = ['BS']
     # 逐仓交易设置 Set Isolated Mode
-    result = accountAPI.set_isolated_mode
+    # result = accountAPI.set_isolated_mode
     # parameters = []
     # 查看账户最大可转余额  Get Maximum Withdrawals
-    request = accountAPI.get_max_withdrawal
+    # request = accountAPI.get_max_withdrawal
     # parameters = []
     # 尊享借币还币 GET Enjoy borrowing and returning money
-    request = accountAPI.borrow_repay
+    # request = accountAPI.borrow_repay
     # parameters = []
     # 获取尊享借币还币历史 Get the privileged currency borrowing and repayment history
-    request = accountAPI.get_borrow_repay_history
+    # request = accountAPI.get_borrow_repay_history
     # parameters = []
     # 获取借币利率与限额 GET Obtain borrowing rate and limit
-    request = accountAPI.get_interest_limits
+    # request = accountAPI.get_interest_limits
     # parameters = []
     # 组合保证金的虚拟持仓保证金计算 POST Simulated Margin
     # result = accountAPI.get_simulated_margin
@@ -339,7 +341,7 @@ if __name__ == '__main__':
     # 撤销策略委托订单  Cancel Algo Order
     # request = tradeAPI.cancel_algo_order
     # parameters = [[{'algoId': '297394002194735104', 'instId': 'BTC-USDT-210409'}]]
-    #撤销高级策略委托订单
+    # 撤销高级策略委托订单
     # result = tradeAPI.cancel_advance_algos
     # parameters = [{"algoId":"198273485","instId":"BTC-USDT"}]
     # 获取未完成策略委托单列表  Get Algo Order List
@@ -406,6 +408,8 @@ if __name__ == '__main__':
     # request = BrokerAPI.rebate_daily
     # parameters = []
 
+    request = marketAPI.get_ticker
+    parameters = ['BTC-USDT']
     loop = asyncio.get_event_loop()
     loop.run_until_complete(http2_request(request, parameters))
-    loop.close()
+    marketAPI.__del__()
