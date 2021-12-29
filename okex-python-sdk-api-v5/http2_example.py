@@ -168,8 +168,8 @@ if __name__ == '__main__':
     # request = marketAPI.get_tickers
     # parameters = ['SPOT']
     # 获取单个产品行情信息  Get Ticker
-    # request = marketAPI.get_ticker
-    # parameters = ['BTC-USDT']
+    request = marketAPI.get_ticker
+    parameters = ['BTC-USDT']
     # 获取指数行情  Get Index Tickers
     # request = marketAPI.get_index_ticker
     # parameters = ['BTC', 'BTC-USD']
