@@ -18,9 +18,15 @@ public class PlaceAlgoOrder {
     private String slOrdPx;
     private String tpTriggerPxType;
     private String slTriggerPxType;
+
     //计划委托
     private String triggerPx;
     private String orderPx;
+
+    //移动止盈止损
+    private String callbackRatio;
+    private String callbackSpread;
+    private String activePx;
 
     //冰山委托
     private String pxVar;
@@ -30,6 +36,33 @@ public class PlaceAlgoOrder {
 
     //时间加权（其他参数跟冰山委托一致）
     private String timeInterval;
+
+    public String getCallbackRatio() {
+        return callbackRatio;
+    }
+
+    public void setCallbackRatio(String callbackRatio) {
+        this.callbackRatio = callbackRatio;
+    }
+
+    public String getCallbackSpread() {
+        return callbackSpread;
+    }
+
+    public void setCallbackSpread(String callbackSpread) {
+        this.callbackSpread = callbackSpread;
+    }
+
+    public String getActivePx() {
+        return activePx;
+    }
+
+    public void setActivePx(String activePx) {
+        this.activePx = activePx;
+    }
+
+
+
 
     public String getPxVar() {
         return pxVar;

@@ -105,7 +105,7 @@ public class WebSocketClient {
                 final String s = byteString;
 //                System.out.println("~~~~~~~~~~~~~~~~~~订阅后推送的数据："+s);
                 //判断是否是深度接口
-                if (s.contains("\"channel\":\"books\",")||s.contains("\"channel\":\"books-l2-tbt\",")) {
+                if (s.contains("\"channel\":\"books\",")||s.contains("\"channel\":\"books-l2-tbt\",")||s.contains("\"channel\":\"books50-l2-tbt\",")) {
                     //是深度接口
                     if (s.contains("snapshot")) {//记录下第一次的全量数据
                         JSONObject rst = JSONObject.fromObject(s);

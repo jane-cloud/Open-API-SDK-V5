@@ -62,7 +62,7 @@ public interface AccountAPI {
 
     //获取最大可用数量 Get Maximum Tradable Size For Instrument
     @GET("/api/v5/account/max-avail-size")
-    Call<JSONObject> getMaximumAvailableTradableAmount(@Query("instId") String instId,@Query("tdMode") String tdMode,@Query("ccy") String ccy,@Query("reduceOnly") String reduceOnly);
+    Call<JSONObject> getMaximumAvailableTradableAmount(@Query("instId") String instId,@Query("tdMode") String tdMode,@Query("ccy") String ccy,@Query("reduceOnly") Boolean reduceOnly,@Query("px") String px);
 
     //调整保证金 Increase/Decrease margin
     @POST("/api/v5/account/position/margin-balance")
@@ -92,6 +92,10 @@ public interface AccountAPI {
     @POST("/api/v5/account/set-greeks")
     Call<JSONObject> setTheDisplayTypeOfGreeks(@Body JSONObject jsonObject);
 
+    //逐仓交易设置 Isolated margin trading settings
+    @POST("/api/v5/account/set-isolated-mode")
+    Call<JSONObject> setIsolatedMode(@Body JSONObject jsonObject);
+
     //查看账户最大可转余额 Get Maximum Withdrawals
     @GET("/api/v5/account/max-withdrawal")
     Call<JSONObject> getMaximumWithdrawals(@Query("ccy") String ccy);
@@ -111,4 +115,9 @@ public interface AccountAPI {
     //获取借币利率与限额  Get borrow interest and limit
     @GET("/api/v5/account/interest-limits")
     Call<JSONObject> getInterestLimits(@Query("type") String type,@Query("ccy") String ccy);
+
+    //组合保证金的虚拟持仓保证金计算 Position builder
+    @POST("/api/v5/account/simulated_margin")
+    Call<JSONObject> simulatedMargin(@Body JSONObject parseObject);
+
 }

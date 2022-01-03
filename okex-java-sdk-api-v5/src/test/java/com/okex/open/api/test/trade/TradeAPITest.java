@@ -295,12 +295,12 @@ public class TradeAPITest extends TradeAPIBaseTest {
     @Test
     public void placeAlgoOrder(){
         PlaceAlgoOrder placeAlgoOrder = new PlaceAlgoOrder();
-        placeAlgoOrder.setInstId("ALGO-USDT-SWAP");
+        placeAlgoOrder.setInstId("DOT-USDT-SWAP");
         placeAlgoOrder.setTdMode("isolated");
 //        placeAlgoOrder.setCcy("");
         placeAlgoOrder.setSide("buy");
-        placeAlgoOrder.setPosSide("long");
-        placeAlgoOrder.setOrdType("trigger");
+//        placeAlgoOrder.setPosSide("long");
+        placeAlgoOrder.setOrdType("conditional");
         placeAlgoOrder.setSz("1");
         placeAlgoOrder.setReduceOnly(false);
 //        placeAlgoOrder.setTgtCcy("");
@@ -317,6 +317,10 @@ public class TradeAPITest extends TradeAPIBaseTest {
         /*placeAlgoOrder.setTriggerPx("1.1");
         placeAlgoOrder.setOrderPx("0.7");
 */
+        //移动止盈止损
+//        placeAlgoOrder.setCallbackRatio("0.1");
+//        placeAlgoOrder.setCallbackSpread("1");
+//        placeAlgoOrder.setActivePx("32");
 
         //冰山委托
         /*placeAlgoOrder.setPxVar("");
