@@ -78,4 +78,6 @@ public interface AccountAPIService {
 
     //组合保证金的虚拟持仓保证金计算 Position builder
     JSONObject simulatedMargin(SimulatedMargin simulatedMargin);
+    //查看账户Greeks
+    JSONObject getAccountGreeks(String ccy);
 }

@@ -8,7 +8,7 @@ OKCoin OKEX V3 Open Api使用说明
  public static void main(String[] args) {
 
         APIConfiguration config = new APIConfiguration();
-        config.setEndpoint("https://www.okex.com/");
+        config.setEndpoint("https://www.okx.com/");
         //secretKey,api注册成功后页面上有
         config.setApiKey("");
         config.setSecretKey("");
@@ -50,7 +50,7 @@ public class TestOKEXOpenApiV3 {
     @Bean
     public APIConfiguration okexApiConfig() {
         APIConfiguration config = new APIConfiguration();
-          config.setEndpoint(" https://www.okex.com/");
+          config.setEndpoint(" https://www.okx.com/");
             //secretKey,api注册成功后页面上有
             config.setApiKey("");
             config.setSecretKey("");

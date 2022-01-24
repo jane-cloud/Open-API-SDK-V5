@@ -5,6 +5,8 @@ public class ClosePositions {
     private String posSide;
     private String mgnMode;
     private String ccy;
+    private String autoCxl;
+
 
     public String getInstId() {
         return instId;
@@ -46,5 +48,13 @@ public class ClosePositions {
                 ", mgnMode='" + mgnMode + '\'' +
                 ", ccy='" + ccy + '\'' +
                 '}';
+    }
+
+    public String getAutoCxl() {
+        return autoCxl;
+    }
+
+    public void setAutoCxl(String autoCxl) {
+        this.autoCxl = autoCxl;
     }
 }

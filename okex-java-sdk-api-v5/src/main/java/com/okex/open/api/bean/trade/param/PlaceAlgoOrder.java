@@ -10,7 +10,7 @@ public class PlaceAlgoOrder {
     private String sz;
     private Boolean reduceOnly;
     private String tgtCcy;
-
+    private String tag;
     //止盈止损
     private String tpTriggerPx;
     private String tpOrdPx;
@@ -22,6 +22,7 @@ public class PlaceAlgoOrder {
     //计划委托
     private String triggerPx;
     private String orderPx;
+    private String triggerPxType;
 
     //移动止盈止损
     private String callbackRatio;
@@ -242,5 +243,21 @@ public class PlaceAlgoOrder {
 
     public void setSlTriggerPxType(String slTriggerPxType) {
         this.slTriggerPxType = slTriggerPxType;
+    }
+
+    public String getTag() {
+        return tag;
+    }
+
+    public void setTag(String tag) {
+        this.tag = tag;
+    }
+
+    public String getTriggerPxType() {
+        return triggerPxType;
+    }
+
+    public void setTriggerPxType(String triggerPxType) {
+        this.triggerPxType = triggerPxType;
     }
 }

@@ -163,4 +163,9 @@ public class AccountAPIServiceImpl implements AccountAPIService {
     public JSONObject simulatedMargin(SimulatedMargin simulatedMargin) {
         return this.client.executeSync(this.api.simulatedMargin(JSONObject.parseObject(JSON.toJSONString(simulatedMargin))));
     }
+    //查看账户Greeks
+    @Override
+    public JSONObject getAccountGreeks(String ccy) {
+        return this.client.executeSync(this.api.getAccountGreeks(ccy));
+    }
 }

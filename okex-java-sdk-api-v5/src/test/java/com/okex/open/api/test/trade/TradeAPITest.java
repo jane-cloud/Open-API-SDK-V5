@@ -213,6 +213,7 @@ public class TradeAPITest extends TradeAPIBaseTest {
         closePositions.setPosSide("long");
         closePositions.setMgnMode("cross");
         closePositions.setCcy("");
+        closePositions.setAutoCxl("false");
         JSONObject result = tradeAPIService.closePositions(closePositions);
 
         toResultString(LOG, "result", result);
@@ -304,6 +305,7 @@ public class TradeAPITest extends TradeAPIBaseTest {
         placeAlgoOrder.setSz("1");
         placeAlgoOrder.setReduceOnly(false);
 //        placeAlgoOrder.setTgtCcy("");
+        //placeAlgoOrder.setTag("");
 
 //        止盈止损 Stop Order
         placeAlgoOrder.setTpTriggerPx("45000");
@@ -316,6 +318,7 @@ public class TradeAPITest extends TradeAPIBaseTest {
 //        计划委托 Trigger Order
         /*placeAlgoOrder.setTriggerPx("1.1");
         placeAlgoOrder.setOrderPx("0.7");
+        placeAlgoOrder.setTriggerPxType("last");
 */
         //移动止盈止损
 //        placeAlgoOrder.setCallbackRatio("0.1");

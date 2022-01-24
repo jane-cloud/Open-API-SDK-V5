@@ -329,4 +329,13 @@ public class AccountAPITests extends  AccountAPIBaseTests {
 
 
     }
+    /**
+     * 查看账户Greeks   Get account greeks
+     * GET /api/v5/account/greeks
+     */
+    @Test
+    public void getAccountGreeks(){
+        JSONObject result = this.accountAPIService.getAccountGreeks("");
+        toResultString(LOG, "result", result);
+    }
 }

@@ -120,4 +120,7 @@ public interface AccountAPI {
     @POST("/api/v5/account/simulated_margin")
     Call<JSONObject> simulatedMargin(@Body JSONObject parseObject);
 
+    //查看账户Greeks
+    @GET("/api/v5/account/greeks")
+    Call<JSONObject> getAccountGreeks(@Query("ccy") String ccy);
 }

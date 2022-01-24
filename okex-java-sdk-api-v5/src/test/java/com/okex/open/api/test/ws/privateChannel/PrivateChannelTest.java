@@ -219,7 +219,32 @@ public class PrivateChannelTest {
         }
     }
 
+    /**
+     * 账户greeks频道
+     * account-greeks
+     * 获取账户资产的greeks信息，首次订阅按照订阅维度推送数据，此外，当增加或者减少币种余额、持仓数量等事件触发时，推送数据以及按照订阅维度定时推送数据
+     */
+    @Test
+    public void accountGreeks() {
+        //添加订阅频道
+        ArrayList<Map> channelList= new ArrayList<>();
+        Map accountGreeks =new HashMap();
 
+        accountGreeks.put("channel","account-greeks");
+        accountGreeks.put("ccy","USDT");
+
+
+        channelList.add(accountGreeks);
+
+        //调用订阅方法
+        WebSocketClient.subscribe(channelList);
+        //为保证测试方法不停，需要让线程延迟
+        try {
+            Thread.sleep(10000000);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
 
     //取消订阅

@@ -9,7 +9,7 @@ public class StatusDataAPIBaseTest  extends BaseTests {
     public APIConfiguration config() {
         APIConfiguration config = new APIConfiguration();
 
-        config.setEndpoint("https://www.okex.com/");
+        config.setEndpoint("https://www.okx.com/");
 
 
         config.setApiKey("");
