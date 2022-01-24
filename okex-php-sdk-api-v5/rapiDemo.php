@@ -43,13 +43,13 @@ $coin = "XMR";
 // 设置持仓模式 Set Position mode
 //$res = $obj -> setPositionMode('long_short_mode');
 // 设置杠杆倍数 Set Leverage
-//$res = $obj -> setLeverage('EGLD-USDT-SWAP','','10','cross','');
+//$res = $obj -> setLeverage('EGLD-USDT-SWAP','','0.01','cross','');
 // 获取最大可交易数量 Get Maximum Tradable Size For Instrument
 //$res = $obj -> getMaxSize('BTC-USDT','cash','','','');
 // 获取最大可用数量 Get Maximum Available Tradable Amount
-//$res = $obj -> getMaxAvailSize('BTC-USDT','','cash','');
+//$res = $obj -> getMaxAvailSize('BTC-USDT','','cash','','');
 // 调整保证金 Increase/Decrease margin
-//$res = $obj -> marginBalance('BTC-USD-210402','long','reduce','0.5','');
+//$res = $obj -> marginBalance('BTC-USD-210402','long','reduce','0.5','','','');
 // 获取杠杆倍数 Get Leverage
 //$res = $obj -> getLeverage('BTC-USD-SWAP','isolated');
 // 获取币币逐仓杠杆最大可借 Get the maximum loan of isolated MARGIN
@@ -72,6 +72,12 @@ $coin = "XMR";
 //$res = $obj -> borrowRepayHistory('','','','');
 //获取借币利率与限额
 //$res = $obj -> interestLimits('','');
+//组合保证金的虚拟持仓保证金计算
+//$res = $obj -> simulatedMargin('','','');
+//逐仓交易设置
+//$res = $obj -> setIsolatedMode('','');
+//逐仓交易设置
+//$res = $obj -> greeks('');
 
 /**
  * 资金 Funding
@@ -159,7 +165,7 @@ $instrumentId = "BTC-USDT-SWAP";
 $currency = "EOS";
 $obj = new PublicDataAPI(Config::$config);
 // 获取交易产品基础信息 Get Instruments
-//$res = $obj->getInstruments('SWAP','','');
+//$res = $obj->getInstruments('SPOT','','');
 
 // 获取交割和行权记录 Get Delivery/Exercise History
 //$res = $obj->getDeliveryExerciseHistory('FUTURES','BTC-USD','','','');
@@ -198,7 +204,7 @@ $obj = new PublicDataAPI(Config::$config);
  */
 $obj = new TradeAPI(Config::$config);
 // 下单 Place Order
-//$res = $obj -> order('BTC-USDT-SWAP','cross','','','','buy','long','limit','1','52000','','');
+//$res = $obj -> order('BTC-USDT','cash','','','','buy','','market',"1000000",'','','');
 //批量下单 Batch Order
 //$res = $obj -> batchOrders([['BTC-USDT-210625','isolated','','b15','','buy','long','limit','1','60000',''],['BTC-USDT-210924','isolated','','b15','','buy','long','limit','1','60000','']]);
 // 撤单 Cancel Order
@@ -206,24 +212,24 @@ $obj = new TradeAPI(Config::$config);
 //批量撤单 Cancel Batch Orders
 //$res = $obj -> cancelBatchOrder([['ETH-USDT-SWAP','307924566148530176',''],['ETH-USDT-SWAP','307924647446724608','']]);
 // 修改订单 Amend Order
-//$res = $obj -> amendOrder('BTC-USD-SWAP','','382261129191497728','','12345678','','57902');
+//$res = $obj -> amendOrder('BTC-USD-211224','','392349685356306432','','12345678','','47000');
 //批量修改订单 Amend Batch Orders
 //$res = $obj -> amendBatchOrder([['BTC-USDT-210625','','300587090669084672','','','3',''],['BTC-USDT-210924','','300587090669084673','','','3','']]);
 // 市价仓位全平 Close Positions
-//$res = $obj -> closePosition('LTC-USDT-210514','long','cross','');
+//$res = $obj -> closePosition('LTC-USDT-210514','long','cross','','');
 // 获取订单信息 Get Order Details
 //$res = $obj -> getOrder('BTC-USDT','385475278759403520','');
 // 获取未成交订单列表 Get Order List
-//$res = $obj -> getOrderPending('SWAP','','BTC-USDT-SWAP','limit','','','','');
+//$res = $obj -> getOrderPending('FUTURES','','','post_only','','','','');
 // 获取历史订单记录（近七天） Get Order History (last 7 days）
-//$res = $obj -> getOrdersHistory('FUTURES','','','','','delivery','','','');
+//$res = $obj -> getOrdersHistory('SWAP','','','','','','','','1');
 // 获取历史订单记录（近三个月） Get Order History (last 3 months)
 //$res = $obj -> getOrdersHistoryArchive('SWAP','','','','','','','','1');
 // 获取成交明细 Get Transaction Details
 //$res = $obj -> getFills('','','','','297793186030845953','','');
 //$res = $obj -> getFillsHistory('','','','','297793186030845953','','');
 // 策略委托下单 Place Algo Order
-//$res = $obj -> orderAlgo('BTC-USDT-SWAP','cross','','sell','long','conditional','1','','','','52000','','52000','','','','','','','','');
+$res = $obj -> orderAlgo('LTC-USD-SWAP','cross','','buy','long','trigger','2','','128.86','-1','','','-1','','','-1','','','','','','','','','','','');
 // 撤销策略委托订单 Cancel Algo Order
 //$res = $obj -> cancelAlgos([['307913429122170880','BTC-USDT-210625'],['307913525461139456','BTC-USDT-210625']]);
 // 获取未完成策略委托单列表 Get Algo Order List
@@ -260,7 +266,7 @@ $obj = new SubaccountApi(Config::$config);
  * Status Status
  */
 $obj = new StatusApi(Config::$config);
-//$res = $obj -> getStatus('completed');
+//$res = $obj -> getStatus('');
 /**
  *交易大数据
  */
@@ -300,4 +306,4 @@ $obj = new BrokerApi(Config::$config);
 //$res = $obj -> subaccountDepositHistory();
 //获取子账户返佣记录
 //$res = $obj -> rebateDaily();
-print_r($res);
+var_dump($res);

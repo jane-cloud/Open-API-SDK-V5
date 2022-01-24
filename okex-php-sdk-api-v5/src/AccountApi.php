@@ -114,19 +114,20 @@ class AccountApi extends Utils
         return $this->request('/api/v5/account/max-size', $params, 'GET');
     }
 
-    public function getMaxAvailSize($instId,$ccy='',$tdMode,$reduceOnly='')
+    public function getMaxAvailSize($instId,$ccy='',$tdMode,$reduceOnly='',$px='')
     {
         $params = [
             'instId' => $instId,
             'ccy' => $ccy,
             'tdMode' => $tdMode,
             'reduceOnly' => $reduceOnly,
+            'px' => $px,
         ];
 
         return $this->request('/api/v5/account/max-avail-size', $params, 'GET');
     }
 
-    public function marginBalance($instId,$posSide,$type,$amt,$loanTrans='')
+    public function marginBalance($instId,$posSide,$type,$amt,$loanTrans='',$ccy='',$auto='')
     {
         $params = [
             'instId' => $instId,
@@ -134,6 +135,8 @@ class AccountApi extends Utils
             'type' => $type,
             'amt' => $amt,
             'loanTrans' => $loanTrans,
+            'ccy' => $ccy,
+            'auto' => $auto,
         ];
 
         return $this->request('/api/v5/account/position/margin-balance', $params, 'POST');
@@ -254,5 +257,39 @@ class AccountApi extends Utils
         ];
 
         return $this->request('/api/v5/account/interest-limits', $params, 'GET');
+    }
+
+    public function simulatedMargin($instType='',$inclRealPos='',$simPos='')
+    {
+        $params = [
+            'instType' => $instType,
+            'inclRealPos' => $inclRealPos,
+            'simPos' => $simPos,
+
+
+        ];
+
+        return $this->request('/api/v5/account/simulated_margin', $params, 'POST');
+    }
+
+    public function setIsolatedMode($type,$isoMode)
+    {
+        $params = [
+            'type' => $type,
+            'isoMode' => $isoMode,
+
+        ];
+
+        return $this->request('/api/v5/account/set-isolated-mode', $params, 'POST');
+    }
+
+    public function greeks($ccy='')
+    {
+        $params = [
+            'ccy' => $ccy,
+
+        ];
+
+        return $this->request('/api/v5/account/greeks', $params, 'GET');
     }
 }

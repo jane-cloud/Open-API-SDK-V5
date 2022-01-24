@@ -102,13 +102,14 @@ class TradeAPI extends Utils
         return $this->request('/api/v5/trade/amend-batch-orders', $params, 'POST');
     }
 
-    public function closePosition($instId,$posSide='',$mgnMode,$ccy='')
+    public function closePosition($instId,$posSide='',$mgnMode,$ccy='',$autoCxl='')
     {
         $params = [
             'instId' => $instId,
             'posSide' => $posSide,
             'mgnMode' => $mgnMode,
             'ccy' => $ccy,
+            'autoCxl' => $autoCxl,
         ];
 
         return $this->request('/api/v5/trade/close-position', $params, 'POST');
@@ -205,7 +206,7 @@ class TradeAPI extends Utils
         return $this->request('/api/v5/trade/fills-history', $params, 'GET');
     }
 
-    public function orderAlgo($instId,$tdMode,$ccy='',$side,$posSide='',$ordType,$sz,$reduceOnly='',$triggerPx='',$orderPx='',$tpTriggerPx='',$tpTriggerPxType='',$tpOrdPx='',$slTriggerPx='',$slTriggerPxType='',$slOrdPx='',$pxVar='',$pxSpread='',$szLimit='',$pxLimit='',$timeInterval='')
+    public function orderAlgo($instId,$tdMode,$ccy='',$side,$posSide='',$ordType,$sz,$reduceOnly='',$triggerPx='',$orderPx='',$tpTriggerPx='',$tpTriggerPxType='',$tpOrdPx='',$slTriggerPx='',$slTriggerPxType='',$slOrdPx='',$pxVar='',$pxSpread='',$szLimit='',$pxLimit='',$timeInterval='',$tag='',$tgtCcy='',$callbackRatio='',$callbackSpread='',$activePx='',$triggerPxType='')
     {
         $params = [
             'instId' => $instId,
@@ -229,6 +230,12 @@ class TradeAPI extends Utils
             'timeInterval' => $timeInterval,
             'reduceOnly' => $reduceOnly,
             'slTriggerPxType' => $slTriggerPxType,
+            'tag' => $tag,
+            'tgtCcy' => $tgtCcy,
+            'callbackRatio' => $callbackRatio,
+            'callbackSpread' => $callbackSpread,
+            'activePx' => $activePx,
+            'triggerPxType' => $triggerPxType,
         ];
 
         return $this->request('/api/v5/trade/order-algo', $params, 'POST');

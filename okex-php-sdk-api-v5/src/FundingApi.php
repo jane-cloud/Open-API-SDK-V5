@@ -132,7 +132,7 @@ class FundingApi extends Utils
             'ccy' => $ccy,
         ];
 
-        return $this->request('/api/v5/asset/piggy-balance',$params, 'GET');
+        return $this->request('/api/v5/asset/saving-balance',$params, 'GET');
     }
 
     public function depositLightning($ccy,$amt,$to='')
