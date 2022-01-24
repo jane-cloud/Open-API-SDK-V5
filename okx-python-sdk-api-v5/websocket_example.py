@@ -17,7 +17,7 @@ def get_timestamp():
 
 
 def get_server_time():
-    url = "https://www.okex.com/api/v5/public/time"
+    url = "https://www.okx.com/api/v5/public/time"
     response = requests.get(url)
     if response.status_code == 200:
         return response.json()['data'][0]['ts']
@@ -386,15 +386,15 @@ passphrase = ""
 
 # WebSocket公共频道 public channels
 # 实盘 real trading
-# url = "wss://ws.okex.com:8443/ws/v5/public"
+# url = "wss://ws.okx.com:8443/ws/v5/public"
 # 模拟盘 demo trading
-# url = "wss://ws.okex.com:8443/ws/v5/public?brokerId=9999"
+# url = "wss://wspap.okx.com:8443/ws/v5/public"
 
 # WebSocket私有频道 private channels
 # 实盘 real trading
-# url = "wss://ws.okex.com:8443/ws/v5/private"
+# url = "wss://ws.okx.com:8443/ws/v5/private"
 # 模拟盘 demo trading
-# url = "wss://ws.okex.com:8443/ws/v5/private?brokerId=9999"
+# url = "wss://wspap.okx.com:8443/ws/v5/private"
 
 '''
 公共频道 public channel
@@ -460,7 +460,8 @@ passphrase = ""
 # channels = [{"channel": "algo-advance", "instType": "SPOT","instId": "BTC-USD-201225","algoId":"12345678"}]
 # 爆仓风险预警推送频道
 # channels = [{"channel": "liquidation-warning", "instType": "SWAP","instType": "","uly":"","instId":""}]
-
+# 账户greeks频道
+# channels = [{"channel": "account-greeks", "ccy": "BTC"}]
 '''
 交易 trade
 '''
@@ -476,15 +477,15 @@ passphrase = ""
 # trade_param = {"id": "1512", "op": "cancel-order", "args": [{"instId": "BTC-USDT", "ordId": "259424589042823169"}]}
 # 批量撤单 Cancel Multiple Orders
 # trade_param = {"id": "1512", "op": "batch-cancel-orders", "args": [
-#         {"instId": "BTC-USDT", "ordId": "259432098826694656"},
-#         {"instId": "BTC-USDT", "ordId": "259432098826694658"}
+#         {"instId": "BTC-USDT", "ordId": ""},
+#         {"instId": "BTC-USDT", "ordId": ""}
 #     ]}
 # 改单 Amend Order
 # trade_param = {"id": "1512", "op": "amend-order", "args": [{"instId": "BTC-USDT", "ordId": "259432767558135808", "newSz": "2"}]}
 # 批量改单 Amend Multiple Orders
 # trade_param = {"id": "1512", "op": "batch-amend-orders", "args": [
-#         {"instId": "BTC-USDT", "ordId": "259435442492289024", "newSz": "2"},
-#         {"instId": "BTC-USDT", "ordId": "259435442496483328", "newSz": "3"}
+#         {"instId": "BTC-USDT", "ordId": "", "newSz": "2"},
+#         {"instId": "BTC-USDT", "ordId": "", "newSz": "3"}
 #     ]}
 
 

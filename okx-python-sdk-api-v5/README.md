@@ -10,7 +10,7 @@
 
 1.1 下载`python SDK`
 
-* 将SDK目录`Clone`或者`Download`到本地，选择使用`okex-python-sdk-api-v5`即可
+* 将SDK目录`Clone`或者`Download`到本地，选择使用`okx-python-sdk-api-v5`即可
 
 1.2 安装所需库
 
@@ -21,7 +21,7 @@ pip install websockets==6.0
 
 #### 第二步：配置个人信息
 
-2.1 如果还未有API，可[点击](https://www.okex.com/account/users/myApi)前往官网进行申请
+2.1 如果还未有API，可[点击](https://www.okx.com/account/users/myApi)前往官网进行申请
 
 2.2 将各项信息在`example.py（RestAPI）`和`websocket_example.py（WebSocketAPI）`中填写
 
@@ -47,10 +47,10 @@ passphrase = ""
 
   ```python
   # WebSocket公共频道
-  url = "wss://ws.okex.com:8443/ws/v5/public?brokerId=9999"
+  url = "wss://ws.okx.com:8443/ws/v5/public?brokerId=9999"
   
   # WebSocket私有频道
-  url = "wss://ws.okex.com:8443/ws/v5/private?brokerId=9999"
+  url = "wss://ws.okx.com:8443/ws/v5/private?brokerId=9999"
   ```
 
   ```python
@@ -66,7 +66,7 @@ passphrase = ""
 
 附言：
 
-* 如果对API尚不了解，建议参考`OKEx`官方[API文档](https://www.okex.com/docs-v5/zh/)
+* 如果对API尚不了解，建议参考`OKx`官方[API文档](https://www.okx.com/docs-v5/zh/)
 
 * 使用RestAPI的用户可以通过设置`example.py`文件下的flag参数来选择接入实盘或者模拟盘
 
@@ -99,7 +99,7 @@ passphrase = ""
 
 1.1 Download python SDK 
 
-- `Clone` or `Download` the SDK directory to your local directory,choose to use `okex-python-sdk-api-v5`
+- `Clone` or `Download` the SDK directory to your local directory,choose to use `okx-python-sdk-api-v5`
 
 1.2 Install the necessary libraries
 
@@ -110,7 +110,7 @@ pip install websockets==6.0
 
 #### Step 2: Configure Personal Information
 
-2.1 If you have no API，[Click here](https://www.okex.com/account/users/myApi) to the official websit to apply for the API
+2.1 If you have no API，[Click here](https://www.okx.com/account/users/myApi) to the official websit to apply for the API
 
 2.2 Fill out all necessary informatiuon in `example.py（RestAPI）`  and `websocket_example.py（WebSocketAPI）`
 
@@ -131,10 +131,10 @@ passphrase = ""
 
 ```python 
 # WebSocket public channel
-url = "wss://ws.okex.com:8443/ws/v5/public?brokerId=9999"
+url = "wss://ws.okx.com:8443/ws/v5/public?brokerId=9999"
 
 # WebSocket private channel
-url = "wss://ws.okex.com:8443/ws/v5/private?brokerId=9999"
+url = "wss://ws.okx.com:8443/ws/v5/private?brokerId=9999"
 ```
 
 ```Python
@@ -150,7 +150,7 @@ loop.run_until_complete(trade(url, api_key, passphrase, seceret_key, trade_param
 
 P.S. 
 
-- If  you know little about API, advise consulting the  offical [API document](https://www.okex.com/docs-v5/en/)
+- If  you know little about API, advise consulting the  offical [API document](https://www.okx.com/docs-v5/en/)
 
 - User with RestAPI can configure parameter `flag` in `example.py` in  to choose to access to real trading or demo trading 
 
