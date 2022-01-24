@@ -1,14 +1,14 @@
 import json
 
-import okex.Account_api as Account
-import okex.Funding_api as Funding
-import okex.Market_api as Market
-import okex.Public_api as Public
-import okex.Trade_api as Trade
-import okex.status_api as Status
-import okex.subAccount_api as SubAccount
-import okex.TradingData_api as TradingData
-import okex.Broker_api as Broker
+import okx.Account_api as Account
+import okx.Funding_api as Funding
+import okx.Market_api as Market
+import okx.Public_api as Public
+import okx.Trade_api as Trade
+import okx.status_api as Status
+import okx.subAccount_api as SubAccount
+import okx.TradingData_api as TradingData
+import okx.Broker_api as Broker
 
 if __name__ == '__main__':
     api_key = ""

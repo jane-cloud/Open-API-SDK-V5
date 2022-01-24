@@ -2,14 +2,14 @@ import asyncio
 import json
 import time
 
-import okex_http2.Account_api as Account
-import okex_http2.Funding_api as Funding
-import okex_http2.Market_api as Market
-import okex_http2.Public_api as Public
-import okex_http2.Trade_api as Trade
-import okex_http2.TradingData_api as TradingData
-import okex_http2.subAccount_api as SubAccount
-import okex.Broker_api as Broker
+import okx_http2.Account_api as Account
+import okx_http2.Funding_api as Funding
+import okx_http2.Market_api as Market
+import okx_http2.Public_api as Public
+import okx_http2.Trade_api as Trade
+import okx_http2.TradingData_api as TradingData
+import okx_http2.subAccount_api as SubAccount
+import okx.Broker_api as Broker
 
 async def http2_request(request, parameters):
     while 1:

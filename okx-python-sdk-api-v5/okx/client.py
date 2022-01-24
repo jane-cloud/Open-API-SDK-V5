@@ -47,7 +47,7 @@ class Client(object):
         # print(response.headers)
 
         if not str(response.status_code).startswith('2'):
-            raise exceptions.OkexAPIException(response)
+            raise exceptions.okxAPIException(response)
 
         return response.json()
 
