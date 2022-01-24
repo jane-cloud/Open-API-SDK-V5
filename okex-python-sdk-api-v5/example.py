@@ -57,19 +57,22 @@ if __name__ == '__main__':
     # 期权希腊字母PA / BS切换  Set Greeks (PA/BS)
     # result = accountAPI.set_greeks('BS')
     # 逐仓交易设置 Set Isolated Mode
-    result = accountAPI.set_isolated_mode()
+    # result = accountAPI.set_isolated_mode()
     # 查看账户最大可转余额  Get Maximum Withdrawals
     # result = accountAPI.get_max_withdrawal('')
     # 查看账户特定风险状态 Get account risk state (Only applicable to Portfolio margin account)
-    result = accountAPI.get_account_risk()
+    # result = accountAPI.get_account_risk()
     # 尊享借币还币 GET Enjoy borrowing and returning money
-    result = accountAPI.borrow_repay('BTC', 'borrow', '10')
+    # result = accountAPI.borrow_repay('BTC', 'borrow', '10')
     # 获取尊享借币还币历史 Get the privileged currency borrowing and repayment history
     # result = accountAPI.get_borrow_repay_history(ccy = '', after = '', before = '', limit = '')
     # 获取借币利率与限额 GET Obtain borrowing rate and limit
     # result = accountAPI.get_interest_limits(type = '2', ccy = 'ETH')
     # 组合保证金的虚拟持仓保证金计算 POST Simulated Margin
     # result = accountAPI.get_simulated_margin()
+    # 查看账户Greeks GET GREEKS
+    result = accountAPI.get_greeks()
+
 
 
     # funding api
@@ -107,9 +110,9 @@ if __name__ == '__main__':
     # 获取余币宝出借明细 GET LENDING HISTORY
     # result = fundingAPI.get_lending_rate(ccy = '')
     # 获取市场借贷信息（公共) GET LENDING RATE HISTORY
-    result = fundingAPI.get_lending_rate_history(ccy = '')
+    # result = fundingAPI.get_lending_rate_history(ccy = '')
     # 获取市场借贷历史（公共）GET LENDING RATE SUMMARY
-    result = fundingAPI.get_lending_rate_summary(ccy = '')
+    # result = fundingAPI.get_lending_rate_summary(ccy = '')
 
     # market api
     marketAPI = Market.MarketAPI(api_key, secret_key, passphrase, False, flag)
@@ -244,9 +247,9 @@ if __name__ == '__main__':
     # 获取成交明细(三个月)  Get Transaction Details History
     # result = tradeAPI.get_fills_history(instType='SPOT')
     # 策略委托下单  Place Algo Order
-    # result = tradeAPI.place_algo_order('BTC-USDT-SWAP', 'isolated', 'buy', ordType='conditional',
-    #                                    sz='100',posSide='long', tpTriggerPx='60000', tpOrdPx='59999', 
-    #                                   tpTriggerPxType = 'last', slTriggerPxType = 'last')
+    result = tradeAPI.place_algo_order('BTC-USDT-SWAP', 'isolated', 'buy', ordType='conditional',
+                                       sz='100',posSide='long', tpTriggerPx='60000', tpOrdPx='59999',
+                                      tpTriggerPxType = 'last', slTriggerPxType = 'last')
     # 撤销策略委托订单  Cancel Algo Order
     # result = tradeAPI.cancel_algo_order([{'algoId': '297394002194735104', 'instId': 'BTC-USDT-210409'}])
     # 撤销高级策略委托订单

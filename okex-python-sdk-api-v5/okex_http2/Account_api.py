@@ -128,3 +128,8 @@ class AccountAPI(Client):
     def get_simulated_margin(self, instType	='',inclRealPos='',instId='',pos=''):
         params = {'instType': instType, 'inclRealPos': inclRealPos,'instId': instId,'pos': pos,}
         return self._request_with_params(GET, SIMULATED_MARGIN, params)
+
+    # Get  Greeks
+    def get_greeks(self, ccy=''):
+        params = {'ccy': ccy,}
+        return self._request_with_params(GET, GREEKS, params)

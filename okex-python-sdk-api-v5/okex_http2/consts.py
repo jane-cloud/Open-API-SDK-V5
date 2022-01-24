@@ -42,6 +42,7 @@ BORROW_REPAY = '/api/v5/account/borrow-repay'
 BORROW_REPAY_HISTORY = '/api/v5/account/borrow-repay-history'
 INTEREST_LIMITS = '/api/v5/account/interest-limits'
 SIMULATED_MARGIN = '/api/v5/account/simulated_margin'
+GREEKS = '/api/v5/account/greeks'
 
 # funding
 DEPOSIT_ADDRESS = '/api/v5/asset/deposit-address'

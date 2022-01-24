@@ -86,23 +86,25 @@ if __name__ == '__main__':
     # request = accountAPI.set_greeks
     # parameters = ['BS']
     # 逐仓交易设置 Set Isolated Mode
-    result = accountAPI.set_isolated_mode
+    # result = accountAPI.set_isolated_mode
     # parameters = []
     # 查看账户最大可转余额  Get Maximum Withdrawals
-    request = accountAPI.get_max_withdrawal
+    # request = accountAPI.get_max_withdrawal
     # parameters = []
     # 尊享借币还币 GET Enjoy borrowing and returning money
-    request = accountAPI.borrow_repay
+    # request = accountAPI.borrow_repay
     # parameters = []
     # 获取尊享借币还币历史 Get the privileged currency borrowing and repayment history
-    request = accountAPI.get_borrow_repay_history
+    # request = accountAPI.get_borrow_repay_history
     # parameters = []
     # 获取借币利率与限额 GET Obtain borrowing rate and limit
-    request = accountAPI.get_interest_limits
+    # request = accountAPI.get_interest_limits
     # parameters = []
     # 组合保证金的虚拟持仓保证金计算 POST Simulated Margin
     # result = accountAPI.get_simulated_margin
     # parameters = []
+    # 查看账户Greeks GET GREEKS
+    result = accountAPI.get_greeks()
 
     # funding api
     fundingAPI = Funding.FundingAPI(api_key, secret_key, passphrase, False, flag)
