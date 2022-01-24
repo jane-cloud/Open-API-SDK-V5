@@ -14,7 +14,7 @@ class Client(object):
         self.PASSPHRASE = passphrase
         self.use_server_time = use_server_time
         self.flag = flag
-        self.client = httpx.Client(base_url='https://www.okex.com', http2=True)
+        self.client = httpx.Client(base_url='https://www.okx.com', http2=True)
 
     def _request(self, method, request_path, params):
         if method == c.GET:
@@ -31,7 +31,7 @@ class Client(object):
         elif method == c.POST:
             response = self.client.post(request_path, data=body, headers=header)
         if not str(response.status_code).startswith('2'):
-            raise exceptions.OkexAPIException(response)
+            raise exceptions.okxAPIException(response)
         return response.json()
 
     def _request_without_params(self, method, request_path):

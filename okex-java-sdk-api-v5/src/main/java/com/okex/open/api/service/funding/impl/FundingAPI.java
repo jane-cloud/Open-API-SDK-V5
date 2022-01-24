@@ -44,7 +44,7 @@ interface FundingAPI {
     Call<JSONObject> piggyBankPurchaseRedemption(@Body JSONObject jsonObject);
 
     //获取余币宝余额
-    @GET("/api/v5/asset/piggy-balance")
+    @GET("/api/v5/asset/saving-balance")
     Call<JSONObject> piggyBalance(@Query("ccy") String ccy);
 
     //闪电网络充币 Deposit Lightning

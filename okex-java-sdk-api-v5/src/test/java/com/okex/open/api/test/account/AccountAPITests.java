@@ -9,6 +9,9 @@ import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class AccountAPITests extends  AccountAPIBaseTests {
 
     private static final Logger LOG = LoggerFactory.getLogger(AccountAPITests.class);
@@ -136,7 +139,7 @@ public class AccountAPITests extends  AccountAPIBaseTests {
      */
     @Test
     public void getMaximumAvailableTradableAmount(){
-        JSONObject result = this.accountAPIService.getMaximumAvailableTradableAmount("BTC-USDT-211231","isolated","","");
+        JSONObject result = this.accountAPIService.getMaximumAvailableTradableAmount("BTC-USDT-SWAP","isolated","",false,"");
         toResultString(LOG, "result", result);
     }
 
@@ -149,11 +152,13 @@ public class AccountAPITests extends  AccountAPIBaseTests {
     public void increaseDecreaseMargin(){
         IncreaseDecreaseMargin increaseDecreaseMargin = new IncreaseDecreaseMargin();
 
-        increaseDecreaseMargin.setInstId("BTC-USDT-211231");
+        increaseDecreaseMargin.setInstId("BTC-USDT-SWAP");
         increaseDecreaseMargin.setPosSide("long");
         increaseDecreaseMargin.setType("add");
         increaseDecreaseMargin.setAmt("100");
         increaseDecreaseMargin.setLoanTrans(false);
+        increaseDecreaseMargin.setCcy("");
+        increaseDecreaseMargin.setAuto(false);
 
         JSONObject result = this.accountAPIService.increaseDecreaseMargin(increaseDecreaseMargin);
         toResultString(LOG, "result", result);
@@ -215,8 +220,6 @@ public class AccountAPITests extends  AccountAPIBaseTests {
         toResultString(LOG, "result", result);
     }
 
-
-
     /**
      * 期权希腊字母PA/BS切换  Set Greeks (PA/BS)
      * POST /api/v5/account/set-greeks
@@ -228,6 +231,20 @@ public class AccountAPITests extends  AccountAPIBaseTests {
         JSONObject result = this.accountAPIService.setTheDisplayTypeOfGreeks(setTheDisplayTypeOfGreeks);
         toResultString(LOG, "result", result);
     }
+
+    /**
+     * 逐仓交易设置  Isolated margin trading settings
+     * POST /api/v5/account/set-isolated-mode
+     */
+    @Test
+    public void setIsolatedMode(){
+        SetIsolatedMode setIsolatedMode = new SetIsolatedMode();
+        setIsolatedMode.setIsoMode("automatic");
+        setIsolatedMode.setType("MARGIN");
+        JSONObject result = this.accountAPIService.setIsolatedMode(setIsolatedMode);
+        toResultString(LOG, "result", result);
+    }
+
 
     /**
      * 查看账户最大可转余额  Get Maximum Withdrawals
@@ -278,6 +295,47 @@ public class AccountAPITests extends  AccountAPIBaseTests {
     @Test
     public void getInterestLimits(){
         JSONObject result = this.accountAPIService.getInterestLimits("1","BTC");
+        toResultString(LOG, "result", result);
+    }
+
+    /**
+     * 组合保证金的虚拟持仓保证金计算  Position builder
+     * POST /api/v5/account/simulated_margin
+     */
+    @Test
+    public void simulatedMargin(){
+        SimulatedMargin simulatedMargin = new SimulatedMargin();
+        simulatedMargin.setInstType("SWAP");
+        simulatedMargin.setInclRealPos(false);
+
+
+        List<InstIdPos> list = new ArrayList<>();
+
+        InstIdPos instIdPos1 = new InstIdPos();
+        instIdPos1.setInstId("DOT-USDT-SWAP");
+        instIdPos1.setPos("1");
+
+        InstIdPos instIdPos2 = new InstIdPos();
+        instIdPos2.setInstId("DOT-USD-SWAP");
+        instIdPos2.setPos("1");
+
+        list.add(instIdPos1);
+        list.add(instIdPos2);
+
+        simulatedMargin.setSimPos(list);
+
+        JSONObject result = this.accountAPIService.simulatedMargin(simulatedMargin);
+        toResultString(LOG, "result", result);
+
+
+    }
+    /**
+     * 查看账户Greeks   Get account greeks
+     * GET /api/v5/account/greeks
+     */
+    @Test
+    public void getAccountGreeks(){
+        JSONObject result = this.accountAPIService.getAccountGreeks("");
         toResultString(LOG, "result", result);
     }
 }

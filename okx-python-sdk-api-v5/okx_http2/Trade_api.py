@@ -12,7 +12,7 @@ class TradeAPI(Client):
                     reduceOnly='', tgtCcy=''):
         params = {'instId': instId, 'tdMode': tdMode, 'side': side, 'ordType': ordType, 'sz': sz, 'ccy': ccy,
                   'clOrdId': clOrdId, 'tag': tag, 'posSide': posSide, 'px': px, 'reduceOnly': reduceOnly,
-                  'tgtCcy': tgtCcy}
+                  'tgtCcy': 'tgtCcy'}
         return self._request_with_params(POST, PLACR_ORDER, params)
 
     # Place Multiple Orders
@@ -40,8 +40,8 @@ class TradeAPI(Client):
         return self._request_with_params(POST, AMEND_BATCH_ORDER, orders_data)
 
     # Close Positions
-    def close_positions(self, instId, mgnMode, posSide='', ccy=''):
-        params = {'instId': instId, 'mgnMode': mgnMode, 'posSide': posSide, 'ccy': ccy}
+    def close_positions(self, instId, mgnMode, posSide='', ccy='',autoCxl=''):
+        params = {'instId': instId, 'mgnMode': mgnMode, 'posSide': posSide, 'ccy': ccy,'autoCxl':autoCxl}
         return self._request_with_params(POST, CLOSE_POSITION, params)
 
     # Get Order Details
@@ -79,22 +79,26 @@ class TradeAPI(Client):
                          tpOrdPx='', slTriggerPx='', slOrdPx='',
                          triggerPx='', orderPx='', tgtCcy='', pxVar='',
                          pxSpread='',
-                         szLimit='', pxLimit='', timeInterval='', tpTriggerPxType='', slTriggerPxType=''):
+                         szLimit='', pxLimit='', timeInterval='', tpTriggerPxType='', slTriggerPxType='',
+                         callbackRatio='',callbackSpread='',activePx='',tag='',triggerPxType=''):
         params = {'instId': instId, 'tdMode': tdMode, 'side': side, 'ordType': ordType, 'sz': sz, 'ccy': ccy,
                   'posSide': posSide, 'reduceOnly': reduceOnly, 'tpTriggerPx': tpTriggerPx, 'tpOrdPx': tpOrdPx,
                   'slTriggerPx': slTriggerPx, 'slOrdPx': slOrdPx, 'triggerPx': triggerPx, 'orderPx': orderPx,
                   'tgtCcy': tgtCcy, 'pxVar': pxVar, 'szLimit': szLimit, 'pxLimit': pxLimit,
                   'timeInterval': timeInterval,
                   'pxSpread': pxSpread, 'tpTriggerPxType': tpTriggerPxType, 'slTriggerPxType': slTriggerPxType,
-                  'tpTriggerPxType' : tpTriggerPxType, 'slTriggerPxType':slTriggerPxType}
+                  'callbackRatio' : callbackRatio, 'callbackSpread':callbackSpread,'activePx':activePx,
+                  'tag':tag,'triggerPxType':triggerPxType,}
         return self._request_with_params(POST, PLACE_ALGO_ORDER, params)
+
+
 
     # Cancel Algo Order
     def cancel_algo_order(self, params):
         return self._request_with_params(POST, CANCEL_ALGOS, params)
 
     # Cancel Advance Algos
-    def cancel_advance_algos(self, params):
+    def cancel_advance_algos(self,params):
         return self._request_with_params(POST, Cancel_Advance_Algos, params)
 
     # Get Algo Order List

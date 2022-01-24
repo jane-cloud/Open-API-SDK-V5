@@ -2,14 +2,14 @@ import asyncio
 import json
 import time
 
-import okex_http2.Account_api as Account
-import okex_http2.Funding_api as Funding
-import okex_http2.Market_api as Market
-import okex_http2.Public_api as Public
-import okex_http2.Trade_api as Trade
-import okex_http2.TradingData_api as TradingData
-import okex_http2.subAccount_api as SubAccount
-import okex.Broker_api as Broker
+import okx_http2.Account_api as Account
+import okx_http2.Funding_api as Funding
+import okx_http2.Market_api as Market
+import okx_http2.Public_api as Public
+import okx_http2.Trade_api as Trade
+import okx_http2.TradingData_api as TradingData
+import okx_http2.subAccount_api as SubAccount
+import okx.Broker_api as Broker
 
 async def http2_request(request, parameters):
     while 1:
@@ -85,6 +85,9 @@ if __name__ == '__main__':
     # 期权希腊字母PA / BS切换  Set Greeks (PA/BS)
     # request = accountAPI.set_greeks
     # parameters = ['BS']
+    # 逐仓交易设置 Set Isolated Mode
+    # result = accountAPI.set_isolated_mode
+    # parameters = []
     # 查看账户最大可转余额  Get Maximum Withdrawals
     # request = accountAPI.get_max_withdrawal
     # parameters = []
@@ -97,6 +100,11 @@ if __name__ == '__main__':
     # 获取借币利率与限额 GET Obtain borrowing rate and limit
     # request = accountAPI.get_interest_limits
     # parameters = []
+    # 组合保证金的虚拟持仓保证金计算 POST Simulated Margin
+    # result = accountAPI.get_simulated_margin
+    # parameters = []
+    # 查看账户Greeks GET GREEKS
+    result = accountAPI.get_greeks()
 
     # funding api
     fundingAPI = Funding.FundingAPI(api_key, secret_key, passphrase, False, flag)
@@ -107,8 +115,11 @@ if __name__ == '__main__':
     # request = fundingAPI.get_balances
     # parameters = ['BTC']
     # 资金划转  Funds Transfer
-    request = fundingAPI.funds_transfer
+    # request = fundingAPI.funds_transfer
     # parameters = {'ccy': '', 'amt': '', 'type': '', 'from': '', 'to': '', 'subAcct': ''}
+    # 获取资金划转状态 Transfer State
+    # result = fundingAPI.transfer_state
+    # parameters = {}
     # 提币  Withdrawal
     # request = fundingAPI.coin_withdraw
     # parameters = ['usdt', '2', '3', '', '', '0']

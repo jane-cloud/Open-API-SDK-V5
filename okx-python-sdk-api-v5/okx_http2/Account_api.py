@@ -99,7 +99,37 @@ class AccountAPI(Client):
         params = {'greeksType': greeksType}
         return self._request_with_params(POST, SET_GREEKS, params)
 
+    # Set Isolated Mode
+    def set_isolated_mode(self, isoMode,type):
+        params = {'isoMode': isoMode, 'type':type}
+        return self._request_with_params(POST, ISOLATED_MODE, params)
+
     # Get Maximum Withdrawals
     def get_max_withdrawal(self, ccy=''):
         params = {'ccy': ccy}
         return self._request_with_params(GET, MAX_WITHDRAWAL, params)
+
+    # Get borrow repay
+    def borrow_repay(self, ccy='', side='', amt=''):
+        params = {'ccy': ccy, 'side': side, 'amt': amt}
+        return self._request_with_params(POST, BORROW_REPAY, params)
+
+    # Get borrow repay history
+    def get_borrow_repay_history(self, ccy='', after='', before='', limit=''):
+        params = {'ccy': ccy, 'after': after, 'before': before, 'limit':limit}
+        return self._request_with_params(GET, BORROW_REPAY_HISTORY, params)
+
+    # Get Obtain borrowing rate and limit
+    def get_interest_limits(self, type='',ccy=''):
+        params = {'type': type, 'ccy': ccy}
+        return self._request_with_params(GET, INTEREST_LIMITS, params)
+
+    # Get Simulated Margin
+    def get_simulated_margin(self, instType	='',inclRealPos='',instId='',pos=''):
+        params = {'instType': instType, 'inclRealPos': inclRealPos,'instId': instId,'pos': pos,}
+        return self._request_with_params(GET, SIMULATED_MARGIN, params)
+
+    # Get  Greeks
+    def get_greeks(self, ccy=''):
+        params = {'ccy': ccy,}
+        return self._request_with_params(GET, GREEKS, params)

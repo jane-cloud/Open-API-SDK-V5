@@ -9,7 +9,7 @@ public class PublicDataAPIBaseTest extends BaseTests {
         APIConfiguration config = new APIConfiguration();
 
 
-        config.setEndpoint("https://www.okex.com/");
+        config.setEndpoint("https://www.okx.com/");
 
         config.setApiKey("");
         config.setSecretKey("");

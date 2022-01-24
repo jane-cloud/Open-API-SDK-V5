@@ -75,8 +75,8 @@ public class AccountAPIServiceImpl implements AccountAPIService {
 
     //获取最大可用数量 Get Maximum Available Tradable Amount
     @Override
-    public JSONObject getMaximumAvailableTradableAmount(String instId, String tdMode, String ccy, String reduceOnly) {
-        return this.client.executeSync(this.api.getMaximumAvailableTradableAmount(instId,tdMode,ccy,reduceOnly));
+    public JSONObject getMaximumAvailableTradableAmount(String instId, String tdMode, String ccy, Boolean reduceOnly,String px) {
+        return this.client.executeSync(this.api.getMaximumAvailableTradableAmount(instId,tdMode,ccy,reduceOnly,px));
     }
 
     //调整保证金 Increase/Decrease margin
@@ -122,6 +122,12 @@ public class AccountAPIServiceImpl implements AccountAPIService {
         return this.client.executeSync(this.api.setTheDisplayTypeOfGreeks(JSONObject.parseObject(JSON.toJSONString(setTheDisplayTypeOfGreeks))));
     }
 
+    //逐仓交易设置 Isolated margin trading settings
+    @Override
+    public JSONObject setIsolatedMode(SetIsolatedMode setIsolatedMode) {
+        return this.client.executeSync(this.api.setIsolatedMode(JSONObject.parseObject(JSON.toJSONString(setIsolatedMode))));
+    }
+
     //查看账户最大可转余额 Get Maximum Withdrawals
     @Override
     public JSONObject getMaximumWithdrawals(String ccy) {
@@ -150,5 +156,16 @@ public class AccountAPIServiceImpl implements AccountAPIService {
     @Override
     public JSONObject getInterestLimits(String type, String ccy) {
         return this.client.executeSync(this.api.getInterestLimits(type,ccy));
+    }
+
+    //组合保证金的虚拟持仓保证金计算 Position builder
+    @Override
+    public JSONObject simulatedMargin(SimulatedMargin simulatedMargin) {
+        return this.client.executeSync(this.api.simulatedMargin(JSONObject.parseObject(JSON.toJSONString(simulatedMargin))));
+    }
+    //查看账户Greeks
+    @Override
+    public JSONObject getAccountGreeks(String ccy) {
+        return this.client.executeSync(this.api.getAccountGreeks(ccy));
     }
 }

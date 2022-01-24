@@ -1,14 +1,14 @@
 import json
 
-import okex.Account_api as Account
-import okex.Funding_api as Funding
-import okex.Market_api as Market
-import okex.Public_api as Public
-import okex.Trade_api as Trade
-import okex.status_api as Status
-import okex.subAccount_api as SubAccount
-import okex.TradingData_api as TradingData
-import okex.Broker_api as Broker
+import okx.Account_api as Account
+import okx.Funding_api as Funding
+import okx.Market_api as Market
+import okx.Public_api as Public
+import okx.Trade_api as Trade
+import okx.status_api as Status
+import okx.subAccount_api as SubAccount
+import okx.TradingData_api as TradingData
+import okx.Broker_api as Broker
 
 if __name__ == '__main__':
     api_key = ""
@@ -56,6 +56,8 @@ if __name__ == '__main__':
     # result = accountAPI.get_interest_rate()
     # 期权希腊字母PA / BS切换  Set Greeks (PA/BS)
     # result = accountAPI.set_greeks('BS')
+    # 逐仓交易设置 Set Isolated Mode
+    # result = accountAPI.set_isolated_mode()
     # 查看账户最大可转余额  Get Maximum Withdrawals
     # result = accountAPI.get_max_withdrawal('')
     # 查看账户特定风险状态 Get account risk state (Only applicable to Portfolio margin account)
@@ -66,6 +68,12 @@ if __name__ == '__main__':
     # result = accountAPI.get_borrow_repay_history(ccy = '', after = '', before = '', limit = '')
     # 获取借币利率与限额 GET Obtain borrowing rate and limit
     # result = accountAPI.get_interest_limits(type = '2', ccy = 'ETH')
+    # 组合保证金的虚拟持仓保证金计算 POST Simulated Margin
+    # result = accountAPI.get_simulated_margin()
+    # 查看账户Greeks GET GREEKS
+    result = accountAPI.get_greeks()
+
+
 
     # funding api
     fundingAPI = Funding.FundingAPI(api_key, secret_key, passphrase, False, flag)
@@ -75,6 +83,8 @@ if __name__ == '__main__':
     # result = fundingAPI.get_balances('BTC')
     # 资金划转  Funds Transfer
     # result = fundingAPI.funds_transfer(ccy='', amt='', type='1', froms="", to="",subAcct='')
+    # 获取资金划转状态 Transfer State
+    # result = fundingAPI.transfer_state(transId='', type='')
     # 提币  Withdrawal
     # result = fundingAPI.coin_withdraw('usdt', '2', '3', '', '', '0')
     # 获取充值记录  Get Deposit History
@@ -100,9 +110,9 @@ if __name__ == '__main__':
     # 获取余币宝出借明细 GET LENDING HISTORY
     # result = fundingAPI.get_lending_rate(ccy = '')
     # 获取市场借贷信息（公共) GET LENDING RATE HISTORY
-    result = fundingAPI.get_lending_rate_history(ccy = '')
+    # result = fundingAPI.get_lending_rate_history(ccy = '')
     # 获取市场借贷历史（公共）GET LENDING RATE SUMMARY
-    result = fundingAPI.get_lending_rate_summary(ccy = '')
+    # result = fundingAPI.get_lending_rate_summary(ccy = '')
 
     # market api
     marketAPI = Market.MarketAPI(api_key, secret_key, passphrase, False, flag)
@@ -237,9 +247,9 @@ if __name__ == '__main__':
     # 获取成交明细(三个月)  Get Transaction Details History
     # result = tradeAPI.get_fills_history(instType='SPOT')
     # 策略委托下单  Place Algo Order
-    # result = tradeAPI.place_algo_order('BTC-USDT-SWAP', 'isolated', 'buy', ordType='conditional',
-    #                                    sz='100',posSide='long', tpTriggerPx='60000', tpOrdPx='59999', 
-    #                                   tpTriggerPxType = 'last', slTriggerPxType = 'last')
+    result = tradeAPI.place_algo_order('BTC-USDT-SWAP', 'isolated', 'buy', ordType='conditional',
+                                       sz='100',posSide='long', tpTriggerPx='60000', tpOrdPx='59999',
+                                      tpTriggerPxType = 'last', slTriggerPxType = 'last')
     # 撤销策略委托订单  Cancel Algo Order
     # result = tradeAPI.cancel_algo_order([{'algoId': '297394002194735104', 'instId': 'BTC-USDT-210409'}])
     # 撤销高级策略委托订单

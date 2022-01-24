@@ -1,7 +1,7 @@
 # coding=utf-8
 
 
-class OkexAPIException(Exception):
+class OkxAPIException(Exception):
 
     def __init__(self, response):
         print(response.text + ', ' + str(response.status_code))
@@ -9,7 +9,7 @@ class OkexAPIException(Exception):
         try:
             json_res = response.json()
         except ValueError:
-            self.message = 'Invalid JSON error message from Okex: {}'.format(response.text)
+            self.message = 'Invalid JSON error message from Okx: {}'.format(response.text)
         else:
             if "code" in json_res.keys() and "msg" in json_res.keys():
                 self.code = json_res['code']
@@ -26,19 +26,19 @@ class OkexAPIException(Exception):
         return 'API Request Error(code=%s): %s' % (self.code, self.message)
 
 
-class OkexRequestException(Exception):
+class OkxRequestException(Exception):
 
     def __init__(self, message):
         self.message = message
 
     def __str__(self):
-        return 'OkexRequestException: %s' % self.message
+        return 'OkxRequestException: %s' % self.message
 
 
-class OkexParamsException(Exception):
+class OkxParamsException(Exception):
 
     def __init__(self, message):
         self.message = message
 
     def __str__(self):
-        return 'OkexParamsException: %s' % self.message
+        return 'OkxParamsException: %s' % self.message

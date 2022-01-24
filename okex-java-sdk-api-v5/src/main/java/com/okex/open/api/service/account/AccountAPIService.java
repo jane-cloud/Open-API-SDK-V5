@@ -35,7 +35,7 @@ public interface AccountAPIService {
     JSONObject getMaximumTradableSizeForInstrument(String instId,String tdMode,String ccy,String px,String leverage);
 
     //获取最大可用数量 Get Maximum Tradable Size For Instrument
-    JSONObject getMaximumAvailableTradableAmount(String instId,String tdMode,String ccy,String reduceOnly);
+    JSONObject getMaximumAvailableTradableAmount(String instId,String tdMode,String ccy,Boolean reduceOnly,String px);
 
     //调整保证金 Increase/Decrease margin
      JSONObject increaseDecreaseMargin(IncreaseDecreaseMargin increaseDecreaseMargin);
@@ -54,8 +54,12 @@ public interface AccountAPIService {
 
     //获取用户当前杠杆借币利率 Get interest rate
     JSONObject getInterestRate(String ccy);
+
     //期权希腊字母PA/BS切换 Set the display type of Greeks
     JSONObject setTheDisplayTypeOfGreeks(SetTheDisplayTypeOfGreeks setTheDisplayTypeOfGreeks);
+
+    //逐仓交易设置 Isolated margin trading settings
+    JSONObject setIsolatedMode(SetIsolatedMode setIsolatedMode);
 
     //查看账户最大可转余额 Get Maximum Withdrawals
     JSONObject getMaximumWithdrawals(String ccy);
@@ -71,4 +75,9 @@ public interface AccountAPIService {
 
     //获取借币利率与限额  Get borrow interest and limit
     JSONObject getInterestLimits(String type, String ccy);
+
+    //组合保证金的虚拟持仓保证金计算 Position builder
+    JSONObject simulatedMargin(SimulatedMargin simulatedMargin);
+    //查看账户Greeks
+    JSONObject getAccountGreeks(String ccy);
 }

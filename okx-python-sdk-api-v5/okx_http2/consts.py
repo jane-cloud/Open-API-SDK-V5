@@ -1,5 +1,5 @@
 # http header
-API_URL = 'https://www.okex.com'
+API_URL = 'https://www.okx.com'
 
 CONTENT_TYPE = 'Content-Type'
 OK_ACCESS_KEY = 'OK-ACCESS-KEY'
@@ -36,15 +36,18 @@ FEE_RATES = '/api/v5/account/trade-fee'
 INTEREST_ACCRUED = '/api/v5/account/interest-accrued'
 INTEREST_RATE = '/api/v5/account/interest-rate'
 SET_GREEKS = '/api/v5/account/set-greeks'
+ISOLATED_MODE = '/api/v5/account/set-isolated-mode'
 MAX_WITHDRAWAL = '/api/v5/account/max-withdrawal'
-ACCOUNT_RISK = '/api/v5/account/risk-state'
 BORROW_REPAY = '/api/v5/account/borrow-repay'
 BORROW_REPAY_HISTORY = '/api/v5/account/borrow-repay-history'
 INTEREST_LIMITS = '/api/v5/account/interest-limits'
+SIMULATED_MARGIN = '/api/v5/account/simulated_margin'
+GREEKS = '/api/v5/account/greeks'
 
 # funding
 DEPOSIT_ADDRESS = '/api/v5/asset/deposit-address'
 GET_BALANCES = '/api/v5/asset/balances'
+TRANSFER_STATE = '/api/v5/asset/transfer-state'
 FUNDS_TRANSFER = '/api/v5/asset/transfer'
 WITHDRAWAL_COIN = '/api/v5/asset/withdrawal'
 DEPOSIT_HISTORIY = '/api/v5/asset/deposit-history'
@@ -55,7 +58,6 @@ BILLS_INFO = '/api/v5/asset/bills'
 PIGGY_BALANCE = '/api/v5/asset/piggy-balance'
 DEPOSIT_LIGHTNING = '/api/v5/asset/deposit-lightning'
 WITHDRAWAL_LIGHTNING = '/api/v5/asset/withdrawal-lightning'
-ASSET_VALUATION = '/api/v5/asset/asset-valuation'
 SET_LENDING_RATE = '/api/v5/asset/set-lending-rate'
 LENDING_HISTORY = '/api/v5/asset/lending-history'
 LENDING_RATE_HISTORY = '/api/v5/asset/lending-rate-history'
@@ -73,8 +75,6 @@ MARKPRICE_CANDLES = '/api/v5/market/mark-price-candles'
 MARKET_TRADES = '/api/v5/market/trades'
 VOLUMNE = '/api/v5/market/platform-24-volume'
 ORACLE = '/api/v5/market/oracle'
-Components = '/api/v5/market/index-components'
-EXCHANGE_RATE = '/api/v5/market/exchange-rate'
 
 # Public Data
 INSTRUMENT_INFO = '/api/v5/public/instruments'
@@ -92,7 +92,6 @@ MARK_PRICE = '/api/v5/public/mark-price'
 TIER = '/api/v5/public/position-tiers'
 INTEREST_LOAN = '/api/v5/public/interest-rate-loan-quota'
 UNDERLYING = '/api/v5/public/underlying'
-VIP_INTEREST_RATE_LOAN_QUOTA = '/api/v5/public/vip-interest-rate-loan-quota'
 
 
 # TRADING DATA
@@ -123,7 +122,6 @@ ORDER_FILLS = '/api/v5/trade/fills'
 ORDERS_FILLS_HISTORY = '/api/v5/trade/fills-history'
 PLACE_ALGO_ORDER = '/api/v5/trade/order-algo'
 CANCEL_ALGOS = '/api/v5/trade/cancel-algos'
-Cancel_Advance_Algos = '/api/v5/trade/cancel-advance-algos'
 ORDERS_ALGO_OENDING = '/api/v5/trade/orders-algo-pending'
 ORDERS_ALGO_HISTORY = '/api/v5/trade/orders-algo-history'
 
@@ -136,18 +134,6 @@ CREATE = '/api/v5/users/subaccount/apikey'
 WATCH = '/api/v5/users/subaccount/apikey'
 VIEW_LIST = '/api/v5/users/subaccount/list'
 SUBACCOUNT_TRANSFER = '/api/v5/asset/subaccount/transfer'
-
-# Broker
-BROKER_INFO = '/api/v5/broker/nd/info'
-CREATE_SUBACCOUNT = '/api/v5/broker/nd/create-subaccount'
-DELETE_SUBACCOUNT = '/api/v5/broker/nd/delete-subaccount'
-SUBACCOUNT_INFO = '/api/v5/broker/nd/subaccount-info'
-SET_SUBACCOUNT_LEVEL = '/api/v5/broker/nd/set-subaccount-level'
-SET_SUBACCOUNT_FEE_REAT = '/api/v5/broker/nd/set-subaccount-fee-rate'
-SUBACCOUNT_DEPOSIT_ADDRESS = '/api/v5/asset/broker/nd/subaccount-deposit-address'
-SUBACCOUNT_DEPOSIT_HISTORY = '/api/v5/asset/broker/nd/subaccount-deposit-history'
-REBATE_DAILY = '/api/v5/broker/nd/rebate-daily'
-# BROKER_INFO = '/api/v5/broker/nd/info' Broker 获取充值地址文档无法打开，预留位置
 
 # status
 STATUS = '/api/v5/system/status'
