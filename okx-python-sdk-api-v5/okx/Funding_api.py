@@ -48,7 +48,7 @@ class FundingAPI(Client):
         return self._request_without_params(GET, CURRENCY_INFO)
 
     # PiggyBank Purchase/Redemption
-    def purchase_redempt(self, ccy, amt, side,rate=''):
+    def purchase_redempt(self, ccy, amt, side,rate):
         params = {'ccy': ccy, 'amt': amt, 'side': side,'rate': rate}
         return self._request_with_params(POST, PURCHASE_REDEMPT, params)
 
