@@ -67,4 +67,10 @@ public class SubAccountAPIServiceImpl implements SubAccountAPIService {
     public JSONObject subAccountTransfer(SubAccountTransfer subAccountTransfer) {
         return this.client.executeSync(this.api.subAccountTransfer(subAccountTransfer));
     }
+
+    //查看被托管的子账户列表 Entrust Subaccount List
+    @Override
+    public JSONObject getEntrustSubList(String subAcct) {
+        return this.client.executeSync(this.api.getEntrustSubList(subAcct));
+    }
 }

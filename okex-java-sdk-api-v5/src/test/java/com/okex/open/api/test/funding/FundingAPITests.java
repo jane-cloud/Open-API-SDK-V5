@@ -147,6 +147,7 @@ public class FundingAPITests extends FundingAPIBaseTests {
 
     /**
      * 余币宝申购/赎回 PiggyBank Purchase/Redemption
+     * rate 仅适用于申购,申购时必填
      * POST /api/v5/asset/purchase_redempt
      */
     @Test
@@ -155,7 +156,7 @@ public class FundingAPITests extends FundingAPIBaseTests {
         piggyBankPurchaseRedemption.setCcy("USDT");
         piggyBankPurchaseRedemption.setAmt("1");
         piggyBankPurchaseRedemption.setSide("purchase");
-        piggyBankPurchaseRedemption.setRate(null);
+        piggyBankPurchaseRedemption.setRate("0.02");
         JSONObject result = fundingAPIService.piggyBankPurchaseRedemption(piggyBankPurchaseRedemption);
         toResultString(LOG, "result", result);
     }

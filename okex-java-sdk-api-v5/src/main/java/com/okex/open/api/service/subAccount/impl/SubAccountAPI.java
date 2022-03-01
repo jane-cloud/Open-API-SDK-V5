@@ -56,11 +56,7 @@ public interface SubAccountAPI {
     @POST("/api/v5/asset/subaccount/transfer")
     Call<JSONObject> subAccountTransfer(@Body SubAccountTransfer subAccountTransfer);
 
-
-
-
-
-
-
-
+    //查看被托管的子账户列表 Entrust Subaccount List
+    @GET("/api/v5/users/entrust-subaccount-list")
+    Call<JSONObject> getEntrustSubList(@Query("subAcct") String subAcct);
 }

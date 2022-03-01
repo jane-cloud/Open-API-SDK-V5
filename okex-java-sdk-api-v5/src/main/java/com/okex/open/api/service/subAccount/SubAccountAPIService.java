@@ -36,5 +36,6 @@ public interface SubAccountAPIService {
     //子账户间资金划转 Master accounts manage the transfers between sub-accounts
     JSONObject subAccountTransfer(SubAccountTransfer subAccountTransfer);
 
-
+    //查看被托管的子账户列表 Entrust Subaccount List
+    JSONObject getEntrustSubList(String subAcct);
 }

@@ -139,7 +139,15 @@ public class SubAccountAPITest extends SubAccountAPIBaseTest{
         toResultString(LOG,"result",result);
     }
 
-
+    /**
+     * 查看被托管的子账户列表 Entrust Subaccount List
+     * GET /api/v5/users/entrust-subaccount-list
+     */
+    @Test
+    public void testGetEntrustSubList(){
+        JSONObject result = this.subAccountAPIService.getEntrustSubList(null);
+        toResultString(LOG, "result", result);
+    }
 
 
 
