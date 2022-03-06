@@ -9,6 +9,7 @@ import okx.status_api as Status
 import okx.subAccount_api as SubAccount
 import okx.TradingData_api as TradingData
 import okx.Broker_api as Broker
+import okx.Convert_api as Convert
 
 if __name__ == '__main__':
     api_key = ""
@@ -71,7 +72,7 @@ if __name__ == '__main__':
     # 组合保证金的虚拟持仓保证金计算 POST Simulated Margin
     # result = accountAPI.get_simulated_margin()
     # 查看账户Greeks GET GREEKS
-    result = accountAPI.get_greeks()
+    # result = accountAPI.get_greeks()
 
 
 
@@ -94,7 +95,7 @@ if __name__ == '__main__':
     # 获取币种列表  Get Currencies
     # result = fundingAPI.get_currency()
     # 余币宝申购/赎回  PiggyBank Purchase/Redemption
-    result = fundingAPI.purchase_redempt('BTC', '1', 'purchase')
+    # result = fundingAPI.purchase_redempt('BTC', '1', 'purchase')
     # 资金流水查询  Asset Bills Details
     # result = fundingAPI.get_bills()
     # 获取余币宝余额 PIGGY BALABCE
@@ -113,6 +114,19 @@ if __name__ == '__main__':
     # result = fundingAPI.get_lending_rate_history(ccy = '')
     # 获取市场借贷历史（公共）GET LENDING RATE SUMMARY
     # result = fundingAPI.get_lending_rate_summary(ccy = '')
+
+    # convert api
+    convertAPI = Convert.ConvertAPI(api_key, secret_key, passphrase, False, flag)
+    # 获取闪兑币种列表  Get Currencies
+    # result = convertAPI.get_currencies()
+    # 获取闪兑币对信息  Get Currency-pair
+    # result = convertAPI.get_currency_pair(fromCcy = 'USDT', toCcy = 'BTC')
+    # 闪兑预估询价  Estimate-quote
+    # result = convertAPI.estimate_quote(baseCcy = 'BTC', quoteCcy = 'USDT', side = 'buy', rfqSz = '1', rfqSzCcy = '', clQReqId = '')
+    # 闪兑交易  Convert-trade
+    # result = convertAPI.convert_trade(quoteId = '', baseCcy = '', quoteCcy = '', side = '', sz = '', szCcy = '', clTReqId = '')
+    # 获取闪兑交易历史  Get Convert-history
+    result = convertAPI.get_convert_history(after = '', before = '', limit = '')
 
     # market api
     marketAPI = Market.MarketAPI(api_key, secret_key, passphrase, False, flag)
@@ -247,9 +261,9 @@ if __name__ == '__main__':
     # 获取成交明细(三个月)  Get Transaction Details History
     # result = tradeAPI.get_fills_history(instType='SPOT')
     # 策略委托下单  Place Algo Order
-    result = tradeAPI.place_algo_order('BTC-USDT-SWAP', 'isolated', 'buy', ordType='conditional',
-                                       sz='100',posSide='long', tpTriggerPx='60000', tpOrdPx='59999',
-                                      tpTriggerPxType = 'last', slTriggerPxType = 'last')
+    # result = tradeAPI.place_algo_order('BTC-USDT-SWAP', 'isolated', 'buy', ordType='conditional',
+    #                                    sz='100',posSide='long', tpTriggerPx='60000', tpOrdPx='59999',
+    #                                   tpTriggerPxType = 'last', slTriggerPxType = 'last')
     # 撤销策略委托订单  Cancel Algo Order
     # result = tradeAPI.cancel_algo_order([{'algoId': '297394002194735104', 'instId': 'BTC-USDT-210409'}])
     # 撤销高级策略委托订单
@@ -278,6 +292,8 @@ if __name__ == '__main__':
     # 子账户间划转 Transfer between subAccounts
     # result = subAccountAPI.subAccount_transfer(ccy='USDT', amt='1', froms='6', to='6', fromSubAccount='1',
     #                                            toSubAccount='2')
+    # 查看被托管子账户列表 entrust-subaccount-list
+    # result = subAccountAPI.entrust_subaccount_list(subAcct = '')
 
     # BrokerAPI
     BrokerAPI = Broker.BrokerAPI(api_key, secret_key, passphrase, False, flag)

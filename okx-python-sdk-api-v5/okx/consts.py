@@ -140,6 +140,7 @@ CREATE = '/api/v5/users/subaccount/apikey'
 WATCH = '/api/v5/users/subaccount/apikey'
 VIEW_LIST = '/api/v5/users/subaccount/list'
 SUBACCOUNT_TRANSFER = '/api/v5/asset/subaccount/transfer'
+ENTRUST_SUBACCOUNT_LIST = '/api/v5/users/entrust-subaccount-list'
 
 # Broker
 BROKER_INFO = '/api/v5/broker/nd/info'
@@ -152,6 +153,13 @@ SUBACCOUNT_DEPOSIT_ADDRESS = '/api/v5/asset/broker/nd/subaccount-deposit-address
 SUBACCOUNT_DEPOSIT_HISTORY = '/api/v5/asset/broker/nd/subaccount-deposit-history'
 REBATE_DAILY = '/api/v5/broker/nd/rebate-daily'
 # BROKER_INFO = '/api/v5/broker/nd/info' Broker 获取充值地址文档无法打开，预留位置
+
+# Convert
+GET_CURRENCIES = '/api/v5/asset/convert/currencies'
+GET_CURRENCY_PAIR = '/api/v5/asset/convert/currency-pair'
+ESTIMATE_QUOTE = '/api/v5/asset/convert/estimate-quote'
+CONVERT_TRADE = '/api/v5/asset/convert/trade'
+CONVERT_HISTORY = '/api/v5/asset/convert/history'
 
 # status
 STATUS = '/api/v5/system/status'

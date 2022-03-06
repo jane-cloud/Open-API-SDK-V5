@@ -38,4 +38,8 @@ class SubAccountAPI(Client):
         params = {'ccy': ccy, 'amt': amt, 'from': froms, 'to': to, 'fromSubAccount': fromSubAccount, 'toSubAccount': toSubAccount,'loanTrans':loanTrans}
         return self._request_with_params(POST, SUBACCOUNT_TRANSFER, params)
 
+    def entrust_subaccount_list(self, subAcct):
+        params = {'subAcct': subAcct}
+        return self._request_with_params(GET, ENTRUST_SUBACCOUNT_LIST, params)
+
 
