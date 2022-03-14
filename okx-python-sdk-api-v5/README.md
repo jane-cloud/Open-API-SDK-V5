@@ -2,7 +2,7 @@
 
 ### 如何使用？
 
-`python版本：3.6+`
+`python版本：3.6 - 3.8`
 
 `WebSocketAPI：建议websockets库版本为6.0`
 
@@ -91,7 +91,7 @@ passphrase = ""
 
 ### How to use ?
 
-`python version：3.6+`
+`python version：3.6 - 3.8`
 
 `WebSocketAPI： websockets package advise version 6.0`
 

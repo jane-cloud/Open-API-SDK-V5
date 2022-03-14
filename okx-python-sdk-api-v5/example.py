@@ -16,10 +16,9 @@ if __name__ == '__main__':
     secret_key = ""
     passphrase = ""
 
-
     # flag是实盘与模拟盘的切换参数 flag is the key parameter which can help you to change between demo and real trading.
-    flag = '1'  # 模拟盘 demo trading
-    # flag = '0'  # 实盘 real trading
+    # flag = '1'  # 模拟盘 demo trading
+    flag = '0'  # 实盘 real trading
 
     # account api
     accountAPI = Account.AccountAPI(api_key, secret_key, passphrase, False, flag)
@@ -74,8 +73,6 @@ if __name__ == '__main__':
     # 查看账户Greeks GET GREEKS
     # result = accountAPI.get_greeks()
 
-
-
     # funding api
     fundingAPI = Funding.FundingAPI(api_key, secret_key, passphrase, False, flag)
     # 获取充值地址信息  Get Deposit Address
@@ -126,7 +123,7 @@ if __name__ == '__main__':
     # 闪兑交易  Convert-trade
     # result = convertAPI.convert_trade(quoteId = '', baseCcy = '', quoteCcy = '', side = '', sz = '', szCcy = '', clTReqId = '')
     # 获取闪兑交易历史  Get Convert-history
-    result = convertAPI.get_convert_history(after = '', before = '', limit = '')
+    # result = convertAPI.get_convert_history(after = '', before = '', limit = '')
 
     # market api
     marketAPI = Market.MarketAPI(api_key, secret_key, passphrase, False, flag)
@@ -315,7 +312,6 @@ if __name__ == '__main__':
     # result = BrokerAPI.subaccount_deposit_history(subAcct = 'qwerty', ccy = 'BTC', txId = '', state = '', after = '', before = '', limit = '')
     # 获取子账户返佣记录 Get rebate record of sub account
     # result = BrokerAPI.rebate_daily(subAcct = 'qwerty', begin = '', end = '', page = '', limit = '')
-
 
     # 系统状态API(仅适用于实盘) system status
     Status = Status.StatusAPI(api_key, secret_key, passphrase, False, flag)

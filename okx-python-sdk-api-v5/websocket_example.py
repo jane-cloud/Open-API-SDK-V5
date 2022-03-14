@@ -264,6 +264,7 @@ async def subscribe_without_login(url, channels):
                                                 await ws.send(sub_str)
                                                 print(f"send: {sub_str}")
         except Exception as e:
+            print(e)
             print("连接断开，正在重连……")
             continue
 
@@ -408,7 +409,7 @@ passphrase = ""
 # 产品频道  Instruments Channel
 # channels = [{"channel": "instruments", "instType": "FUTURES"}]
 # 行情频道 tickers channel
-# channels = [{"channel": "tickers", "instId": "BTC-USD-210326"}]
+# channels = [{"channel": "tickers", "instId": "BTC-USDT"}, {"channel": "tickers", "instId": "ETH-USDT"}]
 # 持仓总量频道 Open interest Channel
 # channels = [{"channel": "open-interest", "instId": "BTC-USD-210326"}]
 # K线频道 Candlesticks Channel
@@ -456,7 +457,7 @@ passphrase = ""
 # channels = [{"channel": "orders", "instType": "FUTURES", "uly": "BTC-USD", "instId": "BTC-USD-201225"}]
 # 策略委托订单频道 Algo Orders Channel
 # channels = [{"channel": "orders-algo", "instType": "FUTURES", "uly": "BTC-USD", "instId": "BTC-USD-201225"}]
-#高级策略委托订单频道 Cancel Advance Algos
+# 高级策略委托订单频道 Cancel Advance Algos
 # channels = [{"channel": "algo-advance", "instType": "SPOT","instId": "BTC-USD-201225","algoId":"12345678"}]
 # 爆仓风险预警推送频道
 # channels = [{"channel": "liquidation-warning", "instType": "SWAP","instType": "","uly":"","instId":""}]
@@ -492,7 +493,7 @@ passphrase = ""
 loop = asyncio.get_event_loop()
 
 # 公共频道 不需要登录（行情，持仓总量，K线，标记价格，深度，资金费率等）subscribe public channel
-# loop.run_until_complete(subscribe_without_login(url, channels))
+loop.run_until_complete(subscribe_without_login(url, channels))
 
 # 私有频道 需要登录（账户，持仓，订单等）subscribe private channel
 # loop.run_until_complete(subscribe(url, api_key, passphrase, secret_key, channels))
