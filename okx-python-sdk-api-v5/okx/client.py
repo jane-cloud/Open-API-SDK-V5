@@ -61,6 +61,6 @@ class Client(object):
         url = c.API_URL + c.SERVER_TIMESTAMP_URL
         response = requests.get(url)
         if response.status_code == 200:
-            return response.json()['ts']
+            return response.json()['data'][0]['ts']
         else:
             return ""

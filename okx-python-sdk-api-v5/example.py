@@ -119,14 +119,15 @@ if __name__ == '__main__':
     # 获取闪兑币对信息  Get Currency-pair
     # result = convertAPI.get_currency_pair(fromCcy = 'USDT', toCcy = 'BTC')
     # 闪兑预估询价  Estimate-quote
-    # result = convertAPI.estimate_quote(baseCcy = 'BTC', quoteCcy = 'USDT', side = 'buy', rfqSz = '1', rfqSzCcy = '', clQReqId = '')
+    # result = convertAPI.estimate_quote(baseCcy = 'OKB', quoteCcy = 'USDT', side = 'sell', rfqSz = '1', rfqSzCcy = 'USDT', clQReqId = '')
     # 闪兑交易  Convert-trade
-    # result = convertAPI.convert_trade(quoteId = '', baseCcy = '', quoteCcy = '', side = '', sz = '', szCcy = '', clTReqId = '')
+    # result = convertAPI.convert_trade(quoteId='quoterOKB-USDT16480319751107680', baseCcy='OKB', quoteCcy='USDT',
+    #                                   side='sell', sz='1', szCcy='USDT', clTReqId='')
     # 获取闪兑交易历史  Get Convert-history
     # result = convertAPI.get_convert_history(after = '', before = '', limit = '')
 
     # market api
-    marketAPI = Market.MarketAPI(api_key, secret_key, passphrase, False, flag)
+    marketAPI = Market.MarketAPI(api_key, secret_key, passphrase, True, flag)
     # 获取所有产品行情信息  Get Tickers
     # result = marketAPI.get_tickers('SPOT')
     # 获取单个产品行情信息  Get Ticker
