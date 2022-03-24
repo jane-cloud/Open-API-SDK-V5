@@ -129,7 +129,6 @@ public class FundingAPITests extends FundingAPIBaseTests {
         withdrawal.setAmt("100");
         withdrawal.setDest("3");
         withdrawal.setToAddr("46674851");
-        withdrawal.setPwd("888888");
         withdrawal.setFee("1");
         JSONObject result = fundingAPIService.Withdrawal(withdrawal);
         toResultString(LOG, "result", result);
@@ -190,7 +189,6 @@ public class FundingAPITests extends FundingAPIBaseTests {
         Withdrawal withdrawal = new Withdrawal();
         withdrawal.setCcy("");
         withdrawal.setInvoice("");
-        withdrawal.setPwd("");
         JSONObject result = fundingAPIService.withdrawalLightning(withdrawal);
         toResultString(LOG, "result", result);
     }

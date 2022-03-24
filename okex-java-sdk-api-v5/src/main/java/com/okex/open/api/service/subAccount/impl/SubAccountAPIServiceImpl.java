@@ -25,31 +25,6 @@ public class SubAccountAPIServiceImpl implements SubAccountAPIService {
         return this.client.executeSync(this.api.getSubAccountList(enable, subAcct, after, before, limit));
     }
 
-    //创建子账户的APIkey Create an APIkey for a sub-account
-    @Override
-    public JSONObject createSubAccountAPIKey(CreateSubAccountApikey createSubAccountApikey) {
-        return this.client.executeSync(this.api.createSubAccountAPIKey(createSubAccountApikey));
-    }
-
-    //查询子账户的APIKey  Query the APIKey of a sub-account
-    @Override
-    public JSONObject getSubAccountApikeyList(String subAcct, String apiKey) {
-        return this.client.executeSync(this.api.getSubAccountApikeyList(subAcct, apiKey));
-    }
-
-
-    //重置子账户的APIkey Reset the APIkey of a sub-account
-    @Override
-    public JSONObject reSetSubAccountAPIKey(ReSetSubAccountApikey reSetSubAccountApikey) {
-        return this.client.executeSync(this.api.reSetSubAccountAPIKey(reSetSubAccountApikey));
-    }
-
-    //删除子账户的APIkey Delete the APIkey of sub-accounts
-    @Override
-    public JSONObject delSubAccountAPIKey(DelSunAccountApikey delSunAccountApikey) {
-        return this.client.executeSync(this.api.delSubAccountAPIKey(delSunAccountApikey));
-    }
-
     //获取子账户资产余额 Get Sub-account Balance
     @Override
     public JSONObject getSubAccountBalances(String subAcct) {

@@ -38,9 +38,9 @@ public class BrokerAPITests extends BrokerAPIBaseTests{
     @Test
     public void createSubAccount(){
         CreateSubAccount createSubAccount = new CreateSubAccount();
-        createSubAccount.setPwd("");
-        createSubAccount.setSubAcct("");
-        createSubAccount.setLabel("test");
+
+        createSubAccount.setSubAcct("0324test01");
+        createSubAccount.setLabel("0324test01");
         createSubAccount.setAcctLv("1");
         JSONObject result = this.brokerAPIService.createSubAccount(createSubAccount);
         toResultString(LOG, "result", result);
@@ -53,7 +53,7 @@ public class BrokerAPITests extends BrokerAPIBaseTests{
     @Test
     public void deleteSubAccount(){
         DeleteSubAccount deleteSubAccount = new DeleteSubAccount();
-        deleteSubAccount.setPwd("");
+
         deleteSubAccount.setSubAcct("");
         JSONObject result = this.brokerAPIService.deleteSubAccount(deleteSubAccount);
         toResultString(LOG, "result", result);
@@ -65,9 +65,68 @@ public class BrokerAPITests extends BrokerAPIBaseTests{
      */
     @Test
     public void getSubAccountInfo(){
-        JSONObject result = this.brokerAPIService.getSubAccountInfo("","","");
+        JSONObject result = this.brokerAPIService.getSubAccountInfo(null,null,null);
         toResultString(LOG, "result", result);
     }
+
+    /**
+     * 创建子账户的APIKey  Create an APIKey for a sub-account
+     * POST /api/v5/broker/nd/subaccount/apikey
+     */
+    @Test
+    public void createSubAccountApikey(){
+        CreateSubAccountApikey createSubAccountApikey = new CreateSubAccountApikey();
+        createSubAccountApikey.setSubAcct("0324test01");
+        createSubAccountApikey.setLabel("0324test001");
+        createSubAccountApikey.setPassphrase("123456");
+        createSubAccountApikey.setIp("111.198.228.246");
+        createSubAccountApikey.setPerm("read_only");
+
+        JSONObject result = this.brokerAPIService.createSubAccountApikey(createSubAccountApikey);
+        toResultString(LOG, "result", result);
+    }
+
+    /**
+     * 查询子账户的APIKey  Query the APIKey of a sub-account
+     * GET /api/v5/broker/nd/subaccount/apikey
+     */
+    @Test
+    public void getApikeyInfo(){
+        JSONObject result = this.brokerAPIService.getApikeyInfo("0324test01","69e8e45c-6db9-44c8-b15a-38119340b376");
+        toResultString(LOG, "result", result);
+    }
+
+    /**
+     * 重置子账户的APIKey  Reset the APIKey of a sub-account
+     * POST /api/v5/broker/nd/subaccount/modify-apikey
+     */
+    @Test
+    public void modifySubAccountApikey(){
+        ModifySubAccountApikey modifySubAccountApikey = new ModifySubAccountApikey();
+        modifySubAccountApikey.setApiKey("69e8e45c-6db9-44c8-b15a-38119340b376");
+        modifySubAccountApikey.setLabel("0324test001");
+        modifySubAccountApikey.setSubAcct("0324test01");
+        modifySubAccountApikey.setPerm("read_only,trade");
+        modifySubAccountApikey.setIp(null);
+
+        JSONObject result = this.brokerAPIService.modifySubAccountApikey(modifySubAccountApikey);
+        toResultString(LOG, "result", result);
+    }
+
+    /**
+     * 删除子账户的APIKey  Delete the APIKey of sub-accounts
+     * POST /api/v5/broker/nd/subaccount/delete-apikey
+     */
+    @Test
+    public void deleteSubAccountApikey(){
+        DeleteSubAccountApikey deleteSubAccountApikey = new DeleteSubAccountApikey();
+        deleteSubAccountApikey.setApiKey("69e8e45c-6db9-44c8-b15a-38119340b376");
+        deleteSubAccountApikey.setSubAcct("0324test01");
+
+        JSONObject result = this.brokerAPIService.deleteSubAccountApikey(deleteSubAccountApikey);
+        toResultString(LOG, "result", result);
+    }
+
 
     /**
      * 设置子账户的账户等级  Set the account level of the sub-account
@@ -144,6 +203,31 @@ public class BrokerAPITests extends BrokerAPIBaseTests{
         JSONObject result = this.brokerAPIService.getRebateDaily(null,null,null,null,null);
         toResultString(LOG, "result", result);
     }
+
+    /**
+     * 获取返佣明细下载链接  Get download link
+     * GET /api/v5/broker/nd/rebate-per-orders
+     */
+    @Test
+    public void rebatePerOrders(){
+        JSONObject result = this.brokerAPIService.rebatePerOrders("true",null,null);
+        toResultString(LOG, "result", result);
+    }
+
+    /**
+     * 生成返佣明细下载链接 Create rebate details download link
+     * POST /api/v5/broker/nd/rebate-per-orders
+     */
+    @Test
+    public void setRebatePerOrders(){
+        SetRebatePerOrders setRebatePerOrders = new SetRebatePerOrders();
+        setRebatePerOrders.setBegin("20220101");
+        setRebatePerOrders.setEnd("20220107");
+
+        JSONObject result = this.brokerAPIService.setRebatePerOrders(setRebatePerOrders);
+        toResultString(LOG, "result", result);
+    }
+
 
 
 }

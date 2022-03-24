@@ -21,24 +21,6 @@ public interface SubAccountAPI {
                                        @Query("before") String before,
                                        @Query("limit") String limit);
 
-    //创建子账户的APIkey Create an APIkey for a sub-account
-    @POST("/api/v5/users/subaccount/apikey")
-    Call<JSONObject> createSubAccountAPIKey(@Body CreateSubAccountApikey createSubAccountApikey);
-
-    //查询子账户的APIKey  Query the APIKey of a sub-account
-    @GET("/api/v5/users/subaccount/apikey")
-    Call<JSONObject> getSubAccountApikeyList(@Query("subAcct") String subAcct, @Query("apiKey") String apiKey);
-
-    //重置子账户的APIkey Reset the APIkey of a sub-account
-    @POST("/api/v5/users/subaccount/modify-apikey")
-    Call<JSONObject> reSetSubAccountAPIKey(@Body ReSetSubAccountApikey reSetSubAccountApikey);
-
-    //删除子账户的APIkey Delete the APIkey of sub-accounts
-    @POST("/api/v5/users/subaccount/delete-apikey")
-    Call<JSONObject> delSubAccountAPIKey(@Body DelSunAccountApikey delSunAccountApikey);
-
-
-
     //获取子账户资产余额 Get Sub-account Balance
     @GET("/api/v5/account/subaccount/balances")
     Call<JSONObject> getSubAccountBalances(@Query("subAcct") String subAcct);

@@ -6,7 +6,6 @@ public class Withdrawal {
     private String amt;
     private String dest;
     private String toAddr;
-    private String pwd;
     private String invoice;
     
     @Override
@@ -17,7 +16,6 @@ public class Withdrawal {
                 ", amt='" + amt + '\'' +
                 ", dest='" + dest + '\'' +
                 ", toAddr='" + toAddr + '\'' +
-                ", pwd='" + pwd + '\'' +
                 ", fee='" + fee + '\'' +
                 '}';
     }
@@ -62,14 +60,6 @@ public class Withdrawal {
 
     public void setToAddr(String toAddr) {
         this.toAddr = toAddr;
-    }
-
-    public String getPwd() {
-        return pwd;
-    }
-
-    public void setPwd(String pwd) {
-        this.pwd = pwd;
     }
 
     public String getFee() {

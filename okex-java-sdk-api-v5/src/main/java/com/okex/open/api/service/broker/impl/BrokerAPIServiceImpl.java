@@ -41,6 +41,29 @@ public class BrokerAPIServiceImpl implements BrokerAPIService {
         return this.client.executeSync(this.api.getSubAccountInfo(subAcct, page, limit));
     }
 
+    //创建子账户的APIKey Create an APIKey for a sub-account
+    @Override
+    public JSONObject createSubAccountApikey(CreateSubAccountApikey createSubAccountApikey) {
+        return this.client.executeSync(this.api.createSubAccountApikey(JSONObject.parseObject(JSON.toJSONString(createSubAccountApikey))));
+    }
+    //查询子账户的APIKey Query the APIKey of a sub-account
+    @Override
+    public JSONObject getApikeyInfo(String subAcct, String apiKey) {
+        return this.client.executeSync(this.api.getApikeyInfo(subAcct,apiKey));
+    }
+
+    //重置子账户的APIKey Reset the APIKey of a sub-account
+    @Override
+    public JSONObject modifySubAccountApikey(ModifySubAccountApikey modifySubAccountApikey) {
+        return this.client.executeSync(this.api.modifySubAccountApikey(JSONObject.parseObject(JSON.toJSONString(modifySubAccountApikey))));
+    }
+
+    //删除子账户的APIKey Delete the APIKey of sub-accounts
+    @Override
+    public JSONObject deleteSubAccountApikey(DeleteSubAccountApikey deleteSubAccountApikey) {
+        return this.client.executeSync(this.api.deleteSubAccount(JSONObject.parseObject(JSON.toJSONString(deleteSubAccountApikey))));
+    }
+
     //设置子账户的账户等级  Set the account level of the sub-account
     @Override
     public JSONObject setSubAccountLevel(SetSubAccountLevel setSubAccountLevel) {
@@ -76,6 +99,19 @@ public class BrokerAPIServiceImpl implements BrokerAPIService {
     public JSONObject getRebateDaily(String subAcct, String begin, String end, String page, String limit) {
         return this.client.executeSync(this.api.getRebateDaily(subAcct,begin,end,page,limit));
     }
+
+    //获取返佣明细下载链接 Get download link
+    @Override
+    public JSONObject rebatePerOrders(String type, String begin, String end) {
+        return this.client.executeSync(this.api.rebatePerOrders(type, begin, end));
+    }
+
+    //生成返佣明细下载链接 Create rebate details download link
+    @Override
+    public JSONObject setRebatePerOrders(SetRebatePerOrders setRebatePerOrders) {
+        return this.client.executeSync(this.api.setRebatePerOrders(JSONObject.parseObject(JSON.toJSONString(setRebatePerOrders))));
+    }
+
 
 
 

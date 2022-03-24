@@ -27,6 +27,23 @@ public interface BrokerAPI {
                                        @Query("page") String page,
                                        @Query("limit") String limit);
 
+    //创建子账户的APIKey Create an APIKey for a sub-account
+    @POST("/api/v5/broker/nd/subaccount/apikey")
+    Call<JSONObject> createSubAccountApikey(@Body JSONObject jsonObject);
+
+    //查询子账户的APIkey Query the APIKey of a sub-account
+    @GET("/api/v5/broker/nd/subaccount/apikey")
+    Call<JSONObject> getApikeyInfo(@Query("subAcct") String subAcct,
+                                   @Query("apiKey") String apiKey);
+
+    //重置子账户的APIKey Reset the APIKey of a sub-account
+    @POST("/api/v5/broker/nd/subaccount/modify-apikey")
+    Call<JSONObject> modifySubAccountApikey(@Body JSONObject jsonObject);
+
+    //删除子账户的APIKey Delete the APIKey of sub-accounts
+    @POST("/api/v5/broker/nd/subaccount/delete-apikey")
+    Call<JSONObject> deleteSubAccountApikey(@Body JSONObject jsonObject);
+
     //设置子账户的账户等级  Set the account level of the sub-account
     @POST("/api/v5/broker/nd/set-subaccount-level")
     Call<JSONObject> setSubAccountLevel(@Body JSONObject jsonObject);
@@ -61,5 +78,18 @@ public interface BrokerAPI {
                                      @Query("end") String end,
                                      @Query("page") String page,
                                      @Query("limit") String limit);
+
+     //获取返佣明细下载链接 Get download link
+     @GET("/api/v5/broker/nd/rebate-per-orders")
+     Call<JSONObject> rebatePerOrders(@Query("type") String type,
+                                     @Query("begin") String begin,
+                                     @Query("end") String end);
+
+     //生成返佣明细下载链接 Create rebate details download link
+     @POST("/api/v5/broker/nd/rebate-per-orders")
+     Call<JSONObject> setRebatePerOrders(@Body JSONObject jsonObject);
+
+
+
 
 }

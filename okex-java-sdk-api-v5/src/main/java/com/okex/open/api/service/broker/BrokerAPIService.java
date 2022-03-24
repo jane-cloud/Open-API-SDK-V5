@@ -18,6 +18,18 @@ public interface BrokerAPIService {
     //查询子账户列表  Get sub-account list
     JSONObject getSubAccountInfo(String subAcct, String page, String limit);
 
+    //创建子账户的APIKey Create an APIKey for a sub-account
+    JSONObject createSubAccountApikey(CreateSubAccountApikey createSubAccountApikey);
+
+    //查询子账户的APIKey Query the APIKey of a sub-account
+    JSONObject getApikeyInfo(String subAcct,String apiKey);
+
+    //重置子账户的APIKey Reset the APIKey of a sub-account
+    JSONObject modifySubAccountApikey(ModifySubAccountApikey modifySubAccountApikey);
+
+    //删除子账户的APIKey Delete the APIKey of sub-accounts
+    JSONObject deleteSubAccountApikey(DeleteSubAccountApikey deleteSubAccountApikey);
+
     //设置子账户的账户等级  Set the account level of the sub-account
     JSONObject setSubAccountLevel(SetSubAccountLevel setSubAccountLevel);
 
@@ -35,4 +47,12 @@ public interface BrokerAPIService {
 
     //子账户返佣记录  Query daily rebate records
     JSONObject getRebateDaily(String subAcct, String begin, String end, String page, String limit);
+
+    //获取返佣明细下载链接 Get download link
+    JSONObject rebatePerOrders(String type,String begin,String end);
+
+    //生成返佣明细下载链接 Create rebate details download link
+    JSONObject setRebatePerOrders(SetRebatePerOrders setRebatePerOrders);
+
+
 }

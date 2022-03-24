@@ -15,18 +15,6 @@ public interface SubAccountAPIService {
     //查看子账户列表 View sub-account list
     JSONObject getSubAccountList(String enable, String subAcct, String after, String before, String limit);
 
-    //创建子账户的APIkey Create an APIkey for a sub-account
-    JSONObject createSubAccountAPIKey(CreateSubAccountApikey createSubAccountApikey);
-
-    //查询子账户的APIKey  Query the APIKey of a sub-account
-    JSONObject getSubAccountApikeyList(String subAcct, String apiKey);
-
-    //重置子账户的APIkey Reset the APIkey of a sub-account
-    JSONObject reSetSubAccountAPIKey(ReSetSubAccountApikey reSetSubAccountApikey);
-
-    //删除子账户的APIkey Delete the APIkey of sub-accounts
-    JSONObject delSubAccountAPIKey(DelSunAccountApikey delSunAccountApikey);
-
     //获取子账户资产余额 Get Sub-account Balance
     JSONObject getSubAccountBalances(String subAcct);
 
