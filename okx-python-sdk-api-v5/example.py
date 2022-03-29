@@ -100,7 +100,7 @@ if __name__ == '__main__':
     # 闪电网络充币
     # result = fundingAPI.get_deposit_lightning(ccy='BTC',amt='0.01')
     # 闪电网络提币
-    # result = fundingAPI.withdrawal_lightning(ccy='BTC',amt='0.01')
+    # result = fundingAPI.withdrawal_lightning(ccy='BTC',invoice='0.01',memo='')
     # 获取账户资产估值 GET Obtain account asset valuation
     # result = fundingAPI.get_asset_valuation(ccy = 'USDT')
     # 设置余币宝借贷利率 POST SET LENDING RATE
@@ -277,14 +277,6 @@ if __name__ == '__main__':
     # result = subAccountAPI.balances(subAcct='')
     # 查询子账户转账记录(仅适用于母账户) History of sub-account transfer(applies to master accounts only)
     # result = subAccountAPI.bills()
-    # 删除子账户APIKey(仅适用于母账户) Delete the APIkey of sub-accounts (applies to master accounts only)
-    # result = subAccountAPI.delete(pwd='', subAcct='', apiKey='')
-    # 重置子账户的APIKey(仅适用于母账户) Reset the APIkey of a sub-account(applies to master accounts only)
-    # result = subAccountAPI.reset(pwd='', subAcct='', label='', apiKey='', perm='')
-    # 创建子账户的APIKey(仅适用于母账户) Create an APIkey for a sub-account(applies to master accounts only)
-    # result = subAccountAPI.create(pwd='', subAcct='', label='trade1', Passphrase='')
-    # 查询子账户的APIKey(仅适用于母账户) Create an APIkey for a sub-account(applies to master accounts only)
-    # result = subAccountAPI.watch()
     # 查看子账户列表(仅适用于母账户) View sub-account list(applies to master accounts only)
     # result = subAccountAPI.view_list()
     # 子账户间划转 Transfer between subAccounts
@@ -298,9 +290,9 @@ if __name__ == '__main__':
     # 获取独立经纪商账户信息 GET Obtain independent broker account information
     # result = BrokerAPI.broker_info()
     # 创建子账户 Create sub account
-    # result = BrokerAPI.create_subaccount(pwd = '123456', subAcct = 'qwerty', label = '', acctLv = '1')
+    # result = BrokerAPI.create_subaccount(subAcct = 'qwerty', label = '', acctLv = '1')
     # 删除子账户 Delete sub account
-    # result = BrokerAPI.delete_subaccount(pwd = '123456', subAcct = 'qwerty')
+    # result = BrokerAPI.delete_subaccount(subAcct = 'qwerty')
     # 获取子账户列表 Get sub account list
     # result = BrokerAPI.subaccount_info(page = '', subAcct = '', limit = '')
     # 设置子账户的账户等级 Set account level of sub account
@@ -313,6 +305,18 @@ if __name__ == '__main__':
     # result = BrokerAPI.subaccount_deposit_history(subAcct = 'qwerty', ccy = 'BTC', txId = '', state = '', after = '', before = '', limit = '')
     # 获取子账户返佣记录 Get rebate record of sub account
     # result = BrokerAPI.rebate_daily(subAcct = 'qwerty', begin = '', end = '', page = '', limit = '')
+    # 创建子账户的APIKEY Apikey for creating sub accounts
+    result = BrokerAPI.nd_create_apikey(subAcct = 'qwerty', label = '', passphrase = '', ip = '', perm = '')
+    # 查询子账户的APIKEY
+    # result = BrokerAPI.nd_select_apikey(subAcct = 'qwerty', apiKey = '')
+    # 重置子账户的APIKEY
+    # result = BrokerAPI.nd_modify_apikey(subAcct = 'qwerty', apiKey = '', label = '', perm = '', ip = '')
+    # 删除子账户的APIKEY
+    # result = BrokerAPI.nd_delete_apikey(subAcct = 'qwerty', apiKey = '')
+    # 生成返佣明细下载链接
+    # result = BrokerAPI.rebate_per_orders(begin = '', end = '')
+    # 获取返佣明细下载链接
+    # result = BrokerAPI.rebate_per_orders(type = '', begin = '', end = '')
 
     # 系统状态API(仅适用于实盘) system status
     Status = Status.StatusAPI(api_key, secret_key, passphrase, False, flag)

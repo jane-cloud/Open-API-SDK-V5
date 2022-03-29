@@ -134,10 +134,10 @@ ORDERS_ALGO_HISTORY = '/api/v5/trade/orders-algo-history'
 # SubAccount
 BALANCE = '/api/v5/account/subaccount/balances'
 BILLs = '/api/v5/asset/subaccount/bills'
-DELETE = '/api/v5/users/subaccount/delete-apikey'
-RESET = '/api/v5/users/subaccount/modify-apikey'
-CREATE = '/api/v5/users/subaccount/apikey'
-WATCH = '/api/v5/users/subaccount/apikey'
+DELETE = '/api/v5/users/subaccount/delete-apikey' # 移除此接口
+RESET = '/api/v5/users/subaccount/modify-apikey' # 移除此接口
+CREATE = '/api/v5/users/subaccount/apikey' # 移除此接口
+WATCH = '/api/v5/users/subaccount/apikey'  # 移除此接口
 VIEW_LIST = '/api/v5/users/subaccount/list'
 SUBACCOUNT_TRANSFER = '/api/v5/asset/subaccount/transfer'
 ENTRUST_SUBACCOUNT_LIST = '/api/v5/users/entrust-subaccount-list'
@@ -153,6 +153,12 @@ SUBACCOUNT_DEPOSIT_ADDRESS = '/api/v5/asset/broker/nd/subaccount-deposit-address
 SUBACCOUNT_DEPOSIT_HISTORY = '/api/v5/asset/broker/nd/subaccount-deposit-history'
 REBATE_DAILY = '/api/v5/broker/nd/rebate-daily'
 # BROKER_INFO = '/api/v5/broker/nd/info' Broker 获取充值地址文档无法打开，预留位置
+ND_CREAET_APIKEY = '/api/v5/broker/nd/subaccount/apikey'
+ND_SELECT_APIKEY = '/api/v5/broker/nd/subaccount/apikey'
+ND_MODIFY_APIKEY = '/api/v5/broker/nd/subaccount/modify-apikey'
+ND_DELETE_APIKEY = '/api/v5/broker/nd/subaccount/delete-apikey'
+GET_REBATE_PER_ORDERS = '/api/v5/broker/nd/rebate-per-orders'
+REBATE_PER_ORDERS = '/api/v5/broker/nd/rebate-per-orders'
 
 # Convert
 GET_CURRENCIES = '/api/v5/asset/convert/currencies'

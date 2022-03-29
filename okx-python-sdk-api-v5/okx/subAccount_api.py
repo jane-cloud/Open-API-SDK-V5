@@ -13,19 +13,19 @@ class SubAccountAPI(Client):
     def bills(self, ccy='', type='', subAcct='', after='', before='', limit=''):
         params = {"ccy": ccy, 'type': type, 'subAcct': subAcct, 'after': after, 'before': before, 'limit': limit}
         return self._request_with_params(GET, BILLs, params)
-
+    # 移除此接口
     def delete(self, pwd, subAcct, apiKey):
         params = {'pwd': pwd, 'subAcct': subAcct, 'apiKey': apiKey}
         return self._request_with_params(POST, DELETE, params)
-
+    # 移除此接口
     def reset(self, pwd, subAcct, label, apiKey, perm, ip=''):
         params = {'pwd': pwd, 'subAcct': subAcct, 'label': label, 'apiKey': apiKey, 'perm': perm, 'ip': ip}
         return self._request_with_params(POST, RESET, params)
-
+    # 移除此接口
     def create(self, pwd, subAcct, label, Passphrase, perm='', ip=''):
         params = {'pwd': pwd, 'subAcct': subAcct, 'label': label, 'Passphrase': Passphrase, 'perm': perm, 'ip': ip}
         return self._request_with_params(POST, CREATE, params)
-
+    # 移除此接口
     def watch(self, subAcct,apiKey=''):
         params = {'subAcct': subAcct,'apiKey':apiKey}
         return self._request_with_params(GET, WATCH, params)

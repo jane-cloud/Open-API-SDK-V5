@@ -10,12 +10,12 @@ class BrokerAPI(Client):
         params = {}
         return self._request_with_params(GET, BROKER_INFO, params)
 
-    def create_subaccount(self, pwd='', subAcct='', label='', acctLv=''):
-        params = {"pwd": pwd, 'subAcct': subAcct, 'label': label, 'acctLv': acctLv}
+    def create_subaccount(self, subAcct='', label='', acctLv=''):
+        params = {'subAcct': subAcct, 'label': label, 'acctLv': acctLv}
         return self._request_with_params(POST, CREATE_SUBACCOUNT, params)
 
-    def delete_subaccount(self, pwd='', subAcct=''):
-        params = {'pwd': pwd, 'subAcct': subAcct}
+    def delete_subaccount(self, subAcct=''):
+        params = {'subAcct': subAcct}
         return self._request_with_params(POST, DELETE_SUBACCOUNT, params)
 
     def subaccount_info(self, subAcct='', page='', limit=''):
@@ -41,3 +41,27 @@ class BrokerAPI(Client):
     def rebate_daily(self, subAcct = '', begin = '', end = '', page = '', limit = ''):
         params = {'subAcct': subAcct, 'begin': begin, 'end': end, 'page': page, 'limit': limit}
         return self._request_with_params(GET, REBATE_DAILY, params)
+
+    def nd_create_apikey(self, subAcct = '', label = '', passphrase = '', ip = '', perm = ''):
+        params = {'subAcct': subAcct, 'label': label, 'passphrase': passphrase, 'ip': ip, 'perm': perm}
+        return self._request_with_params(POST, ND_CREAET_APIKEY, params)
+
+    def nd_select_apikey(self, subAcct = '', apiKey = ''):
+        params = {'subAcct': subAcct, 'apiKey': apiKey}
+        return self._request_with_params(GET, ND_SELECT_APIKEY, params)
+
+    def nd_modify_apikey(self, subAcct = '', apiKey = '', label = '', perm = '', ip = ''):
+        params = {'subAcct': subAcct, 'apiKey': apiKey, 'label': label, 'perm': perm, 'ip': ip}
+        return self._request_with_params(POST, ND_MODIFY_APIKEY, params)
+
+    def nd_delete_apikey(self, subAcct = '', apiKey = ''):
+        params = {'subAcct': subAcct, 'apiKey': apiKey}
+        return self._request_with_params(POST, ND_DELETE_APIKEY, params)
+
+    def rebate_per_orders(self, begin = '', end = ''):
+        params = {'begin': begin, 'end': end}
+        return self._request_with_params(POST, REBATE_PER_ORDERS, params)
+
+    def get_rebate_per_orders(self, type = '', begin = '', end = ''):
+        params = {'type': type, 'begin': begin, 'end': end}
+        return self._request_with_params(GET, GET_REBATE_PER_ORDERS, params)

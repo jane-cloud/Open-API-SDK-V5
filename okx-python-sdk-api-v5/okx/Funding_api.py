@@ -29,8 +29,8 @@ class FundingAPI(Client):
         return self._request_with_params(POST, TRANSFER_STATE, params)
 
     # Withdrawal
-    def coin_withdraw(self, ccy, amt, dest, toAddr, pwd, fee,chain=''):
-        params = {'ccy': ccy, 'amt': amt, 'dest': dest, 'toAddr': toAddr, 'pwd': pwd, 'fee': fee,'chain': chain}
+    def coin_withdraw(self, ccy, amt, dest, toAddr, fee,chain=''):
+        params = {'ccy': ccy, 'amt': amt, 'dest': dest, 'toAddr': toAddr, 'fee': fee,'chain': chain}
         return self._request_with_params(POST, WITHDRAWAL_COIN, params)
 
     # Get Deposit History
@@ -74,8 +74,8 @@ class FundingAPI(Client):
         return self._request_with_params(GET, DEPOSIT_LIGHTNING, params)
 
     # Withdrawal Lightning
-    def withdrawal_lightning(self, ccy,invoice,pwd):
-        params = {'ccy':ccy, 'invoice':invoice, 'pwd':pwd}
+    def withdrawal_lightning(self, ccy,invoice,memo):
+        params = {'ccy':ccy, 'invoice':invoice,'memo':memo}
         return self._request_with_params(POST, WITHDRAWAL_LIGHTNING, params)
 
 
