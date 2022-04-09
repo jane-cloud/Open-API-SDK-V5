@@ -34,14 +34,19 @@ class FundingAPI(Client):
         return self._request_with_params(POST, WITHDRAWAL_COIN, params)
 
     # Get Deposit History
-    def get_deposit_history(self, ccy='', state='', after='', before='', limit='',txId=''):
-        params = {'ccy': ccy, 'state': state, 'after': after, 'before': before, 'limit': limit,'txId':txId}
+    def get_deposit_history(self, ccy='', state='', after='', before='', limit='',txId='',depId=''):
+        params = {'ccy': ccy, 'state': state, 'after': after, 'before': before, 'limit': limit,'txId':txId,'depId':depId}
         return self._request_with_params(GET, DEPOSIT_HISTORIY, params)
 
     # Get Withdrawal History
-    def get_withdrawal_history(self, ccy='', state='', after='', before='', limit='',txId=''):
-        params = {'ccy': ccy, 'state': state, 'after': after, 'before': before, 'limit': limit,'txId':txId}
+    def get_withdrawal_history(self, ccy='', state='', after='', before='', limit='',txId='',depId='',wdId=''):
+        params = {'ccy': ccy, 'state': state, 'after': after, 'before': before, 'limit': limit,'txId':txId,'depId':depId,'wdId':wdId}
         return self._request_with_params(GET, WITHDRAWAL_HISTORIY, params)
+
+    # Get Convert Dust Assets
+    def convert_dust_assets(self, ccy):
+        params = {'ccy': ccy}
+        return self._request_with_params(POST, CONVERT_DUST_ASSETS, params)
 
     # Get Currencies
     def get_currency(self):
@@ -78,6 +83,10 @@ class FundingAPI(Client):
         params = {'ccy':ccy, 'invoice':invoice,'memo':memo}
         return self._request_with_params(POST, WITHDRAWAL_LIGHTNING, params)
 
+    # Withdrawal Lightning
+    def cancel_withdrawal(self, wdId):
+        params = {'wdId':wdId,}
+        return self._request_with_params(POST , CANCEL_WITHDRAWAL, params)
 
     # GET Obtain account asset valuation
     def get_asset_valuation(self, ccy):

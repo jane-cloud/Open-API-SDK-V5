@@ -87,8 +87,6 @@ if __name__ == '__main__':
     # result = fundingAPI.coin_withdraw('usdt', '2', '3', '', '', '0')
     # 获取充值记录  Get Deposit History
     # result = fundingAPI.get_deposit_history()
-    # 获取提币记录  Get Withdrawal History
-    # result = fundingAPI.get_withdrawal_history()
     # 获取币种列表  Get Currencies
     # result = fundingAPI.get_currency()
     # 余币宝申购/赎回  PiggyBank Purchase/Redemption
@@ -101,6 +99,12 @@ if __name__ == '__main__':
     # result = fundingAPI.get_deposit_lightning(ccy='BTC',amt='0.01')
     # 闪电网络提币
     # result = fundingAPI.withdrawal_lightning(ccy='BTC',invoice='0.01',memo='')
+    # 撤销提币 CANCEL_WITHDRAWAL
+    # result = fundingAPI.cancel_withdrawal(wdId='BTC')
+    # 获取提币记录  Get Withdrawal History
+    result = fundingAPI.get_withdrawal_history()
+    # 小额资产兑换 CONVERT_DUST_ASSETS
+    # result = fundingAPI.convert_dust_assets()
     # 获取账户资产估值 GET Obtain account asset valuation
     # result = fundingAPI.get_asset_valuation(ccy = 'USDT')
     # 设置余币宝借贷利率 POST SET LENDING RATE
@@ -122,7 +126,7 @@ if __name__ == '__main__':
     # result = convertAPI.estimate_quote(baseCcy = 'OKB', quoteCcy = 'USDT', side = 'sell', rfqSz = '1', rfqSzCcy = 'USDT', clQReqId = '')
     # 闪兑交易  Convert-trade
     # result = convertAPI.convert_trade(quoteId='quoterOKB-USDT16480319751107680', baseCcy='OKB', quoteCcy='USDT',
-    #                                   side='sell', sz='1', szCcy='USDT', clTReqId='')
+    #                                   side='sell', sz='1', szCcy='USDT', clTReqId='',tag='')
     # 获取闪兑交易历史  Get Convert-history
     # result = convertAPI.get_convert_history(after = '', before = '', limit = '')
 

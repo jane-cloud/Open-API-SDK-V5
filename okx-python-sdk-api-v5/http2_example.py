@@ -104,7 +104,7 @@ if __name__ == '__main__':
     # result = accountAPI.get_simulated_margin
     # parameters = []
     # 查看账户Greeks GET GREEKS
-    result = accountAPI.get_greeks()
+    # result = accountAPI.get_greeks()
 
     # funding api
     fundingAPI = Funding.FundingAPI(api_key, secret_key, passphrase, False, flag)
@@ -126,8 +126,14 @@ if __name__ == '__main__':
     # 获取充值记录  Get Deposit History
     # request = fundingAPI.get_deposit_history
     # parameters = []
+    # 撤销提币 CANCEL_WITHDRAWAL
+    # result = fundingAPI.cancel_withdrawal
+    # parameters = ['BTC']
     # 获取提币记录  Get Withdrawal History
     # request = fundingAPI.get_withdrawal_history
+    # parameters = []
+    # 小额资产兑换 CONVERT_DUST_ASSETS
+    # result = fundingAPI.convert_dust_assets
     # parameters = []
     # 获取币种列表  Get Currencies
     # request = fundingAPI.get_currency
@@ -161,6 +167,24 @@ if __name__ == '__main__':
     # 获取市场借贷历史（公共）GET LENDING RATE SUMMARY
     # result = fundingAPI.get_lending_rate_summary
     # parameters =[]
+
+    # convert api
+    convertAPI = Convert.ConvertAPI(api_key, secret_key, passphrase, False, flag)
+    # 获取闪兑币种列表  Get Currencies
+    # result = convertAPI.get_currencies
+    # parameters = []
+    # 获取闪兑币对信息  Get Currency-pair
+    # result = convertAPI.get_currency_pair
+    # parameters = []
+    # 闪兑预估询价  Estimate-quote
+    # result = convertAPI.estimate_quote
+    # parameters = []
+    # 闪兑交易  Convert-trade
+    # result = convertAPI.convert_trade
+    # parameters = []
+    # 获取闪兑交易历史  Get Convert-history
+    # result = convertAPI.get_convert_history
+    # parameters = []
 
     # market api
     marketAPI = Market.MarketAPI(api_key, secret_key, passphrase, False, flag)
