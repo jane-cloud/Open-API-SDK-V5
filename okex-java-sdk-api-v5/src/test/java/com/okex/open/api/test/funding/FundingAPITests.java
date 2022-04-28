@@ -1,10 +1,7 @@
 package com.okex.open.api.test.funding;
 
 import com.alibaba.fastjson.JSONObject;
-import com.okex.open.api.bean.funding.param.FundsTransfer;
-import com.okex.open.api.bean.funding.param.PiggyBankPurchaseRedemption;
-import com.okex.open.api.bean.funding.param.SetLendingRate;
-import com.okex.open.api.bean.funding.param.Withdrawal;
+import com.okex.open.api.bean.funding.param.*;
 import com.okex.open.api.service.funding.FundingAPIService;
 import com.okex.open.api.service.funding.impl.FundingAPIServiceImpl;
 import org.junit.Before;
@@ -113,7 +110,7 @@ public class FundingAPITests extends FundingAPIBaseTests {
      */
     @Test
     public void getDepositHistory() {
-        JSONObject result = fundingAPIService.getDepositHistory("BTC", "", "", "", "","");
+        JSONObject result = fundingAPIService.getDepositHistory("BTC", "", "", "", "","","");
         toResultString(LOG, "result", result);
     }
 
@@ -140,7 +137,7 @@ public class FundingAPITests extends FundingAPIBaseTests {
      */
     @Test
     public void getWithdrawalHistory() {
-        JSONObject result = fundingAPIService.getWithdrawalHistory("USDT", "", "", "", "","");
+        JSONObject result = fundingAPIService.getWithdrawalHistory("USDT", "", "", "", "","","");
         toResultString(LOG, "result", result);
     }
 
@@ -237,9 +234,29 @@ public class FundingAPITests extends FundingAPIBaseTests {
     }
 
 
+    /**
+     * 小额资产兑换 convert-dust-assets
+     * POST /api/v5/asset/convert-dust-assets
+     */
+    @Test
+    public void convertDustAssets() {
+        ConvertDustAssets convertDustAssets = new ConvertDustAssets();
+        convertDustAssets.setCcy("OKB");
+        JSONObject result = fundingAPIService.convertDustAssets(convertDustAssets);
+        toResultString(LOG, "result", result);
+    }
 
-
-
+    /**
+     * 撤销提币 cancel-withdrawal
+     * POST /api/v5/asset/cancel-withdrawal
+     */
+    @Test
+    public void cancelWithdrawal() {
+        Withdrawal cancelWithdrawal = new Withdrawal();
+        cancelWithdrawal.setWdId("");
+        JSONObject result = fundingAPIService.cancelWithdrawal(cancelWithdrawal);
+        toResultString(LOG, "result", result);
+    }
 
 
 

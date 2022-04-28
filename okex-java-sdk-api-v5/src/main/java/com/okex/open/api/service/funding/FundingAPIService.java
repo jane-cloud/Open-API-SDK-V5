@@ -22,13 +22,13 @@ public interface FundingAPIService {
     JSONObject getDepositAddress(String ccy);
 
     //获取充值记录 Get Deposit History
-    JSONObject getDepositHistory(String ccy,String txId,String state,String after,String before,String limit);
+    JSONObject getDepositHistory(String ccy,String txId,String state,String after,String before,String limit,String depId);
 
     //提币 Withdrawal
     JSONObject Withdrawal(Withdrawal withdrawal);
 
     //获取提币记录 Get Withdrawal History
-    JSONObject getWithdrawalHistory(String ccy,String txId,String state,String after,String before,String limit);
+    JSONObject getWithdrawalHistory(String ccy,String txId,String state,String after,String before,String limit,String wdId);
 
     //余币宝申购/赎回 PiggyBank Purchase/Redemption
     JSONObject piggyBankPurchaseRedemption(PiggyBankPurchaseRedemption piggyBankPurchaseRedemption);
@@ -59,4 +59,10 @@ public interface FundingAPIService {
 
     //获取市场借贷历史（公共）  Get public borrow history (public)
     JSONObject lendingRateHistory(String ccy, String after, String before,String limit);
+
+    //小额资产兑换
+    JSONObject convertDustAssets(ConvertDustAssets convertDustAssets);
+
+    //撤销提币
+    JSONObject cancelWithdrawal(Withdrawal cancelWithdrawal);
 }

@@ -89,6 +89,7 @@ public class WebSocketClient {
             @Override
             public void onFailure(final WebSocket webSocket, final Throwable t, final Response response) {
                 System.out.println("Connection failed,Please reconnect!");
+                System.out.println("reason: "+t.getCause());
                 if (Objects.nonNull(service)) {
 
                     service.shutdown();
@@ -240,10 +241,10 @@ public class WebSocketClient {
 
     //登录
     public static void login(String apiKey, String passPhrase, String secretKey) {
-        String timestamp = (Double.parseDouble(DateUtils.getEpochTime()) + 28800) + "";
+        String timestamp = DateTime.now().getMillis() / 1000+ "";
         String message = timestamp + "GET" + "/users/self/verify";
         sign = sha256_HMAC(message, secretKey);
-        String str = "{\"op\"" + ":" + "\"login\"" + "," + "\"args\"" + ":" + "[" + "\"" + apiKey + "\"" + "," + "\"" + passPhrase + "\"" + "," + "\"" + timestamp + "\"" + "," + "\"" + sign + "\"" + "]}";
+        String str = "{\"op\"" + ":" + "\"login\"" + "," + "\"args\"" + ":" + "[{" + "\"apiKey\"" + ":"+ "\"" + apiKey + "\"" + "," + "\"passphrase\"" + ":" + "\"" + passPhrase + "\"" + ","+ "\"timestamp\"" + ":"  + "\"" + timestamp + "\"" + ","+ "\"sign\"" + ":"  + "\"" + sign + "\"" + "}]}";
         sendMessage(str);
     }
 

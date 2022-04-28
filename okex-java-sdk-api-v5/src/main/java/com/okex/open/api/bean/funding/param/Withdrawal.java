@@ -7,7 +7,16 @@ public class Withdrawal {
     private String dest;
     private String toAddr;
     private String invoice;
-    
+    private String wdId;
+
+    public String getWdId() {
+        return wdId;
+    }
+
+    public void setWdId(String wdId) {
+        this.wdId = wdId;
+    }
+
     @Override
     public String toString() {
         return "Withdrawal{" +
@@ -17,6 +26,7 @@ public class Withdrawal {
                 ", dest='" + dest + '\'' +
                 ", toAddr='" + toAddr + '\'' +
                 ", fee='" + fee + '\'' +
+                ", wdId='" + wdId + '\'' +
                 '}';
     }
 

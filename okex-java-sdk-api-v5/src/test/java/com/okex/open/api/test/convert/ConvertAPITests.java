@@ -46,6 +46,7 @@ public class ConvertAPITests extends ConvertAPIBaseTests {
         estimateQuote.setRfqSzCcy("DOT");
         estimateQuote.setSide("sell");
         estimateQuote.setClQReqId("");
+        estimateQuote.setTag("");
 
         JSONObject result = convertAPIService.estimateQuote(estimateQuote);
         toResultString(LOG, "result", result);
@@ -62,6 +63,7 @@ public class ConvertAPITests extends ConvertAPIBaseTests {
         trade.setSz("0.11");
         trade.setSzCcy("DOT");
         trade.setClTReqId("test0324006");
+        trade.setTag("");
 
         JSONObject result = convertAPIService.trade(trade);
         toResultString(LOG, "result", result);
@@ -70,7 +72,7 @@ public class ConvertAPITests extends ConvertAPIBaseTests {
     //获取闪兑交易历史 Get convert history
     @Test
     public void getHistory(){
-        JSONObject result = convertAPIService.getHistory();
+        JSONObject result = convertAPIService.getHistory("","","","");
         toResultString(LOG, "result", result);
     }
 }

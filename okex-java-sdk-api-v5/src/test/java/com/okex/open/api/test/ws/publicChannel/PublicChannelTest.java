@@ -19,7 +19,7 @@ public class PublicChannelTest {
     @Before
     public void connect() {
         //与服务器建立连接
-        WebSocketConfig.publicConnect(webSocketClient);
+        WebSocketConfig.loginConnect(webSocketClient);
     }
 
     @After
@@ -319,12 +319,13 @@ public class PublicChannelTest {
      */
     @Test
     public void booksl2tbtChannel() {
+
         //添加订阅频道
         ArrayList<Map> channelList= new ArrayList<>();
 
         Map map =new HashMap();
         map.put("channel","books-l2-tbt");
-        map.put("instId","BTC-USDT-210625");
+        map.put("instId","BTC-USDT-SWAP");
 
         channelList.add(map);
         //调用订阅方法
@@ -349,7 +350,7 @@ public class PublicChannelTest {
 
         Map map =new HashMap();
         map.put("channel","books50-l2-tbt");
-        map.put("instId","BTC-USDT-210625");
+        map.put("instId","BTC-USDT-SWAP");
 
         channelList.add(map);
         //调用订阅方法
@@ -361,7 +362,30 @@ public class PublicChannelTest {
             e.printStackTrace();
         }
     }
+    /**
+     * 公共-深度频道(买卖一档)
+     * 新增bbo深度频道，实时推送买卖1档深度数据
+     * Order bbo-tbt Channel
+     */
+    @Test
+    public void bbotbtChannel() {
+        //添加订阅频道
+        ArrayList<Map> channelList= new ArrayList<>();
 
+        Map map =new HashMap();
+        map.put("channel","bbo-tbt");
+        map.put("instId","BTC-USDT");
+
+        channelList.add(map);
+        //调用订阅方法
+        WebSocketClient.subscribe(channelList);
+        //为保证测试方法不停，需要让线程延迟
+        try {
+            Thread.sleep(10000000);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
 
     /**

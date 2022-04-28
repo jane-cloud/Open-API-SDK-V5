@@ -29,7 +29,7 @@ interface FundingAPI {
 
     //获取充值记录 Get Deposit History
     @GET("/api/v5/asset/deposit-history")
-    Call<JSONObject> getDepositHistory(@Query("ccy") String ccy,@Query("txId") String txId,@Query("state")String state,@Query("after")String after,@Query("before")String before,@Query("limit")String limit);
+    Call<JSONObject> getDepositHistory(@Query("ccy") String ccy,@Query("txId") String txId,@Query("state")String state,@Query("after")String after,@Query("before")String before,@Query("limit")String limit,@Query("depId")String depId);
 
     //提币 Withdrawal
     @POST("/api/v5/asset/withdrawal")
@@ -37,7 +37,7 @@ interface FundingAPI {
 
     //获取提币记录 Get Withdrawal History
     @GET("/api/v5/asset/withdrawal-history")
-    Call<JSONObject> getWithdrawalHistory(@Query("ccy") String ccy,@Query("txId") String txId,@Query("state")String state,@Query("after")String after,@Query("before")String before,@Query("limit")String limit);
+    Call<JSONObject> getWithdrawalHistory(@Query("ccy") String ccy,@Query("txId") String txId,@Query("state")String state,@Query("after")String after,@Query("before")String before,@Query("limit")String limit,@Query("wdId")String wdId);
 
     //余币宝申购/赎回 PiggyBank Purchase/Redemption
     @POST("/api/v5/asset/purchase_redempt")
@@ -79,5 +79,9 @@ interface FundingAPI {
     @GET("/api/v5/asset/lending-rate-history")
     Call<JSONObject> lendingRateHistory(@Query("ccy") String ccy,@Query("after") String after,@Query("before") String before,@Query("limit") String limit);
 
+    @POST("/api/v5/asset/convert-dust-assets")
+    Call<JSONObject> ConvertDustAssets(@Body JSONObject parseObject);
 
+    @POST("/api/v5/asset/cancel-withdrawal")
+    Call<JSONObject> cancelWithdrawal(@Body JSONObject parseObject);
 }

@@ -23,8 +23,9 @@ public class WebSocketConfig {
         System.out.println(SERVICE_URL);
         //与服务器建立连接
         WebSocketClient.connection(SERVICE_URL);
-        //登录账号,用户需提供 api-key，passphrase,secret—key 不要随意透漏 ^_^
-        WebSocketClient.login(API_KEY , PASSPHRASE , SECRET_KEY);
-
+        if (API_KEY != "" && API_KEY != null) {
+            //登录账号,用户需提供 api-key，passphrase,secret—key 不要随意透漏 ^_^
+            WebSocketClient.login(API_KEY , PASSPHRASE , SECRET_KEY);
+        }
     }
 }

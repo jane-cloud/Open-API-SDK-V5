@@ -49,8 +49,8 @@ public class FundingAPIServiceImpl implements FundingAPIService {
 
     //获取充值记录 Get Deposit History
     @Override
-    public JSONObject getDepositHistory(String ccy, String txId, String state, String after, String before, String limit) {
-        return this.client.executeSync(this.api.getDepositHistory(ccy,txId,state,after,before,limit));
+    public JSONObject getDepositHistory(String ccy, String txId, String state, String after, String before, String limit,String depId) {
+        return this.client.executeSync(this.api.getDepositHistory(ccy,txId,state,after,before,limit,depId));
     }
 
     //提币 Withdrawal
@@ -61,8 +61,8 @@ public class FundingAPIServiceImpl implements FundingAPIService {
 
     //获取提币记录 Get Withdrawal History
     @Override
-    public JSONObject getWithdrawalHistory(String ccy, String txId, String state, String after, String before, String limit) {
-        return this.client.executeSync(this.api.getWithdrawalHistory(ccy,txId,state,after,before,limit));
+    public JSONObject getWithdrawalHistory(String ccy, String txId, String state, String after, String before, String limit,String wdId) {
+        return this.client.executeSync(this.api.getWithdrawalHistory(ccy,txId,state,after,before,limit,wdId));
     }
 
     //余币宝申购/赎回 PiggyBank Purchase/Redemption
@@ -123,5 +123,18 @@ public class FundingAPIServiceImpl implements FundingAPIService {
     @Override
     public JSONObject lendingRateHistory(String ccy, String after, String before, String limit) {
         return this.client.executeSync(this.api.lendingRateHistory(ccy,after,before,limit));
+    }
+
+    //小额资产兑换
+    @Override
+    public JSONObject convertDustAssets(ConvertDustAssets convertDustAssets) {
+        return this.client.executeSync(this.api.ConvertDustAssets(JSONObject.parseObject(JSON.toJSONString(convertDustAssets))));
+    }
+
+    //撤销提币
+    @Override
+    public JSONObject cancelWithdrawal(Withdrawal cancelWithdrawal) {
+        return this.client.executeSync(this.api.cancelWithdrawal(JSONObject.parseObject(JSON.toJSONString(cancelWithdrawal))));
+
     }
 }
