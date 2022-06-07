@@ -228,6 +228,30 @@ public class BrokerAPITests extends BrokerAPIBaseTests{
         toResultString(LOG, "result", result);
     }
 
+    /**
+     * 获取返佣明细下载链接  Get download link
+     * GET /api/v5/broker/fd/rebate-per-orders
+     */
+    @Test
+    public void rebatePerOrdersfd(){
+        JSONObject result = this.brokerAPIService.rebatePerOrdersfd("false","20220201","220302");
+        toResultString(LOG, "result", result);
+    }
+
+    /**
+     * 生成返佣明细下载链接 Create rebate details download link
+     * POST /api/v5/broker/fd/rebate-per-orders
+     */
+    @Test
+    public void setRebatePerOrdersfd(){
+        SetRebatePerOrders setRebatePerOrders = new SetRebatePerOrders();
+        setRebatePerOrders.setBegin("20220401");
+        setRebatePerOrders.setEnd("20220507");
+
+        JSONObject result = this.brokerAPIService.setRebatePerOrdersfd(setRebatePerOrders);
+        toResultString(LOG, "result", result);
+    }
+
 
 
 }

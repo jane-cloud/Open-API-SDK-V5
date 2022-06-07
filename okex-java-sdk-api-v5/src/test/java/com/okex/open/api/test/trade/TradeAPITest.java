@@ -43,6 +43,7 @@ public class TradeAPITest extends TradeAPIBaseTest {
 //        placeOrder.setPx("60000");
 //        placeOrder.setReduceOnly(false);
 //        placeOrder.setTgtCcy("");
+//        placeOrder.setBanAmend(false);
 
         JSONObject result = tradeAPIService.placeOrder(placeOrder);
 
@@ -72,6 +73,7 @@ public class TradeAPITest extends TradeAPIBaseTest {
         placeOrder1.setPx("0.09");
         placeOrder1.setReduceOnly(null);
 //        placeOrder1.setTgtCcy("");
+//        placeOrder1.setBanAmend(false);
 
 
         PlaceOrder placeOrder2=new PlaceOrder();
@@ -87,6 +89,7 @@ public class TradeAPITest extends TradeAPIBaseTest {
         placeOrder2.setPx("24633");
         placeOrder2.setReduceOnly(null);
 //        placeOrder2.setTgtCcy("");
+//        placeOrder2.setBanAmend(false);
 
 
         placeOrders.add(placeOrder1);
@@ -272,7 +275,7 @@ public class TradeAPITest extends TradeAPIBaseTest {
     @Test
     public void getTransactionDetails(){
 
-        JSONObject result = tradeAPIService.getTransactionDetails("SPOT",null,null,null,null,null,null);
+        JSONObject result = tradeAPIService.getTransactionDetails("SPOT",null,null,null,null,null,null,null,null);
         toResultString(LOG, "result", result);
 
     }
@@ -284,7 +287,7 @@ public class TradeAPITest extends TradeAPIBaseTest {
     @Test
     public void getTransactionDetailsForThreeMonths(){
 
-        JSONObject result = tradeAPIService.getTransactionDetailsForThreeMonths("SPOT",null,null,null,null,null,null);
+        JSONObject result = tradeAPIService.getTransactionDetailsForThreeMonths("SPOT",null,null,null,null,null,null,null,null);
         toResultString(LOG, "result", result);
 
     }

@@ -45,10 +45,13 @@ interface MarketDataAPI {
     @GET("/api/v5/market/mark-price-candles")
     Call<JSONObject> getMarkPriceCandlesticks(@Query("instId") String instId,@Query("after")String after,@Query("before")String before,@Query("bar")String bar,@Query("limit")String limit);
 
-
     //获取交易产品公共成交数据 Get Trades
     @GET("/api/v5/market/trades")
     Call<JSONObject> getTrades(@Query("instId") String instId,@Query("limit") String limit);
+
+    //获取交易产品公共历史成交数据 Get trades history
+    @GET("/api/v5/market/trades")
+    Call<JSONObject> getTradesHistory(@Query("instId") String instId,@Query("after") String after,@Query("before") String before,@Query("limit") String limit);
 
     //获取平台24小时总成交量 Get total volume
     @GET("/api/v5/market/platform-24-volume")

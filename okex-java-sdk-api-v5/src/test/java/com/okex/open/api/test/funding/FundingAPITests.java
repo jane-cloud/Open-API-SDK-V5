@@ -67,8 +67,7 @@ public class FundingAPITests extends FundingAPIBaseTests {
         fundsTransfer.setFrom("9");
         fundsTransfer.setTo("3");
 //        fundsTransfer.setSubAcct("");
-        fundsTransfer.setInstId("EOS-USD");
-        fundsTransfer.setToInstId("EOS-USD");
+        fundsTransfer.setClientId("");
         fundsTransfer.setLoanTrans(false);
         JSONObject result = fundingAPIService.fundsTransfer(fundsTransfer);
         toResultString(LOG, "result", result);
@@ -80,7 +79,7 @@ public class FundingAPITests extends FundingAPIBaseTests {
      */
     @Test
     public void transferState() {
-        JSONObject result = fundingAPIService.transferState("1234","0");
+        JSONObject result = fundingAPIService.transferState("1234",null,"0");
         toResultString(LOG, "result", result);
     }
 
@@ -90,7 +89,7 @@ public class FundingAPITests extends FundingAPIBaseTests {
      */
     @Test
     public void assetBillsDetails() {
-        JSONObject result = fundingAPIService.assetBillsDetails("BTC",null,null,null,null);
+        JSONObject result = fundingAPIService.assetBillsDetails("BTC",null,null,null,null,null);
         toResultString(LOG, "result", result);
     }
 
@@ -127,6 +126,7 @@ public class FundingAPITests extends FundingAPIBaseTests {
         withdrawal.setDest("3");
         withdrawal.setToAddr("46674851");
         withdrawal.setFee("1");
+        withdrawal.setClientId(null);
         JSONObject result = fundingAPIService.Withdrawal(withdrawal);
         toResultString(LOG, "result", result);
     }
@@ -137,7 +137,7 @@ public class FundingAPITests extends FundingAPIBaseTests {
      */
     @Test
     public void getWithdrawalHistory() {
-        JSONObject result = fundingAPIService.getWithdrawalHistory("USDT", "", "", "", "","","");
+        JSONObject result = fundingAPIService.getWithdrawalHistory("USDT", "","", "", "", "","","");
         toResultString(LOG, "result", result);
     }
 

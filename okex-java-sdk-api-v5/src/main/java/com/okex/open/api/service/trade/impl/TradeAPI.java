@@ -87,6 +87,8 @@ interface TradeAPI {
                                            @Query("ordId")String ordId,
                                            @Query("after")String after,
                                            @Query("before")String before,
+                                           @Query("begin")String begin,
+                                           @Query("end")String end,
                                            @Query("limit")String limit);
 
     //获取成交明细（近三个月） Get Transaction Details(last 3 months）
@@ -97,6 +99,8 @@ interface TradeAPI {
                                            @Query("ordId")String ordId,
                                            @Query("after")String after,
                                            @Query("before")String before,
+                                           @Query("begin")String begin,
+                                           @Query("end")String end,
                                            @Query("limit")String limit);
 
 

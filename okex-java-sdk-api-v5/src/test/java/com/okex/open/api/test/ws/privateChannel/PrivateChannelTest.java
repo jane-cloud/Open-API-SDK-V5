@@ -233,7 +233,6 @@ public class PrivateChannelTest {
         accountGreeks.put("channel","account-greeks");
         accountGreeks.put("ccy","USDT");
 
-
         channelList.add(accountGreeks);
 
         //调用订阅方法
@@ -245,6 +244,186 @@ public class PrivateChannelTest {
             e.printStackTrace();
         }
     }
+
+    /**
+     * 询价频道
+     * Rfqs channel
+     */
+    @Test
+    public void rfqsChannel() {
+        //添加订阅频道
+        ArrayList<Map> channelList= new ArrayList<>();
+        Map rfqsChannel =new HashMap();
+
+        rfqsChannel.put("channel","rfqs");
+
+        channelList.add(rfqsChannel);
+
+        //调用订阅方法
+        WebSocketClient.subscribe(channelList);
+        //为保证测试方法不停，需要让线程延迟
+        try {
+            Thread.sleep(10000000);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * 报价频道
+     * Quotes  channel
+     */
+    @Test
+    public void quotesChannel() {
+        //添加订阅频道
+        ArrayList<Map> channelList= new ArrayList<>();
+        Map quotesChannel =new HashMap();
+
+        quotesChannel.put("channel","quotes");
+
+        channelList.add(quotesChannel);
+
+        //调用订阅方法
+        WebSocketClient.subscribe(channelList);
+        //为保证测试方法不停，需要让线程延迟
+        try {
+            Thread.sleep(10000000);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * 大宗交易频道
+     * Structure block trades channel
+     */
+    @Test
+    public void strucBlockTradesChannel() {
+        //添加订阅频道
+        ArrayList<Map> channelList= new ArrayList<>();
+        Map strucBlockTradesChannel =new HashMap();
+
+        strucBlockTradesChannel.put("channel","struc-block-trades");
+
+        channelList.add(strucBlockTradesChannel);
+
+        //调用订阅方法
+        WebSocketClient.subscribe(channelList);
+        //为保证测试方法不停，需要让线程延迟
+        try {
+            Thread.sleep(10000000);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * 现货网格策略委托订单频道
+     * Spot grid algo orders channel
+     */
+    @Test
+    public void gridOrdersSpotChannel() {
+        //添加订阅频道
+        ArrayList<Map> channelList= new ArrayList<>();
+        Map gridOrdersSpotChannel =new HashMap();
+
+        gridOrdersSpotChannel.put("channel","grid-orders-spot");
+        gridOrdersSpotChannel.put("instType","SPOT");
+        gridOrdersSpotChannel.put("instId","BTC-USDT");
+        gridOrdersSpotChannel.put("algoId",null);
+
+        channelList.add(gridOrdersSpotChannel);
+
+        //调用订阅方法
+        WebSocketClient.subscribe(channelList);
+        //为保证测试方法不停，需要让线程延迟
+        try {
+            Thread.sleep(10000000);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * 合约网格策略委托订单频道
+     * Contract grid algo orders channel
+     */
+    @Test
+    public void gridOrdersContractChannel() {
+        //添加订阅频道
+        ArrayList<Map> channelList= new ArrayList<>();
+        Map gridOrdersContractChannel =new HashMap();
+
+        gridOrdersContractChannel.put("channel","grid-orders-contract");
+        gridOrdersContractChannel.put("instType","SWAP");
+        gridOrdersContractChannel.put("instId","BTC-USDT-SWAP");
+        gridOrdersContractChannel.put("algoId",null);
+
+        channelList.add(gridOrdersContractChannel);
+
+        //调用订阅方法
+        WebSocketClient.subscribe(channelList);
+        //为保证测试方法不停，需要让线程延迟
+        try {
+            Thread.sleep(10000000);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * 合约网格持仓频道
+     * Grid positions channel
+     */
+    @Test
+    public void gridPositionsChannel() {
+        //添加订阅频道
+        ArrayList<Map> channelList= new ArrayList<>();
+        Map gridPositionsChannel =new HashMap();
+
+        gridPositionsChannel.put("channel","grid-positions");
+        gridPositionsChannel.put("algoId","");
+
+        channelList.add(gridPositionsChannel);
+
+        //调用订阅方法
+        WebSocketClient.subscribe(channelList);
+        //为保证测试方法不停，需要让线程延迟
+        try {
+            Thread.sleep(10000000);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * 网格策略子订单频道
+     * Grid sub orders channel
+     */
+    @Test
+    public void gridSubOrdersChannel() {
+        //添加订阅频道
+        ArrayList<Map> channelList= new ArrayList<>();
+        Map gridSubOrdersChannel =new HashMap();
+
+        gridSubOrdersChannel.put("channel","grid-sub-orders");
+        gridSubOrdersChannel.put("algoId","");
+
+        channelList.add(gridSubOrdersChannel);
+
+        //调用订阅方法
+        WebSocketClient.subscribe(channelList);
+        //为保证测试方法不停，需要让线程延迟
+        try {
+            Thread.sleep(10000000);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
+
+
 
 
     //取消订阅

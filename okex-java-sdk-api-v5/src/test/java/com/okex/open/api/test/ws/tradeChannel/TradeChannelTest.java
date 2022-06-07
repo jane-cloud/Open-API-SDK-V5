@@ -52,6 +52,7 @@ public class TradeChannelTest {
         order.put("sz","1");
 //        order.put("reduceOnly",false);
 //        order.put("tgtCcy","base_ccy");
+//        order.put("banAmend",false);
 
         placeOrder.add(order);
 
@@ -89,6 +90,7 @@ public class TradeChannelTest {
         order1.put("sz","1");
         order1.put("reduceOnly",false);
         order1.put("tgtCcy","base_ccy");
+//        order1.put("banAmend",false);
 
         Map order2 =new HashMap();
         order2.put("instId","BTC-USDT");
@@ -103,6 +105,7 @@ public class TradeChannelTest {
         order2.put("sz","1");
         order2.put("reduceOnly",false);
 //        order2.put("tgtCcy","base_ccy");
+        order2.put("banAmend",false);
 
         placeMultipleOrders.add(order1);
         placeMultipleOrders.add(order2);

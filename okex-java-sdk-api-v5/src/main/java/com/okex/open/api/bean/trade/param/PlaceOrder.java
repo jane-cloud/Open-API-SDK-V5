@@ -27,9 +27,22 @@ public class PlaceOrder {
                 ", sz='" + sz + '\'' +
                 ", px='" + px + '\'' +
                 ", tgtCcy='" + tgtCcy + '\'' +
+                ", banAmend=" + banAmend +
                 ", reduceOnly=" + reduceOnly +
                 '}';
     }
+
+    public Boolean getBanAmend() {
+        return banAmend;
+    }
+
+    public void setBanAmend(Boolean banAmend) {
+        this.banAmend = banAmend;
+    }
+
+    private Boolean banAmend;
+
+
 
     public String getTgtCcy() {
         return tgtCcy;

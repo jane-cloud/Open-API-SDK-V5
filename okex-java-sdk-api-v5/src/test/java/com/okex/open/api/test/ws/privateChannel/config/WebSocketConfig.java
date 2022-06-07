@@ -2,17 +2,15 @@ package com.okex.open.api.test.ws.privateChannel.config;
 
 public class WebSocketConfig {
     //ws  模拟盘
-//    private static final String SERVICE_URL = "wss://wspap.okx.com:8443/ws/v5/private?brokerId=9999";
+    private static final String SERVICE_URL = "wss://wspap.okx.com:8443/ws/v5/private?brokerId=9999";
 
     //ws  实盘
-    private static final String SERVICE_URL = "wss://ws.okx.com:8443/ws/v5/private";
+//    private static final String SERVICE_URL = "wss://ws.okx.com:8443/ws/v5/private";
 
     // 实盘api key
     private static final String API_KEY = "";
     private static final String SECRET_KEY = "";
     private static final String PASSPHRASE = "";
-
-    
 
 
     public static void publicConnect(WebSocketClient webSocketClient) {

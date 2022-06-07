@@ -6,7 +6,7 @@ import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
 
-public interface    PublicDataAPIService {
+public interface PublicDataAPIService {
 
     //获取交易产品基础信息 Get Instruments
     JSONObject getInstruments(String instType,String uly, String instId);

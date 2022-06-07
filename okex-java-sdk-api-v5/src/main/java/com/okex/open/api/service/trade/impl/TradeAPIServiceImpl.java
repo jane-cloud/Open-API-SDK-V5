@@ -87,13 +87,14 @@ public class TradeAPIServiceImpl implements TradeAPIService {
 
     //获取成交明细（近三天） Get Transaction Details(last 3 days）
     @Override
-    public JSONObject getTransactionDetails(String instType, String uly, String instId, String ordId, String after, String before, String limit) {
-        return this.client.executeSync(this.tradeAPI.getTransactionDetails(instType, uly, instId, ordId, after, before, limit));
+    public JSONObject getTransactionDetails(String instType, String uly, String instId, String ordId, String after, String before, String begin,String end,String limit) {
+        return this.client.executeSync(this.tradeAPI.getTransactionDetails(instType, uly, instId, ordId, after, before, begin,end, limit));
     }
 
+    //获取成交明细（近三个月） Get Transaction Details(last 3 months）
     @Override
-    public JSONObject getTransactionDetailsForThreeMonths(String instType, String uly, String instId, String ordId, String after, String before, String limit) {
-        return this.client.executeSync(this.tradeAPI.getTransactionDetailsForThreeMonths(instType, uly, instId, ordId, after, before, limit));
+    public JSONObject getTransactionDetailsForThreeMonths(String instType, String uly, String instId, String ordId, String after, String before, String begin,String end,String limit) {
+        return this.client.executeSync(this.tradeAPI.getTransactionDetailsForThreeMonths(instType, uly, instId, ordId, after, before,begin,end, limit));
     }
 
     //委托策略下单 Place Algo Order

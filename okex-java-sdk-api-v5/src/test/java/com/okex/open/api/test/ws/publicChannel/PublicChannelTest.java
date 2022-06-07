@@ -509,6 +509,55 @@ public class PublicChannelTest {
         }
     }
 
+    /**
+     * 公共大宗交易频道
+     * Public structure block trades channel
+     */
+    @Test
+    public void publicStrucBlockTradesChannel() {
+        //添加订阅频道
+        ArrayList<Map> channelList= new ArrayList<>();
+
+        Map map =new HashMap();
+        map.put("channel","public-struc-block-trades");
+
+        channelList.add(map);
+        //调用订阅方法
+        WebSocketClient.subscribe(channelList);
+        //为保证测试方法不停，需要让线程延迟
+        try {
+            Thread.sleep(10000000);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * 大宗交易行情频道
+     * Public structure block trades channel
+     */
+    @Test
+    public void blocktickersChannel() {
+        //添加订阅频道
+        ArrayList<Map> channelList= new ArrayList<>();
+
+        Map map =new HashMap();
+        map.put("channel","block-tickers");
+        map.put("instId","BTC-USDT");
+
+        channelList.add(map);
+        //调用订阅方法
+        WebSocketClient.subscribe(channelList);
+        //为保证测试方法不停，需要让线程延迟
+        try {
+            Thread.sleep(10000000);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
+
     //取消订阅
     @Test
     public void unsubscribeChannel() {
