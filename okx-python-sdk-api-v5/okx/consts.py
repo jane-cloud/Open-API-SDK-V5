@@ -169,5 +169,36 @@ ESTIMATE_QUOTE = '/api/v5/asset/convert/estimate-quote'
 CONVERT_TRADE = '/api/v5/asset/convert/trade'
 CONVERT_HISTORY = '/api/v5/asset/convert/history'
 
+# FDBroker
+FD_GET_REBATE_PER_ORDERS = '/api/v5/broker/fd/rebate-per-orders'
+FD_REBATE_PER_ORDERS = '/api/v5/broker/fd/rebate-per-orders'
+
+# Rfq
+COUNTERPARTIES = '/api/v5/rfq/counterparties'
+CREATE_RFQ = '/api/v5/rfq/create-rfq'
+CANCEL_RFQ = '/api/v5/rfq/cancel-rfq'
+CANCEL_BATCH_RFQS = '/api/v5/rfq/cancel-batch-rfqs'
+CANCEL_ALL_RSQS = '/api/v5/rfq/cancel-all-rfqs'
+EXECUTE_QUOTE = '/api/v5/rfq/execute-quote'
+CREATE_QUOTE = '/api/v5/rfq/create-quote'
+CANCEL_QUOTE = '/api/v5/rfq/cancel-quote'
+CANCEL_BATCH_QUOTES = '/api/v5/rfq/cancel-batch-quotes'
+CANCEL_ALL_QUOTES = '/api/v5/rfq/cancel-all-quotes'
+GET_RFQS = '/api/v5/rfq/rfqs'
+GET_QUOTES = '/api/v5/rfq/quotes'
+GET_RFQ_TRADES = '/api/v5/rfq/trades'
+GET_PUBLIC_TRADES = '/api/v5/rfq/public-trades'
+
+# tradingBot
+GRID_ORDER_ALGO = '/api/v5/tradingBot/grid/order-algo'
+GRID_AMEND_ORDER_ALGO = '/api/v5/tradingBot/grid/amend-order-algo'
+GRID_STOP_ORDER_ALGO = '/api/v5/tradingBot/grid/stop-order-algo'
+GRID_ORDERS_ALGO_PENDING = '/api/v5/tradingBot/grid/orders-algo-pending'
+GRID_ORDERS_ALGO_HISTORY = '/api/v5/tradingBot/grid/orders-algo-history'
+GRID_ORDERS_ALGO_DETAILS = '/api/v5/tradingBot/grid/orders-algo-details'
+GRID_SUB_ORDERS = '/api/v5/tradingBot/grid/sub-orders'
+GRID_POSITIONS = '/api/v5/tradingBot/grid/positions'
+GRID_WITHDRAW_INCOME = '/api/v5/tradingBot/grid/withdraw-income'
+
 # status
 STATUS = '/api/v5/system/status'

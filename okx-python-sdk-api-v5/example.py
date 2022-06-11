@@ -10,6 +10,9 @@ import okx.subAccount_api as SubAccount
 import okx.TradingData_api as TradingData
 import okx.Broker_api as Broker
 import okx.Convert_api as Convert
+import okx.FDBroker_api as FDBroker
+import okx.Rfq_api as Rfq
+import okx.TradingBot_api as TradingBot
 
 if __name__ == '__main__':
     api_key = ""
@@ -102,7 +105,7 @@ if __name__ == '__main__':
     # 撤销提币 CANCEL_WITHDRAWAL
     # result = fundingAPI.cancel_withdrawal(wdId='BTC')
     # 获取提币记录  Get Withdrawal History
-    result = fundingAPI.get_withdrawal_history()
+    # result = fundingAPI.get_withdrawal_history()
     # 小额资产兑换 CONVERT_DUST_ASSETS
     # result = fundingAPI.convert_dust_assets()
     # 获取账户资产估值 GET Obtain account asset valuation
@@ -310,7 +313,7 @@ if __name__ == '__main__':
     # 获取子账户返佣记录 Get rebate record of sub account
     # result = BrokerAPI.rebate_daily(subAcct = 'qwerty', begin = '', end = '', page = '', limit = '')
     # 创建子账户的APIKEY Apikey for creating sub accounts
-    result = BrokerAPI.nd_create_apikey(subAcct = 'qwerty', label = '', passphrase = '', ip = '', perm = '')
+    # result = BrokerAPI.nd_create_apikey(subAcct = 'qwerty', label = '', passphrase = '', ip = '', perm = '')
     # 查询子账户的APIKEY
     # result = BrokerAPI.nd_select_apikey(subAcct = 'qwerty', apiKey = '')
     # 重置子账户的APIKEY
@@ -321,6 +324,66 @@ if __name__ == '__main__':
     # result = BrokerAPI.rebate_per_orders(begin = '', end = '')
     # 获取返佣明细下载链接
     # result = BrokerAPI.rebate_per_orders(type = '', begin = '', end = '')
+
+    # FDBrokerAPI
+    FDBrokerAPI = FDBroker.FDBrokerAPI(api_key, secret_key, passphrase, False, flag)
+    # 生成返佣明细下载链接
+    # result = FDBrokerAPI.fd_rebate_per_orders(begin = '', end = '')
+    # 获取返佣明细下载链接
+    # result = FDBrokerAPI.fd_get_rebate_per_orders(type = '', begin = '', end = '')
+
+    # 大宗交易(Rfq)API
+    RfqAPI = Rfq.RfqAPI(api_key, secret_key, passphrase, False, flag)
+    # 获取报价方信息
+    # result = RfqAPI.counterparties()
+    # 询价
+    # result = RfqAPI.create_rfq(counterparties = ["TESTQ4","TESTQ2"], anonymous = False, clRfqId = '20220531test001', 
+    #     legs = [{"instId":"BTC-USDT","sz":"1","side":"buy","tgtCcy":"base_ccy"},{"instId":"ETH-USDT","sz":"0.1","side":"buy","tgtCcy":"base_ccy"}])
+    # 取消询价单
+    # result = RfqAPI.cancel_rfq(rfqId = '3GIFPJ8', clRfqId = '')
+    # 批量取消询价单
+    # result = RfqAPI.cancel_batch_rfqs(rfqIds = '', clRfqIds = '')
+    # 取消所有询价单
+    # result = RfqAPI.cancel_all_rfqs()
+    # 执行报价
+    # result = RfqAPI.execute_quote(rfqId = '', quoteId = '')
+    # 报价
+    # result = RfqAPI.create_quote(rfqId = '', clQuoteId = '', quoteSide = 'buy', legs = [{"px":"39450.0","sz":"200000","instId":"BTC-USDT-SWAP","side":"buy"}])
+    # 取消报价单
+    # result = RfqAPI.cancel_quote(quoteId = '', clQuoteId = '')
+    # 批量取消报价单
+    # result = RfqAPI.cancel_batch_quotes(quoteIds = '', clQuoteIds = '')
+    # 取消所有报价单
+    # result = RfqAPI.cancel_all_quotes()
+    # 获取询价单信息
+    # result = RfqAPI.get_rfqs(rfqId = '', clRfqId = '', state = '', beginId = '', endId = '', limit = '')
+    # 获取报价单信息
+    # result = RfqAPI.get_quotes(rfqId = '', clRfqId = '', quoteId = '', clQuoteId = '', state = '', beginId = '', endId = '', limit = '')
+    # 获取大宗交易信息
+    # result = RfqAPI.get_rfq_trades(rfqId = '', clRfqId = '', quoteId = '', clQuoteId = '', state = '', beginId = '', endId = '', limit = '')
+    # 获取大宗交易公共成交数据
+    # result = RfqAPI.get_public_trades(beginId = '', endId = '', limit = '')
+
+    # 网格交易
+    TradingBot = TradingBot.TradingBotAPI(api_key, secret_key, passphrase, False, flag)
+    # 网格策略下单
+    # result = TradingBot.grid_order_algo(instId = 'BTC-USDT', algoOrdType = 'grid', maxPx = '100000', minPx = '10000', gridNum = '2', runType = '', tpTriggerPx = '', slTriggerPx = '', tag = '', baseSz = '1')
+    # 修改网格策略订单
+    # result = TradingBot.grid_amend_order_algo(algoId = '451791361361317888', instId = '', slTriggerPx = '', tpTriggerPx = '')
+    # 网格策略停止
+    # result = TradingBot.grid_stop_order_algo(algoId = '455784823937040384', instId = 'BTC-USDT', algoOrdType = 'grid', stopType = '1')
+    # 获取未完成网格策略委托单列表
+    # result = TradingBot.grid_orders_algo_pending(algoOrdType = 'grid', algoId = '', instId = '', instType = '', after = '', before = '', limit = '')
+    # 获取历史网格策略委托单列表
+    # result = TradingBot.grid_orders_algo_history(algoOrdType = 'grid', algoId = '', instId = '', instType = '', after = '', before = '', limit = '')
+    # 获取网格策略委托订单详情
+    # result = TradingBot.grid_orders_algo_details(algoOrdType = 'grid', algoId = '451805034968518656')
+    # 获取网格策略委托子订单信息
+    # result = TradingBot.grid_sub_orders(algoId = '451791361361317888', algoOrdType = 'grid', type = 'filled', groupId = '', after = '', before = '', limit = '')
+    # 获取网格策略委托持仓
+    # result = TradingBot.grid_positions(algoOrdType = '', algoId = '')
+    # 现货网格提取利润
+    result = TradingBot.grid_withdraw_income(algoId = '455784823937040384')
 
     # 系统状态API(仅适用于实盘) system status
     Status = Status.StatusAPI(api_key, secret_key, passphrase, False, flag)
