@@ -137,3 +137,7 @@ class AccountAPI(Client):
     def get_greeks(self, ccy=''):
         params = {'ccy': ccy,}
         return self._request_with_params(GET, GREEKS, params)
+
+    def get_positions_history(self, instType='', instId = '', mgnMode = '', type = '', after = '', before = '', limit = ''):
+        params = {'instType': instType, 'instId':instId, 'mgnMode':mgnMode, 'type':type, 'after':after, 'before':before, 'limit':limit}
+        return self._request_with_params(GET, POSITIONS_HISTORY, params)

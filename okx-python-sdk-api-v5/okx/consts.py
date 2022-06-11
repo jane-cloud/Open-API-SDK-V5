@@ -44,6 +44,7 @@ BORROW_REPAY_HISTORY = '/api/v5/account/borrow-repay-history'
 INTEREST_LIMITS = '/api/v5/account/interest-limits'
 SIMULATED_MARGIN = '/api/v5/account/simulated_margin'
 GREEKS = '/api/v5/account/greeks'
+POSITIONS_HISTORY = '/api/v5/account/positions-history'
 
 # funding
 DEPOSIT_ADDRESS = '/api/v5/asset/deposit-address'
@@ -81,6 +82,10 @@ VOLUMNE = '/api/v5/market/platform-24-volume'
 ORACLE = '/api/v5/market/oracle'
 Components = '/api/v5/market/index-components'
 EXCHANGE_RATE = '/api/v5/market/exchange-rate'
+HISTORY_TRADES = '/api/v5/market/history-trades'
+BLOCK_TICKERS = '/api/v5/market/block-tickers'
+BLOCK_TICKER = '/api/v5/market/block-ticker'
+BLOCK_TRADES = '/api/v5/market/trades'
 
 # Public Data
 INSTRUMENT_INFO = '/api/v5/public/instruments'
@@ -99,7 +104,8 @@ TIER = '/api/v5/public/position-tiers'
 INTEREST_LOAN = '/api/v5/public/interest-rate-loan-quota'
 UNDERLYING = '/api/v5/public/underlying'
 VIP_INTEREST_RATE_LOAN_QUOTA = '/api/v5/public/vip-interest-rate-loan-quota'
-
+INSURANCE_FUND = '/api/v5/public/insurance-fund'
+CONVERT_CONTRACT_COIN = '/api/v5/public/convert-contract-coin'
 
 # TRADING DATA
 SUPPORT_COIN = '/api/v5/rubik/stat/trading-data/support-coin'
@@ -161,6 +167,7 @@ ND_MODIFY_APIKEY = '/api/v5/broker/nd/subaccount/modify-apikey'
 ND_DELETE_APIKEY = '/api/v5/broker/nd/subaccount/delete-apikey'
 GET_REBATE_PER_ORDERS = '/api/v5/broker/nd/rebate-per-orders'
 REBATE_PER_ORDERS = '/api/v5/broker/nd/rebate-per-orders'
+MODIFY_SUBACCOUNT_DEPOSIT_ADDRESS = '/api/v5/asset/broker/nd/modify-subaccount-deposit-address'
 
 # Convert
 GET_CURRENCIES = '/api/v5/asset/convert/currencies'

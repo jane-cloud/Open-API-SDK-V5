@@ -87,3 +87,11 @@ class PublicAPI(Client):
     def get_vip_interest_rate_loan_quota(self):
         params = {}
         return self._request_with_params(GET, VIP_INTEREST_RATE_LOAN_QUOTA, params)
+
+    def get_insurance_fund(self, instType = '', type = '', uly = '', ccy = '', before = '', after = '', limit = ''):
+        params = {'instType':instType, 'type':type, 'uly':uly, 'ccy':ccy, 'before':before, 'after':after, 'limit':limit}
+        return self._request_with_params(GET, INSURANCE_FUND, params)
+
+    def convert_contract_coin(self, type = '', instId = '', sz = '', px = '', unit = ''):
+        params = {'type':type, 'instId':instId, 'sz':sz, 'px':px, 'unit':unit}
+        return self._request_with_params(GET, CONVERT_CONTRACT_COIN, params)

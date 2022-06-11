@@ -65,3 +65,7 @@ class BrokerAPI(Client):
     def get_rebate_per_orders(self, type = '', begin = '', end = ''):
         params = {'type': type, 'begin': begin, 'end': end}
         return self._request_with_params(GET, GET_REBATE_PER_ORDERS, params)
+
+    def modify_subaccount_deposit_address(self, subAcct = '', ccy = '', chain = '', addr = '', to = ''):
+        params = {'subAcct': subAcct, 'ccy': ccy, 'chain': chain, 'addr': addr, 'to': to}
+        return self._request_with_params(POST, MODIFY_SUBACCOUNT_DEPOSIT_ADDRESS, params)

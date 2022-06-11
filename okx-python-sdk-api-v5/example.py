@@ -31,6 +31,8 @@ if __name__ == '__main__':
     # result = accountAPI.get_account('BTC')
     # 查看持仓信息  Get Positions
     # result = accountAPI.get_positions('FUTURES', 'BTC-USD-210402')
+    # 查看历史持仓信息
+    # result = accountAPI.get_positions_history(instType = '', instId = '', mgnMode = '', type = '', after = '', before = '', limit = '')
     # 账单流水查询（近七天） Get Bills Details (recent 7 days)
     # result = accountAPI.get_bills_detail('FUTURES', 'BTC', 'cross')
     # 账单流水查询（近三个月） Get Bills Details (recent 3 months)
@@ -161,6 +163,14 @@ if __name__ == '__main__':
     # result = marketAPI.get_index_components(index='')
     # 获取法币汇率 GET exchange rate in legal currency
     # result = marketAPI.get_exchange_rate()
+    # 获取交易产品公共历史成交数据
+    # result = marketAPI.get_history_trades(instId = 'BTC-USDT', after = '', before = '', limit = '')
+    # 获取大宗交易所有产品行情信息
+    # result = marketAPI.get_block_tickers(instType = 'SWAP', uly = 'BTC-USDT')
+    # 获取大宗交易单个产品行情信息
+    # result = marketAPI.get_block_ticker(instId = 'BTC-USDT')
+    # 获取大宗交易公共成交数据
+    # result = marketAPI.get_block_trades(instId = 'BTC-USDT')
 
     # public api
     publicAPI = Public.PublicAPI(api_key, secret_key, passphrase, False, flag)
@@ -196,6 +206,10 @@ if __name__ == '__main__':
     # result = publicAPI.get_underlying(instType='FUTURES')
     # 获取尊享借币杠杆利率和借币限额 GET Obtain the privileged currency borrowing leverage rate and currency borrowing limit
     # result = publicAPI.get_vip_interest_rate_loan_quota()
+    # 获取风险准备金余额
+    # result = publicAPI.get_insurance_fund(instType = 'SWAP', type = '', uly = 'BTC-USDT', ccy = '', before = '', after = '', limit = '')
+    # 张币转换
+    # result = publicAPI.convert_contract_coin(type = '2', instId = 'BTC-USDT-SWAP', sz = '1', px = '', unit = '')
 
     # trading data
     tradingDataAPI = TradingData.TradingDataAPI(api_key, secret_key, passphrase, False, flag)
@@ -224,7 +238,7 @@ if __name__ == '__main__':
     tradeAPI = Trade.TradeAPI(api_key, secret_key, passphrase, False, flag)
     # 下单  Place Order
     # result = tradeAPI.place_order(instId='BTC-USDT-210326', tdMode='cross', side='sell', posSide='short',
-    #                               ordType='market', sz='100',tgtCcy='')
+    #                               ordType='market', sz='100',tgtCcy='',banAmend='')
     # 批量下单  Place Multiple Orders
     # result = tradeAPI.place_multiple_orders([
     #     {'instId': 'BTC-USD-210402', 'tdMode': 'isolated', 'side': 'buy', 'ordType': 'limit', 'sz': '1', 'px': '17400',
@@ -324,6 +338,8 @@ if __name__ == '__main__':
     # result = BrokerAPI.rebate_per_orders(begin = '', end = '')
     # 获取返佣明细下载链接
     # result = BrokerAPI.rebate_per_orders(type = '', begin = '', end = '')
+    # 重置子账户充值地址
+    # result = BrokerAPI.modify_subaccount_deposit_address(subAcct = 'qwert', ccy = 'BTC', chain = '', addr = '1', to = '6')
 
     # FDBrokerAPI
     FDBrokerAPI = FDBroker.FDBrokerAPI(api_key, secret_key, passphrase, False, flag)
@@ -383,7 +399,7 @@ if __name__ == '__main__':
     # 获取网格策略委托持仓
     # result = TradingBot.grid_positions(algoOrdType = '', algoId = '')
     # 现货网格提取利润
-    result = TradingBot.grid_withdraw_income(algoId = '455784823937040384')
+    # result = TradingBot.grid_withdraw_income(algoId = '455784823937040384')
 
     # 系统状态API(仅适用于实盘) system status
     Status = Status.StatusAPI(api_key, secret_key, passphrase, False, flag)
