@@ -46,9 +46,9 @@ class TradeChannels extends Utils{
         $GLOBALS['callback'] = $callback;
         $worker = new Worker();
         if(isset(Config::$config['paper'])){
-            $url = "ws://wspap.okx.com:8443/ws/v5/private";
+            $url = "ws://wspap.okex.com:8443/ws/v5/private?brokerId=9999";
         }else{
-            $url = "ws://ws.okx.com:8443/ws/v5/private";
+            $url = "ws://ws.okex.com:8443/ws/v5/private";
         }
 
         $worker->onWorkerStart = function($worker) use ($url){

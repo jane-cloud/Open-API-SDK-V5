@@ -22,6 +22,7 @@ use okv5\SubaccountApi;
 use okv5\StatusApi;
 use okv5\RubikApi;
 use okv5\BrokerApi;
+use okv5\ConvertApi;
 
 /**
  * 账户 Account
@@ -31,9 +32,9 @@ $coin = "XMR";
 //查看账户持仓风险 Get Account
 //$res = $obj -> getAccountPositionRisk('SWAP');
 // 查看账户余额 Get Balance
-//$res = $obj -> getBalance('');
+//$res = $obj -> getBalance('USDT');
 // 查看持仓信息 Get Positions
-//$res = $obj -> getPositions('','','');
+//$res = $obj -> getPositions('SWAP','BTC-USDT-SWAP','');
 // 账单流水查询（近七天） Get Bills Details (last 7 days)
 //$res = $obj -> getBills('','','','','1','','','','');
 // 账单流水查询（近三个月） Get Bills Details (last 3 months)
@@ -43,11 +44,11 @@ $coin = "XMR";
 // 设置持仓模式 Set Position mode
 //$res = $obj -> setPositionMode('long_short_mode');
 // 设置杠杆倍数 Set Leverage
-//$res = $obj -> setLeverage('EGLD-USDT-SWAP','','0.01','cross','');
+//$res = $obj -> setLeverage('XLM-USDT-SWAP','','3','cross','net');
 // 获取最大可交易数量 Get Maximum Tradable Size For Instrument
-//$res = $obj -> getMaxSize('BTC-USDT','cash','','','');
+//$res = $obj -> getMaxSize('BTC-USDT-SWAP','isolated','','39002.4915','10');
 // 获取最大可用数量 Get Maximum Available Tradable Amount
-//$res = $obj -> getMaxAvailSize('BTC-USDT','','cash','','');
+//$res = $obj -> getMaxAvailSize('BTC-USDT-SWAP','','cross','','');
 // 调整保证金 Increase/Decrease margin
 //$res = $obj -> marginBalance('BTC-USD-210402','long','reduce','0.5','','','');
 // 获取杠杆倍数 Get Leverage
@@ -85,35 +86,38 @@ $coin = "XMR";
 $instrumentId = "EOS-USDT";
 $currency = "EOS";
 $obj = new FundingApi(Config::$config);
-// 获取充值地址信息 Get Deposit Address
-//$res = $obj -> getDepositAddress('USDT');
-// 获取资金账户余额信息 Get Balance
+// 获取币种列表
+//$res = $obj -> getCurrencies();
+// 获取资金账户余额
 //$res = $obj -> getBalance('BTC');
-// 资金划转 Funds Transfer
+//获取账户资产估值
+//$res = $obj -> assetValuation('BTC');
+// 资金划转
 //$res = $obj -> transfer('USDT','8','1','18','18','shangguanlin123','','','');
 //获取资金划转状态
 //$res = $obj -> transferState('203950','');
-
-// 提币 Withdrawal
-//$res = $obj -> withdrawal('USDT','USDT-ERC20','0.1','4','0x634f6bcdefaba105358652a75f2f5c05383a7f33','','0');
-// 充值记录 Get Deposit History
-//$res = $obj -> getDepositHistory('','','','','');
-// 提币记录 Get Withdrawal History
-//$res = $obj -> getWithdrawalHistory('','','','','');
-// 获取币种列表 Get Currencies
-//$res = $obj -> getCurrencies();
-// 余币宝申购/赎回 PiggyBank Purchase/Redemption
-//$res = $obj -> PurchaseRedempt('BTC','1','purchase','');
-// 资金流水查询 PiggyBank Purchase/Redemption
+// 获取资金流水
 //$res = $obj -> getBills('','','','','');
-//获取余币宝余额
-//$res = $obj -> getPiggyBalance('');
 //闪电网络充币
 //$res = $obj -> depositLightning('','','');
+//获取充值地址信息
+//$res = $obj -> getDepositAddress('USDT');
+//获取充值记录
+//$res = $obj -> getDepositHistory('NEAR','','','','','');
+// 提币
+//$res = $obj -> withdrawal('USDT','USDT-ERC20','0.1','4','0x634f6bcdefaba105358652a75f2f5c05383a7f33','');
 //闪电网络提币
-//$res = $obj -> withdrawalLightning('','','');
-//查看账户资产估值
-//$res = $obj -> assetValuation('BTC');
+//$res = $obj -> withdrawalLightning('','');
+//撤销提币
+//$res = $obj -> cancelWithdrawal('');
+//获取提币记录
+//$res = $obj -> getWithdrawalHistory('','','','','','','');
+//小额资产兑换
+//$res = $obj -> convertDustAssets('');
+//获取余币宝余额
+//$res = $obj -> getPiggyBalance('');
+// 余币宝申购/赎回
+//$res = $obj -> PurchaseRedempt('BTC','1','purchase','');
 //设置余币宝借贷利率
 //$res = $obj -> setLendingRate('BTC','');
 //获取余币宝出借明细
@@ -122,6 +126,9 @@ $obj = new FundingApi(Config::$config);
 //$res = $obj -> lendingRateSummary('BTC');
 //获取市场借贷历史（公共）
 //$res = $obj -> lendingRateHistory('BTC');
+//查看历史持仓信息
+$res = $obj -> positionsHistory('','BTC-USDT-SWAP','','','','','1');
+
 
 /**
  * 行情数据 Market Data
@@ -142,7 +149,7 @@ $obj = new MarketDataAPI(Config::$config);
 // 获取所有交易产品K线数据 Get Candlesticksinstruments
 //$res = $obj->getCandles('BTC-USDT-SWAP','','','1m','21');
 // 获取交易产品历史K线数据（仅主流币） Get Candlesticks History（top currencies only）
-//$res = $obj->getHistoryCandles('DOT-USDT-SWAP','','','5m','10');
+//$res = $obj->getHistoryCandles('BTC-USDT-SWAP','','','30m','10');
 // 获取指数K线数据 Get Index Candlesticks
 //$res = $obj->getIndexCandles('ETH-USDT-SWAP','','','1m','');
 // 获取标记价格K线数据 Get Mark Price Candlesticks
@@ -165,7 +172,7 @@ $instrumentId = "BTC-USDT-SWAP";
 $currency = "EOS";
 $obj = new PublicDataAPI(Config::$config);
 // 获取交易产品基础信息 Get Instruments
-//$res = $obj->getInstruments('SPOT','','');
+//$res = $obj->getInstruments('SPOT','','ETH-USDT');
 
 // 获取交割和行权记录 Get Delivery/Exercise History
 //$res = $obj->getDeliveryExerciseHistory('FUTURES','BTC-USD','','','');
@@ -204,7 +211,7 @@ $obj = new PublicDataAPI(Config::$config);
  */
 $obj = new TradeAPI(Config::$config);
 // 下单 Place Order
-//$res = $obj -> order('BTC-USDT','cash','','','','buy','','market',"1000000",'','','');
+//$res = $obj -> order('ETH-USDT-SWAP','cross','','','','sell','','market',"300",'','','');
 //批量下单 Batch Order
 //$res = $obj -> batchOrders([['BTC-USDT-210625','isolated','','b15','','buy','long','limit','1','60000',''],['BTC-USDT-210924','isolated','','b15','','buy','long','limit','1','60000','']]);
 // 撤单 Cancel Order
@@ -212,7 +219,7 @@ $obj = new TradeAPI(Config::$config);
 //批量撤单 Cancel Batch Orders
 //$res = $obj -> cancelBatchOrder([['ETH-USDT-SWAP','307924566148530176',''],['ETH-USDT-SWAP','307924647446724608','']]);
 // 修改订单 Amend Order
-//$res = $obj -> amendOrder('BTC-USD-211224','','392349685356306432','','12345678','','47000');
+//$res = $obj -> amendOrder('OKT-USDT','','434657687979327495','','','','14');
 //批量修改订单 Amend Batch Orders
 //$res = $obj -> amendBatchOrder([['BTC-USDT-210625','','300587090669084672','','','3',''],['BTC-USDT-210924','','300587090669084673','','','3','']]);
 // 市价仓位全平 Close Positions
@@ -220,16 +227,16 @@ $obj = new TradeAPI(Config::$config);
 // 获取订单信息 Get Order Details
 //$res = $obj -> getOrder('BTC-USDT','385475278759403520','');
 // 获取未成交订单列表 Get Order List
-//$res = $obj -> getOrderPending('FUTURES','','','post_only','','','','');
+//$res = $obj -> getOrderPending('FUTURES','','','','live','','','');
 // 获取历史订单记录（近七天） Get Order History (last 7 days）
 //$res = $obj -> getOrdersHistory('SWAP','','','','','','','','1');
 // 获取历史订单记录（近三个月） Get Order History (last 3 months)
 //$res = $obj -> getOrdersHistoryArchive('SWAP','','','','','','','','1');
 // 获取成交明细 Get Transaction Details
-//$res = $obj -> getFills('','','','','297793186030845953','','');
+//$res = $obj -> getFills('SPOT','','','','','','4');
 //$res = $obj -> getFillsHistory('','','','','297793186030845953','','');
 // 策略委托下单 Place Algo Order
-$res = $obj -> orderAlgo('LTC-USD-SWAP','cross','','buy','long','trigger','2','','128.86','-1','','','-1','','','-1','','','','','','','','','','','');
+//$res = $obj -> orderAlgo('BTC-USDT-SWAP','cross','','buy','long','trigger','1','','20','21','','','-1','','','-1','','','','','','','','','','','mark');
 // 撤销策略委托订单 Cancel Algo Order
 //$res = $obj -> cancelAlgos([['307913429122170880','BTC-USDT-210625'],['307913525461139456','BTC-USDT-210625']]);
 // 获取未完成策略委托单列表 Get Algo Order List
@@ -244,23 +251,18 @@ $res = $obj -> orderAlgo('LTC-USD-SWAP','cross','','buy','long','trigger','2',''
  * 子账户 Subaccount
  */
 $obj = new SubaccountApi(Config::$config);
-//母账户查询子账户的交易账户详细资产余额（适用于母账户）
-//$res = $obj -> balances('shangguanlin');
-//子账户转账记录（仅适用于母账户）
-//$res = $obj -> bills('','','shangguanlin123','','','');
-//删除子账户的APIkey（仅适用于母账户）
-//$res = $obj -> deleteApikey('','','');
-//重置子账户的APIkey（仅适用于母账户）
-//$res = $obj -> modifyApikey('','','','','','');
-//创建子账户的APIkey（仅适用于母账户）
-//$res = $obj -> apikey('','','','','','');
-//查询子账户的APIKey
-//$res = $obj -> getapikey('','');
-//查看子账户列表（仅适用于母账户）
 //查看子账户列表（仅适用于母账户）
 //$res = $obj -> subaccountList('','','','','');
-//母账户控制子账户与子账户之间划转（仅适用于母账户）
+//获取子账户资产余额
+//$res = $obj -> balances('shangguanlin');
+//查询子账户转账记录
+//$res = $obj -> bills('','','shangguanlin123','','','');
+//查询子账户转账记录
 //$res = $obj -> transfer('','','','','','','');
+//设置子账户主动转出权限
+//$res = $obj -> setTransferOut('','');
+//查看被托管的子账户列表
+//$res = $obj -> entrustSubaccountList('','','','','','','');
 
 /**
  * Status Status
@@ -288,22 +290,55 @@ $obj = new RubikApi(Config::$config);
 $obj = new BrokerApi(Config::$config);
 //获取独立经纪商账户信息
 //$res = $obj -> info();
-//获取独立经纪商账户信息
-//$res = $obj -> createSubaccount();
+//创建子账户
+//$res = $obj -> createSubaccount('','','');
 //删除子账户
-//$res = $obj -> deleteSubaccount();
+//$res = $obj -> deleteSubaccount('');
 //获取子账户列表
-//$res = $obj -> subaccountInfo();
+//$res = $obj -> subaccountInfo('','','');
+//创建子账户的APIKey
+//$res = $obj -> apikey('','','','','');
+//查询子账户的APIKey
+//$res = $obj -> getApikey('','');
+//重置子账户的APIKey
+//$res = $obj -> modifyApikey('','','','','');
+//删除子账户的APIKey
+//$res = $obj -> deleteApikey('','');
 //设置子账户的账户等级
-//$res = $obj -> setSubaccountLevel();
+//$res = $obj -> setSubaccountLevel('','');
 //设置子账户的交易手续费费率
-//$res = $obj -> setSubaccountFeeRate();
+//$res = $obj -> setSubaccountFeeRate('','','','','','');
 //创建子账户充值地址
-//$res = $obj -> subaccountDepositAddress();
+//$res = $obj -> subaccountDepositAddress('','','','','');
+//重置子账户充值地址
+//$res = $obj -> modifySubaccountDepositAddress('','','','','');
 //获取充值地址
-//$res = $obj -> getSubaccountDepositAddress();
+//$res = $obj -> getSubaccountDepositAddress('','');
 //获取子账户获取充值记录
-//$res = $obj -> subaccountDepositHistory();
+//$res = $obj -> subaccountDepositHistory('','','','','','','');
 //获取子账户返佣记录
-//$res = $obj -> rebateDaily();
+//$res = $obj -> rebateDaily('','','','','');
+//获取返佣明细下载链接
+//$res = $obj -> rebatePerOrders('','','');
+//生成返佣明细下载链接
+//$res = $obj -> PostrebatePerOrders('','');
+
+
+
+
+/**
+ *闪兑
+ */
+$obj = new ConvertApi(Config::$config);
+//获取闪兑币种列表
+//$res = $obj -> currencies();
+//获取闪兑币对信息
+//$res = $obj -> currencyPair('','');
+//闪兑预估询价
+//$res = $obj -> estimateQuote('','','','','','','');
+//闪兑交易
+//$res = $obj -> trade('','','','','','','','');
+//获取闪兑交易历史
+//$res = $obj -> history('','','','');
+
 var_dump($res);

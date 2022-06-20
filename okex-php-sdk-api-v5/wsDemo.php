@@ -111,15 +111,15 @@ $obj = new PublicChannels(Config::$config);
 $instrumentId = "BTC-USDC";
 $coin = "EOS";
 //产品频道
-$obj->subscribe($callbackTime,'{"channel":"instruments","instType":"SPOT"}');
+//$obj->subscribe($callbackTime,'{"channel":"instruments","instType":"SPOT"}');
 //行情频道
-//$obj->subscribe($callbackTime,'{"channel":"tickers","instId":"OKB-USDT"}');
+//$obj->subscribe($callbackTime,'{"channel":"tickers","instId":"OKT-USDT"}');
 //持仓总理频道
 //$obj->subscribe($callbackTime,'{"channel":"open-interest","instId":"ADA-USDT-SWAP"}');
 //k线频道
 //$obj->subscribe($callbackTime,'{"channel" :"candle1m","instId" :"BTC-USDT"}');
 //交易频道
-//$obj->subscribe($callbackTime,'{"channel":"trades","instId":"BTC-USDT"}');
+//$obj->subscribe($callbackTime,'{"channel":"trades","instId":"PEOPLE-USDT-SWAP"}');
 //预估交割/行权价格频道
 //$obj->subscribe($callbackTime,'{"channel":"estimated-price","instType":"FUTURES","uly":"BTC-USD"}');
 //标记价格频道
@@ -129,7 +129,7 @@ $obj->subscribe($callbackTime,'{"channel":"instruments","instType":"SPOT"}');
 //限价频道
 //$obj->subscribe($callbackTime,'{"channel":"price-limit","instId":"BTC-USD-SWAP"}');
 //深度频道
-//$obj->subscribe($callbackTime,'{"channel":"books50-l2-tbt","instId":"BTT-USDT-SWAP"}');
+//$obj->subscribe($callbackTime,'{"channel":"books-l2-tbt","instId":"API3-USDT"}');
 //期权定价频道
 //$obj->subscribe($callbackTime,'{"channel":"opt-summary","uly":"BTC-USD"}');
 //资金费率频道
@@ -146,13 +146,13 @@ $obj->subscribe($callbackTime,'{"channel":"instruments","instType":"SPOT"}');
  */
 $obj = new PrivateChannels(Config::$config);
 //账户频道
-//$obj->subscribe($callbackTime,'{"channel":"account","ccy":"USDT"}');
+//$obj->subscribe($callbackTime,'{"channel":"account","ccy":"OP"}');
 //持仓频道
-//$obj->subscribe($callbackTime,'{"channel":"positions","instType":"ANY"}');
+$obj->subscribe($callbackTime,'{"channel":"positions","instType":"ANY"}');
 //账户余额和持仓频道
 //$obj->subscribe($callbackTime,'{"channel":"balance_and_position"}');
 //订单频道
-//$obj->subscribe($callbackTime,'{"channel":"orders","instType":"MARGIN","instId":"YGG-USDT"}');
+//$obj->subscribe($callbackTime,'{"channel":"orders","instType":"SWAP","instId":"BTC-USDT-SWAP"}');
 //策略委托订单频道
 //$obj->subscribe($callbackTime,'{"channel":"orders-algo","instType":"SWAP","uly":"BTC-USDT","instId":"BTC-USDT-SWAP"}');
 //$obj->subscribe($callbackTime,'{"channel":"algo-advance","instType":"SWAP","instId":"","algoId":""}');

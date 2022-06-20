@@ -97,4 +97,21 @@ class SubaccountApi extends Utils
 
         return $this->request('/api/v5/asset/subaccount/transfer', $params, 'POST');
     }
+
+    public function setTransferOut($subAcct,$canTransOut=''){
+        $params = [
+            'subAcct' => $subAcct,
+            'canTransOut' => $canTransOut,
+        ];
+
+        return $this->request('/api/v5/users/subaccount/set-transfer-out', $params, 'POST');
+    }
+
+    public function entrustSubaccountList($subAcct=''){
+        $params = [
+            'subAcct' => $subAcct,
+        ];
+
+        return $this->request('/api/v5/users/entrust-subaccount-list', $params, 'GET');
+    }
 }

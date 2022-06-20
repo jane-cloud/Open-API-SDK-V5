@@ -13,9 +13,8 @@ class BrokerApi extends Utils
         return $this->request('/api/v5/broker/nd/info', $params, 'GET');
     }
 
-    public function createSubaccount($pwd,$subAcct,$label='',$acctLv){
+    public function createSubaccount($subAcct,$label='',$acctLv){
         $params = [
-            'pwd' => $pwd,
             'subAcct' => $subAcct,
             'label' => $label,
             'acctLv' => $acctLv,
@@ -24,9 +23,8 @@ class BrokerApi extends Utils
         return $this->request('/api/v5/broker/nd/create-subaccount', $params, 'POST');
     }
 
-    public function deleteSubaccount($pwd,$subAcct){
+    public function deleteSubaccount($subAcct){
         $params = [
-            'pwd' => $pwd,
             'subAcct' => $subAcct,
         ];
 
@@ -52,7 +50,7 @@ class BrokerApi extends Utils
         return $this->request('/api/v5/broker/nd/set-subaccount-level', $params, 'GET');
     }
 
-    public function setSubaccountFeeRate($subAcct='',$instType='',$chgType='',$chgTaker='',$chgMaker='',$effDate=''){
+    public function setSubaccountFeeRate($subAcct='',$instType='',$chgType,$chgTaker='',$chgMaker='',$effDate=''){
         $params = [
             'subAcct' => $subAcct,
             'instType' => $instType,
@@ -77,6 +75,18 @@ class BrokerApi extends Utils
         return $this->request('/api/v5/asset/broker/nd/subaccount-deposit-address', $params, 'POST');
     }
 
+    public function modifySubaccountDepositAddress($subAcct,$ccy,$chain='',$addr,$to){
+        $params = [
+            'subAcct' => $subAcct,
+            'ccy' => $ccy,
+            'chain' => $chain,
+            'addr' => $addr,
+            'to' => $to,
+        ];
+
+        return $this->request('/api/v5/asset/broker/nd/modify-subaccount-deposit-address', $params, 'POST');
+    }
+
     public function getSubaccountDepositAddress($subAcct,$ccy){
         $params = [
             'subAcct' => $subAcct,
@@ -86,7 +96,7 @@ class BrokerApi extends Utils
         return $this->request('/api/v5/asset/broker/nd/subaccount-deposit-address', $params, 'GET');
     }
 
-    public function subaccountDepositHistory($subAcct,$ccy='',$txId='',$state='',$after='',$before='',$limit=''){
+    public function subaccountDepositHistory($subAcct='',$ccy='',$txId='',$state='',$after='',$before='',$limit=''){
         $params = [
             'subAcct' => $subAcct,
             'ccy' => $ccy,
@@ -110,6 +120,67 @@ class BrokerApi extends Utils
         ];
 
         return $this->request('/api/v5/broker/nd/rebate-daily', $params, 'GET');
+    }
+
+    public function rebatePerOrders($type='',$begin='',$end=''){
+        $params = [
+            'type' => $type,
+            'begin' => $begin,
+            'end' => $end,
+        ];
+
+        return $this->request('/api/v5/broker/nd/rebate-per-orders', $params, 'GET');
+    }
+
+    public function PostrebatePerOrders($begin,$end){
+        $params = [
+            'begin' => $begin,
+            'end' => $end,
+        ];
+
+        return $this->request('/api/v5/broker/nd/rebate-per-orders', $params, 'POST');
+    }
+
+    public function apikey($subAcct,$label,$passphrase,$ip='',$perm=''){
+        $params = [
+            'subAcct' => $subAcct,
+            'label' => $label,
+            'passphrase' => $passphrase,
+            'ip' => $ip,
+            'perm' => $perm,
+        ];
+
+        return $this->request('/api/v5/broker/nd/subaccount/apikey', $params, 'POST');
+    }
+
+    public function getApikey($subAcct,$apiKey=''){
+        $params = [
+            'subAcct' => $subAcct,
+            'apiKey' => $apiKey,
+        ];
+
+        return $this->request('/api/v5/broker/nd/subaccount/apikey', $params, 'GET');
+    }
+
+    public function modifyApikey($subAcct,$apiKey,$label,$perm,$ip=''){
+        $params = [
+            'subAcct' => $subAcct,
+            'apiKey' => $apiKey,
+            'label' => $label,
+            'perm' => $perm,
+            'ip' => $ip,
+        ];
+
+        return $this->request('/api/v5/broker/nd/subaccount/modify-apikey', $params, 'POST');
+    }
+
+    public function deleteApikey($subAcct,$apiKey){
+        $params = [
+            'subAcct' => $subAcct,
+            'apiKey' => $apiKey,
+        ];
+
+        return $this->request('/api/v5/broker/nd/subaccount/delete-apikey', $params, 'POST');
     }
 
 }

@@ -37,15 +37,14 @@ class PublicChannels extends Utils{
         $this->checksumTest=new ChecksumTest();
     }
 
-
     function subscribe($callback, $sub_str="swap/ticker:BTC-USD-SWAP") {
         $GLOBALS['sub_str'] = $sub_str;
         $GLOBALS['callback'] = $callback;
         $worker = new Worker();
         if(isset(Config::$config['paper'])){
-            $url = "ws://wspap.okx.com:8443/ws/v5/public";
+            $url = "ws://wspap.okex.com:8443/ws/v5/public?brokerId=9999";
         }else{
-            $url = "ws://ws.okx.com:8443/ws/v5/public";
+            $url = "ws://ws.okex.com:8443/ws/v5/public";
         }
 
         $worker->onWorkerStart = function($worker) use ($url){
@@ -66,6 +65,45 @@ class PublicChannels extends Utils{
                 $ntime = $this->getTimestamp();
                 print_r($ntime." ping\n");
             });
+            $sub_strs=json_decode($GLOBALS['sub_str'],true);
+            if(($sub_strs['channel'] == "books-l2-tbt") ||($sub_strs['channel'] == "books50-l2-tbt") )
+            {
+                $con->onConnect = function($con){
+                    // 登陆
+                    $timestamp = self::get_millisecond();
+                    $timestamp = time();
+//                $timestamp = 1563541080.121;
+                    $sign = self::wsSignature($timestamp,"GET","/users/self/verify","",self::$apiSecret);
+//                $args =self::$apiKey, self::$passphrase, $timestamp, $sign};
+                    $args = "{".self::$apiKey.",".self::$passphrase.",".$timestamp.",".$sign."}";
+
+                    $args = [
+                        "apiKey"=>self::$apiKey,
+                        "passphrase"=>self::$passphrase,
+                        "timestamp"=>$timestamp,
+                        "sign"=>$sign
+                    ];
+
+                    $args = json_encode($args);
+
+                    $data = json_encode([
+                        'op' => "login",
+                        'args' => [$args]
+                    ]);
+
+                    $data = '{"op":"login","args":[{'.substr($data,24,-4).'}]}';
+                    $data = stripslashes($data);
+
+
+                    $ntime = $this->getTimestamp();
+                    print_r($ntime." $data\n");
+//                    print_r($ntime." $i $data\n");
+//                $con->send($data);
+                    $con->send($data);
+
+                };
+            }
+
 
             $con->onConnect = function($con){
                 $data = json_encode([

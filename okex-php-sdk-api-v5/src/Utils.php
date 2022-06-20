@@ -11,7 +11,7 @@ class Utils
 
     static $textToSign = '';
 
-    const FUTURE_API_URL = 'https://www.okx.com';
+    const FUTURE_API_URL = 'https://www.okex.com';
 
     public function __construct($configs)
     {
@@ -178,7 +178,6 @@ class Utils
     {
         $time = microtime(true);
         $msec=round($time*1000);
-
         return $msec/1000;
     }
 

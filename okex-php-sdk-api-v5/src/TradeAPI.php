@@ -188,7 +188,7 @@ class TradeAPI extends Utils
             'limit' => $limit,
         ];
 
-        return $this->request('/api/v5/trade/fills', $params, 'GET');
+        return $this->request('/api/v5/trade/fills-history', $params, 'GET');
     }
 
     public function getFillsHistory($instType='',$uly='',$instId='',$ordId='',$after='',$before='',$limit='')
