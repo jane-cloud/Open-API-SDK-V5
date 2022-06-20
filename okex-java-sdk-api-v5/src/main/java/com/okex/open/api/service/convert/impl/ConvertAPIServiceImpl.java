@@ -44,7 +44,7 @@ public class ConvertAPIServiceImpl implements ConvertAPIService {
 
     //获取闪兑交易历史 Get convert history
     @Override
-    public JSONObject getHistory() {
-        return this.client.executeSync(this.api.getHistory());
+    public JSONObject getHistory(String after ,String before,String limit,String tag) {
+        return this.client.executeSync(this.api.getHistory(after,before,limit,tag));
     }
 }

@@ -112,7 +112,17 @@ public class BrokerAPIServiceImpl implements BrokerAPIService {
         return this.client.executeSync(this.api.setRebatePerOrders(JSONObject.parseObject(JSON.toJSONString(setRebatePerOrders))));
     }
 
+    //获取返佣明细下载链接 Get download link
+    @Override
+    public JSONObject rebatePerOrdersfd(String type, String begin, String end) {
+        return this.client.executeSync(this.api.rebatePerOrdersfd(type, begin, end));
+    }
 
+    //生成返佣明细下载链接 Create rebate details download link
+    @Override
+    public JSONObject setRebatePerOrdersfd(SetRebatePerOrders setRebatePerOrders) {
+        return this.client.executeSync(this.api.setRebatePerOrdersfd(JSONObject.parseObject(JSON.toJSONString(setRebatePerOrders))));
+    }
 
 
 }

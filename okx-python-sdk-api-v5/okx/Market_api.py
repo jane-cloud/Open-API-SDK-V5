@@ -77,3 +77,23 @@ class MarketAPI(Client):
     def get_exchange_rate(self):
         params = {}
         return self._request_with_params(GET, BORROW_REPAY, params)
+
+    # Get history trades
+    def get_history_trades(self, instId = '', after = '', before = '', limit = ''):
+        params = {'instId':instId, 'after':after, 'before':before, 'limit':limit}
+        return self._request_with_params(GET, HISTORY_TRADES, params)
+
+    # Get block history tickers
+    def get_block_tickers(self, instType = '', uly = ''):
+        params = {'instType':instType, 'uly':uly}
+        return self._request_with_params(GET, BLOCK_TICKERS, params)
+
+    # Get block history ticker
+    def get_block_ticker(self, instId = ''):
+        params = {'instId':instId}
+        return self._request_with_params(GET, BLOCK_TICKER, params)
+
+    # Get block trades
+    def get_block_trades(self, instId = ''):
+        params = {'instId':instId}
+        return self._request_with_params(GET, BLOCK_TRADES, params)

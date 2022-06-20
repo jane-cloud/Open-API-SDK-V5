@@ -78,7 +78,7 @@ public interface AccountAPI {
 
     //获取当前账户交易手续费费率 Get Fee Rates
     @GET("/api/v5/account/trade-fee")
-    Call<JSONObject> getFeeRates(@Query("instType")String instType,@Query("instId")String instId,@Query("uly")String uly,@Query("category")String category);
+    Call<JSONObject> getFeeRates(@Query("instType")String instType,@Query("instId")String instId,@Query("uly")String uly);
 
     //获取计息记录 Get interest-accrued
     @GET("/api/v5/account/interest-accrued")

@@ -1,10 +1,7 @@
 package com.okex.open.api.service.subAccount.impl;
 
 import com.alibaba.fastjson.JSONObject;
-import com.okex.open.api.bean.subAccount.param.CreateSubAccountApikey;
-import com.okex.open.api.bean.subAccount.param.DelSunAccountApikey;
-import com.okex.open.api.bean.subAccount.param.ReSetSubAccountApikey;
-import com.okex.open.api.bean.subAccount.param.SubAccountTransfer;
+import com.okex.open.api.bean.subAccount.param.*;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
@@ -37,6 +34,10 @@ public interface SubAccountAPI {
     //子账户间资金划转 Master accounts manage the transfers between sub-accounts
     @POST("/api/v5/asset/subaccount/transfer")
     Call<JSONObject> subAccountTransfer(@Body SubAccountTransfer subAccountTransfer);
+
+    //设置子账户主动转出权限 Set Permission Of Transfer Out
+    @POST("/api/v5/users/subaccount/set-transfer-out")
+    Call<JSONObject> setTransferOut(@Body SetTransferOut setTransferOut);
 
     //查看被托管的子账户列表 Entrust Subaccount List
     @GET("/api/v5/users/entrust-subaccount-list")

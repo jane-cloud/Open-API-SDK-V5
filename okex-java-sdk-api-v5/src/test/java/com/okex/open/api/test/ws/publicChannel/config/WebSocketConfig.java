@@ -2,15 +2,16 @@ package com.okex.open.api.test.ws.publicChannel.config;
 
 public class WebSocketConfig {
     //ws  模拟盘
-//    private static final String SERVICE_URL = "wss://wspap.okx.com:8443/ws/v5/public?brokerId=9999";
+    private static final String SERVICE_URL = "wss://wspap.okx.com:8443/ws/v5/public?brokerId=9999";
     //ws  实盘
-    private static final String SERVICE_URL = "wss://ws.okx.com:8443/ws/v5/public";
+//    private static final String SERVICE_URL = "wss://ws.okx.com:8443/ws/v5/public";
 
 
     // api key
     private static final String API_KEY = "";
     private static final String SECRET_KEY = "";
     private static final String PASSPHRASE = "";
+
 
 
 
@@ -23,8 +24,9 @@ public class WebSocketConfig {
         System.out.println(SERVICE_URL);
         //与服务器建立连接
         WebSocketClient.connection(SERVICE_URL);
-        //登录账号,用户需提供 api-key，passphrase,secret—key 不要随意透漏 ^_^
-        WebSocketClient.login(API_KEY , PASSPHRASE , SECRET_KEY);
-
+        if (API_KEY != "" && API_KEY != null) {
+            //登录账号,用户需提供 api-key，passphrase,secret—key 不要随意透漏 ^_^
+            WebSocketClient.login(API_KEY , PASSPHRASE , SECRET_KEY);
+        }
     }
 }

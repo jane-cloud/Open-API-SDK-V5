@@ -8,6 +8,7 @@ public class Trade {
     private String sz;
     private String szCcy;
     private String clTReqId;
+    private String tag;
 
     @Override
     public String toString() {
@@ -19,6 +20,7 @@ public class Trade {
                 ", sz='" + sz + '\'' +
                 ", szCcy='" + szCcy + '\'' +
                 ", clTReqId='" + clTReqId + '\'' +
+                ", tag='" + tag + '\'' +
                 '}';
     }
 
@@ -76,5 +78,13 @@ public class Trade {
 
     public void setClTReqId(String clTReqId) {
         this.clTReqId = clTReqId;
+    }
+
+    public String getTag() {
+        return tag;
+    }
+
+    public void setTag(String tag) {
+        this.tag = tag;
     }
 }

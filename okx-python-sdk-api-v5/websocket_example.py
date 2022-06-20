@@ -436,6 +436,10 @@ passphrase = ""
 # channels = [{"channel": "index-tickers", "instId": "BTC-USDT"}]
 # status频道 Status Channel
 # channels = [{"channel": "status"}]
+# 公共大宗交易频道 Public block trading channel
+# channels = [{"channel": "public-struc-block-trades"}]
+# 大宗交易行情频道 Block trading market channel
+# channels = [{"channel": "block-tickers", "instId":"BTC-USDT-SWAP"}]
 
 '''
 私有频道 private channel
@@ -463,6 +467,20 @@ passphrase = ""
 # channels = [{"channel": "liquidation-warning", "instType": "SWAP","instType": "","uly":"","instId":""}]
 # 账户greeks频道
 # channels = [{"channel": "account-greeks", "ccy": "BTC"}]
+# 询价频道 Inquiry channel
+# channels = [{"channel": "rfqs"}]
+# 报价频道 Quote channel
+# channels = [{"channel": "quotes"}]
+# 大宗交易频道 Block trading channel
+# channels = [{"channel": "struc-block-trades"}]
+# 现货网格策略委托订单频道 Consignment order channel of spot grid strategy
+# channels = [{"channel": "grid-orders-spot", "instType": "ANY"}]
+# 合约网格策略委托订单频道 Spot grid policy delegated order channel contract grid policy delegated order channel
+# channels = [{"channel": "grid-orders-contract", "instType": "ANY"}]
+# 合约网格持仓频道 Contract grid position channel
+# channels = [{"channel": "grid-positions", "algoId": ""}]
+# 网格策略子订单频道 Grid policy suborder channel
+# channels = [{"channel": "grid-sub-orders", "algoId": ""}]
 '''
 交易 trade
 '''

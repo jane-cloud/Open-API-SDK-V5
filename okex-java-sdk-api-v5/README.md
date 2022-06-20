@@ -88,3 +88,5 @@ public class TestOKEXOpenApiV3 {
 第六步：调用接口
 6.1 调用Rest接口，运行对应Test类中的Junit单元测试
 6.2 订阅WS频道，运行对应的Test类中的Junit单元测试
+
+接口说明

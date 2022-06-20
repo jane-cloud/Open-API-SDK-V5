@@ -1,10 +1,7 @@
 package com.okex.open.api.test.subAccount;
 
 import com.alibaba.fastjson.JSONObject;
-import com.okex.open.api.bean.subAccount.param.CreateSubAccountApikey;
-import com.okex.open.api.bean.subAccount.param.DelSunAccountApikey;
-import com.okex.open.api.bean.subAccount.param.ReSetSubAccountApikey;
-import com.okex.open.api.bean.subAccount.param.SubAccountTransfer;
+import com.okex.open.api.bean.subAccount.param.*;
 import com.okex.open.api.service.account.impl.AccountAPIServiceImpl;
 import com.okex.open.api.service.subAccount.SubAccountAPIService;
 import com.okex.open.api.service.subAccount.impl.SubAccountAPIServiceImpl;
@@ -71,6 +68,20 @@ public class SubAccountAPITest extends SubAccountAPIBaseTest{
         subAccountTransfer.setLoanTrans(false);
 
         JSONObject result = this.subAccountAPIService.subAccountTransfer(subAccountTransfer);
+        toResultString(LOG,"result",result);
+    }
+
+    /**
+     * 设置子账户主动转出权限 Set Permission Of Transfer Out
+     * POST /api/v5/users/subaccount/set-transfer-out
+     */
+    @Test
+    public void testSetTransferOut(){
+        SetTransferOut setTransferOut = new SetTransferOut();
+        setTransferOut.setSubAcct("subaccount1");
+        setTransferOut.setCanTransOut(false);
+
+        JSONObject result = this.subAccountAPIService.setTransferOut(setTransferOut);
         toResultString(LOG,"result",result);
     }
 

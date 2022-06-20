@@ -90,6 +90,20 @@ public interface BrokerAPI {
      Call<JSONObject> setRebatePerOrders(@Body JSONObject jsonObject);
 
 
+    //获取返佣明细下载链接 Get download link
+    @GET("/api/v5/broker/fd/rebate-per-orders")
+    Call<JSONObject> rebatePerOrdersfd(@Query("type") String type,
+                                     @Query("begin") String begin,
+                                     @Query("end") String end);
+
+    //生成返佣明细下载链接 Create rebate details download link
+    @POST("/api/v5/broker/fd/rebate-per-orders")
+    Call<JSONObject> setRebatePerOrdersfd(@Body JSONObject jsonObject);
+
+
+
+
+
 
 
 }

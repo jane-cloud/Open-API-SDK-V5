@@ -6,8 +6,9 @@ public class Withdrawal {
     private String amt;
     private String dest;
     private String toAddr;
-    private String invoice;
-    
+    private String clientId;
+    private String wdId;
+
     @Override
     public String toString() {
         return "Withdrawal{" +
@@ -16,11 +17,48 @@ public class Withdrawal {
                 ", amt='" + amt + '\'' +
                 ", dest='" + dest + '\'' +
                 ", toAddr='" + toAddr + '\'' +
+                ", clientId='" + clientId + '\'' +
+                ", wdId='" + wdId + '\'' +
+                ", invoice='" + invoice + '\'' +
+                ", memo='" + memo + '\'' +
                 ", fee='" + fee + '\'' +
                 '}';
     }
 
+    public String getWdId() {
+        return wdId;
+    }
+
+    public void setWdId(String wdId) {
+        this.wdId = wdId;
+    }
+
+    private String invoice;
+
+    public String getMemo() {
+        return memo;
+    }
+
+    public void setMemo(String memo) {
+        this.memo = memo;
+    }
+
+    private String memo;
+
+    public String getClientId() {
+        return clientId;
+    }
+
+    public void setClientId(String clientId) {
+        this.clientId = clientId;
+    }
+
     private String fee;
+
+
+
+
+
 
     public String getCcy() {
         return ccy;

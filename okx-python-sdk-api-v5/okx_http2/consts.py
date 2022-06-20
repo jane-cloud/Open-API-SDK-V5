@@ -63,6 +63,13 @@ LENDING_HISTORY = '/api/v5/asset/lending-history'
 LENDING_RATE_HISTORY = '/api/v5/asset/lending-rate-history'
 LENDING_RATE_SUMMARY = '/api/v5/asset/lending-rate-summary'
 
+# Convert
+GET_CURRENCIES = '/api/v5/asset/convert/currencies'
+GET_CURRENCY_PAIR = '/api/v5/asset/convert/currency-pair'
+ESTIMATE_QUOTE = '/api/v5/asset/convert/estimate-quote'
+CONVERT_TRADE = '/api/v5/asset/convert/trade'
+CONVERT_HISTORY = '/api/v5/asset/convert/history'
+
 # Market Data
 TICKERS_INFO = '/api/v5/market/tickers'
 TICKER_INFO = '/api/v5/market/ticker'

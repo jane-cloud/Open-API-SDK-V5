@@ -9,6 +9,16 @@ public class EstimateQuote {
     private String rfqSzCcy;
     private String clQReqId;
 
+    public String getTag() {
+        return tag;
+    }
+
+    public void setTag(String tag) {
+        this.tag = tag;
+    }
+
+    private String tag;
+
     @Override
     public String toString() {
         return "EstimateQuote{" +
@@ -18,6 +28,7 @@ public class EstimateQuote {
                 ", rfqSz='" + rfqSz + '\'' +
                 ", rfqSzCcy='" + rfqSzCcy + '\'' +
                 ", clQReqId='" + clQReqId + '\'' +
+                ", tag='" + tag + '\'' +
                 '}';
     }
 

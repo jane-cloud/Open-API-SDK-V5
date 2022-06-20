@@ -16,19 +16,19 @@ public interface FundingAPIService {
     JSONObject fundsTransfer(FundsTransfer fundsTransfer);
 
     //资金流水查询 Asset Bills Details
-    JSONObject assetBillsDetails(String ccy,String type,String after,String before,String limit);
+    JSONObject assetBillsDetails(String ccy,String type,String clientId,String after,String before,String limit);
 
     //获取充值地址信息 Get Deposit Address
     JSONObject getDepositAddress(String ccy);
 
     //获取充值记录 Get Deposit History
-    JSONObject getDepositHistory(String ccy,String txId,String state,String after,String before,String limit);
+    JSONObject getDepositHistory(String ccy,String txId,String state,String after,String before,String limit,String depId);
 
     //提币 Withdrawal
     JSONObject Withdrawal(Withdrawal withdrawal);
 
     //获取提币记录 Get Withdrawal History
-    JSONObject getWithdrawalHistory(String ccy,String txId,String state,String after,String before,String limit);
+    JSONObject getWithdrawalHistory(String ccy,String clientId,String txId,String state,String after,String before,String limit,String wdId);
 
     //余币宝申购/赎回 PiggyBank Purchase/Redemption
     JSONObject piggyBankPurchaseRedemption(PiggyBankPurchaseRedemption piggyBankPurchaseRedemption);
@@ -43,7 +43,7 @@ public interface FundingAPIService {
     JSONObject withdrawalLightning(Withdrawal withdrawal);
 
     //获取资金划转状态 Transfer State
-    JSONObject transferState(String transId, String type);
+    JSONObject transferState(String transId,String clientId, String type);
 
     //获取账户资产估值 Get account asset valuation
     JSONObject assetValuation(String ccy);
@@ -59,4 +59,10 @@ public interface FundingAPIService {
 
     //获取市场借贷历史（公共）  Get public borrow history (public)
     JSONObject lendingRateHistory(String ccy, String after, String before,String limit);
+
+    //小额资产兑换
+    JSONObject convertDustAssets(ConvertDustAssets convertDustAssets);
+
+    //撤销提币
+    JSONObject cancelWithdrawal(Withdrawal cancelWithdrawal);
 }

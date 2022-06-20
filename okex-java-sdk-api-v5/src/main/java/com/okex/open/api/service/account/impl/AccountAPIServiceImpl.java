@@ -99,8 +99,8 @@ public class AccountAPIServiceImpl implements AccountAPIService {
 
     //获取当前账户交易手续费费率 Get Fee Rates
     @Override
-    public JSONObject getFeeRates(String instType, String instId, String uly, String category) {
-        return this.client.executeSync(this.api.getFeeRates(instType,instId,uly,category));
+    public JSONObject getFeeRates(String instType, String instId, String uly) {
+        return this.client.executeSync(this.api.getFeeRates(instType,instId,uly));
     }
 
 

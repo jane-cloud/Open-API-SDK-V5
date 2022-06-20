@@ -1,10 +1,7 @@
 package com.okex.open.api.service.subAccount.impl;
 
 import com.alibaba.fastjson.JSONObject;
-import com.okex.open.api.bean.subAccount.param.CreateSubAccountApikey;
-import com.okex.open.api.bean.subAccount.param.DelSunAccountApikey;
-import com.okex.open.api.bean.subAccount.param.ReSetSubAccountApikey;
-import com.okex.open.api.bean.subAccount.param.SubAccountTransfer;
+import com.okex.open.api.bean.subAccount.param.*;
 import com.okex.open.api.client.APIClient;
 import com.okex.open.api.config.APIConfiguration;
 import com.okex.open.api.service.subAccount.SubAccountAPIService;
@@ -41,6 +38,12 @@ public class SubAccountAPIServiceImpl implements SubAccountAPIService {
     @Override
     public JSONObject subAccountTransfer(SubAccountTransfer subAccountTransfer) {
         return this.client.executeSync(this.api.subAccountTransfer(subAccountTransfer));
+    }
+
+    //设置子账户主动转出权限 Set Permission Of Transfer Out
+    @Override
+    public JSONObject setTransferOut(SetTransferOut setTransferOut) {
+        return this.client.executeSync(this.api.setTransferOut(setTransferOut));
     }
 
     //查看被托管的子账户列表 Entrust Subaccount List

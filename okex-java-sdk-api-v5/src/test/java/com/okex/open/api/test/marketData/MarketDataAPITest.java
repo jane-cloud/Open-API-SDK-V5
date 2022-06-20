@@ -128,6 +128,16 @@ public class MarketDataAPITest extends MarketDataAPIBaseTest {
     }
 
     /**
+     * 获取交易产品公共成交数据 Get Trades
+     * GET /api/v5/market/trades
+     */
+    @Test
+    public void getTradesHistory() {
+        JSONObject result = this.marketDataAPIService.getTradesHistory("BTC-USDT-SWAP","","","5");
+        this.toResultString(MarketDataAPITest.LOG, "result", result);
+    }
+
+    /**
      * 获取平台24小时总成交量 Get total volume
      * GET /api/v5/market/platform-24-volume
      */

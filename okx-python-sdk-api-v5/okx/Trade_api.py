@@ -9,10 +9,10 @@ class TradeAPI(Client):
 
     # Place Order
     def place_order(self, instId, tdMode, side, ordType, sz, ccy='', clOrdId='', tag='', posSide='', px='',
-                    reduceOnly='', tgtCcy=''):
+                    reduceOnly='', tgtCcy='', banAmend=''):
         params = {'instId': instId, 'tdMode': tdMode, 'side': side, 'ordType': ordType, 'sz': sz, 'ccy': ccy,
                   'clOrdId': clOrdId, 'tag': tag, 'posSide': posSide, 'px': px, 'reduceOnly': reduceOnly,
-                  'tgtCcy': tgtCcy}
+                  'tgtCcy': tgtCcy, 'banAmend': banAmend}
         return self._request_with_params(POST, PLACR_ORDER, params)
 
     # Place Multiple Orders

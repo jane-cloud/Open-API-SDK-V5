@@ -54,5 +54,11 @@ public interface BrokerAPIService {
     //生成返佣明细下载链接 Create rebate details download link
     JSONObject setRebatePerOrders(SetRebatePerOrders setRebatePerOrders);
 
+    //获取返佣明细下载链接 Get download link
+    JSONObject rebatePerOrdersfd(String type,String begin,String end);
+
+    //生成返佣明细下载链接 Create rebate details download link
+    JSONObject setRebatePerOrdersfd(SetRebatePerOrders setRebatePerOrders);
+
 
 }

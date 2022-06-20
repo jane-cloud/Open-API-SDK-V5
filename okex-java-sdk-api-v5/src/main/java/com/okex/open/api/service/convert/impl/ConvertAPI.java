@@ -28,6 +28,9 @@ public interface ConvertAPI {
 
     //获取闪兑交易历史 Get convert history
     @GET("/api/v5/asset/convert/history")
-    Call<JSONObject> getHistory();
+    Call<JSONObject> getHistory(@Query("after") String after,
+                                @Query("before") String before,
+                                @Query("limit") String limit,
+                                @Query("tag") String tag);
 
 }

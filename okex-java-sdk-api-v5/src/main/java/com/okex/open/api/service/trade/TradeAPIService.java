@@ -42,10 +42,10 @@ public interface TradeAPIService {
     JSONObject getOrderHistory3months(String instType,String uly,String instId,String ordType,String state, String category,String after,String before,String limit);
 
     //获取成交明细（近三天） Get Transaction Details(last 3 days）
-    JSONObject getTransactionDetails(String instType,String uly,String instId,String ordId,String after,String before,String limit);
+    JSONObject getTransactionDetails(String instType,String uly,String instId,String ordId,String after,String before,String begin,String end,String limit);
 
     //获取成交明细（近三个月） Get Transaction Details(last 3 months）
-    JSONObject getTransactionDetailsForThreeMonths(String instType,String uly,String instId,String ordId,String after,String before,String limit);
+    JSONObject getTransactionDetailsForThreeMonths(String instType,String uly,String instId,String ordId,String after,String before,String begin,String end,String limit);
 
     //委托策略下单 Place Algo Order
     JSONObject placeAlgoOrder(PlaceAlgoOrder placeAlgoOrder);
