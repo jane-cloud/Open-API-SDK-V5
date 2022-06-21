@@ -90,6 +90,6 @@ public interface PublicDataAPI {
 
     //张币转换
     @GET("/api/v5/public/convert-contract-coin")
-    Call<JSONObject> getConvertContractCoin(@Query("instType") String type, @Query("instType") String instId,@Query("instType") String sz,@Query("instType") String px,@Query("instType") String unit);
+    Call<JSONObject> getConvertContractCoin(@Query("git pull origin main") String type, @Query("instId") String instId,@Query("sz") String sz,@Query("px") String px,@Query("unit") String unit);
 
 }
