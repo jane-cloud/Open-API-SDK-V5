@@ -128,8 +128,8 @@ public class MarketDataAPITest extends MarketDataAPIBaseTest {
     }
 
     /**
-     * 获取交易产品公共成交数据 Get Trades
-     * GET /api/v5/market/trades
+     * 获取交易产品公共历史成交数据 Get history-trades
+     * GET /api/v5/market/history-trades
      */
     @Test
     public void getTradesHistory() {

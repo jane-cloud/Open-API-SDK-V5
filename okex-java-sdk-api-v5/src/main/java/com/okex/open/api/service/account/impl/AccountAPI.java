@@ -123,4 +123,9 @@ public interface AccountAPI {
     //查看账户Greeks
     @GET("/api/v5/account/greeks")
     Call<JSONObject> getAccountGreeks(@Query("ccy") String ccy);
+
+    //查看历史持仓信息   Get positions-history
+    @GET("/api/v5/account/positions-history")
+    Call<JSONObject> getPositionsHistory(@Query("instType") String instType,@Query("instId") String instId,@Query("mgnMode") String mgnMode,@Query("type") String type,@Query("after") String after,@Query("before") String before,@Query("limit") String limit);
+
 }

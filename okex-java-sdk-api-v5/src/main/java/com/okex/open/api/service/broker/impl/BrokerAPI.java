@@ -101,9 +101,7 @@ public interface BrokerAPI {
     Call<JSONObject> setRebatePerOrdersfd(@Body JSONObject jsonObject);
 
 
-
-
-
-
-
+    //重置子账户充值地址    modify-subaccount-deposit-address
+    @POST("/api/v5/asset/broker/nd/modify-subaccount-deposit-address")
+    Call<JSONObject> modifySubaccountDepositAddress(@Body JSONObject parseObject);
 }

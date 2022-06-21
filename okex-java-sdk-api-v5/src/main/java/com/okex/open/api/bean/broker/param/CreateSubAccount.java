@@ -4,7 +4,7 @@ public class CreateSubAccount {
 
     private String subAcct;
     private String label;
-    private String acctLv;
+
 
 
 
@@ -24,11 +24,5 @@ public class CreateSubAccount {
         this.label = label;
     }
 
-    public String getAcctLv() {
-        return acctLv;
-    }
 
-    public void setAcctLv(String acctLv) {
-        this.acctLv = acctLv;
-    }
 }

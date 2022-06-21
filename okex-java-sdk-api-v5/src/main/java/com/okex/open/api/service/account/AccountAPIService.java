@@ -80,4 +80,9 @@ public interface AccountAPIService {
     JSONObject simulatedMargin(SimulatedMargin simulatedMargin);
     //查看账户Greeks
     JSONObject getAccountGreeks(String ccy);
+
+    //查看历史持仓信息   Get positions-history
+    JSONObject getPositionsHistory(String instType, String instId, String mgnMode, String type, String after, String before, String limit);
+
+
 }

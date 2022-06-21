@@ -9,6 +9,8 @@ import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.ArrayList;
+
 public class FundingAPITests extends FundingAPIBaseTests {
 
     private static final Logger LOG = LoggerFactory.getLogger(FundingAPITests.class);
@@ -241,7 +243,9 @@ public class FundingAPITests extends FundingAPIBaseTests {
     @Test
     public void convertDustAssets() {
         ConvertDustAssets convertDustAssets = new ConvertDustAssets();
-        convertDustAssets.setCcy("OKB");
+        ArrayList<String> list = new  ArrayList<String>();
+        list.add("OKB");
+        convertDustAssets.setCcy(list);
         JSONObject result = fundingAPIService.convertDustAssets(convertDustAssets);
         toResultString(LOG, "result", result);
     }

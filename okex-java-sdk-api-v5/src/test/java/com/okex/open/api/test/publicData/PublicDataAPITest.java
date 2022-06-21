@@ -194,7 +194,15 @@ public class PublicDataAPITest extends PublicDataAPIBaseTest {
         JSONObject result = publicDataAPIService.getVipInterestRateLoanQuota();
         toResultString(LOG, "result", result);
     }
-
+    /**
+     * 张币转换  Get
+     * GET /api/v5/public/convert-contract-coin
+     */
+    @Test
+    public void getConvertContractCoin(){
+        JSONObject result = publicDataAPIService.getConvertContractCoin("","","","","");
+        toResultString(LOG, "result", result);
+    }
 
 
 }

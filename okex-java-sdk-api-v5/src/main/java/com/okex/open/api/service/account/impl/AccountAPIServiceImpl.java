@@ -168,4 +168,9 @@ public class AccountAPIServiceImpl implements AccountAPIService {
     public JSONObject getAccountGreeks(String ccy) {
         return this.client.executeSync(this.api.getAccountGreeks(ccy));
     }
+    //查看历史持仓信息   Get positions-history
+    @Override
+    public JSONObject getPositionsHistory(String instType, String instId, String mgnMode, String type, String after, String before, String limit) {
+        return this.client.executeSync(this.api.getPositionsHistory(instType, instId, mgnMode, type, after, before, limit));
+    }
 }

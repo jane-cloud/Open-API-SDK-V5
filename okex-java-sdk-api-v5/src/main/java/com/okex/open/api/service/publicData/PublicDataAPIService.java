@@ -55,4 +55,7 @@ public interface PublicDataAPIService {
 
     //获取尊享借币杠杆利率和借币限额  Get Interest Rate and Loan Quota for VIP loans
     JSONObject getVipInterestRateLoanQuota();
+
+    //张币转换
+    JSONObject getConvertContractCoin(String type, String instId, String sz, String px, String unit);
 }

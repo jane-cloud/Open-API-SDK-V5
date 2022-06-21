@@ -7,6 +7,16 @@ public class SubAccountDepositAddress {
     private String addrType;
     private String to;
 
+    public String getAddr() {
+        return addr;
+    }
+
+    public void setAddr(String addr) {
+        this.addr = addr;
+    }
+
+    private String addr;
+
     public String getSubAcct() {
         return subAcct;
     }

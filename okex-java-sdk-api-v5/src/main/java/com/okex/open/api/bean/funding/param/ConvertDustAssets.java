@@ -1,19 +1,18 @@
 package com.okex.open.api.bean.funding.param;
 
+import java.util.ArrayList;
+
 public class ConvertDustAssets {
-    public String getCcy() {
+
+
+    public ArrayList<String> getCcy() {
         return ccy;
     }
 
-    public void setCcy(String ccy) {
+    public void setCcy(ArrayList<String> ccy) {
         this.ccy = ccy;
     }
 
-    private String ccy;
-    @Override
-    public String toString() {
-        return "ConvertDustAssets{" +
-                "ccy='" + ccy + '\'' +
-                '}';
-    }
+    private ArrayList<String> ccy;
+
 }

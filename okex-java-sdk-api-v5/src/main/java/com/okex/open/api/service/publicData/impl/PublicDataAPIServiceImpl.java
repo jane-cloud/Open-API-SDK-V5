@@ -110,4 +110,10 @@ public class PublicDataAPIServiceImpl implements PublicDataAPIService {
     public JSONObject getVipInterestRateLoanQuota() {
         return this.client.executeSync(this.api.getVipInterestRateLoanQuota());
     }
+
+    //张币转换
+    @Override
+    public JSONObject getConvertContractCoin(String type, String instId, String sz, String px, String unit) {
+        return this.client.executeSync(this.api.getConvertContractCoin(type,  instId,  sz,  px,  unit));
+    }
 }

@@ -41,7 +41,6 @@ public class BrokerAPITests extends BrokerAPIBaseTests{
 
         createSubAccount.setSubAcct("0324test01");
         createSubAccount.setLabel("0324test01");
-        createSubAccount.setAcctLv("1");
         JSONObject result = this.brokerAPIService.createSubAccount(createSubAccount);
         toResultString(LOG, "result", result);
     }
@@ -252,6 +251,20 @@ public class BrokerAPITests extends BrokerAPIBaseTests{
         toResultString(LOG, "result", result);
     }
 
-
+    /**
+     * 重置子账户充值地址    modify-subaccount-deposit-address
+     * POST /api/v5/asset/broker/nd/modify-subaccount-deposit-address
+     */
+    @Test
+    public void modifySubaccountDepositAddress(){
+        SubAccountDepositAddress subAccountDepositAddress = new SubAccountDepositAddress();
+        subAccountDepositAddress.setSubAcct("");
+        subAccountDepositAddress.setCcy("");
+        subAccountDepositAddress.setChain("");
+        subAccountDepositAddress.setAddr("");
+        subAccountDepositAddress.setTo("");
+        JSONObject result = this.brokerAPIService.modifySubaccountDepositAddress(subAccountDepositAddress);
+        toResultString(LOG, "result", result);
+    }
 
 }

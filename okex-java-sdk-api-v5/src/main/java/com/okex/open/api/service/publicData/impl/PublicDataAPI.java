@@ -87,4 +87,9 @@ public interface PublicDataAPI {
     //获取尊享借币杠杆利率和借币限额  Get Interest Rate and Loan Quota for VIP loans
     @GET("/api/v5/public/vip-interest-rate-loan-quota")
     Call<JSONObject> getVipInterestRateLoanQuota();
+
+    //张币转换
+    @GET("/api/v5/public/convert-contract-coin")
+    Call<JSONObject> getConvertContractCoin(@Query("instType") String type, @Query("instType") String instId,@Query("instType") String sz,@Query("instType") String px,@Query("instType") String unit);
+
 }

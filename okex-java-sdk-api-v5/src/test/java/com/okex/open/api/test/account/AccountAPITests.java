@@ -338,4 +338,14 @@ public class AccountAPITests extends  AccountAPIBaseTests {
         JSONObject result = this.accountAPIService.getAccountGreeks("");
         toResultString(LOG, "result", result);
     }
+
+    /**
+     * 查看历史持仓信息   Get positions-history
+     *GET /api/v5/account/positions-history
+     */
+    @Test
+    public void getPositionsHistory(){
+        JSONObject result = this.accountAPIService.getPositionsHistory("","","","","","","");
+        toResultString(LOG, "result", result);
+    }
 }
