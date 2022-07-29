@@ -51,7 +51,7 @@ interface MarketDataAPI {
 
     //获取交易产品公共历史成交数据 Get trades history
     @GET("/api/v5/market/history-trades")
-    Call<JSONObject> getTradesHistory(@Query("instId") String instId,@Query("after") String after,@Query("before") String before,@Query("limit") String limit);
+    Call<JSONObject> getTradesHistory(@Query("instId") String instId,@Query("after") String after,@Query("before") String before,@Query("limit") String limit,@Query("type") String type);
 
     //获取平台24小时总成交量 Get total volume
     @GET("/api/v5/market/platform-24-volume")

@@ -72,4 +72,20 @@ public class GridTradingAPIServiceImpl implements GridTradingAPIService {
     public JSONObject withdrawIncome(WithdrawIncome withdrawIncome) {
         return client.executeSync(this.gridAPI.withdrawIncome(withdrawIncome));
     }
+
+    //网格策略智能回测（公共）
+    @Override
+    public JSONObject getGridTest(String algoOrdType, String instId, String direction, String duration) {
+        return this.client.executeSync(this.gridAPI.getGridTest(algoOrdType, instId,direction,duration));
+    }
+
+    @Override
+    public JSONObject marginBalance(WithdrawIncome withdrawIncome) {
+        return this.client.executeSync(this.gridAPI.marginBalance(withdrawIncome));
+    }
+
+    @Override
+    public JSONObject computeMarginBalance(WithdrawIncome withdrawIncome) {
+        return this.client.executeSync(this.gridAPI.computeMarginBalance(withdrawIncome));
+    }
 }

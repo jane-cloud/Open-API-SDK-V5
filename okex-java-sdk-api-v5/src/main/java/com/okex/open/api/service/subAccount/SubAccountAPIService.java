@@ -26,4 +26,10 @@ public interface SubAccountAPIService {
 
     //查看被托管的子账户列表 Entrust Subaccount List
     JSONObject getEntrustSubList(String subAcct);
+
+    //获取子账户资金账户余额
+    JSONObject getSubaccountBalances(String subAcct, String ccy);
+
+    //重置子账户的APIKey
+    JSONObject modifySubApikey(SetTransferOut setTransferOut);
 }

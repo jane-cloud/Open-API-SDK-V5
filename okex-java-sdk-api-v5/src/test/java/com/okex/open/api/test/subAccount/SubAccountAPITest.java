@@ -94,7 +94,30 @@ public class SubAccountAPITest extends SubAccountAPIBaseTest{
         JSONObject result = this.subAccountAPIService.getEntrustSubList(null);
         toResultString(LOG, "result", result);
     }
-
-
+    /**
+     * 获取子账户资金账户余额
+     *  subaccount balances
+     * GET /api/v5/asset/subaccount/balances
+     */
+    @Test
+    public void getSubaccountBalances(){
+        JSONObject result = this.subAccountAPIService.getSubaccountBalances("",null);
+        toResultString(LOG, "result", result);
+    }
+    /**
+     * 重置子账户的APIKey modify-apikey
+     * POST /api/v5/users/subaccount/modify-apikey
+     */
+    @Test
+    public void modifySubApikey(){
+        SetTransferOut setTransferOut = new SetTransferOut();
+        setTransferOut.setSubAcct("subaccount1");
+        setTransferOut.setApiKey("");
+        setTransferOut.setIp("");
+        setTransferOut.setLabel("");
+        setTransferOut.setPerm("");
+        JSONObject result = this.subAccountAPIService.modifySubApikey(setTransferOut);
+        toResultString(LOG,"result",result);
+    }
 
 }

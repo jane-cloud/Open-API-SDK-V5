@@ -170,7 +170,13 @@ public class AccountAPIServiceImpl implements AccountAPIService {
     }
     //查看历史持仓信息   Get positions-history
     @Override
-    public JSONObject getPositionsHistory(String instType, String instId, String mgnMode, String type, String after, String before, String limit) {
-        return this.client.executeSync(this.api.getPositionsHistory(instType, instId, mgnMode, type, after, before, limit));
+    public JSONObject getPositionsHistory(String instType, String instId, String mgnMode, String type, String after, String before, String limit,String posId) {
+        return this.client.executeSync(this.api.getPositionsHistory(instType, instId, mgnMode, type, after, before, limit,posId));
+    }
+
+    //获取组合保证金模式全仓限制
+    @Override
+    public JSONObject getPositionTiers(String instType, String uly) {
+        return this.client.executeSync(this.api.getPositionTiers(instType,uly));
     }
 }

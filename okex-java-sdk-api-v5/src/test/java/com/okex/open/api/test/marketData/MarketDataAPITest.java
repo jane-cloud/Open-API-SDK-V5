@@ -133,7 +133,7 @@ public class MarketDataAPITest extends MarketDataAPIBaseTest {
      */
     @Test
     public void getTradesHistory() {
-        JSONObject result = this.marketDataAPIService.getTradesHistory("BTC-USDT-SWAP","","","5");
+        JSONObject result = this.marketDataAPIService.getTradesHistory("BTC-USDT-SWAP","","","5","");
         this.toResultString(MarketDataAPITest.LOG, "result", result);
     }
 

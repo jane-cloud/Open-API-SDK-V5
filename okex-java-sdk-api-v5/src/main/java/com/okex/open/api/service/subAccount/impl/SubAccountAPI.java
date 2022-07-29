@@ -42,4 +42,12 @@ public interface SubAccountAPI {
     //查看被托管的子账户列表 Entrust Subaccount List
     @GET("/api/v5/users/entrust-subaccount-list")
     Call<JSONObject> getEntrustSubList(@Query("subAcct") String subAcct);
+
+    //获取子账户资金账户余额 subaccount balances
+    @GET("/api/v5/asset/subaccount/balances")
+    Call<JSONObject>  getSubaccountBalances(@Query("subAcct") String subAcct,@Query("ccy")  String ccy);
+
+    //重置子账户的APIKey
+    @POST("/api/v5/users/subaccount/modify-apikey")
+    Call<JSONObject> modifySubApikey(@Body SetTransferOut setTransferOut);
 }

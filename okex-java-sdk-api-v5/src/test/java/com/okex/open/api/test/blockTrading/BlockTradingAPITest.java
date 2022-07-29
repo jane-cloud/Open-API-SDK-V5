@@ -158,7 +158,8 @@ public class BlockTradingAPITest extends BlockTradingAPIBaseTest {
         createQuote.setClQuoteId("20220602testquote001");
         createQuote.setQuoteSide("buy");
         createQuote.setLegs(legsList);
-
+        createQuote.setExpiresIn("");
+        createQuote.setAnonymous(false);
 
         JSONObject result = this.blockTradingAPIService.createQuote(createQuote);
         toResultString(LOG, "result", result);

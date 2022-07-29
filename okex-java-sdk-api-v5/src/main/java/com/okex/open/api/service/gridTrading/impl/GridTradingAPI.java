@@ -70,10 +70,14 @@ public interface GridTradingAPI {
     Call<JSONObject> withdrawIncome(@Body WithdrawIncome withdrawIncome);
 
 
+    @GET("/api/v5/tradingBot/grid/ai-param")
+    Call<JSONObject> getGridTest(@Query("algoOrdType") String algoOrdType,@Query("instId") String instId,@Query("direction") String direction,@Query("duration") String duration);
 
+    //调整保证金
+    @POST("/api/v5/tradingBot/grid/margin-balance")
+    Call<JSONObject> marginBalance( @Body WithdrawIncome withdrawIncome);
 
-
-
-
-
+    //调整保证金计算
+    @POST("/api/v5/tradingBot/grid/compute-margin-balance")
+    Call<JSONObject> computeMarginBalance(@Body WithdrawIncome withdrawIncome);
 }

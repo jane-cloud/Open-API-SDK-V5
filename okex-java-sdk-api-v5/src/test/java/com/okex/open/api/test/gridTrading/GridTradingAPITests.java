@@ -152,10 +152,44 @@ public class GridTradingAPITests extends GridTradingAPIBaseTests {
         JSONObject result = this.gridTradingAPIService.withdrawIncome(withdrawIncome);
         toResultString(LOG, "result", result);
     }
+    /**
+     * 网格策略智能回测（公共）grid ai-param
+     * GET /api/v5/tradingBot/grid/ai-param
+     */
+    @Test
+    public void getGridTest(){
+        JSONObject result = this.gridTradingAPIService.getGridTest("","","","");
 
+        toResultString(LOG, "result", result);
+    }
 
-
-
+    /**
+     * 调整保证金 margin-balance
+     * POST /api/v5/tradingBot/grid/margin-balance
+     */
+    @Test
+    public void marginBalance(){
+        WithdrawIncome withdrawIncome = new WithdrawIncome();
+        withdrawIncome.setAlgoId("");
+        withdrawIncome.setAmt("");
+        withdrawIncome.setPercent("");
+        withdrawIncome.setType("");
+        JSONObject result = this.gridTradingAPIService.marginBalance(withdrawIncome);
+        toResultString(LOG, "result", result);
+    }
+    /**
+     * 调整保证金计算 compute-margin-balance
+     * POST /api/v5/tradingBot/grid/compute-margin-balance
+     */
+    @Test
+    public void computeMarginBalance(){
+        WithdrawIncome withdrawIncome = new WithdrawIncome();
+        withdrawIncome.setAlgoId("");
+        withdrawIncome.setAmt("");
+        withdrawIncome.setType("");
+        JSONObject result = this.gridTradingAPIService.computeMarginBalance(withdrawIncome);
+        toResultString(LOG, "result", result);
+    }
 
 
 }

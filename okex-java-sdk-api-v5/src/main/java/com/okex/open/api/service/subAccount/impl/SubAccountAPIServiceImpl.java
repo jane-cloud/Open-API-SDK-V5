@@ -51,4 +51,14 @@ public class SubAccountAPIServiceImpl implements SubAccountAPIService {
     public JSONObject getEntrustSubList(String subAcct) {
         return this.client.executeSync(this.api.getEntrustSubList(subAcct));
     }
+
+    @Override
+    public JSONObject getSubaccountBalances(String subAcct, String ccy) {
+        return this.client.executeSync(this.api.getSubaccountBalances(subAcct,ccy));
+    }
+
+    @Override
+    public JSONObject modifySubApikey(SetTransferOut setTransferOut) {
+        return this.client.executeSync(this.api.modifySubApikey(setTransferOut));
+    }
 }

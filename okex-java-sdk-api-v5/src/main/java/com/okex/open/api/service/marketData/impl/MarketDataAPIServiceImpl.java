@@ -74,8 +74,8 @@ public class MarketDataAPIServiceImpl implements MarketDataAPIService {
 
     //获取交易产品公共历史成交数据 Get trades history
     @Override
-    public JSONObject getTradesHistory(String instId, String after, String before, String limit) {
-        return this.client.executeSync(this.marketDataAPI.getTradesHistory(instId, after, before, limit));
+    public JSONObject getTradesHistory(String instId, String after, String before, String limit,String type) {
+        return this.client.executeSync(this.marketDataAPI.getTradesHistory(instId, after, before, limit,type));
     }
 
     //获取平台24小时总成交量 Get total volume

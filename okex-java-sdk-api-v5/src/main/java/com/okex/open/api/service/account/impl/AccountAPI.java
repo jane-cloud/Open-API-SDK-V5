@@ -126,6 +126,9 @@ public interface AccountAPI {
 
     //查看历史持仓信息   Get positions-history
     @GET("/api/v5/account/positions-history")
-    Call<JSONObject> getPositionsHistory(@Query("instType") String instType,@Query("instId") String instId,@Query("mgnMode") String mgnMode,@Query("type") String type,@Query("after") String after,@Query("before") String before,@Query("limit") String limit);
+    Call<JSONObject> getPositionsHistory(@Query("instType") String instType, @Query("instId") String instId, @Query("mgnMode") String mgnMode, @Query("type") String type, @Query("after") String after, @Query("before") String before, @Query("limit") String limit,@Query("posId") String posId);
 
+    //获取组合保证金模式全仓限制
+    @GET("/api/v5/account/position-tiers")
+    Call<JSONObject> getPositionTiers(@Query("instType") String instType,@Query("uly")  String uly);
 }

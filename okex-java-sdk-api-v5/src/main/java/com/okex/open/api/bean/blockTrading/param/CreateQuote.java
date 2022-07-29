@@ -7,6 +7,8 @@ public class CreateQuote {
     private String clQuoteId;
     private String quoteSide;
     private List<Legs> legs;
+    private Boolean anonymous;
+    private String expiresIn;
 
     public String getRfqId() {
         return rfqId;
@@ -38,5 +40,22 @@ public class CreateQuote {
 
     public void setLegs(List<Legs> legs) {
         this.legs = legs;
+    }
+
+    public String getExpiresIn() {
+        return expiresIn;
+    }
+
+    public void setExpiresIn(String expiresIn) {
+        this.expiresIn = expiresIn;
+    }
+
+
+    public Boolean getAnonymous() {
+        return anonymous;
+    }
+
+    public void setAnonymous(Boolean anonymous) {
+        this.anonymous = anonymous;
     }
 }

@@ -82,7 +82,8 @@ public interface AccountAPIService {
     JSONObject getAccountGreeks(String ccy);
 
     //查看历史持仓信息   Get positions-history
-    JSONObject getPositionsHistory(String instType, String instId, String mgnMode, String type, String after, String before, String limit);
+    JSONObject getPositionsHistory(String instType, String instId, String mgnMode, String type, String after, String before, String limit,String posId);
 
-
+    //获取组合保证金模式全仓限制
+    JSONObject getPositionTiers(String instType, String uly);
 }

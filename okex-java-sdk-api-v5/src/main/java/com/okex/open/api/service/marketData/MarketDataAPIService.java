@@ -39,7 +39,7 @@ public interface MarketDataAPIService {
     JSONObject getTrades(String instId,String limit);
 
     //获取交易产品公共历史成交数据 Get trades history
-    JSONObject getTradesHistory(String instId,String after, String before,String limit);
+    JSONObject getTradesHistory(String instId,String after, String before,String limit,String type);
 
     //获取平台24小时总成交量 Get total volume
     JSONObject getTotalVolume();

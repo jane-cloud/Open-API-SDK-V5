@@ -36,4 +36,11 @@ public interface GridTradingAPIService {
     //现货网格提取利润 Spot grid withdraw income
     JSONObject withdrawIncome(WithdrawIncome withdrawIncome);
 
+    //网格策略智能回测（公共）grid/ai-param
+    JSONObject getGridTest(String algoOrdType, String instId, String direction, String duration);
+
+    //调整保证金
+    JSONObject marginBalance(WithdrawIncome withdrawIncome);
+    //调整保证金计算
+    JSONObject computeMarginBalance(WithdrawIncome withdrawIncome);
 }

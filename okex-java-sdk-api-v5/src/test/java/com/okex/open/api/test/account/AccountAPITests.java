@@ -345,7 +345,16 @@ public class AccountAPITests extends  AccountAPIBaseTests {
      */
     @Test
     public void getPositionsHistory(){
-        JSONObject result = this.accountAPIService.getPositionsHistory("","","","","","","");
+        JSONObject result = this.accountAPIService.getPositionsHistory("","","","","","","","");
+        toResultString(LOG, "result", result);
+    }
+    /**
+     * 获取组合保证金模式全仓限制 position-tiers
+     * GET /api/v5/account/position-tiers
+     */
+    @Test
+    public void getPositionTiers(){
+        JSONObject result = this.accountAPIService.getPositionTiers("","");
         toResultString(LOG, "result", result);
     }
 }
