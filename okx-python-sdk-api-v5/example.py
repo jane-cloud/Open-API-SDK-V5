@@ -16,13 +16,13 @@ import okx.TradingBot_api as TradingBot
 import okx.Finance_api as Finance
 
 if __name__ == '__main__':
-    api_key = "9ad6b0a1-1b9e-4e25-964e-792be71c83b2"
-    secret_key = "240B451114985C8FB617DAF741120DC2"
-    passphrase = "123456"
+    api_key = ""
+    secret_key = ""
+    passphrase = ""
 
     # flag是实盘与模拟盘的切换参数 flag is the key parameter which can help you to change between demo and real trading.
-    flag = '1'  # 模拟盘 demo trading
-    # flag = '0'  # 实盘 real trading
+    # flag = '1'  # 模拟盘 demo trading
+    flag = '0'  # 实盘 real trading
 
     # account api
     accountAPI = Account.AccountAPI(api_key, secret_key, passphrase, False, flag)
@@ -318,7 +318,7 @@ if __name__ == '__main__':
     # 获取独立经纪商账户信息 GET Obtain independent broker account information
     # result = BrokerAPI.broker_info()
     # 创建子账户 Create sub account
-    result = BrokerAPI.create_subaccount(subAcct = 'qwerty', label = '')
+    # result = BrokerAPI.create_subaccount(subAcct = 'qwerty', label = '')
     # 删除子账户 Delete sub account
     # result = BrokerAPI.delete_subaccount(subAcct = 'qwerty')
     # 获取子账户列表 Get sub account list
