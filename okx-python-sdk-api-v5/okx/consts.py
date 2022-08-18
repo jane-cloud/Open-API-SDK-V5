@@ -45,6 +45,7 @@ INTEREST_LIMITS = '/api/v5/account/interest-limits'
 SIMULATED_MARGIN = '/api/v5/account/simulated_margin'
 GREEKS = '/api/v5/account/greeks'
 POSITIONS_HISTORY = '/api/v5/account/positions-history'
+POSITION_TIRES = '/api/v5/account/position-tiers'
 
 # funding
 DEPOSIT_ADDRESS = '/api/v5/asset/deposit-address'
@@ -149,6 +150,9 @@ WATCH = '/api/v5/users/subaccount/apikey'  # 移除此接口
 VIEW_LIST = '/api/v5/users/subaccount/list'
 SUBACCOUNT_TRANSFER = '/api/v5/asset/subaccount/transfer'
 ENTRUST_SUBACCOUNT_LIST = '/api/v5/users/entrust-subaccount-list'
+MODIFY_APIKEY = '/api/v5/users/subaccount/modify-apikey'
+ASSET_BALANCES = '/api/v5/asset/subaccount/balances'
+
 
 # Broker
 BROKER_INFO = '/api/v5/broker/nd/info'
@@ -195,6 +199,7 @@ GET_RFQS = '/api/v5/rfq/rfqs'
 GET_QUOTES = '/api/v5/rfq/quotes'
 GET_RFQ_TRADES = '/api/v5/rfq/trades'
 GET_PUBLIC_TRADES = '/api/v5/rfq/public-trades'
+MARKET_INSTRUMENT_SETTINGS = '/api/v5/rfq/maker-instrument-settings'
 
 # tradingBot
 GRID_ORDER_ALGO = '/api/v5/tradingBot/grid/order-algo'
@@ -206,6 +211,16 @@ GRID_ORDERS_ALGO_DETAILS = '/api/v5/tradingBot/grid/orders-algo-details'
 GRID_SUB_ORDERS = '/api/v5/tradingBot/grid/sub-orders'
 GRID_POSITIONS = '/api/v5/tradingBot/grid/positions'
 GRID_WITHDRAW_INCOME = '/api/v5/tradingBot/grid/withdraw-income'
+GRID_COMPUTE_MARGIN_BALANCE = '/api/v5/tradingBot/grid/compute-margin-balance'
+GRID_MARGIN_BALANCE = '/api/v5/tradingBot/grid/margin-balance'
+GRID_AI_PARAM = '/api/v5/tradingBot/grid/ai-param'
 
+# finance
+STAKING_DEFI_OFFERS = '/api/v5/finance/staking-defi/offers'
+STAKING_DEFI_PURCHASE = '/api/v5/finance/staking-defi/purchase'
+STAKING_DEFI_REDEEM = '/api/v5/finance/staking-defi/redeem'
+STAKING_DEFI_CANCEL = '/api/v5/finance/staking-defi/cancel'
+STAKING_DEFI_ORDERS_ACTIVE = '/api/v5/finance/staking-defi/orders-active'
+STAKING_DEFI_ORDERS_HISTORY = '/api/v5/finance/staking-defi/orders-history'
 # status
 STATUS = '/api/v5/system/status'

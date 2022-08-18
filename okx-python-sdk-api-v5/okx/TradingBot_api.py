@@ -41,3 +41,15 @@ class TradingBotAPI(Client):
     def grid_withdraw_income(self, algoId = ''):
         params = {'algoId': algoId}
         return self._request_with_params(POST, GRID_WITHDRAW_INCOME, params)
+
+    def grid_compute_margin_balance(self, algoId = '', type = '', amt = ''):
+        params = {'algoId': algoId, 'type':type, 'amt':amt}
+        return self._request_with_params(POST, GRID_COMPUTE_MARGIN_BALANCE, params)
+
+    def grid_margin_balance(self, algoId = '', type = '', amt = '', percent = ''):
+        params = {'algoId': algoId, 'type':type, 'amt':amt, 'percent':percent}
+        return self._request_with_params(POST, GRID_MARGIN_BALANCE, params)
+
+    def grid_ai_param(self, algoOrdType = '', instId = '', direction = '', duration = ''):
+        params = {'algoOrdType': algoOrdType, 'instId':instId, 'direction':direction, 'duration':duration}
+        return self._request_with_params(GET, GRID_AI_PARAM, params)

@@ -13,15 +13,16 @@ import okx.Convert_api as Convert
 import okx.FDBroker_api as FDBroker
 import okx.Rfq_api as Rfq
 import okx.TradingBot_api as TradingBot
+import okx.Finance_api as Finance
 
 if __name__ == '__main__':
-    api_key = ""
-    secret_key = ""
-    passphrase = ""
+    api_key = "9ad6b0a1-1b9e-4e25-964e-792be71c83b2"
+    secret_key = "240B451114985C8FB617DAF741120DC2"
+    passphrase = "123456"
 
     # flag是实盘与模拟盘的切换参数 flag is the key parameter which can help you to change between demo and real trading.
-    # flag = '1'  # 模拟盘 demo trading
-    flag = '0'  # 实盘 real trading
+    flag = '1'  # 模拟盘 demo trading
+    # flag = '0'  # 实盘 real trading
 
     # account api
     accountAPI = Account.AccountAPI(api_key, secret_key, passphrase, False, flag)
@@ -32,7 +33,7 @@ if __name__ == '__main__':
     # 查看持仓信息  Get Positions
     # result = accountAPI.get_positions('FUTURES', 'BTC-USD-210402')
     # 查看历史持仓信息
-    # result = accountAPI.get_positions_history(instType = '', instId = '', mgnMode = '', type = '', after = '', before = '', limit = '')
+    # result = accountAPI.get_positions_history(instType = '', instId = '', mgnMode = '', type = '', after = '', before = '', limit = '', posId = '359410150083538946')
     # 账单流水查询（近七天） Get Bills Details (recent 7 days)
     # result = accountAPI.get_bills_detail('FUTURES', 'BTC', 'cross')
     # 账单流水查询（近三个月） Get Bills Details (recent 3 months)
@@ -77,6 +78,8 @@ if __name__ == '__main__':
     # result = accountAPI.get_simulated_margin()
     # 查看账户Greeks GET GREEKS
     # result = accountAPI.get_greeks()
+    # 获取组合保证金模式全仓限制
+    # result = accountAPI.position_tiers(instType = 'SWAP', uly = 'BTC-USDT')
 
     # funding api
     fundingAPI = Funding.FundingAPI(api_key, secret_key, passphrase, False, flag)
@@ -305,13 +308,17 @@ if __name__ == '__main__':
     #                                            toSubAccount='2')
     # 查看被托管子账户列表 entrust-subaccount-list
     # result = subAccountAPI.entrust_subaccount_list(subAcct = '')
+    # 重置子账户的APIKey Reset the apikey of the sub account
+    # result = subAccountAPI.modify_apikey(subAcct = '', apiKey = '', label = '', perm = '', ip = '')
+    # 获取子账户资金账户余额
+    # result = subAccountAPI.asset_balances(subAcct = '', ccy = '')
 
     # BrokerAPI
     BrokerAPI = Broker.BrokerAPI(api_key, secret_key, passphrase, False, flag)
     # 获取独立经纪商账户信息 GET Obtain independent broker account information
     # result = BrokerAPI.broker_info()
     # 创建子账户 Create sub account
-    # result = BrokerAPI.create_subaccount(subAcct = 'qwerty', label = '', acctLv = '1')
+    result = BrokerAPI.create_subaccount(subAcct = 'qwerty', label = '')
     # 删除子账户 Delete sub account
     # result = BrokerAPI.delete_subaccount(subAcct = 'qwerty')
     # 获取子账户列表 Get sub account list
@@ -363,8 +370,10 @@ if __name__ == '__main__':
     # result = RfqAPI.cancel_all_rfqs()
     # 执行报价
     # result = RfqAPI.execute_quote(rfqId = '', quoteId = '')
+    # 设置可报价产品
+    # result = RfqAPI.maker_instrument_settings(instType = 'SPOT', data = [{"uly":"","instId":""}])
     # 报价
-    # result = RfqAPI.create_quote(rfqId = '', clQuoteId = '', quoteSide = 'buy', legs = [{"px":"39450.0","sz":"200000","instId":"BTC-USDT-SWAP","side":"buy"}])
+    result = RfqAPI.create_quote(rfqId = '', clQuoteId = '', quoteSide = 'buy', anonymous = 'True', expiresIn = '', legs = [{"px":"39450.0","sz":"200000","instId":"BTC-USDT-SWAP","side":"buy"}])
     # 取消报价单
     # result = RfqAPI.cancel_quote(quoteId = '', clQuoteId = '')
     # 批量取消报价单
@@ -400,6 +409,27 @@ if __name__ == '__main__':
     # result = TradingBot.grid_positions(algoOrdType = '', algoId = '')
     # 现货网格提取利润
     # result = TradingBot.grid_withdraw_income(algoId = '455784823937040384')
+    # 调整保证金计算
+    # result = TradingBot.grid_compute_margin_balance(algoId = '455784823937040384', type = 'add', amt = '')
+    # 调整保证金
+    # result = TradingBot.grid_margin_balance(algoId = '455784823937040384', type = 'add', amt = '10', percent = '')
+    # 网格策略智能回测（公共）
+    # result = TradingBot.grid_ai_param(algoOrdType = 'grid', instId = 'BTC-USDT', direction = '', duration = '')
+
+    # 赚币 Finance API
+    Finance = Finance.FinanceAPI(api_key, secret_key, passphrase, False, flag)
+    # 查看项目 View items
+    # result = Finance.staking_defi_offers(productId = '', protocolType = 'defi', ccy = '')
+    # 申购项目 Subscription items
+    # result = Finance.staking_defi_purchase(productId = '1456', investData = [{"ccy":"USDT","amt":"1"}], term = '30')
+    # 赎回项目 Redemption items
+    # result = Finance.staking_defi_redeem(ordId = '123', protocolType = 'defi', allowEarlyRedeem = '')
+    # 撤销项目申购/赎回 Cancellation of project subscription / redemption
+    # result = Finance.staking_defi_cancel(ordId = '', protocolType = 'defi')
+    # 查看活跃订单 View active orders
+    # result = Finance.staking_defi_orders_active(productId = '', protocolType = 'defi', ccy = '', state = '')
+    # 查看历史订单 View historical orders
+    # result = Finance.staking_defi_orders_history(productId = '', protocolType = '', ccy = '', after = '', before = '', limit = '')
 
     # 系统状态API(仅适用于实盘) system status
     Status = Status.StatusAPI(api_key, secret_key, passphrase, False, flag)

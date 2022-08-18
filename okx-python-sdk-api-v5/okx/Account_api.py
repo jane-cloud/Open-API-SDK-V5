@@ -138,6 +138,10 @@ class AccountAPI(Client):
         params = {'ccy': ccy,}
         return self._request_with_params(GET, GREEKS, params)
 
-    def get_positions_history(self, instType='', instId = '', mgnMode = '', type = '', after = '', before = '', limit = ''):
-        params = {'instType': instType, 'instId':instId, 'mgnMode':mgnMode, 'type':type, 'after':after, 'before':before, 'limit':limit}
+    def get_positions_history(self, instType='', instId = '', mgnMode = '', type = '', after = '', before = '', limit = '', posId = ''):
+        params = {'instType': instType, 'instId':instId, 'mgnMode':mgnMode, 'type':type, 'after':after, 'before':before, 'limit':limit, 'posId':posId}
         return self._request_with_params(GET, POSITIONS_HISTORY, params)
+
+    def position_tiers(self, instType='',uly=''):
+        params = {'instType': instType, 'uly': uly}
+        return self._request_with_params(GET, POSITION_TIRES, params)

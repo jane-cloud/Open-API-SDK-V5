@@ -30,8 +30,8 @@ class RfqAPI(Client):
         params = {'rfqId': rfqId, 'quoteId': quoteId}
         return self._request_with_params(POST, EXECUTE_QUOTE, params)
 
-    def create_quote(self, rfqId='', clQuoteId='', quoteSide = '', legs = []):
-        params = {'rfqId': rfqId, 'clQuoteId': clQuoteId, 'quoteSide': quoteSide, 'legs': legs}
+    def create_quote(self, rfqId='', clQuoteId='', quoteSide = '', legs = [], expiresIn = '',anonymous = ''):
+        params = {'rfqId': rfqId, 'clQuoteId': clQuoteId, 'quoteSide': quoteSide, 'legs': legs, 'expiresIn':expiresIn, 'anonymous':anonymous}
         return self._request_with_params(POST, CREATE_QUOTE, params)
 
     def cancel_quote(self, quoteId  = '', clQuoteId = ''):
@@ -61,3 +61,7 @@ class RfqAPI(Client):
     def get_public_trades(self, beginId = '', endId = '', limit = ''):
         params = {'beginId': beginId, 'endId': endId, 'limit': limit}
         return self._request_with_params(GET, GET_PUBLIC_TRADES, params)
+
+    def maker_instrument_settings(self, instType='', data=[]):
+        params = [{'instType': instType, 'data': data}]
+        return self._request_with_params(POST, MARKET_INSTRUMENT_SETTINGS, params)

@@ -42,4 +42,10 @@ class SubAccountAPI(Client):
         params = {'subAcct': subAcct}
         return self._request_with_params(GET, ENTRUST_SUBACCOUNT_LIST, params)
 
+    def modify_apikey(self, subAcct, apiKey, label, perm, ip):
+        params = {'subAcct': subAcct, 'apiKey': apiKey, 'label': label, 'perm': perm, 'ip': ip}
+        return self._request_with_params(POST, MODIFY_APIKEY, params)
 
+    def asset_balances(self, subAcct = '', ccy = ''):
+        params = {'subAcct': subAcct, 'ccy':ccy}
+        return self._request_with_params(GET, ASSET_BALANCES, params)
