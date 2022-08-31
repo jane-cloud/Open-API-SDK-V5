@@ -3,18 +3,25 @@ package com.okex.open.api.bean.subAccount.param;
 public class SubAccountTransfer {
     private String ccy;
     private String amt;
-    private String form;
+    private String from;
     private String to;
     private String fromSubAccount;
     private String toSubAccount;
     private Boolean loanTrans;
+    private String omitPosRisk;
 
-    public Boolean getLoanTrans() {
-        return loanTrans;
-    }
-
-    public void setLoanTrans(Boolean loanTrans) {
-        this.loanTrans = loanTrans;
+    @Override
+    public String toString() {
+        return "SubAccountTransfer{" +
+                "ccy='" + ccy + '\'' +
+                ", amt='" + amt + '\'' +
+                ", from='" + from + '\'' +
+                ", to='" + to + '\'' +
+                ", fromSubAccount='" + fromSubAccount + '\'' +
+                ", toSubAccount='" + toSubAccount + '\'' +
+                ", loanTrans=" + loanTrans +
+                ", omitPosRisk='" + omitPosRisk + '\'' +
+                '}';
     }
 
     public String getCcy() {
@@ -33,12 +40,12 @@ public class SubAccountTransfer {
         this.amt = amt;
     }
 
-    public String getForm() {
-        return form;
+    public String getFrom() {
+        return from;
     }
 
-    public void setForm(String form) {
-        this.form = form;
+    public void setFrom(String from) {
+        this.from = from;
     }
 
     public String getTo() {
@@ -65,16 +72,19 @@ public class SubAccountTransfer {
         this.toSubAccount = toSubAccount;
     }
 
-    @Override
-    public String toString() {
-        return "SubAccountTransfer{" +
-                "ccy='" + ccy + '\'' +
-                ", amt='" + amt + '\'' +
-                ", form='" + form + '\'' +
-                ", to='" + to + '\'' +
-                ", fromSubAccount='" + fromSubAccount + '\'' +
-                ", toSubAccount='" + toSubAccount + '\'' +
-                ", loanTrans=" + loanTrans +
-                '}';
+    public Boolean getLoanTrans() {
+        return loanTrans;
+    }
+
+    public void setLoanTrans(Boolean loanTrans) {
+        this.loanTrans = loanTrans;
+    }
+
+    public String getOmitPosRisk() {
+        return omitPosRisk;
+    }
+
+    public void setOmitPosRisk(String omitPosRisk) {
+        this.omitPosRisk = omitPosRisk;
     }
 }

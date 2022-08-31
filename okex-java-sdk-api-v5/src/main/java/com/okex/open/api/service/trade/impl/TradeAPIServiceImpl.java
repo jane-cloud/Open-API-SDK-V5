@@ -126,4 +126,40 @@ public class TradeAPIServiceImpl implements TradeAPIService {
     public JSONObject getAlgoOrderHistory(String state, String algoId, String instType, String instId, String ordType, String after, String before, String limit) {
         return this.client.executeSync(this.tradeAPI.getAlgoOrderHistory(state, algoId, instType, instId, ordType, after, before, limit));
     }
+
+    //获取一键兑换主流币币种列表  Get easy convert currency list
+    @Override
+    public JSONObject getEasyConvertCurrencyList() {
+        return this.client.executeSync(this.tradeAPI.getEasyConvertCurrencyList());
+    }
+
+    //一键兑换主流币交易  Place easy convert
+    @Override
+    public JSONObject placeEasyConvert(EasyConvert easyConvert) {
+        return this.client.executeSync(this.tradeAPI.placeEasyConvert(easyConvert));
+    }
+
+    //获取一键兑换主流币历史记录  Get easy convert history
+    @Override
+    public JSONObject getEasyConvertHistory(String after, String before, String limit) {
+        return this.client.executeSync(this.tradeAPI.getEasyConvertHistory(after, before, limit));
+    }
+
+    //获取一键还债币种列表 Get one-click repay currency list
+    @Override
+    public JSONObject getOneClickRepayCurrencyList(String debtType) {
+        return this.client.executeSync(this.tradeAPI.getOneClickRepayCurrencyList(debtType));
+    }
+
+    //一键还债交易 Trade one-click repay
+    @Override
+    public JSONObject oneClickRepay(OneClickRepay oneClickRepay) {
+        return this.client.executeSync(this.tradeAPI.oneClickRepay(oneClickRepay));
+    }
+
+    //获取一键还债历史记录 Get one-click repay history
+    @Override
+    public JSONObject getOneClickRepayHistory(String after, String before, String limit) {
+        return this.client.executeSync(this.tradeAPI.getOneClickRepayHistory(after, before, limit));
+    }
 }

@@ -62,5 +62,23 @@ public interface TradeAPIService {
     //获取历史策略委托单列表 Get Algo Order History
     JSONObject getAlgoOrderHistory(String state, String algoId, String instType, String instId, String ordType, String after, String before, String limit);
 
+    //获取一键兑换主流币币种列表  Get easy convert currency list
+    JSONObject getEasyConvertCurrencyList();
+
+    //一键兑换主流币交易  Place easy convert
+    JSONObject placeEasyConvert(EasyConvert easyConvert);
+
+    //获取一键兑换主流币历史记录  Get easy convert history
+    JSONObject getEasyConvertHistory(String after,String before,String limit);
+
+    //获取一键还债币种列表 Get one-click repay currency list
+    JSONObject getOneClickRepayCurrencyList(String debtType);
+
+    //一键还债交易 Trade one-click repay
+    JSONObject oneClickRepay(OneClickRepay oneClickRepay);
+
+    //获取一键还债历史记录 Get one-click repay history
+    JSONObject getOneClickRepayHistory(String after,String before,String limit);
+
 
 }

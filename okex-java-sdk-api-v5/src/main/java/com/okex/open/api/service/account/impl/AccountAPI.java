@@ -58,11 +58,11 @@ public interface AccountAPI {
 
     //获取最大可买卖/开仓数量 Get maximum buy/sell amount or open amount
     @GET("/api/v5/account/max-size")
-    Call<JSONObject> getMaximumTradableSizeForInstrument(@Query("instId") String instId,@Query("tdMode") String tdMode,@Query("ccy") String ccy,@Query("px") String px,@Query("leverage") String leverage);
+    Call<JSONObject> getMaximumTradableSizeForInstrument(@Query("instId") String instId,@Query("tdMode") String tdMode,@Query("ccy") String ccy,@Query("px") String px,@Query("leverage") String leverage,@Query("unSpotOffset") Boolean unSpotOffset);
 
     //获取最大可用数量 Get Maximum Tradable Size For Instrument
     @GET("/api/v5/account/max-avail-size")
-    Call<JSONObject> getMaximumAvailableTradableAmount(@Query("instId") String instId,@Query("tdMode") String tdMode,@Query("ccy") String ccy,@Query("reduceOnly") Boolean reduceOnly,@Query("px") String px);
+    Call<JSONObject> getMaximumAvailableTradableAmount(@Query("instId") String instId,@Query("tdMode") String tdMode,@Query("ccy") String ccy,@Query("reduceOnly") Boolean reduceOnly,@Query("px") String px,@Query("unSpotOffset") Boolean unSpotOffset);
 
     //调整保证金 Increase/Decrease margin
     @POST("/api/v5/account/position/margin-balance")

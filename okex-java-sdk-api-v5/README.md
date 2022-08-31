@@ -1,4 +1,4 @@
-OKCoin OKEX V3 Open Api使用说明
+OKX V5 Open Api使用说明
 --------------
 ### 1.使用技术：okhttp3 + retrofit2
 
@@ -16,22 +16,28 @@ OKCoin OKEX V3 Open Api使用说明
         config.setPassphrase("");
         config.setPrint(true);
 
-        GeneralAPIService marketAPIService = new GeneralAPIServiceImpl(config);
-        ServerTime time = marketAPIService.getServerTime();
+        PublicDataAPIService publicDataAPIService = new PublicDataAPIServiceImpl(config);
+        ServerTime time = publicDataAPIService.getSystemTime();
         System.out.println(JSON.toJSONString(time));
 
-        FuturesTradeAPIService tradeAPIService = new FuturesTradeAPIServiceImpl(config);
+        TradeAPIService tradeAPIService = new TradeAPIServiceImpl(config);
 
-        Order order = new Order();
-        order.setClient_oid("OkexTestFuturesOrder2020");
-        order.setInstrument_id("BTC-USD-200626");
-        order.setType("1");
-        order.setPrice("7000");
-        order.setSize("400");
-        order.setMatch_price("0");
-        order.setOrder_type("0");
-        OrderResult orderResult = tradeAPIService.newOrder(order); 
-        System.out.println(JSON.toJSONString(orderResult));
+        PlaceOrder placeOrder =new PlaceOrder();
+        placeOrder.setInstId("LTC-USDT-SWAP");
+        placeOrder.setTdMode("cross");
+        placeOrder.setCcy("USDT");
+        placeOrder.setClOrdId("0423a3a06");
+        placeOrder.setTag("");
+        placeOrder.setSide("sell");
+        placeOrder.setPosSide("short");
+        placeOrder.setOrdType("market");
+        placeOrder.setSz("1");
+        placeOrder.setPx("60000");
+        placeOrder.setReduceOnly(false);
+        placeOrder.setTgtCcy("");
+        placeOrder.setBanAmend(false);
+        JSONObject result = tradeAPIService.placeOrder(placeOrder);
+        toResultString(LOG, "result", result);
  }
 ```
 ### 3.Spring 或 Spring Boot使用方式:
@@ -40,11 +46,11 @@ OKCoin OKEX V3 Open Api使用说明
 public class TestOKEXOpenApiV3 {
 
     @Autowired
-    private GeneralAPIService generalAPIService;
+    private PublicDataAPIService publicDataAPIService;
 
     @GetMapping("/server-time")
-    public ServerTime getServerTime() {
-        return generalAPIService.getServerTime();
+    public ServerTime getSystemTime() {
+        return publicDataAPIService.getSystemTime();
     }
     
     @Bean
@@ -61,8 +67,8 @@ public class TestOKEXOpenApiV3 {
     }
 
     @Bean
-    public GeneralAPIService generalAPIService(APIConfiguration config) {
-        return new GeneralAPIServiceImpl(config);
+    public PublicDataAPIService publicDataAPIService(APIConfiguration config) {
+        return new PublicDataAPIServiceImpl(config);
     }
 }
 

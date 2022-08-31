@@ -41,7 +41,7 @@ public class FundingAPITests extends FundingAPIBaseTests {
      */
     @Test
     public void getBalance() {
-        JSONObject result = fundingAPIService.getBalance("EOS");
+        JSONObject result = fundingAPIService.getBalance("USDT");
         toResultString(LOG, "result", result);
     }
 
@@ -63,14 +63,15 @@ public class FundingAPITests extends FundingAPIBaseTests {
     @Test
     public void fundsTransfer() {
         FundsTransfer fundsTransfer = new FundsTransfer();
-        fundsTransfer.setCcy("EOS");
-        fundsTransfer.setAmt("2");
-        fundsTransfer.setType("0");
-        fundsTransfer.setFrom("9");
-        fundsTransfer.setTo("3");
+        fundsTransfer.setCcy("USDT");
+        fundsTransfer.setAmt("1");
+//        fundsTransfer.setType("0");
+        fundsTransfer.setFrom("18");
+        fundsTransfer.setTo("6");
 //        fundsTransfer.setSubAcct("");
         fundsTransfer.setClientId("");
         fundsTransfer.setLoanTrans(false);
+        fundsTransfer.setOmitPosRisk("false");
         JSONObject result = fundingAPIService.fundsTransfer(fundsTransfer);
         toResultString(LOG, "result", result);
     }

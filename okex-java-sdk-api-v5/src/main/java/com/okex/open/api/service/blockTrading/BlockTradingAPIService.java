@@ -4,6 +4,8 @@ import com.alibaba.fastjson.JSONObject;
 import com.okex.open.api.bean.blockTrading.param.*;
 import retrofit2.http.Query;
 
+import java.util.List;
+
 public interface BlockTradingAPIService {
 
     //获取报价方信息 Get Counterparties
@@ -23,6 +25,9 @@ public interface BlockTradingAPIService {
 
     //执行报价 Execute Quote
     JSONObject executeQuote(ExecuteQuote executeQuote);
+
+    //设置可报价产品 Set Quote products
+    JSONObject setQuoteProducts(List<SetQuoteProducts> setQuoteProducts);
 
     //报价 Create Quote
     JSONObject createQuote(CreateQuote createQuote);

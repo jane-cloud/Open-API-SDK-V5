@@ -12,10 +12,7 @@ import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Timer;
-import java.util.TimerTask;
+import java.util.*;
 
 public class MarketDataAPITest extends MarketDataAPIBaseTest {
 
@@ -79,7 +76,7 @@ public class MarketDataAPITest extends MarketDataAPIBaseTest {
     @Test
     public void getCandlesticks() {
 
-        JSONObject result = this.marketDataAPIService.getCandlesticks("BTC-USD-SWAP","1618468839819",null,"2H","20");
+        JSONObject result = this.marketDataAPIService.getCandlesticks("BTC-USD-SWAP",null,null,"1m","100");
         this.toResultString(MarketDataAPITest.LOG, "result", result);
     }
 
@@ -133,7 +130,7 @@ public class MarketDataAPITest extends MarketDataAPIBaseTest {
      */
     @Test
     public void getTradesHistory() {
-        JSONObject result = this.marketDataAPIService.getTradesHistory("BTC-USDT-SWAP","","","5","");
+        JSONObject result = this.marketDataAPIService.getTradesHistory("BTC-USD-SWAP","198625782","198625720",null,"1");
         this.toResultString(MarketDataAPITest.LOG, "result", result);
     }
 

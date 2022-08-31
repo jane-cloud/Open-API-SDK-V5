@@ -77,8 +77,8 @@ public class BrokerAPITests extends BrokerAPIBaseTests{
         CreateSubAccountApikey createSubAccountApikey = new CreateSubAccountApikey();
         createSubAccountApikey.setSubAcct("0324test01");
         createSubAccountApikey.setLabel("0324test001");
-        createSubAccountApikey.setPassphrase("123456");
-        createSubAccountApikey.setIp("111.198.228.246");
+        createSubAccountApikey.setPassphrase("");
+        createSubAccountApikey.setIp("");
         createSubAccountApikey.setPerm("read_only");
 
         JSONObject result = this.brokerAPIService.createSubAccountApikey(createSubAccountApikey);

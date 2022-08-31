@@ -137,5 +137,35 @@ interface TradeAPI {
                                          @Query("before") String before,
                                          @Query("limit") String limit);
 
+    //获取一键兑换主流币币种列表  Get easy convert currency list
+    @GET("/api/v5/trade/easy-convert-currency-list")
+    Call<JSONObject> getEasyConvertCurrencyList();
+
+    //一键兑换主流币交易  Place easy convert
+    @POST("/api/v5/trade/easy-convert")
+    Call<JSONObject> placeEasyConvert(@Body EasyConvert easyConvert);
+
+    //获取一键兑换主流币历史记录  Get easy convert history
+    @GET("/api/v5/trade/easy-convert-history")
+    Call<JSONObject> getEasyConvertHistory(@Query("after") String after,
+                                           @Query("before") String before,
+                                           @Query("limit") String limit);
+
+    //获取一键还债币种列表 Get one-click repay currency list
+    @GET("/api/v5/trade/one-click-repay-currency-list")
+    Call<JSONObject> getOneClickRepayCurrencyList(@Query("debtType") String debtType);
+
+    //一键还债交易 Trade one-click repay
+    @POST("/api/v5/trade/one-click-repay")
+    Call<JSONObject> oneClickRepay(@Body OneClickRepay oneClickRepay );
+
+    //获取一键还债历史记录 Get one-click repay history
+    @GET("/api/v5/trade/one-click-repay-history")
+    Call<JSONObject> getOneClickRepayHistory(@Query("after") String after,
+                                                     @Query("before") String before,
+                                                     @Query("limit") String limit   );
+
+
+
 
 }

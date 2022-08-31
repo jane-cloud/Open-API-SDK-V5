@@ -6,7 +6,27 @@ public class ClosePositions {
     private String mgnMode;
     private String ccy;
     private String autoCxl;
+    private String clOrdId;
 
+    public String getClOrdId() {
+        return clOrdId;
+    }
+
+    public void setClOrdId(String clOrdId) {
+        this.clOrdId = clOrdId;
+    }
+
+    private String tag;
+
+
+
+    public String getTag() {
+        return tag;
+    }
+
+    public void setTag(String tag) {
+        this.tag = tag;
+    }
 
     public String getInstId() {
         return instId;
@@ -40,15 +60,7 @@ public class ClosePositions {
         this.ccy = ccy;
     }
 
-    @Override
-    public String toString() {
-        return "ClosePositions{" +
-                "instId='" + instId + '\'' +
-                ", posSide='" + posSide + '\'' +
-                ", mgnMode='" + mgnMode + '\'' +
-                ", ccy='" + ccy + '\'' +
-                '}';
-    }
+
 
     public String getAutoCxl() {
         return autoCxl;

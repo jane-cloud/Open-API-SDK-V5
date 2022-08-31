@@ -6,6 +6,8 @@ import com.okex.open.api.client.APIClient;
 import com.okex.open.api.config.APIConfiguration;
 import com.okex.open.api.service.blockTrading.BlockTradingAPIService;
 
+import java.util.List;
+
 public class BlockTradingAPIServiceImpl implements BlockTradingAPIService {
     private APIClient client;
     private BlockTradingAPI api;
@@ -50,6 +52,12 @@ public class BlockTradingAPIServiceImpl implements BlockTradingAPIService {
     @Override
     public JSONObject executeQuote(ExecuteQuote executeQuote) {
         return this.client.executeSync(this.api.executeQuote(executeQuote));
+    }
+
+    //设置可报价产品 Set Quote products
+    @Override
+    public JSONObject setQuoteProducts(List<SetQuoteProducts> setQuoteProducts) {
+        return this.client.executeSync(this.api.setQuoteProducts(setQuoteProducts));
     }
 
     //报价 Create Quote

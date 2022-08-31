@@ -59,13 +59,14 @@ public class SubAccountAPITest extends SubAccountAPIBaseTest{
     @Test
     public void testSubAccountTransfer(){
         SubAccountTransfer subAccountTransfer = new SubAccountTransfer();
-        subAccountTransfer.setCcy("OKB");
+        subAccountTransfer.setCcy("USDT");
         subAccountTransfer.setAmt("1");
-        subAccountTransfer.setForm("6");
+        subAccountTransfer.setFrom("6");
         subAccountTransfer.setTo("6");
-        subAccountTransfer.setFromSubAccount("");
-        subAccountTransfer.setToSubAccount("");
+        subAccountTransfer.setFromSubAccount("ctt042501");
+        subAccountTransfer.setToSubAccount("ctt0425pl");
         subAccountTransfer.setLoanTrans(false);
+        subAccountTransfer.setOmitPosRisk("false");
 
         JSONObject result = this.subAccountAPIService.subAccountTransfer(subAccountTransfer);
         toResultString(LOG,"result",result);

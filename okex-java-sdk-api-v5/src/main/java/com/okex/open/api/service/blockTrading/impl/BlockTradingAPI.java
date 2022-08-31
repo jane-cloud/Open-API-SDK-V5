@@ -8,6 +8,8 @@ import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Query;
 
+import java.util.List;
+
 public interface BlockTradingAPI {
 
     //获取报价方信息 Get Counterparties
@@ -33,6 +35,10 @@ public interface BlockTradingAPI {
     //执行报价 Execute Quote
     @POST("/api/v5/rfq/execute-quote")
     Call<JSONObject> executeQuote(@Body ExecuteQuote executeQuote);
+
+    //设置可报价产品 Set Quote products
+    @POST("/api/v5/rfq/maker-instrument-settings")
+    Call<JSONObject> setQuoteProducts(@Body List<SetQuoteProducts> setQuoteProducts);
 
     //报价 Create Quote
     @POST("/api/v5/rfq/create-quote")

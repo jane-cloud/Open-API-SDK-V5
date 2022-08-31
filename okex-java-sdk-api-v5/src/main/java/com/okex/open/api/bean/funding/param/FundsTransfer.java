@@ -10,6 +10,16 @@ public class FundsTransfer {
     private String clientId;
     private Boolean loanTrans;
 
+    public String getOmitPosRisk() {
+        return omitPosRisk;
+    }
+
+    public void setOmitPosRisk(String omitPosRisk) {
+        this.omitPosRisk = omitPosRisk;
+    }
+
+    private String omitPosRisk;
+
     public String getClientId() {
         return clientId;
     }

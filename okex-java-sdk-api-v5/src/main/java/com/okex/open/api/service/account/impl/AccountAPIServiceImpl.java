@@ -69,14 +69,14 @@ public class AccountAPIServiceImpl implements AccountAPIService {
 
     //获取最大可买卖/开仓数量 Get maximum buy/sell amount or open amount
     @Override
-    public JSONObject getMaximumTradableSizeForInstrument(String instId, String tdMode, String ccy, String px,String leverage) {
-        return this.client.executeSync(this.api.getMaximumTradableSizeForInstrument(instId,tdMode,ccy,px,leverage));
+    public JSONObject getMaximumTradableSizeForInstrument(String instId, String tdMode, String ccy, String px,String leverage,Boolean unSpotOffset) {
+        return this.client.executeSync(this.api.getMaximumTradableSizeForInstrument(instId,tdMode,ccy,px,leverage,unSpotOffset));
     }
 
     //获取最大可用数量 Get Maximum Available Tradable Amount
     @Override
-    public JSONObject getMaximumAvailableTradableAmount(String instId, String tdMode, String ccy, Boolean reduceOnly,String px) {
-        return this.client.executeSync(this.api.getMaximumAvailableTradableAmount(instId,tdMode,ccy,reduceOnly,px));
+    public JSONObject getMaximumAvailableTradableAmount(String instId, String tdMode, String ccy, Boolean reduceOnly,String px,Boolean unSpotOffset) {
+        return this.client.executeSync(this.api.getMaximumAvailableTradableAmount(instId,tdMode,ccy,reduceOnly,px,unSpotOffset));
     }
 
     //调整保证金 Increase/Decrease margin

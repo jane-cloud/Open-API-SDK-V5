@@ -216,6 +216,8 @@ public class TradeAPITest extends TradeAPIBaseTest {
         closePositions.setPosSide("long");
         closePositions.setMgnMode("cross");
         closePositions.setCcy("");
+        closePositions.setClOrdId("");
+        closePositions.setTag("");
         closePositions.setAutoCxl("false");
         JSONObject result = tradeAPIService.closePositions(closePositions);
 
@@ -401,6 +403,79 @@ public class TradeAPITest extends TradeAPIBaseTest {
     @Test
     public void getAlgoOrderHistory(){
         JSONObject result = tradeAPIService.getAlgoOrderHistory("effective",null,null,null,"trigger",null,null,"10");
+        toResultString(LOG, "result", result);
+    }
+
+    /**
+     * 获取一键兑换主流币币种列表  Get easy convert currency list
+     * GET /api/v5/trade/easy-convert-currency-list
+     */
+    @Test
+    public void getEasyConvertCurrencyList(){
+        JSONObject result = tradeAPIService.getEasyConvertCurrencyList();
+        toResultString(LOG, "result", result);
+    }
+
+    /**
+     * 一键兑换主流币交易  Place easy convert
+     * POST /api/v5/trade/easy-convert
+     */
+    @Test
+    public void placeEasyConvert(){
+        EasyConvert easyConvert = new EasyConvert();
+        List<String> fromCcy = new ArrayList();
+        fromCcy.add("LUNA");
+        fromCcy.add("NEO");
+        easyConvert.setFromCcy(fromCcy);
+        easyConvert.setToCcy("USDT");
+        JSONObject result = tradeAPIService.placeEasyConvert(easyConvert);
+        toResultString(LOG, "result", result);
+    }
+
+    /**
+     * 获取一键兑换主流币历史记录  Get easy convert history
+     * GET /api/v5/trade/easy-convert-history
+     */
+    @Test
+    public void getEasyConvertHistory(){
+        JSONObject result = tradeAPIService.getEasyConvertHistory("","","");
+        toResultString(LOG, "result", result);
+    }
+
+    /**
+     * 获取一键还债币种列表 Get one-click repay currency list
+     * GET /api/v5/trade/one-click-repay-currency-list
+     */
+    @Test
+    public void getOneClickRepayCurrencyList(){
+        JSONObject result = tradeAPIService.getOneClickRepayCurrencyList("cross");
+        toResultString(LOG, "result", result);
+    }
+
+    /**
+     * 一键还债交易 Trade one-click repay
+     * POST /api/v5/trade/one-click-repay
+     */
+    @Test
+    public void oneClickRepay(){
+        OneClickRepay oneClickRepay = new OneClickRepay();
+        List<String> debtCcy = new ArrayList();
+        debtCcy.add("USDT");
+
+        oneClickRepay.setDebtCcy(debtCcy);
+        oneClickRepay.setRepayCcy("XRP");
+
+        JSONObject result = tradeAPIService.oneClickRepay(oneClickRepay);
+        toResultString(LOG, "result", result);
+    }
+
+    /**
+     * 获取一键还债历史记录  Get one-click repay history
+     * GET /api/v5/trade/one-click-repay-history
+     */
+    @Test
+    public void getOneClickRepayHistory(){
+        JSONObject result = tradeAPIService.getOneClickRepayHistory(null,null,null);
         toResultString(LOG, "result", result);
     }
 

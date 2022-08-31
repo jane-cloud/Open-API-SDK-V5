@@ -11,9 +11,11 @@ public class BlockTradingAPIBaseTest extends BaseTests {
 
         config.setEndpoint("https://www.okx.com/");
 
+
         config.setApiKey("");
         config.setSecretKey("");
         config.setPassphrase("");
+
 
 
         config.setPrint(true);

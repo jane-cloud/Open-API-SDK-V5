@@ -137,6 +137,50 @@ public class BlockTradingAPITest extends BlockTradingAPIBaseTest {
     }
 
     /**
+     * 设置可报价产品 Set Quote products
+     * POST /api/v5/rfq/maker-instrument-settings
+     */
+    @Test
+    public void setQuoteProducts(){
+        List<SetQuoteProducts> list = new ArrayList<>();
+
+        SetQuoteProducts setQuoteProducts = new SetQuoteProducts();
+        setQuoteProducts.setInstType("SWAP");
+        List<Data> dataList = new ArrayList<>();
+
+        Data data = new Data();
+        data.setInstId("BTC-USDT-SWAP");
+        Data data1 = new Data();
+        data1.setInstId("BTC-USD-SWAP");
+
+        dataList.add(data);
+        dataList.add(data1);
+
+        setQuoteProducts.setData(dataList);
+        list.add(setQuoteProducts);
+
+
+        SetQuoteProducts setQuoteProducts1 = new SetQuoteProducts();
+        setQuoteProducts1.setInstType("FUTURES");
+        List<Data> dataList1 = new ArrayList<>();
+
+        Data data2 = new Data();
+        data2.setInstId("BTC-USDT-220930");
+        Data data3 = new Data();
+        data3.setInstId("BTC-USD-221230");
+
+        dataList1.add(data2);
+        dataList1.add(data3);
+
+        setQuoteProducts1.setData(dataList1);
+        list.add(setQuoteProducts1);
+
+
+        JSONObject result = this.blockTradingAPIService.setQuoteProducts(list);
+        toResultString(LOG, "result", result);
+    }
+
+    /**
      * 报价 Create Quote
      * POST /api/v5/rfq/create-quote
      */
