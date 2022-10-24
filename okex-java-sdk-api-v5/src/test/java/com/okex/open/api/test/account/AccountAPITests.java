@@ -194,7 +194,7 @@ public class AccountAPITests extends  AccountAPIBaseTests {
      */
     @Test
     public void getFeeRates(){
-        JSONObject result = this.accountAPIService.getFeeRates("SWAP",null,"BTC-USDT");
+        JSONObject result = this.accountAPIService.getFeeRates("SWAP",null,"BTC-USDT","");
         toResultString(LOG, "result", result);
     }
 
@@ -354,7 +354,7 @@ public class AccountAPITests extends  AccountAPIBaseTests {
      */
     @Test
     public void getPositionTiers(){
-        JSONObject result = this.accountAPIService.getPositionTiers("","");
+        JSONObject result = this.accountAPIService.getPositionTiers("","","");
         toResultString(LOG, "result", result);
     }
 }

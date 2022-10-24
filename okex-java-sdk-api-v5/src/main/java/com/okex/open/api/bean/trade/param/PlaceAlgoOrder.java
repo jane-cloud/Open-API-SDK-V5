@@ -9,6 +9,16 @@ public class PlaceAlgoOrder {
     private String ordType;
     private String sz;
     private Boolean reduceOnly;
+    private String clOrdId;
+
+    public String getClOrdId() {
+        return clOrdId;
+    }
+
+    public void setClOrdId(String clOrdId) {
+        this.clOrdId = clOrdId;
+    }
+
     private String tgtCcy;
     private String tag;
     //止盈止损

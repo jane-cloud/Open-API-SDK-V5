@@ -47,7 +47,7 @@ public interface AccountAPIService {
     JSONObject getTheMaximumLoanOfIsolatedMARGIN(String instId,String mgnMode,String mgnCcy);
 
     //获取当前账户交易手续费费率 Get Fee Rates
-    JSONObject getFeeRates(String instType,String instId,String uly);
+    JSONObject getFeeRates(String instType,String instId,String uly,String instFamily);
 
     //获取计息记录 Get interest-accrued
     JSONObject getInterestAccrued(String type,String instId,String ccy,String mgnMode,String after,String before,String limit);
@@ -85,5 +85,5 @@ public interface AccountAPIService {
     JSONObject getPositionsHistory(String instType, String instId, String mgnMode, String type, String after, String before, String limit,String posId);
 
     //获取组合保证金模式全仓限制
-    JSONObject getPositionTiers(String instType, String uly);
+    JSONObject getPositionTiers(String instType, String uly,String instFamily);
 }

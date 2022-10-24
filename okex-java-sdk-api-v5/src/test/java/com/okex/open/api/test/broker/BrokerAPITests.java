@@ -184,12 +184,12 @@ public class BrokerAPITests extends BrokerAPIBaseTests{
     }
 
     /**
-     * 查询子账户获取充值记录  Get sub-account deposit history
+     * 获取子账户充值记录  Get sub-account deposit history
      * GET /api/v5/asset/broker/nd/subaccount-deposit-history
      */
     @Test
     public void getSubAccountDepositHistory(){
-        JSONObject result = this.brokerAPIService.getSubAccountDepositHistory("","BTC","","","","","");
+        JSONObject result = this.brokerAPIService.getSubAccountDepositHistory("","BTC","","","","","","");
         toResultString(LOG, "result", result);
     }
 

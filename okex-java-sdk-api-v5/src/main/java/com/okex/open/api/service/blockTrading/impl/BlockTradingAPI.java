@@ -40,6 +40,10 @@ public interface BlockTradingAPI {
     @POST("/api/v5/rfq/maker-instrument-settings")
     Call<JSONObject> setQuoteProducts(@Body List<SetQuoteProducts> setQuoteProducts);
 
+    //重设MMP状态 Reset MMP status
+    @POST("/api/v5/rfq/mmp-reset")
+    Call<JSONObject> resetMMPStatus();
+
     //报价 Create Quote
     @POST("/api/v5/rfq/create-quote")
     Call<JSONObject> createQuote(@Body CreateQuote createQuote);

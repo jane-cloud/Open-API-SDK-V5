@@ -20,8 +20,8 @@ public class MarketDataAPIServiceImpl implements MarketDataAPIService {
 
     //获取所有产品行情信息 Get Tickers
     @Override
-    public JSONObject getTickers(String instType, String uly) {
-        return this.client.executeSync(this.marketDataAPI.getTickers(instType,uly));
+    public JSONObject getTickers(String instType,String instFamily, String uly) {
+        return this.client.executeSync(this.marketDataAPI.getTickers(instType,instFamily,uly));
     }
 
     //获取单个产品行情信息 Get Ticker
@@ -42,6 +42,12 @@ public class MarketDataAPIServiceImpl implements MarketDataAPIService {
         return this.client.executeSync(this.marketDataAPI.getOrderBook(instId,sz));
     }
 
+    //获取产品轻量深度 Get order lite book
+    @Override
+    public JSONObject getOrderLiteBook(String instId) {
+        return this.client.executeSync(this.marketDataAPI.getOrderLiteBook(instId));
+    }
+
     //获取所有交易产品K线数据 Get Candlesticks
     @Override
     public JSONObject getCandlesticks(String instId, String after, String before, String bar, String limit) {
@@ -60,10 +66,22 @@ public class MarketDataAPIServiceImpl implements MarketDataAPIService {
         return this.client.executeSync(this.marketDataAPI.getIndexCandlesticks(instId,after,before,bar,limit));
     }
 
+    //获取指数历史K线数据 Get index candlesticks history
+    @Override
+    public JSONObject getIndexCandlesticksHistory(String instId, String after, String before, String bar, String limit) {
+        return this.client.executeSync(this.marketDataAPI.getIndexCandlesticksHistory(instId, after, before, bar, limit));
+    }
+
     //获取标记价格K线数据 Get Mark Price Candlesticks
     @Override
     public JSONObject getMarkPriceCandlesticks(String instId, String after, String before, String bar, String limit) {
         return this.client.executeSync(this.marketDataAPI.getMarkPriceCandlesticks(instId, after, before, bar, limit));
+    }
+
+    //获取标记价格历史K线数据 Get mark price candlesticks history
+    @Override
+    public JSONObject getMarkPriceCandlesticksHistory(String instId, String after, String before, String bar, String limit) {
+        return this.client.executeSync(this.marketDataAPI.getMarkPriceCandlesticksHistory(instId, after, before, bar, limit));
     }
 
     //获取交易产品公共成交数据 Get Trades
@@ -100,6 +118,24 @@ public class MarketDataAPIServiceImpl implements MarketDataAPIService {
     @Override
     public JSONObject getIndexComponents(String index) {
         return this.client.executeSync(this.marketDataAPI.getIndexComponents(index));
+    }
+
+    //获取大宗交易所有产品行情信息  Get block tickers
+    @Override
+    public JSONObject getBlockTickers(String instType, String uly, String instFamily) {
+        return this.client.executeSync(this.marketDataAPI.getBlockTickers(instType, uly, instFamily));
+    }
+
+    //获取大宗交易单个产品行情信息  Get block ticker
+    @Override
+    public JSONObject getBlockTicker(String instId) {
+        return this.client.executeSync(this.marketDataAPI.getBlockTicker(instId));
+    }
+
+    //获取大宗交易公共成交数据  Get block trades
+    @Override
+    public JSONObject getBlockTrades(String instId) {
+        return this.client.executeSync(this.marketDataAPI.getBlockTrades(instId));
     }
 
 }

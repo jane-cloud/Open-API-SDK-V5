@@ -69,32 +69,32 @@ public class TradeAPIServiceImpl implements TradeAPIService {
 
     //获取未成交订单列表 Get Order List
     @Override
-    public JSONObject getOrderList(String instType,String uly,String instId,String ordType,String state,String after,String before,String limit) {
-        return this.client.executeSync(this.tradeAPI.getOrderList(instType, uly, instId, ordType, state, after, before, limit));
+    public JSONObject getOrderList(String instType,String uly,String instId,String ordType,String instFamily,String state,String after,String before,String limit) {
+        return this.client.executeSync(this.tradeAPI.getOrderList(instType, uly, instId, ordType,instFamily, state, after, before, limit));
     }
 
     //获取历史订单记录（近七天） Get Order History (last 7 days）
     @Override
-    public JSONObject getOrderHistory7days(String instType, String uly, String instId, String ordType, String state, String category,String after, String before, String limit) {
-        return this.client.executeSync(this.tradeAPI.getOrderHistory7days(instType, uly, instId, ordType, state, category,after, before, limit));
+    public JSONObject getOrderHistory7days(String instType, String uly, String instId, String ordType, String instFamily,String state, String category,String after, String before, String limit) {
+        return this.client.executeSync(this.tradeAPI.getOrderHistory7days(instType, uly, instId, ordType,instFamily, state, category,after, before, limit));
     }
 
     ////获取历史订单记录（近三个月） Get Order History (last 3 months)
     @Override
-    public JSONObject getOrderHistory3months(String instType, String uly, String instId, String ordType, String state, String category,String after, String before, String limit) {
-        return this.client.executeSync(this.tradeAPI.getOrderHistory3months(instType, uly, instId, ordType, state, category,after, before, limit));
+    public JSONObject getOrderHistory3months(String instType, String uly, String instId, String ordType,String instFamily, String state, String category,String after, String before, String limit) {
+        return this.client.executeSync(this.tradeAPI.getOrderHistory3months(instType, uly, instId, ordType,instFamily, state, category,after, before, limit));
     }
 
     //获取成交明细（近三天） Get Transaction Details(last 3 days）
     @Override
-    public JSONObject getTransactionDetails(String instType, String uly, String instId, String ordId, String after, String before, String begin,String end,String limit) {
-        return this.client.executeSync(this.tradeAPI.getTransactionDetails(instType, uly, instId, ordId, after, before, begin,end, limit));
+    public JSONObject getTransactionDetails(String instType, String uly, String instId, String ordId, String instFamily,String after, String before, String begin,String end,String limit) {
+        return this.client.executeSync(this.tradeAPI.getTransactionDetails(instType, uly, instId, ordId,instFamily, after, before, begin,end, limit));
     }
 
     //获取成交明细（近三个月） Get Transaction Details(last 3 months）
     @Override
-    public JSONObject getTransactionDetailsForThreeMonths(String instType, String uly, String instId, String ordId, String after, String before, String begin,String end,String limit) {
-        return this.client.executeSync(this.tradeAPI.getTransactionDetailsForThreeMonths(instType, uly, instId, ordId, after, before,begin,end, limit));
+    public JSONObject getTransactionDetailsForThreeMonths(String instType, String uly, String instId, String ordId,String instFamily, String after, String before, String begin,String end,String limit) {
+        return this.client.executeSync(this.tradeAPI.getTransactionDetailsForThreeMonths(instType, uly, instId, ordId, instFamily,after, before,begin,end, limit));
     }
 
     //委托策略下单 Place Algo Order
@@ -117,14 +117,14 @@ public class TradeAPIServiceImpl implements TradeAPIService {
 
     //获取未完成策略委托单列表 Get Algo Order List
     @Override
-    public JSONObject getAlgoOrderList(String algoId, String instType, String instId, String ordType, String after, String before, String limit) {
-        return this.client.executeSync(this.tradeAPI.getAlgoOrderList(algoId, instType, instId, ordType, after, before, limit));
+    public JSONObject getAlgoOrderList(String algoId, String instType, String instId, String ordType,String clOrdId, String after, String before, String limit) {
+        return this.client.executeSync(this.tradeAPI.getAlgoOrderList(algoId, instType, instId, ordType,clOrdId, after, before, limit));
     }
 
     //获取历史策略委托单列表 Get Algo Order History
     @Override
-    public JSONObject getAlgoOrderHistory(String state, String algoId, String instType, String instId, String ordType, String after, String before, String limit) {
-        return this.client.executeSync(this.tradeAPI.getAlgoOrderHistory(state, algoId, instType, instId, ordType, after, before, limit));
+    public JSONObject getAlgoOrderHistory(String state, String algoId, String instType, String instId, String ordType, String clOrdId,String after, String before, String limit) {
+        return this.client.executeSync(this.tradeAPI.getAlgoOrderHistory(state, algoId, instType, instId, ordType, clOrdId, after, before, limit));
     }
 
     //获取一键兑换主流币币种列表  Get easy convert currency list

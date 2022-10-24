@@ -31,7 +31,7 @@ public class MarketDataAPITest extends MarketDataAPIBaseTest {
      */
     @Test
     public void getTickers() {
-        JSONObject result = this.marketDataAPIService.getTickers("FUTURES","BTC-USDT");
+        JSONObject result = this.marketDataAPIService.getTickers("FUTURES","","BTC-USDT");
         this.toResultString(MarketDataAPITest.LOG, "result", result);
     }
 
@@ -65,6 +65,16 @@ public class MarketDataAPITest extends MarketDataAPIBaseTest {
     @Test
     public void getOrderBook() {
         JSONObject result = this.marketDataAPIService.getOrderBook("BTC-USD-SWAP","400");
+        this.toResultString(MarketDataAPITest.LOG, "result", result);
+    }
+
+    /**
+     * 获取产品轻量深度 Get order lite book
+     * GET /api/v5/market/books-lite
+     */
+    @Test
+    public void getOrderLiteBook() {
+        JSONObject result = this.marketDataAPIService.getOrderLiteBook("BTC-USD-SWAP");
         this.toResultString(MarketDataAPITest.LOG, "result", result);
     }
 
@@ -102,6 +112,16 @@ public class MarketDataAPITest extends MarketDataAPIBaseTest {
         this.toResultString(MarketDataAPITest.LOG, "result", result);
     }
 
+    /**
+     * 获取指数历史K线数据 Get index candlesticks history
+     * GET /api/v5/market/history-index-candles
+     */
+    @Test
+    public void getIndexCandlesticksHistory() {
+        JSONObject result = this.marketDataAPIService.getIndexCandlesticksHistory("BTC-USDT","","","1H","5");
+        this.toResultString(MarketDataAPITest.LOG, "result", result);
+    }
+
 
     /**
      * 获取标记价格K线数据 Get Mark Price Candlesticks
@@ -113,6 +133,15 @@ public class MarketDataAPITest extends MarketDataAPIBaseTest {
         this.toResultString(MarketDataAPITest.LOG, "result", result);
     }
 
+    /**
+     * 获取标记价格历史K线数据 Get mark price candlesticks history
+     * GET /api/v5/market/history-mark-price-candles
+     */
+    @Test
+    public void getMarkPriceCandlesticksHistory() {
+        JSONObject result = this.marketDataAPIService.getMarkPriceCandlesticksHistory("BTC-USDT","","","1H","5");
+        this.toResultString(MarketDataAPITest.LOG, "result", result);
+    }
 
     /**
      * 获取交易产品公共成交数据 Get Trades
@@ -171,6 +200,36 @@ public class MarketDataAPITest extends MarketDataAPIBaseTest {
     @Test
     public void getIndexComponents(){
         JSONObject result = this.marketDataAPIService.getIndexComponents("BTC-USDT");
+        this.toResultString(MarketDataAPITest.LOG,"result",result);
+    }
+
+    /**
+     * 获取大宗交易所有产品行情信息  Get block tickers
+     * GET /api/v5/market/block-tickers
+     */
+    @Test
+    public void getBlockTickers(){
+        JSONObject result = this.marketDataAPIService.getBlockTickers("BTC-USDT","","");
+        this.toResultString(MarketDataAPITest.LOG,"result",result);
+    }
+
+    /**
+     * 获取大宗交易单个产品行情信息  Get block ticker
+     * GET /api/v5/market/block-ticker
+     */
+    @Test
+    public void getBlockTicker(){
+        JSONObject result = this.marketDataAPIService.getBlockTicker("BTC-USDT");
+        this.toResultString(MarketDataAPITest.LOG,"result",result);
+    }
+
+    /**
+     * 获取大宗交易公共成交数据  Get block trades
+     * GET /api/v5/market/block-trades
+     */
+    @Test
+    public void getBlockTrades(){
+        JSONObject result = this.marketDataAPIService.getBlockTrades("BTC-USDT");
         this.toResultString(MarketDataAPITest.LOG,"result",result);
     }
 

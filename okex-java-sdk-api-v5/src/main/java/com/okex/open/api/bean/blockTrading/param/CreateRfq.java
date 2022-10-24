@@ -6,6 +6,16 @@ public class CreateRfq {
     private List<String> counterparties;
     private Boolean anonymous;
     private String  clRfqId;
+
+    public Boolean getAllowPartialExecution() {
+        return allowPartialExecution;
+    }
+
+    public void setAllowPartialExecution(Boolean allowPartialExecution) {
+        this.allowPartialExecution = allowPartialExecution;
+    }
+
+    private Boolean  allowPartialExecution;
     private List<Legs> legs;
 
     public List<String> getCounterparties() {

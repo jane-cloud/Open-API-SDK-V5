@@ -17,20 +17,20 @@ public class PublicDataAPIServiceImpl implements PublicDataAPIService {
 
     //获取交易产品基础信息 Get Instruments
     @Override
-    public JSONObject getInstruments(String instType, String uly, String instId) {
-        return this.client.executeSync(this.api.getInstruments(instType, uly, instId));
+    public JSONObject getInstruments(String instType, String uly,String instFamily, String instId) {
+        return this.client.executeSync(this.api.getInstruments(instType, uly,instFamily, instId));
     }
 
     //获取交割和行权记录 Get Delivery/Exercise History
     @Override
-    public JSONObject getDeliveryExerciseHistory(String instType, String uly, String after, String before, String limit) {
-        return this.client.executeSync(this.api.getDeliveryExerciseHistory(instType, uly, after,before,limit));
+    public JSONObject getDeliveryExerciseHistory(String instType, String uly,String instFamily, String after, String before, String limit) {
+        return this.client.executeSync(this.api.getDeliveryExerciseHistory(instType, uly,instFamily, after,before,limit));
     }
 
     //获取持仓总量 Get Open Interest
     @Override
-    public JSONObject getOpenInterest(String instType, String uly, String instId) {
-        return this.client.executeSync(this.api.getOpenInterest(instType, uly, instId));
+    public JSONObject getOpenInterest(String instType, String uly,String instFamily, String instId) {
+        return this.client.executeSync(this.api.getOpenInterest(instType, uly,instFamily, instId));
     }
 
     //获取永续合约当前资金费率 Get Funding Rate
@@ -53,8 +53,8 @@ public class PublicDataAPIServiceImpl implements PublicDataAPIService {
 
     //获取期权定价 Get Option Market Data
     @Override
-    public JSONObject getOptionMarketData(String uly, String expTime) {
-        return this.client.executeSync(this.api.getOptionMarketData(uly,expTime));
+    public JSONObject getOptionMarketData(String uly,String instFamily, String expTime) {
+        return this.client.executeSync(this.api.getOptionMarketData(uly,instFamily,expTime));
     }
 
     //获取预估交割/行权价格 Get Estimated Delivery/Excercise Price
@@ -77,20 +77,20 @@ public class PublicDataAPIServiceImpl implements PublicDataAPIService {
 
     //获取平台公共爆仓单信息 Get Liquidation Orders
     @Override
-    public JSONObject getLiquidationOrders(String instType, String mgnMode, String instId, String ccy, String uly, String alias, String state, String before, String after, String limit) {
-        return this.client.executeSync(this.api.getLiquidationOrders(instType,mgnMode,instId,ccy,uly,alias,state,before,after,limit));
+    public JSONObject getLiquidationOrders(String instType, String mgnMode, String instId, String ccy, String uly,String instFamily, String alias, String state, String before, String after, String limit) {
+        return this.client.executeSync(this.api.getLiquidationOrders(instType,mgnMode,instId,ccy,uly,instFamily,alias,state,before,after,limit));
     }
 
     //获取标记价格 Get Mark Price
     @Override
-    public JSONObject getMarkPrice(String instType, String uly, String instId) {
-        return this.client.executeSync(this.api.getMarkPrice(instType,uly,instId));
+    public JSONObject getMarkPrice(String instType, String uly,String instFamily, String instId) {
+        return this.client.executeSync(this.api.getMarkPrice(instType,uly,instFamily,instId));
     }
 
     //获取合约衍生品仓位档位  Get Position Tiers
     @Override
-    public JSONObject getTier(String instType, String uly, String instId, String tdMode, String tier) {
-        return this.client.executeSync(this.api.getTier(instType, uly, instId, tdMode, tier));
+    public JSONObject getTier(String instType, String uly,String instFamily, String instId, String tdMode, String tier) {
+        return this.client.executeSync(this.api.getTier(instType, uly,instFamily, instId, tdMode, tier));
     }
 
     //获取杠杆利率和借币限额  Get Interest Rate and Loan Quota
@@ -109,6 +109,12 @@ public class PublicDataAPIServiceImpl implements PublicDataAPIService {
     @Override
     public JSONObject getVipInterestRateLoanQuota() {
         return this.client.executeSync(this.api.getVipInterestRateLoanQuota());
+    }
+
+    //获取风险准备金余额  Get insurance fund
+    @Override
+    public JSONObject getInsuranceFund(String instType, String type, String uly, String instFamily, String ccy, String before, String after, String limit) {
+        return this.client.executeSync(this.api.getInsuranceFund(instType, type, uly, instFamily, ccy, before, after, limit));
     }
 
     //张币转换

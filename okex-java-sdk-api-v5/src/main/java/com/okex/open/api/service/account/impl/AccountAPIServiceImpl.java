@@ -99,8 +99,8 @@ public class AccountAPIServiceImpl implements AccountAPIService {
 
     //获取当前账户交易手续费费率 Get Fee Rates
     @Override
-    public JSONObject getFeeRates(String instType, String instId, String uly) {
-        return this.client.executeSync(this.api.getFeeRates(instType,instId,uly));
+    public JSONObject getFeeRates(String instType, String instId, String uly,String instFamily) {
+        return this.client.executeSync(this.api.getFeeRates(instType,instId,uly,instFamily));
     }
 
 
@@ -176,7 +176,7 @@ public class AccountAPIServiceImpl implements AccountAPIService {
 
     //获取组合保证金模式全仓限制
     @Override
-    public JSONObject getPositionTiers(String instType, String uly) {
-        return this.client.executeSync(this.api.getPositionTiers(instType,uly));
+    public JSONObject getPositionTiers(String instType, String uly,String instFamily) {
+        return this.client.executeSync(this.api.getPositionTiers(instType,uly,instFamily));
     }
 }

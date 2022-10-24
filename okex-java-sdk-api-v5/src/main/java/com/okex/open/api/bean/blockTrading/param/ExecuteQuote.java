@@ -1,5 +1,7 @@
 package com.okex.open.api.bean.blockTrading.param;
 
+import java.util.List;
+
 public class ExecuteQuote {
     private String rfqId;
 
@@ -21,5 +23,13 @@ public class ExecuteQuote {
         this.rfqId = rfqId;
     }
 
+    private List<Legs> legs;
 
+    public List<Legs> getLegs() {
+        return legs;
+    }
+
+    public void setLegs(List<Legs> legs) {
+        this.legs = legs;
+    }
 }

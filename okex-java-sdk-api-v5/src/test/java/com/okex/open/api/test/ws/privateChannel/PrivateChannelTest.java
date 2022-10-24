@@ -68,7 +68,7 @@ public class PrivateChannelTest {
 
         positionsMap.put("channel","positions");
         positionsMap.put("instType","SWAP");
-        positionsMap.put("uly","XRP-USDT");
+        positionsMap.put("instFamily","XRP-USDT");
         positionsMap.put("instId","XRP-USDT-SWAP");
 
         channelList.add(positionsMap);
@@ -120,7 +120,7 @@ public class PrivateChannelTest {
 
         orderMap.put("channel","orders");
         orderMap.put("instType","SWAP");
-        orderMap.put("uly","XRP-USDT");
+        orderMap.put("instFamily","XRP-USDT");
         orderMap.put("instId","XRP-USDT-SWAP");
 
         channelList.add(orderMap);
@@ -149,7 +149,7 @@ public class PrivateChannelTest {
 
         algoOrders.put("channel","orders-algo");
         algoOrders.put("instType","FUTURES");
-        algoOrders.put("uly","BTC-USDT");
+        algoOrders.put("instFamily","BTC-USDT");
         algoOrders.put("instId","BTC-USDT-210625");
 
         channelList.add(algoOrders);
@@ -204,7 +204,7 @@ public class PrivateChannelTest {
 
         liquidationWarning.put("channel","liquidation-warning");
         liquidationWarning.put("instType","SWAP");
-        liquidationWarning.put("uly","BTC-USDT");
+        liquidationWarning.put("instFamily","BTC-USDT");
         liquidationWarning.put("instId","BTC-USDT-SWAP");
 
         channelList.add(liquidationWarning);
@@ -360,6 +360,33 @@ public class PrivateChannelTest {
         gridOrdersContractChannel.put("algoId",null);
 
         channelList.add(gridOrdersContractChannel);
+
+        //调用订阅方法
+        WebSocketClient.subscribe(channelList);
+        //为保证测试方法不停，需要让线程延迟
+        try {
+            Thread.sleep(10000000);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * 天地网格策略委托订单频道
+     * Moon grid algo orders channel
+     */
+    @Test
+    public void gridOrdersMoonChannel() {
+        //添加订阅频道
+        ArrayList<Map> channelList= new ArrayList<>();
+        Map gridOrdersMoonChannel =new HashMap();
+
+        gridOrdersMoonChannel.put("channel","grid-orders-moon");
+        gridOrdersMoonChannel.put("instType","SPOT");
+        gridOrdersMoonChannel.put("instId","BTC-USDT");
+        gridOrdersMoonChannel.put("algoId",null);
+
+        channelList.add(gridOrdersMoonChannel);
 
         //调用订阅方法
         WebSocketClient.subscribe(channelList);

@@ -88,10 +88,10 @@ public class BrokerAPIServiceImpl implements BrokerAPIService {
         return this.client.executeSync(this.api.getSubAccountDepositAddress(subAcct,ccy));
     }
 
-    //查询子账户获取充值记录  Get sub-account deposit history
+    //获取子账户充值记录  Get sub-account deposit history
     @Override
-    public JSONObject getSubAccountDepositHistory(String subAcct, String ccy, String txId, String state, String after, String before, String limit) {
-        return this.client.executeSync(this.api.getSubAccountDepositHistory(subAcct,ccy,txId,state,after,before,limit));
+    public JSONObject getSubAccountDepositHistory(String subAcct, String ccy, String txId,String type, String state, String after, String before, String limit) {
+        return this.client.executeSync(this.api.getSubAccountDepositHistory(subAcct,ccy,txId,type,state,after,before,limit));
     }
 
     //子账户返佣记录  Query daily rebate records

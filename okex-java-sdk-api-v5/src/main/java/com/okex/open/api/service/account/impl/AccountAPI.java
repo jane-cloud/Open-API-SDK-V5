@@ -78,7 +78,7 @@ public interface AccountAPI {
 
     //获取当前账户交易手续费费率 Get Fee Rates
     @GET("/api/v5/account/trade-fee")
-    Call<JSONObject> getFeeRates(@Query("instType")String instType,@Query("instId")String instId,@Query("uly")String uly);
+    Call<JSONObject> getFeeRates(@Query("instType")String instType,@Query("instId")String instId,@Query("uly")String uly,@Query("instFamily")String instFamily);
 
     //获取计息记录 Get interest-accrued
     @GET("/api/v5/account/interest-accrued")
@@ -130,5 +130,5 @@ public interface AccountAPI {
 
     //获取组合保证金模式全仓限制
     @GET("/api/v5/account/position-tiers")
-    Call<JSONObject> getPositionTiers(@Query("instType") String instType,@Query("uly")  String uly);
+    Call<JSONObject> getPositionTiers(@Query("instType") String instType,@Query("uly")  String uly,@Query("instFamily")  String instFamily);
 }

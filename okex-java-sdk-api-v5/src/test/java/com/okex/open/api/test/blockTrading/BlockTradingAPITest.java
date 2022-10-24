@@ -64,6 +64,7 @@ public class BlockTradingAPITest extends BlockTradingAPIBaseTest {
         CreateRfq createRfq = new CreateRfq();
         createRfq.setAnonymous(true);
         createRfq.setClRfqId("20220607test004");
+        createRfq.setAllowPartialExecution(false);
         createRfq.setLegs(legsList);
         createRfq.setCounterparties(counterpartiesList);
 
@@ -132,6 +133,14 @@ public class BlockTradingAPITest extends BlockTradingAPIBaseTest {
         executeQuote.setRfqId("3G18D0O");
         executeQuote.setQuoteId("");
 
+        List<Legs> list = new ArrayList<>();
+        Legs legs = new Legs();
+        legs.setInstId("BTC-USDT");
+        legs.setSz("10");
+        list.add(legs);
+        executeQuote.setLegs(list);
+
+
         JSONObject result = this.blockTradingAPIService.executeQuote(executeQuote);
         toResultString(LOG, "result", result);
     }
@@ -146,11 +155,17 @@ public class BlockTradingAPITest extends BlockTradingAPIBaseTest {
 
         SetQuoteProducts setQuoteProducts = new SetQuoteProducts();
         setQuoteProducts.setInstType("SWAP");
+        setQuoteProducts.setIncludeAll(false);
         List<Data> dataList = new ArrayList<>();
 
         Data data = new Data();
+        data.setInstFamily("BTC-USDT");
         data.setInstId("BTC-USDT-SWAP");
+        data.setMaxBlockSz(null);
+        data.setMakerPxBand(null);
+
         Data data1 = new Data();
+        data1.setInstFamily("BTC-USD");
         data1.setInstId("BTC-USD-SWAP");
 
         dataList.add(data);
@@ -165,8 +180,11 @@ public class BlockTradingAPITest extends BlockTradingAPIBaseTest {
         List<Data> dataList1 = new ArrayList<>();
 
         Data data2 = new Data();
+        data2.setInstFamily("BTC-USDT");
         data2.setInstId("BTC-USDT-220930");
+
         Data data3 = new Data();
+        data3.setInstFamily("BTC-USD");
         data3.setInstId("BTC-USD-221230");
 
         dataList1.add(data2);
@@ -180,6 +198,15 @@ public class BlockTradingAPITest extends BlockTradingAPIBaseTest {
         toResultString(LOG, "result", result);
     }
 
+    /**
+     * 重设MMP状态 Reset MMP status
+     * POST /api/v5/rfq/mmp-reset
+     */
+    @Test
+    public void resetMMPStatus(){
+        JSONObject result = this.blockTradingAPIService.resetMMPStatus();
+        toResultString(LOG, "result", result);
+    }
     /**
      * 报价 Create Quote
      * POST /api/v5/rfq/create-quote

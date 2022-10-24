@@ -42,8 +42,8 @@ public interface BrokerAPIService {
     //查看充值地址  Get sub-account deposit address
     JSONObject getSubAccountDepositAddress(String subAcct, String ccy);
 
-    //查询子账户获取充值记录  Get sub-account deposit history
-    JSONObject getSubAccountDepositHistory(String subAcct, String ccy, String txId, String state, String after, String before, String limit);
+    //获取子账户充值记录  Get sub-account deposit history
+    JSONObject getSubAccountDepositHistory(String subAcct, String ccy, String txId,String type, String state, String after, String before, String limit);
 
     //子账户返佣记录  Query daily rebate records
     JSONObject getRebateDaily(String subAcct, String begin, String end, String page, String limit);

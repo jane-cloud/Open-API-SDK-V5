@@ -12,7 +12,7 @@ import java.util.List;
 public interface MarketDataAPIService {
 
     //获取所有产品行情信息 Get Tickers
-    JSONObject getTickers(String instType,String uly);
+    JSONObject getTickers(String instType,String instFamily,String uly);
 
     //获取单个产品行情信息 Get Ticker
     JSONObject getTicker(String instId);
@@ -23,6 +23,9 @@ public interface MarketDataAPIService {
     //获取产品深度 Get Order Book
     JSONObject getOrderBook(String instId,String sz);
 
+    //获取产品轻量深度 Get order lite book
+    JSONObject getOrderLiteBook(@Query("instId") String instId);
+
     //获取所有交易产品K线数据 Get Candlesticks
     JSONObject getCandlesticks(String instId,String after,String before,String bar,String limit);
 
@@ -32,8 +35,14 @@ public interface MarketDataAPIService {
     //获取指数K线数据 Get Index Candlesticks
     JSONObject getIndexCandlesticks(String instId,String after,String before,String bar,String limit);
 
+    //获取指数历史K线数据 Get index candlesticks history
+    JSONObject getIndexCandlesticksHistory(String instId,String after,String before,String bar,String limit);
+
     //获取标记价格K线数据 Get Mark Price Candlesticks
     JSONObject getMarkPriceCandlesticks(String instId,String after,String before,String bar,String limit);
+
+    //获取标记价格历史K线数据 Get mark price candlesticks history
+    JSONObject getMarkPriceCandlesticksHistory(String instId,String after,String before,String bar,String limit);
 
     //获取交易产品公共成交数据 Get Trades
     JSONObject getTrades(String instId,String limit);
@@ -52,5 +61,14 @@ public interface MarketDataAPIService {
 
     //获取指数成分数据  Get index components
     JSONObject getIndexComponents(String index);
+
+    //获取大宗交易所有产品行情信息  Get block tickers
+    JSONObject getBlockTickers(@Query("instType") String instType,@Query("uly") String uly,@Query("instFamily") String instFamily);
+
+    //获取大宗交易单个产品行情信息  Get block ticker
+    JSONObject getBlockTicker(@Query("instId") String instId);
+
+    //获取大宗交易公共成交数据  Get block trades
+    JSONObject getBlockTrades(@Query("instId") String instId);
 
 }

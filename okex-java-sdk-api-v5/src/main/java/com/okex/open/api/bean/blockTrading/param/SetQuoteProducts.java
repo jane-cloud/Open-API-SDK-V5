@@ -4,6 +4,16 @@ import java.util.List;
 
 public class SetQuoteProducts {
     private String instType;
+    private Boolean includeAll;
+
+    public Boolean getIncludeAll() {
+        return includeAll;
+    }
+
+    public void setIncludeAll(Boolean includeAll) {
+        this.includeAll = includeAll;
+    }
+
     private List<Data> data;
 
     public String getInstType() {

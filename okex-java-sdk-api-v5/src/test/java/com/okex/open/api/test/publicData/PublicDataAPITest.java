@@ -28,7 +28,7 @@ public class PublicDataAPITest extends PublicDataAPIBaseTest {
      */
     @Test
     public void getInstruments(){
-        JSONObject result = publicDataAPIService.getInstruments("SPOT",null,null);
+        JSONObject result = publicDataAPIService.getInstruments("SPOT",null,"",null);
         toResultString(LOG, "result", result);
 
     }
@@ -40,7 +40,7 @@ public class PublicDataAPITest extends PublicDataAPIBaseTest {
      */
     @Test
     public void getDeliveryExerciseHistory(){
-        JSONObject result = publicDataAPIService.getDeliveryExerciseHistory("OPTION","BTC-USD","","","");
+        JSONObject result = publicDataAPIService.getDeliveryExerciseHistory("OPTION","BTC-USD","","","","");
         toResultString(LOG, "result", result);
     }
 
@@ -51,7 +51,7 @@ public class PublicDataAPITest extends PublicDataAPIBaseTest {
      */
     @Test
     public void getOpenInterest(){
-        JSONObject result = publicDataAPIService.getOpenInterest("FUTURES","LTC-USDT","LTC-USDT-210416");
+        JSONObject result = publicDataAPIService.getOpenInterest("FUTURES","LTC-USDT","","LTC-USDT-210416");
         toResultString(LOG, "result", result);
     }
 
@@ -95,7 +95,7 @@ public class PublicDataAPITest extends PublicDataAPIBaseTest {
      */
     @Test
     public void getOptionMarketData(){
-        JSONObject result = publicDataAPIService.getOptionMarketData("BTC-USD","");
+        JSONObject result = publicDataAPIService.getOptionMarketData("BTC-USD","","");
         toResultString(LOG, "result", result);
     }
 
@@ -140,7 +140,7 @@ public class PublicDataAPITest extends PublicDataAPIBaseTest {
      */
     @Test
     public void getLiquidationOrders(){
-        JSONObject result = publicDataAPIService.getLiquidationOrders("FUTURES",null,null,null,"BTC-USDT","quarter","filled",null,null,null);
+        JSONObject result = publicDataAPIService.getLiquidationOrders("FUTURES","",null,null,null,"BTC-USDT","quarter","filled",null,null,null);
         toResultString(LOG, "result", result);
     }
 
@@ -150,7 +150,7 @@ public class PublicDataAPITest extends PublicDataAPIBaseTest {
      */
     @Test
     public void getMarkPrice(){
-        JSONObject result = publicDataAPIService.getMarkPrice("FUTURES","","");
+        JSONObject result = publicDataAPIService.getMarkPrice("FUTURES","","","");
         toResultString(LOG, "result", result);
     }
 
@@ -160,7 +160,7 @@ public class PublicDataAPITest extends PublicDataAPIBaseTest {
      */
     @Test
     public void getTier(){
-        JSONObject result = publicDataAPIService.getTier("FUTURES","BTC-USDT",null,"isolated",null);
+        JSONObject result = publicDataAPIService.getTier("FUTURES","BTC-USDT","",null,"isolated",null);
         toResultString(LOG, "result", result);
     }
 
@@ -194,6 +194,18 @@ public class PublicDataAPITest extends PublicDataAPIBaseTest {
         JSONObject result = publicDataAPIService.getVipInterestRateLoanQuota();
         toResultString(LOG, "result", result);
     }
+
+    /**
+     * 获取风险准备金余额  Get insurance fund
+     * GET /api/v5/public/insurance-fund
+     */
+    @Test
+    public void getInsuranceFund(){
+        JSONObject result = publicDataAPIService.getInsuranceFund("","","","","","","","");
+        toResultString(LOG, "result", result);
+    }
+
+
     /**
      * 张币转换  Get
      * GET /api/v5/public/convert-contract-coin

@@ -61,11 +61,12 @@ public interface BrokerAPI {
      Call<JSONObject> getSubAccountDepositAddress(@Query("subAcct") String subAcct,
                                                   @Query("ccy") String ccy);
 
-    //查询子账户获取充值记录  Get sub-account deposit history
+    //获取子账户充值记录  Get sub-account deposit history
      @GET("/api/v5/asset/broker/nd/subaccount-deposit-history")
      Call<JSONObject> getSubAccountDepositHistory(@Query("subAcct") String subAcct,
                                                   @Query("ccy") String ccy,
                                                   @Query("txId") String txId,
+                                                  @Query("type") String type,
                                                   @Query("state") String state,
                                                   @Query("after") String after,
                                                   @Query("before") String before,

@@ -9,13 +9,13 @@ import retrofit2.http.Query;
 public interface PublicDataAPIService {
 
     //获取交易产品基础信息 Get Instruments
-    JSONObject getInstruments(String instType,String uly, String instId);
+    JSONObject getInstruments(String instType,String uly,String instFamily, String instId);
 
     //获取交割和行权记录 Get Delivery/Exercise History
-    JSONObject getDeliveryExerciseHistory(String instType,String uly,String after,String before,String limit);
+    JSONObject getDeliveryExerciseHistory(String instType,String uly,String instFamily,String after,String before,String limit);
 
     //获取持仓总量 Get Open Interest
-    JSONObject getOpenInterest(String instType,String uly,String instId);
+    JSONObject getOpenInterest(String instType,String uly,String instFamily	,String instId);
 
     //获取永续合约当前资金费率 Get Funding Rate
     JSONObject getFundingRate(String instId);
@@ -27,7 +27,7 @@ public interface PublicDataAPIService {
     JSONObject getLimitPrice(String instId);
 
     //获取期权定价 Get Option Market Data
-    JSONObject getOptionMarketData(String uly,String expTime);
+    JSONObject getOptionMarketData(String uly,String instFamily,String expTime);
 
     //获取预估交割/行权价格 Get Estimated Delivery/Excercise Price
     JSONObject getEstimatedDeliveryExcercisePrice(String instId);
@@ -39,13 +39,13 @@ public interface PublicDataAPIService {
     JSONObject getSystemTime();
 
     //获取平台公共爆仓单信息 Get Liquidation Orders
-    JSONObject getLiquidationOrders(String instType,String mgnMode,String instId,String ccy,String uly,String alias,String state,String before,String after,String limit);
+    JSONObject getLiquidationOrders(String instType,String mgnMode,String instId,String ccy,String uly,String instFamily,String alias,String state,String before,String after,String limit);
 
     //获取标记价格 Get Mark Price
-    JSONObject getMarkPrice(String instType,String uly,String instId);
+    JSONObject getMarkPrice(String instType,String uly,String instFamily,String instId);
 
     //获取合约衍生品仓位档位  Get Position Tiers
-    JSONObject getTier(String instType, String uly, String instId, String tdMode, String tier);
+    JSONObject getTier(String instType, String uly, String instFamily, String instId, String tdMode, String tier);
 
     //获取杠杆利率和借币限额  Get Interest Rate and Loan Quota
     JSONObject getInterestRateLoanQuota();
@@ -55,6 +55,9 @@ public interface PublicDataAPIService {
 
     //获取尊享借币杠杆利率和借币限额  Get Interest Rate and Loan Quota for VIP loans
     JSONObject getVipInterestRateLoanQuota();
+
+    //获取风险准备金余额  Get insurance fund
+    JSONObject getInsuranceFund(String instType,String type,String uly,String instFamily,String ccy,String before,String after,String limit);
 
     //张币转换
     JSONObject getConvertContractCoin(String type, String instId, String sz, String px, String unit);

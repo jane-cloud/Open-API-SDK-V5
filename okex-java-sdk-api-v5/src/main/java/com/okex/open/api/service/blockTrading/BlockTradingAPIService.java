@@ -29,6 +29,9 @@ public interface BlockTradingAPIService {
     //设置可报价产品 Set Quote products
     JSONObject setQuoteProducts(List<SetQuoteProducts> setQuoteProducts);
 
+    //重设MMP状态 Reset MMP status
+    JSONObject resetMMPStatus();
+
     //报价 Create Quote
     JSONObject createQuote(CreateQuote createQuote);
 

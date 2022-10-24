@@ -1,15 +1,11 @@
 package com.okex.open.api.bean.blockTrading.param;
 
 public class Data {
-    private String uly;
 
-    public String getUly() {
-        return uly;
-    }
-
-    public void setUly(String uly) {
-        this.uly = uly;
-    }
+    private String instId;
+    private String instFamily;
+    private String maxBlockSz;
+    private String makerPxBand;
 
     public String getInstId() {
         return instId;
@@ -19,6 +15,27 @@ public class Data {
         this.instId = instId;
     }
 
-    private String instId;
+    public String getInstFamily() {
+        return instFamily;
+    }
 
+    public void setInstFamily(String instFamily) {
+        this.instFamily = instFamily;
+    }
+
+    public String getMaxBlockSz() {
+        return maxBlockSz;
+    }
+
+    public void setMaxBlockSz(String maxBlockSz) {
+        this.maxBlockSz = maxBlockSz;
+    }
+
+    public String getMakerPxBand() {
+        return makerPxBand;
+    }
+
+    public void setMakerPxBand(String makerPxBand) {
+        this.makerPxBand = makerPxBand;
+    }
 }

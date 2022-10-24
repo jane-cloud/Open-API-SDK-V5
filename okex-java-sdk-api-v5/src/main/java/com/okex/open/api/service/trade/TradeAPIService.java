@@ -33,19 +33,19 @@ public interface TradeAPIService {
     JSONObject getOrderDetails(String instId,String ordId,String clOrdId);
 
     //获取未成交订单列表 Get Order List
-    JSONObject getOrderList(String instType,String uly,String instId,String ordType,String state,String after,String before,String limit);
+    JSONObject getOrderList(String instType,String uly,String instId,String ordType,String instFamily,String state,String after,String before,String limit);
 
     //获取历史订单记录（近七天） Get Order History (last 7 days）
-    JSONObject getOrderHistory7days(String instType, String uly, String instId, String ordType, String state, String category, String after, String before, String limit);
+    JSONObject getOrderHistory7days(String instType, String uly, String instId, String ordType,String instFamily, String state, String category, String after, String before, String limit);
 
     //获取历史订单记录（近三个月） Get Order History (last 3 months)
-    JSONObject getOrderHistory3months(String instType,String uly,String instId,String ordType,String state, String category,String after,String before,String limit);
+    JSONObject getOrderHistory3months(String instType,String uly,String instId,String ordType,String instFamily,String state, String category,String after,String before,String limit);
 
     //获取成交明细（近三天） Get Transaction Details(last 3 days）
-    JSONObject getTransactionDetails(String instType,String uly,String instId,String ordId,String after,String before,String begin,String end,String limit);
+    JSONObject getTransactionDetails(String instType,String uly,String instId,String ordId,String instFamily,String after,String before,String begin,String end,String limit);
 
     //获取成交明细（近三个月） Get Transaction Details(last 3 months）
-    JSONObject getTransactionDetailsForThreeMonths(String instType,String uly,String instId,String ordId,String after,String before,String begin,String end,String limit);
+    JSONObject getTransactionDetailsForThreeMonths(String instType,String uly,String instId,String ordId,String instFamily,String after,String before,String begin,String end,String limit);
 
     //委托策略下单 Place Algo Order
     JSONObject placeAlgoOrder(PlaceAlgoOrder placeAlgoOrder);
@@ -57,10 +57,10 @@ public interface TradeAPIService {
     JSONObject cancelAdvanceAlgoOrders(List<CancelAlgoOrder> cancelAlgoOrder);
 
     //获取未完成策略委托单列表 Get Algo Order List
-    JSONObject getAlgoOrderList(String algoId, String instType, String instId, String ordType, String after, String before, String limit);
+    JSONObject getAlgoOrderList(String algoId, String instType, String instId, String ordType,String clOrdId, String after, String before, String limit);
 
     //获取历史策略委托单列表 Get Algo Order History
-    JSONObject getAlgoOrderHistory(String state, String algoId, String instType, String instId, String ordType, String after, String before, String limit);
+    JSONObject getAlgoOrderHistory(String state, String algoId, String instType, String instId, String ordType,String clOrdId, String after, String before, String limit);
 
     //获取一键兑换主流币币种列表  Get easy convert currency list
     JSONObject getEasyConvertCurrencyList();

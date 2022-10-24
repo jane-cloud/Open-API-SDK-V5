@@ -175,7 +175,7 @@ public class PublicChannelTest {
         Map map =new HashMap();
         map.put("channel","estimated-price");
         map.put("instType","OPTION");
-        map.put("uly","BTC-USD");
+        map.put("instFamily","BTC-USD");
 
         channelList.add(map);
         //调用订阅方法
@@ -399,7 +399,7 @@ public class PublicChannelTest {
 
         Map map =new HashMap();
         map.put("channel","opt-summary");
-        map.put("uly","BTC-USD");
+        map.put("instFamily","BTC-USD");
 
         channelList.add(map);
         //调用订阅方法

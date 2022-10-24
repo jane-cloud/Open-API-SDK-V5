@@ -60,6 +60,12 @@ public class BlockTradingAPIServiceImpl implements BlockTradingAPIService {
         return this.client.executeSync(this.api.setQuoteProducts(setQuoteProducts));
     }
 
+    //重设MMP状态 Reset MMP status
+    @Override
+    public JSONObject resetMMPStatus() {
+        return this.client.executeSync(this.api.resetMMPStatus());
+    }
+
     //报价 Create Quote
     @Override
     public JSONObject createQuote(CreateQuote createQuote) {
