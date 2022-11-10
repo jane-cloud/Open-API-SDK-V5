@@ -51,7 +51,7 @@ public interface BlockTradingAPIService {
     JSONObject getQuotes(String rfqId, String clRfqId, String quoteId,String clQuoteId,String state, String beginId, String endId, String limit);
 
     //获取大宗交易信息 Get trades
-    JSONObject getTrades(String rfqId, String clRfqId, String quoteId,String clQuoteId,String state, String beginId, String endId, String limit);
+    JSONObject getTrades(String rfqId, String clRfqId, String quoteId,String clQuoteId,String state, String beginId, String endId, String limit, String beginTs, String endTs);
 
     //获取大宗交易公共成交数据 Get public trades
     JSONObject getPublicTrades(String beginId, String endId, String limit);

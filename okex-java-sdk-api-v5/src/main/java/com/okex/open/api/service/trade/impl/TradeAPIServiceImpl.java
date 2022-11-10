@@ -75,14 +75,14 @@ public class TradeAPIServiceImpl implements TradeAPIService {
 
     //获取历史订单记录（近七天） Get Order History (last 7 days）
     @Override
-    public JSONObject getOrderHistory7days(String instType, String uly, String instId, String ordType, String instFamily,String state, String category,String after, String before, String limit) {
-        return this.client.executeSync(this.tradeAPI.getOrderHistory7days(instType, uly, instId, ordType,instFamily, state, category,after, before, limit));
+    public JSONObject getOrderHistory7days(String instType, String uly, String instId, String ordType, String instFamily,String state, String category,String after, String before, String limit,String begin,String end) {
+        return this.client.executeSync(this.tradeAPI.getOrderHistory7days(instType, uly, instId, ordType,instFamily, state, category,after, before, limit, begin,end));
     }
 
     ////获取历史订单记录（近三个月） Get Order History (last 3 months)
     @Override
-    public JSONObject getOrderHistory3months(String instType, String uly, String instId, String ordType,String instFamily, String state, String category,String after, String before, String limit) {
-        return this.client.executeSync(this.tradeAPI.getOrderHistory3months(instType, uly, instId, ordType,instFamily, state, category,after, before, limit));
+    public JSONObject getOrderHistory3months(String instType, String uly, String instId, String ordType,String instFamily, String state, String category,String after, String before, String limit,String begin,String end) {
+        return this.client.executeSync(this.tradeAPI.getOrderHistory3months(instType, uly, instId, ordType,instFamily, state, category,after, before, limit,begin,end));
     }
 
     //获取成交明细（近三天） Get Transaction Details(last 3 days）

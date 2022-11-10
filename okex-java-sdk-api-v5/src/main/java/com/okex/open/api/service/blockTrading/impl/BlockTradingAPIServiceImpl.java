@@ -104,8 +104,8 @@ public class BlockTradingAPIServiceImpl implements BlockTradingAPIService {
 
     //获取大宗交易信息 Get trades
     @Override
-    public JSONObject getTrades(String rfqId, String clRfqId, String quoteId, String clQuoteId, String state, String beginId, String endId, String limit) {
-        return this.client.executeSync(this.api.getTrades(rfqId, clRfqId, quoteId, clQuoteId, state, beginId, endId, limit));
+    public JSONObject getTrades(String rfqId, String clRfqId, String quoteId, String clQuoteId, String state, String beginId, String endId, String limit, String beginTs, String endTs) {
+        return this.client.executeSync(this.api.getTrades(rfqId, clRfqId, quoteId, clQuoteId, state, beginId, endId, limit,beginTs,endTs));
     }
 
     //获取大宗交易公共成交数据 Get public trades

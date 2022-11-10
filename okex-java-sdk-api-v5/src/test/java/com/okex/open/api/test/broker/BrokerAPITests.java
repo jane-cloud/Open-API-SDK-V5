@@ -209,7 +209,7 @@ public class BrokerAPITests extends BrokerAPIBaseTests{
      */
     @Test
     public void rebatePerOrders(){
-        JSONObject result = this.brokerAPIService.rebatePerOrders("true",null,null);
+        JSONObject result = this.brokerAPIService.rebatePerOrders("true",null,null,"");
         toResultString(LOG, "result", result);
     }
 
@@ -222,6 +222,7 @@ public class BrokerAPITests extends BrokerAPIBaseTests{
         SetRebatePerOrders setRebatePerOrders = new SetRebatePerOrders();
         setRebatePerOrders.setBegin("20220101");
         setRebatePerOrders.setEnd("20220107");
+        setRebatePerOrders.setBrokerType("");
 
         JSONObject result = this.brokerAPIService.setRebatePerOrders(setRebatePerOrders);
         toResultString(LOG, "result", result);

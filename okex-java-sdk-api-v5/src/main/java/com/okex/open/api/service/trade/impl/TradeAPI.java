@@ -67,7 +67,9 @@ interface TradeAPI {
                                           @Query("category")String category,
                                           @Query("after")String after,
                                           @Query("before")String before,
-                                          @Query("limit")String limit);
+                                          @Query("limit")String limit,
+                                          @Query("begin")String begin,
+                                          @Query("end")String end);
 
     //获取历史订单记录（近三个月） Get Order History (last 3 months)
     @GET("/api/v5/trade/orders-history-archive")
@@ -80,7 +82,9 @@ interface TradeAPI {
                                             @Query("category")String category,
                                             @Query("after")String after,
                                             @Query("before")String before,
-                                            @Query("limit")String limit);
+                                            @Query("limit")String limit,
+                                            @Query("begin")String begin,
+                                            @Query("end")String end);
 
     //获取成交明细（近三天） Get Transaction Details(last 3 days）
     @GET("/api/v5/trade/fills")

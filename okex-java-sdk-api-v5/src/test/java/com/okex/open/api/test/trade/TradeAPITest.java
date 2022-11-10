@@ -254,7 +254,7 @@ public class TradeAPITest extends TradeAPIBaseTest {
      */
     @Test
     public void getOrderHistory7days(){
-        JSONObject result = tradeAPIService.getOrderHistory7days("FUTURES","","","","","","","","","");
+        JSONObject result = tradeAPIService.getOrderHistory7days("FUTURES","","","","","","","","","","","");
         toResultString(LOG, "result", result);
     }
 
@@ -265,7 +265,7 @@ public class TradeAPITest extends TradeAPIBaseTest {
      */
     @Test
     public void getOrderHistory3months(){
-        JSONObject result = tradeAPIService.getOrderHistory3months("SWAP","","BTC-USDT-SWAP","","","","","","","");
+        JSONObject result = tradeAPIService.getOrderHistory3months("SWAP","","BTC-USDT-SWAP","","","","","","","","","");
         toResultString(LOG, "result", result);
     }
 

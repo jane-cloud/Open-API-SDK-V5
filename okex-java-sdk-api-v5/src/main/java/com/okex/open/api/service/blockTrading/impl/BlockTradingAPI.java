@@ -89,7 +89,9 @@ public interface BlockTradingAPI {
                                @Query("state") String state,
                                @Query("beginId") String beginId,
                                @Query("endId") String endId,
-                               @Query("limit") String limit);
+                               @Query("limit") String limit,
+                               @Query("beginTs") String beginTs,
+                               @Query("endTs") String endTs);
 
     //获取大宗交易公共成交数据 Get public trades
     @GET("/api/v5/rfq/public-trades")

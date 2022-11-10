@@ -36,10 +36,10 @@ public interface TradeAPIService {
     JSONObject getOrderList(String instType,String uly,String instId,String ordType,String instFamily,String state,String after,String before,String limit);
 
     //获取历史订单记录（近七天） Get Order History (last 7 days）
-    JSONObject getOrderHistory7days(String instType, String uly, String instId, String ordType,String instFamily, String state, String category, String after, String before, String limit);
+    JSONObject getOrderHistory7days(String instType, String uly, String instId, String ordType,String instFamily, String state, String category, String after, String before, String limit,String begin,String end);
 
     //获取历史订单记录（近三个月） Get Order History (last 3 months)
-    JSONObject getOrderHistory3months(String instType,String uly,String instId,String ordType,String instFamily,String state, String category,String after,String before,String limit);
+    JSONObject getOrderHistory3months(String instType,String uly,String instId,String ordType,String instFamily,String state, String category,String after,String before,String limit,String begin,String end);
 
     //获取成交明细（近三天） Get Transaction Details(last 3 days）
     JSONObject getTransactionDetails(String instType,String uly,String instId,String ordId,String instFamily,String after,String before,String begin,String end,String limit);

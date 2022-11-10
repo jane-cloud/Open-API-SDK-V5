@@ -84,7 +84,8 @@ public interface BrokerAPI {
      @GET("/api/v5/broker/nd/rebate-per-orders")
      Call<JSONObject> rebatePerOrders(@Query("type") String type,
                                      @Query("begin") String begin,
-                                     @Query("end") String end);
+                                     @Query("end") String end,
+                                      @Query("brokerType") String brokerType);
 
      //生成返佣明细下载链接 Create rebate details download link
      @POST("/api/v5/broker/nd/rebate-per-orders")

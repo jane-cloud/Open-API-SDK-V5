@@ -49,7 +49,7 @@ public interface BrokerAPIService {
     JSONObject getRebateDaily(String subAcct, String begin, String end, String page, String limit);
 
     //获取返佣明细下载链接 Get download link
-    JSONObject rebatePerOrders(String type,String begin,String end);
+    JSONObject rebatePerOrders(String type,String begin,String end,String brokerType);
 
     //生成返佣明细下载链接 Create rebate details download link
     JSONObject setRebatePerOrders(SetRebatePerOrders setRebatePerOrders);

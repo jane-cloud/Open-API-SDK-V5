@@ -102,8 +102,8 @@ public class BrokerAPIServiceImpl implements BrokerAPIService {
 
     //获取返佣明细下载链接 Get download link
     @Override
-    public JSONObject rebatePerOrders(String type, String begin, String end) {
-        return this.client.executeSync(this.api.rebatePerOrders(type, begin, end));
+    public JSONObject rebatePerOrders(String type, String begin, String end,String brokerType) {
+        return this.client.executeSync(this.api.rebatePerOrders(type, begin, end,brokerType));
     }
 
     //生成返佣明细下载链接 Create rebate details download link
