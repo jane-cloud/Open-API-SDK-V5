@@ -56,7 +56,7 @@ public class TestOKEXOpenApiV3 {
     @Bean
     public APIConfiguration okexApiConfig() {
         APIConfiguration config = new APIConfiguration();
-          config.setEndpoint(" https://www.okx.com/");
+          config.setEndpoint("https://www.okx.com/");
             //secretKey,api注册成功后页面上有
             config.setApiKey("");
             config.setSecretKey("");
