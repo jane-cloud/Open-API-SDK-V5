@@ -92,7 +92,7 @@ if __name__ == '__main__':
     # 获取资金划转状态 Transfer State
     # result = fundingAPI.transfer_state(transId='', type='')
     # 提币  Withdrawal
-    # result = fundingAPI.coin_withdraw('usdt', '2', '3', '', '', '0')
+    # result = fundingAPI.coin_withdraw(ccy='', amt='', dest='', toAddr='', fee='', chain='', areaCode='', clientId='')
     # 获取充值记录  Get Deposit History
     # result = fundingAPI.get_deposit_history()
     # 获取币种列表  Get Currencies
