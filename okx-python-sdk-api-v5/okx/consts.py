@@ -139,6 +139,12 @@ CANCEL_ALGOS = '/api/v5/trade/cancel-algos'
 Cancel_Advance_Algos = '/api/v5/trade/cancel-advance-algos'
 ORDERS_ALGO_OENDING = '/api/v5/trade/orders-algo-pending'
 ORDERS_ALGO_HISTORY = '/api/v5/trade/orders-algo-history'
+EASY_CONVERT_CURRENCY_LIST = '/api/v5/trade/easy-convert-currency-list'
+EASY_CONVERT = '/api/v5/trade/easy-convert'
+EASY_CONVERT_HISTORY = '/api/v5/trade/easy-convert-history'
+ONE_CLICK_REPAY_CURRENCY_LIST = '/api/v5/trade/one-click-repay-currency-list'
+ONE_CLICK_REPAY = '/api/v5/trade/one-click-repay'
+ONE_CLICK_REPAY_HISTORY = '/api/v5/trade/one-click-repay-history'
 
 # SubAccount
 BALANCE = '/api/v5/account/subaccount/balances'

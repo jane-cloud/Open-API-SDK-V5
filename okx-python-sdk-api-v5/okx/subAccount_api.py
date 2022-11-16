@@ -34,8 +34,8 @@ class SubAccountAPI(Client):
         params = {'enable': enable, 'subAcct': subAcct, 'after': after, 'before': before, 'limit': limit}
         return self._request_with_params(GET, VIEW_LIST, params)
 
-    def subAccount_transfer(self, ccy, amt, froms, to, fromSubAccount,toSubAccount,loanTrans=''):
-        params = {'ccy': ccy, 'amt': amt, 'from': froms, 'to': to, 'fromSubAccount': fromSubAccount, 'toSubAccount': toSubAccount,'loanTrans':loanTrans}
+    def subAccount_transfer(self, ccy, amt, froms, to, fromSubAccount,toSubAccount,loanTrans='',omitPosRisk=''):
+        params = {'ccy': ccy, 'amt': amt, 'from': froms, 'to': to, 'fromSubAccount': fromSubAccount, 'toSubAccount': toSubAccount,'loanTrans':loanTrans,'omitPosRisk':omitPosRisk}
         return self._request_with_params(POST, SUBACCOUNT_TRANSFER, params)
 
     def entrust_subaccount_list(self, subAcct):

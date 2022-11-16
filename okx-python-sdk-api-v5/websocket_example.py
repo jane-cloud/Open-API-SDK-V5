@@ -389,7 +389,7 @@ passphrase = ""
 # 实盘 real trading
 # url = "wss://ws.okx.com:8443/ws/v5/public"
 # 模拟盘 demo trading
-# url = "wss://wspap.okx.com:8443/ws/v5/public"
+url = "wss://wspap.okx.com:8443/ws/v5/public"
 
 # WebSocket私有频道 private channels
 # 实盘 real trading
@@ -440,6 +440,8 @@ passphrase = ""
 # channels = [{"channel": "public-struc-block-trades"}]
 # 大宗交易行情频道 Block trading market channel
 # channels = [{"channel": "block-tickers", "instId":"BTC-USDT-SWAP"}]
+# 公共大宗交易单腿交易频道
+# channels = [{"channel": "public-block-trades", "instId":"BTC-USDT-SWAP"}]
 
 '''
 私有频道 private channel

@@ -18,9 +18,8 @@ class FundingAPI(Client):
         return self._request_with_params(GET, GET_BALANCES, params)
 
     # POST Account Configuration
-    def funds_transfer(self, ccy, amt, froms, to, type='0', subAcct='', instId='', toInstId='',loanTrans=''):
-        params = {'ccy': ccy, 'amt': amt, 'from': froms, 'to': to, 'type': type, 'subAcct': subAcct, 'instId': instId,
-                  'toInstId': toInstId,'loanTrans':loanTrans}
+    def funds_transfer(self, ccy, amt, froms, to, type='0', subAcct='', clientId='',loanTrans='',omitPosRisk=''):
+        params = {'ccy': ccy, 'amt': amt, 'from': froms, 'to': to, 'type': type, 'subAcct': subAcct,'clientId': clientId,'loanTrans':loanTrans,'omitPosRisk':omitPosRisk}
         return self._request_with_params(POST, FUNDS_TRANSFER, params)
 
     # Get Transfer State

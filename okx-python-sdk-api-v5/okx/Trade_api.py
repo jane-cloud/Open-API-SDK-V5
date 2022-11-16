@@ -40,8 +40,8 @@ class TradeAPI(Client):
         return self._request_with_params(POST, AMEND_BATCH_ORDER, orders_data)
 
     # Close Positions
-    def close_positions(self, instId, mgnMode, posSide='', ccy='',autoCxl=''):
-        params = {'instId': instId, 'mgnMode': mgnMode, 'posSide': posSide, 'ccy': ccy,'autoCxl':autoCxl}
+    def close_positions(self, instId, mgnMode, posSide='', ccy='',autoCxl='',clOrdId='',tag=''):
+        params = {'instId': instId, 'mgnMode': mgnMode, 'posSide': posSide, 'ccy': ccy,'autoCxl':autoCxl,'clOrdId':clOrdId,'tag':tag}
         return self._request_with_params(POST, CLOSE_POSITION, params)
 
     # Get Order Details
@@ -116,3 +116,27 @@ class TradeAPI(Client):
         params = {'instType': instType, 'uly': uly, 'instId': instId, 'ordId': ordId, 'after': after, 'before': before,
                   'limit': limit}
         return self._request_with_params(GET, ORDERS_FILLS_HISTORY, params)
+
+    def easy_convert_currency_list(self):
+        params = {}
+        return self._request_with_params(GET, EASY_CONVERT_CURRENCY_LIST, params)
+
+    def easy_convert(self, fromCcy = '', toCcy = ''):
+        params = {'fromCcy':fromCcy, 'toCcy':toCcy}
+        return self._request_with_params(POST, EASY_CONVERT, params)
+
+    def easy_convert_history(self, after = '', before = '', limit = ''):
+        params = {'after':after, 'before':before, 'limit':limit}
+        return self._request_with_params(GET, EASY_CONVERT_HISTORY, params)
+
+    def one_click_repay_currency_list(self, debtType = ''):
+        params = {'debtType':debtType}
+        return self._request_with_params(GET, ONE_CLICK_REPAY_CURRENCY_LIST, params)
+
+    def one_click_repay(self, debtCcy = '', repayCcy = ''):
+        params = {'debtCcy':debtCcy, 'repayCcy':repayCcy}
+        return self._request_with_params(POST, ONE_CLICK_REPAY, params)
+
+    def one_click_repay_history(self, after = '', before = '', limit = ''):
+        params = {'after':after, 'before':before, 'limit':limit}
+        return self._request_with_params(GET, ONE_CLICK_REPAY_HISTORY, params)

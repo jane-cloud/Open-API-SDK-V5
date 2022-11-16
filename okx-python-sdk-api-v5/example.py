@@ -45,9 +45,9 @@ if __name__ == '__main__':
     # 设置杠杆倍数  Set Leverage
     # result = accountAPI.set_leverage(instId='BTC-USD-210402', lever='10', mgnMode='cross')
     # 获取最大可交易数量  Get Maximum Tradable Size For Instrument
-    # result = accountAPI.get_maximum_trade_size('BTC-USDT-SWAP', 'cross', leverage='10')
+    # result = accountAPI.get_maximum_trade_size(instId='BTC-USDT-SWAP', tdMode='cross',ccy='',px='',leverage='10',unSpotOffset='false')
     # 获取最大可用数量  Get Maximum Available Tradable Amount
-    # result = accountAPI.get_max_avail_size('BTC-USDT-210402', 'isolated', 'BTC')
+    # result = accountAPI.get_max_avail_size(instId='BTC-USDT-SWAP', tdMode='isolated', ccy='BTC', reduceOnly='', unSpotOffset='false')
     # 调整保证金  Increase/Decrease margint
     # result = accountAPI.Adjustment_margin('BTC-USDT-210409', 'long', 'add', '100')
     # 获取杠杆倍数 Get Leverage
@@ -88,7 +88,7 @@ if __name__ == '__main__':
     # 获取资金账户余额信息  Get Balance
     # result = fundingAPI.get_balances('BTC')
     # 资金划转  Funds Transfer
-    # result = fundingAPI.funds_transfer(ccy='', amt='', type='1', froms="", to="",subAcct='')
+    # result = fundingAPI.funds_transfer(ccy='USDT', amt='1', type='1', froms="6", to="18",subAcct='',loanTrans='',clientId='',omitPosRisk='')
     # 获取资金划转状态 Transfer State
     # result = fundingAPI.transfer_state(transId='', type='')
     # 提币  Withdrawal
@@ -269,7 +269,7 @@ if __name__ == '__main__':
     #      ])
 
     # 市价仓位全平  Close Positions
-    # result = tradeAPI.close_positions('BTC-USDT-210409', 'isolated', 'long', '')
+    # result = tradeAPI.close_positions(instId='ADA-USDT-SWAP', posSide='', mgnMode='cross',ccy='', autoCxl='',clOrdId='',tag='')
     # 获取订单信息  Get Order Details
     # result = tradeAPI.get_orders('BTC-USD-201225', '257173039968825345')
     # 获取未成交订单列表  Get Order List
@@ -294,6 +294,18 @@ if __name__ == '__main__':
     # result = tradeAPI.order_algos_list('conditional', instType='FUTURES')
     # 获取历史策略委托单列表  Get Algo Order History
     # result = tradeAPI.order_algos_history('conditional', 'canceled', instType='FUTURES')
+    # 获取一键兑换主流币币种列表
+    # result = tradeAPI.easy_convert_currency_list()
+    # 一键兑换主流币交易
+    # result = tradeAPI.easy_convert(fromCcy = '', toCcy = '')
+    # 获取一键兑换主流币历史记录
+    # result = tradeAPI.easy_convert_history(after = '', before = '', limit = '')
+    # 获取一键还债币种列表
+    # result = tradeAPI.one_click_repay_currency_list(debtType = '')
+    # 一键还债交易
+    # result = tradeAPI.one_click_repay(debtCcy = '', repayCcy = '')
+    # 获取一键还债历史记录
+    # result = tradeAPI.one_click_repay_history(after = '', before = '', limit = '')
 
     # 子账户API subAccount
     subAccountAPI = SubAccount.SubAccountAPI(api_key, secret_key, passphrase, False, flag)
@@ -305,7 +317,7 @@ if __name__ == '__main__':
     # result = subAccountAPI.view_list()
     # 子账户间划转 Transfer between subAccounts
     # result = subAccountAPI.subAccount_transfer(ccy='USDT', amt='1', froms='6', to='6', fromSubAccount='1',
-    #                                            toSubAccount='2')
+    #                                            toSubAccount='2', loanTrans='', omitPosRisk='')
     # 查看被托管子账户列表 entrust-subaccount-list
     # result = subAccountAPI.entrust_subaccount_list(subAcct = '')
     # 重置子账户的APIKey Reset the apikey of the sub account
@@ -373,7 +385,7 @@ if __name__ == '__main__':
     # 设置可报价产品
     # result = RfqAPI.maker_instrument_settings(instType = 'SPOT', data = [{"uly":"","instId":""}])
     # 报价
-    result = RfqAPI.create_quote(rfqId = '', clQuoteId = '', quoteSide = 'buy', anonymous = 'True', expiresIn = '', legs = [{"px":"39450.0","sz":"200000","instId":"BTC-USDT-SWAP","side":"buy"}])
+    # result = RfqAPI.create_quote(rfqId = '', clQuoteId = '', quoteSide = 'buy', anonymous = 'True', expiresIn = '', legs = [{"px":"39450.0","sz":"200000","instId":"BTC-USDT-SWAP","side":"buy"}])
     # 取消报价单
     # result = RfqAPI.cancel_quote(quoteId = '', clQuoteId = '')
     # 批量取消报价单
