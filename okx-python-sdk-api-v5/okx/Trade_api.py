@@ -80,7 +80,7 @@ class TradeAPI(Client):
                          triggerPx='', orderPx='', tgtCcy='', pxVar='',
                          pxSpread='',
                          szLimit='', pxLimit='', timeInterval='', tpTriggerPxType='', slTriggerPxType='',
-                         callbackRatio='',callbackSpread='',activePx='',tag='',triggerPxType=''):
+                         callbackRatio='',callbackSpread='',activePx='',tag='',triggerPxType='',clOrdId=''):
         params = {'instId': instId, 'tdMode': tdMode, 'side': side, 'ordType': ordType, 'sz': sz, 'ccy': ccy,
                   'posSide': posSide, 'reduceOnly': reduceOnly, 'tpTriggerPx': tpTriggerPx, 'tpOrdPx': tpOrdPx,
                   'slTriggerPx': slTriggerPx, 'slOrdPx': slOrdPx, 'triggerPx': triggerPx, 'orderPx': orderPx,
@@ -88,7 +88,7 @@ class TradeAPI(Client):
                   'timeInterval': timeInterval,
                   'pxSpread': pxSpread, 'tpTriggerPxType': tpTriggerPxType, 'slTriggerPxType': slTriggerPxType,
                   'callbackRatio' : callbackRatio, 'callbackSpread':callbackSpread,'activePx':activePx,
-                  'tag':tag,'triggerPxType':triggerPxType,}
+                  'tag':tag,'triggerPxType':triggerPxType,'clOrdId':clOrdId}
         return self._request_with_params(POST, PLACE_ALGO_ORDER, params)
 
     # Cancel Algo Order
@@ -100,9 +100,9 @@ class TradeAPI(Client):
         return self._request_with_params(POST, Cancel_Advance_Algos, params)
 
     # Get Algo Order List
-    def order_algos_list(self, ordType, algoId='', instType='', instId='', after='', before='', limit=''):
+    def order_algos_list(self, ordType, algoId='', instType='', instId='', after='', before='', limit='',clOrdId=''):
         params = {'ordType': ordType, 'algoId': algoId, 'instType': instType, 'instId': instId, 'after': after,
-                  'before': before, 'limit': limit}
+                  'before': before, 'limit': limit,'clOrdId':clOrdId}
         return self._request_with_params(GET, ORDERS_ALGO_OENDING, params)
 
     # Get Algo Order History

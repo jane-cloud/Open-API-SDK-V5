@@ -65,3 +65,7 @@ class RfqAPI(Client):
     def maker_instrument_settings(self, instType='', data=[]):
         params = [{'instType': instType, 'data': data}]
         return self._request_with_params(POST, MARKET_INSTRUMENT_SETTINGS, params)
+
+    def mmp_reset(self):
+        params = {}
+        return self._request_with_params(POST, MMP_RESET, params)

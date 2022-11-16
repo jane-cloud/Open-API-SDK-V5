@@ -87,6 +87,8 @@ HISTORY_TRADES = '/api/v5/market/history-trades'
 BLOCK_TICKERS = '/api/v5/market/block-tickers'
 BLOCK_TICKER = '/api/v5/market/block-ticker'
 BLOCK_TRADES = '/api/v5/market/trades'
+HISTORY_INDEX_CANDLES = '/api/v5/market/history-index-candles'
+HISTORY_MARK_PRICE_CANDLES = '/api/v5/market/history-mark-price-candles'
 
 # Public Data
 INSTRUMENT_INFO = '/api/v5/public/instruments'
@@ -206,6 +208,7 @@ GET_QUOTES = '/api/v5/rfq/quotes'
 GET_RFQ_TRADES = '/api/v5/rfq/trades'
 GET_PUBLIC_TRADES = '/api/v5/rfq/public-trades'
 MARKET_INSTRUMENT_SETTINGS = '/api/v5/rfq/maker-instrument-settings'
+MMP_RESET = '/api/v5/rfq/mmp-reset'
 
 # tradingBot
 GRID_ORDER_ALGO = '/api/v5/tradingBot/grid/order-algo'

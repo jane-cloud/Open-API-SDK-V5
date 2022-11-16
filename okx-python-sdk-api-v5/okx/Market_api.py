@@ -97,3 +97,13 @@ class MarketAPI(Client):
     def get_block_trades(self, instId = ''):
         params = {'instId':instId}
         return self._request_with_params(GET, BLOCK_TRADES, params)
+
+    # Get history index candlesticks
+    def get_history_index_candlesticks(self, instId ='', after='', before='', bar='', limit=''):
+        params = {'instId': instId, 'after': after, 'before': before, 'bar': bar, 'limit': limit}
+        return self._request_with_params(GET, HISTORY_INDEX_CANDLES, params)
+
+    # Get history mark price candlesticks
+    def get_history_markprice_candlesticks(self, instId ='', after='', before='', bar='', limit=''):
+        params = {'instId': instId, 'after': after, 'before': before, 'bar': bar, 'limit': limit}
+        return self._request_with_params(GET, HISTORY_MARK_PRICE_CANDLES, params)

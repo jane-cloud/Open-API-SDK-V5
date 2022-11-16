@@ -154,8 +154,12 @@ if __name__ == '__main__':
     # result = marketAPI.get_history_candlesticks('BTC-USDT')
     # 获取指数K线数据  Get Index Candlesticks
     # result = marketAPI.get_index_candlesticks('BTC-USDT')
+    # 获取指数历史K线数据  Get History Index Candlesticks
+    # result = marketAPI.get_history_index_candlesticks(instId = 'BTC-USDT', after = '', before = '', bar = '', limit = '')
     # 获取标记价格K线数据  Get Mark Price Candlesticks
     # result = marketAPI.get_markprice_candlesticks('BTC-USDT')
+    # 获取标记价格历史K线数据  Get Mark Price Candlesticks
+    # result = marketAPI.get_history_markprice_candlesticks(instId = 'BTC-USDT', after = '', before = '', bar = '', limit = '')
     # 获取交易产品公共成交数据  Get Trades
     # result = marketAPI.get_trades('BTC-USDT', '400')
     # 获取平台24小时成交总量  Get Platform 24 Volume
@@ -285,7 +289,7 @@ if __name__ == '__main__':
     # 策略委托下单  Place Algo Order
     # result = tradeAPI.place_algo_order('BTC-USDT-SWAP', 'isolated', 'buy', ordType='conditional',
     #                                    sz='100',posSide='long', tpTriggerPx='60000', tpOrdPx='59999',
-    #                                   tpTriggerPxType = 'last', slTriggerPxType = 'last')
+    #                                   tpTriggerPxType = 'last', slTriggerPxType = 'last', clOrdId ='123456')
     # 撤销策略委托订单  Cancel Algo Order
     # result = tradeAPI.cancel_algo_order([{'algoId': '297394002194735104', 'instId': 'BTC-USDT-210409'}])
     # 撤销高级策略委托订单
@@ -363,9 +367,9 @@ if __name__ == '__main__':
     # FDBrokerAPI
     FDBrokerAPI = FDBroker.FDBrokerAPI(api_key, secret_key, passphrase, False, flag)
     # 生成返佣明细下载链接
-    # result = FDBrokerAPI.fd_rebate_per_orders(begin = '', end = '')
+    # result = FDBrokerAPI.fd_rebate_per_orders(begin = '', end = '', brokerType = '')
     # 获取返佣明细下载链接
-    # result = FDBrokerAPI.fd_get_rebate_per_orders(type = '', begin = '', end = '')
+    # result = FDBrokerAPI.fd_get_rebate_per_orders(type = '', begin = '', end = '', brokerType = '')
 
     # 大宗交易(Rfq)API
     RfqAPI = Rfq.RfqAPI(api_key, secret_key, passphrase, False, flag)
@@ -383,7 +387,9 @@ if __name__ == '__main__':
     # 执行报价
     # result = RfqAPI.execute_quote(rfqId = '', quoteId = '')
     # 设置可报价产品
-    # result = RfqAPI.maker_instrument_settings(instType = 'SPOT', data = [{"uly":"","instId":""}])
+    # result = RfqAPI.maker_instrument_settings(instType = 'SPOT', data = [{"uly":"","instId":"","maxBlockSz":"","makerPxBand":""}])
+    # 重设MMP状态
+    # result = RfqAPI.mmp_reset()
     # 报价
     # result = RfqAPI.create_quote(rfqId = '', clQuoteId = '', quoteSide = 'buy', anonymous = 'True', expiresIn = '', legs = [{"px":"39450.0","sz":"200000","instId":"BTC-USDT-SWAP","side":"buy"}])
     # 取消报价单
