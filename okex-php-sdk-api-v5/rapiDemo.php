@@ -93,7 +93,7 @@ $obj = new FundingApi(Config::$config);
 //获取账户资产估值
 //$res = $obj -> assetValuation('BTC');
 // 资金划转
-//$res = $obj -> transfer('USDT','8','1','18','18','shangguanlin123','','','');
+//$res = $obj -> transfer('USDT','8','','18','18','shangguanlin123','','','');
 //获取资金划转状态
 //$res = $obj -> transferState('203950','');
 // 获取资金流水
