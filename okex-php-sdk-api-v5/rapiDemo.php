@@ -22,7 +22,7 @@ use okv5\SubaccountApi;
 use okv5\StatusApi;
 use okv5\RubikApi;
 use okv5\BrokerApi;
-use okv5\ConvertApi;
+// use okv5\ConvertApi;
 
 /**
  * 账户 Account
@@ -32,7 +32,7 @@ $coin = "XMR";
 //查看账户持仓风险 Get Account
 //$res = $obj -> getAccountPositionRisk('SWAP');
 // 查看账户余额 Get Balance
-//$res = $obj -> getBalance('USDT');
+$res = $obj -> getBalance('UST');
 // 查看持仓信息 Get Positions
 //$res = $obj -> getPositions('SWAP','BTC-USDT-SWAP','');
 // 账单流水查询（近七天） Get Bills Details (last 7 days)
@@ -211,7 +211,7 @@ $obj = new PublicDataAPI(Config::$config);
  */
 $obj = new TradeAPI(Config::$config);
 // 下单 Place Order
-//$res = $obj -> order('ETH-USDT-SWAP','cross','','','','sell','','market',"300",'','','');
+//$res = $obj -> order('ETH-USDT-SWAP','','','','','sell','','market',"300",'','','');
 //批量下单 Batch Order
 //$res = $obj -> batchOrders([['BTC-USDT-210625','isolated','','b15','','buy','long','limit','1','60000',''],['BTC-USDT-210924','isolated','','b15','','buy','long','limit','1','60000','']]);
 // 撤单 Cancel Order
@@ -329,7 +329,7 @@ $obj = new BrokerApi(Config::$config);
 /**
  *闪兑
  */
-$obj = new ConvertApi(Config::$config);
+// $obj = new ConvertApi(Config::$config);
 //获取闪兑币种列表
 //$res = $obj -> currencies();
 //获取闪兑币对信息

@@ -11,7 +11,7 @@ class Utils
 
     static $textToSign = '';
 
-    const FUTURE_API_URL = 'https://www.okex.com';
+    const FUTURE_API_URL = 'https://www.okx.com';
 
     public function __construct($configs)
     {
