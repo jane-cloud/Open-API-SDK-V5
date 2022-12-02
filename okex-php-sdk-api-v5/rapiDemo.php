@@ -22,7 +22,7 @@ use okv5\SubaccountApi;
 use okv5\StatusApi;
 use okv5\RubikApi;
 use okv5\BrokerApi;
-// use okv5\ConvertApi;
+use okv5\ConvertApi;
 
 /**
  * 账户 Account
@@ -32,7 +32,7 @@ $coin = "XMR";
 //查看账户持仓风险 Get Account
 //$res = $obj -> getAccountPositionRisk('SWAP');
 // 查看账户余额 Get Balance
-$res = $obj -> getBalance('UST');
+// $res = $obj -> getBalance('UST');
 // 查看持仓信息 Get Positions
 //$res = $obj -> getPositions('SWAP','BTC-USDT-SWAP','');
 // 账单流水查询（近七天） Get Bills Details (last 7 days)
@@ -87,7 +87,7 @@ $instrumentId = "EOS-USDT";
 $currency = "EOS";
 $obj = new FundingApi(Config::$config);
 // 获取币种列表
-//$res = $obj -> getCurrencies();
+// $res = $obj -> getCurrencies('USDC');
 // 获取资金账户余额
 //$res = $obj -> getBalance('BTC');
 //获取账户资产估值
@@ -127,7 +127,7 @@ $obj = new FundingApi(Config::$config);
 //获取市场借贷历史（公共）
 //$res = $obj -> lendingRateHistory('BTC');
 //查看历史持仓信息
-$res = $obj -> positionsHistory('','BTC-USDT-SWAP','','','','','1');
+// $res = $obj -> positionsHistory('','BTC-USDT-SWAP','','','','','1');
 
 
 /**
@@ -147,7 +147,7 @@ $obj = new MarketDataAPI(Config::$config);
 // 获取产品深度 Get Order Book
 //$res = $obj->getBooks('ETC-USDT','10');
 // 获取所有交易产品K线数据 Get Candlesticksinstruments
-//$res = $obj->getCandles('BTC-USDT-SWAP','','','1m','21');
+// $res = $obj->getCandles('BTC-USDT-SWAP','','','1m','21');
 // 获取交易产品历史K线数据（仅主流币） Get Candlesticks History（top currencies only）
 //$res = $obj->getHistoryCandles('BTC-USDT-SWAP','','','30m','10');
 // 获取指数K线数据 Get Index Candlesticks
@@ -273,7 +273,7 @@ $obj = new StatusApi(Config::$config);
  *交易大数据
  */
 $obj = new RubikApi(Config::$config);
-//$res = $obj -> supportCoin();
+$res = $obj -> supportCoin();
 //$res = $obj -> takerVolume('BTC','SPOT','','','');
 //$res = $obj -> loanRatio('','','','');
 //$res = $obj -> accountRatio('','','','');
@@ -329,7 +329,7 @@ $obj = new BrokerApi(Config::$config);
 /**
  *闪兑
  */
-// $obj = new ConvertApi(Config::$config);
+$obj = new ConvertApi(Config::$config);
 //获取闪兑币种列表
 //$res = $obj -> currencies();
 //获取闪兑币对信息
@@ -337,7 +337,7 @@ $obj = new BrokerApi(Config::$config);
 //闪兑预估询价
 //$res = $obj -> estimateQuote('','','','','','','');
 //闪兑交易
-//$res = $obj -> trade('','','','','','','','');
+// $res = $obj -> trade('quoterUSDCUSDT','USDC','USDT','sell','1','USDT','test0324006','');
 //获取闪兑交易历史
 //$res = $obj -> history('','','','');
 

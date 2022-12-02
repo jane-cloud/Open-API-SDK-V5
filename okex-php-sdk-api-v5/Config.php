@@ -13,18 +13,13 @@ Config::$debug=0;
 
 Config::$config=[
 
-//        "apiKey"=>"cc80fa3c-fa46-4a5e-85ba-0dc1eff68100",
-//        "apiSecret"=>"B79A47B970546EC186D0B730F9755650",
-//        "passphrase"=>"123456",
-//    //    是否为模拟盘
-//        "paper"=>1
-//        "apiKey"=>"a838576f-0145-4dcd-bce5-2ac84282c2e5",
-//        "apiSecret"=>"8EE8379E23032E8F0DC3E6ECC93BBBD3",
-//        "passphrase"=>"123456",
-    //    是否为模拟盘
-//        "paper"=>1
-    "apiKey"=>"1cf0cbdc-3877-4cb0-a15e-ff51b1088cfc",
-    "apiSecret"=>"FA83160FDFEE35997CB9C67FC805D148",
-    "passphrase"=>"123456",
+       "apiKey"=>"ce25cb5e-d9a6-48f4-9b99-f5fd30726032",
+       "apiSecret"=>"3991B5A72B37052F4B03DA7B669B5F47",
+       "passphrase"=>"Sgl1997.",
+   //    是否为模拟盘
+       "paper"=>1
+    // "apiKey"=>"a8d457ac-ae55-4836-b2ff-0406f110041d",
+    // "apiSecret"=>"A64DF9A671D5D471CB0BDEE1DCF909F6",
+    // "passphrase"=>"Sgl1997.",
 
 ];

@@ -129,7 +129,7 @@ $coin = "EOS";
 //限价频道
 //$obj->subscribe($callbackTime,'{"channel":"price-limit","instId":"BTC-USD-SWAP"}');
 //深度频道
-//$obj->subscribe($callbackTime,'{"channel":"books-l2-tbt","instId":"API3-USDT"}');
+// $obj->subscribe($callbackTime,'{"channel":"bbo-tbt","instId":"CSPR-USDT"}');
 //期权定价频道
 //$obj->subscribe($callbackTime,'{"channel":"opt-summary","uly":"BTC-USD"}');
 //资金费率频道
@@ -148,11 +148,11 @@ $obj = new PrivateChannels(Config::$config);
 //账户频道
 //$obj->subscribe($callbackTime,'{"channel":"account","ccy":"OP"}');
 //持仓频道
-$obj->subscribe($callbackTime,'{"channel":"positions","instType":"ANY"}');
+// $obj->subscribe($callbackTime,'{"channel":"positions","instType":"ANY"}');
 //账户余额和持仓频道
 //$obj->subscribe($callbackTime,'{"channel":"balance_and_position"}');
 //订单频道
-//$obj->subscribe($callbackTime,'{"channel":"orders","instType":"SWAP","instId":"BTC-USDT-SWAP"}');
+$obj->subscribe($callbackTime,'{"channel":"orders","instType":"SWAP","instId":"SHIB-USDT-SWAP"}');
 //策略委托订单频道
 //$obj->subscribe($callbackTime,'{"channel":"orders-algo","instType":"SWAP","uly":"BTC-USDT","instId":"BTC-USDT-SWAP"}');
 //$obj->subscribe($callbackTime,'{"channel":"algo-advance","instType":"SWAP","instId":"","algoId":""}');
