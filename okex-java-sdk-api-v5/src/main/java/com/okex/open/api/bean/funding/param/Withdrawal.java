@@ -9,6 +9,8 @@ public class Withdrawal {
     private String clientId;
     private String wdId;
 
+    private String areaCode;
+
     @Override
     public String toString() {
         return "Withdrawal{" +
@@ -22,7 +24,16 @@ public class Withdrawal {
                 ", invoice='" + invoice + '\'' +
                 ", memo='" + memo + '\'' +
                 ", fee='" + fee + '\'' +
+                ", areaCode='" + areaCode + '\'' +
                 '}';
+    }
+
+    public String getAreaCode() {
+        return areaCode;
+    }
+
+    public void setAreaCode(String areaCode) {
+        this.areaCode = areaCode;
     }
 
     public String getWdId() {

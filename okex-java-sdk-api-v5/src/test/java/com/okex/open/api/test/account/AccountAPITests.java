@@ -139,7 +139,7 @@ public class AccountAPITests extends  AccountAPIBaseTests {
      */
     @Test
     public void getMaximumAvailableTradableAmount(){
-        JSONObject result = this.accountAPIService.getMaximumAvailableTradableAmount("BTC-USDT-SWAP","isolated","",false,"",false);
+        JSONObject result = this.accountAPIService.getMaximumAvailableTradableAmount("BTC-USDT-SWAP","isolated","",false,"",false,"");
         toResultString(LOG, "result", result);
     }
 
@@ -275,6 +275,7 @@ public class AccountAPITests extends  AccountAPIBaseTests {
         accountBorrowRepay.setCcy("BTC");
         accountBorrowRepay.setSide("repay");
         accountBorrowRepay.setAmt("0.1");
+        accountBorrowRepay.setOrdId("");
         JSONObject result = this.accountAPIService.borrowRepay(accountBorrowRepay);
         toResultString(LOG, "result", result);
     }
@@ -355,6 +356,71 @@ public class AccountAPITests extends  AccountAPIBaseTests {
     @Test
     public void getPositionTiers(){
         JSONObject result = this.accountAPIService.getPositionTiers("","","");
+        toResultString(LOG, "result", result);
+    }
+    /**
+     * 获取尊享借币计息记录 vip-interest-accrued
+     * GET /api/v5/account/vip-interest-accrued
+     */
+    @Test
+    public void getVipInterestAccrued(){
+        JSONObject result = this.accountAPIService.getVipInterestAccrued("","","","","");
+        toResultString(LOG, "result", result);
+    }
+
+    /**
+     * 尊享借币订单列表 vip-loan-order-list
+     * GET /api/v5/account/vip-loan-order-list
+     */
+    @Test
+    public void getVipLoanOrderList(){
+        JSONObject result = this.accountAPIService.getVipLoanOrderList("","","","","","");
+        toResultString(LOG, "result", result);
+    }
+
+    /**
+     * 尊享借币订单详情 vip-loan-order-detail
+     * GET /api/v5/account/vip-loan-order-detail
+     */
+    @Test
+    public void getVipLoanOrderDetail(){
+        JSONObject result = this.accountAPIService.getVipLoanOrderDetail("","","","","");
+        toResultString(LOG, "result", result);
+    }
+    /**
+     * 一键借币模式手动借币还币  quick-margin-borrow-repay
+     * POST /api/v5/account/quick-margin-borrow-repay
+     */
+    @Test
+    public void QuickMarginBorrowRepay(){
+        AccountQuickBorrowRepay accountBorrowRepay = new AccountQuickBorrowRepay();
+        accountBorrowRepay.setCcy("BTC");
+        accountBorrowRepay.setSide("repay");
+        accountBorrowRepay.setAmt("0.1");
+        accountBorrowRepay.setInstId("");
+        JSONObject result = this.accountAPIService.QuickMarginBorrowRepay(accountBorrowRepay);
+        toResultString(LOG, "result", result);
+    }
+    /**
+     * 获取一键借币还币历史 borrow-repay-history
+     * GET /api/v5/account/borrow-repay-history
+     */
+    @Test
+    public void getMarginBorrowRepayHistory(){
+        JSONObject result = this.accountAPIService.getMarginBorrowRepayHistory("","","","","","","","");
+        toResultString(LOG, "result", result);
+    }
+
+    /**
+     * 设置组合保证金账户风险对冲模式 set-riskOffset-type
+     * POST /api/v5/account/set-riskOffset-type
+     */
+    @Test
+    public void setRiskOffsetType(){
+        IncreaseDecreaseMargin increaseDecreaseMargin = new IncreaseDecreaseMargin();
+        increaseDecreaseMargin.setType("1");
+
+        JSONObject result = this.accountAPIService.setRiskOffsetType(increaseDecreaseMargin);
         toResultString(LOG, "result", result);
     }
 }

@@ -130,4 +130,9 @@ public class BrokerAPIServiceImpl implements BrokerAPIService {
 
     }
 
+    @Override
+    public JSONObject getSubaccountWithdrawalHistory(String subAcct, String ccy, String wdId, String clientId, String txId, String type, String state, String after, String before, String limit) {
+        return this.client.executeSync(this.api.getSubaccountWithdrawalHistory(subAcct, ccy, wdId,clientId,  txId,  type,  state,  after,  before,  limit));
+    }
+
 }

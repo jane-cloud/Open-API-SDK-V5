@@ -10,6 +10,16 @@ public class CreateQuote {
     private Boolean anonymous;
     private String expiresIn;
 
+    public String getTag() {
+        return tag;
+    }
+
+    public void setTag(String tag) {
+        this.tag = tag;
+    }
+
+    private String tag;
+
     public String getRfqId() {
         return rfqId;
     }

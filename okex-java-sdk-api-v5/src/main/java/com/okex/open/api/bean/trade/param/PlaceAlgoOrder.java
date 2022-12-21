@@ -11,6 +11,16 @@ public class PlaceAlgoOrder {
     private Boolean reduceOnly;
     private String clOrdId;
 
+    public String getCloseFraction() {
+        return closeFraction;
+    }
+
+    public void setCloseFraction(String closeFraction) {
+        this.closeFraction = closeFraction;
+    }
+
+    private String closeFraction;
+
     public String getClOrdId() {
         return clOrdId;
     }
@@ -47,6 +57,16 @@ public class PlaceAlgoOrder {
 
     //时间加权（其他参数跟冰山委托一致）
     private String timeInterval;
+
+    public String getQuickMgnType() {
+        return quickMgnType;
+    }
+
+    public void setQuickMgnType(String quickMgnType) {
+        this.quickMgnType = quickMgnType;
+    }
+
+    private String quickMgnType;
 
     public String getCallbackRatio() {
         return callbackRatio;

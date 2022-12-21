@@ -130,6 +130,7 @@ public class FundingAPITests extends FundingAPIBaseTests {
         withdrawal.setToAddr("46674851");
         withdrawal.setFee("1");
         withdrawal.setClientId(null);
+        withdrawal.setAreaCode(null);
         JSONObject result = fundingAPIService.Withdrawal(withdrawal);
         toResultString(LOG, "result", result);
     }
@@ -262,7 +263,15 @@ public class FundingAPITests extends FundingAPIBaseTests {
         JSONObject result = fundingAPIService.cancelWithdrawal(cancelWithdrawal);
         toResultString(LOG, "result", result);
     }
-
+    /**
+     * 获取不可交易资产 Get non-tradable-assets
+     * GET /api/v5/asset/non-tradable-assets
+     */
+    @Test
+    public void getNonTradableAssets(){
+        JSONObject result = fundingAPIService.getNonTradableAssets("USDT");
+        toResultString(LOG,"result",result);
+    }
 
 
 

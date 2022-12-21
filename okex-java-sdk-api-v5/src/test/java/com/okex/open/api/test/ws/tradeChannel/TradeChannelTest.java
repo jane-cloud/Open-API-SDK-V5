@@ -53,6 +53,7 @@ public class TradeChannelTest {
 //        order.put("reduceOnly",false);
 //        order.put("tgtCcy","base_ccy");
 //        order.put("banAmend",false);
+        order.put("quickMgnType","");
 
         placeOrder.add(order);
 
@@ -90,6 +91,7 @@ public class TradeChannelTest {
         order1.put("sz","1");
         order1.put("reduceOnly",false);
         order1.put("tgtCcy","base_ccy");
+        order1.put("quickMgnType","");
 //        order1.put("banAmend",false);
 
         Map order2 =new HashMap();
@@ -106,6 +108,7 @@ public class TradeChannelTest {
         order2.put("reduceOnly",false);
 //        order2.put("tgtCcy","base_ccy");
         order2.put("banAmend",false);
+        order2.put("quickMgnType","");
 
         placeMultipleOrders.add(order1);
         placeMultipleOrders.add(order2);

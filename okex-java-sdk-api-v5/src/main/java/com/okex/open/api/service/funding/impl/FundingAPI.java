@@ -84,4 +84,7 @@ interface FundingAPI {
 
     @POST("/api/v5/asset/cancel-withdrawal")
     Call<JSONObject> cancelWithdrawal(@Body JSONObject parseObject);
+
+    @GET("/api/v5/asset/non-tradable-assets")
+    Call<JSONObject> getNonTradableAssets(@Query("ccy") String ccy);
 }

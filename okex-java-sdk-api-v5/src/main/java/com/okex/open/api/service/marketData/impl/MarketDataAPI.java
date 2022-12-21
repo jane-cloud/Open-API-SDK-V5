@@ -95,8 +95,6 @@ interface MarketDataAPI {
     @GET("/api/v5/market/block-trades")
     Call<JSONObject> getBlockTrades(@Query("instId") String instId);
 
-
-
-
-
+    @GET("/api/v5/market/option/instrument-family-trades")
+    Call<JSONObject> getInstrumentFamilyTrades(@Query("instFamily") String instFamily);
 }

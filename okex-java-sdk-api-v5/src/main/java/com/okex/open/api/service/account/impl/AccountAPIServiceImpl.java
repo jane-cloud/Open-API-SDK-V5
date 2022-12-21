@@ -75,8 +75,8 @@ public class AccountAPIServiceImpl implements AccountAPIService {
 
     //获取最大可用数量 Get Maximum Available Tradable Amount
     @Override
-    public JSONObject getMaximumAvailableTradableAmount(String instId, String tdMode, String ccy, Boolean reduceOnly,String px,Boolean unSpotOffset) {
-        return this.client.executeSync(this.api.getMaximumAvailableTradableAmount(instId,tdMode,ccy,reduceOnly,px,unSpotOffset));
+    public JSONObject getMaximumAvailableTradableAmount(String instId, String tdMode, String ccy, Boolean reduceOnly,String px,Boolean unSpotOffset, String quickMgnType) {
+        return this.client.executeSync(this.api.getMaximumAvailableTradableAmount(instId,tdMode,ccy,reduceOnly,px,unSpotOffset,quickMgnType));
     }
 
     //调整保证金 Increase/Decrease margin
@@ -178,5 +178,35 @@ public class AccountAPIServiceImpl implements AccountAPIService {
     @Override
     public JSONObject getPositionTiers(String instType, String uly,String instFamily) {
         return this.client.executeSync(this.api.getPositionTiers(instType,uly,instFamily));
+    }
+
+    @Override
+    public JSONObject getVipInterestAccrued(String ccy, String ordId, String after, String before, String limit) {
+        return this.client.executeSync(this.api.getVipInterestAccrued(ccy,ordId,after,before,limit));
+    }
+
+    @Override
+    public JSONObject getVipLoanOrderList(String ordId, String state, String ccy, String after, String before, String limit) {
+        return this.client.executeSync(this.api.getVipLoanOrderList(ordId,state,ccy,after,before,limit));
+    }
+
+    @Override
+    public JSONObject getVipLoanOrderDetail(String ccy, String ordId, String after, String before, String limit) {
+        return this.client.executeSync(this.api.getVipLoanOrderDetail(ccy,ordId,after,before,limit));
+    }
+
+    @Override
+    public JSONObject QuickMarginBorrowRepay(AccountQuickBorrowRepay accountBorrowRepay) {
+        return this.client.executeSync(this.api.QuickMarginBorrowRepay(JSONObject.parseObject(JSON.toJSONString(accountBorrowRepay))));
+    }
+
+    @Override
+    public JSONObject getMarginBorrowRepayHistory(String instId, String ccy, String side, String after, String before, String begin, String end, String limit) {
+        return this.client.executeSync(this.api.getMarginBorrowRepayHistory(instId,ccy,side,after,before,begin,end,limit));
+    }
+
+    @Override
+    public JSONObject setRiskOffsetType(IncreaseDecreaseMargin increaseDecreaseMargin) {
+        return this.client.executeSync(this.api.setRiskOffsetType(JSONObject.parseObject(JSON.toJSONString(increaseDecreaseMargin))));
     }
 }

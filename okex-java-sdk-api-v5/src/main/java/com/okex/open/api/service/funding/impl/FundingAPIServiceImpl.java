@@ -137,4 +137,9 @@ public class FundingAPIServiceImpl implements FundingAPIService {
         return this.client.executeSync(this.api.cancelWithdrawal(JSONObject.parseObject(JSON.toJSONString(cancelWithdrawal))));
 
     }
+
+    @Override
+    public JSONObject getNonTradableAssets(String ccy) {
+        return this.client.executeSync(this.api.getNonTradableAssets(ccy));
+    }
 }

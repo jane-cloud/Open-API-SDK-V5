@@ -55,4 +55,6 @@ public interface BlockTradingAPIService {
 
     //获取大宗交易公共成交数据 Get public trades
     JSONObject getPublicTrades(String beginId, String endId, String limit);
+
+    JSONObject getMakerInstrumentSettings();
 }

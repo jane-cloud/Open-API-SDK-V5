@@ -7,6 +7,15 @@ public class CreateRfq {
     private Boolean anonymous;
     private String  clRfqId;
 
+    public String getTag() {
+        return tag;
+    }
+
+    public void setTag(String tag) {
+        this.tag = tag;
+    }
+
+    private String  tag;
     public Boolean getAllowPartialExecution() {
         return allowPartialExecution;
     }

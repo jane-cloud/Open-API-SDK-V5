@@ -35,7 +35,7 @@ public interface AccountAPIService {
     JSONObject getMaximumTradableSizeForInstrument(String instId,String tdMode,String ccy,String px,String leverage,Boolean unSpotOffset);
 
     //获取最大可用数量 Get Maximum Tradable Size For Instrument
-    JSONObject getMaximumAvailableTradableAmount(String instId,String tdMode,String ccy,Boolean reduceOnly,String px,Boolean unSpotOffset);
+    JSONObject getMaximumAvailableTradableAmount(String instId,String tdMode,String ccy,Boolean reduceOnly,String px,Boolean unSpotOffset,String quickMgnType);
 
     //调整保证金 Increase/Decrease margin
      JSONObject increaseDecreaseMargin(IncreaseDecreaseMargin increaseDecreaseMargin);
@@ -86,4 +86,17 @@ public interface AccountAPIService {
 
     //获取组合保证金模式全仓限制
     JSONObject getPositionTiers(String instType, String uly,String instFamily);
+
+//获取尊享借币计息记录
+    JSONObject getVipInterestAccrued(String ccy, String ordId, String after, String before, String limit);
+//尊享借币订单列表
+    JSONObject getVipLoanOrderList(String ordId, String state, String ccy, String after, String before, String limit);
+
+    JSONObject getVipLoanOrderDetail(String ccy, String ordId, String after, String before, String limit);
+
+    JSONObject QuickMarginBorrowRepay(AccountQuickBorrowRepay accountBorrowRepay);
+
+    JSONObject getMarginBorrowRepayHistory(String instId, String ccy, String side, String after, String before, String begin, String end, String limit);
+
+    JSONObject setRiskOffsetType(IncreaseDecreaseMargin increaseDecreaseMargin);
 }

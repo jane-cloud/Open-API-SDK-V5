@@ -1,6 +1,7 @@
 package com.okex.open.api.service.account.impl;
 
 import com.alibaba.fastjson.JSONObject;
+import com.okex.open.api.bean.account.param.AccountQuickBorrowRepay;
 import retrofit2.Call;
 import retrofit2.http.*;
 
@@ -62,7 +63,7 @@ public interface AccountAPI {
 
     //获取最大可用数量 Get Maximum Tradable Size For Instrument
     @GET("/api/v5/account/max-avail-size")
-    Call<JSONObject> getMaximumAvailableTradableAmount(@Query("instId") String instId,@Query("tdMode") String tdMode,@Query("ccy") String ccy,@Query("reduceOnly") Boolean reduceOnly,@Query("px") String px,@Query("unSpotOffset") Boolean unSpotOffset);
+    Call<JSONObject> getMaximumAvailableTradableAmount(@Query("instId") String instId,@Query("tdMode") String tdMode,@Query("ccy") String ccy,@Query("reduceOnly") Boolean reduceOnly,@Query("px") String px,@Query("unSpotOffset") Boolean unSpotOffset,@Query("quickMgnType") String quickMgnType);
 
     //调整保证金 Increase/Decrease margin
     @POST("/api/v5/account/position/margin-balance")
@@ -131,4 +132,18 @@ public interface AccountAPI {
     //获取组合保证金模式全仓限制
     @GET("/api/v5/account/position-tiers")
     Call<JSONObject> getPositionTiers(@Query("instType") String instType,@Query("uly")  String uly,@Query("instFamily")  String instFamily);
+//获取尊享借币计息记录
+    @GET("/api/v5/account/vip-interest-accrued")
+    Call<JSONObject>  getVipInterestAccrued(@Query("ccy") String ccy,@Query("ordId")  String ordId,@Query("after")  String after,@Query("before")  String before,@Query("limit")  String limit);
+    @GET("/api/v5/account/vip-loan-order-list")
+    Call<JSONObject>  getVipLoanOrderList(@Query("ordId") String ordId, @Query("state") String state, @Query("ccy") String ccy, @Query("after") String after, @Query("before") String before, @Query("limit") String limit);
+    @GET("/api/v5/account/vip-loan-order-detail")
+    Call<JSONObject>  getVipLoanOrderDetail(@Query("ccy") String ccy,@Query("ordId")  String ordId,@Query("after")  String after,@Query("before")  String before,@Query("limit")  String limit);
+    @POST("/api/v5/account/simulated_margin")
+    Call<JSONObject> QuickMarginBorrowRepay(@Body JSONObject parseObject);
+    @GET("/api/v5/account/borrow-repay-history")
+    Call<JSONObject> getMarginBorrowRepayHistory(@Query("instId") String instId,@Query("ccy")  String ccy,@Query("side")  String side,@Query("after")  String after,@Query("before")  String before,@Query("begin")  String begin,@Query("end")  String end,@Query("limit")  String limit);
+
+    @POST("/api/v5/account/set-riskOffset-type")
+    Call<JSONObject> setRiskOffsetType(@Body JSONObject parseObject);
 }

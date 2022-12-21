@@ -1,19 +1,20 @@
 package com.okex.open.api.bean.account.param;
 
-public class AccountBorrowRepay {
+public class AccountQuickBorrowRepay {
     private String ccy;
     private String side;
     private String amt;
 
-    public String getOrdId() {
-        return ordId;
+    public String getInstId() {
+        return instId;
     }
 
-    public void setOrdId(String ordId) {
-        this.ordId = ordId;
+    public void setInstId(String instId) {
+        this.instId = instId;
     }
 
-    private String ordId;
+    private String instId;
+
     public String getAmt() {
         return amt;
     }
@@ -39,11 +40,11 @@ public class AccountBorrowRepay {
     }
     @Override
     public String toString() {
-        return "AccountBorrowRepay{" +
+        return "AccountQuickBorrowRepay{" +
                 "ccy='" + ccy + '\'' +
                 "side='" + side + '\'' +
                 "amt='" + amt + '\'' +
-                "ordId='" + ordId + '\'' +
+                "instId='" + instId + '\'' +
                 '}';
     }
 }

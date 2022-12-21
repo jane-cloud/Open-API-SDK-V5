@@ -8,7 +8,7 @@ public class MarketDataAPIBaseTest extends BaseTests {
     public APIConfiguration config() {
         APIConfiguration config = new APIConfiguration();
 
-        config.setEndpoint("https://www.okx.com/");
+        config.setEndpoint("https://www.ouyicn.blue/");
 
         config.setApiKey("");
         config.setSecretKey("");

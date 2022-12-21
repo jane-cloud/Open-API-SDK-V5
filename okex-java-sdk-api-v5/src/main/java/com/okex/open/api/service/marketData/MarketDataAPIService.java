@@ -71,4 +71,5 @@ public interface MarketDataAPIService {
     //获取大宗交易公共成交数据  Get block trades
     JSONObject getBlockTrades(@Query("instId") String instId);
 
+    JSONObject getInstrumentFamilyTrades(String instFamily);
 }

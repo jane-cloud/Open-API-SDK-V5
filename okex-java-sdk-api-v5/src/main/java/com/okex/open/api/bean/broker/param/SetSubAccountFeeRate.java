@@ -8,6 +8,15 @@ public class SetSubAccountFeeRate {
     private String chgMaker;
     private String effDate;
 
+    public String getMgnType() {
+        return mgnType;
+    }
+
+    public void setMgnType(String mgnType) {
+        this.mgnType = mgnType;
+    }
+
+    private String mgnType;
     public String getSubAcct() {
         return subAcct;
     }

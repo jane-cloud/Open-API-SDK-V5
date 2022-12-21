@@ -232,6 +232,14 @@ public class MarketDataAPITest extends MarketDataAPIBaseTest {
         JSONObject result = this.marketDataAPIService.getBlockTrades("BTC-USDT");
         this.toResultString(MarketDataAPITest.LOG,"result",result);
     }
-
+    /**
+     * 获取期权品种公共成交数据 Get instrument-family-trades
+     * GET /api/v5/market/option/instrument-family-trades
+     */
+    @Test
+    public void getInstrumentFamilyTrades(){
+        JSONObject result = this.marketDataAPIService.getInstrumentFamilyTrades("BTC-USD");
+        this.toResultString(MarketDataAPITest.LOG,"result",result);
+    }
 
 }

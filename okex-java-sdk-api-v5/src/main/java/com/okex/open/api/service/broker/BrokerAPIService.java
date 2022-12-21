@@ -63,4 +63,5 @@ public interface BrokerAPIService {
     //重置子账户充值地址    modify-subaccount-deposit-address
     JSONObject modifySubaccountDepositAddress(SubAccountDepositAddress subAccountDepositAddress);
 
+    JSONObject getSubaccountWithdrawalHistory(String subAcct, String ccy, String wdId, String clientId  , String txId, String type, String state, String after, String before	, String limit);
 }

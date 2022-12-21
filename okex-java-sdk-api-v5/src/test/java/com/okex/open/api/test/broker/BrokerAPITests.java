@@ -153,6 +153,7 @@ public class BrokerAPITests extends BrokerAPIBaseTests{
         setSubAccountFeeRate.setChgTaker("1%");
         setSubAccountFeeRate.setChgMaker("1%");
         setSubAccountFeeRate.setEffDate("20211226");
+        setSubAccountFeeRate.setMgnType("");
         JSONObject result = this.brokerAPIService.setSubAccountFeeRate(setSubAccountFeeRate);
         toResultString(LOG, "result", result);
     }
@@ -265,6 +266,16 @@ public class BrokerAPITests extends BrokerAPIBaseTests{
         subAccountDepositAddress.setAddr("");
         subAccountDepositAddress.setTo("");
         JSONObject result = this.brokerAPIService.modifySubaccountDepositAddress(subAccountDepositAddress);
+        toResultString(LOG, "result", result);
+    }
+
+    /**
+     * 获取子账户提币记录  Get subaccount-withdrawal-history
+     * GET /api/v5/asset/broker/nd/subaccount-withdrawal-history
+     */
+    @Test
+    public void getSubaccountWithdrawalHistory(){
+        JSONObject result = this.brokerAPIService.getSubaccountWithdrawalHistory("","","","","","","","","","");
         toResultString(LOG, "result", result);
     }
 

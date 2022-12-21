@@ -40,10 +40,18 @@ public class TradeAPITest extends TradeAPIBaseTest {
         placeOrder.setPosSide("short");
         placeOrder.setOrdType("market");
         placeOrder.setSz("1");
+        placeOrder.setQuickMgnType("");
 //        placeOrder.setPx("60000");
 //        placeOrder.setReduceOnly(false);
 //        placeOrder.setTgtCcy("");
 //        placeOrder.setBanAmend(false);
+        //止盈止损参数
+        /*placeOrder.setSlTriggerPx("");
+        placeOrder.setSlOrdPx("");
+        placeOrder.setSlTriggerPxType("");
+        placeOrder.setTpOrdPx("");
+        placeOrder.setTpTriggerPx("");
+        placeOrder.setTpTriggerPxType("");*/
 
         JSONObject result = tradeAPIService.placeOrder(placeOrder);
 
@@ -72,9 +80,16 @@ public class TradeAPITest extends TradeAPIBaseTest {
         placeOrder1.setSz("10");
         placeOrder1.setPx("0.09");
         placeOrder1.setReduceOnly(null);
+        placeOrder1.setQuickMgnType("");
 //        placeOrder1.setTgtCcy("");
 //        placeOrder1.setBanAmend(false);
-
+        //止盈止损参数
+        /*placeOrder1.setSlTriggerPx("");
+        placeOrder1.setSlOrdPx("");
+        placeOrder1.setSlTriggerPxType("");
+        placeOrder1.setTpOrdPx("");
+        placeOrder1.setTpTriggerPx("");
+        placeOrder1.setTpTriggerPxType("");*/
 
         PlaceOrder placeOrder2=new PlaceOrder();
         placeOrder2.setInstId("BTC-USDT-211231");
@@ -88,9 +103,16 @@ public class TradeAPITest extends TradeAPIBaseTest {
         placeOrder2.setSz("2");
         placeOrder2.setPx("24633");
         placeOrder2.setReduceOnly(null);
+        placeOrder2.setQuickMgnType("");
 //        placeOrder2.setTgtCcy("");
 //        placeOrder2.setBanAmend(false);
-
+        //止盈止损参数
+        /*placeOrder2.setSlTriggerPx("");
+        placeOrder2.setSlOrdPx("");
+        placeOrder2.setSlTriggerPxType("");
+        placeOrder2.setTpOrdPx("");
+        placeOrder2.setTpTriggerPx("");
+        placeOrder2.setTpTriggerPxType("");*/
 
         placeOrders.add(placeOrder1);
         placeOrders.add(placeOrder2);
@@ -309,10 +331,11 @@ public class TradeAPITest extends TradeAPIBaseTest {
         placeAlgoOrder.setOrdType("conditional");
         placeAlgoOrder.setClOrdId("");
         placeAlgoOrder.setSz("1");
+        //placeAlgoOrder.setCloseFraction("");
         placeAlgoOrder.setReduceOnly(false);
 //        placeAlgoOrder.setTgtCcy("");
         //placeAlgoOrder.setTag("");
-
+        placeAlgoOrder.setQuickMgnType("");
 //        止盈止损 Stop Order
         placeAlgoOrder.setTpTriggerPx("45000");
         placeAlgoOrder.setTpOrdPx("44000");

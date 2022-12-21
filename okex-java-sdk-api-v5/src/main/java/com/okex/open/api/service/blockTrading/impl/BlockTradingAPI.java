@@ -99,5 +99,6 @@ public interface BlockTradingAPI {
                                      @Query("endId") String endId,
                                      @Query("limit") String limit);
 
-
+    @GET("/api/v5/rfq/maker-instrument-settings")
+    Call<JSONObject> getMakerInstrumentSettings();
 }

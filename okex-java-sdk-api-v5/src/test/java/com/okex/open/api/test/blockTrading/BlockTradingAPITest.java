@@ -50,12 +50,14 @@ public class BlockTradingAPITest extends BlockTradingAPIBaseTest {
         legs.setSide("buy");
         legs.setSz("0.1");
         legs.setTgtCcy("base_ccy");
+        legs.setPosSide("");
 
         Legs legs1 = new Legs();
         legs1.setInstId("ETH-USDT");
         legs1.setSide("buy");
         legs1.setSz("0.4");
         legs1.setTgtCcy("base_ccy");
+        legs1.setPosSide("");
 
         List<Legs> legsList = new ArrayList<Legs>();
         legsList.add(legs);
@@ -67,6 +69,7 @@ public class BlockTradingAPITest extends BlockTradingAPIBaseTest {
         createRfq.setAllowPartialExecution(false);
         createRfq.setLegs(legsList);
         createRfq.setCounterparties(counterpartiesList);
+        createRfq.setTag("");
 
         JSONObject result = this.blockTradingAPIService.createRfq(createRfq);
         toResultString(LOG, "result", result);
@@ -220,6 +223,7 @@ public class BlockTradingAPITest extends BlockTradingAPIBaseTest {
         legs.setPx("29700");
         legs.setSide("buy");
         legs.setTgtCcy("base_ccy");
+        legs.setPosSide("");
 
         legsList.add(legs);
 
@@ -231,7 +235,7 @@ public class BlockTradingAPITest extends BlockTradingAPIBaseTest {
         createQuote.setLegs(legsList);
         createQuote.setExpiresIn("");
         createQuote.setAnonymous(false);
-
+        createQuote.setTag("");
         JSONObject result = this.blockTradingAPIService.createQuote(createQuote);
         toResultString(LOG, "result", result);
     }
@@ -323,7 +327,15 @@ public class BlockTradingAPITest extends BlockTradingAPIBaseTest {
         toResultString(LOG, "result", result);
     }
 
-
+    /**
+     * 获取可报价产品 Get maker-instrument-settings
+     * GET /api/v5/rfq/maker-instrument-settings
+     */
+    @Test
+    public void getMakerInstrumentSettings(){
+        JSONObject result = this.blockTradingAPIService.getMakerInstrumentSettings();
+        toResultString(LOG, "result", result);
+    }
 
 
 

@@ -65,4 +65,6 @@ public interface FundingAPIService {
 
     //撤销提币
     JSONObject cancelWithdrawal(Withdrawal cancelWithdrawal);
+
+    JSONObject getNonTradableAssets(String ccy);
 }

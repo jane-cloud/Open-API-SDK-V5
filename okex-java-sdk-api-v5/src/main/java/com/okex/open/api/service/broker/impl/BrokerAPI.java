@@ -106,4 +106,7 @@ public interface BrokerAPI {
     //重置子账户充值地址    modify-subaccount-deposit-address
     @POST("/api/v5/asset/broker/nd/modify-subaccount-deposit-address")
     Call<JSONObject> modifySubaccountDepositAddress(@Body JSONObject parseObject);
+
+    @GET("/api/v5/asset/broker/nd/subaccount-withdrawal-history")
+    Call<JSONObject> getSubaccountWithdrawalHistory(@Query("subAcct") String subAcct,@Query("ccy")  String ccy,@Query("wdId")  String wdId, @Query("clientId") String clientId, @Query("txId") String txId, @Query("type") String type, @Query("state") String state, @Query("after") String after, @Query("before") String before, @Query("limit") String limit);
 }

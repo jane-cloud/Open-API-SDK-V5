@@ -7,6 +7,16 @@ public class Legs {
     private String  tgtCcy;
     private String  px;
 
+    public String getPosSide() {
+        return posSide;
+    }
+
+    public void setPosSide(String posSide) {
+        this.posSide = posSide;
+    }
+
+    private String  posSide;
+
     public String getPx() {
         return px;
     }

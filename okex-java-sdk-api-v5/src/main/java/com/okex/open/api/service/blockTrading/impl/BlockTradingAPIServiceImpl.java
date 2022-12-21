@@ -114,5 +114,10 @@ public class BlockTradingAPIServiceImpl implements BlockTradingAPIService {
         return this.client.executeSync(this.api.getPublicTrades(beginId, endId, limit));
     }
 
+    @Override
+    public JSONObject getMakerInstrumentSettings() {
+        return this.client.executeSync(this.api.getMakerInstrumentSettings());
+    }
+
 
 }

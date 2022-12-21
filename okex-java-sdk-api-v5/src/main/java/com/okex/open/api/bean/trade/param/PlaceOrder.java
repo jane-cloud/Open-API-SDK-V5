@@ -13,6 +13,71 @@ public class PlaceOrder {
     private String px;
     private String tgtCcy;
 
+    public String getQuickMgnType() {
+        return quickMgnType;
+    }
+
+    public void setQuickMgnType(String quickMgnType) {
+        this.quickMgnType = quickMgnType;
+    }
+
+    private String quickMgnType;
+
+    public String getTpTriggerPx() {
+        return tpTriggerPx;
+    }
+
+    public void setTpTriggerPx(String tpTriggerPx) {
+        this.tpTriggerPx = tpTriggerPx;
+    }
+
+    public String getTpOrdPx() {
+        return tpOrdPx;
+    }
+
+    public void setTpOrdPx(String tpOrdPx) {
+        this.tpOrdPx = tpOrdPx;
+    }
+
+    public String getSlTriggerPx() {
+        return slTriggerPx;
+    }
+
+    public void setSlTriggerPx(String slTriggerPx) {
+        this.slTriggerPx = slTriggerPx;
+    }
+
+    public String getSlOrdPx() {
+        return slOrdPx;
+    }
+
+    public void setSlOrdPx(String slOrdPx) {
+        this.slOrdPx = slOrdPx;
+    }
+
+    public String getTpTriggerPxType() {
+        return tpTriggerPxType;
+    }
+
+    public void setTpTriggerPxType(String tpTriggerPxType) {
+        this.tpTriggerPxType = tpTriggerPxType;
+    }
+
+    public String getSlTriggerPxType() {
+        return slTriggerPxType;
+    }
+
+    public void setSlTriggerPxType(String slTriggerPxType) {
+        this.slTriggerPxType = slTriggerPxType;
+    }
+
+    private String tpTriggerPx;
+    private String tpOrdPx;
+    private String slTriggerPx;
+    private String slOrdPx;
+    private String tpTriggerPxType;
+    private String slTriggerPxType;
+
     @Override
     public String toString() {
         return "PlaceOrder{" +
@@ -29,6 +94,13 @@ public class PlaceOrder {
                 ", tgtCcy='" + tgtCcy + '\'' +
                 ", banAmend=" + banAmend +
                 ", reduceOnly=" + reduceOnly +
+                ", tpTriggerPx='" + tpTriggerPx + '\'' +
+                ", tpOrdPx='" + tpOrdPx + '\'' +
+                ", slTriggerPx='" + slTriggerPx + '\'' +
+                ", slOrdPx='" + slOrdPx + '\'' +
+                ", tpTriggerPxType=" + tpTriggerPxType +
+                ", slTriggerPxType=" + slTriggerPxType +
+                ", quickMgnType=" + quickMgnType +
                 '}';
     }
 
