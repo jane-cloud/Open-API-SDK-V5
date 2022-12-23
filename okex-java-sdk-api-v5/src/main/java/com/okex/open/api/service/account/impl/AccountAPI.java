@@ -8,7 +8,6 @@ import retrofit2.http.*;
 
 public interface AccountAPI {
 
-
     //查看账户余额 Get Balance
     @GET("/api/v5/account/balance")
     Call<JSONObject> getBalance(@Query("ccy") String ccy);
@@ -16,6 +15,10 @@ public interface AccountAPI {
     //查看持仓信息 Get Positions
     @GET("/api/v5/account/positions")
     Call<JSONObject> getPositions(@Query("instType") String instType,@Query("instId") String instId,@Query("posId") String posId);
+
+    //查看历史持仓信息   Get positions-history
+    @GET("/api/v5/account/positions-history")
+    Call<JSONObject> getPositionsHistory(@Query("instType") String instType, @Query("instId") String instId, @Query("mgnMode") String mgnMode, @Query("type") String type, @Query("after") String after, @Query("before") String before, @Query("limit") String limit,@Query("posId") String posId);
 
     //查看账户持仓风险 Get account and position risk
     @GET("/api/v5/account/account-position-risk")
@@ -33,7 +36,7 @@ public interface AccountAPI {
                                           @Query("before")String before,
                                           @Query("limit")String limit);
 
-    //账单流水查询（近七天） Get Bills Details (last 3 months)
+    //账单流水查询（近三月） Get Bills Details (last 3 months)
     @GET("/api/v5/account/bills-archive")
     Call<JSONObject> getBillsDetails3Months(@Query("instType") String instType,
                                           @Query("ccy")String ccy,
@@ -105,6 +108,14 @@ public interface AccountAPI {
     @GET("/api/v5/account/risk-state")
     Call<JSONObject> getRiskState();
 
+    //一键借币模式手动借币还币 Manual borrow and repay in Quick Margin Mode
+    @POST("/api/v5/account/quick-margin-borrow-repay")
+    Call<JSONObject> quickMarginBorrowRepay(@Body JSONObject jsonObject);
+
+    //获取一键借币还币历史 Get manual borrow and repay history in Quick Margin Mode
+    @GET("/api/v5/account/borrow-repay-history")
+    Call<JSONObject> getMarginBorrowRepayHistory(@Query("instId") String instId,@Query("ccy")  String ccy,@Query("side")  String side,@Query("after")  String after,@Query("before")  String before,@Query("begin")  String begin,@Query("end")  String end,@Query("limit")  String limit);
+
     //尊享借币还币  VIP loans borrow and repay
     @POST("/api/v5/account/borrow-repay")
     Call<JSONObject> borrowRepay(@Body JSONObject parseObject);
@@ -112,6 +123,22 @@ public interface AccountAPI {
     //获取尊享借币借还历史  Get borrow and repay history for VIP loans
     @GET("/api/v5/account/borrow-repay-history")
     Call<JSONObject> getBorrowRepayHistory(@Query("ccy") String ccy,@Query("after") String after,@Query("before") String before,@Query("limit") String limit);
+
+    //获取尊享借币计息记录 Get VIP interest accrued data
+    @GET("/api/v5/account/vip-interest-accrued")
+    Call<JSONObject>  getVipInterestAccrued(@Query("ccy") String ccy,@Query("ordId")  String ordId,@Query("after")  String after,@Query("before")  String before,@Query("limit")  String limit);
+
+    //获取尊享借币扣息记录 Get VIP interest deducted data
+    @GET("/api/v5/account/vip-interest-deducted")
+    Call<JSONObject>  getVipInterestDeducted(@Query("ordId") String ordId,@Query("ccy") String ccy,@Query("after") String after,@Query("before") String before,@Query("limit") String limit);
+
+    //尊享借币订单列表 Get VIP loan order list
+    @GET("/api/v5/account/vip-loan-order-list")
+    Call<JSONObject>  getVipLoanOrderList(@Query("ordId") String ordId, @Query("state") String state, @Query("ccy") String ccy, @Query("after") String after, @Query("before") String before, @Query("limit") String limit);
+
+    //尊享借币订单详情 Get VIP loan order detail
+    @GET("/api/v5/account/vip-loan-order-detail")
+    Call<JSONObject>  getVipLoanOrderDetail(@Query("ccy") String ccy,@Query("ordId")  String ordId,@Query("after")  String after,@Query("before")  String before,@Query("limit")  String limit);
 
     //获取借币利率与限额  Get borrow interest and limit
     @GET("/api/v5/account/interest-limits")
@@ -121,29 +148,19 @@ public interface AccountAPI {
     @POST("/api/v5/account/simulated_margin")
     Call<JSONObject> simulatedMargin(@Body JSONObject parseObject);
 
-    //查看账户Greeks
+    //查看账户Greeks Get Greeks
     @GET("/api/v5/account/greeks")
     Call<JSONObject> getAccountGreeks(@Query("ccy") String ccy);
 
-    //查看历史持仓信息   Get positions-history
-    @GET("/api/v5/account/positions-history")
-    Call<JSONObject> getPositionsHistory(@Query("instType") String instType, @Query("instId") String instId, @Query("mgnMode") String mgnMode, @Query("type") String type, @Query("after") String after, @Query("before") String before, @Query("limit") String limit,@Query("posId") String posId);
-
-    //获取组合保证金模式全仓限制
+    //获取组合保证金模式全仓限制 Get PM limitation
     @GET("/api/v5/account/position-tiers")
     Call<JSONObject> getPositionTiers(@Query("instType") String instType,@Query("uly")  String uly,@Query("instFamily")  String instFamily);
-//获取尊享借币计息记录
-    @GET("/api/v5/account/vip-interest-accrued")
-    Call<JSONObject>  getVipInterestAccrued(@Query("ccy") String ccy,@Query("ordId")  String ordId,@Query("after")  String after,@Query("before")  String before,@Query("limit")  String limit);
-    @GET("/api/v5/account/vip-loan-order-list")
-    Call<JSONObject>  getVipLoanOrderList(@Query("ordId") String ordId, @Query("state") String state, @Query("ccy") String ccy, @Query("after") String after, @Query("before") String before, @Query("limit") String limit);
-    @GET("/api/v5/account/vip-loan-order-detail")
-    Call<JSONObject>  getVipLoanOrderDetail(@Query("ccy") String ccy,@Query("ordId")  String ordId,@Query("after")  String after,@Query("before")  String before,@Query("limit")  String limit);
-    @POST("/api/v5/account/simulated_margin")
-    Call<JSONObject> QuickMarginBorrowRepay(@Body JSONObject parseObject);
-    @GET("/api/v5/account/borrow-repay-history")
-    Call<JSONObject> getMarginBorrowRepayHistory(@Query("instId") String instId,@Query("ccy")  String ccy,@Query("side")  String side,@Query("after")  String after,@Query("before")  String before,@Query("begin")  String begin,@Query("end")  String end,@Query("limit")  String limit);
 
+    // 设置组合保证金账户风险对冲模式 Set risk offset type
     @POST("/api/v5/account/set-riskOffset-type")
     Call<JSONObject> setRiskOffsetType(@Body JSONObject parseObject);
+
+    //开通期权交易 Activate option
+    @POST("/api/v5/account/activate-option")
+    Call<JSONObject> activateOption();
 }

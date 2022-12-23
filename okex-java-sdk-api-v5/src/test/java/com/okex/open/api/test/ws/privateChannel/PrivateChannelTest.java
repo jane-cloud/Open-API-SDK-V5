@@ -41,7 +41,7 @@ public class PrivateChannelTest {
         Map accountMap =new HashMap();
 
            accountMap.put("channel","account");
-           accountMap.put("ccy","USDT");
+           accountMap.put("ccy","BNB");
 
         channelList.add(accountMap);
 

@@ -35,7 +35,6 @@ public class AccountAPITests extends  AccountAPIBaseTests {
         toResultString(LOG, "result", result);
     }
 
-
     /**
      * 查看持仓信息 Get Positions
      * GET /api/v5/account/positions
@@ -46,6 +45,15 @@ public class AccountAPITests extends  AccountAPIBaseTests {
         toResultString(LOG, "result", result);
     }
 
+    /**
+     * 查看历史持仓信息   Get positions-history
+     *GET /api/v5/account/positions-history
+     */
+    @Test
+    public void getPositionsHistory(){
+        JSONObject result = this.accountAPIService.getPositionsHistory("","","","","","","","");
+        toResultString(LOG, "result", result);
+    }
 
     /**
      * 查看账户持仓风险 Get account and position risk
@@ -57,7 +65,6 @@ public class AccountAPITests extends  AccountAPIBaseTests {
         toResultString(LOG, "result", result);
     }
 
-
     /**
      * 账单流水查询（近七天） Get Bills Details (last 7 days)
      * GET /api/v5/account/bills
@@ -67,7 +74,6 @@ public class AccountAPITests extends  AccountAPIBaseTests {
         JSONObject result = this.accountAPIService.getBillsDetails7Days("SWAP","","","","","","","","");
         toResultString(LOG, "result", result);
     }
-
 
     /**
      * 账单流水查询（近三个月） Get Bills Details (last 3 months)
@@ -79,7 +85,6 @@ public class AccountAPITests extends  AccountAPIBaseTests {
         toResultString(LOG, "result", result);
     }
 
-
     /**
      * 查看账户配置 Get Account Configuration
      * GET /api/v5/account/config
@@ -89,7 +94,6 @@ public class AccountAPITests extends  AccountAPIBaseTests {
         JSONObject result = this.accountAPIService.getAccountConfiguration();
         toResultString(LOG, "result", result);
     }
-
 
     /**
      * 设置持仓模式 Set Position mode
@@ -102,7 +106,6 @@ public class AccountAPITests extends  AccountAPIBaseTests {
         JSONObject result = this.accountAPIService.setPositionMode(setPositionMode);
         toResultString(LOG, "result", result);
     }
-
 
     /**
      * 设置杠杆倍数 Set Leverage
@@ -121,7 +124,6 @@ public class AccountAPITests extends  AccountAPIBaseTests {
         toResultString(LOG, "result", result);
     }
 
-
     /**
      * 获取最大可买卖/开仓数量 Get maximum buy/sell amount or open amount
      * GET /api/v5/account/max-size
@@ -132,7 +134,6 @@ public class AccountAPITests extends  AccountAPIBaseTests {
         toResultString(LOG, "result", result);
     }
 
-
     /**
      * 获取最大可用数量  Get Maximum Available Tradable Amount
      * GET /api/v5/account/max-avail-size
@@ -142,7 +143,6 @@ public class AccountAPITests extends  AccountAPIBaseTests {
         JSONObject result = this.accountAPIService.getMaximumAvailableTradableAmount("BTC-USDT-SWAP","isolated","",false,"",false,"");
         toResultString(LOG, "result", result);
     }
-
 
     /**
      * 调整保证金  Increase/Decrease margin
@@ -164,8 +164,6 @@ public class AccountAPITests extends  AccountAPIBaseTests {
         toResultString(LOG, "result", result);
     }
 
-
-
     /**
      * 获取杠杆倍数  Get Leverage
      * GET /api/v5/account/leverage-info
@@ -175,7 +173,6 @@ public class AccountAPITests extends  AccountAPIBaseTests {
         JSONObject result = this.accountAPIService.getLeverage("BTC-USDT-211231 ","cross");
         toResultString(LOG, "result", result);
     }
-
 
     /**
      * 获取交易产品最大可借  Get the maximum loan of instrument
@@ -187,7 +184,6 @@ public class AccountAPITests extends  AccountAPIBaseTests {
         toResultString(LOG, "result", result);
     }
 
-
     /**
      * 获取当前账户交易手续费费率  Get Fee Rates
      * GET /api/v5/account/trade-fee
@@ -198,7 +194,6 @@ public class AccountAPITests extends  AccountAPIBaseTests {
         toResultString(LOG, "result", result);
     }
 
-
     /**
      * 获取计息记录  Get interest-accrued
      * GET /api/v5/account/interest-accrued
@@ -208,7 +203,6 @@ public class AccountAPITests extends  AccountAPIBaseTests {
         JSONObject result = this.accountAPIService.getInterestAccrued("1","BTC-USDT","","","","","");
         toResultString(LOG, "result", result);
     }
-
 
     /**
      * 获取用户当前杠杆借币利率  Get interest rate
@@ -245,7 +239,6 @@ public class AccountAPITests extends  AccountAPIBaseTests {
         toResultString(LOG, "result", result);
     }
 
-
     /**
      * 查看账户最大可转余额  Get Maximum Withdrawals
      * GET /api/v5/account/max-withdrawal
@@ -265,6 +258,32 @@ public class AccountAPITests extends  AccountAPIBaseTests {
         JSONObject result = this.accountAPIService.getRiskState();
         toResultString(LOG, "result", result);
     }
+
+    /**
+     * 一键借币模式手动借币还币 Manual borrow and repay in Quick Margin Mode
+     * POST /api/v5/account/quick-margin-borrow-repay
+     */
+    @Test
+    public void quickMarginBorrowRepay(){
+        QuickMarginBorrowRepay quickMarginBorrowRepay = new QuickMarginBorrowRepay();
+        quickMarginBorrowRepay.setCcy("BTC");
+        quickMarginBorrowRepay.setSide("repay");
+        quickMarginBorrowRepay.setAmt("0.1");
+        quickMarginBorrowRepay.setInstId("");
+        JSONObject result = this.accountAPIService.quickMarginBorrowRepay(quickMarginBorrowRepay);
+        toResultString(LOG, "result", result);
+    }
+
+    /**
+     * 获取一键借币还币历史 Get manual borrow and repay history in Quick Margin Mode
+     * GET /api/v5/account/borrow-repay-history
+     */
+    @Test
+    public void getMarginBorrowRepayHistory(){
+        JSONObject result = this.accountAPIService.getMarginBorrowRepayHistory("","","","","","","","");
+        toResultString(LOG, "result", result);
+    }
+
     /**
      * 尊享借币还币  VIP loans borrow and repay
      * POST /api/v5/account/borrow-repay
@@ -279,6 +298,7 @@ public class AccountAPITests extends  AccountAPIBaseTests {
         JSONObject result = this.accountAPIService.borrowRepay(accountBorrowRepay);
         toResultString(LOG, "result", result);
     }
+
     /**
      * 获取尊享借币借还历史  Get borrow and repay history for VIP loans
      * GET /api/v5/account/borrow-repay-history
@@ -286,6 +306,46 @@ public class AccountAPITests extends  AccountAPIBaseTests {
     @Test
     public void getBorrowRepayHistory(){
         JSONObject result = this.accountAPIService.getBorrowRepayHistory("BTC",null,null,"100");
+        toResultString(LOG, "result", result);
+    }
+
+    /**
+     * 获取尊享借币计息记录 vip-interest-accrued
+     * GET /api/v5/account/vip-interest-accrued
+     */
+    @Test
+    public void getVipInterestAccrued(){
+        JSONObject result = this.accountAPIService.getVipInterestAccrued("","","","","");
+        toResultString(LOG, "result", result);
+    }
+
+    /**
+     * 获取尊享借币扣息记录 Get VIP interest deducted data
+     * GET /api/v5/account/vip-interest-deducted
+     */
+    @Test
+    public void getVipInterestDeducted(){
+        JSONObject result = this.accountAPIService.getVipInterestDeducted("","","","","");
+        toResultString(LOG, "result", result);
+    }
+
+    /**
+     * 尊享借币订单列表 vip-loan-order-list
+     * GET /api/v5/account/vip-loan-order-list
+     */
+    @Test
+    public void getVipLoanOrderList(){
+        JSONObject result = this.accountAPIService.getVipLoanOrderList("","","","","","");
+        toResultString(LOG, "result", result);
+    }
+
+    /**
+     * 尊享借币订单详情 vip-loan-order-detail
+     * GET /api/v5/account/vip-loan-order-detail
+     */
+    @Test
+    public void getVipLoanOrderDetail(){
+        JSONObject result = this.accountAPIService.getVipLoanOrderDetail("","","","","");
         toResultString(LOG, "result", result);
     }
 
@@ -330,6 +390,7 @@ public class AccountAPITests extends  AccountAPIBaseTests {
 
 
     }
+
     /**
      * 查看账户Greeks   Get account greeks
      * GET /api/v5/account/greeks
@@ -341,15 +402,6 @@ public class AccountAPITests extends  AccountAPIBaseTests {
     }
 
     /**
-     * 查看历史持仓信息   Get positions-history
-     *GET /api/v5/account/positions-history
-     */
-    @Test
-    public void getPositionsHistory(){
-        JSONObject result = this.accountAPIService.getPositionsHistory("","","","","","","","");
-        toResultString(LOG, "result", result);
-    }
-    /**
      * 获取组合保证金模式全仓限制 position-tiers
      * GET /api/v5/account/position-tiers
      */
@@ -358,61 +410,9 @@ public class AccountAPITests extends  AccountAPIBaseTests {
         JSONObject result = this.accountAPIService.getPositionTiers("","","");
         toResultString(LOG, "result", result);
     }
-    /**
-     * 获取尊享借币计息记录 vip-interest-accrued
-     * GET /api/v5/account/vip-interest-accrued
-     */
-    @Test
-    public void getVipInterestAccrued(){
-        JSONObject result = this.accountAPIService.getVipInterestAccrued("","","","","");
-        toResultString(LOG, "result", result);
-    }
 
     /**
-     * 尊享借币订单列表 vip-loan-order-list
-     * GET /api/v5/account/vip-loan-order-list
-     */
-    @Test
-    public void getVipLoanOrderList(){
-        JSONObject result = this.accountAPIService.getVipLoanOrderList("","","","","","");
-        toResultString(LOG, "result", result);
-    }
-
-    /**
-     * 尊享借币订单详情 vip-loan-order-detail
-     * GET /api/v5/account/vip-loan-order-detail
-     */
-    @Test
-    public void getVipLoanOrderDetail(){
-        JSONObject result = this.accountAPIService.getVipLoanOrderDetail("","","","","");
-        toResultString(LOG, "result", result);
-    }
-    /**
-     * 一键借币模式手动借币还币  quick-margin-borrow-repay
-     * POST /api/v5/account/quick-margin-borrow-repay
-     */
-    @Test
-    public void QuickMarginBorrowRepay(){
-        AccountQuickBorrowRepay accountBorrowRepay = new AccountQuickBorrowRepay();
-        accountBorrowRepay.setCcy("BTC");
-        accountBorrowRepay.setSide("repay");
-        accountBorrowRepay.setAmt("0.1");
-        accountBorrowRepay.setInstId("");
-        JSONObject result = this.accountAPIService.QuickMarginBorrowRepay(accountBorrowRepay);
-        toResultString(LOG, "result", result);
-    }
-    /**
-     * 获取一键借币还币历史 borrow-repay-history
-     * GET /api/v5/account/borrow-repay-history
-     */
-    @Test
-    public void getMarginBorrowRepayHistory(){
-        JSONObject result = this.accountAPIService.getMarginBorrowRepayHistory("","","","","","","","");
-        toResultString(LOG, "result", result);
-    }
-
-    /**
-     * 设置组合保证金账户风险对冲模式 set-riskOffset-type
+     * 设置组合保证金账户风险对冲模式 Set risk offset type
      * POST /api/v5/account/set-riskOffset-type
      */
     @Test
@@ -421,6 +421,16 @@ public class AccountAPITests extends  AccountAPIBaseTests {
         increaseDecreaseMargin.setType("1");
 
         JSONObject result = this.accountAPIService.setRiskOffsetType(increaseDecreaseMargin);
+        toResultString(LOG, "result", result);
+    }
+
+    /**
+     * 开通期权交易 Activate option
+     * POST /api/v5/account/activate-option
+     */
+    @Test
+    public void activateOption(){
+        JSONObject result = this.accountAPIService.activateOption();
         toResultString(LOG, "result", result);
     }
 }

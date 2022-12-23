@@ -15,6 +15,15 @@ public class Purchase {
 
     private List<InvestData> investData;
     private String term;
+    private String tag;
+
+    public String getTag() {
+        return tag;
+    }
+
+    public void setTag(String tag) {
+        this.tag = tag;
+    }
 
     public String getProductId() {
         return productId;

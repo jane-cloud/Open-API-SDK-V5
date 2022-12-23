@@ -2,6 +2,8 @@ package com.okex.open.api.service.account;
 
 import com.alibaba.fastjson.JSONObject;
 import com.okex.open.api.bean.account.param.*;
+import retrofit2.Call;
+import retrofit2.http.POST;
 import retrofit2.http.Query;
 
 
@@ -13,13 +15,16 @@ public interface AccountAPIService {
     //查看持仓信息 Get Positions
     JSONObject getPositions(String instType,String instId,String posId);
 
+    //查看历史持仓信息   Get positions-history
+    JSONObject getPositionsHistory(String instType, String instId, String mgnMode, String type, String after, String before, String limit,String posId);
+
     //查看账户持仓风险 Get account and position risk
     JSONObject getAccountAndPosition(String instType);
 
     //账单流水查询（近七天） Get Bills Details (last 7 days)
     JSONObject getBillsDetails7Days(String instType,String ccy,String mgnMode,String ctType,String type,String subType,String after,String before,String limit);
 
-    //账单流水查询（近七天） Get Bills Details (last 3 months)
+    //账单流水查询（近三月） Get Bills Details (last 3 months)
     JSONObject getBillsDetails3Months(String instType,String ccy,String mgnMode,String ctType,String type,String subType,String after,String before,String limit);
 
     //查看账户配置 Get Account Configuration
@@ -67,36 +72,45 @@ public interface AccountAPIService {
     //查看账户特定风险状态 Get account risk state
     JSONObject getRiskState();
 
+    //一键借币模式手动借币还币 Manual borrow and repay in Quick Margin Mode
+    JSONObject quickMarginBorrowRepay(QuickMarginBorrowRepay quickMarginBorrowRepay);
+
+    //获取一键借币还币历史 Get manual borrow and repay history in Quick Margin Mode
+    JSONObject getMarginBorrowRepayHistory(String instId, String ccy, String side, String after, String before, String begin, String end, String limit);
+
     //尊享借币还币  VIP loans borrow and repay
     JSONObject borrowRepay(AccountBorrowRepay accountBorrowRepay);
 
     //获取尊享借币借还历史  Get borrow and repay history for VIP loans
     JSONObject getBorrowRepayHistory(String ccy, String after, String before, String limit);
 
+    //获取尊享借币计息记录 Get VIP interest accrued data
+    JSONObject getVipInterestAccrued(String ccy, String ordId, String after, String before, String limit);
+
+    //获取尊享借币扣息记录 Get VIP interest deducted data
+    JSONObject getVipInterestDeducted(String ordId, String ccy, String after, String before, String limit);
+
+    //尊享借币订单列表 Get VIP loan order list
+    JSONObject getVipLoanOrderList(String ordId, String state, String ccy, String after, String before, String limit);
+
+    //尊享借币订单详情 Get VIP loan order detail
+    JSONObject getVipLoanOrderDetail(String ccy, String ordId, String after, String before, String limit);
+
     //获取借币利率与限额  Get borrow interest and limit
     JSONObject getInterestLimits(String type, String ccy);
 
     //组合保证金的虚拟持仓保证金计算 Position builder
     JSONObject simulatedMargin(SimulatedMargin simulatedMargin);
-    //查看账户Greeks
+
+    //查看账户Greeks Get Greeks
     JSONObject getAccountGreeks(String ccy);
 
-    //查看历史持仓信息   Get positions-history
-    JSONObject getPositionsHistory(String instType, String instId, String mgnMode, String type, String after, String before, String limit,String posId);
-
-    //获取组合保证金模式全仓限制
+    //获取组合保证金模式全仓限制 Get PM limitation
     JSONObject getPositionTiers(String instType, String uly,String instFamily);
 
-//获取尊享借币计息记录
-    JSONObject getVipInterestAccrued(String ccy, String ordId, String after, String before, String limit);
-//尊享借币订单列表
-    JSONObject getVipLoanOrderList(String ordId, String state, String ccy, String after, String before, String limit);
-
-    JSONObject getVipLoanOrderDetail(String ccy, String ordId, String after, String before, String limit);
-
-    JSONObject QuickMarginBorrowRepay(AccountQuickBorrowRepay accountBorrowRepay);
-
-    JSONObject getMarginBorrowRepayHistory(String instId, String ccy, String side, String after, String before, String begin, String end, String limit);
-
+    //设置组合保证金账户风险对冲模式 Set risk offset type
     JSONObject setRiskOffsetType(IncreaseDecreaseMargin increaseDecreaseMargin);
+
+    //开通期权交易 Activate option
+    JSONObject activateOption();
 }

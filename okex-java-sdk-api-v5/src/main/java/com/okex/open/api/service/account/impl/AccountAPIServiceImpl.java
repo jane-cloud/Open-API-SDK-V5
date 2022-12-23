@@ -31,6 +31,12 @@ public class AccountAPIServiceImpl implements AccountAPIService {
         return this.client.executeSync(this.api.getPositions(instType,instId,posId));
     }
 
+    //查看历史持仓信息   Get positions-history
+    @Override
+    public JSONObject getPositionsHistory(String instType, String instId, String mgnMode, String type, String after, String before, String limit,String posId) {
+        return this.client.executeSync(this.api.getPositionsHistory(instType, instId, mgnMode, type, after, before, limit,posId));
+    }
+
     //查看账户持仓风险 Get account and position risk
     @Override
     public JSONObject getAccountAndPosition(String instType) {
@@ -43,7 +49,7 @@ public class AccountAPIServiceImpl implements AccountAPIService {
         return this.client.executeSync(this.api.getBillsDetails7Days(instType,ccy,mgnMode,ctType,type,subType,after,before,limit));
     }
 
-    //账单流水查询（近七天） Get Bills Details (last 3 months)
+    //账单流水查询（近三月） Get Bills Details (last 3 months)
     @Override
     public JSONObject getBillsDetails3Months(String instType, String ccy, String mgnMode, String ctType, String type, String subType, String after, String before, String limit) {
         return this.client.executeSync(this.api.getBillsDetails3Months(instType,ccy,mgnMode,ctType,type,subType,after,before,limit));
@@ -103,7 +109,6 @@ public class AccountAPIServiceImpl implements AccountAPIService {
         return this.client.executeSync(this.api.getFeeRates(instType,instId,uly,instFamily));
     }
 
-
     //获取计息记录 Get interest-accrued
     @Override
     public JSONObject getInterestAccrued(String type,String instId, String ccy, String mgnMode, String after, String before, String limit) {
@@ -140,6 +145,18 @@ public class AccountAPIServiceImpl implements AccountAPIService {
         return this.client.executeSync(this.api.getRiskState());
     }
 
+    //一键借币模式手动借币还币 Manual borrow and repay in Quick Margin Mode
+    @Override
+    public JSONObject quickMarginBorrowRepay(QuickMarginBorrowRepay quickMarginBorrowRepay) {
+        return this.client.executeSync(this.api.quickMarginBorrowRepay(JSONObject.parseObject(JSON.toJSONString(quickMarginBorrowRepay))));
+    }
+
+    //获取一键借币还币历史 Get manual borrow and repay history in Quick Margin Mode
+    @Override
+    public JSONObject getMarginBorrowRepayHistory(String instId, String ccy, String side, String after, String before, String begin, String end, String limit) {
+        return this.client.executeSync(this.api.getMarginBorrowRepayHistory(instId,ccy,side,after,before,begin,end,limit));
+    }
+
     //尊享借币还币  VIP loans borrow and repay
     @Override
     public JSONObject borrowRepay(AccountBorrowRepay accountBorrowRepay) {
@@ -150,6 +167,30 @@ public class AccountAPIServiceImpl implements AccountAPIService {
     @Override
     public JSONObject getBorrowRepayHistory(String ccy, String after, String before, String limit) {
         return this.client.executeSync(this.api.getBorrowRepayHistory(ccy,after,before,limit));
+    }
+
+    //获取尊享借币计息记录 Get VIP interest accrued data
+    @Override
+    public JSONObject getVipInterestAccrued(String ccy, String ordId, String after, String before, String limit) {
+        return this.client.executeSync(this.api.getVipInterestAccrued(ccy,ordId,after,before,limit));
+    }
+
+    //获取尊享借币扣息记录 Get VIP interest deducted data
+    @Override
+    public JSONObject getVipInterestDeducted(String ordId, String ccy, String after, String before, String limit) {
+        return this.client.executeSync(this.api.getVipInterestDeducted(ordId, ccy, after, before, limit));
+    }
+
+    //尊享借币订单列表 Get VIP loan order list
+    @Override
+    public JSONObject getVipLoanOrderList(String ordId, String state, String ccy, String after, String before, String limit) {
+        return this.client.executeSync(this.api.getVipLoanOrderList(ordId,state,ccy,after,before,limit));
+    }
+
+    //尊享借币订单详情 Get VIP loan order detail
+    @Override
+    public JSONObject getVipLoanOrderDetail(String ccy, String ordId, String after, String before, String limit) {
+        return this.client.executeSync(this.api.getVipLoanOrderDetail(ccy,ordId,after,before,limit));
     }
 
     //获取借币利率与限额  Get borrow interest and limit
@@ -163,50 +204,28 @@ public class AccountAPIServiceImpl implements AccountAPIService {
     public JSONObject simulatedMargin(SimulatedMargin simulatedMargin) {
         return this.client.executeSync(this.api.simulatedMargin(JSONObject.parseObject(JSON.toJSONString(simulatedMargin))));
     }
-    //查看账户Greeks
+
+    //查看账户Greeks Get Greeks
     @Override
     public JSONObject getAccountGreeks(String ccy) {
         return this.client.executeSync(this.api.getAccountGreeks(ccy));
     }
-    //查看历史持仓信息   Get positions-history
-    @Override
-    public JSONObject getPositionsHistory(String instType, String instId, String mgnMode, String type, String after, String before, String limit,String posId) {
-        return this.client.executeSync(this.api.getPositionsHistory(instType, instId, mgnMode, type, after, before, limit,posId));
-    }
 
-    //获取组合保证金模式全仓限制
+    //获取组合保证金模式全仓限制 Get PM limitation
     @Override
     public JSONObject getPositionTiers(String instType, String uly,String instFamily) {
         return this.client.executeSync(this.api.getPositionTiers(instType,uly,instFamily));
     }
 
-    @Override
-    public JSONObject getVipInterestAccrued(String ccy, String ordId, String after, String before, String limit) {
-        return this.client.executeSync(this.api.getVipInterestAccrued(ccy,ordId,after,before,limit));
-    }
-
-    @Override
-    public JSONObject getVipLoanOrderList(String ordId, String state, String ccy, String after, String before, String limit) {
-        return this.client.executeSync(this.api.getVipLoanOrderList(ordId,state,ccy,after,before,limit));
-    }
-
-    @Override
-    public JSONObject getVipLoanOrderDetail(String ccy, String ordId, String after, String before, String limit) {
-        return this.client.executeSync(this.api.getVipLoanOrderDetail(ccy,ordId,after,before,limit));
-    }
-
-    @Override
-    public JSONObject QuickMarginBorrowRepay(AccountQuickBorrowRepay accountBorrowRepay) {
-        return this.client.executeSync(this.api.QuickMarginBorrowRepay(JSONObject.parseObject(JSON.toJSONString(accountBorrowRepay))));
-    }
-
-    @Override
-    public JSONObject getMarginBorrowRepayHistory(String instId, String ccy, String side, String after, String before, String begin, String end, String limit) {
-        return this.client.executeSync(this.api.getMarginBorrowRepayHistory(instId,ccy,side,after,before,begin,end,limit));
-    }
-
+    //设置组合保证金账户风险对冲模式 Set risk offset type
     @Override
     public JSONObject setRiskOffsetType(IncreaseDecreaseMargin increaseDecreaseMargin) {
         return this.client.executeSync(this.api.setRiskOffsetType(JSONObject.parseObject(JSON.toJSONString(increaseDecreaseMargin))));
+    }
+
+    //开通期权交易 Activate option
+    @Override
+    public JSONObject activateOption() {
+        return this.client.executeSync(this.api.activateOption());
     }
 }

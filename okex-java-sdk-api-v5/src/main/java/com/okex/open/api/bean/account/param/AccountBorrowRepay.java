@@ -5,6 +5,8 @@ public class AccountBorrowRepay {
     private String side;
     private String amt;
 
+    private String ordId;
+
     public String getOrdId() {
         return ordId;
     }
@@ -13,7 +15,7 @@ public class AccountBorrowRepay {
         this.ordId = ordId;
     }
 
-    private String ordId;
+
     public String getAmt() {
         return amt;
     }

@@ -57,6 +57,7 @@ public class EarnAPITests extends EarnAPIBaseTests {
         invest.add(investData);
 
         purchase.setProductId("1456");
+        purchase.setTag("123456");
         purchase.setInvestData(invest);
 //        purchase.setTerm("90");
         JSONObject result = this.earnAPIService.purchase(purchase);
