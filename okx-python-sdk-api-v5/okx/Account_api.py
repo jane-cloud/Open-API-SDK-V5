@@ -60,8 +60,8 @@ class AccountAPI(Client):
         return self._request_with_params(GET, MAX_TRADE_SIZE, params)
 
     # Get Maximum Available Tradable Amount
-    def get_max_avail_size(self, instId, tdMode, ccy='', reduceOnly='', unSpotOffset=''):
-        params = {'instId': instId, 'tdMode': tdMode, 'ccy': ccy, 'reduceOnly': reduceOnly,'unSpotOffset':unSpotOffset}
+    def get_max_avail_size(self, instId, tdMode, ccy='', reduceOnly='', unSpotOffset='',quickMgnType=''):
+        params = {'instId': instId, 'tdMode': tdMode, 'ccy': ccy, 'reduceOnly': reduceOnly,'unSpotOffset':unSpotOffset,'quickMgnType':quickMgnType}
         return self._request_with_params(GET, MAX_AVAIL_SIZE, params)
 
     # Increase / Decrease margin

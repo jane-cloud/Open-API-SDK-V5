@@ -234,5 +234,17 @@ STAKING_DEFI_REDEEM = '/api/v5/finance/staking-defi/redeem'
 STAKING_DEFI_CANCEL = '/api/v5/finance/staking-defi/cancel'
 STAKING_DEFI_ORDERS_ACTIVE = '/api/v5/finance/staking-defi/orders-active'
 STAKING_DEFI_ORDERS_HISTORY = '/api/v5/finance/staking-defi/orders-history'
+
+# copytrading
+CURRENT_SUBPOSITIONS = '/api/v5/copytrading/current-subpositions'
+SUBPOSITIONS_HISTORY = '/api/v5/copytrading/subpositions-history'
+COPYTRADING_ALGO_ORDER = '/api/v5/copytrading/algo-order'
+COPYTRADING_CLOSE_SUBPOSITION = '/api/v5/copytrading/close-subposition'
+COPYTRADING_INSTRUMENTS = '/api/v5/copytrading/instruments'
+COPYTRADING_SET_INSTRUMENTS = '/api/v5/copytrading/set-instruments'
+PROFIT_SHARING_DETAILS = '/api/v5/copytrading/profit-sharing-details'
+TOTAL_PROFIT_SHARING = '/api/v5/copytrading/total-profit-sharing'
+UNREALIZED_PROFIT_SHARING_DETAILS = '/api/v5/copytrading/unrealized-profit-sharing-details'
+
 # status
 STATUS = '/api/v5/system/status'

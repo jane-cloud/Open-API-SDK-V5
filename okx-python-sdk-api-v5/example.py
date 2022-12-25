@@ -14,6 +14,7 @@ import okx.FDBroker_api as FDBroker
 import okx.Rfq_api as Rfq
 import okx.TradingBot_api as TradingBot
 import okx.Finance_api as Finance
+import okx.Copytrading_api as Copytrading
 
 if __name__ == '__main__':
     api_key = "9ad6b0a1-1b9e-4e25-964e-792be71c83b2"
@@ -47,7 +48,7 @@ if __name__ == '__main__':
     # 获取最大可交易数量  Get Maximum Tradable Size For Instrument
     # result = accountAPI.get_maximum_trade_size(instId='BTC-USDT-SWAP', tdMode='cross',ccy='',px='',leverage='10',unSpotOffset='false')
     # 获取最大可用数量  Get Maximum Available Tradable Amount
-    # result = accountAPI.get_max_avail_size(instId='BTC-USDT-SWAP', tdMode='isolated', ccy='BTC', reduceOnly='', unSpotOffset='false')
+    # result = accountAPI.get_max_avail_size(instId='BTC-USDT-SWAP', tdMode='isolated', ccy='BTC', reduceOnly='', unSpotOffset='false',quickMgnType='')
     # 调整保证金  Increase/Decrease margint
     # result = accountAPI.Adjustment_margin('BTC-USDT-210409', 'long', 'add', '100')
     # 获取杠杆倍数 Get Leverage
@@ -251,7 +252,7 @@ if __name__ == '__main__':
     tradeAPI = Trade.TradeAPI(api_key, secret_key, passphrase, False, flag)
     # 下单  Place Order
     # result = tradeAPI.place_order(instId='BTC-USDT-210326', tdMode='cross', side='sell', posSide='short',
-    #                               ordType='market', sz='100',tgtCcy='',banAmend='')
+    #                               ordType='market', sz='100',tgtCcy='',banAmend='',quickMgnType='auto_borrow')
     # 批量下单  Place Multiple Orders
     # result = tradeAPI.place_multiple_orders([
     #     {'instId': 'BTC-USD-210402', 'tdMode': 'isolated', 'side': 'buy', 'ordType': 'limit', 'sz': '1', 'px': '17400',
@@ -295,7 +296,7 @@ if __name__ == '__main__':
     # 策略委托下单  Place Algo Order
     # result = tradeAPI.place_algo_order('BTC-USDT-SWAP', 'isolated', 'buy', ordType='conditional',
     #                                    sz='100',posSide='long', tpTriggerPx='60000', tpOrdPx='59999',
-    #                                   tpTriggerPxType = 'last', slTriggerPxType = 'last', clOrdId ='123456')
+    #                                   tpTriggerPxType = 'last', slTriggerPxType = 'last', clOrdId ='123456', quickMgnType='')
     # 撤销策略委托订单  Cancel Algo Order
     # result = tradeAPI.cancel_algo_order([{'algoId': '297394002194735104', 'instId': 'BTC-USDT-210409'}])
     # 撤销高级策略委托订单
@@ -445,7 +446,7 @@ if __name__ == '__main__':
     # 查看项目 View items
     # result = Finance.staking_defi_offers(productId = '', protocolType = 'defi', ccy = '')
     # 申购项目 Subscription items
-    # result = Finance.staking_defi_purchase(productId = '1456', investData = [{"ccy":"USDT","amt":"1"}], term = '30')
+    # result = Finance.staking_defi_purchase(productId = '1456', investData = [{"ccy":"USDT","amt":"1"}], term = '30', tag='')
     # 赎回项目 Redemption items
     # result = Finance.staking_defi_redeem(ordId = '123', protocolType = 'defi', allowEarlyRedeem = '')
     # 撤销项目申购/赎回 Cancellation of project subscription / redemption
@@ -454,6 +455,26 @@ if __name__ == '__main__':
     # result = Finance.staking_defi_orders_active(productId = '', protocolType = 'defi', ccy = '', state = '')
     # 查看历史订单 View historical orders
     # result = Finance.staking_defi_orders_history(productId = '', protocolType = '', ccy = '', after = '', before = '', limit = '')
+
+    Copytrading = Copytrading.CopytradingAPI(api_key, secret_key, passphrase, False, flag)
+    # 交易员获取当前带单
+    # result = Copytrading.current_subpositions(instId='')
+    # 交易员获取历史带单
+    # result = Copytrading.subpositions_history(instId='', after='', before='', limit='')
+    # 交易员止盈止损
+    # result = Copytrading.copytrading_algo_order(subPosId='123456789', tpTriggerPx='1', slTriggerPx='', tpTriggerPxType='', slTriggerPxType='')
+    # 交易员平仓
+    # result = Copytrading.copytrading_close_subposition(subPosId='123456789')
+    # 交易员获取带单合约
+    # result = Copytrading.copytrading_instruments()
+    # 交易员修改带单合约
+    # result = Copytrading.copytrading_set_instruments(instId='BTC-USDT-SWAP')
+    # 交易员历史分润明细
+    # result = Copytrading.profit_sharing_details(after='', before='', limit='')
+    # 交易员历史分润汇总
+    # result = Copytrading.total_profit_sharing()
+    # 交易员待分润明细
+    # result = Copytrading.unrealized_profit_sharing_details()
 
     # 系统状态API(仅适用于实盘) system status
     Status = Status.StatusAPI(api_key, secret_key, passphrase, False, flag)

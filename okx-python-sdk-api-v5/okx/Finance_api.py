@@ -13,8 +13,8 @@ class FinanceAPI(Client):
         return self._request_with_params(GET, STAKING_DEFI_OFFERS, params)
 
     # Subscription items
-    def staking_defi_purchase(self, productId = '', investData = [], term= ''):
-        params = {'productId': productId, 'investData': investData, 'term': term}
+    def staking_defi_purchase(self, productId = '', investData = [], term= '',tag=''):
+        params = {'productId': productId, 'investData': investData, 'term': term,'tag':tag}
         return self._request_with_params(POST, STAKING_DEFI_PURCHASE, params)
 
     # Redemption items
