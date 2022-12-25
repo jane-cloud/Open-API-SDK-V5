@@ -145,3 +145,15 @@ class AccountAPI(Client):
     def position_tiers(self, instType='',uly=''):
         params = {'instType': instType, 'uly': uly}
         return self._request_with_params(GET, POSITION_TIRES, params)
+
+    def activate_option(self):
+        params = {}
+        return self._request_with_params(POST, ACTIVATE_OPTION, params)
+
+    def quick_margin_borrow_repay(self, instId='', ccy='', side='', amt=''):
+        params = {'instId':instId, 'ccy':ccy, 'side':side, 'amt':amt}
+        return self._request_with_params(POST, QUICK_MARGIN_BRROW_REPAY, params)
+
+    def quick_margin_borrow_repay_history(self, instId='', ccy='', side='', after='', before='', begin='', end='', limit=''):
+        params = {'instId': instId, 'ccy': ccy, 'side': side, 'after': after, 'before': before, 'begin': begin, 'end': end, 'limit': limit}
+        return self._request_with_params(GET, QUICK_MARGIN_BORROW_REPAY_HISTORY, params)

@@ -46,6 +46,9 @@ SIMULATED_MARGIN = '/api/v5/account/simulated_margin'
 GREEKS = '/api/v5/account/greeks'
 POSITIONS_HISTORY = '/api/v5/account/positions-history'
 POSITION_TIRES = '/api/v5/account/position-tiers'
+ACTIVATE_OPTION = '/api/v5/account/activate-option'
+QUICK_MARGIN_BRROW_REPAY = '/api/v5/account/quick-margin-borrow-repay'
+QUICK_MARGIN_BORROW_REPAY_HISTORY = '/api/v5/account/quick-margin-borrow-repay-history'
 
 # funding
 DEPOSIT_ADDRESS = '/api/v5/asset/deposit-address'

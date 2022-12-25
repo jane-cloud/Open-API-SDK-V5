@@ -16,13 +16,13 @@ import okx.TradingBot_api as TradingBot
 import okx.Finance_api as Finance
 
 if __name__ == '__main__':
-    api_key = ""
-    secret_key = ""
-    passphrase = ""
+    api_key = "9ad6b0a1-1b9e-4e25-964e-792be71c83b2"
+    secret_key = "240B451114985C8FB617DAF741120DC2"
+    passphrase = "123456"
 
     # flag是实盘与模拟盘的切换参数 flag is the key parameter which can help you to change between demo and real trading.
-    # flag = '1'  # 模拟盘 demo trading
-    flag = '0'  # 实盘 real trading
+    flag = '1'  # 模拟盘 demo trading
+    # flag = '0'  # 实盘 real trading
 
     # account api
     accountAPI = Account.AccountAPI(api_key, secret_key, passphrase, False, flag)
@@ -68,6 +68,10 @@ if __name__ == '__main__':
     # result = accountAPI.get_max_withdrawal('')
     # 查看账户特定风险状态 Get account risk state (Only applicable to Portfolio margin account)
     # result = accountAPI.get_account_risk()
+    # 一键借币模式手动借币还币
+    # result = accountAPI.quick_margin_borrow_repay(instId='BTC-USDT', ccy='BTC', side='borrow', amt='1')
+    # 获取一键借币还币历史
+    # result = accountAPI.quick_margin_borrow_repay_history(instId='', ccy='', side='', after='', before='', begin='', end='', limit='')
     # 尊享借币还币 GET Enjoy borrowing and returning money
     # result = accountAPI.borrow_repay('BTC', 'borrow', '10')
     # 获取尊享借币还币历史 Get the privileged currency borrowing and repayment history
@@ -80,6 +84,8 @@ if __name__ == '__main__':
     # result = accountAPI.get_greeks()
     # 获取组合保证金模式全仓限制
     # result = accountAPI.position_tiers(instType = 'SWAP', uly = 'BTC-USDT')
+    # 开通期权交易
+    # result = accountAPI.activate_option()
 
     # funding api
     fundingAPI = Funding.FundingAPI(api_key, secret_key, passphrase, False, flag)
