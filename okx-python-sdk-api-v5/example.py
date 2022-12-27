@@ -17,9 +17,9 @@ import okx.Finance_api as Finance
 import okx.Copytrading_api as Copytrading
 
 if __name__ == '__main__':
-    api_key = "9ad6b0a1-1b9e-4e25-964e-792be71c83b2"
-    secret_key = "240B451114985C8FB617DAF741120DC2"
-    passphrase = "123456"
+    api_key = ""
+    secret_key = ""
+    passphrase = ""
 
     # flag是实盘与模拟盘的切换参数 flag is the key parameter which can help you to change between demo and real trading.
     flag = '1'  # 模拟盘 demo trading
