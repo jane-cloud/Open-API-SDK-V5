@@ -26,8 +26,8 @@ class BrokerAPI(Client):
         params = {'subAcct': subAcct, 'acctLv': acctLv}
         return self._request_with_params(POST, SET_SUBACCOUNT_LEVEL, params)
 
-    def set_subaccount_fee_rate(self, subAcct='', instType='', chgType='', chgTaker='', chgMaker='', effDate=''):
-        params = {'subAcct': subAcct, 'instType': instType, 'chgType': chgType, 'chgTaker': chgTaker, 'chgMaker':chgMaker, 'effDate':effDate}
+    def set_subaccount_fee_rate(self, subAcct='', instType='', chgType='', chgTaker='', chgMaker='', effDate='', mgnType=''):
+        params = {'subAcct': subAcct, 'instType': instType, 'chgType': chgType, 'chgTaker': chgTaker, 'chgMaker':chgMaker, 'effDate':effDate, 'mgnType':mgnType}
         return self._request_with_params(POST, SET_SUBACCOUNT_FEE_REAT, params)
 
     def subaccount_deposit_address(self, subAcct='', ccy='', chain='', addrType='', to=''):

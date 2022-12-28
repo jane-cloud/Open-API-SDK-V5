@@ -53,6 +53,7 @@ VIP_INTEREST_ACCRUED = '/api/v5/account/vip-interest-accrued'
 VIP_INTEREST_DEDUCTED = '/api/v5/account/vip-interest-deducted'
 VIP_LOAN_ORDER_LIST = '/api/v5/account/vip-loan-order-list'
 VIP_LOAN_ORDER_DETAIL = '/api/v5/account/vip-loan-order-detail'
+SET_RISKOFFSET_TYPE = '/api/v5/account/set-riskOffset-type'
 
 # funding
 DEPOSIT_ADDRESS = '/api/v5/asset/deposit-address'
@@ -96,6 +97,7 @@ BLOCK_TICKER = '/api/v5/market/block-ticker'
 BLOCK_TRADES = '/api/v5/market/trades'
 HISTORY_INDEX_CANDLES = '/api/v5/market/history-index-candles'
 HISTORY_MARK_PRICE_CANDLES = '/api/v5/market/history-mark-price-candles'
+INSTRUMENT_FAMILY_TRADES = '/api/v5/market/option/instrument-family-trades'
 
 # Public Data
 INSTRUMENT_INFO = '/api/v5/public/instruments'
@@ -217,6 +219,7 @@ GET_RFQ_TRADES = '/api/v5/rfq/trades'
 GET_PUBLIC_TRADES = '/api/v5/rfq/public-trades'
 MARKET_INSTRUMENT_SETTINGS = '/api/v5/rfq/maker-instrument-settings'
 MMP_RESET = '/api/v5/rfq/mmp-reset'
+GET_MAKER_INSTRUMENT_SETTINGS = '/api/v5/rfq/maker-instrument-settings'
 
 # tradingBot
 GRID_ORDER_ALGO = '/api/v5/tradingBot/grid/order-algo'

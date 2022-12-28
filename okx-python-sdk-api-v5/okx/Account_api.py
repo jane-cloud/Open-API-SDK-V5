@@ -114,8 +114,8 @@ class AccountAPI(Client):
         return self._request_without_params(GET, ACCOUNT_RISK)
 
     # Get borrow repay
-    def borrow_repay(self, ccy='', side='', amt=''):
-        params = {'ccy': ccy, 'side': side, 'amt': amt}
+    def borrow_repay(self, ccy='', side='', amt='', ordId = ''):
+        params = {'ccy': ccy, 'side': side, 'amt': amt, 'ordId':ordId}
         return self._request_with_params(POST, BORROW_REPAY, params)
 
     # Get borrow repay history
@@ -129,9 +129,9 @@ class AccountAPI(Client):
         return self._request_with_params(GET, INTEREST_LIMITS, params)
 
     # Get Simulated Margin
-    def get_simulated_margin(self, instType	='',inclRealPos='',instId='',pos=''):
-        params = {'instType': instType, 'inclRealPos': inclRealPos,'instId': instId,'pos': pos,}
-        return self._request_with_params(GET, SIMULATED_MARGIN, params)
+    def get_simulated_margin(self, instType	='',inclRealPos='',spotOffsetType='',simPos=[]):
+        params = {'instType': instType, 'inclRealPos': inclRealPos,'spotOffsetType':spotOffsetType,'simPos': simPos}
+        return self._request_with_params(POST, SIMULATED_MARGIN, params)
 
     # Get  Greeks
     def get_greeks(self, ccy=''):
@@ -177,3 +177,8 @@ class AccountAPI(Client):
     def vip_loan_order_detail(self, ccy = '', ordId = '', after = '', before = '', limit = ''):
         params = {'ccy': ccy, 'ordId': ordId, 'after': after, 'before': before, 'limit': limit}
         return self._request_with_params(GET, VIP_LOAN_ORDER_DETAIL, params)
+
+    # POST /api/v5/account/set-riskOffset-type
+    def set_riskOffset_type(self, type = ''):
+        params = {'type':type}
+        return self._request_with_params(POST, SET_RISKOFFSET_TYPE, params)

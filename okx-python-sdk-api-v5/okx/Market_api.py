@@ -107,3 +107,8 @@ class MarketAPI(Client):
     def get_history_markprice_candlesticks(self, instId ='', after='', before='', bar='', limit=''):
         params = {'instId': instId, 'after': after, 'before': before, 'bar': bar, 'limit': limit}
         return self._request_with_params(GET, HISTORY_MARK_PRICE_CANDLES, params)
+
+    # GET /api/v5/market/option/instrument-family-trades
+    def instrument_family_trades(self, instFamily = ''):
+        params = {'instFamily':instFamily}
+        return self._request_with_params(GET, INSTRUMENT_FAMILY_TRADES, params)

@@ -69,3 +69,8 @@ class RfqAPI(Client):
     def mmp_reset(self):
         params = {}
         return self._request_with_params(POST, MMP_RESET, params)
+
+    # GET /api/v5/rfq/maker-instrument-settings
+    def get_maker_instrument_settings(self):
+        params = {}
+        return self._request_with_params(GET, GET_MAKER_INSTRUMENT_SETTINGS, params)

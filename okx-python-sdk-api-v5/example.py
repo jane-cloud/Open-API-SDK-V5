@@ -74,7 +74,7 @@ if __name__ == '__main__':
     # 获取一键借币还币历史
     # result = accountAPI.quick_margin_borrow_repay_history(instId='', ccy='', side='', after='', before='', begin='', end='', limit='')
     # 尊享借币还币 GET Enjoy borrowing and returning money
-    # result = accountAPI.borrow_repay('BTC', 'borrow', '10')
+    # result = accountAPI.borrow_repay(ccy = 'BTC', side = 'borrow', amt = '10', ordId = '')
     # 获取尊享借币还币历史 Get the privileged currency borrowing and repayment history
     # result = accountAPI.get_borrow_repay_history(ccy = '', after = '', before = '', limit = '')
     # 获取尊享借币计息记录
@@ -88,11 +88,13 @@ if __name__ == '__main__':
     # 获取借币利率与限额 GET Obtain borrowing rate and limit
     # result = accountAPI.get_interest_limits(type = '2', ccy = 'ETH')
     # 组合保证金的虚拟持仓保证金计算 POST Simulated Margin
-    # result = accountAPI.get_simulated_margin()
+    # result = accountAPI.get_simulated_margin(instType = '', inclRealPos = '', spotOffsetType = '', simPos = [{"instId":"BTC-USDT-SWAP","pos":"1"}])
     # 查看账户Greeks GET GREEKS
     # result = accountAPI.get_greeks()
     # 获取组合保证金模式全仓限制
     # result = accountAPI.position_tiers(instType = 'SWAP', uly = 'BTC-USDT')
+    # 设置组合保证金账户风险对冲模式
+    # result = accountAPI.set_riskOffset_type(type = '1')
     # 开通期权交易
     # result = accountAPI.activate_option()
 
@@ -177,6 +179,8 @@ if __name__ == '__main__':
     # result = marketAPI.get_history_markprice_candlesticks(instId = 'BTC-USDT', after = '', before = '', bar = '', limit = '')
     # 获取交易产品公共成交数据  Get Trades
     # result = marketAPI.get_trades('BTC-USDT', '400')
+    # 获取期权品种公共成交数据
+    # result = marketAPI.instrument_family_trades(instFamily = 'BTC-USD')
     # 获取平台24小时成交总量  Get Platform 24 Volume
     # result = marketAPI.get_volume()
     # Oracle 上链交易数据 GET Oracle
@@ -259,8 +263,9 @@ if __name__ == '__main__':
     # trade api
     tradeAPI = Trade.TradeAPI(api_key, secret_key, passphrase, False, flag)
     # 下单  Place Order
-    # result = tradeAPI.place_order(instId='BTC-USDT-210326', tdMode='cross', side='sell', posSide='short',
-    #                               ordType='market', sz='100',tgtCcy='',banAmend='',quickMgnType='auto_borrow')
+    # result = tradeAPI.place_order(instId='BTC-USDT-SWAP', tdMode='cross', side='sell', posSide='',
+    #                               ordType='market', sz='100',tgtCcy='',banAmend='',quickMgnType='auto_borrow',
+    #                               tpTriggerPx = '1111', tpOrdPx = '1000', slTriggerPx = '', slOrdPx = '', tpTriggerPxType = '', slTriggerPxType = '')
     # 批量下单  Place Multiple Orders
     # result = tradeAPI.place_multiple_orders([
     #     {'instId': 'BTC-USD-210402', 'tdMode': 'isolated', 'side': 'buy', 'ordType': 'limit', 'sz': '1', 'px': '17400',
@@ -304,7 +309,7 @@ if __name__ == '__main__':
     # 策略委托下单  Place Algo Order
     # result = tradeAPI.place_algo_order('BTC-USDT-SWAP', 'isolated', 'buy', ordType='conditional',
     #                                    sz='100',posSide='long', tpTriggerPx='60000', tpOrdPx='59999',
-    #                                   tpTriggerPxType = 'last', slTriggerPxType = 'last', clOrdId ='123456', quickMgnType='')
+    #                                   tpTriggerPxType = 'last', slTriggerPxType = 'last', clOrdId ='123456', quickMgnType='', closeFraction = '1')
     # 撤销策略委托订单  Cancel Algo Order
     # result = tradeAPI.cancel_algo_order([{'algoId': '297394002194735104', 'instId': 'BTC-USDT-210409'}])
     # 撤销高级策略委托订单
@@ -357,7 +362,7 @@ if __name__ == '__main__':
     # 设置子账户的账户等级 Set account level of sub account
     # result = BrokerAPI.set_subaccount_level(subAcct = 'qwerty', acctLv = '1')
     # 设置子账户的交易手续费费率 Set transaction fee rate of sub account
-    # result = BrokerAPI.set_subaccount_fee_rate(subAcct = 'qwerty', instType = 'SPOT', chgType = 'absolute', chgTaker = '0.1bp', chgMaker = '', effDate = '')
+    # result = BrokerAPI.set_subaccount_fee_rate(subAcct = 'qwerty', instType = 'SPOT', mgnType = '', chgType = 'absolute', chgTaker = '0.1bp', chgMaker = '', effDate = '')
     # 创建子账户充值地址 Create sub account recharge address
     # result = BrokerAPI.subaccount_deposit_address(subAcct = 'qwerty', ccy = 'BTC', chain = '', addrType = '', to = '')
     # 获取子账户获取充值记录 Get sub account recharge record
@@ -403,6 +408,8 @@ if __name__ == '__main__':
     # result = RfqAPI.cancel_all_rfqs()
     # 执行报价
     # result = RfqAPI.execute_quote(rfqId = '', quoteId = '')
+    # 获取可报价产品
+    # result = RfqAPI.get_maker_instrument_settings()
     # 设置可报价产品
     # result = RfqAPI.maker_instrument_settings(instType = 'SPOT', data = [{"uly":"","instId":"","maxBlockSz":"","makerPxBand":""}])
     # 重设MMP状态

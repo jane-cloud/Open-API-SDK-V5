@@ -9,10 +9,11 @@ class TradeAPI(Client):
 
     # Place Order
     def place_order(self, instId, tdMode, side, ordType, sz, ccy='', clOrdId='', tag='', posSide='', px='',
-                    reduceOnly='', tgtCcy='', banAmend='',quickMgnType=''):
+                    reduceOnly='', tgtCcy='', banAmend='',quickMgnType='',tpTriggerPx = '', tpOrdPx = '', slTriggerPx = '', slOrdPx = '', tpTriggerPxType = '', slTriggerPxType = ''):
         params = {'instId': instId, 'tdMode': tdMode, 'side': side, 'ordType': ordType, 'sz': sz, 'ccy': ccy,
                   'clOrdId': clOrdId, 'tag': tag, 'posSide': posSide, 'px': px, 'reduceOnly': reduceOnly,
-                  'tgtCcy': tgtCcy, 'banAmend': banAmend,'quickMgnType':quickMgnType}
+                  'tgtCcy': tgtCcy, 'banAmend': banAmend,'quickMgnType':quickMgnType,'tpTriggerPx':tpTriggerPx,'tpOrdPx':tpOrdPx,'slTriggerPx':slTriggerPx
+                  ,'slOrdPx':slOrdPx,'tpTriggerPxType':tpTriggerPxType,'slTriggerPxType':slTriggerPxType}
         return self._request_with_params(POST, PLACR_ORDER, params)
 
     # Place Multiple Orders
@@ -80,7 +81,7 @@ class TradeAPI(Client):
                          triggerPx='', orderPx='', tgtCcy='', pxVar='',
                          pxSpread='',
                          szLimit='', pxLimit='', timeInterval='', tpTriggerPxType='', slTriggerPxType='',
-                         callbackRatio='',callbackSpread='',activePx='',tag='',triggerPxType='',clOrdId='',quickMgnType=''):
+                         callbackRatio='',callbackSpread='',activePx='',tag='',triggerPxType='',clOrdId='',quickMgnType='',closeFraction=''):
         params = {'instId': instId, 'tdMode': tdMode, 'side': side, 'ordType': ordType, 'sz': sz, 'ccy': ccy,
                   'posSide': posSide, 'reduceOnly': reduceOnly, 'tpTriggerPx': tpTriggerPx, 'tpOrdPx': tpOrdPx,
                   'slTriggerPx': slTriggerPx, 'slOrdPx': slOrdPx, 'triggerPx': triggerPx, 'orderPx': orderPx,
@@ -88,7 +89,7 @@ class TradeAPI(Client):
                   'timeInterval': timeInterval,
                   'pxSpread': pxSpread, 'tpTriggerPxType': tpTriggerPxType, 'slTriggerPxType': slTriggerPxType,
                   'callbackRatio' : callbackRatio, 'callbackSpread':callbackSpread,'activePx':activePx,
-                  'tag':tag,'triggerPxType':triggerPxType,'clOrdId':clOrdId,'quickMgnType':quickMgnType}
+                  'tag':tag,'triggerPxType':triggerPxType,'clOrdId':clOrdId,'quickMgnType':quickMgnType,'closeFraction':closeFraction}
         return self._request_with_params(POST, PLACE_ALGO_ORDER, params)
 
     # Cancel Algo Order
