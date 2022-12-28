@@ -56,7 +56,7 @@ if __name__ == '__main__':
     # 获取交易产品最大可借  Get the maximum loan of instrument
     # result = accountAPI.get_max_load('BTC-USDT', 'cross', 'BTC')
     # 获取当前账户交易手续费费率  Get Fee Rates
-    # result = accountAPI.get_fee_rates('FUTURES', '', category='1')
+    # result = accountAPI.get_fee_rates(instType = 'FUTURES',instId = '', category='1',instFamily = '')
     # 获取计息记录  Get interest-accrued
     # result = accountAPI.get_interest_accrued('BTC-USDT', 'BTC', 'isolated', '', '', '10', '')
     # 获取用户当前杠杆借币利率 Get interest rate
@@ -165,6 +165,8 @@ if __name__ == '__main__':
     # result = marketAPI.get_index_ticker('BTC', 'BTC-USD')
     # 获取产品深度  Get Order Book
     # result = marketAPI.get_orderbook('BTC-USDT-210402', '400')
+    # 获取产品轻量深度
+    result = marketAPI.get_books_lite(instId = 'BTC-USDT')
     # 获取所有交易产品K线数据  Get Candlesticks
     # result = marketAPI.get_candlesticks('BTC-USDT-210924', bar='1m')
     # 获取交易产品历史K线数据（仅主流币实盘数据）  Get Candlesticks History（top currencies in real-trading only）
@@ -201,7 +203,7 @@ if __name__ == '__main__':
     # public api
     publicAPI = Public.PublicAPI(api_key, secret_key, passphrase, False, flag)
     # 获取交易产品基础信息  Get instrument
-    # result = publicAPI.get_instruments('FUTURES', 'BTC-USDT')
+    # result = publicAPI.get_instruments(instType = 'FUTURES', uly = '', instFamily = 'BTC-USDT', instId = '')
     # 获取交割和行权记录  Get Delivery/Exercise History
     # result = publicAPI.get_deliver_history('FUTURES', 'BTC-USD')
     # 获取持仓总量  Get Open Interest
@@ -297,13 +299,13 @@ if __name__ == '__main__':
     # 获取订单信息  Get Order Details
     # result = tradeAPI.get_orders('BTC-USD-201225', '257173039968825345')
     # 获取未成交订单列表  Get Order List
-    # result = tradeAPI.get_order_list()
+    # result = tradeAPI.get_order_list(instType = '', uly = '', instFamily = '', instId = '', ordType = '', state = '', after = '', before = '', limit = '')
     # 获取历史订单记录（近七天） Get Order History (last 7 days）
-    # result = tradeAPI.get_orders_history('FUTURES')
+    # result = tradeAPI.get_orders_history(instType = 'SWAP', uly = '', instFamily = '', instId = '', ordType = '', state = '', category = '', after = '', before = '', begin = '', end = '', limit = '')
     # 获取历史订单记录（近三个月） Get Order History (last 3 months)
-    # result = tradeAPI.orders_history_archive('FUTURES')
+    # result = tradeAPI.orders_history_archive(instType = 'SWAP', uly = '', instFamily = '', instId = '', ordType = '', state = '', category = '', after = '', before = '', begin = '', end = '', limit = '')
     # 获取成交明细(三天)  Get Transaction Details
-    # result = tradeAPI.get_fills
+    # result = tradeAPI.get_fills(instType = '', uly = '', instFamily = '', instId = '', ordId = '', after = '', before = '', begin = '', end = '', limit = '')
     # 获取成交明细(三个月)  Get Transaction Details History
     # result = tradeAPI.get_fills_history(instType='SPOT')
     # 策略委托下单  Place Algo Order
@@ -398,7 +400,7 @@ if __name__ == '__main__':
     # 获取报价方信息
     # result = RfqAPI.counterparties()
     # 询价
-    # result = RfqAPI.create_rfq(counterparties = ["TESTQ4","TESTQ2"], anonymous = False, clRfqId = '20220531test001', tag = '555',
+    # result = RfqAPI.create_rfq(counterparties = ["TESTQ4","TESTQ2"], anonymous = False, clRfqId = '20220531test001', tag = '555', allowPartialExecution ='',
     #     legs = [{"instId":"BTC-USDT","sz":"1","side":"buy","tgtCcy":"base_ccy"},{"instId":"ETH-USDT","sz":"0.1","side":"buy","tgtCcy":"base_ccy"}])
     # 取消询价单
     # result = RfqAPI.cancel_rfq(rfqId = '3GIFPJ8', clRfqId = '')
@@ -411,7 +413,7 @@ if __name__ == '__main__':
     # 获取可报价产品
     # result = RfqAPI.get_maker_instrument_settings()
     # 设置可报价产品
-    # result = RfqAPI.maker_instrument_settings(instType = 'SPOT', data = [{"uly":"","instId":"","maxBlockSz":"","makerPxBand":""}])
+    # result = RfqAPI.maker_instrument_settings(instType = 'SPOT', data = [{"instFamily":"","instId":"","maxBlockSz":"","makerPxBand":""}])
     # 重设MMP状态
     # result = RfqAPI.mmp_reset()
     # 报价
@@ -427,7 +429,7 @@ if __name__ == '__main__':
     # 获取报价单信息
     # result = RfqAPI.get_quotes(rfqId = '', clRfqId = '', quoteId = '', clQuoteId = '', state = '', beginId = '', endId = '', limit = '')
     # 获取大宗交易信息
-    # result = RfqAPI.get_rfq_trades(rfqId = '', clRfqId = '', quoteId = '', clQuoteId = '', state = '', beginId = '', endId = '', limit = '')
+    # result = RfqAPI.get_rfq_trades(rfqId = '', clRfqId = '', quoteId = '', blockTdId = '', clQuoteId = '', state = '', beginId = '', endId = '', beginTs ='', endTs = '', limit = '')
     # 获取大宗交易公共成交数据
     # result = RfqAPI.get_public_trades(beginId = '', endId = '', limit = '')
 

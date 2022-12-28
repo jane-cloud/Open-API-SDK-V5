@@ -8,8 +8,8 @@ class PublicAPI(Client):
         Client.__init__(self, api_key, api_secret_key, passphrase, use_server_time, flag)
 
     # Get Instruments
-    def get_instruments(self, instType, uly='', instId=''):
-        params = {'instType': instType, 'uly': uly, 'instId': instId}
+    def get_instruments(self, instType = 'FUTURES', uly = 'BTC-USDT', instFamily = '', instId = ''):
+        params = {'instType': instType, 'uly': uly, 'instId': instId, 'instFamily':instFamily}
         return self._request_with_params(GET, INSTRUMENT_INFO, params)
 
     # Get Delivery/Exercise History
@@ -18,8 +18,8 @@ class PublicAPI(Client):
         return self._request_with_params(GET, DELIVERY_EXERCISE, params)
 
     # Get Open Interest
-    def get_open_interest(self, instType, uly='', instId=''):
-        params = {'instType': instType, 'uly': uly, 'instId': instId}
+    def get_open_interest(self, instType, uly='', instId='',instFamily=''):
+        params = {'instType': instType, 'uly': uly, 'instId': instId,'instFamily':instFamily}
         return self._request_with_params(GET, OPEN_INTEREST, params)
 
     # Get Funding Rate
@@ -58,19 +58,19 @@ class PublicAPI(Client):
 
     # Get Liquidation Orders
     def get_liquidation_orders(self, instType, mgnMode='', instId='', ccy='', uly='', alias='', state='', before='',
-                               after='', limit=''):
+                               after='', limit='',instFamily = ''):
         params = {'instType': instType, 'mgnMode': mgnMode, 'instId': instId, 'ccy': ccy, 'uly': uly,
-                  'alias': alias, 'state': state, 'before': before, 'after': after, 'limit': limit}
+                  'alias': alias, 'state': state, 'before': before, 'after': after, 'limit': limit,'instFamily':instFamily}
         return self._request_with_params(GET, LIQUIDATION_ORDERS, params)
 
     # Get Mark Price
-    def get_mark_price(self, instType, uly='', instId=''):
-        params = {'instType': instType, 'uly': uly, 'instId': instId}
+    def get_mark_price(self, instType, uly='', instId='',instFamily=''):
+        params = {'instType': instType, 'uly': uly, 'instId': instId,'instFamily':instFamily}
         return self._request_with_params(GET, MARK_PRICE, params)
 
     # Get Tier
-    def get_tier(self, instType, tdMode, uly='', instId='', ccy='', tier=''):
-        params = {'instType': instType, 'tdMode': tdMode, 'uly': uly, 'instId': instId, 'ccy': ccy, 'tier': tier}
+    def get_tier(self, instType, tdMode, uly='', instId='', ccy='', tier='',instFamily=''):
+        params = {'instType': instType, 'tdMode': tdMode, 'uly': uly, 'instId': instId, 'ccy': ccy, 'tier': tier,'instFamily':instFamily}
         return self._request_with_params(GET, TIER, params)
 
     # Get Interest Rate and Loan Quota
@@ -88,8 +88,8 @@ class PublicAPI(Client):
         params = {}
         return self._request_with_params(GET, VIP_INTEREST_RATE_LOAN_QUOTA, params)
 
-    def get_insurance_fund(self, instType = '', type = '', uly = '', ccy = '', before = '', after = '', limit = ''):
-        params = {'instType':instType, 'type':type, 'uly':uly, 'ccy':ccy, 'before':before, 'after':after, 'limit':limit}
+    def get_insurance_fund(self, instType = '', type = '', uly = '', ccy = '', before = '', after = '', limit = '',instFamily=''):
+        params = {'instType':instType, 'type':type, 'uly':uly, 'ccy':ccy, 'before':before, 'after':after, 'limit':limit,'instFamily':instFamily}
         return self._request_with_params(GET, INSURANCE_FUND, params)
 
     def convert_contract_coin(self, type = '', instId = '', sz = '', px = '', unit = ''):

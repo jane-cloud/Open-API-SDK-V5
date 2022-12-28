@@ -98,6 +98,7 @@ BLOCK_TRADES = '/api/v5/market/trades'
 HISTORY_INDEX_CANDLES = '/api/v5/market/history-index-candles'
 HISTORY_MARK_PRICE_CANDLES = '/api/v5/market/history-mark-price-candles'
 INSTRUMENT_FAMILY_TRADES = '/api/v5/market/option/instrument-family-trades'
+GET_BOOKS_LITE = '/api/v5/market/books-lite'
 
 # Public Data
 INSTRUMENT_INFO = '/api/v5/public/instruments'

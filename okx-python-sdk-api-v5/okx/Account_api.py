@@ -80,8 +80,8 @@ class AccountAPI(Client):
         return self._request_with_params(GET, MAX_LOAN, params)
 
     # Get Fee Rates
-    def get_fee_rates(self, instType, instId='', uly='', category=''):
-        params = {'instType': instType, 'instId': instId, 'uly': uly, 'category': category}
+    def get_fee_rates(self, instType, instId='', uly='', category='', instFamily=''):
+        params = {'instType': instType, 'instId': instId, 'uly': uly, 'category': category,'instFamily':instFamily}
         return self._request_with_params(GET, FEE_RATES, params)
 
     # Get interest-accrued

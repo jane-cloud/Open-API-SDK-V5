@@ -8,7 +8,7 @@ class MarketAPI(Client):
         Client.__init__(self, api_key, api_secret_key, passphrase, use_server_time, flag)
 
     # Get Tickers
-    def get_tickers(self, instType, uly=''):
+    def get_tickers(self, instType, uly='',instFamily=''):
         if uly:
             params = {'instType': instType, 'uly': uly}
         else:
@@ -84,8 +84,8 @@ class MarketAPI(Client):
         return self._request_with_params(GET, HISTORY_TRADES, params)
 
     # Get block history tickers
-    def get_block_tickers(self, instType = '', uly = ''):
-        params = {'instType':instType, 'uly':uly}
+    def get_block_tickers(self, instType = '', uly = '',instFamily =''):
+        params = {'instType':instType, 'uly':uly,'instFamily':instFamily}
         return self._request_with_params(GET, BLOCK_TICKERS, params)
 
     # Get block history ticker
@@ -112,3 +112,8 @@ class MarketAPI(Client):
     def instrument_family_trades(self, instFamily = ''):
         params = {'instFamily':instFamily}
         return self._request_with_params(GET, INSTRUMENT_FAMILY_TRADES, params)
+
+    # GET /api/v5/market/books-lite
+    def get_books_lite(self, instId=''):
+        params = {'instId': instId}
+        return self._request_with_params(GET, GET_BOOKS_LITE, params)
