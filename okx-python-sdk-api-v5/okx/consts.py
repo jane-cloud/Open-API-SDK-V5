@@ -49,6 +49,10 @@ POSITION_TIRES = '/api/v5/account/position-tiers'
 ACTIVATE_OPTION = '/api/v5/account/activate-option'
 QUICK_MARGIN_BRROW_REPAY = '/api/v5/account/quick-margin-borrow-repay'
 QUICK_MARGIN_BORROW_REPAY_HISTORY = '/api/v5/account/quick-margin-borrow-repay-history'
+VIP_INTEREST_ACCRUED = '/api/v5/account/vip-interest-accrued'
+VIP_INTEREST_DEDUCTED = '/api/v5/account/vip-interest-deducted'
+VIP_LOAN_ORDER_LIST = '/api/v5/account/vip-loan-order-list'
+VIP_LOAN_ORDER_DETAIL = '/api/v5/account/vip-loan-order-detail'
 
 # funding
 DEPOSIT_ADDRESS = '/api/v5/asset/deposit-address'
@@ -183,6 +187,7 @@ ND_DELETE_APIKEY = '/api/v5/broker/nd/subaccount/delete-apikey'
 GET_REBATE_PER_ORDERS = '/api/v5/broker/nd/rebate-per-orders'
 REBATE_PER_ORDERS = '/api/v5/broker/nd/rebate-per-orders'
 MODIFY_SUBACCOUNT_DEPOSIT_ADDRESS = '/api/v5/asset/broker/nd/modify-subaccount-deposit-address'
+ND_SUBACCOUNT_WITHDRAWAL_HISTORY = '/api/v5/asset/broker/nd/subaccount-withdrawal-history'
 
 # Convert
 GET_CURRENCIES = '/api/v5/asset/convert/currencies'

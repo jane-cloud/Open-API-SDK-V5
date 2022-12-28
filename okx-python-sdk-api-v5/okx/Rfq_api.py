@@ -10,8 +10,8 @@ class RfqAPI(Client):
         params = {}
         return self._request_with_params(GET, COUNTERPARTIES, params)
 
-    def create_rfq(self, counterparties='', anonymous='', clRfqId='', legs = []):
-        params = {'counterparties': counterparties, 'anonymous': anonymous, 'clRfqId': clRfqId, 'legs': legs}
+    def create_rfq(self, counterparties='', anonymous='', clRfqId='', tag='', legs = []):
+        params = {'counterparties': counterparties, 'anonymous': anonymous, 'clRfqId': clRfqId, 'tag':tag, 'legs': legs}
         return self._request_with_params(POST, CREATE_RFQ, params)
 
     def cancel_rfq(self, rfqId = '', clRfqId = ''):
@@ -30,8 +30,8 @@ class RfqAPI(Client):
         params = {'rfqId': rfqId, 'quoteId': quoteId}
         return self._request_with_params(POST, EXECUTE_QUOTE, params)
 
-    def create_quote(self, rfqId='', clQuoteId='', quoteSide = '', legs = [], expiresIn = '',anonymous = ''):
-        params = {'rfqId': rfqId, 'clQuoteId': clQuoteId, 'quoteSide': quoteSide, 'legs': legs, 'expiresIn':expiresIn, 'anonymous':anonymous}
+    def create_quote(self, rfqId='', clQuoteId='', tag = '', quoteSide = '', legs = [], expiresIn = '',anonymous = ''):
+        params = {'rfqId': rfqId, 'clQuoteId': clQuoteId, 'tag':tag, 'quoteSide': quoteSide, 'legs': legs, 'expiresIn':expiresIn, 'anonymous':anonymous}
         return self._request_with_params(POST, CREATE_QUOTE, params)
 
     def cancel_quote(self, quoteId  = '', clQuoteId = ''):

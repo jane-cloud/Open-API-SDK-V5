@@ -69,3 +69,7 @@ class BrokerAPI(Client):
     def modify_subaccount_deposit_address(self, subAcct = '', ccy = '', chain = '', addr = '', to = ''):
         params = {'subAcct': subAcct, 'ccy': ccy, 'chain': chain, 'addr': addr, 'to': to}
         return self._request_with_params(POST, MODIFY_SUBACCOUNT_DEPOSIT_ADDRESS, params)
+
+    def nd_subaccount_withdrawal_history(self, subAcct = '', ccy = '', wdId = '', clientId = '', txId = '', type = '', state = '', after = '', before = '', limit = ''):
+        params = {'subAcct': subAcct, 'ccy': ccy, 'wdId': wdId, 'clientId': clientId, 'txId': txId, 'type': type, 'state': state, 'after': after, 'before': before, 'limit': limit}
+        return self._request_with_params(GET, ND_SUBACCOUNT_WITHDRAWAL_HISTORY, params)

@@ -77,6 +77,14 @@ if __name__ == '__main__':
     # result = accountAPI.borrow_repay('BTC', 'borrow', '10')
     # 获取尊享借币还币历史 Get the privileged currency borrowing and repayment history
     # result = accountAPI.get_borrow_repay_history(ccy = '', after = '', before = '', limit = '')
+    # 获取尊享借币计息记录
+    # result = accountAPI.vip_interest_accrued(ccy = '', ordId = '', after = '', before = '', limit = '')
+    # 获取尊享借币扣息记录
+    # result = accountAPI.vip_interest_deducted(ordId = '', ccy = '', after = '', before = '', limit = '')
+    # 尊享借币订单列表
+    # result = accountAPI.vip_loan_order_list(ordId = '', state = '', ccy = '', after = '', before = '', limit = '')
+    # 尊享借币订单详情
+    # result = accountAPI.vip_loan_order_detail(ordId = '123', ccy = '', after = '', before = '', limit = '')
     # 获取借币利率与限额 GET Obtain borrowing rate and limit
     # result = accountAPI.get_interest_limits(type = '2', ccy = 'ETH')
     # 组合保证金的虚拟持仓保证金计算 POST Simulated Margin
@@ -354,6 +362,8 @@ if __name__ == '__main__':
     # result = BrokerAPI.subaccount_deposit_address(subAcct = 'qwerty', ccy = 'BTC', chain = '', addrType = '', to = '')
     # 获取子账户获取充值记录 Get sub account recharge record
     # result = BrokerAPI.subaccount_deposit_history(subAcct = 'qwerty', ccy = 'BTC', txId = '', state = '', after = '', before = '', limit = '')
+    # 获取子账户提币记录
+    # result = BrokerAPI.nd_subaccount_withdrawal_history(subAcct = 'qwerty', ccy = 'BTC', wdId = '', clientId = '', txId = '', type = '', state = '', after = '', before = '', limit = '')
     # 获取子账户返佣记录 Get rebate record of sub account
     # result = BrokerAPI.rebate_daily(subAcct = 'qwerty', begin = '', end = '', page = '', limit = '')
     # 创建子账户的APIKEY Apikey for creating sub accounts
@@ -383,7 +393,7 @@ if __name__ == '__main__':
     # 获取报价方信息
     # result = RfqAPI.counterparties()
     # 询价
-    # result = RfqAPI.create_rfq(counterparties = ["TESTQ4","TESTQ2"], anonymous = False, clRfqId = '20220531test001', 
+    # result = RfqAPI.create_rfq(counterparties = ["TESTQ4","TESTQ2"], anonymous = False, clRfqId = '20220531test001', tag = '555',
     #     legs = [{"instId":"BTC-USDT","sz":"1","side":"buy","tgtCcy":"base_ccy"},{"instId":"ETH-USDT","sz":"0.1","side":"buy","tgtCcy":"base_ccy"}])
     # 取消询价单
     # result = RfqAPI.cancel_rfq(rfqId = '3GIFPJ8', clRfqId = '')
@@ -398,7 +408,7 @@ if __name__ == '__main__':
     # 重设MMP状态
     # result = RfqAPI.mmp_reset()
     # 报价
-    # result = RfqAPI.create_quote(rfqId = '', clQuoteId = '', quoteSide = 'buy', anonymous = 'True', expiresIn = '', legs = [{"px":"39450.0","sz":"200000","instId":"BTC-USDT-SWAP","side":"buy"}])
+    # result = RfqAPI.create_quote(rfqId = '', clQuoteId = '', tag = '123', quoteSide = 'buy', anonymous = 'True', expiresIn = '', legs = [{"px":"39450.0","sz":"200000","instId":"BTC-USDT-SWAP","side":"buy"}])
     # 取消报价单
     # result = RfqAPI.cancel_quote(quoteId = '', clQuoteId = '')
     # 批量取消报价单

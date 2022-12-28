@@ -157,3 +157,23 @@ class AccountAPI(Client):
     def quick_margin_borrow_repay_history(self, instId='', ccy='', side='', after='', before='', begin='', end='', limit=''):
         params = {'instId': instId, 'ccy': ccy, 'side': side, 'after': after, 'before': before, 'begin': begin, 'end': end, 'limit': limit}
         return self._request_with_params(GET, QUICK_MARGIN_BORROW_REPAY_HISTORY, params)
+
+    # GET /api/v5/account/vip-interest-accrued
+    def vip_interest_accrued(self, ccy = '', ordId = '', after = '', before = '', limit = ''):
+        params = {'ccy': ccy, 'ordId': ordId, 'after': after, 'before': before, 'limit': limit}
+        return self._request_with_params(GET, VIP_INTEREST_ACCRUED, params)
+
+    # GET /api/v5/account/vip-interest-deducted
+    def vip_interest_deducted(self, ccy = '', ordId = '', after = '', before = '', limit = ''):
+        params = {'ccy': ccy, 'ordId': ordId, 'after': after, 'before': before, 'limit': limit}
+        return self._request_with_params(GET, VIP_INTEREST_DEDUCTED, params)
+
+    # GET /api/v5/account/vip-loan-order-list
+    def vip_loan_order_list(self, ordId = '', state = '', ccy = '', after = '', before = '', limit = ''):
+        params = {'ordId': ordId, 'state': state, 'ccy': ccy, 'after': after, 'before': before, 'limit': limit}
+        return self._request_with_params(GET, VIP_LOAN_ORDER_LIST, params)
+
+    # GET /api/v5/account/vip-loan-order-detail
+    def vip_loan_order_detail(self, ccy = '', ordId = '', after = '', before = '', limit = ''):
+        params = {'ccy': ccy, 'ordId': ordId, 'after': after, 'before': before, 'limit': limit}
+        return self._request_with_params(GET, VIP_LOAN_ORDER_DETAIL, params)
