@@ -433,4 +433,17 @@ public class AccountAPITests extends  AccountAPIBaseTests {
         JSONObject result = this.accountAPIService.activateOption();
         toResultString(LOG, "result", result);
     }
+
+    /**
+     * 设置自动借币 Set auto loan
+     * POST /api/v5/account/set-auto-loan
+     */
+    @Test
+    public void setAutoLoan(){
+        SetAutoLoan setAutoLoan = new SetAutoLoan();
+        setAutoLoan.setAutoLoan(true);
+
+        JSONObject result = this.accountAPIService.setAutoLoan(setAutoLoan);
+        toResultString(LOG, "result", result);
+    }
 }

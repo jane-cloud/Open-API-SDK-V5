@@ -246,6 +246,56 @@ public class PrivateChannelTest {
     }
 
     /**
+     * 充值信息频道
+     * Deposit Info Channel
+     */
+    @Test
+    public void depositInfoChannel() {
+        //添加订阅频道
+        ArrayList<Map> channelList= new ArrayList<>();
+        Map depositInfo =new HashMap();
+
+        depositInfo.put("channel","deposit-info");
+        depositInfo.put("ccy","BTC");
+
+        channelList.add(depositInfo);
+
+        //调用订阅方法
+        WebSocketClient.subscribe(channelList);
+        //为保证测试方法不停，需要让线程延迟
+        try {
+            Thread.sleep(10000000);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * 提币信息频道
+     * Withdrawal info channel
+     */
+    @Test
+    public void withdrawalInfoChannel() {
+        //添加订阅频道
+        ArrayList<Map> channelList= new ArrayList<>();
+        Map withdrawalInfoChannel =new HashMap();
+
+        withdrawalInfoChannel.put("channel","withdrawal-info");
+        withdrawalInfoChannel.put("ccy","BTC");
+
+        channelList.add(withdrawalInfoChannel);
+
+        //调用订阅方法
+        WebSocketClient.subscribe(channelList);
+        //为保证测试方法不停，需要让线程延迟
+        try {
+            Thread.sleep(10000000);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
      * 询价频道
      * Rfqs channel
      */

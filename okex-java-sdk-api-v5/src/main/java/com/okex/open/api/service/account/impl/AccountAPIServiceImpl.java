@@ -228,4 +228,10 @@ public class AccountAPIServiceImpl implements AccountAPIService {
     public JSONObject activateOption() {
         return this.client.executeSync(this.api.activateOption());
     }
+
+    //设置自动借币 Set auto loan
+    @Override
+    public JSONObject setAutoLoan(SetAutoLoan setAutoLoan) {
+        return this.client.executeSync(this.api.setAutoLoan(JSONObject.parseObject(JSON.toJSONString(setAutoLoan))));
+    }
 }

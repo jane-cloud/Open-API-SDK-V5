@@ -101,9 +101,12 @@ public interface PublicDataAPI {
                                       @Query("after") String after,
                                       @Query("limit") String limit);
 
-
-    //张币转换
+    //张币转换 Unit convert
     @GET("/api/v5/public/convert-contract-coin")
-    Call<JSONObject> getConvertContractCoin(@Query("git pull origin main") String type, @Query("instId") String instId,@Query("sz") String sz,@Query("px") String px,@Query("unit") String unit);
+    Call<JSONObject> getConvertContractCoin(@Query("type") String type, @Query("instId") String instId,@Query("sz") String sz,@Query("px") String px,@Query("unit") String unit);
+
+    //获取期权公共成交数据  Get option trades
+    @GET("/api/v5/public/option-trades")
+    Call<JSONObject> getOptionTrades(@Query("instId") String instId, @Query("instFamily") String instFamily,@Query("optType") String optType);
 
 }

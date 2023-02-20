@@ -60,6 +60,9 @@ public interface BrokerAPIService {
     //生成返佣明细下载链接 Create rebate details download link
     JSONObject setRebatePerOrdersfd(SetRebatePerOrders setRebatePerOrders);
 
+    //获取用户的 Broker 返佣信息 Get the user's broker rebate information
+    JSONObject ifRebate(String apiKey,String brokerType);
+
     //重置子账户充值地址    modify-subaccount-deposit-address
     JSONObject modifySubaccountDepositAddress(SubAccountDepositAddress subAccountDepositAddress);
 

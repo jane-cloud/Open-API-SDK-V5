@@ -3,6 +3,7 @@ package com.okex.open.api.service.account;
 import com.alibaba.fastjson.JSONObject;
 import com.okex.open.api.bean.account.param.*;
 import retrofit2.Call;
+import retrofit2.http.Body;
 import retrofit2.http.POST;
 import retrofit2.http.Query;
 
@@ -113,4 +114,7 @@ public interface AccountAPIService {
 
     //开通期权交易 Activate option
     JSONObject activateOption();
+
+    //设置自动借币 Set auto loan
+    JSONObject setAutoLoan(SetAutoLoan setAutoLoan);
 }

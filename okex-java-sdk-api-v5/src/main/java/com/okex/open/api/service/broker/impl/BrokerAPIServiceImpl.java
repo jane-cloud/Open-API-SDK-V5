@@ -123,6 +123,13 @@ public class BrokerAPIServiceImpl implements BrokerAPIService {
     public JSONObject setRebatePerOrdersfd(SetRebatePerOrders setRebatePerOrders) {
         return this.client.executeSync(this.api.setRebatePerOrdersfd(JSONObject.parseObject(JSON.toJSONString(setRebatePerOrders))));
     }
+
+    //获取用户的 Broker 返佣信息 Get the user's broker rebate information
+    @Override
+    public JSONObject ifRebate(String apiKey, String brokerType) {
+        return this.client.executeSync(this.api.ifRebate(apiKey, brokerType));
+    }
+
     //重置子账户充值地址    modify-subaccount-deposit-address
     @Override
     public JSONObject modifySubaccountDepositAddress(SubAccountDepositAddress subAccountDepositAddress) {

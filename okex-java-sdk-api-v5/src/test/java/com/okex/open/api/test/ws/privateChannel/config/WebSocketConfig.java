@@ -4,6 +4,9 @@ public class WebSocketConfig {
     //ws  模拟盘
     private static final String SERVICE_URL = "wss://wspap.okx.com:8443/ws/v5/private?brokerId=9999";
 
+    //提币信息频道&充值信息频道
+//    private static final String SERVICE_URL = "wss://ws.okx.com:8443/ws/v5/business";
+
     //ws  实盘
 //    private static final String SERVICE_URL = "wss://ws.okx.com:8443/ws/v5/private";
 

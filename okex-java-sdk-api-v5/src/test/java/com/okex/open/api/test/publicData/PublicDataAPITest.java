@@ -207,12 +207,22 @@ public class PublicDataAPITest extends PublicDataAPIBaseTest {
 
 
     /**
-     * 张币转换  Get
+     * 张币转换  Unit convert
      * GET /api/v5/public/convert-contract-coin
      */
     @Test
     public void getConvertContractCoin(){
         JSONObject result = publicDataAPIService.getConvertContractCoin("","","","","");
+        toResultString(LOG, "result", result);
+    }
+
+    /**
+     * 获取期权公共成交数据  Get option trades
+     * GET /api/v5/public/option-trades
+     */
+    @Test
+    public void getOptionTrades(){
+        JSONObject result = publicDataAPIService.getOptionTrades("BTC-USD-230303-17000-C",null,null);
         toResultString(LOG, "result", result);
     }
 

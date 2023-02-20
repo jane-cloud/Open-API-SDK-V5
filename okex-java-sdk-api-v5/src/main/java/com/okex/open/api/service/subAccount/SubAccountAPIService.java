@@ -30,6 +30,10 @@ public interface SubAccountAPIService {
     //获取子账户资金账户余额
     JSONObject getSubaccountBalances(String subAcct, String ccy);
 
-    //重置子账户的APIKey
+    //重置子账户的APIKey Reset the APIKey of a sub-account
     JSONObject modifySubApikey(SetTransferOut setTransferOut);
+
+    //获取用户的节点返佣信息 Get the user's affiliate rebate information
+    JSONObject ifRebate(String apiKey);
+
 }

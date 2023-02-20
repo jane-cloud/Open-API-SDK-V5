@@ -4,6 +4,7 @@ public class CancelRfq {
     private String rfqId;
     private String clRfqId;
 
+
     public String getRfqId() {
         return rfqId;
     }

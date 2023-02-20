@@ -61,4 +61,10 @@ public class SubAccountAPIServiceImpl implements SubAccountAPIService {
     public JSONObject modifySubApikey(SetTransferOut setTransferOut) {
         return this.client.executeSync(this.api.modifySubApikey(setTransferOut));
     }
+
+    //获取用户的节点返佣信息 Get the user's affiliate rebate information
+    @Override
+    public JSONObject ifRebate(String apiKey) {
+        return this.client.executeSync(this.api.ifRebate(apiKey));
+    }
 }

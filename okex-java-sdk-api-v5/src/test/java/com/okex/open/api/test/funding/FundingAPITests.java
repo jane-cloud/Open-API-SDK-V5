@@ -112,7 +112,7 @@ public class FundingAPITests extends FundingAPIBaseTests {
      */
     @Test
     public void getDepositHistory() {
-        JSONObject result = fundingAPIService.getDepositHistory("BTC", "","", "", "", "","","");
+        JSONObject result = fundingAPIService.getDepositHistory("BTC", "","", "","", "", "","","");
         toResultString(LOG, "result", result);
     }
 
@@ -142,6 +142,16 @@ public class FundingAPITests extends FundingAPIBaseTests {
     @Test
     public void getWithdrawalHistory() {
         JSONObject result = fundingAPIService.getWithdrawalHistory("USDT", "","","", "", "", "","","");
+        toResultString(LOG, "result", result);
+    }
+
+    /**
+     * 获取充值/提现的详细状态 Get deposit withdraw status
+     * GET /api/v5/asset/deposit-withdraw-status
+     */
+    @Test
+    public void getDepositWithdrawalStatus() {
+        JSONObject result = fundingAPIService.getDepositWithdrawalStatus("64407152", null,null,null, null);
         toResultString(LOG, "result", result);
     }
 

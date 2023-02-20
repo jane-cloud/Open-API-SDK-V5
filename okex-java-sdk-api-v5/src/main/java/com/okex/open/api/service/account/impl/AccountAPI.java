@@ -163,4 +163,8 @@ public interface AccountAPI {
     //开通期权交易 Activate option
     @POST("/api/v5/account/activate-option")
     Call<JSONObject> activateOption();
+
+    //设置自动借币 Set auto loan
+    @POST("/api/v5/account/set-auto-loan")
+    Call<JSONObject> setAutoLoan(@Body JSONObject jsonObject);
 }

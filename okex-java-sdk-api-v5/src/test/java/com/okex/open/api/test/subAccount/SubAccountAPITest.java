@@ -95,6 +95,7 @@ public class SubAccountAPITest extends SubAccountAPIBaseTest{
         JSONObject result = this.subAccountAPIService.getEntrustSubList(null);
         toResultString(LOG, "result", result);
     }
+
     /**
      * 获取子账户资金账户余额
      *  subaccount balances
@@ -105,6 +106,7 @@ public class SubAccountAPITest extends SubAccountAPIBaseTest{
         JSONObject result = this.subAccountAPIService.getSubaccountBalances("",null);
         toResultString(LOG, "result", result);
     }
+
     /**
      * 重置子账户的APIKey modify-apikey
      * POST /api/v5/users/subaccount/modify-apikey
@@ -119,6 +121,16 @@ public class SubAccountAPITest extends SubAccountAPIBaseTest{
         setTransferOut.setPerm("");
         JSONObject result = this.subAccountAPIService.modifySubApikey(setTransferOut);
         toResultString(LOG,"result",result);
+    }
+
+    /**
+     * 获取用户的节点返佣信息 Get the user's affiliate rebate information
+     * GET api/v5/users/partner/if-rebate
+     */
+    @Test
+    public void ifRebate(){
+        JSONObject result = this.subAccountAPIService.ifRebate("");
+        toResultString(LOG, "result", result);
     }
 
 }

@@ -47,7 +47,13 @@ public interface SubAccountAPI {
     @GET("/api/v5/asset/subaccount/balances")
     Call<JSONObject>  getSubaccountBalances(@Query("subAcct") String subAcct,@Query("ccy")  String ccy);
 
-    //重置子账户的APIKey
+    //重置子账户的APIKey Reset the APIKey of a sub-account
     @POST("/api/v5/users/subaccount/modify-apikey")
     Call<JSONObject> modifySubApikey(@Body SetTransferOut setTransferOut);
+
+    //获取用户的节点返佣信息 Get the user's affiliate rebate information
+    @GET("/api/v5/users/partner/if-rebate")
+    Call<JSONObject>  ifRebate(@Query("apiKey") String apiKey);
+
+
 }

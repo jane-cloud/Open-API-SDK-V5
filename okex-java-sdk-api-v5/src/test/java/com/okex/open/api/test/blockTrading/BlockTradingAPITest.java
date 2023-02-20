@@ -249,6 +249,7 @@ public class BlockTradingAPITest extends BlockTradingAPIBaseTest {
         CancelQuote cancelQuote = new CancelQuote();
         cancelQuote.setClQuoteId("");
         cancelQuote.setQuoteId("");
+        cancelQuote.setRfqId("");
 
         JSONObject result = this.blockTradingAPIService.cancelQuote(cancelQuote);
         toResultString(LOG, "result", result);

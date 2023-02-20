@@ -556,6 +556,32 @@ public class PublicChannelTest {
         }
     }
 
+    /**
+     * 期权公共成交频道
+     * Option trades channel
+     */
+    @Test
+    public void optionTradesChannel() {
+        //添加订阅频道
+        ArrayList<Map> channelList= new ArrayList<>();
+
+        Map map =new HashMap();
+        map.put("channel","option-trades");
+        map.put("instType","OPTION");
+        map.put("instId","BTC-USD-230303-17000-C");
+        map.put("instFamily","BTC-USD");
+
+        channelList.add(map);
+        //调用订阅方法
+        WebSocketClient.subscribe(channelList);
+        //为保证测试方法不停，需要让线程延迟
+        try {
+            Thread.sleep(10000000);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 
 
     //取消订阅

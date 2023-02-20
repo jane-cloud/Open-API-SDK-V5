@@ -117,9 +117,18 @@ public class PublicDataAPIServiceImpl implements PublicDataAPIService {
         return this.client.executeSync(this.api.getInsuranceFund(instType, type, uly, instFamily, ccy, before, after, limit));
     }
 
-    //张币转换
+    //张币转换 Unit convert
     @Override
     public JSONObject getConvertContractCoin(String type, String instId, String sz, String px, String unit) {
         return this.client.executeSync(this.api.getConvertContractCoin(type,  instId,  sz,  px,  unit));
     }
+
+    //获取期权公共成交数据  Get option trades
+    @Override
+    public JSONObject getOptionTrades(String instId, String instFamily, String optType) {
+        return this.client.executeSync(this.api.getOptionTrades(instId, instFamily, optType));
+    }
+
+
+
 }

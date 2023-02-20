@@ -102,6 +102,10 @@ public interface BrokerAPI {
     @POST("/api/v5/broker/fd/rebate-per-orders")
     Call<JSONObject> setRebatePerOrdersfd(@Body JSONObject jsonObject);
 
+    //获取用户的 Broker 返佣信息 Get the user's broker rebate information
+    @GET("/api/v5/broker/fd/if-rebate")
+    Call<JSONObject> ifRebate(@Query("apiKey") String apiKey,
+                              @Query("brokerType") String brokerType);
 
     //重置子账户充值地址    modify-subaccount-deposit-address
     @POST("/api/v5/asset/broker/nd/modify-subaccount-deposit-address")
