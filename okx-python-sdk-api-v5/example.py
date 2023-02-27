@@ -97,6 +97,8 @@ if __name__ == '__main__':
     # result = accountAPI.set_riskOffset_type(type = '1')
     # 开通期权交易
     # result = accountAPI.activate_option()
+    # 开通期权交易
+    # result = accountAPI.set_auto_loan(autoLoan = '')
 
     # funding api
     fundingAPI = Funding.FundingAPI(api_key, secret_key, passphrase, False, flag)
@@ -128,6 +130,8 @@ if __name__ == '__main__':
     # result = fundingAPI.cancel_withdrawal(wdId='BTC')
     # 获取提币记录  Get Withdrawal History
     # result = fundingAPI.get_withdrawal_history()
+    # 获取充值/提现的详细状态
+    # result = fundingAPI.deposit_withdraw_status(wdId = '', txId = '', ccy = '', to = '', chain = '')
     # 小额资产兑换 CONVERT_DUST_ASSETS
     # result = fundingAPI.convert_dust_assets()
     # 获取账户资产估值 GET Obtain account asset valuation
@@ -350,6 +354,8 @@ if __name__ == '__main__':
     # result = subAccountAPI.modify_apikey(subAcct = '', apiKey = '', label = '', perm = '', ip = '')
     # 获取子账户资金账户余额
     # result = subAccountAPI.asset_balances(subAcct = '', ccy = '')
+    # 获取用户的节点返佣信息
+    # result = subAccountAPI.partner_if_rebate(apiKey = '')
 
     # BrokerAPI
     BrokerAPI = Broker.BrokerAPI(api_key, secret_key, passphrase, False, flag)
@@ -394,6 +400,8 @@ if __name__ == '__main__':
     # result = FDBrokerAPI.fd_rebate_per_orders(begin = '', end = '', brokerType = '')
     # 获取返佣明细下载链接
     # result = FDBrokerAPI.fd_get_rebate_per_orders(type = '', begin = '', end = '', brokerType = '')
+    # 获取返佣明细下载链接
+    # result = FDBrokerAPI.fd_if_rebate(apiKey = '', brokerType = '')
 
     # 大宗交易(Rfq)API
     RfqAPI = Rfq.RfqAPI(api_key, secret_key, passphrase, False, flag)
@@ -419,7 +427,7 @@ if __name__ == '__main__':
     # 报价
     # result = RfqAPI.create_quote(rfqId = '', clQuoteId = '', tag = '123', quoteSide = 'buy', anonymous = 'True', expiresIn = '', legs = [{"px":"39450.0","sz":"200000","instId":"BTC-USDT-SWAP","side":"buy"}])
     # 取消报价单
-    # result = RfqAPI.cancel_quote(quoteId = '', clQuoteId = '')
+    # result = RfqAPI.cancel_quote(quoteId = '', clQuoteId = '', rfqId = '')
     # 批量取消报价单
     # result = RfqAPI.cancel_batch_quotes(quoteIds = '', clQuoteIds = '')
     # 取消所有报价单

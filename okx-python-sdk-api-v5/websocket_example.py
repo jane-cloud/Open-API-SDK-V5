@@ -396,7 +396,8 @@ url = "wss://wspap.okx.com:8443/ws/v5/public"
 # url = "wss://ws.okx.com:8443/ws/v5/private"
 # 模拟盘 demo trading
 # url = "wss://wspap.okx.com:8443/ws/v5/private"
-
+# 充值信息/提币信息频道
+# url = "wss://ws.okx.com:8443/ws/v5/business"
 '''
 公共频道 public channel
 :param channel: 频道名
@@ -483,6 +484,10 @@ url = "wss://wspap.okx.com:8443/ws/v5/public"
 # channels = [{"channel": "grid-positions", "algoId": ""}]
 # 网格策略子订单频道 Grid policy suborder channel
 # channels = [{"channel": "grid-sub-orders", "algoId": ""}]
+# 充值信息频道
+# channels = [{"channel": "deposit-info", "ccy":"BTC"}]
+# 提币信息频道
+# channels = [{"channel": "withdrawal-info", "ccy":"BTC"}]
 '''
 交易 trade
 '''

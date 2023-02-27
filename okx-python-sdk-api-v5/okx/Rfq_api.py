@@ -34,8 +34,8 @@ class RfqAPI(Client):
         params = {'rfqId': rfqId, 'clQuoteId': clQuoteId, 'tag':tag, 'quoteSide': quoteSide, 'legs': legs, 'expiresIn':expiresIn, 'anonymous':anonymous}
         return self._request_with_params(POST, CREATE_QUOTE, params)
 
-    def cancel_quote(self, quoteId  = '', clQuoteId = ''):
-        params = {'quoteId': quoteId, 'clQuoteId': clQuoteId}
+    def cancel_quote(self, quoteId  = '', clQuoteId = '', rfqId = ''):
+        params = {'quoteId': quoteId, 'clQuoteId': clQuoteId, 'rfqId':rfqId}
         return self._request_with_params(POST, CANCEL_QUOTE, params)
 
     def cancel_batch_quotes(self, quoteIds='', clQuoteIds=''):

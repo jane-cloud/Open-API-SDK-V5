@@ -150,6 +150,10 @@ class AccountAPI(Client):
         params = {}
         return self._request_with_params(POST, ACTIVATE_OPTION, params)
 
+    def set_auto_loan(self,autoLoan = ''):
+        params = {'autoLoan':autoLoan}
+        return self._request_with_params(POST, SET_AUTO_LOAN, params)
+
     def quick_margin_borrow_repay(self, instId='', ccy='', side='', amt=''):
         params = {'instId':instId, 'ccy':ccy, 'side':side, 'amt':amt}
         return self._request_with_params(POST, QUICK_MARGIN_BRROW_REPAY, params)

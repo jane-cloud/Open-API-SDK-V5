@@ -13,3 +13,7 @@ class FDBrokerAPI(Client):
     def fd_get_rebate_per_orders(self, type = '', begin = '', end = '', brokerType = ''):
         params = {'type': type, 'begin': begin, 'end': end, 'brokerType':brokerType}
         return self._request_with_params(GET, FD_GET_REBATE_PER_ORDERS, params)
+
+    def fd_if_rebate(self, apiKey = '', brokerType = ''):
+        params = {'apiKey': apiKey, 'brokerType':brokerType}
+        return self._request_with_params(GET, FD_IF_REBATE, params)

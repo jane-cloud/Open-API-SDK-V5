@@ -46,6 +46,6 @@ class SubAccountAPI(Client):
         params = {'subAcct': subAcct, 'apiKey': apiKey, 'label': label, 'perm': perm, 'ip': ip}
         return self._request_with_params(POST, MODIFY_APIKEY, params)
 
-    def asset_balances(self, subAcct = '', ccy = ''):
-        params = {'subAcct': subAcct, 'ccy':ccy}
-        return self._request_with_params(GET, ASSET_BALANCES, params)
+    def partner_if_rebate(self, apiKey = ''):
+        params = {'apiKey': apiKey}
+        return self._request_with_params(GET, PARTNER_IF_REBATE, params)

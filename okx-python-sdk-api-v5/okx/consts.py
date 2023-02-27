@@ -54,6 +54,7 @@ VIP_INTEREST_DEDUCTED = '/api/v5/account/vip-interest-deducted'
 VIP_LOAN_ORDER_LIST = '/api/v5/account/vip-loan-order-list'
 VIP_LOAN_ORDER_DETAIL = '/api/v5/account/vip-loan-order-detail'
 SET_RISKOFFSET_TYPE = '/api/v5/account/set-riskOffset-type'
+SET_AUTO_LOAN = '/api/v5/account/set-auto-loan'
 
 # funding
 DEPOSIT_ADDRESS = '/api/v5/asset/deposit-address'
@@ -76,6 +77,7 @@ SET_LENDING_RATE = '/api/v5/asset/set-lending-rate'
 LENDING_HISTORY = '/api/v5/asset/lending-history'
 LENDING_RATE_HISTORY = '/api/v5/asset/lending-rate-history'
 LENDING_RATE_SUMMARY = '/api/v5/asset/lending-rate-summary'
+DEPOSIT_WITHDRAW_STATUS = '/api/v5/asset/deposit-withdraw-status'
 
 # Market Data
 TICKERS_INFO = '/api/v5/market/tickers'
@@ -170,7 +172,7 @@ SUBACCOUNT_TRANSFER = '/api/v5/asset/subaccount/transfer'
 ENTRUST_SUBACCOUNT_LIST = '/api/v5/users/entrust-subaccount-list'
 MODIFY_APIKEY = '/api/v5/users/subaccount/modify-apikey'
 ASSET_BALANCES = '/api/v5/asset/subaccount/balances'
-
+PARTNER_IF_REBATE = '/api/v5/users/partner/if-rebate'
 
 # Broker
 BROKER_INFO = '/api/v5/broker/nd/info'
@@ -202,6 +204,7 @@ CONVERT_HISTORY = '/api/v5/asset/convert/history'
 # FDBroker
 FD_GET_REBATE_PER_ORDERS = '/api/v5/broker/fd/rebate-per-orders'
 FD_REBATE_PER_ORDERS = '/api/v5/broker/fd/rebate-per-orders'
+FD_IF_REBATE = '/api/v5/broker/fd/if-rebate'
 
 # Rfq
 COUNTERPARTIES = '/api/v5/rfq/counterparties'
