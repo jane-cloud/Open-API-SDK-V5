@@ -36,7 +36,8 @@ public class APIClient {
      * Initialize the apis client
      */
     public APIClient(final APIConfiguration config) {
-        if (config == null || StringUtils.isEmpty(config.getEndpoint())) {
+//        if (config == null || StringUtils.isEmpty(config.getEndpoint())) {
+        if (config == null || StringUtils.isEmpty(config.getDomain())) {
             throw new RuntimeException("The APIClient params can't be empty.");
         }
         this.config = config;
@@ -76,14 +77,36 @@ public class APIClient {
             //获取错误信息
             final String message = new StringBuilder().append(response.code()).append(" / ").append(response.message()).toString();
             //响应成功
+//            return response.body();
             if (response.isSuccessful()) {
                 return response.body();
 
                 ////如果状态码是400,401,429,500中的任意一个，抛出异常
-            } else {
-                final HttpResult result = JSON.parseObject(new String(response.errorBody().bytes()), HttpResult.class);
-                throw new APIException(result.getCode(), result.getMsg());
+            } else if (APIConstants.resultStatusArray.contains(status)) {
+                final HttpResult result = JSON.parseObject(new String(response.errorBody().bytes()),HttpResult.class);
+                if(result.getCode() == 0 && result.getMsg() == null){
+                    System.out.println(result);
+                    throw new APIException(result.getCode(), result.getMsg());
+                }else {
+                    System.out.println(result);
+                    throw new APIException(result.getCode(), result.getMsg());
+                }
+
+            }else{
+                throw new APIException(message);
             }
+
+
+//            else {
+//
+//                final HttpResult result = JSON.parseObject(new String(response.errorBody().bytes()), HttpResult.class);
+//
+////                if(result.getCode() != 0){
+////                    return response.body();
+////                }
+//
+//                throw new APIException(result.getCode(), result.getMsg());
+//            }
         } catch (final IOException e) {
             throw new APIException("APIClient executeSync exception.", e);
         }
@@ -113,7 +136,7 @@ public class APIClient {
             }
             if (APIConstants.resultStatusArray.contains(status)) {
                 final HttpResult result = JSON.parseObject(new String(response.errorBody().bytes()), HttpResult.class);
-                throw new APIException(result.getCode(), result.getMessage());
+                throw new APIException(result.getCode(), result.getMsg());
             }
             throw new APIException(message);
         } catch (final IOException e) {

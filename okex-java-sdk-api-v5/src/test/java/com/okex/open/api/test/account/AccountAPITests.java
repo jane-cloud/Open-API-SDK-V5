@@ -41,7 +41,7 @@ public class AccountAPITests extends  AccountAPIBaseTests {
      */
     @Test
     public void getPositions(){
-        JSONObject result = this.accountAPIService.getPositions("MARGIN",null,null);
+        JSONObject result = this.accountAPIService.getPositions("SWAP",null,null);
         toResultString(LOG, "result", result);
     }
 

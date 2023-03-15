@@ -2,11 +2,12 @@ package com.okex.open.api.test.ws.tradeChannel.config;
 
 
 public class WebSocketConfig {
-    //ws  模拟盘
-//    private static final String SERVICE_URL = "wss://wspap.okx.com:8443/ws/v5/private?brokerId=9999";
+    //ws  模拟盘 the demo trading URL
+    private static final String SERVICE_URL = "wss://wspap.okx.com:8443/ws/v5/private?brokerId=9999";
 
-    //ws  实盘
-    private static final String SERVICE_URL = "wss://ws.okx.com:8443/ws/v5/private";
+    //ws  实盘 the living trading URL
+//    private static final String SERVICE_URL = "wss://ws.okx.com:8443/ws/v5/private";
+
     // api key
     private static final String API_KEY = "";
     private static final String SECRET_KEY = "";

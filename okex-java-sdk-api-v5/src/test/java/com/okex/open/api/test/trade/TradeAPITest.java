@@ -31,10 +31,10 @@ public class TradeAPITest extends TradeAPIBaseTest {
     public void placeOrder(){
 
         PlaceOrder placeOrder =new PlaceOrder();
-        placeOrder.setInstId("LTC-USDT-SWAP");
+        placeOrder.setInstId("DOT-USDT-SWAP");
         placeOrder.setTdMode("cross");
 //        placeOrder.setCcy("USDT");
-        placeOrder.setClOrdId("0423a3a06");
+        placeOrder.setClOrdId("0423a3a06···");
 //        placeOrder.setTag("");
         placeOrder.setSide("sell");
         placeOrder.setPosSide("short");

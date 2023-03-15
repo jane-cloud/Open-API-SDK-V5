@@ -87,9 +87,9 @@ public class APIHttpClient {
             builder.add(HttpHeadersEnum.OK_ACCESS_SIGN.header(), this.sign(request, timestamp));
             builder.add(HttpHeadersEnum.OK_ACCESS_TIMESTAMP.header(), timestamp);
             builder.add(HttpHeadersEnum.OK_ACCESS_PASSPHRASE.header(), this.credentials.getPassphrase());
-            builder.add("x-simulated-trading","1");
-        }else{
-//            builder.add("x-simulated-trading","1");
+            //updata on 0314
+            builder.add(HttpHeadersEnum.x_simulated_trading.header(), this.credentials.getxSimulatedTrading());
+
         }
 
         return builder.build();
@@ -128,12 +128,12 @@ public class APIHttpClient {
     //返回请求路径
     private String requestPath(final Request request) {
         String url = this.url(request);
-        url = url.replace(this.config.getEndpoint(), APIConstants.EMPTY);
+        url = url.replace(this.config.getDomain(), APIConstants.EMPTY);
         String requestPath = url;
         if (requestPath.contains(APIConstants.QUESTION)) {
             requestPath = requestPath.substring(0, url.lastIndexOf(APIConstants.QUESTION));
         }
-        if(this.config.getEndpoint().endsWith(APIConstants.SLASH)){
+        if(this.config.getDomain().endsWith(APIConstants.SLASH)){
             requestPath = APIConstants.SLASH + requestPath;
         }
         return requestPath;

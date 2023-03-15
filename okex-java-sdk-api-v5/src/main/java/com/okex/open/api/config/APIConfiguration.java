@@ -17,12 +17,14 @@ public class APIConfiguration {
      * The Passphrase will be provided by you to further secure your API access.
      */
     private String passphrase;
+
+
+
     /**
      * Rest api endpoint url.
      */
-    private String endpoint;
-
-
+    private String domain;
+    private String xSimulatedTrading;
 
 
 
@@ -62,7 +64,8 @@ public class APIConfiguration {
         this.apiKey = null;
         this.secretKey = null;
         this.passphrase = null;
-        this.endpoint = endpoint;
+        this.domain = domain;
+        this.xSimulatedTrading = null;
         this.connectTimeout = APIConstants.TIMEOUT;
         this.readTimeout = APIConstants.TIMEOUT;
         this.writeTimeout = APIConstants.TIMEOUT;
@@ -95,14 +98,21 @@ public class APIConfiguration {
         this.passphrase = passphrase;
     }
 
-    public String getEndpoint() {
-        return endpoint;
+    public String getDomain() {
+        return domain;
     }
 
-    public void setEndpoint(String endpoint) {
-        this.endpoint = endpoint;
+    public void setDomain(String domain) {
+        this.domain = domain;
     }
 
+    public String getxSimulatedTrading() {
+        return xSimulatedTrading;
+    }
+
+    public void setxSimulatedTrading(String xSimulatedTrading) {
+        this.xSimulatedTrading = xSimulatedTrading;
+    }
     public long getConnectTimeout() {
         return connectTimeout;
     }

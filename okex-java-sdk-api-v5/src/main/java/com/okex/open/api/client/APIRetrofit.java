@@ -27,7 +27,7 @@ public class APIRetrofit {
         builder.addConverterFactory(ScalarsConverterFactory.create());
         builder.addConverterFactory(GsonConverterFactory.create());
         builder.addCallAdapterFactory(RxJavaCallAdapterFactory.create());
-        builder.baseUrl(this.config.getEndpoint());
+        builder.baseUrl(this.config.getDomain());
         return builder.build();
     }
 }

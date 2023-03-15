@@ -17,12 +17,16 @@ public class APICredentials {
      */
     private String passphrase;
 
+    private String xSimulatedTrading;
+
+
 
     public APICredentials(APIConfiguration config) {
         super();
         this.apiKey = config.getApiKey();
         this.secretKey = config.getSecretKey();
         this.passphrase = config.getPassphrase();
+        this.xSimulatedTrading = config.getxSimulatedTrading();
     }
 
     public String getApiKey() {
@@ -47,5 +51,13 @@ public class APICredentials {
 
     public void setPassphrase(String passphrase) {
         this.passphrase = passphrase;
+    }
+
+    public String getxSimulatedTrading() {
+        return xSimulatedTrading;
+    }
+
+    public void setxSimulatedTrading(String xSimulatedTrading) {
+        this.xSimulatedTrading = xSimulatedTrading;
     }
 }

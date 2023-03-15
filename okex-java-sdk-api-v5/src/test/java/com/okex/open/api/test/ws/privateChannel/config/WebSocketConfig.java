@@ -1,16 +1,18 @@
 package com.okex.open.api.test.ws.privateChannel.config;
 
 public class WebSocketConfig {
-    //ws  模拟盘
+    //ws 模拟盘 the demo trading URL
     private static final String SERVICE_URL = "wss://wspap.okx.com:8443/ws/v5/private?brokerId=9999";
 
-    //提币信息频道&充值信息频道
-//    private static final String SERVICE_URL = "wss://ws.okx.com:8443/ws/v5/business";
-
-    //ws  实盘
+    //ws 实盘 the live trading URL
 //    private static final String SERVICE_URL = "wss://ws.okx.com:8443/ws/v5/private";
 
-    // 实盘api key
+    //提币信息频道&充值信息频道  the URL for Deposit info channel and Withdrawal info channel
+//    private static final String SERVICE_URL = "wss://ws.okx.com:8443/ws/v5/business";
+
+
+
+    // api key
     private static final String API_KEY = "";
     private static final String SECRET_KEY = "";
     private static final String PASSPHRASE = "";

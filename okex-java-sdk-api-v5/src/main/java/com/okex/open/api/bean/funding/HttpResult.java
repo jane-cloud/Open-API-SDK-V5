@@ -1,17 +1,42 @@
 package com.okex.open.api.bean.funding;
 
+import java.util.List;
+
 public class HttpResult {
 
     private int code;
-    private String message;
-    private String msg;
-    private int errorCode;
-    private String errorMessage;
-    private String order_id;
-    private Boolean result;
 
-    public int getErrorCode() {
-        return errorCode;
+
+
+    private String msg;
+    private int sCode;
+
+    public int getsCode() {
+        return sCode;
+    }
+
+    public void setsCode(int sCode) {
+        this.sCode = sCode;
+    }
+
+    public String getsMsg() {
+        return sMsg;
+    }
+
+    public void setsMsg(String sMsg) {
+        this.sMsg = sMsg;
+    }
+
+    private String sMsg;
+
+    private List data;
+
+    public List getData() {
+        return data;
+    }
+
+    public void setData(List data) {
+        this.data = data;
     }
 
     public String getMsg() {
@@ -20,18 +45,6 @@ public class HttpResult {
 
     public void setMsg(String msg) {
         this.msg = msg;
-    }
-
-    public void setErrorCode(int errorCode) {
-        this.errorCode = errorCode;
-    }
-
-    public String getErrorMessage() {
-        return errorMessage;
-    }
-
-    public void setErrorMessage(String errorMessage) {
-        this.errorMessage = errorMessage;
     }
 
 
@@ -44,41 +57,29 @@ public class HttpResult {
         this.code = code;
     }
 
-    public String getMessage() {
-        return message;
-    }
 
-    public void setMessage(String message) {
-        this.message = message;
-    }
 
-    public String getOrder_id() {
-        return order_id;
-    }
 
-    public void setOrder_id(String order_id) {
-        this.order_id = order_id;
-    }
-
-    public Boolean getResult() {
-        return result;
-    }
-
-    public void setResult(Boolean result) {
-        this.result = result;
-    }
-
+// [{"code":"50001","data":[],"msg":"Service temporarily unavailable. Try again later"}]
 
     @Override
     public String toString() {
-        return "HttpResult{" +
-                "code=" + code +
-                ", message='" + message + '\'' +
-                ", msg='" + msg + '\'' +
-                ", errorCode=" + errorCode +
-                ", errorMessage='" + errorMessage + '\'' +
-                ", order_id='" + order_id + '\'' +
-                ", result=" + result +
-                '}';
+//        return "Response Body:{" + "code : " + code + ",data:[], msg : " + msg + "}";
+        return "\t\tResponse Body:{" + "\"code\":\"" + code+"\",\"data\":[],\"msg\":\""+msg+"\"}";
+
+
     }
+
+
+//    public String toString() {
+//        return "HttpResult{" +
+//                "code=" + code +
+//                ", message='" + msg + '\'' +
+//                ", msg='" + msg + '\'' +
+//                ", errorCode=" + sCode +
+//                ", errorMessage='" + sMsg + '\'' +
+//                ", order_id='" + order_id + '\'' +
+//                ", result=" + result +
+//                '}';
+//    }
 }

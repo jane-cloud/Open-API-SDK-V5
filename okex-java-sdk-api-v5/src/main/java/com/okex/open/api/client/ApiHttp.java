@@ -68,7 +68,7 @@ public class ApiHttp {
                 return bodyString;
             } else if (APIConstants.resultStatusArray.contains(status)) {
                 HttpResult result = com.alibaba.fastjson.JSON.parseObject(bodyString, HttpResult.class);
-                throw new APIException(result.getCode(), result.getMessage());
+                throw new APIException(result.getCode(), result.getMsg());
             } else {
                 throw new APIException(message);
             }
@@ -91,6 +91,6 @@ public class ApiHttp {
     }
 
     public String url(String url) {
-        return new StringBuilder(this.config.getEndpoint()).append(url).toString();
+        return new StringBuilder(this.config.getDomain()).append(url).toString();
     }
 }
