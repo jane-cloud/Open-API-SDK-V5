@@ -108,5 +108,7 @@ public interface PublicDataAPI {
     //获取期权公共成交数据  Get option trades
     @GET("/api/v5/public/option-trades")
     Call<JSONObject> getOptionTrades(@Query("instId") String instId, @Query("instFamily") String instFamily,@Query("optType") String optType);
-
+   //获取期权价格梯度
+    @GET("/api/v5/public/instrument-tick-bands")
+    Call<JSONObject> getInstrumentTickBands(@Query("instType") String instType, @Query("instFamily") String instFamily);
 }

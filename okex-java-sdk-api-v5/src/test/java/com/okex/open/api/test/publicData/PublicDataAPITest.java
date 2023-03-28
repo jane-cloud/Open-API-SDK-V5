@@ -226,5 +226,14 @@ public class PublicDataAPITest extends PublicDataAPIBaseTest {
         toResultString(LOG, "result", result);
     }
 
+    /**
+     * 获取期权价格梯度 Get instrument-tick-bands
+     * GET  /api/v5/public/instrument-tick-bands
+     */
+    @Test
+    public void getInstrumentTickBands(){
+        JSONObject result = publicDataAPIService.getInstrumentTickBands("",null);
+        toResultString(LOG, "result", result);
 
+    }
 }

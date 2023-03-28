@@ -131,7 +131,7 @@ interface TradeAPI {
                                       @Query("instType") String instType,
                                       @Query("instId") String instId,
                                       @Query("ordType") String ordType,
-                                      @Query("clOrdId") String clOrdId,
+                                      @Query("algoClOrdId") String algoClOrdId,
                                       @Query("after") String after,
                                       @Query("before") String before,
                                       @Query("limit") String limit);
@@ -176,7 +176,6 @@ interface TradeAPI {
                                                      @Query("before") String before,
                                                      @Query("limit") String limit   );
 
-
-
-
+    @GET("/api/v5/trade/order-algo")
+    Call<JSONObject>  getAlgoOrderDetails(@Query("algoId")String algoId, @Query("algoClOrdId")String algoClOrdId);
 }

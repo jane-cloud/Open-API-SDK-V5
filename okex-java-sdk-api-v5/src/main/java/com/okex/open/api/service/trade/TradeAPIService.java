@@ -57,7 +57,7 @@ public interface TradeAPIService {
     JSONObject cancelAdvanceAlgoOrders(List<CancelAlgoOrder> cancelAlgoOrder);
 
     //获取未完成策略委托单列表 Get Algo Order List
-    JSONObject getAlgoOrderList(String algoId, String instType, String instId, String ordType,String clOrdId, String after, String before, String limit);
+    JSONObject getAlgoOrderList(String algoId, String instType, String instId, String ordType,String algoClOrdId, String after, String before, String limit);
 
     //获取历史策略委托单列表 Get Algo Order History
     JSONObject getAlgoOrderHistory(String state, String algoId, String instType, String instId, String ordType,String clOrdId, String after, String before, String limit);
@@ -81,4 +81,5 @@ public interface TradeAPIService {
     JSONObject getOneClickRepayHistory(String after,String before,String limit);
 
 
+    JSONObject getAlgoOrderDetails(String algoId, String algoClOrdId);
 }

@@ -329,7 +329,7 @@ public class TradeAPITest extends TradeAPIBaseTest {
         placeAlgoOrder.setSide("buy");
 //        placeAlgoOrder.setPosSide("long");
         placeAlgoOrder.setOrdType("conditional");
-        placeAlgoOrder.setClOrdId("");
+        placeAlgoOrder.setAlgoClOrdId("");
         placeAlgoOrder.setSz("1");
         //placeAlgoOrder.setCloseFraction("");
         placeAlgoOrder.setReduceOnly(false);
@@ -502,6 +502,14 @@ public class TradeAPITest extends TradeAPIBaseTest {
         JSONObject result = tradeAPIService.getOneClickRepayHistory(null,null,null);
         toResultString(LOG, "result", result);
     }
-
+    /**
+     * 获取策略委托单信息 Get Algo Order Details
+     * GET /api/v5/trade/order-algo
+     */
+    @Test
+    public void getAlgoOrderDetails(){
+        JSONObject result = tradeAPIService.getAlgoOrderDetails("","");
+        toResultString(LOG, "result", result);
+    }
 
 }

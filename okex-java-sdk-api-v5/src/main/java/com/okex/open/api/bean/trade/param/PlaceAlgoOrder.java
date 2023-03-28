@@ -9,7 +9,7 @@ public class PlaceAlgoOrder {
     private String ordType;
     private String sz;
     private Boolean reduceOnly;
-    private String clOrdId;
+    private String algoClOrdId;
 
     public String getCloseFraction() {
         return closeFraction;
@@ -21,12 +21,12 @@ public class PlaceAlgoOrder {
 
     private String closeFraction;
 
-    public String getClOrdId() {
-        return clOrdId;
+    public String getAlgoClOrdId() {
+        return algoClOrdId;
     }
 
-    public void setClOrdId(String clOrdId) {
-        this.clOrdId = clOrdId;
+    public void setAlgoClOrdId(String algoClOrdId) {
+        this.algoClOrdId = algoClOrdId;
     }
 
     private String tgtCcy;

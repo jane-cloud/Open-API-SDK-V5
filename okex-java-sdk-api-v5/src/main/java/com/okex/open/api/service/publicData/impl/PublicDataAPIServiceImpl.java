@@ -129,6 +129,11 @@ public class PublicDataAPIServiceImpl implements PublicDataAPIService {
         return this.client.executeSync(this.api.getOptionTrades(instId, instFamily, optType));
     }
 
+    // 获取期权价格梯度
+    @Override
+    public JSONObject getInstrumentTickBands(String instType, String instFamily) {
+        return this.client.executeSync(this.api.getInstrumentTickBands(instType, instFamily));
+    }
 
 
 }

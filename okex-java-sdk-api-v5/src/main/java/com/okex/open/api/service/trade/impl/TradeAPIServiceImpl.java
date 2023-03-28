@@ -117,8 +117,8 @@ public class TradeAPIServiceImpl implements TradeAPIService {
 
     //获取未完成策略委托单列表 Get Algo Order List
     @Override
-    public JSONObject getAlgoOrderList(String algoId, String instType, String instId, String ordType,String clOrdId, String after, String before, String limit) {
-        return this.client.executeSync(this.tradeAPI.getAlgoOrderList(algoId, instType, instId, ordType,clOrdId, after, before, limit));
+    public JSONObject getAlgoOrderList(String algoId, String instType, String instId, String ordType,String algoClOrdId, String after, String before, String limit) {
+        return this.client.executeSync(this.tradeAPI.getAlgoOrderList(algoId, instType, instId, ordType,algoClOrdId, after, before, limit));
     }
 
     //获取历史策略委托单列表 Get Algo Order History
@@ -161,5 +161,11 @@ public class TradeAPIServiceImpl implements TradeAPIService {
     @Override
     public JSONObject getOneClickRepayHistory(String after, String before, String limit) {
         return this.client.executeSync(this.tradeAPI.getOneClickRepayHistory(after, before, limit));
+    }
+
+    //获取策略委托单信息
+    @Override
+    public JSONObject getAlgoOrderDetails(String algoId, String algoClOrdId) {
+        return this.client.executeSync(this.tradeAPI.getAlgoOrderDetails(algoId, algoClOrdId));
     }
 }

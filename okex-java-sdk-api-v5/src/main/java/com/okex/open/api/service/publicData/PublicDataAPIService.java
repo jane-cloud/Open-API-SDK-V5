@@ -64,5 +64,6 @@ public interface PublicDataAPIService {
 
     //获取期权公共成交数据  Get option trades
     JSONObject getOptionTrades(String instId, String instFamily, String optType);
-
+    //获取期权价格梯度
+    JSONObject getInstrumentTickBands(String instType, String instFamily);
 }

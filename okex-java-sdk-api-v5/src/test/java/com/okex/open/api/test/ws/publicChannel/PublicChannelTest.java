@@ -582,7 +582,30 @@ public class PublicChannelTest {
         }
     }
 
+    /**
+     * 平台公共爆仓单频道
+     * liquidation-orders channel
+     */
+    @Test
+    public void liquidationOrdersChannel() {
+        //添加订阅频道
+        ArrayList<Map> channelList= new ArrayList<>();
 
+        Map map =new HashMap();
+        map.put("channel","liquidation-orders");
+        map.put("instType","SWAP");
+
+
+        channelList.add(map);
+        //调用订阅方法
+        WebSocketClient.subscribe(channelList);
+        //为保证测试方法不停，需要让线程延迟
+        try {
+            Thread.sleep(10000000);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     //取消订阅
     @Test
