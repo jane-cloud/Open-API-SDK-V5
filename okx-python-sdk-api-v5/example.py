@@ -15,6 +15,7 @@ import okx.Rfq_api as Rfq
 import okx.TradingBot_api as TradingBot
 import okx.Finance_api as Finance
 import okx.Copytrading_api as Copytrading
+import okx.Recurring_api as Recurring
 
 if __name__ == '__main__':
     api_key = ""
@@ -97,7 +98,7 @@ if __name__ == '__main__':
     # result = accountAPI.set_riskOffset_type(type = '1')
     # 开通期权交易
     # result = accountAPI.activate_option()
-    # 开通期权交易
+    # 设置自动借币
     # result = accountAPI.set_auto_loan(autoLoan = '')
 
     # funding api
@@ -170,7 +171,7 @@ if __name__ == '__main__':
     # 获取产品深度  Get Order Book
     # result = marketAPI.get_orderbook('BTC-USDT-210402', '400')
     # 获取产品轻量深度
-    result = marketAPI.get_books_lite(instId = 'BTC-USDT')
+    # result = marketAPI.get_books_lite(instId = 'BTC-USDT')
     # 获取所有交易产品K线数据  Get Candlesticks
     # result = marketAPI.get_candlesticks('BTC-USDT-210924', bar='1m')
     # 获取交易产品历史K线数据（仅主流币实盘数据）  Get Candlesticks History（top currencies in real-trading only）
@@ -242,6 +243,10 @@ if __name__ == '__main__':
     # result = publicAPI.get_insurance_fund(instType = 'SWAP', type = '', uly = 'BTC-USDT', ccy = '', before = '', after = '', limit = '')
     # 张币转换
     # result = publicAPI.convert_contract_coin(type = '2', instId = 'BTC-USDT-SWAP', sz = '1', px = '', unit = '')
+    # 获取期权价格梯度
+    # result = publicAPI.instrument_tick_bands(instType = 'OPTION', instFamily = '')
+    # 获取期权公共成交数据
+    # result = publicAPI.option_trades(instId = '', instFamily = 'BTC-USD', optType = '')
 
     # trading data
     tradingDataAPI = TradingData.TradingDataAPI(api_key, secret_key, passphrase, False, flag)
@@ -315,11 +320,13 @@ if __name__ == '__main__':
     # 策略委托下单  Place Algo Order
     # result = tradeAPI.place_algo_order('BTC-USDT-SWAP', 'isolated', 'buy', ordType='conditional',
     #                                    sz='100',posSide='long', tpTriggerPx='60000', tpOrdPx='59999',
-    #                                   tpTriggerPxType = 'last', slTriggerPxType = 'last', clOrdId ='123456', quickMgnType='', closeFraction = '1')
+    #                                   tpTriggerPxType = 'last', slTriggerPxType = 'last', algoClOrdId ='123456', quickMgnType='', closeFraction = '1')
     # 撤销策略委托订单  Cancel Algo Order
     # result = tradeAPI.cancel_algo_order([{'algoId': '297394002194735104', 'instId': 'BTC-USDT-210409'}])
     # 撤销高级策略委托订单
     # result = tradeAPI.cancel_advance_algos([ {"algoId":"198273485","instId":"BTC-USDT"}])
+    # 获取策略委托单信息
+    # result = tradeAPI.get_order_algo(algoId = '', algoClOrdId = '')
     # 获取未完成策略委托单列表  Get Algo Order List
     # result = tradeAPI.order_algos_list('conditional', instType='FUTURES')
     # 获取历史策略委托单列表  Get Algo Order History
@@ -502,6 +509,25 @@ if __name__ == '__main__':
     # result = Copytrading.total_profit_sharing()
     # 交易员待分润明细
     # result = Copytrading.unrealized_profit_sharing_details()
+
+    # 定投
+    Recurring = Recurring.RecurringAPI(api_key, secret_key, passphrase, False, flag)
+    # 定投策略委托下单
+    # result = Recurring.recurring_order_algo(stgyName = 'test', recurringList = [{"ccy":"BTC","ratio":"1"}], period = 'daily', recurringDay = '1', recurringTime = '2', 
+    #     timeZone = '8', amt = '2', investmentCcy = 'USDT', tdMode = 'cash', algoClOrdId = 'testclordid', tag = 'testtag')
+    # 修改定投策略订单
+    # result = Recurring.recurring_amend_order_algo(algoId = '561293358812102656', stgyName = 'test2')
+    # 定投策略停止
+    # result = Recurring.recurring_stop_order_algo([{"algoId":"561293358812102656"}])
+    # 获取未完成定投策略委托单列表
+    # result = Recurring.recurring_orders_algo_pending(algoId = '', after = '', before = '', limit = '')
+    # 获取历史定投策略委托单列表
+    # result = Recurring.recurring_orders_algo_history(algoId = '', after = '', before = '', limit = '')
+    # 获取定投策略委托订单详情
+    # result = Recurring.recurring_orders_algo_details(algoId = '561293358812102656')
+    # 获取定投策略子订单信息
+    # result = Recurring.recurring_sub_orders(algoId = '561293358812102656', ordId = '', after = '', before = '', limit = '')
+
 
     # 系统状态API(仅适用于实盘) system status
     Status = Status.StatusAPI(api_key, secret_key, passphrase, False, flag)

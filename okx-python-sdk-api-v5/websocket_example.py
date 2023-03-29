@@ -389,15 +389,18 @@ passphrase = ""
 # 实盘 real trading
 # url = "wss://ws.okx.com:8443/ws/v5/public"
 # 模拟盘 demo trading
-url = "wss://wspap.okx.com:8443/ws/v5/public"
+url = "wss://wspap.okx.com:8443/ws/v5/public?brokerId=9999"
 
 # WebSocket私有频道 private channels
 # 实盘 real trading
 # url = "wss://ws.okx.com:8443/ws/v5/private"
 # 模拟盘 demo trading
 # url = "wss://wspap.okx.com:8443/ws/v5/private"
-# 充值信息/提币信息频道
+# 充值信息/提币信息频道、定投策略订单频道(实盘)
 # url = "wss://ws.okx.com:8443/ws/v5/business"
+# 充值信息/提币信息频道、提币信息频道、定投策略订单频道(模拟盘)
+# url = "wss://ws.okx.com:8443/ws/v5/business?brokerId=9999"
+
 '''
 公共频道 public channel
 :param channel: 频道名
@@ -437,6 +440,10 @@ url = "wss://wspap.okx.com:8443/ws/v5/public"
 # channels = [{"channel": "index-tickers", "instId": "BTC-USDT"}]
 # status频道 Status Channel
 # channels = [{"channel": "status"}]
+# 平台公共爆仓单频道
+# channels = [{"channel": "liquidation-orders", "instType":"SWAP"}]
+# 期权公共成交频道
+channels = [{"channel": "option-trades", "instType":"OPTION","instFamily":"BTC-USD"}]
 # 公共大宗交易频道 Public block trading channel
 # channels = [{"channel": "public-struc-block-trades"}]
 # 大宗交易行情频道 Block trading market channel
@@ -488,6 +495,8 @@ url = "wss://wspap.okx.com:8443/ws/v5/public"
 # channels = [{"channel": "deposit-info", "ccy":"BTC"}]
 # 提币信息频道
 # channels = [{"channel": "withdrawal-info", "ccy":"BTC"}]
+# 定投策略委托订单频道
+# channels = [{"channel": "algo-recurring-buy", "instType":"SPOT"}]
 '''
 交易 trade
 '''

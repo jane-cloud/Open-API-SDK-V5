@@ -95,3 +95,13 @@ class PublicAPI(Client):
     def convert_contract_coin(self, type = '', instId = '', sz = '', px = '', unit = ''):
         params = {'type':type, 'instId':instId, 'sz':sz, 'px':px, 'unit':unit}
         return self._request_with_params(GET, CONVERT_CONTRACT_COIN, params)
+
+    # GET /api/v5/public/instrument-tick-bands
+    def instrument_tick_bands(self, instType = '', instFamily = ''):
+        params = {'instType':instType, 'instFamily':instFamily}
+        return self._request_with_params(GET, INSTRUMENT_TICK_BANDS, params)
+
+    # GET /api/v5/public/option-trades
+    def option_trades(self, instId = '', instFamily = '', optType = ''):
+        params = {'instId':instId, 'instFamily':instFamily, 'optType':optType}
+        return self._request_with_params(GET, OPTION_TRADES, params)

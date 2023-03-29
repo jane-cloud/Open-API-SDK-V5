@@ -81,7 +81,7 @@ class TradeAPI(Client):
                          triggerPx='', orderPx='', tgtCcy='', pxVar='',
                          pxSpread='',
                          szLimit='', pxLimit='', timeInterval='', tpTriggerPxType='', slTriggerPxType='',
-                         callbackRatio='',callbackSpread='',activePx='',tag='',triggerPxType='',clOrdId='',quickMgnType='',closeFraction=''):
+                         callbackRatio='',callbackSpread='',activePx='',tag='',triggerPxType='',algoClOrdId='',quickMgnType='',closeFraction=''):
         params = {'instId': instId, 'tdMode': tdMode, 'side': side, 'ordType': ordType, 'sz': sz, 'ccy': ccy,
                   'posSide': posSide, 'reduceOnly': reduceOnly, 'tpTriggerPx': tpTriggerPx, 'tpOrdPx': tpOrdPx,
                   'slTriggerPx': slTriggerPx, 'slOrdPx': slOrdPx, 'triggerPx': triggerPx, 'orderPx': orderPx,
@@ -89,7 +89,7 @@ class TradeAPI(Client):
                   'timeInterval': timeInterval,
                   'pxSpread': pxSpread, 'tpTriggerPxType': tpTriggerPxType, 'slTriggerPxType': slTriggerPxType,
                   'callbackRatio' : callbackRatio, 'callbackSpread':callbackSpread,'activePx':activePx,
-                  'tag':tag,'triggerPxType':triggerPxType,'clOrdId':clOrdId,'quickMgnType':quickMgnType,'closeFraction':closeFraction}
+                  'tag':tag,'triggerPxType':triggerPxType,'algoClOrdId':algoClOrdId,'quickMgnType':quickMgnType,'closeFraction':closeFraction}
         return self._request_with_params(POST, PLACE_ALGO_ORDER, params)
 
     # Cancel Algo Order
@@ -101,9 +101,9 @@ class TradeAPI(Client):
         return self._request_with_params(POST, Cancel_Advance_Algos, params)
 
     # Get Algo Order List
-    def order_algos_list(self, ordType, algoId='', instType='', instId='', after='', before='', limit='',clOrdId=''):
+    def order_algos_list(self, ordType, algoId='', instType='', instId='', after='', before='', limit='',algoClOrdId=''):
         params = {'ordType': ordType, 'algoId': algoId, 'instType': instType, 'instId': instId, 'after': after,
-                  'before': before, 'limit': limit,'clOrdId':clOrdId}
+                  'before': before, 'limit': limit,'algoClOrdId':algoClOrdId}
         return self._request_with_params(GET, ORDERS_ALGO_OENDING, params)
 
     # Get Algo Order History
@@ -141,3 +141,8 @@ class TradeAPI(Client):
     def one_click_repay_history(self, after = '', before = '', limit = ''):
         params = {'after':after, 'before':before, 'limit':limit}
         return self._request_with_params(GET, ONE_CLICK_REPAY_HISTORY, params)
+
+    # GET /api/v5/trade/order-algo
+    def get_order_algo(self, algoId = '', algoClOrdId = ''):
+        params = {'algoId':algoId, 'algoClOrdId':algoClOrdId}
+        return self._request_with_params(GET, GET_ORDER_ALGO, params)

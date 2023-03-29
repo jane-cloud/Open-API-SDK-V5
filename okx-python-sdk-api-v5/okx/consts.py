@@ -121,6 +121,8 @@ UNDERLYING = '/api/v5/public/underlying'
 VIP_INTEREST_RATE_LOAN_QUOTA = '/api/v5/public/vip-interest-rate-loan-quota'
 INSURANCE_FUND = '/api/v5/public/insurance-fund'
 CONVERT_CONTRACT_COIN = '/api/v5/public/convert-contract-coin'
+INSTRUMENT_TICK_BANDS = '/api/v5/public/instrument-tick-bands'
+OPTION_TRADES = '/api/v5/public/option-trades'
 
 # TRADING DATA
 SUPPORT_COIN = '/api/v5/rubik/stat/trading-data/support-coin'
@@ -159,6 +161,7 @@ EASY_CONVERT_HISTORY = '/api/v5/trade/easy-convert-history'
 ONE_CLICK_REPAY_CURRENCY_LIST = '/api/v5/trade/one-click-repay-currency-list'
 ONE_CLICK_REPAY = '/api/v5/trade/one-click-repay'
 ONE_CLICK_REPAY_HISTORY = '/api/v5/trade/one-click-repay-history'
+GET_ORDER_ALGO = '/api/v5/trade/order-algo'
 
 # SubAccount
 BALANCE = '/api/v5/account/subaccount/balances'
@@ -257,6 +260,15 @@ COPYTRADING_SET_INSTRUMENTS = '/api/v5/copytrading/set-instruments'
 PROFIT_SHARING_DETAILS = '/api/v5/copytrading/profit-sharing-details'
 TOTAL_PROFIT_SHARING = '/api/v5/copytrading/total-profit-sharing'
 UNREALIZED_PROFIT_SHARING_DETAILS = '/api/v5/copytrading/unrealized-profit-sharing-details'
+
+# recurring
+RECURRING_ORDER_ALGO = '/api/v5/tradingBot/recurring/order-algo'
+RECURRING_AMEND_ORDER_ALGO = '/api/v5/tradingBot/recurring/amend-order-algo'
+RECURRING_STOP_ORDER_ALGO = '/api/v5/tradingBot/recurring/stop-order-algo'
+RECURRING_ORDER_ALGO_PENDING = '/api/v5/tradingBot/recurring/orders-algo-pending'
+RECURRING_ORDER_ALGO_HISTORY = '/api/v5/tradingBot/recurring/orders-algo-history'
+RECURRING_ORDER_ALGO_DETAILS = '/api/v5/tradingBot/recurring/orders-algo-details'
+RECURRING_SUB_ORDERS = '/api/v5/tradingBot/recurring/sub-orders'
 
 # status
 STATUS = '/api/v5/system/status'
