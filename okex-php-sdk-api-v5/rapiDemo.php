@@ -87,7 +87,7 @@ $instrumentId = "EOS-USDT";
 $currency = "EOS";
 $obj = new FundingApi(Config::$config);
 // 获取币种列表
-// $res = $obj -> getCurrencies('USDC');
+$res = $obj -> getCurrencies('USDC');
 // 获取资金账户余额
 //$res = $obj -> getBalance('BTC');
 //获取账户资产估值
