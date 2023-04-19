@@ -498,7 +498,31 @@ public class PrivateChannelTest {
         }
     }
 
+    /**
+     * 定投策略委托订单频道
+     * algo-recurring-buy
+     */
+    @Test
+    public void recurringOrdersChannel() {
+        //添加订阅频道
+        ArrayList<Map> channelList= new ArrayList<>();
+        Map recurringOrdersChannel =new HashMap();
 
+        recurringOrdersChannel.put("channel","algo-recurring-buy");
+        recurringOrdersChannel.put("algoId","");
+        recurringOrdersChannel.put("instType","");
+
+        channelList.add(recurringOrdersChannel);
+
+        //调用订阅方法
+        WebSocketClient.subscribe(channelList);
+        //为保证测试方法不停，需要让线程延迟
+        try {
+            Thread.sleep(10000000);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
 
 
