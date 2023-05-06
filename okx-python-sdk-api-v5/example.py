@@ -23,8 +23,8 @@ if __name__ == '__main__':
     passphrase = ""
 
     # flag是实盘与模拟盘的切换参数 flag is the key parameter which can help you to change between demo and real trading.
-    flag = '1'  # 模拟盘 demo trading
-    # flag = '0'  # 实盘 real trading
+    # flag = '1'  # 模拟盘 demo trading
+    flag = '0'  # 实盘 real trading
 
     # account api
     accountAPI = Account.AccountAPI(api_key, secret_key, passphrase, False, flag)
@@ -116,7 +116,7 @@ if __name__ == '__main__':
     # 获取充值记录  Get Deposit History
     # result = fundingAPI.get_deposit_history()
     # 获取币种列表  Get Currencies
-    # result = fundingAPI.get_currency()
+    result = fundingAPI.get_currency('ETH,BTC')
     # 余币宝申购/赎回  PiggyBank Purchase/Redemption
     # result = fundingAPI.purchase_redempt('BTC', '1', 'purchase')
     # 资金流水查询  Asset Bills Details

@@ -48,8 +48,9 @@ class FundingAPI(Client):
         return self._request_with_params(POST, CONVERT_DUST_ASSETS, params)
 
     # Get Currencies
-    def get_currency(self):
-        return self._request_without_params(GET, CURRENCY_INFO)
+    def get_currency(self,ccy=''):
+        params = {'ccy':ccy}
+        return self._request_with_params(GET, CURRENCY_INFO,params)
 
     # PiggyBank Purchase/Redemption
     def purchase_redempt(self, ccy, amt, side,rate):
