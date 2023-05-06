@@ -182,6 +182,16 @@ class AccountAPI(Client):
         params = {'ccy': ccy, 'ordId': ordId, 'after': after, 'before': before, 'limit': limit}
         return self._request_with_params(GET, VIP_LOAN_ORDER_DETAIL, params)
 
+    # POST /api/v5/account/subaccount/set-loan-allocation
+    def set_loan_allocation(self, enable, alloc:[]):
+        params = {'enable': enable, 'alloc': alloc}
+        return self._request_with_params(POST, SET_LOAN_ALLOCATION, params)
+
+    # GET /api/v5/account/subaccount/interest-limits
+    def interest_limits(self, subAcct = '', ccy = ''):
+        params = {'subAcct': subAcct, 'ccy': ccy}
+        return self._request_with_params(GET, INTEREST_LIMITS, params)
+
     # POST /api/v5/account/set-riskOffset-type
     def set_riskOffset_type(self, type = ''):
         params = {'type':type}

@@ -86,6 +86,10 @@ if __name__ == '__main__':
     # result = accountAPI.vip_loan_order_list(ordId = '', state = '', ccy = '', after = '', before = '', limit = '')
     # 尊享借币订单详情
     # result = accountAPI.vip_loan_order_detail(ordId = '123', ccy = '', after = '', before = '', limit = '')
+    # 设置子账户尊享借币比率 POST SET LOAN ALLOCATION
+    result = accountAPI.set_loan_allocation(enable = 'true',subAcct = '',loanAlloc = '')
+    # 获取子账户借币利率与限额 GET INTEREST LIMITS
+    # result = accountAPI.insterst_limits(subAcct = '',ccy = '')
     # 获取借币利率与限额 GET Obtain borrowing rate and limit
     # result = accountAPI.get_interest_limits(type = '2', ccy = 'ETH')
     # 组合保证金的虚拟持仓保证金计算 POST Simulated Margin
@@ -322,7 +326,9 @@ if __name__ == '__main__':
     #                                    sz='100',posSide='long', tpTriggerPx='60000', tpOrdPx='59999',
     #                                   tpTriggerPxType = 'last', slTriggerPxType = 'last', algoClOrdId ='123456', quickMgnType='', closeFraction = '1')
     # 撤销策略委托订单  Cancel Algo Order
-    # result = tradeAPI.cancel_algo_order([{'algoId': '297394002194735104', 'instId': 'BTC-USDT-210409'}])
+    result = tradeAPI.cancel_algo_order([{'algoId': '297394002194735104', 'instId': 'BTC-USDT-210409'}])
+    # 修改策略委托订单 POST AMEND ALGOS
+    result = tradeAPI.amend_algos()
     # 撤销高级策略委托订单
     # result = tradeAPI.cancel_advance_algos([ {"algoId":"198273485","instId":"BTC-USDT"}])
     # 获取策略委托单信息
@@ -377,7 +383,7 @@ if __name__ == '__main__':
     # 设置子账户的账户等级 Set account level of sub account
     # result = BrokerAPI.set_subaccount_level(subAcct = 'qwerty', acctLv = '1')
     # 设置子账户的交易手续费费率 Set transaction fee rate of sub account
-    # result = BrokerAPI.set_subaccount_fee_rate(subAcct = 'qwerty', instType = 'SPOT', mgnType = '', chgType = 'absolute', chgTaker = '0.1bp', chgMaker = '', effDate = '')
+    result = BrokerAPI.set_subaccount_fee_rate(subAcct = 'qwerty', instType = 'SPOT', mgnType = '', chgType = 'absolute', chgTaker = '0.1bp', chgMaker = '', effDate = '')
     # 创建子账户充值地址 Create sub account recharge address
     # result = BrokerAPI.subaccount_deposit_address(subAcct = 'qwerty', ccy = 'BTC', chain = '', addrType = '', to = '')
     # 获取子账户获取充值记录 Get sub account recharge record
@@ -432,7 +438,7 @@ if __name__ == '__main__':
     # 重设MMP状态
     # result = RfqAPI.mmp_reset()
     # 报价
-    # result = RfqAPI.create_quote(rfqId = '', clQuoteId = '', tag = '123', quoteSide = 'buy', anonymous = 'True', expiresIn = '', legs = [{"px":"39450.0","sz":"200000","instId":"BTC-USDT-SWAP","side":"buy"}])
+    result = RfqAPI.create_quote(rfqId = '', clQuoteId = '', tag = '123', quoteSide = 'buy', anonymous = 'True', expiresIn = '', legs = [{"px":"39450.0","sz":"200000","instId":"BTC-USDT-SWAP","side":"buy"}])
     # 取消报价单
     # result = RfqAPI.cancel_quote(quoteId = '', clQuoteId = '', rfqId = '')
     # 批量取消报价单

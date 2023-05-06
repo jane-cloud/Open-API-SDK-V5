@@ -30,10 +30,13 @@ class TradeAPI(Client):
         return self._request_with_params(POST, CANAEL_BATCH_ORDERS, orders_data)
 
     # Amend Order
-    def amend_order(self, instId, cxlOnFail='', ordId='', clOrdId='', reqId='', newSz='', newPx=''):
+    def amend_order(self, instId, cxlOnFail='', ordId='', clOrdId='', reqId='', newSz='',
+                    newPx = '', newTpTriggerPx='', newTpOrdPx='',newSlTriggerPx='', newSlOrdPx='',
+                    newTpTriggerPxType='', newSlTriggerPxType=''):
         params = {'instId': instId, 'cxlOnFailc': cxlOnFail, 'ordId': ordId, 'clOrdId': clOrdId, 'reqId': reqId,
-                  'newSz': newSz,
-                  'newPx': newPx}
+                  'newSz': newSz,'newPx': newPx,'newTpTriggerPx': newTpTriggerPx,'newTpOrdPx': newTpOrdPx,
+                  'newSlTriggerPx': newSlTriggerPx,'newSlOrdPx': newSlOrdPx,'newTpTriggerPxType': newTpTriggerPxType,
+                  'newSlTriggerPxType': newSlTriggerPxType}
         return self._request_with_params(POST, AMEND_ORDER, params)
 
     # Amend Multiple Orders
@@ -95,6 +98,16 @@ class TradeAPI(Client):
     # Cancel Algo Order
     def cancel_algo_order(self, params):
         return self._request_with_params(POST, CANCEL_ALGOS, params)
+
+    # POST /api/v5/trade/amend-algos
+    def amend_algos(self, instId, algoId, algoClOrdId, cxlOnFail = '',reqId = '',newSz = '',
+                    newTpTriggerPx = '',newTpOrdPx = '',newSlTriggerPx = '',
+                    newSlOrdPx = '',newTpTriggerPxType = '',newSlTriggerPxType=''):
+        params = {'instId':instId,'algoId':algoId,'algoClOrdId':algoClOrdId,'cxlOnFail':cxlOnFail,
+                  'reqId':reqId,'newSz':newSz,'newTpTriggerPx':newTpTriggerPx,'newTpOrdPx':newTpOrdPx,
+                  'newSlTriggerPx':newSlTriggerPx,'newSlOrdPx':newSlOrdPx,'newTpTriggerPxType':newTpTriggerPxType,
+                  'newSlTriggerPxType':newSlTriggerPxType,}
+        return self._request_with_params(POST, AMEND_ALGOS, params)
 
     # Cancel Advance Algos
     def cancel_advance_algos(self, params):
