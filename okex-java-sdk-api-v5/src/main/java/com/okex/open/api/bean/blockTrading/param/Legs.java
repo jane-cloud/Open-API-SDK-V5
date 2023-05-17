@@ -7,6 +7,25 @@ public class Legs {
     private String  tgtCcy;
     private String  px;
 
+    public String getTdMode() {
+        return tdMode;
+    }
+
+    public void setTdMode(String tdMode) {
+        this.tdMode = tdMode;
+    }
+
+    public String getCcy() {
+        return ccy;
+    }
+
+    public void setCcy(String ccy) {
+        this.ccy = ccy;
+    }
+
+    private String tdMode;
+    private String ccy;
+
     public String getPosSide() {
         return posSide;
     }

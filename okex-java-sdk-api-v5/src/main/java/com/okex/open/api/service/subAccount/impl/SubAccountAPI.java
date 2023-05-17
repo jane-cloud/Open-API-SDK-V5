@@ -55,5 +55,10 @@ public interface SubAccountAPI {
     @GET("/api/v5/users/partner/if-rebate")
     Call<JSONObject>  ifRebate(@Query("apiKey") String apiKey);
 
-
+//设置子账户尊享借币比率
+    @POST("/api/v5/account/subaccount/set-loan-allocation")
+    Call<JSONObject> setSubAccountLoanAllocation(@Body SetSubAccountLoanAllocation subAccountLoanAllocation);
+//获取子账户借币利率与限额
+    @GET("/api/v5/account/subaccount/interest-limits")
+    Call<JSONObject> getSubAccountInterestLimits(@Query("subAcct") String subAcct,@Query("ccy") String ccy);
 }

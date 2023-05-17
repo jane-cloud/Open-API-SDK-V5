@@ -67,4 +67,14 @@ public class SubAccountAPIServiceImpl implements SubAccountAPIService {
     public JSONObject ifRebate(String apiKey) {
         return this.client.executeSync(this.api.ifRebate(apiKey));
     }
+
+    @Override
+    public JSONObject setSubAccountLoanAllocation(SetSubAccountLoanAllocation subAccountLoanAllocation) {
+        return this.client.executeSync(this.api.setSubAccountLoanAllocation(subAccountLoanAllocation));
+    }
+
+    @Override
+    public JSONObject getSubAccountInterestLimits(String subAcct, String ccy) {
+        return this.client.executeSync(this.api.getSubAccountInterestLimits(subAcct,ccy));
+    }
 }

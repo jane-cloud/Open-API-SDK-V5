@@ -51,6 +51,8 @@ public class BlockTradingAPITest extends BlockTradingAPIBaseTest {
         legs.setSz("0.1");
         legs.setTgtCcy("base_ccy");
         legs.setPosSide("");
+        legs.setTdMode("");
+        legs.setCcy("");
 
         Legs legs1 = new Legs();
         legs1.setInstId("ETH-USDT");
@@ -58,6 +60,8 @@ public class BlockTradingAPITest extends BlockTradingAPIBaseTest {
         legs1.setSz("0.4");
         legs1.setTgtCcy("base_ccy");
         legs1.setPosSide("");
+        legs1.setTdMode("");
+        legs1.setCcy("");
 
         List<Legs> legsList = new ArrayList<Legs>();
         legsList.add(legs);
@@ -224,6 +228,8 @@ public class BlockTradingAPITest extends BlockTradingAPIBaseTest {
         legs.setSide("buy");
         legs.setTgtCcy("base_ccy");
         legs.setPosSide("");
+        legs.setTdMode("");
+        legs.setCcy("");
 
         legsList.add(legs);
 

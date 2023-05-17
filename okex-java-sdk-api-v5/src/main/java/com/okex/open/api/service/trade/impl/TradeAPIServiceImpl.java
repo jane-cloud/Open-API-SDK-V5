@@ -168,4 +168,9 @@ public class TradeAPIServiceImpl implements TradeAPIService {
     public JSONObject getAlgoOrderDetails(String algoId, String algoClOrdId) {
         return this.client.executeSync(this.tradeAPI.getAlgoOrderDetails(algoId, algoClOrdId));
     }
+
+    @Override
+    public JSONObject amendAlgos(AmendAlgos amendAlgos) {
+        return this.client.executeSync(this.tradeAPI.amendAlgos(amendAlgos));
+    }
 }

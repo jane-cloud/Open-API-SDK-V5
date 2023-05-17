@@ -9,6 +9,62 @@ public class AmendOrder {
     private String newSz;
     private String newPx;
 
+    private String newTpTriggerPx;
+    private String newTpOrdPx;
+    private String newSlTriggerPx;
+    private String newSlOrdPx;
+
+    public String getNewTpTriggerPx() {
+        return newTpTriggerPx;
+    }
+
+    public void setNewTpTriggerPx(String newTpTriggerPx) {
+        this.newTpTriggerPx = newTpTriggerPx;
+    }
+
+    public String getNewTpOrdPx() {
+        return newTpOrdPx;
+    }
+
+    public void setNewTpOrdPx(String newTpOrdPx) {
+        this.newTpOrdPx = newTpOrdPx;
+    }
+
+    public String getNewSlTriggerPx() {
+        return newSlTriggerPx;
+    }
+
+    public void setNewSlTriggerPx(String newSlTriggerPx) {
+        this.newSlTriggerPx = newSlTriggerPx;
+    }
+
+    public String getNewSlOrdPx() {
+        return newSlOrdPx;
+    }
+
+    public void setNewSlOrdPx(String newSlOrdPx) {
+        this.newSlOrdPx = newSlOrdPx;
+    }
+
+    public String getNewTpTriggerPxType() {
+        return newTpTriggerPxType;
+    }
+
+    public void setNewTpTriggerPxType(String newTpTriggerPxType) {
+        this.newTpTriggerPxType = newTpTriggerPxType;
+    }
+
+    public String getNewSlTriggerPxType() {
+        return newSlTriggerPxType;
+    }
+
+    public void setNewSlTriggerPxType(String newSlTriggerPxType) {
+        this.newSlTriggerPxType = newSlTriggerPxType;
+    }
+
+    private String newTpTriggerPxType;
+    private String newSlTriggerPxType;
+
     public java.lang.String getInstId() {
         return instId;
     }

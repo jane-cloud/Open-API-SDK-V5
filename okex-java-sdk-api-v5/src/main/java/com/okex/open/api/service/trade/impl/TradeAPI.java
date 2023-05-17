@@ -178,4 +178,7 @@ interface TradeAPI {
 
     @GET("/api/v5/trade/order-algo")
     Call<JSONObject>  getAlgoOrderDetails(@Query("algoId")String algoId, @Query("algoClOrdId")String algoClOrdId);
+
+    @POST("/api/v5/trade/amend-algos")
+    Call<JSONObject> amendAlgos(@Body AmendAlgos amendAlgos);
 }

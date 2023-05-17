@@ -36,4 +36,7 @@ public interface SubAccountAPIService {
     //获取用户的节点返佣信息 Get the user's affiliate rebate information
     JSONObject ifRebate(String apiKey);
 
+    JSONObject setSubAccountLoanAllocation(SetSubAccountLoanAllocation subAccountLoanAllocation);
+
+    JSONObject getSubAccountInterestLimits(String subAcct, String ccy);
 }

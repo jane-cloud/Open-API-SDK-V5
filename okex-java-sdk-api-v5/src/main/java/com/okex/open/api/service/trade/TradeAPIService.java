@@ -2,6 +2,7 @@ package com.okex.open.api.service.trade;
 
 import com.alibaba.fastjson.JSONObject;
 import com.okex.open.api.bean.trade.param.*;
+import retrofit2.http.POST;
 import retrofit2.http.Query;
 
 import java.util.List;
@@ -82,4 +83,7 @@ public interface TradeAPIService {
 
 
     JSONObject getAlgoOrderDetails(String algoId, String algoClOrdId);
+
+
+    JSONObject amendAlgos(AmendAlgos amendAlgos);
 }

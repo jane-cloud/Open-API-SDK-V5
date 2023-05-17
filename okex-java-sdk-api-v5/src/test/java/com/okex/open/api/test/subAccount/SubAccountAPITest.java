@@ -10,6 +10,9 @@ import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class SubAccountAPITest extends SubAccountAPIBaseTest{
 
     private static final Logger LOG = LoggerFactory.getLogger(SubAccountAPITest.class);
@@ -130,6 +133,32 @@ public class SubAccountAPITest extends SubAccountAPIBaseTest{
     @Test
     public void ifRebate(){
         JSONObject result = this.subAccountAPIService.ifRebate("");
+        toResultString(LOG, "result", result);
+    }
+    /**
+     * 设置子账户尊享借币比率
+     * POST /api/v5/account/subaccount/set-loan-allocation
+     */
+    @Test
+    public void setSubAccountLoanAllocation(){
+        SetSubAccountLoanAllocation subAccountLoanAllocation = new SetSubAccountLoanAllocation();
+        subAccountLoanAllocation.setEnable("");
+        List<Alloc> list = new ArrayList<Alloc>();
+        Alloc alloc = new Alloc();
+        alloc.setLoanAlloc("");
+        alloc.setSubAcct("");
+        list.add(alloc);
+        subAccountLoanAllocation.setAlloc(list);
+        JSONObject result = this.subAccountAPIService.setSubAccountLoanAllocation(subAccountLoanAllocation);
+        toResultString(LOG,"result",result);
+    }
+    /**
+     * 获取子账户借币利率与限额
+     * GET /api/v5/account/subaccount/interest-limits
+     */
+    @Test
+    public void getSubAccountInterestLimits(){
+        JSONObject result = this.subAccountAPIService.getSubAccountInterestLimits("","");
         toResultString(LOG, "result", result);
     }
 

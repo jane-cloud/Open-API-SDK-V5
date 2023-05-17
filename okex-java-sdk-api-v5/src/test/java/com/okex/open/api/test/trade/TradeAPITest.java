@@ -182,7 +182,12 @@ public class TradeAPITest extends TradeAPIBaseTest {
         amendOrder.setReqId("");
         amendOrder.setNewSz("12.5");
         amendOrder.setNewPx("52000");
-
+        amendOrder.setNewTpTriggerPx("");
+        amendOrder.setNewTpOrdPx("");
+        amendOrder.setNewSlTriggerPx("");
+        amendOrder.setNewSlOrdPx("");
+        amendOrder.setNewTpTriggerPxType("");
+        amendOrder.setNewSlTriggerPxType("");
         JSONObject result = tradeAPIService.amendOrder(amendOrder);
 
         toResultString(LOG, "result", result);
@@ -207,6 +212,12 @@ public class TradeAPITest extends TradeAPIBaseTest {
         amendOrder1.setReqId("");
         amendOrder1.setNewSz("15");
         amendOrder1.setNewPx("0.0272");
+        amendOrder1.setNewTpTriggerPx("");
+        amendOrder1.setNewTpOrdPx("");
+        amendOrder1.setNewSlTriggerPx("");
+        amendOrder1.setNewSlOrdPx("");
+        amendOrder1.setNewTpTriggerPxType("");
+        amendOrder1.setNewSlTriggerPxType("");
 
         AmendOrder amendOrder2 = new AmendOrder();
         amendOrder2.setInstId("BTC-USDT-211231");
@@ -216,6 +227,12 @@ public class TradeAPITest extends TradeAPIBaseTest {
         amendOrder2.setReqId("");
         amendOrder2.setNewSz("20");
         amendOrder2.setNewPx("");
+        amendOrder2.setNewTpTriggerPx("");
+        amendOrder2.setNewTpOrdPx("");
+        amendOrder2.setNewSlTriggerPx("");
+        amendOrder2.setNewSlOrdPx("");
+        amendOrder2.setNewTpTriggerPxType("");
+        amendOrder2.setNewSlTriggerPxType("");
 
         amendOrders.add(amendOrder1);
         amendOrders.add(amendOrder2);
@@ -512,4 +529,28 @@ public class TradeAPITest extends TradeAPIBaseTest {
         toResultString(LOG, "result", result);
     }
 
+    /**
+     * 修改策略委托订单 Amend Algo Order
+     * POST /api/v5/trade/amend-algos
+     */
+    @Test
+    public void amendAlgos(){
+
+        AmendAlgos amendAlgos = new AmendAlgos();
+        amendAlgos.setInstId("");
+        amendAlgos.setAlgoId("");
+        amendAlgos.setAlgoClOrdId("");
+        amendAlgos.setCxlOnFail("");
+        amendAlgos.setReqId("");
+        amendAlgos.setNewSz("");
+        amendAlgos.setNewTpTriggerPx("");
+        amendAlgos.setNewTpOrdPx("");
+        amendAlgos.setNewSlTriggerPx("");
+        amendAlgos.setNewSlOrdPx("");
+        amendAlgos.setNewTpTriggerPxType("");
+        amendAlgos.setNewSlTriggerPxType("");
+
+        JSONObject result = tradeAPIService.amendAlgos(amendAlgos);
+        toResultString(LOG, "result", result);
+    }
 }

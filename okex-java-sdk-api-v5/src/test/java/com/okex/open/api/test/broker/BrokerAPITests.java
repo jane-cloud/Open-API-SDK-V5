@@ -154,6 +154,7 @@ public class BrokerAPITests extends BrokerAPIBaseTests{
         setSubAccountFeeRate.setChgMaker("1%");
         setSubAccountFeeRate.setEffDate("20211226");
         setSubAccountFeeRate.setMgnType("");
+        setSubAccountFeeRate.setQuoteCcyType("");
         JSONObject result = this.brokerAPIService.setSubAccountFeeRate(setSubAccountFeeRate);
         toResultString(LOG, "result", result);
     }

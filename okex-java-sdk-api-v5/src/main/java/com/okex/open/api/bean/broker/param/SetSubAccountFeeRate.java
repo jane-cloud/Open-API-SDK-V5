@@ -8,6 +8,16 @@ public class SetSubAccountFeeRate {
     private String chgMaker;
     private String effDate;
 
+    public String getQuoteCcyType() {
+        return quoteCcyType;
+    }
+
+    public void setQuoteCcyType(String quoteCcyType) {
+        this.quoteCcyType = quoteCcyType;
+    }
+
+    private String quoteCcyType;
+
     public String getMgnType() {
         return mgnType;
     }
