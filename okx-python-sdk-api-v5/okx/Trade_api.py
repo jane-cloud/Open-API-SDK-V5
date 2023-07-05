@@ -9,11 +9,14 @@ class TradeAPI(Client):
 
     # Place Order
     def place_order(self, instId, tdMode, side, ordType, sz, ccy='', clOrdId='', tag='', posSide='', px='',
-                    reduceOnly='', tgtCcy='', banAmend='',quickMgnType='',tpTriggerPx = '', tpOrdPx = '', slTriggerPx = '', slOrdPx = '', tpTriggerPxType = '', slTriggerPxType = ''):
+                    reduceOnly='', tgtCcy='', banAmend='',quickMgnType='',tpTriggerPx = '', tpOrdPx = '',
+                    slTriggerPx = '', slOrdPx = '', tpTriggerPxType = '', slTriggerPxType = '',stpId='',
+                    stpMode='',attachAlgoClOrdId=''):
         params = {'instId': instId, 'tdMode': tdMode, 'side': side, 'ordType': ordType, 'sz': sz, 'ccy': ccy,
                   'clOrdId': clOrdId, 'tag': tag, 'posSide': posSide, 'px': px, 'reduceOnly': reduceOnly,
                   'tgtCcy': tgtCcy, 'banAmend': banAmend,'quickMgnType':quickMgnType,'tpTriggerPx':tpTriggerPx,'tpOrdPx':tpOrdPx,'slTriggerPx':slTriggerPx
-                  ,'slOrdPx':slOrdPx,'tpTriggerPxType':tpTriggerPxType,'slTriggerPxType':slTriggerPxType}
+                  ,'slOrdPx':slOrdPx,'tpTriggerPxType':tpTriggerPxType,'slTriggerPxType':slTriggerPxType,
+                  'stpId':stpId,'stpMode':stpMode,'attachAlgoClOrdId':attachAlgoClOrdId}
         return self._request_with_params(POST, PLACR_ORDER, params)
 
     # Place Multiple Orders
@@ -159,3 +162,12 @@ class TradeAPI(Client):
     def get_order_algo(self, algoId = '', algoClOrdId = ''):
         params = {'algoId':algoId, 'algoClOrdId':algoClOrdId}
         return self._request_with_params(GET, GET_ORDER_ALGO, params)
+
+    # POST /api/v5/trade/mass-cancel
+    def mass_cancel(self,instType,instFamily):
+        params = {'instType':instType, 'instFamily':instFamily}
+        return self._request_with_params(POST, MASS_CANCEL, params)
+
+    def cancel_all_after(self,timeOut):
+        params = {'timeOut': timeOut,}
+        return self._request_with_params(POST, CANCEL_ALL_AFTER, params)

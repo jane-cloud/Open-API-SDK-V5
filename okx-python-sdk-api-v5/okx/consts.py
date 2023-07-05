@@ -57,6 +57,7 @@ SET_LOAN_ALLOCATION = '/api/v5/account/subaccount/set-loan-allocation'
 INTEREST_LIMITS = '/api/v5/account/subaccount/interest-limits'
 SET_RISKOFFSET_TYPE = '/api/v5/account/set-riskOffset-type'
 SET_AUTO_LOAN = '/api/v5/account/set-auto-loan'
+MMP_RESET = '/api/v5/account/mmp-reset'
 
 # funding
 DEPOSIT_ADDRESS = '/api/v5/asset/deposit-address'
@@ -165,6 +166,9 @@ ONE_CLICK_REPAY_CURRENCY_LIST = '/api/v5/trade/one-click-repay-currency-list'
 ONE_CLICK_REPAY = '/api/v5/trade/one-click-repay'
 ONE_CLICK_REPAY_HISTORY = '/api/v5/trade/one-click-repay-history'
 GET_ORDER_ALGO = '/api/v5/trade/order-algo'
+MASS_CANCEL = '/api/v5/trade/mass-cancel'
+CANCEL_ALL_AFTER = '/api/v5/trade/cancel-all-after'
+
 
 # SubAccount
 BALANCE = '/api/v5/account/subaccount/balances'
@@ -179,6 +183,8 @@ ENTRUST_SUBACCOUNT_LIST = '/api/v5/users/entrust-subaccount-list'
 MODIFY_APIKEY = '/api/v5/users/subaccount/modify-apikey'
 ASSET_BALANCES = '/api/v5/asset/subaccount/balances'
 PARTNER_IF_REBATE = '/api/v5/users/partner/if-rebate'
+MAX_WITHDRAW = '/api/v5/account/subaccount/max-withdrawal'
+SUB_BILLS = '/api/v5/asset/subaccount/managed-subaccount-bills'
 
 # Broker
 BROKER_INFO = '/api/v5/broker/nd/info'

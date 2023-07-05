@@ -5,9 +5,10 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/example.py" beforeDir="false" afterPath="$PROJECT_DIR$/example.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/okx/Account_api.py" beforeDir="false" afterPath="$PROJECT_DIR$/okx/Account_api.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/okx/Broker_api.py" beforeDir="false" afterPath="$PROJECT_DIR$/okx/Broker_api.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/okx/Trade_api.py" beforeDir="false" afterPath="$PROJECT_DIR$/okx/Trade_api.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/okx/consts.py" beforeDir="false" afterPath="$PROJECT_DIR$/okx/consts.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/okx/subAccount_api.py" beforeDir="false" afterPath="$PROJECT_DIR$/okx/subAccount_api.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/websocket_example.py" beforeDir="false" afterPath="$PROJECT_DIR$/websocket_example.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,11 +27,11 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;last_opened_file_path&quot;: &quot;/Users/oker/Desktop/D/V5/Open-API-SDK-V5/okx-python-sdk-api-v5&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "last_opened_file_path": "/Users/oker/Desktop/V5 update/Open-API-SDK-V5/okx-python-sdk-api-v5"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\oker\Desktop\新建文件夹\Open-API-SDK-V5\okx-python-sdk-api-v5\okx_http2" />
@@ -44,7 +45,7 @@
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
-      <option name="SDK_HOME" value="$PROJECT_DIR$/../../../../ana/anaconda3/python.app/Contents/MacOS/python" />
+      <option name="SDK_HOME" value="$USER_HOME$/ana/anaconda3/python.app/Contents/MacOS/python" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />

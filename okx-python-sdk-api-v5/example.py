@@ -87,7 +87,7 @@ if __name__ == '__main__':
     # 尊享借币订单详情
     # result = accountAPI.vip_loan_order_detail(ordId = '123', ccy = '', after = '', before = '', limit = '')
     # 设置子账户尊享借币比率 POST SET LOAN ALLOCATION
-    result = accountAPI.set_loan_allocation(enable = 'true',subAcct = '',loanAlloc = '')
+    # result = accountAPI.set_loan_allocation(enable = 'true',subAcct = '',loanAlloc = '')
     # 获取子账户借币利率与限额 GET INTEREST LIMITS
     # result = accountAPI.insterst_limits(subAcct = '',ccy = '')
     # 获取借币利率与限额 GET Obtain borrowing rate and limit
@@ -104,6 +104,8 @@ if __name__ == '__main__':
     # result = accountAPI.activate_option()
     # 设置自动借币
     # result = accountAPI.set_auto_loan(autoLoan = '')
+    # 重置 MMP 状态
+    result = accountAPI.mmp_reset()
 
     # funding api
     fundingAPI = Funding.FundingAPI(api_key, secret_key, passphrase, False, flag)
@@ -326,9 +328,9 @@ if __name__ == '__main__':
     #                                    sz='100',posSide='long', tpTriggerPx='60000', tpOrdPx='59999',
     #                                   tpTriggerPxType = 'last', slTriggerPxType = 'last', algoClOrdId ='123456', quickMgnType='', closeFraction = '1')
     # 撤销策略委托订单  Cancel Algo Order
-    result = tradeAPI.cancel_algo_order([{'algoId': '297394002194735104', 'instId': 'BTC-USDT-210409'}])
+    # result = tradeAPI.cancel_algo_order([{'algoId': '297394002194735104', 'instId': 'BTC-USDT-210409'}])
     # 修改策略委托订单 POST AMEND ALGOS
-    result = tradeAPI.amend_algos()
+    # result = tradeAPI.amend_algos()
     # 撤销高级策略委托订单
     # result = tradeAPI.cancel_advance_algos([ {"algoId":"198273485","instId":"BTC-USDT"}])
     # 获取策略委托单信息
@@ -349,6 +351,11 @@ if __name__ == '__main__':
     # result = tradeAPI.one_click_repay(debtCcy = '', repayCcy = '')
     # 获取一键还债历史记录
     # result = tradeAPI.one_click_repay_history(after = '', before = '', limit = '')
+    # 撤销 MMP 订单
+    # result =tradeAPI.mass_cancel()
+    # 倒计时全部撤单
+    result = tradeAPI.cancel_all_after()
+
 
     # 子账户API subAccount
     subAccountAPI = SubAccount.SubAccountAPI(api_key, secret_key, passphrase, False, flag)
@@ -357,7 +364,7 @@ if __name__ == '__main__':
     # 查询子账户转账记录(仅适用于母账户) History of sub-account transfer(applies to master accounts only)
     # result = subAccountAPI.bills()
     # 查看子账户列表(仅适用于母账户) View sub-account list(applies to master accounts only)
-    # result = subAccountAPI.view_list()
+    result = subAccountAPI.view_list()
     # 子账户间划转 Transfer between subAccounts
     # result = subAccountAPI.subAccount_transfer(ccy='USDT', amt='1', froms='6', to='6', fromSubAccount='1',
     #                                            toSubAccount='2', loanTrans='', omitPosRisk='')
@@ -369,6 +376,11 @@ if __name__ == '__main__':
     # result = subAccountAPI.asset_balances(subAcct = '', ccy = '')
     # 获取用户的节点返佣信息
     # result = subAccountAPI.partner_if_rebate(apiKey = '')
+    # 获取子账户最大可转余额
+    # result = subAccountAPI.max_withdrawal()
+    # 查询托管子账户转账记录
+    # result = subAccountAPI.managed_subaccount_bills()
+
 
     # BrokerAPI
     BrokerAPI = Broker.BrokerAPI(api_key, secret_key, passphrase, False, flag)

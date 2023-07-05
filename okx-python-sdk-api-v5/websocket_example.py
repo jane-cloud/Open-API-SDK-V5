@@ -523,6 +523,12 @@ channels = [{"channel": "option-trades", "instType":"OPTION","instFamily":"BTC-U
 #         {"instId": "BTC-USDT", "ordId": "", "newSz": "3"}
 #     ]}
 
+# 撤销 MMP 订单
+# trade_param = {"id":"","op":"mass-cancel","args":[{
+#     "instType":"",
+#     "instFamily":""
+# }]}
+
 
 loop = asyncio.get_event_loop()
 

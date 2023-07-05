@@ -30,8 +30,9 @@ class SubAccountAPI(Client):
         params = {'subAcct': subAcct,'apiKey':apiKey}
         return self._request_with_params(GET, WATCH, params)
 
-    def view_list(self, enable='', subAcct='', after='', before='', limit=''):
-        params = {'enable': enable, 'subAcct': subAcct, 'after': after, 'before': before, 'limit': limit}
+    def view_list(self, enable='', subAcct='', after='', before='', limit='',uid=''):
+        params = {'enable': enable, 'subAcct': subAcct, 'after': after,
+                  'before': before, 'limit': limit,'uid':uid}
         return self._request_with_params(GET, VIEW_LIST, params)
 
     def subAccount_transfer(self, ccy, amt, froms, to, fromSubAccount,toSubAccount,loanTrans='',omitPosRisk=''):
@@ -49,3 +50,14 @@ class SubAccountAPI(Client):
     def partner_if_rebate(self, apiKey = ''):
         params = {'apiKey': apiKey}
         return self._request_with_params(GET, PARTNER_IF_REBATE, params)
+
+    # 获取子账户最大可转余额 max-withdrawal
+    def max_withdrawal(self, subAcct, ccy = ''):
+        params = {'subAcct': subAcct,'ccy': ccy,}
+        return self._request_with_params(GET, MAX_WITHDRAW, params)
+
+    # 查询托管子账户转账记录 managed-subaccount-bills
+    def managed_subaccount_bills(self,ccy='',type='',subAcct='',subUid='',after='',before='',limit=''):
+        params = {'ccy': ccy,'type': type,'subAcct': subAcct,'subUid': subUid,'after': after,'before': before,
+                  'limit': limit,}
+        return self._request_with_params(GET,SUB_BILLS,params)

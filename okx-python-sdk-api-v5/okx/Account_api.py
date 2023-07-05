@@ -196,3 +196,8 @@ class AccountAPI(Client):
     def set_riskOffset_type(self, type = ''):
         params = {'type':type}
         return self._request_with_params(POST, SET_RISKOFFSET_TYPE, params)
+
+    # POST /api/v5/account/mmp-reset
+    def mmp_reset(self,instType,instFamily):
+        params = {'instType': instType,'instFamily':instFamily}
+        return self._request_with_params(POST, MMP_RESET, params)
