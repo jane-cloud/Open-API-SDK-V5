@@ -167,4 +167,12 @@ public interface AccountAPI {
     //设置自动借币 Set auto loan
     @POST("/api/v5/account/set-auto-loan")
     Call<JSONObject> setAutoLoan(@Body JSONObject jsonObject);
+
+
+    @POST("/api/v5/account/mmp-reset")
+    Call<JSONObject> mmpReset(@Body JSONObject parseObject);
+
+
+    @GET("/api/v5/account/adjust-leverage-info")
+    Call<JSONObject> getAdjustLeverageInfo(@Query("instType") String instType,@Query("mgnMode")  String mgnMode, @Query("lever") String lever,@Query("instId")  String instId,@Query("ccy")  String ccy, @Query("posSide") String posSide);
 }

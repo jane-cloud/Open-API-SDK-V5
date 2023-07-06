@@ -86,4 +86,8 @@ public interface TradeAPIService {
 
 
     JSONObject amendAlgos(AmendAlgos amendAlgos);
+
+    JSONObject massCancelOrder(CancelOrder cancelOrder);
+
+    JSONObject cancelAllOrder(CancelOrder cancelOrder);
 }

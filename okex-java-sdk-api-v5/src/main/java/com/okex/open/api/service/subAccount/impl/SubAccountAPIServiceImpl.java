@@ -77,4 +77,14 @@ public class SubAccountAPIServiceImpl implements SubAccountAPIService {
     public JSONObject getSubAccountInterestLimits(String subAcct, String ccy) {
         return this.client.executeSync(this.api.getSubAccountInterestLimits(subAcct,ccy));
     }
+
+    @Override
+    public JSONObject getSubAccountMaxWithdrawal(String subAcct, String ccy) {
+        return this.client.executeSync(this.api.getSubAccountMaxWithdrawal(subAcct,ccy));
+    }
+
+    @Override
+    public JSONObject getManagedSubaccountBills(String ccy, String type, String subAcct, String subUid, String after, String before, String limit) {
+        return this.client.executeSync(this.api.getManagedSubaccountBills(ccy,type,subAcct,subUid,after,before,limit));
+    }
 }

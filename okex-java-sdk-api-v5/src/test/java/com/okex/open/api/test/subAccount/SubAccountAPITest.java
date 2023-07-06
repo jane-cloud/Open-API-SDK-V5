@@ -161,5 +161,22 @@ public class SubAccountAPITest extends SubAccountAPIBaseTest{
         JSONObject result = this.subAccountAPIService.getSubAccountInterestLimits("","");
         toResultString(LOG, "result", result);
     }
-
+    /**
+     * 获取子账户最大可转余额
+     * GET /api/v5/account/subaccount/max-withdrawal
+     */
+    @Test
+    public void getSubAccountMaxWithdrawal(){
+        JSONObject result = this.subAccountAPIService.getSubAccountMaxWithdrawal("","");
+        toResultString(LOG, "result", result);
+    }
+    /**
+     * 查询托管子账户转账记录
+     * GET /api/v5/asset/subaccount/managed-subaccount-bills
+     */
+    @Test
+    public void getManagedSubaccountBills(){
+        JSONObject result = this.subAccountAPIService.getManagedSubaccountBills("","","","","","","");
+        toResultString(LOG, "result", result);
+    }
 }

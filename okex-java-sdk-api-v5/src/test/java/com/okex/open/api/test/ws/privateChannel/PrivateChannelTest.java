@@ -43,6 +43,9 @@ public class PrivateChannelTest {
            accountMap.put("channel","account");
            accountMap.put("ccy","BNB");
 
+
+        accountMap.put("extraParams","{updateInterval:0}");
+
         channelList.add(accountMap);
 
         //调用订阅方法
@@ -70,6 +73,8 @@ public class PrivateChannelTest {
         positionsMap.put("instType","SWAP");
         positionsMap.put("instFamily","XRP-USDT");
         positionsMap.put("instId","XRP-USDT-SWAP");
+
+        positionsMap.put("extraParams","{updateInterval:0}");
 
         channelList.add(positionsMap);
 

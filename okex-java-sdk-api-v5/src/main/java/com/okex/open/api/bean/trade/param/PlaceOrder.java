@@ -13,6 +13,34 @@ public class PlaceOrder {
     private String px;
     private String tgtCcy;
 
+    public String getAttachAlgoClOrdId() {
+        return attachAlgoClOrdId;
+    }
+
+    public void setAttachAlgoClOrdId(String attachAlgoClOrdId) {
+        this.attachAlgoClOrdId = attachAlgoClOrdId;
+    }
+
+    private String attachAlgoClOrdId;
+    public String getStpId() {
+        return stpId;
+    }
+
+    public void setStpId(String stpId) {
+        this.stpId = stpId;
+    }
+
+    public String getStpMode() {
+        return stpMode;
+    }
+
+    public void setStpMode(String stpMode) {
+        this.stpMode = stpMode;
+    }
+
+    private String stpId;
+    private String stpMode;
+
     public String getQuickMgnType() {
         return quickMgnType;
     }

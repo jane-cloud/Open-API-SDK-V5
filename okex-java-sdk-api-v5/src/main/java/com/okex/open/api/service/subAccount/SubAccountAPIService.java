@@ -39,4 +39,8 @@ public interface SubAccountAPIService {
     JSONObject setSubAccountLoanAllocation(SetSubAccountLoanAllocation subAccountLoanAllocation);
 
     JSONObject getSubAccountInterestLimits(String subAcct, String ccy);
+
+    JSONObject getSubAccountMaxWithdrawal(String subAcct, String ccy);
+
+    JSONObject getManagedSubaccountBills(String ccy, String type, String subAcct, String subUid, String after, String before,String limit);
 }

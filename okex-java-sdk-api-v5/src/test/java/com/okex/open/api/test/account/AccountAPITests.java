@@ -446,4 +446,27 @@ public class AccountAPITests extends  AccountAPIBaseTests {
         JSONObject result = this.accountAPIService.setAutoLoan(setAutoLoan);
         toResultString(LOG, "result", result);
     }
+    /**
+     * 重置 MMP 状态 mmp-reset
+     * POST /api/v5/account/mmp-reset
+     */
+    @Test
+    public void mmpReset(){
+        MmpReset mmpReset = new MmpReset();
+        mmpReset.setInstType("");
+        mmpReset.setInstFamily("");
+
+        JSONObject result = this.accountAPIService.mmpReset(mmpReset);
+        toResultString(LOG, "result", result);
+    }
+
+    /**
+     * 获取杠杆倍数预估信息 adjust-leverage-info
+     * GET /api/v5/account/adjust-leverage-info
+     */
+    @Test
+    public void getAdjustLeverageInfo(){
+        JSONObject result = this.accountAPIService.getAdjustLeverageInfo("","","","","","");
+        toResultString(LOG, "result", result);
+    }
 }

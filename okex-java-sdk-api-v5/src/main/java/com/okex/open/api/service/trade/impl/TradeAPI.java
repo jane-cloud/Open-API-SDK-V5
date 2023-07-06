@@ -181,4 +181,12 @@ interface TradeAPI {
 
     @POST("/api/v5/trade/amend-algos")
     Call<JSONObject> amendAlgos(@Body AmendAlgos amendAlgos);
+
+
+    @POST("/api/v5/trade/mass-cancel")
+    Call<JSONObject> massCancelOrder(@Body CancelOrder cancelOrder);
+
+
+    @POST("/api/v5/trade/cancel-all-after")
+    Call<JSONObject>  cancelAllOrder(@Body CancelOrder cancelOrder);
 }

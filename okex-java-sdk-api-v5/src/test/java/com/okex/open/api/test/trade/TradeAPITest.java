@@ -46,12 +46,17 @@ public class TradeAPITest extends TradeAPIBaseTest {
 //        placeOrder.setTgtCcy("");
 //        placeOrder.setBanAmend(false);
         //止盈止损参数
-        /*placeOrder.setSlTriggerPx("");
+       /* placeOrder.setSlTriggerPx("");
         placeOrder.setSlOrdPx("");
         placeOrder.setSlTriggerPxType("");
         placeOrder.setTpOrdPx("");
         placeOrder.setTpTriggerPx("");
-        placeOrder.setTpTriggerPxType("");*/
+        placeOrder.setTpTriggerPxType("");
+        placeOrder.setAttachAlgoClOrdId("");*/
+        //自成交保护
+        /*placeOrder.setStpId("");
+        placeOrder.setStpMode("");*/
+
 
         JSONObject result = tradeAPIService.placeOrder(placeOrder);
 
@@ -89,8 +94,11 @@ public class TradeAPITest extends TradeAPIBaseTest {
         placeOrder1.setSlTriggerPxType("");
         placeOrder1.setTpOrdPx("");
         placeOrder1.setTpTriggerPx("");
-        placeOrder1.setTpTriggerPxType("");*/
-
+        placeOrder1.setTpTriggerPxType("");
+        placeOrder1.setAttachAlgoClOrdId("")*/
+//自成交保护
+        /*placeOrder1.setStpId("");
+        placeOrder1.setStpMode("");*/
         PlaceOrder placeOrder2=new PlaceOrder();
         placeOrder2.setInstId("BTC-USDT-211231");
         placeOrder2.setTdMode("cross");
@@ -112,8 +120,11 @@ public class TradeAPITest extends TradeAPIBaseTest {
         placeOrder2.setSlTriggerPxType("");
         placeOrder2.setTpOrdPx("");
         placeOrder2.setTpTriggerPx("");
-        placeOrder2.setTpTriggerPxType("");*/
-
+        placeOrder2.setTpTriggerPxType("");
+         placeOrder2.setAttachAlgoClOrdId("")*/
+//自成交保护
+        /*placeOrder2.setStpId("");
+        placeOrder2.setStpMode("");*/
         placeOrders.add(placeOrder1);
         placeOrders.add(placeOrder2);
 
@@ -551,6 +562,34 @@ public class TradeAPITest extends TradeAPIBaseTest {
         amendAlgos.setNewSlTriggerPxType("");
 
         JSONObject result = tradeAPIService.amendAlgos(amendAlgos);
+        toResultString(LOG, "result", result);
+    }
+    /**
+     * 撤销 MMP 订单 mass-cancel Order
+     * POST /api/v5/trade/mass-cancel
+     */
+    @Test
+    public void massCancelOrder(){
+        CancelOrder cancelOrder = new CancelOrder();
+        cancelOrder.setInstType("");
+        cancelOrder.setInstFamily("");
+
+        JSONObject result = tradeAPIService.massCancelOrder(cancelOrder);
+
+        toResultString(LOG, "result", result);
+    }
+
+    /**
+     * 倒计时全部撤单 cancel-all-after
+     * POST /api/v5/trade/cancel-all-after
+     */
+    @Test
+    public void cancelAllOrder(){
+        CancelOrder cancelOrder = new CancelOrder();
+        cancelOrder.setTimeOut("");
+
+        JSONObject result = tradeAPIService.cancelAllOrder(cancelOrder);
+
         toResultString(LOG, "result", result);
     }
 }

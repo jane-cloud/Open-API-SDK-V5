@@ -173,4 +173,14 @@ public class TradeAPIServiceImpl implements TradeAPIService {
     public JSONObject amendAlgos(AmendAlgos amendAlgos) {
         return this.client.executeSync(this.tradeAPI.amendAlgos(amendAlgos));
     }
+
+    @Override
+    public JSONObject massCancelOrder(CancelOrder cancelOrder) {
+        return this.client.executeSync(this.tradeAPI.massCancelOrder(cancelOrder));
+    }
+
+    @Override
+    public JSONObject cancelAllOrder(CancelOrder cancelOrder) {
+        return this.client.executeSync(this.tradeAPI.cancelAllOrder(cancelOrder));
+    }
 }

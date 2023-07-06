@@ -234,4 +234,14 @@ public class AccountAPIServiceImpl implements AccountAPIService {
     public JSONObject setAutoLoan(SetAutoLoan setAutoLoan) {
         return this.client.executeSync(this.api.setAutoLoan(JSONObject.parseObject(JSON.toJSONString(setAutoLoan))));
     }
+
+    @Override
+    public JSONObject mmpReset(MmpReset mmpReset) {
+        return this.client.executeSync(this.api.mmpReset(JSONObject.parseObject(JSON.toJSONString(mmpReset))));
+    }
+
+    @Override
+    public JSONObject getAdjustLeverageInfo(String instType, String mgnMode, String lever, String instId, String ccy, String posSide) {
+        return this.client.executeSync(this.api.getAdjustLeverageInfo(instType,mgnMode,lever,instId,ccy,posSide));
+    }
 }

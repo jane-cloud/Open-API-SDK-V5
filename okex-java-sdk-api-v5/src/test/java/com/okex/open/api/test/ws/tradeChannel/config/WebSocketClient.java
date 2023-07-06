@@ -200,7 +200,13 @@ public class WebSocketClient {
         if (null != webSocket)
             sendMessage(str);
     }
+    public static void wsMassCancelOrder(List<Map> list,String id) {
+        String s = listToJson(list);
+        String str = "{\"id\": \""+id+"\",\"op\": \"mass-cancel\", \"args\":" + s + "}";
 
+        if (null != webSocket)
+            sendMessage(str);
+    }
 
 
     private static void sendMessage(String str) {

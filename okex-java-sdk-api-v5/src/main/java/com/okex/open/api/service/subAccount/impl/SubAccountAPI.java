@@ -61,4 +61,10 @@ public interface SubAccountAPI {
 //获取子账户借币利率与限额
     @GET("/api/v5/account/subaccount/interest-limits")
     Call<JSONObject> getSubAccountInterestLimits(@Query("subAcct") String subAcct,@Query("ccy") String ccy);
+    //获取子账户最大可转余额
+    @GET("/api/v5/account/subaccount/max-withdrawal")
+    Call<JSONObject>  getSubAccountMaxWithdrawal(@Query("subAcct") String subAcct,@Query("ccy") String ccy);
+
+    @GET("/api/v5/asset/subaccount/managed-subaccount-bills")
+    Call<JSONObject>  getManagedSubaccountBills(@Query("ccy")String ccy,@Query("type") String type,@Query("subAcct") String subAcct, @Query("subUid")String subUid, @Query("after")String after, @Query("before")String before, @Query("limit")String limit);
 }

@@ -54,7 +54,8 @@ public class TradeChannelTest {
 //        order.put("tgtCcy","base_ccy");
 //        order.put("banAmend",false);
         order.put("quickMgnType","");
-
+        order.put("stpId","");
+        order.put("stpMode","");
         placeOrder.add(order);
 
         //订阅
@@ -93,6 +94,8 @@ public class TradeChannelTest {
         order1.put("tgtCcy","base_ccy");
         order1.put("quickMgnType","");
 //        order1.put("banAmend",false);
+        order1.put("stpId","");
+        order1.put("stpMode","");
 
         Map order2 =new HashMap();
         order2.put("instId","BTC-USDT");
@@ -109,7 +112,8 @@ public class TradeChannelTest {
 //        order2.put("tgtCcy","base_ccy");
         order2.put("banAmend",false);
         order2.put("quickMgnType","");
-
+        order2.put("stpId","");
+        order2.put("stpMode","");
         placeMultipleOrders.add(order1);
         placeMultipleOrders.add(order2);
         try {
@@ -266,7 +270,31 @@ public class TradeChannelTest {
             e.printStackTrace();
         }
     }
+    /**
+     * 撤销MMP订单
+     * mass-cancel
+     */
+    @Test
+    public void wsMassCancelOrder() {
 
+        ArrayList<Map> cancelOrder= new ArrayList<>();
+        Map order =new HashMap();
+
+        order.put("instType","OPTION");
+        order.put("instFamily","BTC-USD");
+
+
+        cancelOrder.add(order);
+
+        //订阅
+        WebSocketClient.wsMassCancelOrder(cancelOrder,"123");
+        //为保证测试方法不停，需要让线程延迟
+        try {
+            Thread.sleep(10000000);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
 
 

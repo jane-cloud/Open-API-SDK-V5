@@ -113,4 +113,8 @@ public interface BrokerAPI {
 
     @GET("/api/v5/asset/broker/nd/subaccount-withdrawal-history")
     Call<JSONObject> getSubaccountWithdrawalHistory(@Query("subAcct") String subAcct,@Query("ccy")  String ccy,@Query("wdId")  String wdId, @Query("clientId") String clientId, @Query("txId") String txId, @Query("type") String type, @Query("state") String state, @Query("after") String after, @Query("before") String before, @Query("limit") String limit);
+
+
+    @GET("/api/v5/broker/nd/subaccount-info")
+    Call<JSONObject> getSubaccountInfo(@Query("subAcct") String subAcct, @Query("uid") String uid, @Query("page") String page, @Query("limit") String limit);
 }

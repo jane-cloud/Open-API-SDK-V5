@@ -289,5 +289,14 @@ public class BrokerAPITests extends BrokerAPIBaseTests{
         JSONObject result = this.brokerAPIService.getSubaccountWithdrawalHistory("","","","","","","","","","");
         toResultString(LOG, "result", result);
     }
+    /**
+     * 获取子账户列表  Get subaccount-info
+     * GET /api/v5/broker/nd/subaccount-info
+     */
+    @Test
+    public void getSubaccountInfo(){
+        JSONObject result = this.brokerAPIService.getSubaccountInfo("","","","");
+        toResultString(LOG, "result", result);
+    }
 
 }
