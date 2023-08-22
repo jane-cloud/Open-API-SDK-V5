@@ -607,6 +607,78 @@ public class PublicChannelTest {
         }
     }
 
+    /**
+     * 价差撮合深度频道
+     * sprd-bbo-tbt: 首次推1档快照数据，以后定量推送，每10毫秒当1档快照数据有变化推送一次1档数据
+     *
+     * sprd-books5: 首次推5档快照数据，以后定量推送，每100毫秒当5档快照数据有变化推送一次5档数据
+     */
+    @Test
+    public void sprdBooksChannel() {
+        //添加订阅频道
+        ArrayList<Map> channelList= new ArrayList<>();
+
+        Map map =new HashMap();
+        map.put("channel","sprd-bbo-tbt");
+        map.put("sprdId","");
+
+
+        channelList.add(map);
+        //调用订阅方法
+        WebSocketClient.subscribe(channelList);
+        //为保证测试方法不停，需要让线程延迟
+        try {
+            Thread.sleep(10000000);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    /**
+     * 价差撮合公共成交数据频道
+     */
+    @Test
+    public void sprdPublicTradesChannel() {
+        //添加订阅频道
+        ArrayList<Map> channelList= new ArrayList<>();
+
+        Map map =new HashMap();
+        map.put("channel","sprd-public-trades");
+        map.put("sprdId","BTC-USDT_BTC-USDT-SWAP");
+
+
+        channelList.add(map);
+        //调用订阅方法
+        WebSocketClient.subscribe(channelList);
+        //为保证测试方法不停，需要让线程延迟
+        try {
+            Thread.sleep(10000000);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    /**
+     * 价差撮合行情频道
+     */
+    @Test
+    public void sprdTickersChannel() {
+        //添加订阅频道
+        ArrayList<Map> channelList= new ArrayList<>();
+
+        Map map =new HashMap();
+        map.put("channel","sprd-tickers");
+        map.put("sprdId","BTC-USDT_BTC-USDT-SWAP");
+
+
+        channelList.add(map);
+        //调用订阅方法
+        WebSocketClient.subscribe(channelList);
+        //为保证测试方法不停，需要让线程延迟
+        try {
+            Thread.sleep(10000000);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
     //取消订阅
     @Test
     public void unsubscribeChannel() {

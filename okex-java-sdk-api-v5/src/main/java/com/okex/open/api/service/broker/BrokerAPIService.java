@@ -69,4 +69,6 @@ public interface BrokerAPIService {
     JSONObject getSubaccountWithdrawalHistory(String subAcct, String ccy, String wdId, String clientId  , String txId, String type, String state, String after, String before	, String limit);
 
     JSONObject getSubaccountInfo(String subAcct, String uid, String page, String limit);
+
+    JSONObject setSubaccountAssets(SetSubAccountAssets setSubAccountAssets);
 }

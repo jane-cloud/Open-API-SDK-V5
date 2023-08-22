@@ -147,4 +147,10 @@ public class BrokerAPIServiceImpl implements BrokerAPIService {
         return this.client.executeSync(this.api.getSubaccountInfo(subAcct, uid,page,limit));
     }
 
+    @Override
+    public JSONObject setSubaccountAssets(SetSubAccountAssets setSubAccountAssets) {
+        return this.client.executeSync(this.api.setSubaccountAssets(JSONObject.parseObject(JSON.toJSONString(setSubAccountAssets))));
+
+    }
+
 }

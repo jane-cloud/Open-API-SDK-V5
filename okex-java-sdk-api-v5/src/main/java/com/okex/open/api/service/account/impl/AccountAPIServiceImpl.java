@@ -236,12 +236,27 @@ public class AccountAPIServiceImpl implements AccountAPIService {
     }
 
     @Override
-    public JSONObject mmpReset(MmpReset mmpReset) {
+    public JSONObject mmpReset(Mmp mmpReset) {
         return this.client.executeSync(this.api.mmpReset(JSONObject.parseObject(JSON.toJSONString(mmpReset))));
     }
 
     @Override
     public JSONObject getAdjustLeverageInfo(String instType, String mgnMode, String lever, String instId, String ccy, String posSide) {
         return this.client.executeSync(this.api.getAdjustLeverageInfo(instType,mgnMode,lever,instId,ccy,posSide));
+    }
+
+    @Override
+    public JSONObject mmpConfig(Mmp mmpConfig) {
+        return this.client.executeSync(this.api.mmpConfig(JSONObject.parseObject(JSON.toJSONString(mmpConfig))));
+    }
+
+    @Override
+    public JSONObject getMmpConfig(String instFamily) {
+        return this.client.executeSync(this.api.getMmpConfig(instFamily));
+    }
+
+    @Override
+    public JSONObject setAccountLevel(AccountMode accountMode) {
+        return this.client.executeSync(this.api.setAccountLevel(JSONObject.parseObject(JSON.toJSONString(accountMode))));
     }
 }

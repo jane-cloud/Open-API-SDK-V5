@@ -452,7 +452,7 @@ public class AccountAPITests extends  AccountAPIBaseTests {
      */
     @Test
     public void mmpReset(){
-        MmpReset mmpReset = new MmpReset();
+        Mmp mmpReset = new Mmp();
         mmpReset.setInstType("");
         mmpReset.setInstFamily("");
 
@@ -467,6 +467,45 @@ public class AccountAPITests extends  AccountAPIBaseTests {
     @Test
     public void getAdjustLeverageInfo(){
         JSONObject result = this.accountAPIService.getAdjustLeverageInfo("","","","","","");
+        toResultString(LOG, "result", result);
+    }
+
+    /**
+     * 设置 MMP  mmp-config
+     * POST /api/v5/account/mmp-config
+     */
+    @Test
+    public void mmpConfig(){
+        Mmp mmpConfig = new Mmp();
+
+        mmpConfig.setInstFamily("");
+        mmpConfig.setFrozenInterval("");
+        mmpConfig.setTimeInterval("");
+        mmpConfig.setQtyLimit("");
+        JSONObject result = this.accountAPIService.mmpConfig(mmpConfig);
+        toResultString(LOG, "result", result);
+    }
+
+    /**
+     * 查看 MMP 配置 mmp-config
+     * GET /api/v5/account/mmp-config
+     */
+    @Test
+    public void getMmpConfig(){
+        JSONObject result = this.accountAPIService.getMmpConfig("");
+        toResultString(LOG, "result", result);
+    }
+
+    /**
+     * 设置账户模式
+     * POST /api/v5/account/set-account-level
+     */
+    @Test
+    public void setAccountLevel(){
+        AccountMode accountMode = new AccountMode();
+        accountMode.setAcctLv("");
+
+        JSONObject result = this.accountAPIService.setAccountLevel(accountMode);
         toResultString(LOG, "result", result);
     }
 }

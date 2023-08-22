@@ -528,8 +528,48 @@ public class PrivateChannelTest {
             e.printStackTrace();
         }
     }
+    /*   价差撮合订单频道
+    *   sprd-orders
+    *
+    *
+    * */
+    @Test
+    public void SprdOrdersChannel() {
+        ArrayList<Map> channelList= new ArrayList<>();
 
+        Map map =new HashMap();
+        map.put("channel","sprd-orders");
+        map.put("sprdId","");
+        channelList.add(map);
+        WebSocketClient.unsubscribe(channelList);
+        //为保证收到服务端返回的消息，需要让线程延迟
+        try {
+            Thread.sleep(100);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    /*   价差撮合成交数据頻道
+     *   sprd-trades
+     *
+     *
+     * */
+    @Test
+    public void SprdTradesChannel() {
+        ArrayList<Map> channelList= new ArrayList<>();
 
+        Map map =new HashMap();
+        map.put("channel","sprd-trades");
+        map.put("sprdId","");
+        channelList.add(map);
+        WebSocketClient.unsubscribe(channelList);
+        //为保证收到服务端返回的消息，需要让线程延迟
+        try {
+            Thread.sleep(100);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
 
     //取消订阅

@@ -118,7 +118,13 @@ public interface AccountAPIService {
     //设置自动借币 Set auto loan
     JSONObject setAutoLoan(SetAutoLoan setAutoLoan);
 
-    JSONObject mmpReset(MmpReset mmpReset);
+    JSONObject mmpReset(Mmp mmpReset);
 
     JSONObject getAdjustLeverageInfo(String instType, String mgnMode, String lever, String instId, String ccy, String posSide);
+
+    JSONObject mmpConfig(Mmp mmpConfig);
+
+    JSONObject getMmpConfig(String instFamily);
+
+    JSONObject setAccountLevel(AccountMode accountMode);
 }

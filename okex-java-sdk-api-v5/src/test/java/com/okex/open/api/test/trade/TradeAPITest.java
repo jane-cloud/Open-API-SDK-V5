@@ -395,6 +395,8 @@ public class TradeAPITest extends TradeAPIBaseTest {
         placeAlgoOrder.setPxLimit("");
         placeAlgoOrder.setTimeInterval("");*/
 
+        //placeAlgoOrder.setCxlOnClosePos("");
+
 
         JSONObject result = tradeAPIService.placeAlgoOrder(placeAlgoOrder);
         toResultString(LOG, "result", result);

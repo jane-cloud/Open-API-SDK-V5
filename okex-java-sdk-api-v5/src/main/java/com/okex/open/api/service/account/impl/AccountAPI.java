@@ -175,4 +175,13 @@ public interface AccountAPI {
 
     @GET("/api/v5/account/adjust-leverage-info")
     Call<JSONObject> getAdjustLeverageInfo(@Query("instType") String instType,@Query("mgnMode")  String mgnMode, @Query("lever") String lever,@Query("instId")  String instId,@Query("ccy")  String ccy, @Query("posSide") String posSide);
+
+    @POST("/api/v5/account/mmp-config")
+    Call<JSONObject>  mmpConfig(@Body JSONObject parseObject);
+
+    @GET("/api/v5/account/mmp-config")
+    Call<JSONObject>  getMmpConfig(@Query("instFamily") String instFamily);
+
+    @POST("/api/v5/account/set-account-level")
+    Call<JSONObject>   setAccountLevel(@Body JSONObject parseObject);
 }

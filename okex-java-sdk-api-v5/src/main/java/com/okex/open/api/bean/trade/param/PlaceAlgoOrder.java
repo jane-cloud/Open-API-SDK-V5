@@ -11,6 +11,15 @@ public class PlaceAlgoOrder {
     private Boolean reduceOnly;
     private String algoClOrdId;
 
+    public String getCxlOnClosePos() {
+        return cxlOnClosePos;
+    }
+
+    public void setCxlOnClosePos(String cxlOnClosePos) {
+        this.cxlOnClosePos = cxlOnClosePos;
+    }
+
+    private String cxlOnClosePos;
     public String getCloseFraction() {
         return closeFraction;
     }

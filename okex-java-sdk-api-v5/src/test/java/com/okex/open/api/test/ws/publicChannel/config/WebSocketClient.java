@@ -104,21 +104,34 @@ public class WebSocketClient {
 
                 //不进行解压
                 final String s = byteString;
-//                System.out.println("~~~~~~~~~~~~~~~~~~订阅后推送的数据："+s);
+//                if(s.contains("event")){
+//                    System.out.println(DateFormatUtils.format(new Date(), DateUtils.TIME_STYLE_S4) + " Receive: " + s);
+//                }else{
+
                 //判断是否是深度接口
                 if (s.contains("\"channel\":\"books\",")||s.contains("\"channel\":\"books-l2-tbt\",")||s.contains("\"channel\":\"books50-l2-tbt\",")) {
                     //是深度接口
+
                     if (s.contains("snapshot")) {//记录下第一次的全量数据
+
                         JSONObject rst = JSONObject.fromObject(s);
+
+
                         JSONObject arg = JSONObject.fromObject(rst.get("arg"));
                         net.sf.json.JSONArray dataArr = net.sf.json.JSONArray.fromObject(rst.get("data"));
 
                         JSONObject data = JSONObject.fromObject(dataArr.get(0));
+//
                         String dataStr = data.toString();
+
+                        System.out.println("dataStr:"+dataStr);
                         Optional<SpotOrderBook> oldBook = parse(dataStr);
+                        System.out.println("oldBook:"+oldBook);
                         String instrumentId = arg.get("instId").toString();
+                        System.out.println("instrumentId:"+instrumentId);
                         bookMap.put(instrumentId,oldBook);
                     } else if (s.contains("\"action\":\"update\",")) {//是后续的增量，则需要进行深度合并
+
 
                         JSONObject rst = JSONObject.fromObject(s);
                         JSONObject arg =JSONObject.fromObject(rst.get("arg"));
@@ -192,11 +205,13 @@ public class WebSocketClient {
 
 
                     }else {
+
                         System.out.println(DateFormatUtils.format(new Date(), DateUtils.TIME_STYLE_S4) + " Receive: " + s);
                     }
 
 
                 }
+//                }
                 if (null != s && s.contains("login")) {
                     if (s.endsWith("true}")) {
                         flag = true;
@@ -351,8 +366,10 @@ public class WebSocketClient {
 
     public static Optional<SpotOrderBook> parse(String json) {
 
+
         try {
             OrderBookData data = objectReader.readValue(json);
+
             List<SpotOrderBookItem> asks =
                     data.getAsks().stream().map(x -> new SpotOrderBookItem(new String(x.get(0)), x.get(1), x.get(2), x.get(3)))
                             .collect(Collectors.toList());
@@ -360,9 +377,9 @@ public class WebSocketClient {
             List<SpotOrderBookItem> bids =
                     data.getBids().stream().map(x -> new SpotOrderBookItem(new String(x.get(0)), x.get(1), x.get(2), x.get(3)))
                             .collect(Collectors.toList());
-
-            return Optional.of(new SpotOrderBook(asks, bids, data.getTs(),data.getChecksum()));
+            return Optional.of(new SpotOrderBook(asks, bids, data.getTs(),data.getChecksum(), data.getPrevSeqId(), data.getSeqId()));
         } catch (Exception e) {
+            System.out.println("e"+e);
             return Optional.empty();
         }
     }
@@ -373,6 +390,25 @@ public class WebSocketClient {
         private List<List<String>> bids;
         private String ts;
         private int checksum;
+
+        public long getPrevSeqId() {
+            return prevSeqId;
+        }
+
+        public void setPrevSeqId(long prevSeqId) {
+            this.prevSeqId = prevSeqId;
+        }
+
+        public long getSeqId() {
+            return seqId;
+        }
+
+        public void setSeqId(long seqId) {
+            this.seqId = seqId;
+        }
+
+        private long prevSeqId;
+        private long seqId;
 
         public List<List<String>> getAsks() {
             return asks;

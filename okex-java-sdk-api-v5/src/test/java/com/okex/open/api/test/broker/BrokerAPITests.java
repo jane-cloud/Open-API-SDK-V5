@@ -299,4 +299,17 @@ public class BrokerAPITests extends BrokerAPIBaseTests{
         toResultString(LOG, "result", result);
     }
 
+    /**
+     * 设置模拟盘ND子账户资产    set-subaccount-assets
+     * POST /api/v5/broker/nd/set-subaccount-assets
+     */
+    @Test
+    public void setSubaccountAssets(){
+        SetSubAccountAssets setSubAccountAssets = new SetSubAccountAssets();
+        setSubAccountAssets.setSubAcct("");
+        setSubAccountAssets.setCcy("");
+        JSONObject result = this.brokerAPIService.setSubaccountAssets(setSubAccountAssets);
+        toResultString(LOG, "result", result);
+    }
+
 }

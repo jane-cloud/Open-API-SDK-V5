@@ -7,8 +7,10 @@ public class WebSocketConfig {
     private static final String SERVICE_URL = "wss://wspap.okx.com:8443/ws/v5/public?brokerId=9999";
 
     //ws 实盘 the live trading URL
-//    private static final String SERVICE_URL = "wss://ws.okx.com:8443/ws/v5/public";
+    //private static final String SERVICE_URL = "wss://ws.okx.com:8443/ws/v5/public";
 
+    //部分订阅频道已迁移
+   // private static final String SERVICE_URL = "wss://ws.okx.com:8443/ws/v5/business";
 
     // api key
     private static final String API_KEY = "";

@@ -117,4 +117,7 @@ public interface BrokerAPI {
 
     @GET("/api/v5/broker/nd/subaccount-info")
     Call<JSONObject> getSubaccountInfo(@Query("subAcct") String subAcct, @Query("uid") String uid, @Query("page") String page, @Query("limit") String limit);
+
+    @POST("/api/v5/broker/nd/set-subaccount-assets")
+    Call<JSONObject> setSubaccountAssets(@Body JSONObject parseObject);
 }

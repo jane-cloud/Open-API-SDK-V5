@@ -16,16 +16,38 @@ public class SpotOrderBook {
     private List<SpotOrderBookItem> bids;
     private String ts;
     private int checksum;
+    private long prevSeqId;
+    private long seqId;
+
+    public long getPrevSeqId() {
+        return prevSeqId;
+    }
+
+    public void setPrevSeqId(long prevSeqId) {
+        this.prevSeqId = prevSeqId;
+    }
+
+    public long getSeqId() {
+        return seqId;
+    }
+
+    public void setSeqId(long seqId) {
+        this.seqId = seqId;
+    }
+
+
     private OrderBookDiffer differ = new OrderBookDiffer();
     private OrderBookChecksumer checksumer = new OrderBookChecksumer();
 
     private HashFunction crc32 = Hashing.crc32();
 
-    public SpotOrderBook(List<SpotOrderBookItem> asks, List<SpotOrderBookItem> bids, String ts, int checksum) {
+    public SpotOrderBook(List<SpotOrderBookItem> asks, List<SpotOrderBookItem> bids, String ts, int checksum, long prevSeqId, long seqId) {
         this.asks = asks;
         this.bids = bids;
         this.ts = ts;
         this.checksum = checksum;
+        this.prevSeqId = prevSeqId;
+        this.seqId = seqId;
     }
 
 
@@ -73,7 +95,7 @@ public class SpotOrderBook {
 
     //深度合并，返回深度合并后的内容current为现有的数据，snapshot为快照增量的数据
     private List<SpotOrderBookItem> diff(final List<SpotOrderBookItem> current, final List<SpotOrderBookItem> snapshot,
-        final Comparator<String> comparator,int order) {
+                                         final Comparator<String> comparator,int order) {
         return differ.diff(current, snapshot, comparator,order);
     }
 
@@ -98,6 +120,10 @@ public class SpotOrderBook {
         sb.append(ts);
         sb.append("\",\"checksum\":");
         sb.append(this.checksum);
+        sb.append("\",\"prevSeqId\":");
+        sb.append(this.prevSeqId);
+        sb.append("\",\"seqId\":");
+        sb.append(this.seqId);
         sb.append("}");
         return sb.toString();
     }
