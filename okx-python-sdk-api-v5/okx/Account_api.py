@@ -60,8 +60,9 @@ class AccountAPI(Client):
         return self._request_with_params(GET, MAX_TRADE_SIZE, params)
 
     # Get Maximum Available Tradable Amount
-    def get_max_avail_size(self, instId, tdMode, ccy='', reduceOnly='', unSpotOffset='',quickMgnType=''):
-        params = {'instId': instId, 'tdMode': tdMode, 'ccy': ccy, 'reduceOnly': reduceOnly,'unSpotOffset':unSpotOffset,'quickMgnType':quickMgnType}
+    def get_max_avail_size(self, instId, tdMode, ccy='', reduceOnly='', unSpotOffset='',quickMgnType='',px=''):
+        params = {'instId': instId, 'tdMode': tdMode, 'ccy': ccy, 'reduceOnly': reduceOnly,
+                  'unSpotOffset':unSpotOffset,'quickMgnType':quickMgnType,'px': px}
         return self._request_with_params(GET, MAX_AVAIL_SIZE, params)
 
     # Increase / Decrease margin
@@ -201,3 +202,18 @@ class AccountAPI(Client):
     def mmp_reset(self,instType,instFamily):
         params = {'instType': instType,'instFamily':instFamily}
         return self._request_with_params(POST, MMP_RESET, params)
+
+    # POST /api/v5/account/mmp-config
+    def mmp_config(self,instFamily,timeInterval,frozenInterval,qtyLimit):
+        params = {'instFamily': instFamily,'timeInterval': timeInterval,'frozenInterval': frozenInterval,'qtyLimit': qtyLimit,}
+        return self._request_with_params(POST, MMP_CONFIG, params)
+
+    # GET /api/v5/account/mmp-config
+    def mmp(self,instFamily):
+        params = {'instFamily': instFamily}
+        return self._request_with_params(GET, MMP, params)
+
+    # POST /api/v5/account/set-account-level
+    def set_account_level(self,acctLv):
+        params = {'acctLv': acctLv}
+        return self._request_with_params(POST, SET_ACCOUNT_LEVEL, params)

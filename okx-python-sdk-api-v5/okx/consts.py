@@ -81,6 +81,7 @@ LENDING_HISTORY = '/api/v5/asset/lending-history'
 LENDING_RATE_HISTORY = '/api/v5/asset/lending-rate-history'
 LENDING_RATE_SUMMARY = '/api/v5/asset/lending-rate-summary'
 DEPOSIT_WITHDRAW_STATUS = '/api/v5/asset/deposit-withdraw-status'
+EXCHANGE_LIST = '/api/v5/asset/exchange-list'
 
 # Market Data
 TICKERS_INFO = '/api/v5/market/tickers'
@@ -169,6 +170,20 @@ GET_ORDER_ALGO = '/api/v5/trade/order-algo'
 MASS_CANCEL = '/api/v5/trade/mass-cancel'
 CANCEL_ALL_AFTER = '/api/v5/trade/cancel-all-after'
 
+#Sprd
+SPRD_PLACE_ORDER = '/api/v5/sprd/order'
+SPRD_CANCEL_ORDER = '/api/v5/sprd/cancel-order'
+SPRD_MASS_CANCELS = '/api/v5/sprd/mass-cancel'
+SPRD_ORDER = '/api/v5/sprd/order'
+SPRD_ORDERS_PENDING = '/api/v5/sprd/orders-pending'
+SPRD_ORDERS_HISTORY = '/api/v5/sprd/orders-history'
+SPRD_TRADES = '/api/v5/sprd/trades'
+SPRD_SPREADS = '/api/v5/sprd/spreads'
+SPRD_BOOKS = '/api/v5/sprd/books'
+SPRD_TICKER = '/api/v5/sprd/ticker'
+SPRD_PUBLIC_TRADES = '/api/v5/sprd/public-trades'
+
+
 
 # SubAccount
 BALANCE = '/api/v5/account/subaccount/balances'
@@ -205,6 +220,7 @@ GET_REBATE_PER_ORDERS = '/api/v5/broker/nd/rebate-per-orders'
 REBATE_PER_ORDERS = '/api/v5/broker/nd/rebate-per-orders'
 MODIFY_SUBACCOUNT_DEPOSIT_ADDRESS = '/api/v5/asset/broker/nd/modify-subaccount-deposit-address'
 ND_SUBACCOUNT_WITHDRAWAL_HISTORY = '/api/v5/asset/broker/nd/subaccount-withdrawal-history'
+SET_SUBACCOUNT_ASSETS = '/api/v5/broker/nd/set-subaccount-assets'
 
 # Convert
 GET_CURRENCIES = '/api/v5/asset/convert/currencies'
@@ -235,6 +251,9 @@ GET_RFQ_TRADES = '/api/v5/rfq/trades'
 GET_PUBLIC_TRADES = '/api/v5/rfq/public-trades'
 MARKET_INSTRUMENT_SETTINGS = '/api/v5/rfq/maker-instrument-settings'
 MMP_RESET = '/api/v5/rfq/mmp-reset'
+MMP_CONFIG = '/api/v5/account/mmp-config'
+MMP = '/api/v5/account/mmp-config'
+SET_ACCOUNT_LEVEL = '/api/v5/account/set-account-level'
 GET_MAKER_INSTRUMENT_SETTINGS = '/api/v5/rfq/maker-instrument-settings'
 
 # tradingBot

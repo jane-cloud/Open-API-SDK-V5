@@ -16,6 +16,7 @@ import okx.TradingBot_api as TradingBot
 import okx.Finance_api as Finance
 import okx.Copytrading_api as Copytrading
 import okx.Recurring_api as Recurring
+import okx.SprdApi_api as Sprd
 
 if __name__ == '__main__':
     api_key = ""
@@ -105,7 +106,13 @@ if __name__ == '__main__':
     # 设置自动借币
     # result = accountAPI.set_auto_loan(autoLoan = '')
     # 重置 MMP 状态
-    result = accountAPI.mmp_reset()
+    # result = accountAPI.mmp_reset()
+    # 设置MMP
+    # result = accountAPI.mmp_config(instFamily='',timeInterval='',frozenInterval='',qtyLimit='')
+    # 查看 MMP 配置
+    # result = accountAPI.mmp(instFamily='')
+    # 设置账户模式 POST /api/v5/account/set-account-level
+    # result  = accountAPI.set_account_level(acctLv='')
 
     # funding api
     fundingAPI = Funding.FundingAPI(api_key, secret_key, passphrase, False, flag)
@@ -122,7 +129,7 @@ if __name__ == '__main__':
     # 获取充值记录  Get Deposit History
     # result = fundingAPI.get_deposit_history()
     # 获取币种列表  Get Currencies
-    result = fundingAPI.get_currency('ETH,BTC')
+    # result = fundingAPI.get_currency('ETH,BTC')
     # 余币宝申购/赎回  PiggyBank Purchase/Redemption
     # result = fundingAPI.purchase_redempt('BTC', '1', 'purchase')
     # 资金流水查询  Asset Bills Details
@@ -151,6 +158,8 @@ if __name__ == '__main__':
     # result = fundingAPI.get_lending_rate_history(ccy = '')
     # 获取市场借贷历史（公共）GET LENDING RATE SUMMARY
     # result = fundingAPI.get_lending_rate_summary(ccy = '')
+    # 获取交易所列表
+    # result = fundingAPI.exchange_list()
 
     # convert api
     convertAPI = Convert.ConvertAPI(api_key, secret_key, passphrase, False, flag)
@@ -326,7 +335,8 @@ if __name__ == '__main__':
     # 策略委托下单  Place Algo Order
     # result = tradeAPI.place_algo_order('BTC-USDT-SWAP', 'isolated', 'buy', ordType='conditional',
     #                                    sz='100',posSide='long', tpTriggerPx='60000', tpOrdPx='59999',
-    #                                   tpTriggerPxType = 'last', slTriggerPxType = 'last', algoClOrdId ='123456', quickMgnType='', closeFraction = '1')
+    #                                   tpTriggerPxType = 'last', slTriggerPxType = 'last', algoClOrdId ='123456',
+    #                                    quickMgnType='', closeFraction = '1',cxlOnClosePos= '')
     # 撤销策略委托订单  Cancel Algo Order
     # result = tradeAPI.cancel_algo_order([{'algoId': '297394002194735104', 'instId': 'BTC-USDT-210409'}])
     # 修改策略委托订单 POST AMEND ALGOS
@@ -354,8 +364,32 @@ if __name__ == '__main__':
     # 撤销 MMP 订单
     # result =tradeAPI.mass_cancel()
     # 倒计时全部撤单
-    result = tradeAPI.cancel_all_after()
+    # result = tradeAPI.cancel_all_after()
 
+    #价差撮合交易 SprdAPI
+    sprdAPI = Sprd.SprdAPI(api_key, secret_key, passphrase, False, flag)
+    # 下单 POST /api/v5/sprd/order
+    # result = sprdAPI.place(sprdId='',clOrdId='',tag='',side='',ordType='',sz='',px='')
+    # 撤单 POST /api/v5/sprd/cancel-order
+    # result = sprdAPI.cancel_order(ordId='',clOrdId='')
+    # 全部撤单 POST /api/v5/sprd/mass-cancel
+    # result = sprdAPI.mass_cancel(sprdId='')
+    # 获取订单信息 GET /api/v5/sprd/order
+    # result = sprdAPI.order(ordId='',clOrdId='')
+    # 获取未成交订单列表 GET /api/v5/sprd/orders-pending
+    # result = sprdAPI.orders_pending(sprdId='',ordType='',state='',beginId='',endId='',limit='')
+    # 获取历史订单记录（近七天) GET /api/v5/sprd/orders-history (按创建时间倒叙排序)
+    # result = sprdAPI.orders_history(sprdId='',ordType='',state='',beginId='',endId='',begin='',end='',limit='')
+    # 获取历史成交数据（近七天）GET /api/v5/sprd/trades (按时间倒叙排序)
+    # result = sprdAPI.trades(sprdId='',tradeId='',ordId='',beginId='',endId='',begin='',end='',limit='')
+    # 获取Spreads（公共）GET /api/v5/sprd/spreads
+    # result = sprdAPI.spreads(baseCcy='',instId='',sprdId='',state='')
+    # 获取Spread产品深度（公共）GET /api/v5/sprd/books
+    # result = sprdAPI.books(sprdId='',sz='')
+    # 获取单个Spread产品行情信息（公共） GET /api/v5/sprd/ticker
+    # result = sprdAPI.ticker(sprdId='')
+    # 获取公共成交数据（公共）GET /api/v5/sprd/public-trades
+    result = sprdAPI.public_trades(sprdId='')
 
     # 子账户API subAccount
     subAccountAPI = SubAccount.SubAccountAPI(api_key, secret_key, passphrase, False, flag)
@@ -364,7 +398,7 @@ if __name__ == '__main__':
     # 查询子账户转账记录(仅适用于母账户) History of sub-account transfer(applies to master accounts only)
     # result = subAccountAPI.bills()
     # 查看子账户列表(仅适用于母账户) View sub-account list(applies to master accounts only)
-    result = subAccountAPI.view_list()
+    # result = subAccountAPI.view_list()
     # 子账户间划转 Transfer between subAccounts
     # result = subAccountAPI.subAccount_transfer(ccy='USDT', amt='1', froms='6', to='6', fromSubAccount='1',
     #                                            toSubAccount='2', loanTrans='', omitPosRisk='')
@@ -395,7 +429,7 @@ if __name__ == '__main__':
     # 设置子账户的账户等级 Set account level of sub account
     # result = BrokerAPI.set_subaccount_level(subAcct = 'qwerty', acctLv = '1')
     # 设置子账户的交易手续费费率 Set transaction fee rate of sub account
-    result = BrokerAPI.set_subaccount_fee_rate(subAcct = 'qwerty', instType = 'SPOT', mgnType = '', chgType = 'absolute', chgTaker = '0.1bp', chgMaker = '', effDate = '')
+    # result = BrokerAPI.set_subaccount_fee_rate(subAcct = 'qwerty', instType = 'SPOT', mgnType = '', chgType = 'absolute', chgTaker = '0.1bp', chgMaker = '', effDate = '')
     # 创建子账户充值地址 Create sub account recharge address
     # result = BrokerAPI.subaccount_deposit_address(subAcct = 'qwerty', ccy = 'BTC', chain = '', addrType = '', to = '')
     # 获取子账户获取充值记录 Get sub account recharge record
@@ -418,6 +452,8 @@ if __name__ == '__main__':
     # result = BrokerAPI.rebate_per_orders(type = '', begin = '', end = '')
     # 重置子账户充值地址
     # result = BrokerAPI.modify_subaccount_deposit_address(subAcct = 'qwert', ccy = 'BTC', chain = '', addr = '1', to = '6')
+    # 设置模拟盘ND子账户资产
+    # result = BrokerAPI.set_subaccount_assets(subAcct='',ccy='')
 
     # FDBrokerAPI
     FDBrokerAPI = FDBroker.FDBrokerAPI(api_key, secret_key, passphrase, False, flag)
@@ -450,7 +486,7 @@ if __name__ == '__main__':
     # 重设MMP状态
     # result = RfqAPI.mmp_reset()
     # 报价
-    result = RfqAPI.create_quote(rfqId = '', clQuoteId = '', tag = '123', quoteSide = 'buy', anonymous = 'True', expiresIn = '', legs = [{"px":"39450.0","sz":"200000","instId":"BTC-USDT-SWAP","side":"buy"}])
+    # result = RfqAPI.create_quote(rfqId = '', clQuoteId = '', tag = '123', quoteSide = 'buy', anonymous = 'True', expiresIn = '', legs = [{"px":"39450.0","sz":"200000","instId":"BTC-USDT-SWAP","side":"buy"}])
     # 取消报价单
     # result = RfqAPI.cancel_quote(quoteId = '', clQuoteId = '', rfqId = '')
     # 批量取消报价单

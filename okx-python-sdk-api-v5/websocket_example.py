@@ -396,9 +396,9 @@ url = "wss://wspap.okx.com:8443/ws/v5/public?brokerId=9999"
 # url = "wss://ws.okx.com:8443/ws/v5/private"
 # 模拟盘 demo trading
 # url = "wss://wspap.okx.com:8443/ws/v5/private"
-# 充值信息/提币信息频道、定投策略订单频道(实盘)
+# 充值信息/提币信息频道、定投策略订单频道，价差撮合(实盘)
 # url = "wss://ws.okx.com:8443/ws/v5/business"
-# 充值信息/提币信息频道、提币信息频道、定投策略订单频道(模拟盘)
+# 充值信息/提币信息频道、提币信息频道、定投策略订单频道，价差撮合(模拟盘)
 # url = "wss://ws.okx.com:8443/ws/v5/business?brokerId=9999"
 
 '''
@@ -443,13 +443,26 @@ url = "wss://wspap.okx.com:8443/ws/v5/public?brokerId=9999"
 # 平台公共爆仓单频道
 # channels = [{"channel": "liquidation-orders", "instType":"SWAP"}]
 # 期权公共成交频道
-channels = [{"channel": "option-trades", "instType":"OPTION","instFamily":"BTC-USD"}]
+# channels = [{"channel": "option-trades", "instType":"OPTION","instFamily":"BTC-USD"}]
 # 公共大宗交易频道 Public block trading channel
 # channels = [{"channel": "public-struc-block-trades"}]
 # 大宗交易行情频道 Block trading market channel
 # channels = [{"channel": "block-tickers", "instId":"BTC-USDT-SWAP"}]
 # 公共大宗交易单腿交易频道
 # channels = [{"channel": "public-block-trades", "instId":"BTC-USDT-SWAP"}]
+# 全部交易频道
+# channels = [{"channel": "trades-all","instId":"BTC-USDT-SWAP"}]
+
+#价差撮合
+# 深度频道 sprd-bbo-tbt/sprd-books5
+channels = [{"channel": "sprd-bbo-tbt","sprdId":""}]
+# 公共成交数据频道 sprd-public-trades （每次推送一条成交数据）
+channels = [{"channel": "sprd-public-trades","sprdId":""}]
+# 行情频道 tickers
+channels = [{"channel": "sprd-tickers","sprdId":""}]
+
+
+
 
 '''
 私有频道 private channel
@@ -497,6 +510,16 @@ channels = [{"channel": "option-trades", "instType":"OPTION","instFamily":"BTC-U
 # channels = [{"channel": "withdrawal-info", "ccy":"BTC"}]
 # 定投策略委托订单频道
 # channels = [{"channel": "algo-recurring-buy", "instType":"SPOT"}]
+
+#价差撮合
+# 订单频道 sprd-orders
+channels = [{"channel": "sprd-orders", "sprdId":""}]
+# 成交数据頻道 sprd-trades
+channels = [{"channel": "sprd-trades", "sprdId":""}]
+
+
+
+
 '''
 交易 trade
 '''
@@ -528,6 +551,16 @@ channels = [{"channel": "option-trades", "instType":"OPTION","instFamily":"BTC-U
 #     "instType":"",
 #     "instFamily":""
 # }]}
+
+# 价差撮合下单 sprd_order
+# trade_param = {"id": "1512", "op": "sprd-order", "args": [{"sprdId": "", "clOrdId": "", "tag": "", "side": "", "ordType": "", "sz": "1", "px":""}]}
+# 价差撮合撤单 sprd-cancel-order
+# trade_param = {"id": "1512", "op": "sprd-cancel-order", "args": [{"clOrdId": "", "ordId": ""}]}
+# 价差撮合全部撤单 sprd-mass-cancel
+# trade_param = {"id": "1512", "op": "sprd-mass-cancel", "args": [{"sprdId": "",}]}
+
+
+
 
 
 loop = asyncio.get_event_loop()

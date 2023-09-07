@@ -40,8 +40,10 @@ class BrokerAPI(Client):
         params = {'subAcct': subAcct, 'ccy': ccy, 'txId': txId, 'state': state, 'after': after, 'before': before, 'limit':limit}
         return self._request_with_params(GET, SUBACCOUNT_DEPOSIT_HISTORY, params)
 
-    def rebate_daily(self, subAcct = '', begin = '', end = '', page = '', limit = ''):
-        params = {'subAcct': subAcct, 'begin': begin, 'end': end, 'page': page, 'limit': limit}
+    def rebate_daily(self, subAcct = '', begin = '', end = '', page = '', limit = '',
+                     beginTime = '', endTime = ''):
+        params = {'subAcct': subAcct, 'begin': begin, 'end': end, 'page': page, 'limit': limit,
+                  'beginTime':beginTime, 'endTime': endTime}
         return self._request_with_params(GET, REBATE_DAILY, params)
 
     def nd_create_apikey(self, subAcct = '', label = '', passphrase = '', ip = '', perm = ''):
@@ -75,3 +77,8 @@ class BrokerAPI(Client):
     def nd_subaccount_withdrawal_history(self, subAcct = '', ccy = '', wdId = '', clientId = '', txId = '', type = '', state = '', after = '', before = '', limit = ''):
         params = {'subAcct': subAcct, 'ccy': ccy, 'wdId': wdId, 'clientId': clientId, 'txId': txId, 'type': type, 'state': state, 'after': after, 'before': before, 'limit': limit}
         return self._request_with_params(GET, ND_SUBACCOUNT_WITHDRAWAL_HISTORY, params)
+
+    # POST /api/v5/broker/nd/set-subaccount-assets
+    def set_subaccount_assets(self, subAcct = '', ccy = ''):
+        params = {'subAcct': subAcct, 'ccy': ccy,}
+        return self._request_with_params(POST, SET_SUBACCOUNT_ASSETS, params)

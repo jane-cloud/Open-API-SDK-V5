@@ -119,3 +119,8 @@ class FundingAPI(Client):
     def deposit_withdraw_status(self, wdId = '', txId = '', ccy = '', to = '', chain = ''):
         params = {'wdId': wdId, 'txId': txId, 'ccy': ccy, 'to': to, 'chain':chain}
         return self._request_with_params(GET,DEPOSIT_WITHDRAW_STATUS, params)
+
+    # GET /api/v5/asset/exchange-list
+    def exchange_list(self):
+        return self._request_without_params(GET,EXCHANGE_LIST)
+
