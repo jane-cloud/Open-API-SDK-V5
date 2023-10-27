@@ -32,7 +32,7 @@ public class CopytradingAPITests extends CopytradingAPIBaseTests{
      */
     @Test
     public void currentSubpositions() {
-        JSONObject result = copytradingAPIService.currentSubpositions("BTC-USDT-SWAP");
+        JSONObject result = copytradingAPIService.currentSubpositions("BTC-USDT-SWAP",null,null,null);
         toResultString(LOG, "result", result);
     }
 
@@ -71,6 +71,7 @@ public class CopytradingAPITests extends CopytradingAPIBaseTests{
     public void closeSubposition() {
         CloseSubposition closeSubposition = new CloseSubposition();
         closeSubposition.setSubPosId("1234");
+        closeSubposition.setTag("");
 
         JSONObject result = copytradingAPIService.closeSubposition(closeSubposition);
         toResultString(LOG, "result", result);
@@ -128,6 +129,22 @@ public class CopytradingAPITests extends CopytradingAPIBaseTests{
         JSONObject result = copytradingAPIService.getUnrealizedProfitSharingDetails();
         toResultString(LOG, "result", result);
     }
+    /**
+     * 交易员止盈止损 Close algo-order
+     * POST /api/v5/copytrading/algo-order
+     */
+    @Test
+    public void setAlgoOrder() {
+        CloseSubposition algoOrder = new CloseSubposition();
+        algoOrder.setSubPosId("1234");
+        algoOrder.setTpTriggerPx("");
+        algoOrder.setSlTriggerPx("");
+        algoOrder.setTpTriggerPxType("");
+        algoOrder.setSlTriggerPxType("");
+        algoOrder.setTag("");
 
+        JSONObject result = copytradingAPIService.setAlgoOrder(algoOrder);
+        toResultString(LOG, "result", result);
+    }
 
 }

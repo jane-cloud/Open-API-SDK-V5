@@ -189,4 +189,22 @@ interface TradeAPI {
 
     @POST("/api/v5/trade/cancel-all-after")
     Call<JSONObject>  cancelAllOrder(@Body CancelOrder cancelOrder);
+
+    @GET("/api/v5/tradingBot/signal/orders-algo-details")
+    Call<JSONObject>   getOrdersAlgoDetails(@Query("algoOrdType")String algoOrdType, @Query("algoId")String algoId);
+
+    @GET("/api/v5/tradingBot/grid/positions")
+    Call<JSONObject> getSignalPositions(@Query("algoOrdType")String algoOrdType, @Query("algoId")String algoId);
+
+    @GET("/api/v5/tradingBot/signal/sub-orders")
+    Call<JSONObject>  getSignalSubOrders(@Query("algoId")String algoId, @Query("algoOrdType")String algoOrdType,@Query("type") String type, @Query("clOrdId")String clOrdId,@Query("after") String after,@Query("before") String before,@Query("begin") String begin,@Query("end") String end,@Query("limit") String limit);
+
+    @GET("/api/v5/tradingBot/signal/event-history")
+    Call<JSONObject> getSignalEventHistory(@Query("algoId")String algoId, @Query("after")String after,@Query("before") String before,@Query("limit") String limit);
+
+    @POST("/api/v5/trade/fills-archive")
+    Call<JSONObject> applyFillsArchive(@Body Fills fills);
+
+    @GET("/api/v5/trade/fills-archive")
+    Call<JSONObject> getFillsArchive(@Query("year")String year, @Query("quarter")String quarter);
 }

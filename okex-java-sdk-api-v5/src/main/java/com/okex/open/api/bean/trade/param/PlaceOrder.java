@@ -13,6 +13,26 @@ public class PlaceOrder {
     private String px;
     private String tgtCcy;
 
+    private String pxUsd;
+
+    public String getPxUsd() {
+        return pxUsd;
+    }
+
+    public void setPxUsd(String pxUsd) {
+        this.pxUsd = pxUsd;
+    }
+
+    public String getPxVol() {
+        return pxVol;
+    }
+
+    public void setPxVol(String pxVol) {
+        this.pxVol = pxVol;
+    }
+
+    private String pxVol;
+
     public String getAttachAlgoClOrdId() {
         return attachAlgoClOrdId;
     }

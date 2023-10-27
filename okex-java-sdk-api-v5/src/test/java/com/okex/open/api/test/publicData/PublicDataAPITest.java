@@ -212,7 +212,7 @@ public class PublicDataAPITest extends PublicDataAPIBaseTest {
      */
     @Test
     public void getConvertContractCoin(){
-        JSONObject result = publicDataAPIService.getConvertContractCoin("","","","","");
+        JSONObject result = publicDataAPIService.getConvertContractCoin("","","","","",null);
         toResultString(LOG, "result", result);
     }
 

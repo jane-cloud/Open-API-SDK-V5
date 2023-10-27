@@ -165,4 +165,22 @@ public class SpreadTradeTests extends SpreadTradeBaseTests {
         toResultString(LOG, "result", result);
     }
 
+    /**
+     * 修改订单  amend-order
+     * POST /api/v5/sprd/amend-order
+     */
+    @Test
+    public void amendOrder(){
+
+        SpreadOrder amendOrder =new SpreadOrder();
+        amendOrder.setReqId("");
+        amendOrder.setOrdId("");
+        amendOrder.setClOrdId("");
+        amendOrder.setNewPx("");
+        amendOrder.setNewSz("");
+        JSONObject result = spreadTradeService.amendOrder(amendOrder);
+
+        toResultString(LOG, "result", result);
+    }
+
 }

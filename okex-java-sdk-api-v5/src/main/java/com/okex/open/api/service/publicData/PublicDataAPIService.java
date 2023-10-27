@@ -60,7 +60,7 @@ public interface PublicDataAPIService {
     JSONObject getInsuranceFund(String instType,String type,String uly,String instFamily,String ccy,String before,String after,String limit);
 
     //张币转换 Unit convert
-    JSONObject getConvertContractCoin(String type, String instId, String sz, String px, String unit);
+    JSONObject getConvertContractCoin(String type, String instId, String sz, String px, String unit,String opType);
 
     //获取期权公共成交数据  Get option trades
     JSONObject getOptionTrades(String instId, String instFamily, String optType);

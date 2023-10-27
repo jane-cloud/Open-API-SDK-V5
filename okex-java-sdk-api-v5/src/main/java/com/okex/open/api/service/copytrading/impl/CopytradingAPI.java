@@ -11,7 +11,10 @@ public interface CopytradingAPI {
 
     //交易员获取当前带单 Get existing leading positions
     @GET("/api/v5/copytrading/current-subpositions")
-    Call<JSONObject> currentSubpositions(@Query("instId") String instId);
+    Call<JSONObject> currentSubpositions(@Query("instId") String instId,
+                                         @Query("after") String after,
+                                         @Query("before") String before,
+                                         @Query("limit") String limit);
 
     //交易员获取历史带单 Get leading position history
     @GET("/api/v5/copytrading/subpositions-history")
@@ -50,5 +53,7 @@ public interface CopytradingAPI {
     @GET("/api/v5/copytrading/unrealized-profit-sharing-details")
     Call<JSONObject> getUnrealizedProfitSharingDetails();
 
-
+    //交易员止盈止损
+    @POST("/api/v5/copytrading/algo-order")
+    Call<JSONObject> setAlgoOrder(@Body JSONObject parseObject);
 }

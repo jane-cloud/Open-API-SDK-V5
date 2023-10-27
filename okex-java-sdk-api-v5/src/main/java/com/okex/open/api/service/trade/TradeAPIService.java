@@ -90,4 +90,30 @@ public interface TradeAPIService {
     JSONObject massCancelOrder(CancelOrder cancelOrder);
 
     JSONObject cancelAllOrder(CancelOrder cancelOrder);
+
+
+
+
+
+
+
+
+
+
+
+
+    /*信号策略
+
+    获取信号策略详情*/
+    JSONObject getOrdersAlgoDetails(String algoOrdType, String algoId);
+
+    JSONObject getSignalPositions(String algoOrdType, String algoId);
+
+    JSONObject getSignalSubOrders(String algoId, String algoOrdType, String type, String clOrdId, String after, String before, String begin, String end,String limit);
+
+    JSONObject getSignalEventHistory(String algoId, String after, String before, String limit);
+
+    JSONObject applyFillsArchive(Fills fills);
+
+    JSONObject getFillsArchive(String year, String quarter);
 }

@@ -41,6 +41,7 @@ public class BrokerAPITests extends BrokerAPIBaseTests{
 
         createSubAccount.setSubAcct("0324test01");
         createSubAccount.setLabel("0324test01");
+        createSubAccount.setClientIP("");
         JSONObject result = this.brokerAPIService.createSubAccount(createSubAccount);
         toResultString(LOG, "result", result);
     }
@@ -201,7 +202,7 @@ public class BrokerAPITests extends BrokerAPIBaseTests{
      */
     @Test
     public void getRebateDaily(){
-        JSONObject result = this.brokerAPIService.getRebateDaily(null,null,null,null,null);
+        JSONObject result = this.brokerAPIService.getRebateDaily(null,null,null,null,null,null,null);
         toResultString(LOG, "result", result);
     }
 
@@ -311,5 +312,17 @@ public class BrokerAPITests extends BrokerAPIBaseTests{
         JSONObject result = this.brokerAPIService.setSubaccountAssets(setSubAccountAssets);
         toResultString(LOG, "result", result);
     }
+    /**
+     * 子账户IP上报   report-subaccount-ip
+     * POST /api/v5/broker/nd/report-subaccount-ip
+     */
+    @Test
+    public void reportSubaccIp(){
+        CreateSubAccount subAccount = new CreateSubAccount();
 
+        subAccount.setSubAcct("0324test01");
+        subAccount.setClientIP("");
+        JSONObject result = this.brokerAPIService.reportSubaccIp(subAccount);
+        toResultString(LOG, "result", result);
+    }
 }

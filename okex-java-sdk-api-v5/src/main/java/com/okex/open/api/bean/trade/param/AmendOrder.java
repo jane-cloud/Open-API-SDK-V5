@@ -14,6 +14,26 @@ public class AmendOrder {
     private String newSlTriggerPx;
     private String newSlOrdPx;
 
+    private String newPxUsd;
+
+    public String getNewPxUsd() {
+        return newPxUsd;
+    }
+
+    public void setNewPxUsd(String newPxUsd) {
+        this.newPxUsd = newPxUsd;
+    }
+
+    public String getNewPxVol() {
+        return newPxVol;
+    }
+
+    public void setNewPxVol(String newPxVol) {
+        this.newPxVol = newPxVol;
+    }
+
+    private String newPxVol;
+
     public String getNewTpTriggerPx() {
         return newTpTriggerPx;
     }

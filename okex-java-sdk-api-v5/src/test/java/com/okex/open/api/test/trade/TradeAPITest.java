@@ -56,6 +56,9 @@ public class TradeAPITest extends TradeAPIBaseTest {
         //自成交保护
         /*placeOrder.setStpId("");
         placeOrder.setStpMode("");*/
+        //仅适用于期权
+        /*placeOrder.setPxUsd("");
+        placeOrder.setPxVol("");*/
 
 
         JSONObject result = tradeAPIService.placeOrder(placeOrder);
@@ -99,6 +102,10 @@ public class TradeAPITest extends TradeAPIBaseTest {
 //自成交保护
         /*placeOrder1.setStpId("");
         placeOrder1.setStpMode("");*/
+        //仅适用于期权
+        /*placeOrder1.setPxUsd("");
+        placeOrder1.setPxVol("");*/
+
         PlaceOrder placeOrder2=new PlaceOrder();
         placeOrder2.setInstId("BTC-USDT-211231");
         placeOrder2.setTdMode("cross");
@@ -125,6 +132,11 @@ public class TradeAPITest extends TradeAPIBaseTest {
 //自成交保护
         /*placeOrder2.setStpId("");
         placeOrder2.setStpMode("");*/
+
+        //仅适用于期权
+        /*placeOrder2.setPxUsd("");
+        placeOrder2.setPxVol("");*/
+
         placeOrders.add(placeOrder1);
         placeOrders.add(placeOrder2);
 
@@ -199,6 +211,8 @@ public class TradeAPITest extends TradeAPIBaseTest {
         amendOrder.setNewSlOrdPx("");
         amendOrder.setNewTpTriggerPxType("");
         amendOrder.setNewSlTriggerPxType("");
+        amendOrder.setNewPxUsd("");
+        amendOrder.setNewPxVol("");
         JSONObject result = tradeAPIService.amendOrder(amendOrder);
 
         toResultString(LOG, "result", result);
@@ -229,6 +243,8 @@ public class TradeAPITest extends TradeAPIBaseTest {
         amendOrder1.setNewSlOrdPx("");
         amendOrder1.setNewTpTriggerPxType("");
         amendOrder1.setNewSlTriggerPxType("");
+        amendOrder1.setNewPxUsd("");
+        amendOrder1.setNewPxVol("");
 
         AmendOrder amendOrder2 = new AmendOrder();
         amendOrder2.setInstId("BTC-USDT-211231");
@@ -244,6 +260,8 @@ public class TradeAPITest extends TradeAPIBaseTest {
         amendOrder2.setNewSlOrdPx("");
         amendOrder2.setNewTpTriggerPxType("");
         amendOrder2.setNewSlTriggerPxType("");
+        amendOrder2.setNewPxUsd("");
+        amendOrder2.setNewPxVol("");
 
         amendOrders.add(amendOrder1);
         amendOrders.add(amendOrder2);
@@ -376,7 +394,18 @@ public class TradeAPITest extends TradeAPIBaseTest {
         /*placeAlgoOrder.setTriggerPx("1.1");
         placeAlgoOrder.setOrderPx("0.7");
         placeAlgoOrder.setTriggerPxType("last");
-*/
+        AttachAlgoOrds attachAlgoOrds = new AttachAlgoOrds();
+        attachAlgoOrds.setAttachAlgoClOrdId("");
+        attachAlgoOrds.setSlOrdPx("");
+        attachAlgoOrds.setTpOrdPx("");
+        attachAlgoOrds.setSlTriggerPx("");
+        attachAlgoOrds.setTpTriggerPx("");
+        attachAlgoOrds.setSlTriggerPxType("");
+        attachAlgoOrds.setTpTriggerPxType("");
+
+        List<AttachAlgoOrds> list = new ArrayList<AttachAlgoOrds>();
+        list.add(attachAlgoOrds);
+        placeAlgoOrder.setAttachAlgoOrdsList(list);*/
         //移动止盈止损
 //        placeAlgoOrder.setCallbackRatio("0.1");
 //        placeAlgoOrder.setCallbackSpread("1");
@@ -591,6 +620,31 @@ public class TradeAPITest extends TradeAPIBaseTest {
         cancelOrder.setTimeOut("");
 
         JSONObject result = tradeAPIService.cancelAllOrder(cancelOrder);
+
+        toResultString(LOG, "result", result);
+    }
+    /**
+     * 申请成交明细（近两年） fills-archive
+     * POST /api/v5/trade/fills-archive
+     */
+    @Test
+    public void applyFillsArchive(){
+        Fills fills = new Fills();
+        fills.setQuarter("");
+        fills.setYear("");
+
+        JSONObject result = tradeAPIService.applyFillsArchive(fills);
+
+        toResultString(LOG, "result", result);
+    }
+    /**
+     *  获取成交明细（近两年） fills-archive
+     * GET /api/v5/trade/fills-archive
+     */
+    @Test
+    public void getFillsArchive(){
+
+        JSONObject result = tradeAPIService.getFillsArchive("","");
 
         toResultString(LOG, "result", result);
     }

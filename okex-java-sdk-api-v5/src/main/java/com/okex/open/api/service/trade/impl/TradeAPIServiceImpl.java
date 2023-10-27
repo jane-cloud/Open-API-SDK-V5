@@ -183,4 +183,44 @@ public class TradeAPIServiceImpl implements TradeAPIService {
     public JSONObject cancelAllOrder(CancelOrder cancelOrder) {
         return this.client.executeSync(this.tradeAPI.cancelAllOrder(cancelOrder));
     }
+
+
+
+
+
+
+
+
+
+    //信号策略
+    //获取信号策略详情
+    @Override
+    public JSONObject getOrdersAlgoDetails(String algoOrdType, String algoId) {
+        return this.client.executeSync(this.tradeAPI.getOrdersAlgoDetails(algoOrdType, algoId));
+    }
+
+    @Override
+    public JSONObject getSignalPositions(String algoOrdType, String algoId) {
+        return this.client.executeSync(this.tradeAPI.getSignalPositions(algoOrdType, algoId));
+    }
+
+    @Override
+    public JSONObject getSignalSubOrders(String algoId, String algoOrdType, String type, String clOrdId, String after, String before, String begin, String end, String limit) {
+        return this.client.executeSync(this.tradeAPI.getSignalSubOrders(algoId, algoOrdType, type,  clOrdId,  after,  before,  begin,  end,  limit));
+    }
+
+    @Override
+    public JSONObject getSignalEventHistory(String algoId, String after, String before, String limit) {
+        return this.client.executeSync(this.tradeAPI.getSignalEventHistory(algoId, after,before,limit));
+    }
+
+    @Override
+    public JSONObject applyFillsArchive(Fills fills) {
+        return this.client.executeSync(this.tradeAPI.applyFillsArchive(fills));
+    }
+
+    @Override
+    public JSONObject getFillsArchive(String year, String quarter) {
+        return this.client.executeSync(this.tradeAPI.getFillsArchive(year,quarter));
+    }
 }

@@ -29,4 +29,6 @@ public interface SpreadTradeService {
     JSONObject getPublicTicker(String sprdId);
 
     JSONObject getPublicTrades(String sprdId);
+
+    JSONObject amendOrder(SpreadOrder amendOrder);
 }

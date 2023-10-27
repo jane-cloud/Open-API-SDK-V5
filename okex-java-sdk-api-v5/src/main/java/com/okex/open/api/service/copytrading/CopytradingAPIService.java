@@ -10,7 +10,7 @@ import retrofit2.http.Query;
 public interface CopytradingAPIService {
 
     //交易员获取当前带单 Get existing leading positions
-    JSONObject currentSubpositions(String instId);
+    JSONObject currentSubpositions(String instId,String after,String before,String limit);
 
     //交易员获取历史带单 Get leading position history
     JSONObject subpositionsHistory(String instId,String after,String before,String limit);
@@ -36,5 +36,6 @@ public interface CopytradingAPIService {
     //交易员待分润明细 Get unrealized profit sharing details
     JSONObject getUnrealizedProfitSharingDetails();
 
-
+// 交易员止盈止损
+    JSONObject setAlgoOrder(CloseSubposition algoOrder);
 }

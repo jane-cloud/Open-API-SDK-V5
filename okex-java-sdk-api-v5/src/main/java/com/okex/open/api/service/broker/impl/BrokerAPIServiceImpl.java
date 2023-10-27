@@ -96,8 +96,8 @@ public class BrokerAPIServiceImpl implements BrokerAPIService {
 
     //子账户返佣记录  Query daily rebate records
     @Override
-    public JSONObject getRebateDaily(String subAcct, String begin, String end, String page, String limit) {
-        return this.client.executeSync(this.api.getRebateDaily(subAcct,begin,end,page,limit));
+    public JSONObject getRebateDaily(String subAcct, String begin, String end, String page, String limit, String beginTime, String endTime) {
+        return this.client.executeSync(this.api.getRebateDaily(subAcct,begin,end,page,limit,beginTime,endTime));
     }
 
     //获取返佣明细下载链接 Get download link
@@ -151,6 +151,11 @@ public class BrokerAPIServiceImpl implements BrokerAPIService {
     public JSONObject setSubaccountAssets(SetSubAccountAssets setSubAccountAssets) {
         return this.client.executeSync(this.api.setSubaccountAssets(JSONObject.parseObject(JSON.toJSONString(setSubAccountAssets))));
 
+    }
+
+    @Override
+    public JSONObject reportSubaccIp(CreateSubAccount subAccount) {
+        return this.client.executeSync(this.api.reportSubaccIp(JSONObject.parseObject(JSON.toJSONString(subAccount))));
     }
 
 }

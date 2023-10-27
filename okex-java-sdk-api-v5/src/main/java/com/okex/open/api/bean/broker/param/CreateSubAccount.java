@@ -5,6 +5,15 @@ public class CreateSubAccount {
     private String subAcct;
     private String label;
 
+    public String getClientIP() {
+        return clientIP;
+    }
+
+    public void setClientIP(String clientIP) {
+        this.clientIP = clientIP;
+    }
+
+    private String clientIP;
 
 
 

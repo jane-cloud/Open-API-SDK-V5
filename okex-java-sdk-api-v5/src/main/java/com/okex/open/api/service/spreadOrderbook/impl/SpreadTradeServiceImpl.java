@@ -73,4 +73,9 @@ public class SpreadTradeServiceImpl implements SpreadTradeService {
     public JSONObject getPublicTrades(String sprdId) {
          return this.client.executeSync(this.api.getPublicTrades(sprdId));
     }
+
+    @Override
+    public JSONObject amendOrder(SpreadOrder amendOrder) {
+        return this.client.executeSync(this.api.amendOrder(amendOrder));
+    }
 }

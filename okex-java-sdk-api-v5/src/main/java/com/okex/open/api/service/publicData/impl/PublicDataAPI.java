@@ -103,7 +103,7 @@ public interface PublicDataAPI {
 
     //张币转换 Unit convert
     @GET("/api/v5/public/convert-contract-coin")
-    Call<JSONObject> getConvertContractCoin(@Query("type") String type, @Query("instId") String instId,@Query("sz") String sz,@Query("px") String px,@Query("unit") String unit);
+    Call<JSONObject> getConvertContractCoin(@Query("type") String type, @Query("instId") String instId,@Query("sz") String sz,@Query("px") String px,@Query("unit") String unit,@Query("opType") String opType);
 
     //获取期权公共成交数据  Get option trades
     @GET("/api/v5/public/option-trades")

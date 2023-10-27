@@ -56,6 +56,8 @@ public class TradeChannelTest {
         order.put("quickMgnType","");
         order.put("stpId","");
         order.put("stpMode","");
+        order.put("pxUsd","");
+        order.put("pxVol","");
         placeOrder.add(order);
 
         //订阅
@@ -96,6 +98,8 @@ public class TradeChannelTest {
 //        order1.put("banAmend",false);
         order1.put("stpId","");
         order1.put("stpMode","");
+        order1.put("pxUsd","");
+        order1.put("pxVol","");
 
         Map order2 =new HashMap();
         order2.put("instId","BTC-USDT");
@@ -114,6 +118,9 @@ public class TradeChannelTest {
         order2.put("quickMgnType","");
         order2.put("stpId","");
         order2.put("stpMode","");
+        order2.put("pxUsd","");
+        order2.put("pxVol","");
+
         placeMultipleOrders.add(order1);
         placeMultipleOrders.add(order2);
         try {
@@ -215,7 +222,8 @@ public class TradeChannelTest {
 //        order.put("reqId","123456");
         order.put("newPx","23498");
         order.put("newSz","3.6");
-
+        order.put("newPxUsd","");
+        order.put("newPxVol","");
 
         cancelOrder.add(order);
 
@@ -247,6 +255,8 @@ public class TradeChannelTest {
 //        order1.put("reqId","123456");
         order1.put("newPx","23498");
         order1.put("newSz","3.6");
+        order1.put("newPxUsd","");
+        order1.put("newPxVol","");
 
         Map order2 =new HashMap();
 
@@ -257,6 +267,8 @@ public class TradeChannelTest {
 //        order2.put("reqId","123456");
         order2.put("newPx","23498");
         order2.put("newSz","3.6");
+        order2.put("newPxUsd","");
+        order2.put("newPxVol","");
 
         cancelOrder.add(order1);
         cancelOrder.add(order2);

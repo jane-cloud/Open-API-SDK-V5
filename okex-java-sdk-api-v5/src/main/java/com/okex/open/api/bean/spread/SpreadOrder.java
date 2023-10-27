@@ -8,6 +8,34 @@ public class SpreadOrder {
     private String ordType;
 
     private String sz;
+    private String reqId;
+    private String newSz;
+
+    public String getReqId() {
+        return reqId;
+    }
+
+    public void setReqId(String reqId) {
+        this.reqId = reqId;
+    }
+
+    public String getNewSz() {
+        return newSz;
+    }
+
+    public void setNewSz(String newSz) {
+        this.newSz = newSz;
+    }
+
+    public String getNewPx() {
+        return newPx;
+    }
+
+    public void setNewPx(String newPx) {
+        this.newPx = newPx;
+    }
+
+    private String newPx;
 
     public String getOrdId() {
         return ordId;

@@ -148,4 +148,9 @@ public class FundingAPIServiceImpl implements FundingAPIService {
     public JSONObject getNonTradableAssets(String ccy) {
         return this.client.executeSync(this.api.getNonTradableAssets(ccy));
     }
+
+    @Override
+    public JSONObject getExchangeList() {
+        return this.client.executeSync(this.api.getExchangeList());
+    }
 }

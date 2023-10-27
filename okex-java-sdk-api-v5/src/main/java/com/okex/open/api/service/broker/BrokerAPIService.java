@@ -46,7 +46,7 @@ public interface BrokerAPIService {
     JSONObject getSubAccountDepositHistory(String subAcct, String ccy, String txId,String type, String state, String after, String before, String limit);
 
     //子账户返佣记录  Query daily rebate records
-    JSONObject getRebateDaily(String subAcct, String begin, String end, String page, String limit);
+    JSONObject getRebateDaily(String subAcct, String begin, String end, String page, String limit,String beginTime, String endTime);
 
     //获取返佣明细下载链接 Get download link
     JSONObject rebatePerOrders(String type,String begin,String end,String brokerType);
@@ -71,4 +71,6 @@ public interface BrokerAPIService {
     JSONObject getSubaccountInfo(String subAcct, String uid, String page, String limit);
 
     JSONObject setSubaccountAssets(SetSubAccountAssets setSubAccountAssets);
+
+    JSONObject reportSubaccIp(CreateSubAccount subAccount);
 }

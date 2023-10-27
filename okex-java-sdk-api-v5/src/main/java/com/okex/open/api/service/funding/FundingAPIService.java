@@ -71,4 +71,7 @@ public interface FundingAPIService {
     JSONObject cancelWithdrawal(Withdrawal cancelWithdrawal);
 
     JSONObject getNonTradableAssets(String ccy);
+
+    //获取交易所列表
+    JSONObject getExchangeList();
 }

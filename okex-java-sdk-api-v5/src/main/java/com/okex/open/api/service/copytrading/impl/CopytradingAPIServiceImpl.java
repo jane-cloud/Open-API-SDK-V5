@@ -21,8 +21,8 @@ public class CopytradingAPIServiceImpl implements CopytradingAPIService {
 
     //交易员获取当前带单 Get existing leading positions
     @Override
-    public JSONObject currentSubpositions(String instId) {
-        return this.client.executeSync(this.api.currentSubpositions(instId));
+    public JSONObject currentSubpositions(String instId,String after,String before,String limit) {
+        return this.client.executeSync(this.api.currentSubpositions(instId, after, before, limit));
     }
 
     //交易员获取历史带单 Get leading position history
@@ -71,6 +71,11 @@ public class CopytradingAPIServiceImpl implements CopytradingAPIService {
     @Override
     public JSONObject getUnrealizedProfitSharingDetails() {
         return this.client.executeSync(this.api.getUnrealizedProfitSharingDetails());
+    }
+
+    @Override
+    public JSONObject setAlgoOrder(CloseSubposition algoOrder) {
+        return this.client.executeSync(this.api.setAlgoOrder(JSONObject.parseObject(JSON.toJSONString(algoOrder))));
     }
 
 

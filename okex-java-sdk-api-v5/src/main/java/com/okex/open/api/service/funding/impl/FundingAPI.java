@@ -92,4 +92,7 @@ interface FundingAPI {
 
     @GET("/api/v5/asset/non-tradable-assets")
     Call<JSONObject> getNonTradableAssets(@Query("ccy") String ccy);
+    //获取交易所列表
+    @GET("/api/v5/asset/exchange-list")
+    Call<JSONObject>  getExchangeList();
 }

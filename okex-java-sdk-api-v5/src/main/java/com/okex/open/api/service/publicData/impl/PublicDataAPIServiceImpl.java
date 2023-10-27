@@ -119,8 +119,8 @@ public class PublicDataAPIServiceImpl implements PublicDataAPIService {
 
     //张币转换 Unit convert
     @Override
-    public JSONObject getConvertContractCoin(String type, String instId, String sz, String px, String unit) {
-        return this.client.executeSync(this.api.getConvertContractCoin(type,  instId,  sz,  px,  unit));
+    public JSONObject getConvertContractCoin(String type, String instId, String sz, String px, String unit,String opType) {
+        return this.client.executeSync(this.api.getConvertContractCoin(type,  instId,  sz,  px,  unit,opType));
     }
 
     //获取期权公共成交数据  Get option trades

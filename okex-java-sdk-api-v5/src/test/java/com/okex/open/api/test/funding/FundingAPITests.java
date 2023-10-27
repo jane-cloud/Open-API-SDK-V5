@@ -283,7 +283,15 @@ public class FundingAPITests extends FundingAPIBaseTests {
         toResultString(LOG,"result",result);
     }
 
-
+    /**
+     * 获取交易所列表 Get exchange-list
+     * GET /api/v5/asset/exchange-list
+     */
+    @Test
+    public void getExchangeList(){
+        JSONObject result = fundingAPIService.getExchangeList();
+        toResultString(LOG,"result",result);
+    }
 
 }
 

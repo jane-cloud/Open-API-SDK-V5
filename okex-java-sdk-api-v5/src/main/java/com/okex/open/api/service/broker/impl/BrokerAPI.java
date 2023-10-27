@@ -78,7 +78,9 @@ public interface BrokerAPI {
                                      @Query("begin") String begin,
                                      @Query("end") String end,
                                      @Query("page") String page,
-                                     @Query("limit") String limit);
+                                     @Query("limit") String limit,
+                                     @Query("beginTime") String beginTime,
+                                     @Query("endTime") String endTime);
 
      //获取返佣明细下载链接 Get download link
      @GET("/api/v5/broker/nd/rebate-per-orders")
@@ -120,4 +122,8 @@ public interface BrokerAPI {
 
     @POST("/api/v5/broker/nd/set-subaccount-assets")
     Call<JSONObject> setSubaccountAssets(@Body JSONObject parseObject);
+
+
+    @POST("/api/v5/broker/nd/report-subaccount-ip")
+    Call<JSONObject> reportSubaccIp(@Body JSONObject parseObject);
 }

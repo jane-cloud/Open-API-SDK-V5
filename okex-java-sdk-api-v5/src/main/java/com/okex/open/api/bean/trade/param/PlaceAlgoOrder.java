@@ -1,5 +1,7 @@
 package com.okex.open.api.bean.trade.param;
 
+import java.util.List;
+
 public class PlaceAlgoOrder {
     private String instId;
     private String tdMode;
@@ -10,6 +12,16 @@ public class PlaceAlgoOrder {
     private String sz;
     private Boolean reduceOnly;
     private String algoClOrdId;
+
+    public List<AttachAlgoOrds> getAttachAlgoOrdsList() {
+        return attachAlgoOrdsList;
+    }
+
+    public void setAttachAlgoOrdsList(List<AttachAlgoOrds> attachAlgoOrdsList) {
+        this.attachAlgoOrdsList = attachAlgoOrdsList;
+    }
+
+    private List<AttachAlgoOrds> attachAlgoOrdsList;
 
     public String getCxlOnClosePos() {
         return cxlOnClosePos;

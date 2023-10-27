@@ -1,6 +1,7 @@
 package com.okex.open.api.service.spreadOrderbook.impl;
 
 import com.alibaba.fastjson.JSONObject;
+import com.okex.open.api.bean.spread.SpreadOrder;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
@@ -41,4 +42,8 @@ public interface SpreadTrade {
 
     @GET("/api/v5/sprd/public-trades")
     Call<JSONObject>   getPublicTrades(@Query("sprdId")String sprdId);
+
+
+    @POST("/api/v5/sprd/amend-order")
+    Call<JSONObject> amendOrder(@Body SpreadOrder amendOrder);
 }
