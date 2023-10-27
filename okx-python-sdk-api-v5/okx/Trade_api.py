@@ -87,7 +87,8 @@ class TradeAPI(Client):
                          triggerPx='', orderPx='', tgtCcy='', pxVar='',
                          pxSpread='', cxlOnClosePos='',
                          szLimit='', pxLimit='', timeInterval='', tpTriggerPxType='', slTriggerPxType='',
-                         callbackRatio='',callbackSpread='',activePx='',tag='',triggerPxType='',algoClOrdId='',quickMgnType='',closeFraction=''):
+                         callbackRatio='',callbackSpread='',activePx='',tag='',triggerPxType='',
+                         algoClOrdId='',quickMgnType='',closeFraction='', attachAlgoClOrdId=''):
         params = {'instId': instId, 'tdMode': tdMode, 'side': side, 'ordType': ordType, 'sz': sz, 'ccy': ccy,
                   'posSide': posSide, 'reduceOnly': reduceOnly, 'tpTriggerPx': tpTriggerPx, 'tpOrdPx': tpOrdPx,
                   'slTriggerPx': slTriggerPx, 'slOrdPx': slOrdPx, 'triggerPx': triggerPx, 'orderPx': orderPx,
@@ -95,7 +96,8 @@ class TradeAPI(Client):
                   'timeInterval': timeInterval, 'cxlOnClosePos': cxlOnClosePos,
                   'pxSpread': pxSpread, 'tpTriggerPxType': tpTriggerPxType, 'slTriggerPxType': slTriggerPxType,
                   'callbackRatio' : callbackRatio, 'callbackSpread':callbackSpread,'activePx':activePx,
-                  'tag':tag,'triggerPxType':triggerPxType,'algoClOrdId':algoClOrdId,'quickMgnType':quickMgnType,'closeFraction':closeFraction}
+                  'tag':tag,'triggerPxType':triggerPxType,'algoClOrdId':algoClOrdId,'quickMgnType':quickMgnType,
+                  'closeFraction':closeFraction, 'attachAlgoClOrdId':attachAlgoClOrdId}
         return self._request_with_params(POST, PLACE_ALGO_ORDER, params)
 
     # Cancel Algo Order
@@ -171,3 +173,15 @@ class TradeAPI(Client):
     def cancel_all_after(self,timeOut):
         params = {'timeOut': timeOut,}
         return self._request_with_params(POST, CANCEL_ALL_AFTER, params)
+
+    # POST / api / v5 / trade / fills - archive
+    def fills_archive(self,year, quarter):
+        params = {'year': year, 'quarter':quarter}
+        return self._request_with_params(POST, FILLS_ARCHIVE, params)
+
+    # GET / api / v5 / trade / fills - archive
+    def fills_archives(self,year, quarter):
+        params = {'year': year, 'quarter':quarter}
+        return self._request_with_params(GET, FILLS_ARCHIVES, params)
+
+

@@ -92,8 +92,8 @@ class PublicAPI(Client):
         params = {'instType':instType, 'type':type, 'uly':uly, 'ccy':ccy, 'before':before, 'after':after, 'limit':limit,'instFamily':instFamily}
         return self._request_with_params(GET, INSURANCE_FUND, params)
 
-    def convert_contract_coin(self, type = '', instId = '', sz = '', px = '', unit = ''):
-        params = {'type':type, 'instId':instId, 'sz':sz, 'px':px, 'unit':unit}
+    def convert_contract_coin(self, type = '', instId = '', sz = '', px = '', unit = '', opType=''):
+        params = {'type':type, 'instId':instId, 'sz':sz, 'px':px, 'unit':unit, 'opType':opType}
         return self._request_with_params(GET, CONVERT_CONTRACT_COIN, params)
 
     # GET /api/v5/public/instrument-tick-bands

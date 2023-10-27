@@ -8,8 +8,8 @@ class CopytradingAPI(Client):
         Client.__init__(self, api_key, api_secret_key, passphrase, use_server_time, flag)
 
     # GET /api/v5/copytrading/current-subpositions
-    def current_subpositions(self, instId=''):
-        params = {'instId': instId}
+    def current_subpositions(self, instId='',after='', before='', limit=''):
+        params = {'instId': instId, 'after': after, 'before': before, 'limit': limit, }
         return self._request_with_params(GET, CURRENT_SUBPOSITIONS, params)
 
     # GET /api/v5/copytrading/subpositions-history
@@ -18,13 +18,16 @@ class CopytradingAPI(Client):
         return self._request_with_params(GET, SUBPOSITIONS_HISTORY, params)
 
     # POST /api/v5/copytrading/algo-order
-    def copytrading_algo_order(self, subPosId='', tpTriggerPx='', slTriggerPx='', tpTriggerPxType='', slTriggerPxType=''):
-        params = {'subPosId': subPosId, 'tpTriggerPx': tpTriggerPx, 'slTriggerPx': slTriggerPx, 'tpTriggerPxType': tpTriggerPxType, 'slTriggerPxType': slTriggerPxType}
+    def copytrading_algo_order(self, subPosId='', tpTriggerPx='', slTriggerPx='', tpTriggerPxType='',
+                               slTriggerPxType='', tag=''):
+        params = {'subPosId': subPosId, 'tpTriggerPx': tpTriggerPx,
+                  'slTriggerPx': slTriggerPx, 'tpTriggerPxType': tpTriggerPxType,
+                  'slTriggerPxType': slTriggerPxType,'tag':tag}
         return self._request_with_params(POST, COPYTRADING_ALGO_ORDER, params)
 
     # POST /api/v5/copytrading/close-subposition
-    def copytrading_close_subposition(self, subPosId=''):
-        params = {'subPosId': subPosId}
+    def copytrading_close_subposition(self, subPosId='',tag=''):
+        params = {'subPosId': subPosId,'tag':tag}
         return self._request_with_params(POST, COPYTRADING_ALGO_ORDER, params)
 
     # GET /api/v5/copytrading/instruments

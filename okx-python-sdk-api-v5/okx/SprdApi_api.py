@@ -22,6 +22,11 @@ class RfqAPI(Client):
         params = {'sprdId':sprdId}
         return self._request_with_params(POST, SPRD_MASS_CANCELS, params)
 
+    # 修改订单 POST /api/v5/sprd/amend-order
+    def amend_cancel(self,reqId='',ordId='', clOrdId='', newSz='', newPx=''):
+        params = {'reqId':reqId, 'ordId':ordId, 'clOrdId':clOrdId, 'newSz':newSz, 'newPx':newPx, }
+        return self._request_with_params(POST, SPRD_AMEND_CANCELS, params)
+
     # 获取订单信息 GET /api/v5/sprd/order
     def order(self, ordId='', clOrdId=''):
         params = {'ordId': ordId, 'clOrdId': clOrdId}

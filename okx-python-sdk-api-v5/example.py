@@ -257,7 +257,8 @@ if __name__ == '__main__':
     # 获取风险准备金余额
     # result = publicAPI.get_insurance_fund(instType = 'SWAP', type = '', uly = 'BTC-USDT', ccy = '', before = '', after = '', limit = '')
     # 张币转换
-    # result = publicAPI.convert_contract_coin(type = '2', instId = 'BTC-USDT-SWAP', sz = '1', px = '', unit = '')
+    # result = publicAPI.convert_contract_coin(type = '2', instId = 'BTC-USDT-SWAP', sz = '1', px = '',
+    #                                          unit = '', opType='')
     # 获取期权价格梯度
     # result = publicAPI.instrument_tick_bands(instType = 'OPTION', instFamily = '')
     # 获取期权公共成交数据
@@ -336,7 +337,8 @@ if __name__ == '__main__':
     # result = tradeAPI.place_algo_order('BTC-USDT-SWAP', 'isolated', 'buy', ordType='conditional',
     #                                    sz='100',posSide='long', tpTriggerPx='60000', tpOrdPx='59999',
     #                                   tpTriggerPxType = 'last', slTriggerPxType = 'last', algoClOrdId ='123456',
-    #                                    quickMgnType='', closeFraction = '1',cxlOnClosePos= '')
+    #                                    quickMgnType='', closeFraction = '1',cxlOnClosePos= '', attachAlgoClOrdId='',
+    #                                    )
     # 撤销策略委托订单  Cancel Algo Order
     # result = tradeAPI.cancel_algo_order([{'algoId': '297394002194735104', 'instId': 'BTC-USDT-210409'}])
     # 修改策略委托订单 POST AMEND ALGOS
@@ -365,6 +367,11 @@ if __name__ == '__main__':
     # result =tradeAPI.mass_cancel()
     # 倒计时全部撤单
     # result = tradeAPI.cancel_all_after()
+    # 申请成交明细（近两年） POST /api/v5/trade/fills-archive
+    # result = tradeAPI.fills_archive()
+    # 获取成交明细（近两年） GET /api/v5/trade/fills-archive
+    # result = tradeAPI.fills_archives()
+
 
     #价差撮合交易 SprdAPI
     sprdAPI = Sprd.SprdAPI(api_key, secret_key, passphrase, False, flag)
@@ -373,7 +380,9 @@ if __name__ == '__main__':
     # 撤单 POST /api/v5/sprd/cancel-order
     # result = sprdAPI.cancel_order(ordId='',clOrdId='')
     # 全部撤单 POST /api/v5/sprd/mass-cancel
-    # result = sprdAPI.mass_cancel(sprdId='')
+    result = sprdAPI.mass_cancel(sprdId='')
+    # 修改订单（仅适用白名单用户） POST /api/v5/sprd/amend-order
+    result = sprdAPI.amend_cancel(reqId='',ordId='', clOrdId='', newSz='', newPx='')
     # 获取订单信息 GET /api/v5/sprd/order
     # result = sprdAPI.order(ordId='',clOrdId='')
     # 获取未成交订单列表 GET /api/v5/sprd/orders-pending
@@ -389,7 +398,7 @@ if __name__ == '__main__':
     # 获取单个Spread产品行情信息（公共） GET /api/v5/sprd/ticker
     # result = sprdAPI.ticker(sprdId='')
     # 获取公共成交数据（公共）GET /api/v5/sprd/public-trades
-    result = sprdAPI.public_trades(sprdId='')
+    # result = sprdAPI.public_trades(sprdId='')
 
     # 子账户API subAccount
     subAccountAPI = SubAccount.SubAccountAPI(api_key, secret_key, passphrase, False, flag)
@@ -421,7 +430,7 @@ if __name__ == '__main__':
     # 获取独立经纪商账户信息 GET Obtain independent broker account information
     # result = BrokerAPI.broker_info()
     # 创建子账户 Create sub account
-    # result = BrokerAPI.create_subaccount(subAcct = 'qwerty', label = '')
+    # result = BrokerAPI.create_subaccount(subAcct = 'qwerty', label = '',clientIP='')
     # 删除子账户 Delete sub account
     # result = BrokerAPI.delete_subaccount(subAcct = 'qwerty')
     # 获取子账户列表 Get sub account list
@@ -454,6 +463,9 @@ if __name__ == '__main__':
     # result = BrokerAPI.modify_subaccount_deposit_address(subAcct = 'qwert', ccy = 'BTC', chain = '', addr = '1', to = '6')
     # 设置模拟盘ND子账户资产
     # result = BrokerAPI.set_subaccount_assets(subAcct='',ccy='')
+    # 子账户IP上报 POST /api/v5/broker/nd/report-subaccount-ip
+    # result = BrokerAPI.report_subaccount_ip(subAcct='',clientIP='')
+
 
     # FDBrokerAPI
     FDBrokerAPI = FDBroker.FDBrokerAPI(api_key, secret_key, passphrase, False, flag)
@@ -546,13 +558,14 @@ if __name__ == '__main__':
 
     Copytrading = Copytrading.CopytradingAPI(api_key, secret_key, passphrase, False, flag)
     # 交易员获取当前带单
-    # result = Copytrading.current_subpositions(instId='')
+    # result = Copytrading.current_subpositions(instId='', after='', before='', limit='')
     # 交易员获取历史带单
     # result = Copytrading.subpositions_history(instId='', after='', before='', limit='')
     # 交易员止盈止损
-    # result = Copytrading.copytrading_algo_order(subPosId='123456789', tpTriggerPx='1', slTriggerPx='', tpTriggerPxType='', slTriggerPxType='')
+    # result = Copytrading.copytrading_algo_order(subPosId='123456789', tpTriggerPx='1', slTriggerPx='', tpTriggerPxType='', slTriggerPxType=''
+    #                                             tag='')
     # 交易员平仓
-    # result = Copytrading.copytrading_close_subposition(subPosId='123456789')
+    # result = Copytrading.copytrading_close_subposition(subPosId='123456789',tag='')
     # 交易员获取带单合约
     # result = Copytrading.copytrading_instruments()
     # 交易员修改带单合约
