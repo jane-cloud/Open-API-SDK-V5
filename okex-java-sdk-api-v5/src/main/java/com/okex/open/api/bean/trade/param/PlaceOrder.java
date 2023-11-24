@@ -1,5 +1,7 @@
 package com.okex.open.api.bean.trade.param;
 
+import java.util.ArrayList;
+
 public class PlaceOrder {
     private String instId;
     private String tdMode;
@@ -14,6 +16,17 @@ public class PlaceOrder {
     private String tgtCcy;
 
     private String pxUsd;
+
+    public ArrayList<AttachAlgoOrds> getAttachAlgoOrds() {
+        return attachAlgoOrds;
+    }
+
+    public void setAttachAlgoOrds(ArrayList<AttachAlgoOrds> attachAlgoOrds) {
+        this.attachAlgoOrds = attachAlgoOrds;
+    }
+
+    private ArrayList<AttachAlgoOrds> attachAlgoOrds;
+
 
     public String getPxUsd() {
         return pxUsd;

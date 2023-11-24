@@ -94,7 +94,7 @@ public interface BlockTradingAPI {
                                @Query("endTs") String endTs);
 
     //获取大宗交易公共成交数据 Get public trades
-    @GET("/api/v5/rfq/public-trades")
+    @GET("/api/v5/public/block-trades")
     Call<JSONObject> getPublicTrades(@Query("beginId") String beginId,
                                      @Query("endId") String endId,
                                      @Query("limit") String limit);

@@ -19,5 +19,5 @@ public interface ConvertAPIService {
     JSONObject trade(Trade trade);
 
     //获取闪兑交易历史 Get convert history
-    JSONObject getHistory(String after ,String before,String limit,String tag);
+    JSONObject getHistory(String clTReqId,String after ,String before,String limit,String tag);
 }

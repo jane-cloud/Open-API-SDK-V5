@@ -32,7 +32,7 @@ public class CopytradingAPITests extends CopytradingAPIBaseTests{
      */
     @Test
     public void currentSubpositions() {
-        JSONObject result = copytradingAPIService.currentSubpositions("BTC-USDT-SWAP",null,null,null);
+        JSONObject result = copytradingAPIService.currentSubpositions("BTC-USDT-SWAP",null,null,null,null);
         toResultString(LOG, "result", result);
     }
 
@@ -42,13 +42,13 @@ public class CopytradingAPITests extends CopytradingAPIBaseTests{
      */
     @Test
     public void subpositionsHistory() {
-        JSONObject result = copytradingAPIService.subpositionsHistory("BTC-USDT-SWAP",null,null,null);
+        JSONObject result = copytradingAPIService.subpositionsHistory("BTC-USDT-SWAP",null,null,null,null);
         toResultString(LOG, "result", result);
     }
 
     /**
-     * 交易员获取历史带单 Get leading position history
-     * /api/v5/copytrading/subpositions-history
+     * 交易员止盈止损 algo-order
+     * /api/v5/copytrading/algo-order
      */
     @Test
     public void AlgoOrder() {
@@ -58,7 +58,7 @@ public class CopytradingAPITests extends CopytradingAPIBaseTests{
         algoOrder.setSlTriggerPxType("last");
         algoOrder.setTpTriggerPx("13");
         algoOrder.setTpTriggerPxType("last");
-
+        algoOrder.setInstType("");
         JSONObject result = copytradingAPIService.algoOrder(algoOrder);
         toResultString(LOG, "result", result);
     }
@@ -72,6 +72,7 @@ public class CopytradingAPITests extends CopytradingAPIBaseTests{
         CloseSubposition closeSubposition = new CloseSubposition();
         closeSubposition.setSubPosId("1234");
         closeSubposition.setTag("");
+        closeSubposition.setInstType("");
 
         JSONObject result = copytradingAPIService.closeSubposition(closeSubposition);
         toResultString(LOG, "result", result);
@@ -83,7 +84,7 @@ public class CopytradingAPITests extends CopytradingAPIBaseTests{
      */
     @Test
     public void getInstruments() {
-        JSONObject result = copytradingAPIService.getInstruments();
+        JSONObject result = copytradingAPIService.getInstruments("");
         toResultString(LOG, "result", result);
     }
 
@@ -95,7 +96,7 @@ public class CopytradingAPITests extends CopytradingAPIBaseTests{
     public void setInstruments() {
         SetInstruments setInstruments = new SetInstruments();
         setInstruments.setInstId("BTC-USDT-SWAP");
-
+        setInstruments.setInstType("");
         JSONObject result = copytradingAPIService.setInstruments(setInstruments);
         toResultString(LOG, "result", result);
     }
@@ -106,7 +107,7 @@ public class CopytradingAPITests extends CopytradingAPIBaseTests{
      */
     @Test
     public void getProfitSharingDetails() {
-        JSONObject result = copytradingAPIService.getProfitSharingDetails("","","");
+        JSONObject result = copytradingAPIService.getProfitSharingDetails("","","","");
         toResultString(LOG, "result", result);
     }
 
@@ -116,7 +117,7 @@ public class CopytradingAPITests extends CopytradingAPIBaseTests{
      */
     @Test
     public void getTotalProfitSharing() {
-        JSONObject result = copytradingAPIService.getTotalProfitSharing();
+        JSONObject result = copytradingAPIService.getTotalProfitSharing("");
         toResultString(LOG, "result", result);
     }
 
@@ -126,7 +127,7 @@ public class CopytradingAPITests extends CopytradingAPIBaseTests{
      */
     @Test
     public void getUnrealizedProfitSharingDetails() {
-        JSONObject result = copytradingAPIService.getUnrealizedProfitSharingDetails();
+        JSONObject result = copytradingAPIService.getUnrealizedProfitSharingDetails("");
         toResultString(LOG, "result", result);
     }
     /**

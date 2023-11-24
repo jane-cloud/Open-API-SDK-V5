@@ -46,13 +46,20 @@ public class TradeAPITest extends TradeAPIBaseTest {
 //        placeOrder.setTgtCcy("");
 //        placeOrder.setBanAmend(false);
         //止盈止损参数
-       /* placeOrder.setSlTriggerPx("");
-        placeOrder.setSlOrdPx("");
-        placeOrder.setSlTriggerPxType("");
-        placeOrder.setTpOrdPx("");
-        placeOrder.setTpTriggerPx("");
-        placeOrder.setTpTriggerPxType("");
-        placeOrder.setAttachAlgoClOrdId("");*/
+
+        /*ArrayList<AttachAlgoOrds> list = new ArrayList<>();
+        AttachAlgoOrds attachAlgoOrds = new AttachAlgoOrds();
+        attachAlgoOrds.setAttachAlgoClOrdId("");
+        attachAlgoOrds.setTpTriggerPxType("");
+        attachAlgoOrds.setTpOrdPx("");
+        attachAlgoOrds.setTpTriggerPx("");
+        attachAlgoOrds.setSlTriggerPxType("");
+        attachAlgoOrds.setSlOrdPx("");
+        attachAlgoOrds.setSlTriggerPx("");
+        attachAlgoOrds.setSz("");
+        attachAlgoOrds.setAmendPxOnTriggerType("");
+        list.add(attachAlgoOrds);
+        placeOrder.setAttachAlgoOrds(list);*/
         //自成交保护
         /*placeOrder.setStpId("");
         placeOrder.setStpMode("");*/
@@ -92,13 +99,19 @@ public class TradeAPITest extends TradeAPIBaseTest {
 //        placeOrder1.setTgtCcy("");
 //        placeOrder1.setBanAmend(false);
         //止盈止损参数
-        /*placeOrder1.setSlTriggerPx("");
-        placeOrder1.setSlOrdPx("");
-        placeOrder1.setSlTriggerPxType("");
-        placeOrder1.setTpOrdPx("");
-        placeOrder1.setTpTriggerPx("");
-        placeOrder1.setTpTriggerPxType("");
-        placeOrder1.setAttachAlgoClOrdId("")*/
+        /*ArrayList<AttachAlgoOrds> list = new ArrayList<>();
+        AttachAlgoOrds attachAlgoOrds = new AttachAlgoOrds();
+        attachAlgoOrds.setAttachAlgoClOrdId("");
+        attachAlgoOrds.setTpTriggerPxType("");
+        attachAlgoOrds.setTpOrdPx("");
+        attachAlgoOrds.setTpTriggerPx("");
+        attachAlgoOrds.setSlTriggerPxType("");
+        attachAlgoOrds.setSlOrdPx("");
+        attachAlgoOrds.setSlTriggerPx("");
+        attachAlgoOrds.setSz("");
+        attachAlgoOrds.setAmendPxOnTriggerType("");
+        list.add(attachAlgoOrds);
+        placeOrder1.setAttachAlgoOrds(list);*/
 //自成交保护
         /*placeOrder1.setStpId("");
         placeOrder1.setStpMode("");*/
@@ -122,13 +135,19 @@ public class TradeAPITest extends TradeAPIBaseTest {
 //        placeOrder2.setTgtCcy("");
 //        placeOrder2.setBanAmend(false);
         //止盈止损参数
-        /*placeOrder2.setSlTriggerPx("");
-        placeOrder2.setSlOrdPx("");
-        placeOrder2.setSlTriggerPxType("");
-        placeOrder2.setTpOrdPx("");
-        placeOrder2.setTpTriggerPx("");
-        placeOrder2.setTpTriggerPxType("");
-         placeOrder2.setAttachAlgoClOrdId("")*/
+        /*ArrayList<AttachAlgoOrds> list2 = new ArrayList<>();
+        AttachAlgoOrds2 attachAlgoOrds2 = new AttachAlgoOrds();
+        attachAlgoOrds2.setAttachAlgoClOrdId("");
+        attachAlgoOrds2.setTpTriggerPxType("");
+        attachAlgoOrds2.setTpOrdPx("");
+        attachAlgoOrds2.setTpTriggerPx("");
+        attachAlgoOrds2.setSlTriggerPxType("");
+        attachAlgoOrds2.setSlOrdPx("");
+        attachAlgoOrds2.setSlTriggerPx("");
+        attachAlgoOrds2.setSz("");
+        attachAlgoOrds2.setAmendPxOnTriggerType("");
+        list2.add(attachAlgoOrds2);
+        placeOrder2.setAttachAlgoOrds(list2);*/
 //自成交保护
         /*placeOrder2.setStpId("");
         placeOrder2.setStpMode("");*/
@@ -213,6 +232,19 @@ public class TradeAPITest extends TradeAPIBaseTest {
         amendOrder.setNewSlTriggerPxType("");
         amendOrder.setNewPxUsd("");
         amendOrder.setNewPxVol("");
+        ArrayList<AttachAlgoOrds> list = new ArrayList<>();
+        AttachAlgoOrds attachAlgoOrds = new AttachAlgoOrds();
+        attachAlgoOrds.setAttachAlgoClOrdId("");
+        attachAlgoOrds.setTpTriggerPxType("");
+        attachAlgoOrds.setTpOrdPx("");
+        attachAlgoOrds.setTpTriggerPx("");
+        attachAlgoOrds.setSlTriggerPxType("");
+        attachAlgoOrds.setSlOrdPx("");
+        attachAlgoOrds.setSlTriggerPx("");
+        attachAlgoOrds.setSz("");
+        attachAlgoOrds.setAmendPxOnTriggerType("");
+        list.add(attachAlgoOrds);
+        amendOrder.setAttachAlgoOrds(list);
         JSONObject result = tradeAPIService.amendOrder(amendOrder);
 
         toResultString(LOG, "result", result);
@@ -246,6 +278,20 @@ public class TradeAPITest extends TradeAPIBaseTest {
         amendOrder1.setNewPxUsd("");
         amendOrder1.setNewPxVol("");
 
+        ArrayList<AttachAlgoOrds> list = new ArrayList<>();
+        AttachAlgoOrds attachAlgoOrds = new AttachAlgoOrds();
+        attachAlgoOrds.setAttachAlgoClOrdId("");
+        attachAlgoOrds.setTpTriggerPxType("");
+        attachAlgoOrds.setTpOrdPx("");
+        attachAlgoOrds.setTpTriggerPx("");
+        attachAlgoOrds.setSlTriggerPxType("");
+        attachAlgoOrds.setSlOrdPx("");
+        attachAlgoOrds.setSlTriggerPx("");
+        attachAlgoOrds.setSz("");
+        attachAlgoOrds.setAmendPxOnTriggerType("");
+        list.add(attachAlgoOrds);
+        amendOrder1.setAttachAlgoOrds(list);
+
         AmendOrder amendOrder2 = new AmendOrder();
         amendOrder2.setInstId("BTC-USDT-211231");
         amendOrder2.setCxlOnFail(false);
@@ -262,6 +308,20 @@ public class TradeAPITest extends TradeAPIBaseTest {
         amendOrder2.setNewSlTriggerPxType("");
         amendOrder2.setNewPxUsd("");
         amendOrder2.setNewPxVol("");
+
+        ArrayList<AttachAlgoOrds> list2 = new ArrayList<>();
+        AttachAlgoOrds attachAlgoOrds2 = new AttachAlgoOrds();
+        attachAlgoOrds2.setAttachAlgoClOrdId("");
+        attachAlgoOrds2.setTpTriggerPxType("");
+        attachAlgoOrds2.setTpOrdPx("");
+        attachAlgoOrds2.setTpTriggerPx("");
+        attachAlgoOrds2.setSlTriggerPxType("");
+        attachAlgoOrds2.setSlOrdPx("");
+        attachAlgoOrds2.setSlTriggerPx("");
+        attachAlgoOrds2.setSz("");
+        attachAlgoOrds2.setAmendPxOnTriggerType("");
+        list2.add(attachAlgoOrds2);
+        amendOrder2.setAttachAlgoOrds(list2);
 
         amendOrders.add(amendOrder1);
         amendOrders.add(amendOrder2);

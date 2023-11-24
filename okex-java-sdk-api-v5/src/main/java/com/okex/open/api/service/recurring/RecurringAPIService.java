@@ -13,11 +13,11 @@ public interface RecurringAPIService {
 
     JSONObject stopOrderAlgo(List<Recurring> recurring);
 
-    JSONObject getOrderAlgoPending(String algoId, String after, String before, String limit);
+    JSONObject getOrderAlgoPending(String algoId, String after, String before, String limit, String recurringHour, String nextInvestTime);
 
-    JSONObject getOrderAlgoHistory(String algoId, String after, String before, String limit);
+    JSONObject getOrderAlgoHistory(String algoId, String after, String before, String limit,String recurringHour, String nextInvestTime);
 
-    JSONObject getOrderAlgoDetails(String algoId);
+    JSONObject getOrderAlgoDetails(String algoId,String recurringHour, String nextInvestTime);
 
     JSONObject getSubOrders(String algoId,String ordId, String after, String before, String limit);
 }

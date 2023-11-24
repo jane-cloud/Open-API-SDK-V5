@@ -2,10 +2,99 @@ package com.okex.open.api.bean.trade.param;
 
 public class AttachAlgoOrds {
     private String attachAlgoClOrdId;
+
     private String tpTriggerPx;
     private String tpTriggerPxType;
     private String tpOrdPx;
     private String slTriggerPx;
+    private String slTriggerPxType;
+    private String slOrdPx;
+
+    private String attachAlgoId;
+    private String newTpTriggerPx;
+    private String newTpTriggerPxType;
+    private String newTpOrdPx;
+    private String newSlTriggerPx;
+    private String newSlTriggerPxType;
+    private String newSlOrdPx;
+
+    private String sz;
+    private String amendPxOnTriggerType;
+
+
+    public String getAttachAlgoId() {
+        return attachAlgoId;
+    }
+
+    public void setAttachAlgoId(String attachAlgoId) {
+        this.attachAlgoId = attachAlgoId;
+    }
+
+    public String getNewTpTriggerPx() {
+        return newTpTriggerPx;
+    }
+
+    public void setNewTpTriggerPx(String newTpTriggerPx) {
+        this.newTpTriggerPx = newTpTriggerPx;
+    }
+
+    public String getNewTpTriggerPxType() {
+        return newTpTriggerPxType;
+    }
+
+    public void setNewTpTriggerPxType(String newTpTriggerPxType) {
+        this.newTpTriggerPxType = newTpTriggerPxType;
+    }
+
+    public String getNewTpOrdPx() {
+        return newTpOrdPx;
+    }
+
+    public void setNewTpOrdPx(String newTpOrdPx) {
+        this.newTpOrdPx = newTpOrdPx;
+    }
+
+    public String getNewSlTriggerPx() {
+        return newSlTriggerPx;
+    }
+
+    public void setNewSlTriggerPx(String newSlTriggerPx) {
+        this.newSlTriggerPx = newSlTriggerPx;
+    }
+
+    public String getNewSlTriggerPxType() {
+        return newSlTriggerPxType;
+    }
+
+    public void setNewSlTriggerPxType(String newSlTriggerPxType) {
+        this.newSlTriggerPxType = newSlTriggerPxType;
+    }
+
+    public String getNewSlOrdPx() {
+        return newSlOrdPx;
+    }
+
+    public void setNewSlOrdPx(String newSlOrdPx) {
+        this.newSlOrdPx = newSlOrdPx;
+    }
+
+    public String getSz() {
+        return sz;
+    }
+
+    public void setSz(String sz) {
+        this.sz = sz;
+    }
+
+    public String getAmendPxOnTriggerType() {
+        return amendPxOnTriggerType;
+    }
+
+    public void setAmendPxOnTriggerType(String amendPxOnTriggerType) {
+        this.amendPxOnTriggerType = amendPxOnTriggerType;
+    }
+
+
 
     public String getAttachAlgoClOrdId() {
         return attachAlgoClOrdId;
@@ -63,7 +152,6 @@ public class AttachAlgoOrds {
         this.slOrdPx = slOrdPx;
     }
 
-    private String slTriggerPxType;
-    private String slOrdPx;
+
 
 }

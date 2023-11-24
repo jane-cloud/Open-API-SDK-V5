@@ -13,6 +13,25 @@ public class RecurringAlgoOrder {
     private String investmentCcy;
     private String tdMode;
     private String algoClOrdId;
+    private String recurringHour;
+
+    public String getRecurringHour() {
+        return recurringHour;
+    }
+
+    public void setRecurringHour(String recurringHour) {
+        this.recurringHour = recurringHour;
+    }
+
+    public String getNextInvestTime() {
+        return nextInvestTime;
+    }
+
+    public void setNextInvestTime(String nextInvestTime) {
+        this.nextInvestTime = nextInvestTime;
+    }
+
+    private String nextInvestTime;
 
     public String getStgyName() {
         return stgyName;

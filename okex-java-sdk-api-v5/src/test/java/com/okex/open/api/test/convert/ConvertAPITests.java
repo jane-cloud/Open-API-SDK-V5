@@ -72,7 +72,7 @@ public class ConvertAPITests extends ConvertAPIBaseTests {
     //获取闪兑交易历史 Get convert history
     @Test
     public void getHistory(){
-        JSONObject result = convertAPIService.getHistory("","","","");
+        JSONObject result = convertAPIService.getHistory("","","","","");
         toResultString(LOG, "result", result);
     }
 }

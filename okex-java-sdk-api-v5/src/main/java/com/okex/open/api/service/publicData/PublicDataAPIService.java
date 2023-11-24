@@ -66,4 +66,6 @@ public interface PublicDataAPIService {
     JSONObject getOptionTrades(String instId, String instFamily, String optType);
     //获取期权价格梯度
     JSONObject getInstrumentTickBands(String instType, String instFamily);
+
+    JSONObject getEconomicCalendar(String region, String importance, String before, String after, String limit);
 }

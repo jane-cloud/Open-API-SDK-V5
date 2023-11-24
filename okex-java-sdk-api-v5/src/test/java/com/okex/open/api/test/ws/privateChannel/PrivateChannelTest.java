@@ -516,6 +516,8 @@ public class PrivateChannelTest {
         recurringOrdersChannel.put("channel","algo-recurring-buy");
         recurringOrdersChannel.put("algoId","");
         recurringOrdersChannel.put("instType","");
+        recurringOrdersChannel.put("recurringHour","");
+        recurringOrdersChannel.put("nextInvestTime","");
 
         channelList.add(recurringOrdersChannel);
 

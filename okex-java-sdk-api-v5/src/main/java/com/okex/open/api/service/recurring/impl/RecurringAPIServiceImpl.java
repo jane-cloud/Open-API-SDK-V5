@@ -38,18 +38,18 @@ public class RecurringAPIServiceImpl implements RecurringAPIService {
     }
 
     @Override
-    public JSONObject getOrderAlgoPending(String algoId, String after, String before, String limit) {
-        return this.client.executeSync(this.api.getOrderAlgoPending(algoId,after,before,limit));
+    public JSONObject getOrderAlgoPending(String algoId, String after, String before, String limit, String recurringHour, String nextInvestTime) {
+        return this.client.executeSync(this.api.getOrderAlgoPending(algoId,after,before,limit,recurringHour,nextInvestTime));
     }
 
     @Override
-    public JSONObject getOrderAlgoHistory(String algoId, String after, String before, String limit) {
-        return this.client.executeSync(this.api.getOrderAlgoHistory(algoId,after,before,limit));
+    public JSONObject getOrderAlgoHistory(String algoId, String after, String before, String limit,String recurringHour, String nextInvestTime) {
+        return this.client.executeSync(this.api.getOrderAlgoHistory(algoId,after,before,limit,recurringHour,nextInvestTime));
     }
 
     @Override
-    public JSONObject getOrderAlgoDetails( String algoId) {
-        return this.client.executeSync(this.api.getOrderAlgoDetails(algoId));
+    public JSONObject getOrderAlgoDetails( String algoId,String recurringHour, String nextInvestTime) {
+        return this.client.executeSync(this.api.getOrderAlgoDetails(algoId,recurringHour,nextInvestTime));
     }
 
     @Override

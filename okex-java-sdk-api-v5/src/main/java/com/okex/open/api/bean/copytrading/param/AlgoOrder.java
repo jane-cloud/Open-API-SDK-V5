@@ -8,6 +8,16 @@ public class AlgoOrder {
     private String tpTriggerPxType;
     private String slTriggerPxType;
 
+    public String getInstType() {
+        return instType;
+    }
+
+    public void setInstType(String instType) {
+        this.instType = instType;
+    }
+
+    private String instType;
+
     public String getSubPosId() {
         return subPosId;
     }

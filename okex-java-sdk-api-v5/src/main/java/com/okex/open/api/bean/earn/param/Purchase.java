@@ -17,6 +17,16 @@ public class Purchase {
     private String term;
     private String tag;
 
+    public String getAmt() {
+        return amt;
+    }
+
+    public void setAmt(String amt) {
+        this.amt = amt;
+    }
+
+    private String amt;
+
     public String getTag() {
         return tag;
     }

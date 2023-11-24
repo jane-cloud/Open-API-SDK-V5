@@ -326,7 +326,7 @@ public class BlockTradingAPITest extends BlockTradingAPIBaseTest {
 
     /**
      * 获取大宗交易公共成交数据 Get public trades
-     * GET /api/v5/rfq/public-trades
+     * GET /api/v5/public/block-trades
      */
     @Test
     public void getPublicTrades(){

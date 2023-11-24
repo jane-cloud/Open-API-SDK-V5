@@ -702,6 +702,56 @@ public class PublicChannelTest {
             e.printStackTrace();
         }
     }
+
+    /**
+     * 经济日历频道
+     * 该频道使用如下服务地址
+     * 生产环境 wss://ws.okx.com:8443/ws/v5/business，wss://wsaws.okx.com:8443/ws/v5/business
+     * 该接口需验证后使用。仅支持实盘服务。
+     */
+    @Test
+    public void economicCalendar() {
+        //添加订阅频道
+        ArrayList<Map> channelList= new ArrayList<>();
+
+        Map map =new HashMap();
+        map.put("channel","economic-calendar");
+
+
+        channelList.add(map);
+        //调用订阅方法
+        WebSocketClient.subscribe(channelList);
+        //为保证测试方法不停，需要让线程延迟
+        try {
+            Thread.sleep(10000000);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    /**
+     * 自动减仓预警频道
+     * 该频道为公共频道，无需验证即可使用
+     */
+    @Test
+    public void adlWarning() {
+        //添加订阅频道
+        ArrayList<Map> channelList= new ArrayList<>();
+
+        Map map =new HashMap();
+        map.put("channel","adl-warning");
+        map.put("instType","FUTURES");
+        map.put("instFamily","");
+
+        channelList.add(map);
+        //调用订阅方法
+        WebSocketClient.subscribe(channelList);
+        //为保证测试方法不停，需要让线程延迟
+        try {
+            Thread.sleep(10000000);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
     //取消订阅
     @Test
     public void unsubscribeChannel() {

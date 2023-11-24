@@ -212,7 +212,7 @@ public class TradeChannelTest {
     @Test
     public void wsAmendOrder() {
 
-        ArrayList<Map> cancelOrder= new ArrayList<>();
+        ArrayList<Map> amendOrder= new ArrayList<>();
         Map order =new HashMap();
 
         order.put("instId","BTC-USDT");
@@ -225,10 +225,10 @@ public class TradeChannelTest {
         order.put("newPxUsd","");
         order.put("newPxVol","");
 
-        cancelOrder.add(order);
+        amendOrder.add(order);
 
         //订阅
-        WebSocketClient.wsAmendOrder(cancelOrder,"testwsAmendOrder2020");
+        WebSocketClient.wsAmendOrder(amendOrder,"testwsAmendOrder2020");
         //为保证测试方法不停，需要让线程延迟
         try {
             Thread.sleep(10000000);

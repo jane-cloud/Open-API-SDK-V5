@@ -48,6 +48,8 @@ public class RecurringAPITest extends RecurringAPIBaseTest {
         recurringOrder.setAmt("100");
         recurringOrder.setTdMode("cash");
         recurringOrder.setInvestmentCcy("USDT");
+        recurringOrder.setRecurringHour("");
+        recurringOrder.setNextInvestTime("");
         JSONObject result = recurringAPIService.placeOrderAlgo(recurringOrder);
 
         toResultString(LOG, "result", result);
@@ -92,7 +94,7 @@ public class RecurringAPITest extends RecurringAPIBaseTest {
     @Test
     public void getOrderAlgoPending(){
 
-        JSONObject result = recurringAPIService.getOrderAlgoPending("","","","");
+        JSONObject result = recurringAPIService.getOrderAlgoPending("","","","","","");
 
         toResultString(LOG, "result", result);
     }
@@ -103,7 +105,7 @@ public class RecurringAPITest extends RecurringAPIBaseTest {
     @Test
     public void getOrderAlgoHistory(){
 
-        JSONObject result = recurringAPIService.getOrderAlgoHistory("","","","");
+        JSONObject result = recurringAPIService.getOrderAlgoHistory("","","","","","");
 
         toResultString(LOG, "result", result);
     }
@@ -114,7 +116,7 @@ public class RecurringAPITest extends RecurringAPIBaseTest {
     @Test
     public void getOrderAlgoDetails(){
 
-        JSONObject result = recurringAPIService.getOrderAlgoDetails("568856532780318720");
+        JSONObject result = recurringAPIService.getOrderAlgoDetails("568856532780318720","","");
 
         toResultString(LOG, "result", result);
     }

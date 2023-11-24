@@ -111,4 +111,7 @@ public interface PublicDataAPI {
    //获取期权价格梯度
     @GET("/api/v5/public/instrument-tick-bands")
     Call<JSONObject> getInstrumentTickBands(@Query("instType") String instType, @Query("instFamily") String instFamily);
+
+    @GET("/api/v5/public/economic-calendar")
+    Call<JSONObject> getEconomicCalendar(@Query("region")String region, @Query("importance")String importance,@Query("before") String before, @Query("after")String after,@Query("limit") String limit);
 }

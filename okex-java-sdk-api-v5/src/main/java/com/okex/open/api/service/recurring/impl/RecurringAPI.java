@@ -22,13 +22,13 @@ public interface RecurringAPI {
     Call<JSONObject>  stopOrderAlgo(@Body List<Recurring> recurring);
 
     @GET("/api/v5/tradingBot/recurring/orders-algo-pending")
-    Call<JSONObject> getOrderAlgoPending(@Query("algoId") String algoId,@Query("after") String after,@Query("before") String before,@Query("limit") String limit);
+    Call<JSONObject> getOrderAlgoPending(@Query("algoId") String algoId,@Query("after") String after,@Query("before") String before,@Query("limit") String limit,@Query("recurringHour") String recurringHour,@Query("nextInvestTime") String nextInvestTime);
 
     @GET("/api/v5/tradingBot/recurring/orders-algo-history")
-    Call<JSONObject>  getOrderAlgoHistory(@Query("algoId") String algoId,@Query("after") String after,@Query("before") String before,@Query("limit") String limit);
+    Call<JSONObject>  getOrderAlgoHistory(@Query("algoId") String algoId,@Query("after") String after,@Query("before") String before,@Query("limit") String limit,@Query("recurringHour") String recurringHour,@Query("nextInvestTime") String nextInvestTime);
 
     @GET("/api/v5/tradingBot/recurring/orders-algo-details")
-    Call<JSONObject> getOrderAlgoDetails(@Query("algoId") String algoIds);
+    Call<JSONObject> getOrderAlgoDetails(@Query("algoId") String algoIds,@Query("recurringHour") String recurringHour,@Query("nextInvestTime") String nextInvestTime);
 
     @GET("/api/v5/tradingBot/recurring/sub-orders")
     Call<JSONObject> getSubOrders(@Query("algoId") String algoId,@Query("ordId") String ordId,@Query("after") String after,@Query("before") String before,@Query("limit") String limit);

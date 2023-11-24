@@ -135,5 +135,10 @@ public class PublicDataAPIServiceImpl implements PublicDataAPIService {
         return this.client.executeSync(this.api.getInstrumentTickBands(instType, instFamily));
     }
 
+    @Override
+    public JSONObject getEconomicCalendar(String region, String importance, String before, String after, String limit) {
+        return this.client.executeSync(this.api.getEconomicCalendar(region, importance,before,after,limit));
+    }
+
 
 }

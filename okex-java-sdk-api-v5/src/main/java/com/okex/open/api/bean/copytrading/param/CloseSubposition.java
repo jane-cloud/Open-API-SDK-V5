@@ -5,6 +5,17 @@ public class CloseSubposition {
     private String tpTriggerPx;
     private String slTriggerPx;
 
+
+    public String getInstType() {
+        return InstType;
+    }
+
+    public void setInstType(String instType) {
+        InstType = instType;
+    }
+
+    private String InstType;
+
     public String getTpTriggerPx() {
         return tpTriggerPx;
     }

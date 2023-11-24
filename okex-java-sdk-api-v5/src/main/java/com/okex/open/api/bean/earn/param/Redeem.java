@@ -5,6 +5,16 @@ public class Redeem {
     private String protocolType;
     private String allowEarlyRedeem;
 
+    public String getAmt() {
+        return amt;
+    }
+
+    public void setAmt(String amt) {
+        this.amt = amt;
+    }
+
+    private String amt;
+
     public String getOrdId() {
         return ordId;
     }

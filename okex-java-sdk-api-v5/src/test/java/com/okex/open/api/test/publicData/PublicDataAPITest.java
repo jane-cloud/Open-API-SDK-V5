@@ -236,4 +236,15 @@ public class PublicDataAPITest extends PublicDataAPIBaseTest {
         toResultString(LOG, "result", result);
 
     }
+    /**
+     * 获取经济日历数据 Get economic-calendar
+     *  该接口需验证后使用。仅支持实盘服务。
+     * GET /api/v5/public/economic-calendar
+     */
+    @Test
+    public void getEconomicCalendar(){
+        JSONObject result = publicDataAPIService.getEconomicCalendar("","","","","");
+        toResultString(LOG, "result", result);
+
+    }
 }

@@ -1,5 +1,7 @@
 package com.okex.open.api.bean.trade.param;
 
+import java.util.ArrayList;
+
 public class AmendOrder {
     private String instId;
     private Boolean cxlOnFail;
@@ -15,6 +17,16 @@ public class AmendOrder {
     private String newSlOrdPx;
 
     private String newPxUsd;
+
+    public ArrayList<AttachAlgoOrds> getAttachAlgoOrds() {
+        return attachAlgoOrds;
+    }
+
+    public void setAttachAlgoOrds(ArrayList<AttachAlgoOrds> attachAlgoOrds) {
+        this.attachAlgoOrds = attachAlgoOrds;
+    }
+
+    private ArrayList<AttachAlgoOrds> attachAlgoOrds;
 
     public String getNewPxUsd() {
         return newPxUsd;
