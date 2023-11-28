@@ -61,7 +61,7 @@ public class BrokerAPIServiceImpl implements BrokerAPIService {
     //删除子账户的APIKey Delete the APIKey of sub-accounts
     @Override
     public JSONObject deleteSubAccountApikey(DeleteSubAccountApikey deleteSubAccountApikey) {
-        return this.client.executeSync(this.api.deleteSubAccount(JSONObject.parseObject(JSON.toJSONString(deleteSubAccountApikey))));
+        return this.client.executeSync(this.api.deleteSubAccountApikey(JSONObject.parseObject(JSON.toJSONString(deleteSubAccountApikey))));
     }
 
     //设置子账户的账户等级  Set the account level of the sub-account
