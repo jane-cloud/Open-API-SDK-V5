@@ -70,7 +70,19 @@ class RfqAPI(Client):
         params = {}
         return self._request_with_params(POST, MMP_RESET, params)
 
+    # POST /api/v5/rfq/mmp-config
+    def mmp_config(self,timeInterval='',frozenInterval='',countLimit=''):
+        params = {'timeInterval':timeInterval,'frozenInterval':frozenInterval,'countLimit':countLimit,}
+        return self._request_with_params(POST, MMP_CONFIG, params)
+
     # GET /api/v5/rfq/maker-instrument-settings
     def get_maker_instrument_settings(self):
         params = {}
         return self._request_with_params(GET, GET_MAKER_INSTRUMENT_SETTINGS, params)
+
+
+    # GET /api/v5/rfq/maker-instrument-settings
+    def mmp_configs(self,timeInterval='', frozenInterval='', countLimit='',mmpFrozen='',mmpFrozenUntil='',):
+        params = {'timeInterval':timeInterval,'frozenInterval':frozenInterval,'countLimit':countLimit,
+                  'mmpFrozen':mmpFrozen,'mmpFrozenUntil':mmpFrozenUntil,}
+        return self._request_with_params(GET, MMP_CONF, params)

@@ -160,6 +160,10 @@ if __name__ == '__main__':
     # result = fundingAPI.get_lending_rate_summary(ccy = '')
     # 获取交易所列表
     # result = fundingAPI.exchange_list()
+    # 申请月结单 (近一年)
+    # result = fundingAPI.monthly_statement(month='')
+    # 获取月结单 (近一年)
+    # result = fundingAPI.monthly_statement(month='')
 
     # convert api
     convertAPI = Convert.ConvertAPI(api_key, secret_key, passphrase, False, flag)
@@ -255,7 +259,7 @@ if __name__ == '__main__':
     # 获取尊享借币杠杆利率和借币限额 GET Obtain the privileged currency borrowing leverage rate and currency borrowing limit
     # result = publicAPI.get_vip_interest_rate_loan_quota()
     # 获取风险准备金余额
-    # result = publicAPI.get_insurance_fund(instType = 'SWAP', type = '', uly = 'BTC-USDT', ccy = '', before = '', after = '', limit = '')
+    result = publicAPI.get_insurance_fund(instType = 'SWAP', type = '', uly = 'BTC-USDT', ccy = '', before = '', after = '', limit = '')
     # 张币转换
     # result = publicAPI.convert_contract_coin(type = '2', instId = 'BTC-USDT-SWAP', sz = '1', px = '',
     #                                          unit = '', opType='')
@@ -387,8 +391,10 @@ if __name__ == '__main__':
     # result = sprdAPI.order(ordId='',clOrdId='')
     # 获取未成交订单列表 GET /api/v5/sprd/orders-pending
     # result = sprdAPI.orders_pending(sprdId='',ordType='',state='',beginId='',endId='',limit='')
-    # 获取历史订单记录（近七天) GET /api/v5/sprd/orders-history (按创建时间倒叙排序)
-    # result = sprdAPI.orders_history(sprdId='',ordType='',state='',beginId='',endId='',begin='',end='',limit='')
+    # 获取历史订单记录（近21天) GET /api/v5/sprd/orders-history (按创建时间倒叙排序)
+    result = sprdAPI.orders_history(sprdId='',ordType='',state='',beginId='',endId='',begin='',end='',limit='')
+    # 获取历史订单记录（近三月)
+    result = sprdAPI.orders_history_archive(sprdId='',ordType='',state='',beginId='',endId='',begin='',end='',limit='')
     # 获取历史成交数据（近七天）GET /api/v5/sprd/trades (按时间倒叙排序)
     # result = sprdAPI.trades(sprdId='',tradeId='',ordId='',beginId='',endId='',begin='',end='',limit='')
     # 获取Spreads（公共）GET /api/v5/sprd/spreads
@@ -430,7 +436,7 @@ if __name__ == '__main__':
     # 获取独立经纪商账户信息 GET Obtain independent broker account information
     # result = BrokerAPI.broker_info()
     # 创建子账户 Create sub account
-    # result = BrokerAPI.create_subaccount(subAcct = 'qwerty', label = '',clientIP='')
+    result = BrokerAPI.create_subaccount(subAcct = 'qwerty', label = '',clientIP='',mainAcct='')
     # 删除子账户 Delete sub account
     # result = BrokerAPI.delete_subaccount(subAcct = 'qwerty')
     # 获取子账户列表 Get sub account list
@@ -496,7 +502,11 @@ if __name__ == '__main__':
     # 设置可报价产品
     # result = RfqAPI.maker_instrument_settings(instType = 'SPOT', data = [{"instFamily":"","instId":"","maxBlockSz":"","makerPxBand":""}])
     # 重设MMP状态
-    # result = RfqAPI.mmp_reset()
+    result = RfqAPI.mmp_reset()
+    # 设置 MMP
+    result = RfqAPI.mmp_config(timeInterval='',frozenInterval='',countLimit='')
+    # 查看 MMP 配置
+    result = RfqAPI.mmp_configs(timeInterval='', frozenInterval='', countLimit='',mmpFrozen='',mmpFrozenUntil='',)
     # 报价
     # result = RfqAPI.create_quote(rfqId = '', clQuoteId = '', tag = '123', quoteSide = 'buy', anonymous = 'True', expiresIn = '', legs = [{"px":"39450.0","sz":"200000","instId":"BTC-USDT-SWAP","side":"buy"}])
     # 取消报价单
@@ -513,6 +523,7 @@ if __name__ == '__main__':
     # result = RfqAPI.get_rfq_trades(rfqId = '', clRfqId = '', quoteId = '', blockTdId = '', clQuoteId = '', state = '', beginId = '', endId = '', beginTs ='', endTs = '', limit = '')
     # 获取大宗交易公共成交数据
     # result = RfqAPI.get_public_trades(beginId = '', endId = '', limit = '')
+
 
     # 网格交易
     TradingBot = TradingBot.TradingBotAPI(api_key, secret_key, passphrase, False, flag)
@@ -561,7 +572,7 @@ if __name__ == '__main__':
     # result = Copytrading.current_subpositions(instId='', after='', before='', limit='')
     # 交易员获取历史带单
     # result = Copytrading.subpositions_history(instId='', after='', before='', limit='')
-    # 交易员止盈止损
+    #  带单或跟单仓位止盈止损
     # result = Copytrading.copytrading_algo_order(subPosId='123456789', tpTriggerPx='1', slTriggerPx='', tpTriggerPxType='', slTriggerPxType=''
     #                                             tag='')
     # 交易员平仓
@@ -576,6 +587,45 @@ if __name__ == '__main__':
     # result = Copytrading.total_profit_sharing()
     # 交易员待分润明细
     # result = Copytrading.unrealized_profit_sharing_details()
+    # 首次跟单设置
+    # result = Copytrading.first_copy_settings(instType='',uniqueCode='',copyMgnMode='',copyInstIdType='',instId='',copyMode='',
+    #                                          copyTotalAmt='',copyAmt='',copyRatio='',tpRatio='',slRatio='',slTotalAmt='',
+    #                                          subPosCloseType='')
+    # 修改跟单设置
+    # result = Copytrading.amend_copy_settings(instType='', uniqueCode='', copyMgnMode='', copyInstIdType='', instId='',
+    #                                          copyMode='',
+    #                                          copyTotalAmt='', copyAmt='', copyRatio='', tpRatio='', slRatio='',
+    #                                          slTotalAmt='',
+    #                                          subPosCloseType='')
+    # 停止跟单
+    # result = Copytrading.stop_copy_trading(instType='',uniqueCode='',subPosCloseType='')
+    # 获取跟单设置
+    # result = Copytrading.copy_settings(instType='',uniqueCode='')
+    # 批量获取杠杆倍数
+    # result = Copytrading.batch_leverage_info(mgnMode='',uniqueCode='',instId='')
+    # 批量设置杠杆倍数
+    # result = Copytrading.batch_set_leverage(mgnMode='', lever='', instId='')
+    # 获取我的交易员
+    # result = Copytrading.current_lead_traders(instType='')
+    # GET / 获取我的交易员历史
+    # result = Copytrading.lead_traders_history(after='',before='',limit='',instType='',)
+    # GET / 获取交易员排名
+    # result = Copytrading.public_lead_traders(instType='',sortType='',state='',minLeadDays='',minAssets='',maxAssets='',
+    #                                          minAum='',maxAum='',dataVer='',page='',limit='')
+    # GET / 获取交易员收益周表现
+    # result = Copytrading.public_weekly_pnl(instType='',uniqueCode='')
+    # GET / 获取交易员收益日表现
+    # result = Copytrading.public_pnl(instType='', uniqueCode='',lastDays='')
+    # GET / 获取交易员带单情况
+    # result = Copytrading.public_stats(instType='', uniqueCode='',lastDays='')
+    # GET / 获取交易员币种偏好
+    # result = Copytrading.public_preference_currency(instType='', uniqueCode='')
+    # GET / 获取交易员当前带单
+    # result = Copytrading.public_current_subpositions(after='', before='', limit='', instType='', uniqueCode='')
+    # GET / 获取交易员历史带单
+    # result = Copytrading.public_subpositions_history(after='', before='', limit='', instType='', uniqueCode='')
+
+
 
     # 定投
     Recurring = Recurring.RecurringAPI(api_key, secret_key, passphrase, False, flag)

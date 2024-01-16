@@ -10,8 +10,8 @@ class BrokerAPI(Client):
         params = {}
         return self._request_with_params(GET, BROKER_INFO, params)
 
-    def create_subaccount(self, subAcct='', label='', clientIP=''):
-        params = {'subAcct': subAcct, 'label': label, 'clientIP':clientIP}
+    def create_subaccount(self, subAcct='', label='', clientIP='',mainAcct=''):
+        params = {'subAcct': subAcct, 'label': label, 'clientIP':clientIP,'mainAcct':mainAcct}
         return self._request_with_params(POST, CREATE_SUBACCOUNT, params)
 
     def delete_subaccount(self, subAcct=''):

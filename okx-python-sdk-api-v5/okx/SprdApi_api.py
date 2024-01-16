@@ -41,7 +41,7 @@ class RfqAPI(Client):
                   }
         return self._request_with_params(GET, SPRD_ORDERS_PENDING, params)
 
-    # 获取历史订单记录（近七天) GET /api/v5/sprd/orders-history
+    # 获取历史订单记录（近21天) GET /api/v5/sprd/orders-history
     def orders_history(self,sprdId='',ordType='',state='',beginId='',endId='',limit='',
                        begin='',end='',):
         params = {'sprdId': sprdId, 'ordType': ordType,
@@ -50,6 +50,17 @@ class RfqAPI(Client):
                   'beginId': beginId, 'limit': limit,
                   }
         return self._request_with_params(GET, SPRD_ORDERS_HISTORY, params)
+
+
+    # 获取历史订单记录（近3个月) GET /api/v5/sprd/orders-history-archive
+    def orders_history_archive(self, sprdId='', ordType='', state='', beginId='', endId='', limit='',
+                       begin='', end='', ):
+        params = {'sprdId': sprdId, 'ordType': ordType,
+                  'state': state, 'begin': state,
+                  'endId': endId, 'end': endId,
+                  'beginId': beginId, 'limit': limit,
+                  }
+        return self._request_with_params(GET, SPRD_ORDERS_HISTORY_ARCHIVE, params)
 
     # 获取历史成交数据（近七天）GET /api/v5/sprd/trades
     def trades(self,sprdId='',tradeId='',ordId='',beginId='',endId='',limit='',begin='',end='',):

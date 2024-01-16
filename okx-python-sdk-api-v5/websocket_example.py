@@ -442,6 +442,8 @@ url = "wss://wspap.okx.com:8443/ws/v5/public?brokerId=9999"
 # channels = [{"channel": "status"}]
 # 平台公共爆仓单频道
 # channels = [{"channel": "liquidation-orders", "instType":"SWAP"}]
+# 自动减仓预警频道
+# channels = [{"channel": "adl-warning", "instType":"SWAP","instFamily":""}]
 # 期权公共成交频道
 # channels = [{"channel": "option-trades", "instType":"OPTION","instFamily":"BTC-USD"}]
 # 公共大宗交易频道 Public block trading channel
@@ -453,13 +455,14 @@ url = "wss://wspap.okx.com:8443/ws/v5/public?brokerId=9999"
 # 全部交易频道
 # channels = [{"channel": "trades-all","instId":"BTC-USDT-SWAP"}]
 
+
 #价差撮合
 # 深度频道 sprd-bbo-tbt/sprd-books5
 channels = [{"channel": "sprd-bbo-tbt","sprdId":""}]
 # 公共成交数据频道 sprd-public-trades （每次推送一条成交数据）
-channels = [{"channel": "sprd-public-trades","sprdId":""}]
+# channels = [{"channel": "sprd-public-trades","sprdId":""}]
 # 行情频道 tickers
-channels = [{"channel": "sprd-tickers","sprdId":""}]
+# channels = [{"channel": "sprd-tickers","sprdId":""}]
 
 
 
@@ -510,6 +513,8 @@ channels = [{"channel": "sprd-tickers","sprdId":""}]
 # channels = [{"channel": "withdrawal-info", "ccy":"BTC"}]
 # 定投策略委托订单频道
 # channels = [{"channel": "algo-recurring-buy", "instType":"SPOT"}]
+# 跟单消息通知频道
+channels = [{"channel": "copytrading-notification", "instType":"SWAP","instId":"BTC-USDT-SWAP"}]
 
 #价差撮合
 # 订单频道 sprd-orders

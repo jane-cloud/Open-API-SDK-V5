@@ -124,3 +124,13 @@ class FundingAPI(Client):
     def exchange_list(self):
         return self._request_without_params(GET,EXCHANGE_LIST)
 
+    # POST /api/v5/asset/monthly-statement
+    def monthly_statement(self,month=''):
+        params = {'month':month}
+        return self._request_with_params(POST, MONTHLY_STATEMENT,params)
+
+    # GET /api/v5/asset/monthly-statement
+    def monthly_statement(self,month=''):
+        params = {'month':month}
+        return self._request_with_params(GET, MONTHLY_STATEMENTS,params)
+
