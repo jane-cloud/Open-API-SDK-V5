@@ -259,4 +259,9 @@ public class AccountAPIServiceImpl implements AccountAPIService {
     public JSONObject setAccountLevel(AccountMode accountMode) {
         return this.client.executeSync(this.api.setAccountLevel(JSONObject.parseObject(JSON.toJSONString(accountMode))));
     }
+
+    @Override
+    public JSONObject setMmpConfig(Mmp mmp) {
+        return this.client.executeSync(this.api.setMmpConfig(JSONObject.parseObject(JSON.toJSONString(mmp))));
+    }
 }

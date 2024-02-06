@@ -42,6 +42,7 @@ public class BrokerAPITests extends BrokerAPIBaseTests{
         createSubAccount.setSubAcct("0324test01");
         createSubAccount.setLabel("0324test01");
         createSubAccount.setClientIP("");
+        createSubAccount.setMainAcct("");
         JSONObject result = this.brokerAPIService.createSubAccount(createSubAccount);
         toResultString(LOG, "result", result);
     }

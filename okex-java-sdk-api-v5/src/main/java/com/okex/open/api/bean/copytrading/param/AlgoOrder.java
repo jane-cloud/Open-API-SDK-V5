@@ -8,6 +8,25 @@ public class AlgoOrder {
     private String tpTriggerPxType;
     private String slTriggerPxType;
 
+    public String getTpOrdPx() {
+        return tpOrdPx;
+    }
+
+    public void setTpOrdPx(String tpOrdPx) {
+        this.tpOrdPx = tpOrdPx;
+    }
+
+    public String getSlOrdPx() {
+        return slOrdPx;
+    }
+
+    public void setSlOrdPx(String slOrdPx) {
+        this.slOrdPx = slOrdPx;
+    }
+
+    private String tpOrdPx;
+    private String slOrdPx;
+
     public String getInstType() {
         return instType;
     }

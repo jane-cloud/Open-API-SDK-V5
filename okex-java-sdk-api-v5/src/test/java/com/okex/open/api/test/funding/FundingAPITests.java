@@ -293,6 +293,26 @@ public class FundingAPITests extends FundingAPIBaseTests {
         toResultString(LOG,"result",result);
     }
 
+    /**
+     * 申请月结单 monthly-statement
+     * POST /api/v5/asset/monthly-statement
+     */
+    @Test
+    public void applyMonthlyStatement() {
+        MonthlyStatement monthlyStatement = new MonthlyStatement();
+        monthlyStatement.setMonth("");
+        JSONObject result = fundingAPIService.applyMonthlyStatement(monthlyStatement);
+        toResultString(LOG, "result", result);
+    }
+    /**
+     * 获取月结单 (近一年) Get monthly-statement
+     * GET /api/v5/asset/monthly-statement
+     */
+    @Test
+    public void getMonthlyStatement(){
+        JSONObject result = fundingAPIService.getMonthlyStatement("");
+        toResultString(LOG,"result",result);
+    }
 }
 
 

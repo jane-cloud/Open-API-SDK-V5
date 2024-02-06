@@ -182,5 +182,16 @@ public class SpreadTradeTests extends SpreadTradeBaseTests {
 
         toResultString(LOG, "result", result);
     }
+    /**
+     * 获取历史订单记录（近三月)orders-history-archive
+     * GET /api/v5/sprd/orders-history-archive
+     */
+    @Test
+    public void getOrdersHistoryArchive(){
+
+        JSONObject result = spreadTradeService.getOrdersHistoryArchive("","","","","","","","","","");
+
+        toResultString(LOG, "result", result);
+    }
 
 }

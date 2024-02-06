@@ -74,4 +74,8 @@ public interface FundingAPIService {
 
     //获取交易所列表
     JSONObject getExchangeList();
+
+    JSONObject applyMonthlyStatement(MonthlyStatement monthlyStatement);
+
+    JSONObject getMonthlyStatement(String month);
 }

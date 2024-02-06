@@ -95,4 +95,10 @@ interface FundingAPI {
     //获取交易所列表
     @GET("/api/v5/asset/exchange-list")
     Call<JSONObject>  getExchangeList();
+
+    @POST("/api/v5/asset/monthly-statement")
+    Call<JSONObject>  applyMonthlyStatement(@Body JSONObject parseObject);
+
+    @GET("/api/v5/asset/exchange-list")
+    Call<JSONObject> getMonthlyStatement(@Query("month")String month);
 }

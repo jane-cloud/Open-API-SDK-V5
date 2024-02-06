@@ -127,4 +127,6 @@ public interface AccountAPIService {
     JSONObject getMmpConfig(String instFamily);
 
     JSONObject setAccountLevel(AccountMode accountMode);
+
+    JSONObject setMmpConfig(Mmp mmp);
 }

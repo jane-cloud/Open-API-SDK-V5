@@ -153,4 +153,14 @@ public class FundingAPIServiceImpl implements FundingAPIService {
     public JSONObject getExchangeList() {
         return this.client.executeSync(this.api.getExchangeList());
     }
+
+    @Override
+    public JSONObject applyMonthlyStatement(MonthlyStatement monthlyStatement) {
+        return this.client.executeSync(this.api.applyMonthlyStatement(JSONObject.parseObject(JSON.toJSONString(monthlyStatement))));
+    }
+
+    @Override
+    public JSONObject getMonthlyStatement(String month) {
+        return this.client.executeSync(this.api.getMonthlyStatement(month));
+    }
 }

@@ -61,4 +61,6 @@ public class SignalTradeAPITest extends SignalTradeAPIBaseTest {
         JSONObject result = tradeAPIService.getSignalEventHistory("","","","");
         toResultString(LOG, "result", result);
     }
+
+    
 }

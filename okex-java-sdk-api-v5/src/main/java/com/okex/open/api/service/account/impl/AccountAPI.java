@@ -184,4 +184,7 @@ public interface AccountAPI {
 
     @POST("/api/v5/account/set-account-level")
     Call<JSONObject>   setAccountLevel(@Body JSONObject parseObject);
+
+    @POST("/api/v5/account/mmp-config")
+    Call<JSONObject>  setMmpConfig(@Body JSONObject parseObject);
 }

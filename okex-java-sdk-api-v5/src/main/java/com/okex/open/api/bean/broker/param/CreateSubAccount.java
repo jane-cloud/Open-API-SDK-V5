@@ -15,6 +15,15 @@ public class CreateSubAccount {
 
     private String clientIP;
 
+    public String getMainAcct() {
+        return mainAcct;
+    }
+
+    public void setMainAcct(String mainAcct) {
+        this.mainAcct = mainAcct;
+    }
+
+    private String mainAcct;
 
 
     public String getSubAcct() {

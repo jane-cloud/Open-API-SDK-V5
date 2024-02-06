@@ -508,4 +508,5 @@ public class AccountAPITests extends  AccountAPIBaseTests {
         JSONObject result = this.accountAPIService.setAccountLevel(accountMode);
         toResultString(LOG, "result", result);
     }
+
 }

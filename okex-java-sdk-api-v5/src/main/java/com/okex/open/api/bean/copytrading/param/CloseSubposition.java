@@ -5,6 +5,35 @@ public class CloseSubposition {
     private String tpTriggerPx;
     private String slTriggerPx;
 
+    public String getOrdType() {
+        return ordType;
+    }
+
+    public void setOrdType(String ordType) {
+        this.ordType = ordType;
+    }
+
+    public String getPx() {
+        return px;
+    }
+
+    public void setPx(String px) {
+        this.px = px;
+    }
+
+    private String ordType;
+    private String px;
+
+    public String getSubPosType() {
+        return subPosType;
+    }
+
+    public void setSubPosType(String subPosType) {
+        this.subPosType = subPosType;
+    }
+
+    private String subPosType;
+
 
     public String getInstType() {
         return InstType;

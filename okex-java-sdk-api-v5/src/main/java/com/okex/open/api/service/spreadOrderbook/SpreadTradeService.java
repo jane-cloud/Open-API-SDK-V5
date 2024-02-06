@@ -31,4 +31,6 @@ public interface SpreadTradeService {
     JSONObject getPublicTrades(String sprdId);
 
     JSONObject amendOrder(SpreadOrder amendOrder);
+
+    JSONObject getOrdersHistoryArchive(String sprdId, String ordType, String state, String instType, String endId,String begin ,String end,String limit, String beginId, String instFamily);
 }

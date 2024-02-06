@@ -46,4 +46,7 @@ public interface SpreadTrade {
 
     @POST("/api/v5/sprd/amend-order")
     Call<JSONObject> amendOrder(@Body SpreadOrder amendOrder);
+
+    @GET("/api/v5/sprd/orders-history-archive")
+    Call<JSONObject>  getOrdersHistoryArchive(@Query("sprdId")String sprdId, @Query("ordType")String ordType,@Query("state") String state, @Query("beginId")String beginId,@Query("endId") String endId, @Query("begin")String begin, @Query("end")String end, @Query("limit")String limit, @Query("instType")String instType,@Query("instFamily") String instFamily);
 }
