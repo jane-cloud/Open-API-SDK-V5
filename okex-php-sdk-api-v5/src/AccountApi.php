@@ -292,4 +292,223 @@ class AccountApi extends Utils
 
         return $this->request('/api/v5/account/greeks', $params, 'GET');
     }
+
+    public function getPositionsHistory($instType='',$instId='',$mgnMode='',$type='',$posId='',$after='',$before='',$limit='')
+    {
+        $params = [
+            'instType' => $instType,
+            'instId' => $instId,
+            'mgnMode' => $mgnMode,
+            'type' => $type,
+            'posId' => $posId,
+            'after' => $after,
+            'before' => $before,
+            'limit' => $limit,
+        ];
+
+        return $this->request('/api/v5/account/positions-history', $params, 'GET');
+    }
+
+    public function getAdjustLeverageInfo($instType='',$mgnMode='',$lever='',$instId='',$ccy='',$posSide='')
+    {
+        $params = [
+            'instType' => $instType,
+            'mgnMode' => $mgnMode,
+            'lever' => $lever,
+            'instId' => $instId,
+            'ccy' => $ccy,
+            'posSide' => $posSide,
+            
+        ];
+
+        return $this->request('/api/v5/account/adjust-leverage-info', $params, 'GET');
+    }
+
+    public function quickMarginBorrowRepay($instId='',$ccy='',$side='',$amt='')
+    {
+        $params = [
+            'instId' => $instId,
+            'ccy' => $ccy,
+            'side' => $side,
+            'amt' => $amt,
+            
+        ];
+
+        return $this->request('/api/v5/account/quick-margin-borrow-repay', $params, 'POST');
+    }
+
+    public function quickMarginBorrowRepayHistory($instId='',$ccy='',$side='',$after='',$before='',$begin='',$end='',$limit='')
+    {
+        $params = [
+            'instId' => $instId,
+            'ccy' => $ccy,
+            'side' => $side,
+            'after' => $after,
+            'before' => $before,
+            'begin' => $begin,
+            'end' => $end,
+            'limit' => $limit,
+            
+        ];
+
+        return $this->request('/api/v5/account/quick-margin-borrow-repay-history', $params, 'GET');
+    }
+
+    public function vipInterestAccrued($ccy='',$ordId='',$after='',$before='',$limit='')
+    {
+        $params = [
+            'ccy' => $ccy,
+            'ordId' => $ordId,
+            'after' => $after,
+            'before' => $before,
+            'limit' => $limit,
+            
+        ];
+
+        return $this->request('/api/v5/account/vip-interest-accrued', $params, 'GET');
+    }
+
+    public function vipInterestDeducted($ordId='',$ccy='',$after='',$before='',$limit='')
+    {
+        $params = [
+            
+            'ordId' => $ordId,
+            'ccy' => $ccy,
+            'after' => $after,
+            'before' => $before,
+            'limit' => $limit,
+            
+        ];
+
+        return $this->request('/api/v5/account/vip-interest-deducted', $params, 'GET');
+    }
+
+    public function vipLoanOrderList($ordId='',$state='',$ccy='',$after='',$before='',$limit='')
+    {
+        $params = [
+            'ordId' => $ordId,
+            'state' => $state,
+            'ccy' => $ccy,
+            'after' => $after,
+            'before' => $before,
+            'limit' => $limit,
+            
+        ];
+
+        return $this->request('/api/v5/account/vip-loan-order-list', $params, 'GET');
+    }
+
+    public function vipLoanOrderDetail($ordId='',$ccy='',$after='',$before='',$limit='')
+    {
+        $params = [
+            'ordId' => $ordId,
+            'ccy' => $ccy,
+            'after' => $after,
+            'before' => $before,
+            'limit' => $limit,
+            
+        ];
+
+        return $this->request('/api/v5/account/vip-loan-order-detail', $params, 'GET');
+    }
+
+    public function positionBuilder($inclRealPosAndEq='',$spotOffsetType='',$simPos='',$simAsset='',$greeksType='')
+    {
+        $params = [
+            'inclRealPosAndEq' => $inclRealPosAndEq,
+            'spotOffsetType' => $spotOffsetType,
+            'simPos' => $simPos,
+            'simAsset' => $simAsset,
+            'greeksType' => $greeksType,
+            
+        ];
+
+        return $this->request('/api/v5/account/position-builder', $params, 'POST');
+    }
+
+    public function positionTiers($instType='',$uly='',$instFamily='')
+    {
+        $params = [
+            'instType' => $instType,
+            'uly' => $uly,
+            'instFamily' => $instFamily,
+            
+        ];
+
+        return $this->request('/api/v5/account/position-tiers', $params, 'GET');
+    }
+
+    public function setRiskOffsetType($instType='')
+    {
+        $params = [
+            'type' => $type,
+            
+        ];
+
+        return $this->request('/api/v5/account/set-riskOffset-type', $params, 'POST');
+    }
+
+    public function activateOption()
+    {
+        $params = [
+            
+            
+        ];
+
+        return $this->request('/api/v5/account/activate-option', $params, 'POST');
+    }
+
+    public function setAutoLoan($autoLoan='')
+    {
+        $params = [
+            'autoLoan' => $autoLoan,
+            
+        ];
+
+        return $this->request('/api/v5/account/set-auto-loan', $params, 'POST');
+    }
+
+    public function setAccountLevel($acctLv='')
+    {
+        $params = [
+            'acctLv' => $acctLv,
+            
+        ];
+
+        return $this->request('/api/v5/account/set-account-level', $params, 'POST');
+    }
+
+    public function mmpReset($instType='',$instFamily='')
+    {
+        $params = [
+            'instType' => $instType,
+            'instFamily' => $instFamily,
+            
+        ];
+
+        return $this->request('/api/v5/account/mmp-reset', $params, 'POST');
+    }
+
+    public function mmpConfig($instFamily='',$timeInterval='',$frozenInterval='',$qtyLimit='')
+    {
+        $params = [
+            'instFamily' => $instFamily,
+            'timeInterval' => $timeInterval,
+            'frozenInterval' => $frozenInterval,
+            'qtyLimit' => $qtyLimit,
+            
+        ];
+
+        return $this->request('/api/v5/account/mmp-config', $params, 'POST');
+    }
+
+    public function getMmpConfig($instFamily='')
+    {
+        $params = [
+            'instFamily' => $instFamily,
+            
+        ];
+
+        return $this->request('/api/v5/account/mmp-config', $params, 'GET');
+    }
 }

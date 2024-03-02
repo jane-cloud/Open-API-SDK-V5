@@ -35,6 +35,8 @@ $coin = "XMR";
 // $res = $obj -> getBalance('UST');
 // 查看持仓信息 Get Positions
 //$res = $obj -> getPositions('SWAP','BTC-USDT-SWAP','');
+// 查看历史持仓信息 Get Positions history
+// $res = $obj -> getPositionsHistory('SWAP','BTC-USDT-SWAP','','','','','');
 // 账单流水查询（近七天） Get Bills Details (last 7 days)
 //$res = $obj -> getBills('','','','','1','','','','');
 // 账单流水查询（近三个月） Get Bills Details (last 3 months)
@@ -45,7 +47,7 @@ $coin = "XMR";
 //$res = $obj -> setPositionMode('long_short_mode');
 // 设置杠杆倍数 Set Leverage
 //$res = $obj -> setLeverage('XLM-USDT-SWAP','','3','cross','net');
-// 获取最大可交易数量 Get Maximum Tradable Size For Instrument
+// 获取最大可买卖/开仓数量 Get Maximum Tradable Size For Instrument
 //$res = $obj -> getMaxSize('BTC-USDT-SWAP','isolated','','39002.4915','10');
 // 获取最大可用数量 Get Maximum Available Tradable Amount
 //$res = $obj -> getMaxAvailSize('BTC-USDT-SWAP','','cross','','');
@@ -53,7 +55,9 @@ $coin = "XMR";
 //$res = $obj -> marginBalance('BTC-USD-210402','long','reduce','0.5','','','');
 // 获取杠杆倍数 Get Leverage
 //$res = $obj -> getLeverage('BTC-USD-SWAP','isolated');
-// 获取币币逐仓杠杆最大可借 Get the maximum loan of isolated MARGIN
+// 获取杠杆倍数预估信息 Get Adjust Leverage Info
+//$res = $obj -> getAdjustLeverageInfo('BTC-USD-SWAP','isolated');
+// 获取交易产品最大可借 Get the maximum loan of isolated MARGIN
 //$res = $obj -> getMaxloan('BTC-USDT-SWAP','isolated','');
 // 获取当前账户交易手续费费率 Get Fee Rates
 //$res = $obj -> getTradeFee('MARGIN','BTC-USDT','','');
@@ -63,22 +67,53 @@ $coin = "XMR";
 //$res = $obj -> getInterestRate('');
 // 期权希腊字母PA/BS切换 Set Greeks (PA/BS)
 //$res = $obj -> setGreeks('PA');
+//逐仓交易设置
+//$res = $obj -> setIsolatedMode('','');
 // 查看账户最大可转余额 Get Maximum Withdrawals
 //$res = $obj -> getMaxWithdrawal('OKT');
 //查看账户特定风险状态
 //$res = $obj -> riskState();
+//一键借币模式手动借币还币
+// $res = $obj -> quickMarginBorrowRepay('','','','');
+//获取一键借币还币历史
+// $res = $obj -> quickMarginBorrowRepayHistory('','','','','','','','');
 //尊享借币还币
 //$res = $obj -> borrowRepay('BTC','borrow','1');
 //获取尊享借币还币历史
 //$res = $obj -> borrowRepayHistory('','','','');
+//获取尊享借币计息记录
+// $res = $obj -> vipInterestAccrued('','','','','');
+//获取尊享借币扣息记录
+// $res = $obj -> vipInterestDeducted('','','','','');
+//尊享借币订单列表
+// $res = $obj -> vipLoanOrderList('','','','','','');
+//尊享借币订单详情
+// $res = $obj -> vipLoanOrderDetail('','','','','');
 //获取借币利率与限额
 //$res = $obj -> interestLimits('','');
 //组合保证金的虚拟持仓保证金计算
 //$res = $obj -> simulatedMargin('','','');
-//逐仓交易设置
-//$res = $obj -> setIsolatedMode('','');
-//逐仓交易设置
+//仓位创建器
+// $res = $obj -> positionBuilder('','','','','');
+//查看账户Greeks
 //$res = $obj -> greeks('');
+//获取组合保证金模式仓位限制
+// $res = $obj -> positionTiers('','','');
+//设置组合保证金账户风险对冲模式
+// $res = $obj -> setRiskOffsetType('');
+//开通期权交易
+// $res = $obj -> activateOption();
+//设置自动借币
+// $res = $obj -> setAutoLoan('');
+//设置账户模式
+// $res = $obj -> setAccountLevel('');
+//重置 MMP 状态
+// $res = $obj -> mmpReset('','');
+//设置 MMP
+// $res = $obj -> mmpConfig('','','','');
+//查看 MMP 配置
+// $res = $obj -> getMmpConfig('');
+
 
 /**
  * 资金 Funding
