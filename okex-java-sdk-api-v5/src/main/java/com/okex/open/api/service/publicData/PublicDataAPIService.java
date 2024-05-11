@@ -68,4 +68,6 @@ public interface PublicDataAPIService {
     JSONObject getInstrumentTickBands(String instType, String instFamily);
 
     JSONObject getEconomicCalendar(String region, String importance, String before, String after, String limit);
+
+    JSONObject getPremiumHistory(String instId, String after, String before, String ts);
 }

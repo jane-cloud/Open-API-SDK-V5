@@ -6,6 +6,24 @@ public class AmendOrderAlgo {
     private String slTriggerPx;
     private String tpTriggerPx;
 
+    public String getTpRatio() {
+        return tpRatio;
+    }
+
+    public void setTpRatio(String tpRatio) {
+        this.tpRatio = tpRatio;
+    }
+
+    public String getSlRatio() {
+        return slRatio;
+    }
+
+    public void setSlRatio(String slRatio) {
+        this.slRatio = slRatio;
+    }
+
+    private String tpRatio;
+    private String slRatio;
     public String getAlgoId() {
         return algoId;
     }

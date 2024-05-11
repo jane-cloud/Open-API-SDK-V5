@@ -2,10 +2,7 @@ package com.okex.open.api.test.gridTrading;
 
 
 import com.alibaba.fastjson.JSONObject;
-import com.okex.open.api.bean.gridTrading.param.AmendOrderAlgo;
-import com.okex.open.api.bean.gridTrading.param.OrderAlgo;
-import com.okex.open.api.bean.gridTrading.param.StopOrderAlgo;
-import com.okex.open.api.bean.gridTrading.param.WithdrawIncome;
+import com.okex.open.api.bean.gridTrading.param.*;
 import com.okex.open.api.service.gridTrading.GridTradingAPIService;
 import com.okex.open.api.service.gridTrading.impl.GridTradingAPIServiceImpl;
 import org.junit.Before;
@@ -52,6 +49,8 @@ public class GridTradingAPITests extends GridTradingAPIBaseTests {
         orderAlgo.setDirection("");
         orderAlgo.setLever("");
         orderAlgo.setBasePos("");
+        orderAlgo.setTpRatio("");
+        orderAlgo.setSlRatio("");
 
         JSONObject result = this.gridTradingAPIService.orderAlgo(orderAlgo);
         toResultString(LOG, "result", result);
@@ -68,6 +67,8 @@ public class GridTradingAPITests extends GridTradingAPIBaseTests {
         amendOrderAlgo.setInstId("");
         amendOrderAlgo.setSlTriggerPx("");
         amendOrderAlgo.setTpTriggerPx("");
+        amendOrderAlgo.setTpRatio("");
+        amendOrderAlgo.setSlRatio("");
 
         JSONObject result = this.gridTradingAPIService.amendOrderAlgo(amendOrderAlgo);
         toResultString(LOG, "result", result);
@@ -188,6 +189,18 @@ public class GridTradingAPITests extends GridTradingAPIBaseTests {
         withdrawIncome.setAmt("");
         withdrawIncome.setType("");
         JSONObject result = this.gridTradingAPIService.computeMarginBalance(withdrawIncome);
+        toResultString(LOG, "result", result);
+    }
+    /**
+     * POST / 加仓adjust-investment
+     * POST /api/v5/tradingBot/grid/adjust-investment
+     */
+    @Test
+    public void adjustInvestment(){
+        Investment adjustInvestment = new Investment();
+        adjustInvestment.setAlgoId("");
+        adjustInvestment.setAmt("");
+        JSONObject result = this.gridTradingAPIService.adjustInvestment(adjustInvestment);
         toResultString(LOG, "result", result);
     }
 

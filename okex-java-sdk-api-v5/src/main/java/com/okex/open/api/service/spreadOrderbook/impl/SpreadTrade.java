@@ -49,4 +49,13 @@ public interface SpreadTrade {
 
     @GET("/api/v5/sprd/orders-history-archive")
     Call<JSONObject>  getOrdersHistoryArchive(@Query("sprdId")String sprdId, @Query("ordType")String ordType,@Query("state") String state, @Query("beginId")String beginId,@Query("endId") String endId, @Query("begin")String begin, @Query("end")String end, @Query("limit")String limit, @Query("instType")String instType,@Query("instFamily") String instFamily);
+
+    @GET("/api/v5/market/sprd-history-candles")
+    Call<JSONObject> getSprdHistoryCandles(@Query("sprdId")String sprdId,@Query("after")String after, @Query("before")String before,@Query("bar") String bar,@Query("limit") String limit);
+
+    @GET("/api/v5/market/sprd-candles")
+    Call<JSONObject> getSprdCandles(@Query("sprdId")String sprdId,@Query("after")String after, @Query("before")String before,@Query("bar") String bar,@Query("limit") String limit);
+
+    @GET("/api/v5/market/sprd-ticker")
+    Call<JSONObject> getSprdTicker(@Query("sprdId")String sprdId);
 }

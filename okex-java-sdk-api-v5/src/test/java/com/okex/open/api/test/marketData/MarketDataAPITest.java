@@ -241,5 +241,13 @@ public class MarketDataAPITest extends MarketDataAPIBaseTest {
         JSONObject result = this.marketDataAPIService.getInstrumentFamilyTrades("BTC-USD");
         this.toResultString(MarketDataAPITest.LOG,"result",result);
     }
-
+    /**
+     * 获取产品完整深度Get books-full
+     * GET /api/v5/market/books-full
+     */
+    @Test
+    public void getBooksFull(){
+        JSONObject result = this.marketDataAPIService.getBooksFull("","");
+        this.toResultString(MarketDataAPITest.LOG,"result",result);
+    }
 }

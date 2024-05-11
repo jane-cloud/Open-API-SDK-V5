@@ -73,4 +73,10 @@ public interface BrokerAPIService {
     JSONObject setSubaccountAssets(SetSubAccountAssets setSubAccountAssets);
 
     JSONObject reportSubaccIp(CreateSubAccount subAccount);
+
+    JSONObject getIfRebate(String apiKey, String uid, String subAcct);
+
+    JSONObject activateCredit(ActivateCredit activateCredit);
+
+    JSONObject getCredits(String state, String limit);
 }

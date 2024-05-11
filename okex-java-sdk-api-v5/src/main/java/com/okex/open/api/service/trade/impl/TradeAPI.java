@@ -97,7 +97,8 @@ interface TradeAPI {
                                            @Query("before")String before,
                                            @Query("begin")String begin,
                                            @Query("end")String end,
-                                           @Query("limit")String limit);
+                                           @Query("limit")String limit,
+                                           @Query("subType")String subType);
 
     //获取成交明细（近三个月） Get Transaction Details(last 3 months）
     @GET("/api/v5/trade/fills-history")
@@ -110,7 +111,7 @@ interface TradeAPI {
                                            @Query("before")String before,
                                            @Query("begin")String begin,
                                            @Query("end")String end,
-                                           @Query("limit")String limit);
+                                           @Query("limit")String limit, @Query("subType")String subType);
 
 
     //委托策略下单 Place Algo Order
@@ -207,4 +208,7 @@ interface TradeAPI {
 
     @GET("/api/v5/trade/fills-archive")
     Call<JSONObject> getFillsArchive(@Query("year")String year, @Query("quarter")String quarter);
+
+    @GET("/api/v5/trade/account-rate-limit")
+    Call<JSONObject> getAccountRateLimit(@Query("fillRatio")String fillRatio,@Query("mainFillRatio") String mainFillRatio,@Query("accRateLimit") String accRateLimit,@Query("nextAccRateLimit") String nextAccRateLimit,@Query("ts") String ts);
 }

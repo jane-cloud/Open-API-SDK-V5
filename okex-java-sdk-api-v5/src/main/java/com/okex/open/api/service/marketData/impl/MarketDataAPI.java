@@ -97,4 +97,7 @@ interface MarketDataAPI {
 
     @GET("/api/v5/market/option/instrument-family-trades")
     Call<JSONObject> getInstrumentFamilyTrades(@Query("instFamily") String instFamily);
+
+    @GET("/api/v5/market/books-full")
+    Call<JSONObject>  getBooksFull(@Query("instId") String instId, @Query("sz") String sz);
 }

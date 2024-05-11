@@ -57,4 +57,6 @@ public interface BlockTradingAPIService {
     JSONObject getPublicTrades(String beginId, String endId, String limit);
 
     JSONObject getMakerInstrumentSettings();
+
+    JSONObject cancelAllAfter(CancelBatchQuotes cancelAllAfter);
 }

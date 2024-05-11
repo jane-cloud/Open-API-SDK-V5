@@ -87,14 +87,14 @@ public class TradeAPIServiceImpl implements TradeAPIService {
 
     //获取成交明细（近三天） Get Transaction Details(last 3 days）
     @Override
-    public JSONObject getTransactionDetails(String instType, String uly, String instId, String ordId, String instFamily,String after, String before, String begin,String end,String limit) {
-        return this.client.executeSync(this.tradeAPI.getTransactionDetails(instType, uly, instId, ordId,instFamily, after, before, begin,end, limit));
+    public JSONObject getTransactionDetails(String instType, String uly, String instId, String ordId, String instFamily,String after, String before, String begin,String end,String limit,String subType) {
+        return this.client.executeSync(this.tradeAPI.getTransactionDetails(instType, uly, instId, ordId,instFamily, after, before, begin,end, limit,subType));
     }
 
     //获取成交明细（近三个月） Get Transaction Details(last 3 months）
     @Override
-    public JSONObject getTransactionDetailsForThreeMonths(String instType, String uly, String instId, String ordId,String instFamily, String after, String before, String begin,String end,String limit) {
-        return this.client.executeSync(this.tradeAPI.getTransactionDetailsForThreeMonths(instType, uly, instId, ordId, instFamily,after, before,begin,end, limit));
+    public JSONObject getTransactionDetailsForThreeMonths(String instType, String uly, String instId, String ordId,String instFamily, String after, String before, String begin,String end,String limit,String subType) {
+        return this.client.executeSync(this.tradeAPI.getTransactionDetailsForThreeMonths(instType, uly, instId, ordId, instFamily,after, before,begin,end, limit,subType));
     }
 
     //委托策略下单 Place Algo Order
@@ -222,5 +222,10 @@ public class TradeAPIServiceImpl implements TradeAPIService {
     @Override
     public JSONObject getFillsArchive(String year, String quarter) {
         return this.client.executeSync(this.tradeAPI.getFillsArchive(year,quarter));
+    }
+
+    @Override
+    public JSONObject getAccountRateLimit(String fillRatio, String mainFillRatio, String accRateLimit, String nextAccRateLimit, String ts) {
+        return this.client.executeSync(this.tradeAPI.getAccountRateLimit( fillRatio,  mainFillRatio,  accRateLimit,  nextAccRateLimit,  ts));
     }
 }

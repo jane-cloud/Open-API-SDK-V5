@@ -4,6 +4,25 @@ public class InstIdPos {
     private String instId;
     private String pos;
 
+    public String getCcy() {
+        return ccy;
+    }
+
+    public void setCcy(String ccy) {
+        this.ccy = ccy;
+    }
+
+    public String getAmt() {
+        return amt;
+    }
+
+    public void setAmt(String amt) {
+        this.amt = amt;
+    }
+
+    private String ccy;
+    private String amt;
+
     public String getInstId() {
         return instId;
     }

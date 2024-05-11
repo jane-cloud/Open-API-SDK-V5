@@ -187,4 +187,10 @@ public interface AccountAPI {
 
     @POST("/api/v5/account/mmp-config")
     Call<JSONObject>  setMmpConfig(@Body JSONObject parseObject);
+
+    @POST("/api/v5/account/position-builder")
+    Call<JSONObject>   positionBuilder(@Body JSONObject parseObject);
+
+    @GET("/api/v5/account/instruments")
+    Call<JSONObject>   getInstruments(@Query("instType")String instType,@Query("uly") String uly,@Query("instFamily") String instFamily,@Query("instId") String instId);
 }

@@ -344,6 +344,16 @@ public class BlockTradingAPITest extends BlockTradingAPIBaseTest {
         toResultString(LOG, "result", result);
     }
 
-
+    /**
+     * 倒计时全部撤单 cancel-all-after
+     * POST /api/v5/rfq/cancel-all-after
+     */
+    @Test
+    public void cancelAllAfter(){
+        CancelBatchQuotes cancelAllAfter = new CancelBatchQuotes();
+        cancelAllAfter.setTimeOut("");
+        JSONObject result = this.blockTradingAPIService.cancelAllAfter(cancelAllAfter);
+        toResultString(LOG, "result", result);
+    }
 
 }

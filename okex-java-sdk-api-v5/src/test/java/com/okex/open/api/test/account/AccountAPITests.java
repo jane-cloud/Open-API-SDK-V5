@@ -508,5 +508,42 @@ public class AccountAPITests extends  AccountAPIBaseTests {
         JSONObject result = this.accountAPIService.setAccountLevel(accountMode);
         toResultString(LOG, "result", result);
     }
+    /**
+     * 仓位创建器
+     * POST /api/v5/account/position-builder
+     */
+    @Test
+    public void positionBuilder(){
+        PositionBuilder positionBuilder = new PositionBuilder();
+        positionBuilder.setInclRealPosAndEq("");
+        positionBuilder.setSpotOffsetType("");
 
+        List<InstIdPos> list1 = new ArrayList<>();
+        InstIdPos instIdPos1 = new InstIdPos();
+        instIdPos1.setInstId("DOT-USDT-SWAP");
+        instIdPos1.setPos("1");
+        list1.add(instIdPos1);
+        positionBuilder.setSimPos(list1);
+
+        List<InstIdPos> list2 = new ArrayList<>();
+        InstIdPos instIdPos2 = new InstIdPos();
+        instIdPos2.setAmt("");
+        instIdPos2.setCcy("");
+        list2.add(instIdPos2);
+        positionBuilder.setSimAsset(list2);
+
+        positionBuilder.setGreeksType("");
+
+        JSONObject result = this.accountAPIService.positionBuilder(positionBuilder);
+        toResultString(LOG, "result", result);
+    }
+    /**
+     * 获取交易产品基础信息 instruments
+     * GET /api/v5/account/instruments
+     */
+    @Test
+    public void getInstruments(){
+        JSONObject result = this.accountAPIService.getInstruments("","","","");
+        toResultString(LOG, "result", result);
+    }
 }

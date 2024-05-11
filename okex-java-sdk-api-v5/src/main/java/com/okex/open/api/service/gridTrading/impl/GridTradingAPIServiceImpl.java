@@ -1,10 +1,7 @@
 package com.okex.open.api.service.gridTrading.impl;
 
 import com.alibaba.fastjson.JSONObject;
-import com.okex.open.api.bean.gridTrading.param.AmendOrderAlgo;
-import com.okex.open.api.bean.gridTrading.param.OrderAlgo;
-import com.okex.open.api.bean.gridTrading.param.StopOrderAlgo;
-import com.okex.open.api.bean.gridTrading.param.WithdrawIncome;
+import com.okex.open.api.bean.gridTrading.param.*;
 import com.okex.open.api.client.APIClient;
 import com.okex.open.api.config.APIConfiguration;
 import com.okex.open.api.service.gridTrading.GridTradingAPIService;
@@ -87,5 +84,10 @@ public class GridTradingAPIServiceImpl implements GridTradingAPIService {
     @Override
     public JSONObject computeMarginBalance(WithdrawIncome withdrawIncome) {
         return this.client.executeSync(this.gridAPI.computeMarginBalance(withdrawIncome));
+    }
+
+    @Override
+    public JSONObject adjustInvestment(Investment adjustInvestment) {
+        return this.client.executeSync(this.gridAPI.adjustInvestment(adjustInvestment));
     }
 }

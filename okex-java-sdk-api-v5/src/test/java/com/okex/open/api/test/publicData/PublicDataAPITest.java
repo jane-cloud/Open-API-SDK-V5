@@ -247,4 +247,15 @@ public class PublicDataAPITest extends PublicDataAPIBaseTest {
         toResultString(LOG, "result", result);
 
     }
+    /**
+     * 获取溢价历史数据 Get premium-history
+     *
+     * GET /api/v5/public/premium-history
+     */
+    @Test
+    public void getPremiumHistory(){
+        JSONObject result = publicDataAPIService.getPremiumHistory("","","","");
+        toResultString(LOG, "result", result);
+
+    }
 }

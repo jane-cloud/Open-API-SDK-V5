@@ -143,4 +143,9 @@ public class MarketDataAPIServiceImpl implements MarketDataAPIService {
         return this.client.executeSync(this.marketDataAPI.getInstrumentFamilyTrades(instFamily));
     }
 
+    @Override
+    public JSONObject getBooksFull(String instId, String sz) {
+        return this.client.executeSync(this.marketDataAPI.getBooksFull(instId,sz));
+    }
+
 }

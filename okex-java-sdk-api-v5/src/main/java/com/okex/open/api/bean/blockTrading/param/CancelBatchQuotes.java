@@ -6,6 +6,16 @@ public class CancelBatchQuotes {
     private List<String> quoteIds;
     private List<String> clQuoteIds;
 
+    public String getTimeOut() {
+        return timeOut;
+    }
+
+    public void setTimeOut(String timeOut) {
+        this.timeOut = timeOut;
+    }
+
+    private String timeOut;
+
     public List<String> getQuoteIds() {
         return quoteIds;
     }

@@ -43,10 +43,10 @@ public interface TradeAPIService {
     JSONObject getOrderHistory3months(String instType,String uly,String instId,String ordType,String instFamily,String state, String category,String after,String before,String limit,String begin,String end);
 
     //获取成交明细（近三天） Get Transaction Details(last 3 days）
-    JSONObject getTransactionDetails(String instType,String uly,String instId,String ordId,String instFamily,String after,String before,String begin,String end,String limit);
+    JSONObject getTransactionDetails(String instType,String uly,String instId,String ordId,String instFamily,String after,String before,String begin,String end,String limit,String subType);
 
     //获取成交明细（近三个月） Get Transaction Details(last 3 months）
-    JSONObject getTransactionDetailsForThreeMonths(String instType,String uly,String instId,String ordId,String instFamily,String after,String before,String begin,String end,String limit);
+    JSONObject getTransactionDetailsForThreeMonths(String instType,String uly,String instId,String ordId,String instFamily,String after,String before,String begin,String end,String limit,String subType);
 
     //委托策略下单 Place Algo Order
     JSONObject placeAlgoOrder(PlaceAlgoOrder placeAlgoOrder);
@@ -116,4 +116,6 @@ public interface TradeAPIService {
     JSONObject applyFillsArchive(Fills fills);
 
     JSONObject getFillsArchive(String year, String quarter);
+
+    JSONObject getAccountRateLimit(String fillRatio, String mainFillRatio, String accRateLimit, String nextAccRateLimit, String ts);
 }

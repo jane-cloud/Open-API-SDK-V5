@@ -326,4 +326,33 @@ public class BrokerAPITests extends BrokerAPIBaseTests{
         JSONObject result = this.brokerAPIService.reportSubaccIp(subAccount);
         toResultString(LOG, "result", result);
     }
+    /**
+     * 获取用户的 Broker 返佣信息 Get if-rebate
+     * GET /api/v5/broker/nd/if-rebate
+     */
+    @Test
+    public void getIfRebate(){
+        JSONObject result = this.brokerAPIService.getIfRebate("","","");
+        toResultString(LOG, "result", result);
+    }
+    /**
+     * 激活合约体验金  activate-credit
+     * POST /api/v5/broker/nd/activate-credit
+     */
+    @Test
+    public void activateCredit(){
+        ActivateCredit activateCredit = new ActivateCredit();
+        activateCredit.setCreditId("");
+        JSONObject result = this.brokerAPIService.activateCredit(activateCredit);
+        toResultString(LOG, "result", result);
+    }
+    /**
+     * 获取合约体验金Get credits
+     * GET /api/v5/broker/nd/credits
+     */
+    @Test
+    public void getCredits(){
+        JSONObject result = this.brokerAPIService.getCredits("","");
+        toResultString(LOG, "result", result);
+    }
 }

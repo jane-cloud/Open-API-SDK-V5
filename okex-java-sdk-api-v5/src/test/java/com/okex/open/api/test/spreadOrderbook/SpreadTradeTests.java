@@ -193,5 +193,38 @@ public class SpreadTradeTests extends SpreadTradeBaseTests {
 
         toResultString(LOG, "result", result);
     }
+    /**
+     * 获取价差交易产品历史K线数据sprd-history-candles
+     * GET /api/v5/market/sprd-history-candles
+     */
+    @Test
+    public void getSprdHistoryCandles(){
+
+        JSONObject result = spreadTradeService.getSprdHistoryCandles("","","","","");
+
+        toResultString(LOG, "result", result);
+    }
+    /**
+     * 获取价差交易产品K线数据sprd-candles
+     * GET /api/v5/market/sprd-candles
+     */
+    @Test
+    public void getSprdCandles(){
+
+        JSONObject result = spreadTradeService.getSprdCandles("","","","","");
+
+        toResultString(LOG, "result", result);
+    }
+    /**
+     * 获取单个Spread产品行情信息（公共）sprd-ticker
+     * GET /api/v5/market/sprd-ticker
+     */
+    @Test
+    public void getSprdTicker(){
+
+        JSONObject result = spreadTradeService.getSprdTicker("");
+
+        toResultString(LOG, "result", result);
+    }
 
 }

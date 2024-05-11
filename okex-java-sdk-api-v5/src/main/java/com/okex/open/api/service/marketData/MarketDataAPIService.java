@@ -72,4 +72,6 @@ public interface MarketDataAPIService {
     JSONObject getBlockTrades(@Query("instId") String instId);
 
     JSONObject getInstrumentFamilyTrades(String instFamily);
+
+    JSONObject getBooksFull(String instId, String sz);
 }

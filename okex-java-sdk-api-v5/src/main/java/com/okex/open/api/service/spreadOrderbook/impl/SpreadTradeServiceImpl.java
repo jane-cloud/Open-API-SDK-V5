@@ -83,4 +83,19 @@ public class SpreadTradeServiceImpl implements SpreadTradeService {
     public JSONObject getOrdersHistoryArchive(String sprdId, String ordType, String state, String instType, String endId, String begin, String end, String limit, String beginId, String instFamily) {
         return this.client.executeSync(this.api.getOrdersHistoryArchive(sprdId, ordType, state, beginId, endId, begin,end,limit,instType,instFamily));
     }
+
+    @Override
+    public JSONObject getSprdHistoryCandles(String sprdId, String after, String before, String bar, String limit) {
+        return this.client.executeSync(this.api.getSprdHistoryCandles(sprdId,after,before,bar,limit));
+    }
+
+    @Override
+    public JSONObject getSprdCandles(String sprdId, String after, String before, String bar, String limit) {
+        return this.client.executeSync(this.api.getSprdCandles(sprdId,after,before,bar,limit));
+    }
+
+    @Override
+    public JSONObject getSprdTicker(String sprdId) {
+        return this.client.executeSync(this.api.getSprdTicker(sprdId));
+    }
 }

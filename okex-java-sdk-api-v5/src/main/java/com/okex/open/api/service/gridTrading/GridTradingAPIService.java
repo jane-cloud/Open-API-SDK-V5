@@ -1,10 +1,7 @@
 package com.okex.open.api.service.gridTrading;
 
 import com.alibaba.fastjson.JSONObject;
-import com.okex.open.api.bean.gridTrading.param.AmendOrderAlgo;
-import com.okex.open.api.bean.gridTrading.param.OrderAlgo;
-import com.okex.open.api.bean.gridTrading.param.StopOrderAlgo;
-import com.okex.open.api.bean.gridTrading.param.WithdrawIncome;
+import com.okex.open.api.bean.gridTrading.param.*;
 import retrofit2.http.Query;
 
 public interface GridTradingAPIService {
@@ -43,4 +40,6 @@ public interface GridTradingAPIService {
     JSONObject marginBalance(WithdrawIncome withdrawIncome);
     //调整保证金计算
     JSONObject computeMarginBalance(WithdrawIncome withdrawIncome);
+
+    JSONObject adjustInvestment(Investment adjustInvestment);
 }

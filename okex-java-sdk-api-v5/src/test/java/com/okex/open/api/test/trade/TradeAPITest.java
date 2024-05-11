@@ -41,13 +41,14 @@ public class TradeAPITest extends TradeAPIBaseTest {
         placeOrder.setOrdType("market");
         placeOrder.setSz("1");
         placeOrder.setQuickMgnType("");
+
 //        placeOrder.setPx("60000");
 //        placeOrder.setReduceOnly(false);
 //        placeOrder.setTgtCcy("");
 //        placeOrder.setBanAmend(false);
         //止盈止损参数
 
-        /*ArrayList<AttachAlgoOrds> list = new ArrayList<>();
+        ArrayList<AttachAlgoOrds> list = new ArrayList<>();
         AttachAlgoOrds attachAlgoOrds = new AttachAlgoOrds();
         attachAlgoOrds.setAttachAlgoClOrdId("");
         attachAlgoOrds.setTpTriggerPxType("");
@@ -58,8 +59,9 @@ public class TradeAPITest extends TradeAPIBaseTest {
         attachAlgoOrds.setSlTriggerPx("");
         attachAlgoOrds.setSz("");
         attachAlgoOrds.setAmendPxOnTriggerType("");
+        attachAlgoOrds.setTpOrdKind("");
         list.add(attachAlgoOrds);
-        placeOrder.setAttachAlgoOrds(list);*/
+        placeOrder.setAttachAlgoOrds(list);
         //自成交保护
         /*placeOrder.setStpId("");
         placeOrder.setStpMode("");*/
@@ -110,6 +112,7 @@ public class TradeAPITest extends TradeAPIBaseTest {
         attachAlgoOrds.setSlTriggerPx("");
         attachAlgoOrds.setSz("");
         attachAlgoOrds.setAmendPxOnTriggerType("");
+        attachAlgoOrds.setTpOrdKind("");
         list.add(attachAlgoOrds);
         placeOrder1.setAttachAlgoOrds(list);*/
 //自成交保护
@@ -146,6 +149,7 @@ public class TradeAPITest extends TradeAPIBaseTest {
         attachAlgoOrds2.setSlTriggerPx("");
         attachAlgoOrds2.setSz("");
         attachAlgoOrds2.setAmendPxOnTriggerType("");
+        attachAlgoOrds.setTpOrdKind("");
         list2.add(attachAlgoOrds2);
         placeOrder2.setAttachAlgoOrds(list2);*/
 //自成交保护
@@ -242,6 +246,7 @@ public class TradeAPITest extends TradeAPIBaseTest {
         attachAlgoOrds.setSlOrdPx("");
         attachAlgoOrds.setSlTriggerPx("");
         attachAlgoOrds.setSz("");
+        attachAlgoOrds.setNewTpOrdKind("");
         attachAlgoOrds.setAmendPxOnTriggerType("");
         list.add(attachAlgoOrds);
         amendOrder.setAttachAlgoOrds(list);
@@ -289,6 +294,7 @@ public class TradeAPITest extends TradeAPIBaseTest {
         attachAlgoOrds.setSlTriggerPx("");
         attachAlgoOrds.setSz("");
         attachAlgoOrds.setAmendPxOnTriggerType("");
+        attachAlgoOrds.setNewTpOrdKind("");
         list.add(attachAlgoOrds);
         amendOrder1.setAttachAlgoOrds(list);
 
@@ -308,7 +314,6 @@ public class TradeAPITest extends TradeAPIBaseTest {
         amendOrder2.setNewSlTriggerPxType("");
         amendOrder2.setNewPxUsd("");
         amendOrder2.setNewPxVol("");
-
         ArrayList<AttachAlgoOrds> list2 = new ArrayList<>();
         AttachAlgoOrds attachAlgoOrds2 = new AttachAlgoOrds();
         attachAlgoOrds2.setAttachAlgoClOrdId("");
@@ -320,6 +325,7 @@ public class TradeAPITest extends TradeAPIBaseTest {
         attachAlgoOrds2.setSlTriggerPx("");
         attachAlgoOrds2.setSz("");
         attachAlgoOrds2.setAmendPxOnTriggerType("");
+        attachAlgoOrds.setNewTpOrdKind("");
         list2.add(attachAlgoOrds2);
         amendOrder2.setAttachAlgoOrds(list2);
 
@@ -405,7 +411,7 @@ public class TradeAPITest extends TradeAPIBaseTest {
     @Test
     public void getTransactionDetails(){
 
-        JSONObject result = tradeAPIService.getTransactionDetails("SPOT",null,null,null,null,null,null,null,null,null);
+        JSONObject result = tradeAPIService.getTransactionDetails("SPOT",null,null,null,null,null,null,null,null,null,null);
         toResultString(LOG, "result", result);
 
     }
@@ -417,7 +423,7 @@ public class TradeAPITest extends TradeAPIBaseTest {
     @Test
     public void getTransactionDetailsForThreeMonths(){
 
-        JSONObject result = tradeAPIService.getTransactionDetailsForThreeMonths("SPOT",null,null,null,null,null,null,null,null,null);
+        JSONObject result = tradeAPIService.getTransactionDetailsForThreeMonths("SPOT",null,null,null,null,null,null,null,null,null,null);
         toResultString(LOG, "result", result);
 
     }
@@ -708,4 +714,16 @@ public class TradeAPITest extends TradeAPIBaseTest {
 
         toResultString(LOG, "result", result);
     }
+    /**
+     *   获取账户限速 account-rate-limit
+     * GET /api/v5/trade/account-rate-limit
+     */
+    @Test
+    public void getAccountRateLimit(){
+
+        JSONObject result = tradeAPIService.getAccountRateLimit("","","","","");
+
+        toResultString(LOG, "result", result);
+    }
+
 }

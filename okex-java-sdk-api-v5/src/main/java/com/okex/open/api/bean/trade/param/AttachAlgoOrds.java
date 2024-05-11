@@ -21,6 +21,25 @@ public class AttachAlgoOrds {
     private String sz;
     private String amendPxOnTriggerType;
 
+    public String getNewTpOrdKind() {
+        return newTpOrdKind;
+    }
+
+    public void setNewTpOrdKind(String newTpOrdKind) {
+        this.newTpOrdKind = newTpOrdKind;
+    }
+
+    private String newTpOrdKind;
+
+    public String getTpOrdKind() {
+        return tpOrdKind;
+    }
+
+    public void setTpOrdKind(String tpOrdKind) {
+        this.tpOrdKind = tpOrdKind;
+    }
+
+    private String tpOrdKind;
 
     public String getAttachAlgoId() {
         return attachAlgoId;

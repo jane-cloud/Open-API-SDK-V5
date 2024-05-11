@@ -114,4 +114,7 @@ public interface PublicDataAPI {
 
     @GET("/api/v5/public/economic-calendar")
     Call<JSONObject> getEconomicCalendar(@Query("region")String region, @Query("importance")String importance,@Query("before") String before, @Query("after")String after,@Query("limit") String limit);
+
+    @GET("/api/v5/public/premium-history")
+    Call<JSONObject> getPremiumHistory(@Query("instId")String instId, @Query("after")String after, @Query("before")String before, @Query("ts")String ts);
 }

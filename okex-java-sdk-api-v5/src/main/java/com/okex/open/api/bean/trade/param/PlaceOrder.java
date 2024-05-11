@@ -17,6 +17,7 @@ public class PlaceOrder {
 
     private String pxUsd;
 
+
     public ArrayList<AttachAlgoOrds> getAttachAlgoOrds() {
         return attachAlgoOrds;
     }

@@ -158,4 +158,19 @@ public class BrokerAPIServiceImpl implements BrokerAPIService {
         return this.client.executeSync(this.api.reportSubaccIp(JSONObject.parseObject(JSON.toJSONString(subAccount))));
     }
 
+    @Override
+    public JSONObject getIfRebate(String apiKey, String uid, String subAcct) {
+        return this.client.executeSync(this.api.getIfRebate(apiKey,subAcct, uid));
+    }
+
+    @Override
+    public JSONObject activateCredit(ActivateCredit activateCredit) {
+        return this.client.executeSync(this.api.activateCredit(JSONObject.parseObject(JSON.toJSONString(activateCredit))));
+    }
+
+    @Override
+    public JSONObject getCredits(String state, String limit) {
+        return this.client.executeSync(this.api.getCredits(state,limit));
+    }
+
 }

@@ -18,6 +18,7 @@ public class AmendOrder {
 
     private String newPxUsd;
 
+
     public ArrayList<AttachAlgoOrds> getAttachAlgoOrds() {
         return attachAlgoOrds;
     }

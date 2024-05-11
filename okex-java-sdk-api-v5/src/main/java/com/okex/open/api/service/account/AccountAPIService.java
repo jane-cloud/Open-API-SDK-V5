@@ -129,4 +129,8 @@ public interface AccountAPIService {
     JSONObject setAccountLevel(AccountMode accountMode);
 
     JSONObject setMmpConfig(Mmp mmp);
+
+    JSONObject positionBuilder(PositionBuilder positionBuilder);
+
+    JSONObject getInstruments(String instType, String uly, String instFamily, String instId);
 }

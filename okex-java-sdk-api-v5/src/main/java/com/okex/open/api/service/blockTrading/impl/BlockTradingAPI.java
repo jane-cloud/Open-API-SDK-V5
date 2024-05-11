@@ -101,4 +101,7 @@ public interface BlockTradingAPI {
 
     @GET("/api/v5/rfq/maker-instrument-settings")
     Call<JSONObject> getMakerInstrumentSettings();
+
+    @POST("/api/v5/rfq/cancel-all-after")
+    Call<JSONObject> cancelAllAfter(@Body CancelBatchQuotes cancelAllAfter);
 }

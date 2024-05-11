@@ -264,4 +264,14 @@ public class AccountAPIServiceImpl implements AccountAPIService {
     public JSONObject setMmpConfig(Mmp mmp) {
         return this.client.executeSync(this.api.setMmpConfig(JSONObject.parseObject(JSON.toJSONString(mmp))));
     }
+
+    @Override
+    public JSONObject positionBuilder(PositionBuilder positionBuilder) {
+        return this.client.executeSync(this.api.positionBuilder(JSONObject.parseObject(JSON.toJSONString(positionBuilder))));
+    }
+
+    @Override
+    public JSONObject getInstruments(String instType, String uly, String instFamily, String instId) {
+        return this.client.executeSync(this.api.getInstruments(instType,uly,instFamily,instId));
+    }
 }

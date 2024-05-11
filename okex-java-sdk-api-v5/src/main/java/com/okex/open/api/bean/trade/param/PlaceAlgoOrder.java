@@ -13,6 +13,7 @@ public class PlaceAlgoOrder {
     private Boolean reduceOnly;
     private String algoClOrdId;
 
+
     public List<AttachAlgoOrds> getAttachAlgoOrdsList() {
         return attachAlgoOrdsList;
     }

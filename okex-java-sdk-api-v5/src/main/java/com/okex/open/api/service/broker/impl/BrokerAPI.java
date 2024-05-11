@@ -126,4 +126,13 @@ public interface BrokerAPI {
 
     @POST("/api/v5/broker/nd/report-subaccount-ip")
     Call<JSONObject> reportSubaccIp(@Body JSONObject parseObject);
+
+    @GET("/api/v5/broker/nd/if-rebate")
+    Call<JSONObject>  getIfRebate(@Query("apiKey") String apiKey,@Query("subAcct")  String subAcct,@Query("uid")  String uid);
+
+    @POST("/api/v5/broker/nd/activate-credit")
+    Call<JSONObject> activateCredit(@Body JSONObject parseObject);
+
+    @GET("/api/v5/broker/nd/credits")
+    Call<JSONObject> getCredits(@Query("state")String state,@Query("limit") String limit);
 }

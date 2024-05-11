@@ -119,5 +119,10 @@ public class BlockTradingAPIServiceImpl implements BlockTradingAPIService {
         return this.client.executeSync(this.api.getMakerInstrumentSettings());
     }
 
+    @Override
+    public JSONObject cancelAllAfter(CancelBatchQuotes cancelAllAfter) {
+        return this.client.executeSync(this.api.cancelAllAfter(cancelAllAfter));
+    }
+
 
 }
