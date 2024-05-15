@@ -2,6 +2,22 @@
 
 All notable changes in `sebastian/global-state` are documented in this file using the [Keep a CHANGELOG](https://keepachangelog.com/) principles.
 
+## [3.0.5] - 2024-03-02
+
+### Changed
+
+* Do not use implicitly nullable parameters
+
+## [3.0.4] - 2024-03-01
+
+* No code changes, only updated `.gitattributes` to not export non-essential files.
+
+## [3.0.3] - 2023-08-02
+
+### Changed
+
+* Changed usage of `ReflectionProperty::setValue()` to be compatible with PHP 8.3
+
 ## [3.0.2] - 2022-02-10
 
 ### Fixed
@@ -24,6 +40,9 @@ All notable changes in `sebastian/global-state` are documented in this file usin
 
 * This component is no longer supported on PHP 7.0 and PHP 7.1
 
+[3.0.5]: https://github.com/sebastianbergmann/phpunit/compare/3.0.4...3.0.5
+[3.0.4]: https://github.com/sebastianbergmann/phpunit/compare/3.0.3...3.0.4
+[3.0.3]: https://github.com/sebastianbergmann/phpunit/compare/3.0.2...3.0.3
 [3.0.2]: https://github.com/sebastianbergmann/phpunit/compare/3.0.1...3.0.2
 [3.0.1]: https://github.com/sebastianbergmann/phpunit/compare/3.0.0...3.0.1
 [3.0.0]: https://github.com/sebastianbergmann/phpunit/compare/2.0.0...3.0.0

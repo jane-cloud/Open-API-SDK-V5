@@ -10,10 +10,13 @@
 namespace PHPUnit\Framework\Constraint;
 
 use PHPUnit\Framework\Assert;
+use PHPUnit\Framework\Exception;
 use PHPUnit\Framework\ExpectationFailedException;
+use SebastianBergmann\RecursionContext\InvalidArgumentException;
 
 /**
  * @deprecated https://github.com/sebastianbergmann/phpunit/issues/3338
+ *
  * @codeCoverageIgnore
  */
 final class Attribute extends Composite
@@ -40,9 +43,9 @@ final class Attribute extends Composite
      * a boolean value instead: true in case of success, false in case of a
      * failure.
      *
-     * @throws \PHPUnit\Framework\Exception
-     * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
+     * @throws Exception
      * @throws ExpectationFailedException
+     * @throws InvalidArgumentException
      */
     public function evaluate($other, string $description = '', bool $returnResult = false)
     {

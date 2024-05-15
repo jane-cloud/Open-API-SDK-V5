@@ -23,6 +23,7 @@ use okv5\StatusApi;
 use okv5\RubikApi;
 use okv5\BrokerApi;
 use okv5\ConvertApi;
+// use okv5\Copytrading;
 
 /**
  * 账户 Account
@@ -122,7 +123,7 @@ $instrumentId = "EOS-USDT";
 $currency = "EOS";
 $obj = new FundingApi(Config::$config);
 // 获取币种列表
-$res = $obj -> getCurrencies('USDC');
+// $res = $obj -> getCurrencies('USDC');
 // 获取资金账户余额
 //$res = $obj -> getBalance('BTC');
 //获取账户资产估值
@@ -264,7 +265,7 @@ $obj = new TradeAPI(Config::$config);
 // 获取未成交订单列表 Get Order List
 //$res = $obj -> getOrderPending('FUTURES','','','','live','','','');
 // 获取历史订单记录（近七天） Get Order History (last 7 days）
-//$res = $obj -> getOrdersHistory('SWAP','','','','','','','','1');
+$res = $obj -> getOrdersHistory('SWAP','','','','','','','','1');
 // 获取历史订单记录（近三个月） Get Order History (last 3 months)
 //$res = $obj -> getOrdersHistoryArchive('SWAP','','','','','','','','1');
 // 获取成交明细 Get Transaction Details
@@ -280,6 +281,25 @@ $obj = new TradeAPI(Config::$config);
 //$res = $obj -> getAlgoHistory('','388040684007202816','SWAP','','conditional','','','');
 //撤销高级策略委托订单
 //$res = $obj -> cancelAdvanceAlgos('','314738893715283968','FUTURES','','trigger','','','');
+
+/**
+ * 跟单 copytrading
+ */
+// $obj = new Copytrading(Config::$config);
+//获取当前带单或跟单
+// $res = $obj -> currentSubpositions('','','','','','','');
+// 获取历史带单或跟单
+// $res = $obj -> subpositionsHistory('','','','','','');
+// 带单或跟单仓位止盈止损
+// $res = $obj -> algoOrder('','','','','','','','','','');
+// 平仓带单或跟单
+// $res = $obj -> closeSubposition('','','','','','');
+// 获取带单产品
+// $res = $obj -> instruments('');
+// 交易员修改带单产品
+// $res = $obj -> setInstruments('','');
+// 交易员历史分润明细
+// $res = $obj -> profitSharingDetails('','');
 
 
 /**
@@ -308,7 +328,7 @@ $obj = new StatusApi(Config::$config);
  *交易大数据
  */
 $obj = new RubikApi(Config::$config);
-$res = $obj -> supportCoin();
+// $res = $obj -> supportCoin();
 //$res = $obj -> takerVolume('BTC','SPOT','','','');
 //$res = $obj -> loanRatio('','','','');
 //$res = $obj -> accountRatio('','','','');

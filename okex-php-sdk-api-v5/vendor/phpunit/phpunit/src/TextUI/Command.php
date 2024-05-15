@@ -64,6 +64,7 @@ use PHPUnit\Util\XmlTestListRenderer;
 use ReflectionClass;
 use ReflectionException;
 use SebastianBergmann\FileIterator\Facade as FileIteratorFacade;
+use SebastianBergmann\RecursionContext\InvalidArgumentException;
 use Throwable;
 
 /**
@@ -187,7 +188,7 @@ class Command
     private $versionStringPrinted = false;
 
     /**
-     * @throws \PHPUnit\Framework\Exception
+     * @throws Exception
      */
     public static function main(bool $exit = true): int
     {
@@ -445,6 +446,9 @@ class Command
                     print 'Source directory (relative to path shown above; default: src): ';
                     $src = trim(fgets(STDIN));
 
+                    print 'Cache directory (relative to path shown above; default: .phpunit.cache): ';
+                    $cacheDirectory = trim(fgets(STDIN));
+
                     if ($bootstrapScript === '') {
                         $bootstrapScript = 'vendor/autoload.php';
                     }
@@ -457,6 +461,10 @@ class Command
                         $src = 'src';
                     }
 
+                    if ($cacheDirectory === '') {
+                        $cacheDirectory = '.phpunit.cache';
+                    }
+
                     $generator = new ConfigurationGenerator;
 
                     file_put_contents(
@@ -465,11 +473,13 @@ class Command
                             Version::series(),
                             $bootstrapScript,
                             $testsDirectory,
-                            $src
+                            $src,
+                            $cacheDirectory
                         )
                     );
 
                     print PHP_EOL . 'Generated phpunit.xml in ' . getcwd() . PHP_EOL;
+                    print 'Make sure to exclude the ' . $cacheDirectory . ' directory from version control.' . PHP_EOL;
 
                     exit(TestRunner::SUCCESS_EXIT);
 
@@ -1008,7 +1018,7 @@ class Command
             } catch (ReflectionException $e) {
                 throw new Exception(
                     $e->getMessage(),
-                    (int) $e->getCode(),
+                    $e->getCode(),
                     $e
                 );
             }
@@ -1073,7 +1083,7 @@ class Command
         } catch (ReflectionException $e) {
             throw new Exception(
                 $e->getMessage(),
-                (int) $e->getCode(),
+                $e->getCode(),
                 $e
             );
             // @codeCoverageIgnoreEnd
@@ -1133,17 +1143,31 @@ class Command
     {
         $this->printVersionString();
 
-        $latestVersion = file_get_contents('https://phar.phpunit.de/latest-version-of/phpunit');
-        $isOutdated    = version_compare($latestVersion, Version::id(), '>');
+        $latestVersion           = file_get_contents('https://phar.phpunit.de/latest-version-of/phpunit');
+        $latestCompatibleVersion = file_get_contents('https://phar.phpunit.de/latest-version-of/phpunit-' . explode('.', Version::series())[0]);
 
-        if ($isOutdated) {
+        $notLatest           = version_compare($latestVersion, Version::id(), '>');
+        $notLatestCompatible = version_compare($latestCompatibleVersion, Version::id(), '>');
+
+        if ($notLatest || $notLatestCompatible) {
+            print 'You are not using the latest version of PHPUnit.' . PHP_EOL;
+        } else {
+            print 'You are using the latest version of PHPUnit.' . PHP_EOL;
+        }
+
+        if ($notLatestCompatible) {
             printf(
-                'You are not using the latest version of PHPUnit.' . PHP_EOL .
+                'The latest version compatible with PHPUnit %s is PHPUnit %s.' . PHP_EOL,
+                Version::id(),
+                $latestCompatibleVersion
+            );
+        }
+
+        if ($notLatest) {
+            printf(
                 'The latest version is PHPUnit %s.' . PHP_EOL,
                 $latestVersion
             );
-        } else {
-            print 'You are using the latest version of PHPUnit.' . PHP_EOL;
         }
 
         exit(TestRunner::SUCCESS_EXIT);
@@ -1226,6 +1250,16 @@ class Command
     {
         $this->printVersionString();
 
+        $this->warnAboutConflictingOptions(
+            'listGroups',
+            [
+                'filter',
+                'groups',
+                'excludeGroups',
+                'testsuite',
+            ]
+        );
+
         print 'Available test group(s):' . PHP_EOL;
 
         $groups = $suite->getGroups();
@@ -1246,11 +1280,21 @@ class Command
     }
 
     /**
-     * @throws \PHPUnit\Framework\Exception
+     * @throws Exception
      */
     private function handleListSuites(bool $exit): int
     {
         $this->printVersionString();
+
+        $this->warnAboutConflictingOptions(
+            'listSuites',
+            [
+                'filter',
+                'groups',
+                'excludeGroups',
+                'testsuite',
+            ]
+        );
 
         print 'Available test suite(s):' . PHP_EOL;
 
@@ -1273,11 +1317,20 @@ class Command
     }
 
     /**
-     * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
+     * @throws InvalidArgumentException
      */
     private function handleListTests(TestSuite $suite, bool $exit): int
     {
         $this->printVersionString();
+
+        $this->warnAboutConflictingOptions(
+            'listTests',
+            [
+                'filter',
+                'groups',
+                'excludeGroups',
+            ]
+        );
 
         $renderer = new TextTestListRenderer;
 
@@ -1291,11 +1344,20 @@ class Command
     }
 
     /**
-     * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
+     * @throws InvalidArgumentException
      */
     private function handleListTestsXml(TestSuite $suite, string $target, bool $exit): int
     {
         $this->printVersionString();
+
+        $this->warnAboutConflictingOptions(
+            'listTestsXml',
+            [
+                'filter',
+                'groups',
+                'excludeGroups',
+            ]
+        );
 
         $renderer = new XmlTestListRenderer;
 
@@ -1362,6 +1424,64 @@ class Command
                 default:
                     $this->exitWithErrorMessage("unrecognized --order-by option: {$order}");
             }
+        }
+    }
+
+    /**
+     * @psalm-param "listGroups"|"listSuites"|"listTests"|"listTestsXml"|"filter"|"groups"|"excludeGroups"|"testsuite" $key
+     * @psalm-param list<"listGroups"|"listSuites"|"listTests"|"listTestsXml"|"filter"|"groups"|"excludeGroups"|"testsuite"> $keys
+     */
+    private function warnAboutConflictingOptions(string $key, array $keys): void
+    {
+        $warningPrinted = false;
+
+        foreach ($keys as $_key) {
+            if (!empty($this->arguments[$_key])) {
+                printf(
+                    'The %s and %s options cannot be combined, %s is ignored' . PHP_EOL,
+                    $this->mapKeyToOptionForWarning($_key),
+                    $this->mapKeyToOptionForWarning($key),
+                    $this->mapKeyToOptionForWarning($_key)
+                );
+
+                $warningPrinted = true;
+            }
+        }
+
+        if ($warningPrinted) {
+            print PHP_EOL;
+        }
+    }
+
+    /**
+     * @psalm-param "listGroups"|"listSuites"|"listTests"|"listTestsXml"|"filter"|"groups"|"excludeGroups"|"testsuite" $key
+     */
+    private function mapKeyToOptionForWarning(string $key): string
+    {
+        switch ($key) {
+            case 'listGroups':
+                return '--list-groups';
+
+            case 'listSuites':
+                return '--list-suites';
+
+            case 'listTests':
+                return '--list-tests';
+
+            case 'listTestsXml':
+                return '--list-tests-xml';
+
+            case 'filter':
+                return '--filter';
+
+            case 'groups':
+                return '--group';
+
+            case 'excludeGroups':
+                return '--exclude-group';
+
+            case 'testsuite':
+                return '--testsuite';
         }
     }
 }

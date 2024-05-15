@@ -16,10 +16,6 @@ class ComposerStaticInit4459aac20139f7aeb86f81027aba19f9
         array (
             'test\\' => 5,
         ),
-        'p' => 
-        array (
-            'phpDocumentor\\Reflection\\' => 25,
-        ),
         'o' => 
         array (
             'okv5\\' => 5,
@@ -27,11 +23,6 @@ class ComposerStaticInit4459aac20139f7aeb86f81027aba19f9
         'W' => 
         array (
             'Workerman\\' => 10,
-            'Webmozart\\Assert\\' => 17,
-        ),
-        'P' => 
-        array (
-            'Prophecy\\' => 9,
         ),
         'D' => 
         array (
@@ -45,12 +36,6 @@ class ComposerStaticInit4459aac20139f7aeb86f81027aba19f9
         array (
             0 => __DIR__ . '/../..' . '/test',
         ),
-        'phpDocumentor\\Reflection\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/phpdocumentor/reflection-common/src',
-            1 => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src',
-            2 => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src',
-        ),
         'okv5\\' => 
         array (
             0 => __DIR__ . '/../..' . '/src',
@@ -58,14 +43,6 @@ class ComposerStaticInit4459aac20139f7aeb86f81027aba19f9
         'Workerman\\' => 
         array (
             0 => __DIR__ . '/..' . '/workerman/workerman',
-        ),
-        'Webmozart\\Assert\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/webmozart/assert/src',
-        ),
-        'Prophecy\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/phpspec/prophecy/src/Prophecy',
         ),
         'Doctrine\\Instantiator\\' => 
         array (
@@ -513,6 +490,7 @@ class ComposerStaticInit4459aac20139f7aeb86f81027aba19f9
         'PharIo\\Manifest\\ManifestLoader' => __DIR__ . '/..' . '/phar-io/manifest/src/ManifestLoader.php',
         'PharIo\\Manifest\\ManifestLoaderException' => __DIR__ . '/..' . '/phar-io/manifest/src/exceptions/ManifestLoaderException.php',
         'PharIo\\Manifest\\ManifestSerializer' => __DIR__ . '/..' . '/phar-io/manifest/src/ManifestSerializer.php',
+        'PharIo\\Manifest\\NoEmailAddressException' => __DIR__ . '/..' . '/phar-io/manifest/src/exceptions/NoEmailAddressException.php',
         'PharIo\\Manifest\\PhpElement' => __DIR__ . '/..' . '/phar-io/manifest/src/xml/PhpElement.php',
         'PharIo\\Manifest\\PhpExtensionRequirement' => __DIR__ . '/..' . '/phar-io/manifest/src/values/PhpExtensionRequirement.php',
         'PharIo\\Manifest\\PhpVersionRequirement' => __DIR__ . '/..' . '/phar-io/manifest/src/values/PhpVersionRequirement.php',

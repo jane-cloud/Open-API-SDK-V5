@@ -2,6 +2,81 @@
 
 All notable changes of the PHPUnit 8.5 release series are documented in this file using the [Keep a CHANGELOG](https://keepachangelog.com/) principles.
 
+## [8.5.38] - 2024-04-05
+
+### Changed
+
+* The namespaces of dependencies are now prefixed with `PHPUnitPHAR` instead of just `PHPUnit` for the PHAR distribution of PHPUnit
+
+## [8.5.37] - 2024-03-06
+
+### Changed
+
+* Improve output of `--check-version` CLI option
+* Improve description of `--check-version` CLI option
+* Show help for `--manifest`, `--sbom`, and `--composer-lock` when the PHAR is used
+* Make PHAR build reproducible (the only remaining differences were in the timestamps for the files in the PHAR)
+
+## [8.5.36] - 2023-12-01
+
+### Fixed
+
+* [#5596](https://github.com/sebastianbergmann/phpunit/issues/5596): `PHPUnit\Framework\TestCase` has `@internal` annotation in PHAR
+
+## [8.5.35] - 2023-12-01
+
+### Added
+
+* [#5577](https://github.com/sebastianbergmann/phpunit/issues/5577): `--composer-lock` CLI option for PHAR binary that displays the `composer.lock` used to build the PHAR
+
+## [8.5.34] - 2023-09-19
+
+### Changed
+
+* The child processes used for process isolation now use temporary files to communicate their result to the parent process
+
+## [8.5.33] - 2023-02-27
+
+### Fixed
+
+* [#5186](https://github.com/sebastianbergmann/phpunit/issues/5186): SBOM does not validate
+
+## [8.5.32] - 2023-01-26
+
+### Fixed
+
+* [#5120](https://github.com/sebastianbergmann/phpunit/issues/5120): Test Runner incorrectly treats `--testsuite` and `--list-tests` as not combinable options
+
+## [8.5.31] - 2022-10-28
+
+### Fixed
+
+* [#5076](https://github.com/sebastianbergmann/phpunit/issues/5076): Test Runner does not warn about conflicting options
+
+## [8.5.30] - 2022-09-25
+
+### Changed
+
+* The configuration generator now asks for a cache directory
+
+### Fixed
+
+* [#4913](https://github.com/sebastianbergmann/phpunit/issues/4913): Failed `assert()` should show a backtrace
+* [#4966](https://github.com/sebastianbergmann/phpunit/issues/4966): `TestCase::assertSame()` (and related exact comparisons) must compare `float` exactly
+
+## [8.5.29] - 2022-08-22
+
+### Changed
+
+* [#5033](https://github.com/sebastianbergmann/phpunit/issues/5033): Do not depend on phpspec/prophecy
+
+## [8.5.28] - 2022-07-29
+
+### Fixed
+
+* [#5015](https://github.com/sebastianbergmann/phpunit/pull/5015): Ukraine banner unreadable on black background
+* [#5016](https://github.com/sebastianbergmann/phpunit/issues/5016): PHPUnit 8.5.27 does not work on PHP 7.2.0-7.2.18 and PHP 7.3.0-7.3.5
+
 ## [8.5.27] - 2022-06-19
 
 ### Fixed
@@ -226,6 +301,17 @@ All notable changes of the PHPUnit 8.5 release series are documented in this fil
 * [#3967](https://github.com/sebastianbergmann/phpunit/issues/3967): Cannot double interface that extends interface that extends `\Throwable`
 * [#3968](https://github.com/sebastianbergmann/phpunit/pull/3968): Test class run in a separate PHP process are passing when `exit` called inside
 
+[8.5.38]: https://github.com/sebastianbergmann/phpunit/compare/8.5.37...8.5.38
+[8.5.37]: https://github.com/sebastianbergmann/phpunit/compare/8.5.36...8.5.37
+[8.5.36]: https://github.com/sebastianbergmann/phpunit/compare/8.5.35...8.5.36
+[8.5.35]: https://github.com/sebastianbergmann/phpunit/compare/8.5.34...8.5.35
+[8.5.34]: https://github.com/sebastianbergmann/phpunit/compare/8.5.33...8.5.34
+[8.5.33]: https://github.com/sebastianbergmann/phpunit/compare/8.5.32...8.5.33
+[8.5.32]: https://github.com/sebastianbergmann/phpunit/compare/8.5.31...8.5.32
+[8.5.31]: https://github.com/sebastianbergmann/phpunit/compare/8.5.30...8.5.31
+[8.5.30]: https://github.com/sebastianbergmann/phpunit/compare/8.5.29...8.5.30
+[8.5.29]: https://github.com/sebastianbergmann/phpunit/compare/8.5.28...8.5.29
+[8.5.28]: https://github.com/sebastianbergmann/phpunit/compare/8.5.27...8.5.28
 [8.5.27]: https://github.com/sebastianbergmann/phpunit/compare/8.5.26...8.5.27
 [8.5.26]: https://github.com/sebastianbergmann/phpunit/compare/8.5.25...8.5.26
 [8.5.25]: https://github.com/sebastianbergmann/phpunit/compare/8.5.24...8.5.25

@@ -16,6 +16,7 @@ use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\TestSuite;
 use PHPUnit\Runner\PhptTestCase;
 use RecursiveIteratorIterator;
+use SebastianBergmann\RecursionContext\InvalidArgumentException;
 use XMLWriter;
 
 /**
@@ -24,7 +25,7 @@ use XMLWriter;
 final class XmlTestListRenderer
 {
     /**
-     * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
+     * @throws InvalidArgumentException
      */
     public function render(TestSuite $suite): string
     {
@@ -32,7 +33,7 @@ final class XmlTestListRenderer
 
         $writer->openMemory();
         $writer->setIndent(true);
-        $writer->startDocument();
+        $writer->startDocument('1.0', 'UTF-8');
         $writer->startElement('tests');
 
         $currentTestCase = null;
@@ -84,6 +85,7 @@ final class XmlTestListRenderer
         }
 
         $writer->endElement();
+        $writer->endDocument();
 
         return $writer->outputMemory();
     }

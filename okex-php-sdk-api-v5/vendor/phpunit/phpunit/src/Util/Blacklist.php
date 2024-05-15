@@ -21,11 +21,7 @@ use Doctrine\Instantiator\Instantiator;
 use PharIo\Manifest\Manifest;
 use PharIo\Version\Version as PharIoVersion;
 use PHP_Token;
-use phpDocumentor\Reflection\DocBlock;
-use phpDocumentor\Reflection\Project;
-use phpDocumentor\Reflection\Type;
 use PHPUnit\Framework\TestCase;
-use Prophecy\Prophet;
 use ReflectionClass;
 use ReflectionException;
 use SebastianBergmann\CodeCoverage\CodeCoverage;
@@ -38,6 +34,7 @@ use SebastianBergmann\FileIterator\Facade as FileIteratorFacade;
 use SebastianBergmann\GlobalState\Snapshot;
 use SebastianBergmann\Invoker\Invoker;
 use SebastianBergmann\ObjectEnumerator\Enumerator;
+use SebastianBergmann\ObjectReflector\ObjectReflector;
 use SebastianBergmann\RecursionContext\Context;
 use SebastianBergmann\ResourceOperations\ResourceOperations;
 use SebastianBergmann\Timer\Timer;
@@ -45,7 +42,6 @@ use SebastianBergmann\Type\TypeName;
 use SebastianBergmann\Version;
 use Text_Template;
 use TheSeer\Tokenizer\Tokenizer;
-use Webmozart\Assert\Assert;
 
 /**
  * @internal This class is not covered by the backward compatibility promise for PHPUnit
@@ -71,17 +67,8 @@ final class Blacklist
         // phar-io/version
         PharIoVersion::class => 1,
 
-        // phpdocumentor/reflection-common
-        Project::class => 1,
-
-        // phpdocumentor/reflection-docblock
-        DocBlock::class => 1,
-
         // phpdocumentor/type-resolver
         Type::class => 1,
-
-        // phpspec/prophecy
-        Prophet::class => 1,
 
         // phpunit/phpunit
         TestCase::class => 2,
@@ -125,6 +112,9 @@ final class Blacklist
         // sebastian/object-enumerator
         Enumerator::class => 1,
 
+        // sebastian/object-reflector
+        ObjectReflector::class => 1,
+
         // sebastian/recursion-context
         Context::class => 1,
 
@@ -139,9 +129,6 @@ final class Blacklist
 
         // theseer/tokenizer
         Tokenizer::class => 1,
-
-        // webmozart/assert
-        Assert::class => 1,
     ];
 
     /**
@@ -200,7 +187,7 @@ final class Blacklist
                 } catch (ReflectionException $e) {
                     throw new Exception(
                         $e->getMessage(),
-                        (int) $e->getCode(),
+                        $e->getCode(),
                         $e
                     );
                 }

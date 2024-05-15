@@ -17,7 +17,8 @@
         }
     ],
     "support": {
-        "issues": "https://github.com/sebastianbergmann/phpunit/issues"
+        "issues": "https://github.com/sebastianbergmann/phpunit/issues",
+        "security": "https://github.com/sebastianbergmann/phpunit/security/policy"
     },
     "prefer-stable": true,
     "require": {
@@ -32,15 +33,14 @@
         "myclabs/deep-copy": "^1.10.0",
         "phar-io/manifest": "^2.0.3",
         "phar-io/version": "^3.0.2",
-        "phpspec/prophecy": "^1.10.3",
         "phpunit/php-code-coverage": "^7.0.12",
         "phpunit/php-file-iterator": "^2.0.4",
         "phpunit/php-text-template": "^1.2.1",
         "phpunit/php-timer": "^2.1.2",
-        "sebastian/comparator": "^3.0.2",
+        "sebastian/comparator": "^3.0.5",
         "sebastian/diff": "^3.0.2",
         "sebastian/environment": "^4.2.3",
-        "sebastian/exporter": "^3.1.2",
+        "sebastian/exporter": "^3.1.5",
         "sebastian/global-state": "^3.0.0",
         "sebastian/object-enumerator": "^3.0.3",
         "sebastian/resource-operations": "^2.0.1",
@@ -55,9 +55,9 @@
         "sort-packages": true
     },
     "suggest": {
-        "phpunit/php-invoker": "^2.0.0",
-        "ext-soap": "*",
-        "ext-xdebug": "*"
+        "phpunit/php-invoker": "To allow enforcing time limits",
+        "ext-soap": "To be able to generate mocks based on WSDL files",
+        "ext-xdebug": "PHP extension that provides line coverage as well as branch and path coverage"
     },
     "bin": [
         "phpunit"
