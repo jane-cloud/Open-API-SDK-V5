@@ -36,3 +36,51 @@ class FinanceAPI(Client):
     def staking_defi_orders_history(self, productId = '', protocolType = '', ccy = '', after = '', before = '', limit = ''):
         params = {'productId': productId, 'protocolType': protocolType, 'ccy': ccy, 'after':after, 'before':before, 'limit':limit}
         return self._request_with_params(GET, STAKING_DEFI_ORDERS_HISTORY, params)
+
+
+    def staking_defi_eth_purcase(self, amt = ''):
+        params = {}
+        return self._request_with_params(POST, STAKING_DEFI_ETH_PURCASE, params)
+
+
+    def staking_defi_eth_redeem(self, amt = ''):
+        params = {}
+        return self._request_with_params(POST, STAKING_DEFI_ETH_REDEEM, params)
+
+
+    def staking_defi_eth_balance(self, ):
+        params = {}
+        return self._request_with_params(GET, STAKING_DEFI_ETH_BALANCE, params)
+
+
+    def staking_defi_eth_p_r_history(self,type='',status='',after='',before='',limit='', ):
+        params = {'type': type,'status': status,'after': after,'before': before,'limit': limit,}
+        return self._request_with_params(GET, STAKING_DEFI_ETH_P_R_HISTORY, params)
+
+    def staking_defi_eth_apy_history(self,days='',):
+        params = {'days': days,}
+        return self._request_with_params(GET, STAKING_DEFI_ETH_APY_HISTORY, params)
+
+    def savings_lending_rate_summary(self,ccy='',):
+        params = {'ccy': ccy,}
+        return self._request_with_params(GET, SAVINGS_LENDING_RATE_SUM, params)
+
+
+    def savings_lending_rate_his(self,ccy='',after='',before='',limit='',):
+        params = {'ccy': ccy,'after': after,'before': before,'limit': limit,}
+        return self._request_with_params(GET, SAVINGS_LENDING_RATE_HIS, params)
+
+
+    def fixed_loan_lending_offers(self, ccy='', term='',  ):
+        params = {'ccy': ccy, 'term': term, }
+        return self._request_with_params(GET, FIXED_LOAN_LENDING_OFFERS, params)
+
+
+    def fixed_loan_lending_apy_history(self, ccy='', term='',  ):
+        params = {'ccy': ccy, 'term': term, }
+        return self._request_with_params(GET, FIXED_LOAN_LENDING_APY_HIS, params)
+
+
+    def fixed_loan_pending_lending_vol(self, ccy='', term='',  ):
+        params = {'ccy': ccy, 'term': term, }
+        return self._request_with_params(GET, FIXED_LOAN_PENDING_LENDING_VOL, params)

@@ -75,9 +75,10 @@ class TradeAPI(Client):
         return self._request_with_params(GET, ORDERS_HISTORY_ARCHIVE, params)
 
     # Get Transaction Details
-    def get_fills(self, instType='', uly='', instId='', ordId='', after='', before='', limit='', instFamily = '', begin = '', end = ''):
+    def get_fills(self, instType='', uly='', instId='', ordId='', after='', before='',
+                  limit='', instFamily = '', begin = '', end = '',subType=''):
         params = {'instType': instType, 'uly': uly, 'instId': instId, 'ordId': ordId, 'after': after, 'before': before,
-                  'limit': limit, 'instFamily': instFamily, 'begin': begin, 'end': end}
+                  'limit': limit, 'instFamily': instFamily, 'begin': begin, 'end': end,'subType':subType}
         return self._request_with_params(GET, ORDER_FILLS, params)
 
     # Place Algo Order
@@ -131,9 +132,9 @@ class TradeAPI(Client):
         return self._request_with_params(GET, ORDERS_ALGO_HISTORY, params)
 
     # Get Transaction Details History
-    def get_fills_history(self, instType, uly='', instId='', ordId='', after='', before='', limit=''):
+    def get_fills_history(self, instType, uly='', instId='', ordId='', after='', before='', limit='',subType=''):
         params = {'instType': instType, 'uly': uly, 'instId': instId, 'ordId': ordId, 'after': after, 'before': before,
-                  'limit': limit}
+                  'limit': limit,'subType':subType}
         return self._request_with_params(GET, ORDERS_FILLS_HISTORY, params)
 
     def easy_convert_currency_list(self):
@@ -183,5 +184,10 @@ class TradeAPI(Client):
     def fills_archives(self,year, quarter):
         params = {'year': year, 'quarter':quarter}
         return self._request_with_params(GET, FILLS_ARCHIVES, params)
+
+
+    def account_rate_limit(self,):
+        params = {}
+        return self._request_with_params(GET, ACC_RATE_LIMIT, params)
 
 

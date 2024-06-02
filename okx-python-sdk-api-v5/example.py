@@ -113,6 +113,10 @@ if __name__ == '__main__':
     # result = accountAPI.mmp(instFamily='')
     # 设置账户模式 POST /api/v5/account/set-account-level
     # result  = accountAPI.set_account_level(acctLv='')
+    # 仓位创建器 POST /api/v5/account/position-builder
+    result = accountAPI.position_builder()
+
+
 
     # funding api
     fundingAPI = Funding.FundingAPI(api_key, secret_key, passphrase, False, flag)
@@ -130,12 +134,10 @@ if __name__ == '__main__':
     # result = fundingAPI.get_deposit_history()
     # 获取币种列表  Get Currencies
     # result = fundingAPI.get_currency('ETH,BTC')
-    # 余币宝申购/赎回  PiggyBank Purchase/Redemption
-    result = fundingAPI.purchase_redempt('BTC', '1', 'purchase')
+
     # 资金流水查询  Asset Bills Details
     # result = fundingAPI.get_bills()
-    # 获取余币宝余额 PIGGY BALABCE
-    # result = fundingAPI.get_piggy_balance()
+
     # 闪电网络充币
     # result = fundingAPI.get_deposit_lightning(ccy='BTC',amt='0.01')
     # 闪电网络提币
@@ -150,10 +152,7 @@ if __name__ == '__main__':
     # result = fundingAPI.convert_dust_assets()
     # 获取账户资产估值 GET Obtain account asset valuation
     # result = fundingAPI.get_asset_valuation(ccy = 'USDT')
-    # 设置余币宝借贷利率 POST SET LENDING RATE
-    # result = fundingAPI.set_lending_rate(ccy = 'USDT',rate='')
-    # 获取余币宝出借明细 GET LENDING HISTORY
-    # result = fundingAPI.get_lending_rate(ccy = '')
+
     # 获取市场借贷信息（公共) GET LENDING RATE HISTORY
     # result = fundingAPI.get_lending_rate_history(ccy = '')
     # 获取市场借贷历史（公共）GET LENDING RATE SUMMARY
@@ -189,8 +188,11 @@ if __name__ == '__main__':
     # result = marketAPI.get_index_ticker('BTC', 'BTC-USD')
     # 获取产品深度  Get Order Book
     # result = marketAPI.get_orderbook('BTC-USDT-210402', '400')
-    # 获取产品轻量深度
+    # 获取产品轻量深度（该接口已下线）
     # result = marketAPI.get_books_lite(instId = 'BTC-USDT')
+    # 获取产品完整深度 GET /api/v5/market/books-full
+    # result = marketAPI.books_full()
+
     # 获取所有交易产品K线数据  Get Candlesticks
     # result = marketAPI.get_candlesticks('BTC-USDT-210924', bar='1m')
     # 获取交易产品历史K线数据（仅主流币实盘数据）  Get Candlesticks History（top currencies in real-trading only）
@@ -374,7 +376,9 @@ if __name__ == '__main__':
     # 申请成交明细（近两年） POST /api/v5/trade/fills-archive
     # result = tradeAPI.fills_archive()
     # 获取成交明细（近两年） GET /api/v5/trade/fills-archive
-    # result = tradeAPI.fills_archives()
+    result = tradeAPI.fills_archives()
+    # 获取账户限速 GET /api/v5/trade/account-rate-limit
+    result = accountAPI.account_rate_limit()
 
 
     #价差撮合交易 SprdAPI
@@ -436,7 +440,7 @@ if __name__ == '__main__':
     # 获取独立经纪商账户信息 GET Obtain independent broker account information
     # result = BrokerAPI.broker_info()
     # 创建子账户 Create sub account
-    result = BrokerAPI.create_subaccount(subAcct = 'qwerty', label = '',clientIP='',mainAcct='')
+    # result = BrokerAPI.create_subaccount(subAcct = 'qwerty', label = '',clientIP='',mainAcct='')
     # 删除子账户 Delete sub account
     # result = BrokerAPI.delete_subaccount(subAcct = 'qwerty')
     # 获取子账户列表 Get sub account list
@@ -471,6 +475,10 @@ if __name__ == '__main__':
     # result = BrokerAPI.set_subaccount_assets(subAcct='',ccy='')
     # 子账户IP上报 POST /api/v5/broker/nd/report-subaccount-ip
     # result = BrokerAPI.report_subaccount_ip(subAcct='',clientIP='')
+    # 获取用户的 Broker 返佣信息 GET /api/v5/broker/nd/if-rebate
+    # result = BrokerAPI.if_rebate(subAcct='',clientIP='')
+
+
 
 
     # FDBrokerAPI
@@ -523,14 +531,17 @@ if __name__ == '__main__':
     # result = RfqAPI.get_rfq_trades(rfqId = '', clRfqId = '', quoteId = '', blockTdId = '', clQuoteId = '', state = '', beginId = '', endId = '', beginTs ='', endTs = '', limit = '')
     # 获取大宗交易公共成交数据
     # result = RfqAPI.get_public_trades(beginId = '', endId = '', limit = '')
+    # 倒计时全部撤单 POST /api/v5/rfq/cancel-all-after
+    # result = RfqAPI.cancel_all_after()
+
 
 
     # 网格交易
     TradingBot = TradingBot.TradingBotAPI(api_key, secret_key, passphrase, False, flag)
     # 网格策略下单
-    # result = TradingBot.grid_order_algo(instId = 'BTC-USDT', algoOrdType = 'grid', maxPx = '100000', minPx = '10000', gridNum = '2', runType = '', tpTriggerPx = '', slTriggerPx = '', tag = '', baseSz = '1')
+    result = TradingBot.grid_order_algo(instId = 'BTC-USDT', algoOrdType = 'grid', maxPx = '100000', minPx = '10000', gridNum = '2', runType = '', tpTriggerPx = '', slTriggerPx = '', tag = '', baseSz = '1')
     # 修改网格策略订单
-    # result = TradingBot.grid_amend_order_algo(algoId = '451791361361317888', instId = '', slTriggerPx = '', tpTriggerPx = '')
+    result = TradingBot.grid_amend_order_algo(algoId = '451791361361317888', instId = '', slTriggerPx = '', tpTriggerPx = '')
     # 网格策略停止
     # result = TradingBot.grid_stop_order_algo(algoId = '455784823937040384', instId = 'BTC-USDT', algoOrdType = 'grid', stopType = '1')
     # 获取未完成网格策略委托单列表
@@ -566,6 +577,48 @@ if __name__ == '__main__':
     # result = Finance.staking_defi_orders_active(productId = '', protocolType = 'defi', ccy = '', state = '')
     # 查看历史订单 View historical orders
     # result = Finance.staking_defi_orders_history(productId = '', protocolType = '', ccy = '', after = '', before = '', limit = '')
+
+    # ETH质押
+    # 申购/api/v5/finance/staking-defi/eth/purchase
+    # result = Finance.staking_defi_eth_purcase()
+    # 赎回 POST /api/v5/finance/staking-defi/eth/redeem
+    # result = Finance.staking_defi_eth_redeem()
+    # GET / 获取余额 GET /api/v5/finance/staking-defi/eth/balance
+    # result = Finance.staking_defi_eth_balance()
+    # 获取申购赎回记录 GET /api/v5/finance/staking-defi/eth/purchase-redeem-history
+    # result = Finance.staking_defi_eth_p_r_history()
+    # 获取历史收益率(公共) GET /api/v5/finance/staking-defi/eth/apy-history
+    # result = Finance.staking_defi_eth_apy_history()
+
+    # 活期简单赚币
+    # 余币宝申购/赎回  PiggyBank Purchase/Redemption
+    # result = fundingAPI.purchase_redempt('BTC', '1', 'purchase')
+    # 获取余币宝余额 PIGGY BALABCE
+    # result = fundingAPI.get_piggy_balance()
+    # 设置余币宝借贷利率 POST SET LENDING RATE
+    # result = fundingAPI.set_lending_rate(ccy = 'USDT',rate='')
+    # 获取余币宝出借明细 GET LENDING HISTORY
+    # result = fundingAPI.get_lending_rate(ccy = '')
+    # 获取市场借贷信息（公共）GET /api/v5/finance/savings/lending-rate-summary
+    # result = Finance.savings_lending_rate_summary()
+    # 获取市场借贷历史（公共） GET /api/v5/finance/savings/lending-rate-history
+    # result = Finance.savings_lending_rate_his()
+
+    # 定期简单赚币
+    # 获取借币信息 GET /api/v5/finance/fixed-loan/lending-offers
+    # result = Finance.fixed_loan_lending_offers()
+    # 获取历史收益率 GET /api/v5/finance/fixed-loan/lending-apy-history
+    result = Finance.fixed_loan_lending_apy_history()
+    # 获取借贷量 GET /api/v5/finance/fixed-loan/pending-lending-volume
+    result = Finance.fixed_loan_pending_lending_vol()
+
+
+
+
+
+
+
+
 
     Copytrading = Copytrading.CopytradingAPI(api_key, secret_key, passphrase, False, flag)
     # 交易员获取当前带单

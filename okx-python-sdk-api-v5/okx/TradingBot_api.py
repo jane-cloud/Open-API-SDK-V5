@@ -6,12 +6,14 @@ class TradingBotAPI(Client):
     def __init__(self, api_key, api_secret_key, passphrase, use_server_time=False, flag='1'):
         Client.__init__(self, api_key, api_secret_key, passphrase, use_server_time, flag)
 
-    def grid_order_algo(self, instId = '', algoOrdType = '', maxPx= '', minPx = '', gridNum ='', runType = '', tpTriggerPx = '', slTriggerPx = '', tag = '', quoteSz = '', baseSz = '', sz = '', direction = '', lever = '', basePos = ''):
-        params = {'instId': instId, 'algoOrdType': algoOrdType, 'maxPx': maxPx, 'minPx': minPx, 'gridNum': gridNum, 'runType': runType, 'tpTriggerPx': tpTriggerPx, 'slTriggerPx': slTriggerPx, 'tag': tag, 'quoteSz': quoteSz, 'baseSz': baseSz, 'sz': sz, 'direction': direction, 'lever': lever, 'basePos':basePos}
+    def grid_order_algo(self, instId = '', algoOrdType = '', maxPx= '', minPx = '', gridNum ='', runType = '', tpTriggerPx = '', slTriggerPx = '', tag = '', quoteSz = '',
+                        baseSz = '', sz = '', direction = '', lever = '', basePos = '',tpRatio = '',slRatio=''):
+        params = {'instId': instId, 'algoOrdType': algoOrdType, 'maxPx': maxPx, 'minPx': minPx, 'gridNum': gridNum, 'runType': runType, 'tpTriggerPx': tpTriggerPx, 'slTriggerPx': slTriggerPx, 'tag': tag, 'quoteSz': quoteSz, 'baseSz': baseSz, 'sz': sz, 'direction': direction, 'lever': lever, 'basePos':basePos,
+                  'tpRatio': tpRatio,'slRatio': slRatio,}
         return self._request_with_params(POST, GRID_ORDER_ALGO, params)
 
-    def grid_amend_order_algo(self, algoId = '', instId = '', slTriggerPx= '', tpTriggerPx =''):
-        params = {'algoId': algoId, 'instId': instId, 'slTriggerPx': slTriggerPx, 'tpTriggerPx': tpTriggerPx}
+    def grid_amend_order_algo(self, algoId = '', instId = '', slTriggerPx= '', tpTriggerPx ='',tpRatio = '',slRatio=''):
+        params = {'algoId': algoId, 'instId': instId, 'slTriggerPx': slTriggerPx, 'tpTriggerPx': tpTriggerPx,'tpRatio': tpRatio,'slRatio': slRatio,}
         return self._request_with_params(POST, GRID_AMEND_ORDER_ALGO, params)
 
     def grid_stop_order_algo(self, algoId = '', instId = '', algoOrdType= '', stopType =''):

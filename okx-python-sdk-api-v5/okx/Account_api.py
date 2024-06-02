@@ -217,3 +217,10 @@ class AccountAPI(Client):
     def set_account_level(self,acctLv):
         params = {'acctLv': acctLv}
         return self._request_with_params(POST, SET_ACCOUNT_LEVEL, params)
+
+
+    def position_builder(self,inclRealPosAndEq='',spotOffsetType='',simPos='',simAsset='',
+                         greeksType='',):
+        params = {'acctLv': acctLv, 'spotOffsetType': spotOffsetType, 'simPos': simPos, 'simAsset': simAsset,
+                  'greeksType': greeksType, }
+        return self._request_with_params(POST, POSITION_BUILDER, params)

@@ -117,3 +117,8 @@ class MarketAPI(Client):
     def get_books_lite(self, instId=''):
         params = {'instId': instId}
         return self._request_with_params(GET, GET_BOOKS_LITE, params)
+
+
+    def books_full(self, instId='',sz=''):
+        params = {'instId': instId,'sz':sz}
+        return self._request_with_params(GET, BOOKS_FULL, params)

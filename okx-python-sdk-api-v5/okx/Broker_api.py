@@ -88,3 +88,8 @@ class BrokerAPI(Client):
         params = {'subAcct': subAcct, 'clientIP': clientIP,}
         return self._request_with_params(POST, R_SACCOUNT_IP, params)
 
+
+    def if_rebate(self, apiKey='',uid='',subAcct='',):
+        params = {'subAcct': subAcct, 'apiKey': apiKey,'uid': uid,}
+        return self._request_with_params(GET, IF_REBATE, params)
+
