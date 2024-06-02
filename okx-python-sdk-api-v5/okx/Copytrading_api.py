@@ -143,3 +143,75 @@ class CopytradingAPI(Client):
         params = {'instType': instType, 'after': after, 'before': before, 'limit': limit, 'uniqueCode': uniqueCode}
         return self._request_with_params(GET, PUBLIC_SUBPOS_HIS, params)
 
+    def apply_lead_trading(self, instType='',instId='', ):
+        params = {'instType': instType, 'instId': instId,}
+        return self._request_with_params(POST, APP_LEA_TRAD, params)
+
+    def stop_lead_trading(self, instType='',):
+        params = {'instType': instType,}
+        return self._request_with_params(POST, STOP_LEA_TRAD, params)
+
+
+    def amend_profit_sharing_ratio(self, instType='',profitSharingRatio=''):
+        params = {'instType': instType,'profitSharingRatio': profitSharingRatio}
+        return self._request_with_params(POST, AMEDN_PRO_SHAR_RATIO, params)
+
+
+    def lead_traders(self, instType='',sortType='',state='',minLeadDays='',minAssets='',maxAssets='',
+                     minAum='',maxAum='',dataVer='',page='',limit='',):
+        params = {'instType': instType,'sortType': sortType,'state': state,'minLeadDays': minLeadDays,
+                  'minAssets': minAssets,'maxAssets': maxAssets,'minAum': minAum,'maxAum': maxAum,
+                  'dataVer': dataVer,'page': page,'limit': limit,}
+        return self._request_with_params(GET, LEAD_TRADERS, params)
+
+
+    def weekly_pnl(self, instType='',uniqueCode=''):
+        params = {'instType': instType,'uniqueCode': uniqueCode,}
+        return self._request_with_params(GET, WEEKLY_PNL, params)
+
+
+    def pnl(self, instType='',uniqueCode='',lastDays = ''):
+        params = {'instType': instType,'uniqueCode': uniqueCode,'lastDays': lastDays,}
+        return self._request_with_params(GET, PNL, params)
+
+
+    def stats(self, instType='',uniqueCode='',lastDays = ''):
+        params = {'instType': instType,'uniqueCode': uniqueCode,'lastDays': lastDays,}
+        return self._request_with_params(GET, STATS, params)
+
+
+    def preference_currency(self, instType='',uniqueCode=''):
+        params = {'instType': instType,'uniqueCode': uniqueCode,}
+        return self._request_with_params(GET, PRE_CURR, params)
+
+
+    def performance_current_subpositions(self, instType='',uniqueCode='', after='', before='', limit='', ):
+        params = {'instType': instType,'uniqueCode': uniqueCode,'after': after,'before': before,'limit': limit, }
+        return self._request_with_params(GET, PRE_CURR_SUNPOSITION, params)
+
+
+    def performance_subpositions_history(self, instType='',uniqueCode='', after='', before='', limit='', ):
+        params = {'instType': instType,'uniqueCode': uniqueCode,'after': after,'before': before,'limit': limit, }
+        return self._request_with_params(GET, PRE_SUNPOSITION_HISTORY, params)
+
+
+    def copy_traders(self, instType='',uniqueCode='', limit='', ):
+        params = {'instType': instType,'uniqueCode': uniqueCode,'limit': limit, }
+        return self._request_with_params(GET, COPY_TRADERS, params)
+
+
+    def public_copy_traders(self, instType='',uniqueCode='', limit='', ):
+        params = {'instType': instType,'uniqueCode': uniqueCode,'limit': limit, }
+        return self._request_with_params(GET, PUB_COPY_TRADERS, params)
+
+
+    def config(self, ):
+        params = {}
+        return self._request_with_params(GET, CONFIG, params)
+
+
+    def total_unrealized_profit_sharing(self, instType = ''):
+        params = {'instType':instType}
+        return self._request_with_params(GET, TOTAL_UNREA_PRO_SHAR, params)
+
+

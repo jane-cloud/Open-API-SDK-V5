@@ -131,7 +131,7 @@ if __name__ == '__main__':
     # 获取币种列表  Get Currencies
     # result = fundingAPI.get_currency('ETH,BTC')
     # 余币宝申购/赎回  PiggyBank Purchase/Redemption
-    # result = fundingAPI.purchase_redempt('BTC', '1', 'purchase')
+    result = fundingAPI.purchase_redempt('BTC', '1', 'purchase')
     # 资金流水查询  Asset Bills Details
     # result = fundingAPI.get_bills()
     # 获取余币宝余额 PIGGY BALABCE
@@ -623,9 +623,48 @@ if __name__ == '__main__':
     # GET / 获取交易员当前带单
     # result = Copytrading.public_current_subpositions(after='', before='', limit='', instType='', uniqueCode='')
     # GET / 获取交易员历史带单
-    # result = Copytrading.public_subpositions_history(after='', before='', limit='', instType='', uniqueCode='')
+    result = Copytrading.public_subpositions_history(after='', before='', limit='', instType='', uniqueCode='')
+    # 带单申请 POST /api/v5/copytrading/apply-lead-trading
+    result = Copytrading.apply_lead_trading()
 
+    # 停止带单 /api/v5/copytrading/stop-lead-trading
+    result = Copytrading.stop_lead_trading()
 
+    # 修改分润比例 /api/v5/copytrading/amend-profit-sharing-ratio
+    result = Copytrading.amend_profit_sharing_ratio()
+
+    # 获取交易员排名（私有）GET /api/v5/copytrading/lead-traders
+    result = Copytrading.lead_traders()
+
+    # 获取交易员收益周表现（私有）GET /api/v5/copytrading/weekly-pnl
+    result = Copytrading.weekly_pnl()
+
+    # 获取交易员收益日表现（私有）/api/v5/copytrading/pnl
+    result = Copytrading.pnl()
+
+    # 获取交易员带单情况（私有）/api/v5/copytrading/stats
+    result = Copytrading.stats()
+
+    # 获取交易员币种偏好（私有）/api/v5/copytrading/preference-currency
+    result = Copytrading.preference_currency()
+
+    # 获取交易员当前带单（私有）/api/v5/copytrading/performance-current-subpositions
+    result = Copytrading.performance_current_subpositions(after='', before='', limit='', instType='', uniqueCode='')
+
+    # 获取交易员历史带单（私有）/api/v5/copytrading/performance-subpositions-history
+    result = Copytrading.performance_subpositions_history(after='', before='', limit='', instType='', uniqueCode='')
+
+    # 获取跟单人信息（私有）/api/v5/copytrading/copy-traders
+    result = Copytrading.copy_traders(uniqueCode='')
+
+    # 获取跟单人信息/api/v5/copytrading/public-copy-traders
+    result = Copytrading.public_copy_traders()
+
+    # 查看账户配置信息/api/v5/copytrading/config
+    result = Copytrading.config()
+
+    # 交易员待分润汇总 /api/v5/copytrading/total-unrealized-profit-sharing
+    result = Copytrading.total_unrealized_profit_sharing()
 
     # 定投
     Recurring = Recurring.RecurringAPI(api_key, secret_key, passphrase, False, flag)

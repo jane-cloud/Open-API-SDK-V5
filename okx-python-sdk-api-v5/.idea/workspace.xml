@@ -4,12 +4,7 @@
     <list default="true" id="17bd8d01-d93f-47b5-8b9f-802e831eeec2" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/example.py" beforeDir="false" afterPath="$PROJECT_DIR$/example.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/okx/Broker_api.py" beforeDir="false" afterPath="$PROJECT_DIR$/okx/Broker_api.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/okx/Copytrading_api.py" beforeDir="false" afterPath="$PROJECT_DIR$/okx/Copytrading_api.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/okx/Funding_api.py" beforeDir="false" afterPath="$PROJECT_DIR$/okx/Funding_api.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/okx/Public_api.py" beforeDir="false" afterPath="$PROJECT_DIR$/okx/Public_api.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/okx/Rfq_api.py" beforeDir="false" afterPath="$PROJECT_DIR$/okx/Rfq_api.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/okx/SprdApi_api.py" beforeDir="false" afterPath="$PROJECT_DIR$/okx/SprdApi_api.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/okx/consts.py" beforeDir="false" afterPath="$PROJECT_DIR$/okx/consts.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/websocket_example.py" beforeDir="false" afterPath="$PROJECT_DIR$/websocket_example.py" afterDir="false" />
     </list>
@@ -39,7 +34,9 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
-    &quot;last_opened_file_path&quot;: &quot;/Users/oker/Desktop/V5 update/Open-API-SDK-V5/okx-python-sdk-api-v5&quot;
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/oker/Desktop/D/V5/Open-API-SDK-V5/Open-API-SDK-V5/okx-python-sdk-api-v5&quot;
   }
 }</component>
   <component name="RecentsManager">
@@ -47,7 +44,7 @@
       <recent name="C:\Users\oker\Desktop\新建文件夹\Open-API-SDK-V5\okx-python-sdk-api-v5\okx_http2" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.SprdApi_api">
+  <component name="RunManager" selected="Python.example">
     <configuration name="SprdApi_api" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="okx-python-sdk-api-v5" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -92,8 +89,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.SprdApi_api" />
         <item itemvalue="Python.example" />
+        <item itemvalue="Python.SprdApi_api" />
       </list>
     </recent_temporary>
   </component>

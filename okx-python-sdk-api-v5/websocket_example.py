@@ -515,6 +515,8 @@ channels = [{"channel": "sprd-bbo-tbt","sprdId":""}]
 # channels = [{"channel": "algo-recurring-buy", "instType":"SPOT"}]
 # 跟单消息通知频道
 channels = [{"channel": "copytrading-notification", "instType":"SWAP","instId":"BTC-USDT-SWAP"}]
+# 带单消息通知频道
+channels = [{"channel": "copytrading-lead-notification", "instType":"SWAP","instId":"BTC-USDT-SWAP"}]
 
 #价差撮合
 # 订单频道 sprd-orders
