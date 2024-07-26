@@ -247,7 +247,7 @@ $obj = new PublicDataAPI(Config::$config);
  */
 $obj = new TradeAPI(Config::$config);
 // 下单 Place Order
-//$res = $obj -> order('ETH-USDT-SWAP','','','','','sell','','market',"300",'','','');
+// $res = $obj -> order('ETH-USDT-SWAP','cross','','','','sell','short','market',"1",'','','');
 //批量下单 Batch Order
 //$res = $obj -> batchOrders([['BTC-USDT-210625','isolated','','b15','','buy','long','limit','1','60000',''],['BTC-USDT-210924','isolated','','b15','','buy','long','limit','1','60000','']]);
 // 撤单 Cancel Order
@@ -265,7 +265,7 @@ $obj = new TradeAPI(Config::$config);
 // 获取未成交订单列表 Get Order List
 //$res = $obj -> getOrderPending('FUTURES','','','','live','','','');
 // 获取历史订单记录（近七天） Get Order History (last 7 days）
-$res = $obj -> getOrdersHistory('SWAP','','','','','','','','1');
+// $res = $obj -> getOrdersHistory('SWAP','','','','','','','','1');
 // 获取历史订单记录（近三个月） Get Order History (last 3 months)
 //$res = $obj -> getOrdersHistoryArchive('SWAP','','','','','','','','1');
 // 获取成交明细 Get Transaction Details
@@ -300,6 +300,30 @@ $res = $obj -> getOrdersHistory('SWAP','','','','','','','','1');
 // $res = $obj -> setInstruments('','');
 // 交易员历史分润明细
 // $res = $obj -> profitSharingDetails('','');
+// 交易员历史分润汇总
+// $res = $obj -> totalProfitSharing('','');
+// 交易员待分润明细
+// $res = $obj -> unrealizedProfitSharingDetails('','');
+// 交易员待分润汇总
+// $res = $obj -> totalUnrealizedProfitSharing('','');
+// 带单申请
+// $res = $obj -> applyLeadTrading('','');
+// 停止带单
+// $res = $obj -> stopLeadTrading('','');
+// 修改分润比例
+// $res = $obj -> amendProfitSharingRatio('','');
+// 查看账户配置信息
+// $res = $obj -> config('','');
+// 首次跟单设置
+// $res = $obj -> firstCopySettings('','');
+// 修改跟单设置
+// $res = $obj -> amendCopySettings('','');
+// 停止跟单
+// $res = $obj -> stopCopyTrading('','');
+// 获取跟单设置
+// $res = $obj -> copySettings('','');
+// 批量获取杠杆倍数
+// $res = $obj -> batchLeverageInfo('','');
 
 
 /**
