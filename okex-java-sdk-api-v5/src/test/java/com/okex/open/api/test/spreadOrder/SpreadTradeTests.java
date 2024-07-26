@@ -1,4 +1,4 @@
-package com.okex.open.api.test.spreadOrderbook;
+package com.okex.open.api.test.spreadOrder;
 
 import com.alibaba.fastjson.JSONObject;
 import com.okex.open.api.bean.spread.SpreadOrder;
@@ -223,6 +223,20 @@ public class SpreadTradeTests extends SpreadTradeBaseTests {
     public void getSprdTicker(){
 
         JSONObject result = spreadTradeService.getSprdTicker("");
+
+        toResultString(LOG, "result", result);
+    }
+    /**
+     * 倒计时全部撤单 cancel-all-after
+     * POST /api/v5/sprd/cancel-all-after
+     */
+    @Test
+    public void cancelAllAfter(){
+
+        SpreadOrder cancelAllAfter =new SpreadOrder();
+        cancelAllAfter.setTimeOut("");
+
+        JSONObject result = spreadTradeService.cancelAllAfter(cancelAllAfter);
 
         toResultString(LOG, "result", result);
     }

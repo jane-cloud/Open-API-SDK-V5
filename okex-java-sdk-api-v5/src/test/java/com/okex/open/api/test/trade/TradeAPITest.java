@@ -684,7 +684,7 @@ public class TradeAPITest extends TradeAPIBaseTest {
     public void cancelAllOrder(){
         CancelOrder cancelOrder = new CancelOrder();
         cancelOrder.setTimeOut("");
-
+        cancelOrder.setTag("");
         JSONObject result = tradeAPIService.cancelAllOrder(cancelOrder);
 
         toResultString(LOG, "result", result);

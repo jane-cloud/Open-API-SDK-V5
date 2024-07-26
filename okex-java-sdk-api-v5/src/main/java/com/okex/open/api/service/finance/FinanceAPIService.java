@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.okex.open.api.bean.earn.param.Cancel;
 import com.okex.open.api.bean.earn.param.Purchase;
 import com.okex.open.api.bean.earn.param.Redeem;
+import com.okex.open.api.bean.finance.param.AmendFinance;
 import com.okex.open.api.bean.finance.param.Finance;
 
 public interface FinanceAPIService {
@@ -21,4 +22,18 @@ public interface FinanceAPIService {
     JSONObject getLendingRateSummary(String ccy);
 
     JSONObject getLendingRateHistory(String ccy, String after, String before, String limit);
+
+    JSONObject getLendingOffers(String ccy, String term);
+
+    JSONObject getLendingApyHistory(String ccy, String term);
+
+    JSONObject getPendingLendingVolume(String ccy, String term);
+
+    JSONObject lendingOrder(Finance finance);
+
+    JSONObject amendLendingOrder(AmendFinance amendFinance);
+
+    JSONObject getLendingOrdersList(String ordId, String ccy, String state, String after, String before, String limit);
+
+    JSONObject getLendingSubOrders(String ordId, String state, String after, String before, String limit);
 }

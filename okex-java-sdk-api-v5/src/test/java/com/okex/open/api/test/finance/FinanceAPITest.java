@@ -2,6 +2,7 @@ package com.okex.open.api.test.finance;
 
 
 import com.alibaba.fastjson.JSONObject;
+import com.okex.open.api.bean.finance.param.AmendFinance;
 import com.okex.open.api.bean.finance.param.Finance;
 import com.okex.open.api.bean.trade.param.ClosePositions;
 import com.okex.open.api.service.finance.FinanceAPIService;
@@ -21,6 +22,7 @@ public class FinanceAPITest extends FinanceAPIBaseTests {
         this.config = this.config();
         this.financeAPIService = new FinanceAPIServiceImpl(this.config);
     }
+    //活期简单赚币
     /**
      * 获取余币宝余额 Get finance balance
      * GET /api/v5/finance/savings/balance
@@ -90,6 +92,93 @@ public class FinanceAPITest extends FinanceAPIBaseTests {
     @Test
     public void getLendingRateHistory(){
         JSONObject result = financeAPIService.getLendingRateHistory("","","","");
+        toResultString(LOG, "result", result);
+
+    }
+
+    //定期简单赚币
+    /**
+     * GET / 获取借币信息（公共） Get lending-offers
+     * GET /api/v5/finance/fixed-loan/lending-offers
+     */
+    @Test
+    public void getLendingOffers(){
+        JSONObject result = financeAPIService.getLendingOffers("","");
+        toResultString(LOG, "result", result);
+
+    }
+    /**
+     * GET /  获取历史收益率（公共） Get lending-apy-history
+     * GET /api/v5/finance/fixed-loan/lending-apy-history
+     */
+    @Test
+    public void getLendingApyHistory(){
+        JSONObject result = financeAPIService.getLendingApyHistory("","");
+        toResultString(LOG, "result", result);
+
+    }
+    /**
+     * GET /  获取借贷量（公共） Get pending-lending-volume
+     * GET /api/v5/finance/fixed-loan/pending-lending-volume
+     */
+    @Test
+    public void getPendingLendingVolume(){
+        JSONObject result = financeAPIService.getPendingLendingVolume("","");
+        toResultString(LOG, "result", result);
+
+    }
+
+    /**
+     * POST / 定期简单赚币申购 Get lending-order
+     * POST /api/v5/finance/fixed-loan/lending-order
+     */
+    @Test
+    public void lendingOrder(){
+        Finance finance =  new Finance();
+        finance.setCcy("");
+        finance.setRate("");
+        finance.setAmt("");
+        finance.setTerm("");
+        finance.setAutoRenewal("");
+        JSONObject result = financeAPIService.lendingOrder(finance);
+
+        toResultString(LOG, "result", result);
+
+    }
+
+    /**
+     * POST / 定期简单赚币修改订单 Get amend-lending-order
+     * POST /api/v5/finance/fixed-loan/amend-lending-order
+     */
+    @Test
+    public void amendLendingOrder(){
+        AmendFinance amendFinance =  new AmendFinance();
+        amendFinance.setOrdId("");
+        amendFinance.setAutoRenewal("");
+        amendFinance.setRate("");
+        amendFinance.setChangeAmt("");
+        JSONObject result = financeAPIService.amendLendingOrder(amendFinance);
+
+        toResultString(LOG, "result", result);
+
+    }
+    /**
+     * GET /  获取定期简单赚币订单信息 Get lending-orders-list
+     * GET /api/v5/finance/fixed-loan/lending-orders-list
+     */
+    @Test
+    public void getLendingOrdersList(){
+        JSONObject result = financeAPIService.getLendingOrdersList("","","","","","");
+        toResultString(LOG, "result", result);
+
+    }
+    /**
+     * GET /  获取定期简单赚币子订单信息 Get lending-sub-orders
+     * GET /api/v5/finance/fixed-loan/lending-sub-orders
+     */
+    @Test
+    public void getLendingSubOrders(){
+        JSONObject result = financeAPIService.getLendingSubOrders("","","","","");
         toResultString(LOG, "result", result);
 
     }

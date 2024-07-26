@@ -6,7 +6,6 @@ import com.okex.open.api.bean.account.param.*;
 import com.okex.open.api.client.APIClient;
 import com.okex.open.api.config.APIConfiguration;
 import com.okex.open.api.service.account.AccountAPIService;
-import retrofit2.http.Query;
 
 public class AccountAPIServiceImpl implements AccountAPIService {
 
@@ -45,14 +44,14 @@ public class AccountAPIServiceImpl implements AccountAPIService {
 
     //账单流水查询（近七天） Get Bills Details (last 7 days)
     @Override
-    public JSONObject getBillsDetails7Days(String instType,String ccy,String mgnMode,String ctType,String type,String subType,String after,String before,String limit) {
-        return this.client.executeSync(this.api.getBillsDetails7Days(instType,ccy,mgnMode,ctType,type,subType,after,before,limit));
+    public JSONObject getBillsDetails7Days(String instType,String ccy,String mgnMode,String ctType,String type,String subType,String after,String before,String limit,String instId) {
+        return this.client.executeSync(this.api.getBillsDetails7Days(instType,ccy,mgnMode,ctType,type,subType,after,before,limit,instId));
     }
 
     //账单流水查询（近三月） Get Bills Details (last 3 months)
     @Override
-    public JSONObject getBillsDetails3Months(String instType, String ccy, String mgnMode, String ctType, String type, String subType, String after, String before, String limit) {
-        return this.client.executeSync(this.api.getBillsDetails3Months(instType,ccy,mgnMode,ctType,type,subType,after,before,limit));
+    public JSONObject getBillsDetails3Months(String instType, String ccy, String mgnMode, String ctType, String type, String subType, String after, String before, String limit,String instId) {
+        return this.client.executeSync(this.api.getBillsDetails3Months(instType,ccy,mgnMode,ctType,type,subType,after,before,limit,instId));
     }
 
     //查看账户配置 Get Account Configuration
@@ -273,5 +272,45 @@ public class AccountAPIServiceImpl implements AccountAPIService {
     @Override
     public JSONObject getInstruments(String instType, String uly, String instFamily, String instId) {
         return this.client.executeSync(this.api.getInstruments(instType,uly,instFamily,instId));
+    }
+
+    @Override
+    public JSONObject getBorrowingLimit() {
+        return this.client.executeSync(this.api.getBorrowingLimit());
+    }
+
+    @Override
+    public JSONObject getBorrowingQuote(String type, String ccy, String amt, String maxRate, String term, String ordId) {
+        return this.client.executeSync(this.api.getBorrowingQuote(type, ccy, amt, maxRate, term, ordId));
+    }
+
+    @Override
+    public JSONObject borrowingOrder(AccountBorrowRepay borrowingOrder) {
+        return this.client.executeSync(this.api.borrowingOrder(JSONObject.parseObject(JSON.toJSONString(borrowingOrder))));
+    }
+
+    @Override
+    public JSONObject amendBorrowingOrder(BorrowingOrder amendBorrowingOrder) {
+        return this.client.executeSync(this.api.amendBorrowingOrder(JSONObject.parseObject(JSON.toJSONString(amendBorrowingOrder))));
+    }
+
+    @Override
+    public JSONObject manualReborrow(BorrowingOrder manualReborrow) {
+        return this.client.executeSync(this.api.manualReborrow(JSONObject.parseObject(JSON.toJSONString(manualReborrow))));
+    }
+
+    @Override
+    public JSONObject repayBorrowingOrder(BorrowingOrder repayBorrowingOrder) {
+        return this.client.executeSync(this.api.repayBorrowingOrder(JSONObject.parseObject(JSON.toJSONString(repayBorrowingOrder))));
+    }
+
+    @Override
+    public JSONObject getBorrowingOrdersList(String ordId, String ccy, String state, String after, String before, String limit) {
+        return this.client.executeSync(this.api.getBorrowingOrdersList(ordId,  ccy,  state,  after,  before,  limit));
+    }
+
+    @Override
+    public JSONObject setRiskOffsetAmt(SetRiskOffsetAmt setRiskOffsetAmt) {
+        return this.client.executeSync(this.api.setRiskOffsetAmt(JSONObject.parseObject(JSON.toJSONString(setRiskOffsetAmt))));
     }
 }

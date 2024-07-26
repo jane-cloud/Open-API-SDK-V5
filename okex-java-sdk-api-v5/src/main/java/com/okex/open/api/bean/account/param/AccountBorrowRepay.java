@@ -7,6 +7,44 @@ public class AccountBorrowRepay {
 
     private String ordId;
 
+    public String getMaxRate() {
+        return maxRate;
+    }
+
+    public void setMaxRate(String maxRate) {
+        this.maxRate = maxRate;
+    }
+
+    public String getTerm() {
+        return term;
+    }
+
+    public void setTerm(String term) {
+        this.term = term;
+    }
+
+    public String getReborrow() {
+        return reborrow;
+    }
+
+    public void setReborrow(String reborrow) {
+        this.reborrow = reborrow;
+    }
+
+    public String getReborrowRate() {
+        return reborrowRate;
+    }
+
+    public void setReborrowRate(String reborrowRate) {
+        this.reborrowRate = reborrowRate;
+    }
+
+    private String maxRate;
+    private String term;
+    private String reborrow;
+
+    private String reborrowRate;
+
     public String getOrdId() {
         return ordId;
     }

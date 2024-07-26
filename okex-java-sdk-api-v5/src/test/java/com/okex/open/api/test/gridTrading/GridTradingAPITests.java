@@ -39,6 +39,7 @@ public class GridTradingAPITests extends GridTradingAPIBaseTests {
         orderAlgo.setTpTriggerPx("");
         orderAlgo.setSlTriggerPx("");
         orderAlgo.setTag("");
+        orderAlgo.setProfitSharingRatio("");
 
         //现货网格
         orderAlgo.setQuoteSz("");

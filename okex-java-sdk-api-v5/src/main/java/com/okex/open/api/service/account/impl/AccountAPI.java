@@ -34,7 +34,8 @@ public interface AccountAPI {
                                           @Query("subType")String subType,
                                           @Query("after")String after,
                                           @Query("before")String before,
-                                          @Query("limit")String limit);
+                                          @Query("limit")String limit,
+                                          @Query("instId")String instId);
 
     //账单流水查询（近三月） Get Bills Details (last 3 months)
     @GET("/api/v5/account/bills-archive")
@@ -46,7 +47,8 @@ public interface AccountAPI {
                                           @Query("subType")String subType,
                                           @Query("after")String after,
                                           @Query("before")String before,
-                                          @Query("limit")String limit);
+                                          @Query("limit")String limit,
+                                                    @Query("instId")String instId);
 
     //查看账户配置 Get Account Configuration
     @GET("/api/v5/account/config")
@@ -193,4 +195,27 @@ public interface AccountAPI {
 
     @GET("/api/v5/account/instruments")
     Call<JSONObject>   getInstruments(@Query("instType")String instType,@Query("uly") String uly,@Query("instFamily") String instFamily,@Query("instId") String instId);
+    @GET("/api/v5/account/fixed-loan/borrowing-limit")
+    Call<JSONObject> getBorrowingLimit();
+
+    @GET("/api/v5/account/fixed-loan/borrowing-quote")
+    Call<JSONObject> getBorrowingQuote(@Query("type")String type, @Query("ccy")String ccy, @Query("amt")String amt, @Query("maxRate")String maxRate, @Query("term")String term,@Query("ordId") String ordId);
+
+    @POST("/api/v5/account/fixed-loan/borrowing-order")
+    Call<JSONObject> borrowingOrder(@Body JSONObject parseObject);
+
+    @POST("/api/v5/account/fixed-loan/amend-borrowing-order")
+    Call<JSONObject> amendBorrowingOrder(@Body JSONObject parseObject);
+
+    @POST("/api/v5/account/fixed-loan/manual-reborrow")
+    Call<JSONObject> manualReborrow(@Body JSONObject parseObject);
+
+    @POST("/api/v5/account/fixed-loan/repay-borrowing-order")
+    Call<JSONObject> repayBorrowingOrder(@Body JSONObject parseObject);
+
+    @GET("/api/v5/account/fixed-loan/borrowing-orders-list")
+    Call<JSONObject> getBorrowingOrdersList(@Query("ordId")String ordId,@Query("ccy") String ccy,@Query("state") String state,@Query("after") String after,@Query("before") String before,@Query("limit") String limit);
+
+    @POST("/api/v5/account/set-riskOffset-amt")
+    Call<JSONObject> setRiskOffsetAmt(@Body JSONObject parseObject);
 }

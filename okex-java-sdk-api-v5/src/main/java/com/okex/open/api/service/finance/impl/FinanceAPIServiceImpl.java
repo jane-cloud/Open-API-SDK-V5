@@ -2,6 +2,7 @@ package com.okex.open.api.service.finance.impl;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import com.okex.open.api.bean.finance.param.AmendFinance;
 import com.okex.open.api.bean.finance.param.Finance;
 import com.okex.open.api.client.APIClient;
 import com.okex.open.api.config.APIConfiguration;
@@ -46,5 +47,40 @@ public class FinanceAPIServiceImpl implements FinanceAPIService {
     @Override
     public JSONObject getLendingRateHistory(String ccy, String after, String before, String limit) {
         return this.client.executeSync(this.api.getLendingRateHistory( ccy,after, before, limit));
+    }
+
+    @Override
+    public JSONObject getLendingOffers(String ccy, String term) {
+        return this.client.executeSync(this.api.getLendingOffers( ccy,term));
+    }
+
+    @Override
+    public JSONObject getLendingApyHistory(String ccy, String term) {
+        return this.client.executeSync(this.api.getLendingApyHistory( ccy,term));
+    }
+
+    @Override
+    public JSONObject getPendingLendingVolume(String ccy, String term) {
+        return this.client.executeSync(this.api.getPendingLendingVolume( ccy,term));
+    }
+
+    @Override
+    public JSONObject lendingOrder(Finance finance) {
+        return this.client.executeSync(this.api.lendingOrder( JSONObject.parseObject(JSON.toJSONString(finance))));
+    }
+
+    @Override
+    public JSONObject amendLendingOrder(AmendFinance amendFinance) {
+        return this.client.executeSync(this.api.amendLendingOrder( JSONObject.parseObject(JSON.toJSONString(amendFinance))));
+    }
+
+    @Override
+    public JSONObject getLendingOrdersList(String ordId, String ccy, String state, String after, String before, String limit) {
+        return this.client.executeSync(this.api.getLendingOrdersList( ordId,  ccy, state, after, before, limit));
+    }
+
+    @Override
+    public JSONObject getLendingSubOrders(String ordId, String state, String after, String before, String limit) {
+        return this.client.executeSync(this.api.getLendingSubOrders( ordId, state, after, before, limit));
     }
 }

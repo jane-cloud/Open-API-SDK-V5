@@ -39,4 +39,6 @@ public interface SpreadTradeService {
     JSONObject getSprdCandles(String sprdId, String after, String before, String bar, String limit);
 
     JSONObject getSprdTicker(String sprdId);
+
+    JSONObject cancelAllAfter(SpreadOrder cancelAllAfter);
 }

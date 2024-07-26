@@ -37,4 +37,23 @@ public class Finance {
     private String amt;
     private String side;
     private String rate;
+
+    public String getTerm() {
+        return term;
+    }
+
+    public void setTerm(String term) {
+        this.term = term;
+    }
+
+    public String getAutoRenewal() {
+        return autoRenewal;
+    }
+
+    public void setAutoRenewal(String autoRenewal) {
+        this.autoRenewal = autoRenewal;
+    }
+
+    private String term;
+    private String autoRenewal;
 }

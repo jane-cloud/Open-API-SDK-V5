@@ -76,4 +76,29 @@ public class RubikAPIServiceImpl implements RubikAPIService {
         return this.client.executeSync(this.api.getTakerBlockVolume(ccy,period));
     }
 
+    @Override
+    public JSONObject getOpenInterestHistory(String instId, String period, String end, String begin, String limit) {
+        return this.client.executeSync(this.api.getOpenInterestHistory(instId,  period,  end,  begin,  limit));
+    }
+
+    @Override
+    public JSONObject getTakerVolumeContract(String instId, String period, String unit, String end, String begin, String limit) {
+        return this.client.executeSync(this.api.getTakerVolumeContract(instId,  period, unit, end,  begin,  limit));
+    }
+
+    @Override
+    public JSONObject getTopLongShortRatio(String instId, String period, String end, String begin, String limit) {
+        return this.client.executeSync(this.api.getTopLongShortRatio(instId,  period,  end,  begin,  limit));
+    }
+
+    @Override
+    public JSONObject getTopLongShortPosRatio(String instId, String period, String end, String begin, String limit) {
+        return this.client.executeSync(this.api.getTopLongShortPosRatio(instId,  period,  end,  begin,  limit));
+    }
+
+    @Override
+    public JSONObject getLongShortRatio(String instId, String period, String end, String begin, String limit) {
+        return this.client.executeSync(this.api.getLongShortRatio(instId,  period,  end,  begin,  limit));
+    }
+
 }

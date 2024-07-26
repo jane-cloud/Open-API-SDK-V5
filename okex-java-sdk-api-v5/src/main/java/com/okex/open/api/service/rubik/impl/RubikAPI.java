@@ -67,6 +67,19 @@ public interface RubikAPI {
                                          @Query("period")String period);
 
 
+    @GET("/api/v5/rubik/stat/contracts/open-interest-history")
+    Call<JSONObject> getOpenInterestHistory(@Query("instId") String instId,@Query("period")  String period,@Query("end")  String end, @Query("begin") String begin,@Query("limit")  String limit);
 
+    @GET("/api/v5/rubik/stat/taker-volume-contract")
+    Call<JSONObject>  getTakerVolumeContract(@Query("instId") String instId,@Query("period")  String period,@Query("unit")  String unit,@Query("end")  String end, @Query("begin") String begin,@Query("limit")  String limit);
+
+    @GET("/api/v5/rubik/stat/contracts/long-short-account-ratio-contract-top-trader")
+    Call<JSONObject> getTopLongShortRatio(@Query("instId") String instId,@Query("period")  String period,@Query("end")  String end, @Query("begin") String begin,@Query("limit")  String limit);
+
+    @GET("/api/v5/rubik/stat/contracts/long-short-position-ratio-contract-top-trader")
+    Call<JSONObject> getTopLongShortPosRatio(@Query("instId") String instId,@Query("period")  String period,@Query("end")  String end, @Query("begin") String begin,@Query("limit")  String limit);
+
+    @GET("/api/v5/rubik/stat/contracts/long-short-account-ratio-contract")
+    Call<JSONObject> getLongShortRatio(@Query("instId") String instId,@Query("period")  String period,@Query("end")  String end, @Query("begin") String begin,@Query("limit")  String limit);
 
 }

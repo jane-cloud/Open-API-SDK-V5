@@ -1,4 +1,4 @@
-package com.okex.open.api.test.earn;
+package com.okex.open.api.test.copytrading.earn;
 
 
 import com.alibaba.fastjson.JSONObject;

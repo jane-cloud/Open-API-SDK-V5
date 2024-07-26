@@ -27,4 +27,26 @@ public interface FinanceAPI {
     Call<JSONObject>  getLendingRateSummary(@Query("ccy")String ccy);
     @GET("/api/v5/finance/savings/lending-rate-history")
     Call<JSONObject>  getLendingRateHistory(@Query("ccy")String ccy, @Query("after")String after, @Query("before")String before, @Query("limit")String limit);
+
+    @GET("/api/v5/finance/fixed-loan/lending-offers")
+    Call<JSONObject>  getLendingOffers(@Query("ccy")String ccy, @Query("term")String term);
+
+    @GET("/api/v5/finance/fixed-loan/lending-apy-history")
+    Call<JSONObject> getLendingApyHistory(@Query("ccy")String ccy, @Query("term")String term);
+
+    @GET("/api/v5/finance/fixed-loan/pending-lending-volume")
+    Call<JSONObject> getPendingLendingVolume(@Query("ccy")String ccy, @Query("term")String term);
+
+    @POST("/api/v5/finance/fixed-loan/lending-order")
+    Call<JSONObject> lendingOrder(@Body JSONObject parseObject);
+
+ @POST("/api/v5/finance/fixed-loan/amend-lending-order")
+ Call<JSONObject> amendLendingOrder(@Body JSONObject parseObject);
+
+ @GET("/api/v5/finance/fixed-loan/lending-orders-list")
+ Call<JSONObject> getLendingOrdersList(@Query("ordId")String ordId,@Query("ccy") String ccy,@Query("state") String state, @Query("after")String after,@Query("before") String before,@Query("limit") String limit);
+
+ @GET("/api/v5/finance/fixed-loan/lending-sub-orders")
+ Call<JSONObject> getLendingSubOrders(@Query("ordId")String ordId,@Query("state") String state, @Query("after")String after,@Query("before") String before,@Query("limit") String limit);
+
 }

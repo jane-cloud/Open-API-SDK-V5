@@ -2,10 +2,6 @@ package com.okex.open.api.service.account;
 
 import com.alibaba.fastjson.JSONObject;
 import com.okex.open.api.bean.account.param.*;
-import retrofit2.Call;
-import retrofit2.http.Body;
-import retrofit2.http.POST;
-import retrofit2.http.Query;
 
 
 public interface AccountAPIService {
@@ -23,10 +19,10 @@ public interface AccountAPIService {
     JSONObject getAccountAndPosition(String instType);
 
     //账单流水查询（近七天） Get Bills Details (last 7 days)
-    JSONObject getBillsDetails7Days(String instType,String ccy,String mgnMode,String ctType,String type,String subType,String after,String before,String limit);
+    JSONObject getBillsDetails7Days(String instType,String ccy,String mgnMode,String ctType,String type,String subType,String after,String before,String limit,String instId);
 
     //账单流水查询（近三月） Get Bills Details (last 3 months)
-    JSONObject getBillsDetails3Months(String instType,String ccy,String mgnMode,String ctType,String type,String subType,String after,String before,String limit);
+    JSONObject getBillsDetails3Months(String instType,String ccy,String mgnMode,String ctType,String type,String subType,String after,String before,String limit,String instId);
 
     //查看账户配置 Get Account Configuration
     JSONObject getAccountConfiguration();
@@ -133,4 +129,20 @@ public interface AccountAPIService {
     JSONObject positionBuilder(PositionBuilder positionBuilder);
 
     JSONObject getInstruments(String instType, String uly, String instFamily, String instId);
+
+    JSONObject getBorrowingLimit();
+
+    JSONObject getBorrowingQuote(String type, String ccy, String amt, String maxRate, String term, String ordId);
+
+    JSONObject borrowingOrder(AccountBorrowRepay borrowingOrder);
+
+    JSONObject amendBorrowingOrder(BorrowingOrder amendBorrowingOrder);
+
+    JSONObject manualReborrow(BorrowingOrder manualReborrow);
+
+    JSONObject repayBorrowingOrder(BorrowingOrder repayBorrowingOrder);
+
+    JSONObject getBorrowingOrdersList(String ordId, String ccy, String state, String after, String before, String limit);
+
+    JSONObject setRiskOffsetAmt(SetRiskOffsetAmt setRiskOffsetAmt);
 }

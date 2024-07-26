@@ -120,5 +120,50 @@ public class RubikAPITests extends RubikAPIBaseTests{
         JSONObject result = this.rubikAPIService.getTakerBlockVolume("BTC",null);
         toResultString(LOG, "result", result);
     }
+    /**
+     * 获取合约持仓量历史 open-interest-history
+     * GET /api/v5/rubik/stat/contracts/open-interest-history
+     */
+    @Test
+    public void getOpenInterestHistory(){
+        JSONObject result = this.rubikAPIService.getOpenInterestHistory("",null,null,null,null);
+        toResultString(LOG, "result", result);
+    }
+    /**
+     * 获取合约主动买入/卖出情况 taker-volume-contract
+     * GET /api/v5/rubik/stat/taker-volume-contract
+     */
+    @Test
+    public void getTakerVolumeContract(){
+        JSONObject result = this.rubikAPIService.getTakerVolumeContract("",null,null,null,null,null);
+        toResultString(LOG, "result", result);
+    }
+    /**
+     * 获取精英交易员合约多空持仓人数比 long-short-account-ratio-contract-top-trader
+     * GET /api/v5/rubik/stat/contracts/long-short-account-ratio-contract-top-trader
+     */
+    @Test
+    public void getTopLongShortRatio(){
+        JSONObject result = this.rubikAPIService.getTopLongShortRatio("",null,null,null,null);
+        toResultString(LOG, "result", result);
+    }
+    /**
+     * 获取精英交易员合约多空持仓仓位比 long-short-position-ratio-contract-top-trader
+     * GET /api/v5/rubik/stat/contracts/long-short-position-ratio-contract-top-trader
+     */
+    @Test
+    public void getTopLongShortPosRatio(){
+        JSONObject result = this.rubikAPIService.getTopLongShortPosRatio("",null,null,null,null);
+        toResultString(LOG, "result", result);
+    }
+    /**
+     * 获取合约多空持仓人数比 long-short-account-ratio-contract
+     * GET /api/v5/rubik/stat/contracts/long-short-account-ratio-contract
+     */
+    @Test
+    public void getLongShortRatio(){
+        JSONObject result = this.rubikAPIService.getLongShortRatio("",null,null,null,null);
+        toResultString(LOG, "result", result);
+    }
 
 }

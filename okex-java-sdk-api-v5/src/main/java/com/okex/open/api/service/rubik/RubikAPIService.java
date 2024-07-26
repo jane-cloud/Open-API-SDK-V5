@@ -35,4 +35,13 @@ public interface RubikAPIService {
     //看跌/看涨期权合约 主动买入/卖出量 Get Taker flow
     JSONObject getTakerBlockVolume(String ccy,String period);
 
+    JSONObject getOpenInterestHistory(String instId, String period, String end, String begin, String limit);
+
+    JSONObject getTakerVolumeContract(String instId, String period,String unit, String end, String begin, String limit);
+
+    JSONObject getTopLongShortRatio(String instId, String period, String end, String begin, String limit);
+
+    JSONObject getTopLongShortPosRatio(String instId, String period, String end, String begin, String limit);
+
+    JSONObject getLongShortRatio(String instId, String period, String end, String begin, String limit);
 }

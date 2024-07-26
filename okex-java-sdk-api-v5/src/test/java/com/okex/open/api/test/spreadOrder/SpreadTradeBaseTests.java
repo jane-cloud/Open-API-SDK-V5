@@ -1,11 +1,10 @@
-package com.okex.open.api.test.earn;
+package com.okex.open.api.test.spreadOrder;
 
 import com.okex.open.api.config.APIConfiguration;
 import com.okex.open.api.enums.I18nEnum;
 import com.okex.open.api.test.BaseTests;
 
-public class EarnAPIBaseTests extends BaseTests {
-
+public class SpreadTradeBaseTests extends BaseTests {
     public APIConfiguration config() {
         APIConfiguration config = new APIConfiguration();
 
@@ -22,9 +21,14 @@ public class EarnAPIBaseTests extends BaseTests {
         //if you want to request the endpoint in demo trading,please input 1,otherwise,please input 0
         config.setxSimulatedTrading("0");
 
-        config.setPrint(true);
-        config.setI18n(I18nEnum.ENGLISH);
+        //请求模拟盘的接口需要传入1，否则传入0
+        //if you want to request the endpoint in demo trading,please input 1,otherwise,please input 0
+        config.setxSimulatedTrading("0");
 
+
+        config.setPrint(true);
+        /* config.setI18n(I18nEnum.SIMPLIFIED_CHINESE);*/
+        config.setI18n(I18nEnum.ENGLISH);
         return config;
     }
 }

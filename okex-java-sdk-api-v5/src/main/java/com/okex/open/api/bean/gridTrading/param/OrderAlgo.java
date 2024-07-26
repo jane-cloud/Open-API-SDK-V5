@@ -20,6 +20,17 @@ public class OrderAlgo {
     private String basePos;
     private String tpRatio;
 
+    public String getProfitSharingRatio() {
+        return profitSharingRatio;
+    }
+
+    public void setProfitSharingRatio(String profitSharingRatio) {
+        this.profitSharingRatio = profitSharingRatio;
+    }
+
+    private String profitSharingRatio;
+
+
     public String getTpRatio() {
         return tpRatio;
     }

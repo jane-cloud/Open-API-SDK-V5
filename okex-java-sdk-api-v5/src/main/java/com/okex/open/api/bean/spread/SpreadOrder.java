@@ -11,6 +11,16 @@ public class SpreadOrder {
     private String reqId;
     private String newSz;
 
+    public String getTimeOut() {
+        return timeOut;
+    }
+
+    public void setTimeOut(String timeOut) {
+        this.timeOut = timeOut;
+    }
+
+    private String timeOut;
+
     public String getReqId() {
         return reqId;
     }

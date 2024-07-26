@@ -58,4 +58,7 @@ public interface SpreadTrade {
 
     @GET("/api/v5/market/sprd-ticker")
     Call<JSONObject> getSprdTicker(@Query("sprdId")String sprdId);
+
+    @POST("/api/v5/sprd/cancel-all-after")
+    Call<JSONObject> cancelAllAfter(@Body SpreadOrder cancelAllAfter);
 }

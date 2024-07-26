@@ -71,7 +71,7 @@ public class AccountAPITests extends  AccountAPIBaseTests {
      */
     @Test
     public void getBillsDetails7Days(){
-        JSONObject result = this.accountAPIService.getBillsDetails7Days("SWAP","","","","","","","","");
+        JSONObject result = this.accountAPIService.getBillsDetails7Days("SWAP","","","","","","","","","");
         toResultString(LOG, "result", result);
     }
 
@@ -81,7 +81,7 @@ public class AccountAPITests extends  AccountAPIBaseTests {
      */
     @Test
     public void getBillsDetails3Months(){
-        JSONObject result = this.accountAPIService.getBillsDetails3Months("SWAP",null,null,null,"8",null,null,null,null);
+        JSONObject result = this.accountAPIService.getBillsDetails3Months("SWAP",null,null,null,"8",null,null,null,null,null);
         toResultString(LOG, "result", result);
     }
 
@@ -544,6 +544,99 @@ public class AccountAPITests extends  AccountAPIBaseTests {
     @Test
     public void getInstruments(){
         JSONObject result = this.accountAPIService.getInstruments("","","","");
+        toResultString(LOG, "result", result);
+    }
+    /**
+     * 获取固定借币限额 borrowing-limit
+     * GET /api/v5/account/fixed-loan/borrowing-limit
+     */
+    @Test
+    public void getBorrowingLimit(){
+        JSONObject result = this.accountAPIService.getBorrowingLimit();
+        toResultString(LOG, "result", result);
+    }
+    /**
+     * 获取固定借币询价 borrowing-quote
+     * GET /api/v5/account/fixed-loan/borrowing-quote
+     */
+    @Test
+    public void getBorrowingQuote(){
+        JSONObject result = this.accountAPIService.getBorrowingQuote("","","","","","");
+        toResultString(LOG, "result", result);
+    }
+    /**
+     * 固定借币下单 borrowing-order
+     * POST /api/v5/account/fixed-loan/borrowing-order
+     */
+    @Test
+    public void borrowingOrder(){
+        AccountBorrowRepay borrowingOrder = new AccountBorrowRepay();
+        borrowingOrder.setCcy("");
+        borrowingOrder.setAmt("");
+        borrowingOrder.setMaxRate("");
+        borrowingOrder.setTerm("");
+        borrowingOrder.setReborrow("");
+        borrowingOrder.setReborrowRate("");
+        JSONObject result = this.accountAPIService.borrowingOrder(borrowingOrder);
+        toResultString(LOG, "result", result);
+    }
+    /**
+     * 修改固定借币订单 amend-borrowing-order
+     * POST /api/v5/account/fixed-loan/amend-borrowing-order
+     */
+    @Test
+    public void amendBorrowingOrder(){
+        BorrowingOrder amendBorrowingOrder = new BorrowingOrder();
+        amendBorrowingOrder.setOrdId("");
+        amendBorrowingOrder.setReborrow("");
+        amendBorrowingOrder.setRenewMaxRate("");
+        JSONObject result = this.accountAPIService.amendBorrowingOrder(amendBorrowingOrder);
+        toResultString(LOG, "result", result);
+    }
+    /**
+     * 固定借币手动续借 manual-reborrow
+     * POST /api/v5/account/fixed-loan/manual-reborrow
+     */
+    @Test
+    public void manualReborrow(){
+        BorrowingOrder manualReborrow = new BorrowingOrder();
+        manualReborrow.setOrdId("");
+        manualReborrow.setMaxRate("");
+        JSONObject result = this.accountAPIService.manualReborrow(manualReborrow);
+        toResultString(LOG, "result", result);
+    }
+    /**
+     * 固定借币手动还币 repay-borrowing-order
+     * POST  /api/v5/account/fixed-loan/repay-borrowing-order
+     */
+    @Test
+    public void repayBorrowingOrder(){
+        BorrowingOrder repayBorrowingOrder = new BorrowingOrder();
+        repayBorrowingOrder.setOrdId("");
+        JSONObject result = this.accountAPIService.repayBorrowingOrder(repayBorrowingOrder);
+        toResultString(LOG, "result", result);
+    }
+    /**
+     * 获取固定借币订单信息borrowing-orders-list
+     * GET  /api/v5/account/fixed-loan/borrowing-orders-list
+     */
+    @Test
+    public void getBorrowingOrdersList(){
+
+        JSONObject result = this.accountAPIService.getBorrowingOrdersList("","","","","","");
+        toResultString(LOG, "result", result);
+    }
+    /**
+     * 设置现货对冲占用 set-riskOffset-amt
+     * POST /api/v5/account/set-riskOffset-amt
+     */
+    @Test
+    public void setRiskOffsetAmt(){
+        SetRiskOffsetAmt setRiskOffsetAmt = new SetRiskOffsetAmt();
+        setRiskOffsetAmt.setCcy("");
+        setRiskOffsetAmt.setClSpotInUseAmt("");
+
+        JSONObject result = this.accountAPIService.setRiskOffsetAmt(setRiskOffsetAmt);
         toResultString(LOG, "result", result);
     }
 }
