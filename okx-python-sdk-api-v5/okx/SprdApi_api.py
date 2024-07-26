@@ -94,3 +94,14 @@ class SprdAPI(Client):
         return self._request_with_params(POST, SPRD_CANCEL_ALL_AFTER, params)
 
 
+    # GET /api/v5/market/sprd-candles
+    def get_sprd_candles(self,sprdId='', bar='', after='', before='', limit=''):
+        params = {'sprdId': sprdId, 'bar': bar, 'after': after, 'before': before, 'limit': limit}
+        return self._request_with_params(GET, GET_SPRD_CANDLES, params)
+
+    # GET /api/v5/market/sprd-history-candles
+    def get_sprd_history_candles(self,sprdId='', bar='', after='', before='', limit=''):
+        params = {'sprdId': sprdId, 'bar': bar, 'after': after, 'before': before, 'limit': limit}
+        return self._request_with_params(GET, GET_SPRD_HISTORY_CANDLES, params)
+
+

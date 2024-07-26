@@ -29,6 +29,8 @@ if __name__ == '__main__':
 
     # account api
     accountAPI = Account.AccountAPI(api_key, secret_key, passphrase, False, flag)
+    # 获取交易产品基础信息
+    result = accountAPI.get_account_instruments(instType = 'SWAP', uly = '', instFamily = '', instId = '')
     # 查看账户持仓风险 GET Position_risk
     # result = accountAPI.get_position_risk('SWAP')
     # 查看账户余额  Get Balance
@@ -116,9 +118,21 @@ if __name__ == '__main__':
     # 仓位创建器 POST /api/v5/account/position-builder
     # result = accountAPI.position_builder()
     # 设置现货对冲占用 POST /api/v5/account/set-riskOffset-amt
-    result = accountAPI.set_riskOffset_amt(ccy = 'BTC', clSpotInUseAmt = '0.01')
-
-
+    # result = accountAPI.set_riskOffset_amt(ccy = 'BTC', clSpotInUseAmt = '0.01')
+    # 获取固定借币限额 GET /api/v5/account/fixed-loan/borrowing-limit
+    # result = accountAPI.get_fixed_loan_borrowing_limit()
+    # 获取固定借币询价 GET /api/v5/account/fixed-loan/borrowing-quote
+    # result = accountAPI.get_fixed_loan_borrowing_quote(type = '', ccy = '', amt = '', maxRate = '', term = '', ordId = '')
+    # 固定借币下单 POST /api/v5/account/fixed-loan/borrowing-order
+    # result = accountAPI.fixed_loan_borrowing_order(ccy = '', amt = '', maxRate = '', term = '', reborrow = '', reborrowRate = '')
+    # 修改固定借币订单 POST /api/v5/account/fixed-loan/amend-borrowing-order
+    # result = accountAPI.fixed_loan_amend_borrowing_order(ordId = '111111111111', reborrow = '', renewMaxRate = '')
+    # 固定借币手动续借 POST /api/v5/account/fixed-loan/manual-reborrow
+    # result = accountAPI.fixed_loan_manual_reborrow(ordId = '111111111111', maxRate = '0.01')
+    # 固定借币手动还币 POST /api/v5/account/fixed-loan/repay-borrowing-order
+    # result = accountAPI.fixed_loan_repay_borrowing_order(ordId = '111111111111')
+    # 获取固定借币订单信息 GET /api/v5/account/fixed-loan/borrowing-orders-list
+    # result = accountAPI.get_fixed_loan_borrowing_orders_list(ordId = '', ccy = '', state = '', after = '', before = '', limit = '')
 
     # funding api
     fundingAPI = Funding.FundingAPI(api_key, secret_key, passphrase, False, flag)
@@ -423,6 +437,10 @@ if __name__ == '__main__':
     # result = sprdAPI.public_trades(sprdId='')
     # 倒计时全部撤单 POST /api/v5/sprd/cancel-all-after
     # result = sprdAPI.sprd_cancel_all_after(timeOut='10')
+    # 获取价差交易产品K线数据 GET /api/v5/market/sprd-candles
+    # result = sprdAPI.get_sprd_candles(sprdId='', bar='', after='', before='', limit='')
+    # 获取价差交易产品历史K线数据 GET /api/v5/market/sprd-history-candles
+    # result = sprdAPI.get_sprd_history_candles(sprdId='', bar='', after='', before='', limit='')
 
     # 子账户API subAccount
     subAccountAPI = SubAccount.SubAccountAPI(api_key, secret_key, passphrase, False, flag)
@@ -577,6 +595,8 @@ if __name__ == '__main__':
     # result = TradingBot.grid_margin_balance(algoId = '455784823937040384', type = 'add', amt = '10', percent = '')
     # 网格策略智能回测（公共）
     # result = TradingBot.grid_ai_param(algoOrdType = 'grid', instId = 'BTC-USDT', direction = '', duration = '')
+    # 加仓 POST /api/v5/tradingBot/grid/adjust-investment
+    # result = TradingBot.grid_adjust_investment(algoId = '', amt = '')
 
     # 金融产品 Finance API
     Finance = Finance.FinanceAPI(api_key, secret_key, passphrase, False, flag)

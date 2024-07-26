@@ -59,6 +59,14 @@ SET_RISKOFFSET_TYPE = '/api/v5/account/set-riskOffset-type'
 SET_AUTO_LOAN = '/api/v5/account/set-auto-loan'
 MMP_RESET = '/api/v5/account/mmp-reset'
 SET_RISKOFFSET_AMT = '/api/v5/account/set-riskOffset-amt'
+GET_FIXED_LOAN_BORROWING_LIMIT = '/api/v5/account/fixed-loan/borrowing-limit'
+GET_FIXED_LOAN_BORROWING_QUOTE = '/api/v5/account/fixed-loan/borrowing-quote'
+FIXED_LOAN_BORROWING_ORDER = '/api/v5/account/fixed-loan/borrowing-order'
+FIXED_LOAN_AMEND_BORROWING_ORDER = '/api/v5/account/fixed-loan/amend-borrowing-order'
+FIXED_LOAN_MANUAL_BORROWING = '/api/v5/account/fixed-loan/manual-reborrow'
+FIXED_LOAN_REPAY_BORROWING_ORDER = '/api/v5/account/fixed-loan/repay-borrowing-order'
+GET_FIXED_LOAN_BORROWING_ORDERS_LIST = '/api/v5/account/fixed-loan/borrowing-orders-list'
+GET_ACCOUNT_INSTRUMENTS = '/api/v5/account/instruments'
 
 # funding
 DEPOSIT_ADDRESS = '/api/v5/asset/deposit-address'
@@ -194,10 +202,11 @@ SPRD_ORDERS_HISTORY_ARCHIVE = '/api/v5/sprd/orders-history-archive'
 SPRD_TRADES = '/api/v5/sprd/trades'
 SPRD_SPREADS = '/api/v5/sprd/spreads'
 SPRD_BOOKS = '/api/v5/sprd/books'
-SPRD_TICKER = '/api/v5/sprd/ticker'
+SPRD_TICKER = '/api/v5/market/sprd-ticker'
 SPRD_PUBLIC_TRADES = '/api/v5/sprd/public-trades'
 SPRD_CANCEL_ALL_AFTER = '/api/v5/sprd/cancel-all-after'
-
+GET_SPRD_CANDLES = '/api/v5/market/sprd-candles'
+GET_SPRD_HISTORY_CANDLES = '/api/v5/market/sprd-history-candles'
 
 
 # SubAccount
@@ -290,6 +299,7 @@ GRID_WITHDRAW_INCOME = '/api/v5/tradingBot/grid/withdraw-income'
 GRID_COMPUTE_MARGIN_BALANCE = '/api/v5/tradingBot/grid/compute-margin-balance'
 GRID_MARGIN_BALANCE = '/api/v5/tradingBot/grid/margin-balance'
 GRID_AI_PARAM = '/api/v5/tradingBot/grid/ai-param'
+GRID_ADJUST_INVESTMETN = '/api/v5/tradingBot/grid/adjust-investment'
 
 # finance
 STAKING_DEFI_OFFERS = '/api/v5/finance/staking-defi/offers'

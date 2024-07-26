@@ -230,3 +230,47 @@ class AccountAPI(Client):
     def set_riskOffset_amt(self,ccy = '', clSpotInUseAmt = ''):
         params = {'ccy': ccy, 'clSpotInUseAmt': clSpotInUseAmt}
         return self._request_with_params(POST, SET_RISKOFFSET_AMT, params)
+
+    # GET /api/v5/account/fixed-loan/borrowing-limit
+    def get_fixed_loan_borrowing_limit(self):
+        params = {}
+        return self._request_with_params(GET, GET_FIXED_LOAN_BORROWING_LIMIT, params)
+
+    # GET /api/v5/account/fixed-loan/borrowing-quote
+    def get_fixed_loan_borrowing_quote(self,type = '', ccy = '', amt = '', maxRate = '', term = '', ordId = ''):
+        params = {'type':type, 'ccy':ccy, 'amt':amt, 'maxRate':maxRate, 'maxRate':maxRate, 'term':term, 'ordId':ordId}
+        return self._request_with_params(GET, GET_FIXED_LOAN_BORROWING_QUOTE, params)
+
+
+    # POST /api/v5/account/fixed-loan/borrowing-order
+    def fixed_loan_borrowing_order(self,ccy = '', amt = '', maxRate = '', term = '', reborrow = '', reborrowRate = ''):
+        params = {'ccy':ccy, 'amt':amt, 'maxRate':maxRate, 'term':term, 'reborrow':reborrow, 'reborrowRate':reborrowRate}
+        return self._request_with_params(POST, FIXED_LOAN_BORROWING_ORDER, params)
+
+
+    # POST /api/v5/account/fixed-loan/amend-borrowing-order
+    def fixed_loan_amend_borrowing_order(self,ordId = '', reborrow = '', renewMaxRate = ''):
+        params = {'ordId':ordId, 'reborrow':reborrow, 'renewMaxRate':renewMaxRate}
+        return self._request_with_params(POST, FIXED_LOAN_AMEND_BORROWING_ORDER, params)
+
+
+    # POST /api/v5/account/fixed-loan/manual-reborrow
+    def fixed_loan_manual_reborrow(self,ordId = '', maxRate = ''):
+        params = {'ordId':ordId, 'maxRate':maxRate}
+        return self._request_with_params(POST, FIXED_LOAN_MANUAL_BORROWING, params)
+
+    # POST /api/v5/account/fixed-loan/repay-borrowing-order
+    def fixed_loan_repay_borrowing_order(self,ordId = ''):
+        params = {'ordId':ordId}
+        return self._request_with_params(POST, FIXED_LOAN_REPAY_BORROWING_ORDER, params)
+
+
+    # GET /api/v5/account/fixed-loan/borrowing-orders-list
+    def get_fixed_loan_borrowing_orders_list(self,ordId = '', ccy = '', state = '', after = '', before = '',limit = ''):
+        params = {'ordId':ordId, 'ccy':ccy, 'state':state, 'after':after, 'before':before, 'limit':limit}
+        return self._request_with_params(GET, GET_FIXED_LOAN_BORROWING_ORDERS_LIST, params)
+
+    # GET /api/v5/account/instruments
+    def get_account_instruments(self,instType = '', uly = '', instFamily = '', instId = ''):
+        params = {'instType':instType, 'uly':uly, 'instFamily':instFamily, 'instId':instId}
+        return self._request_with_params(GET, GET_ACCOUNT_INSTRUMENTS, params)
