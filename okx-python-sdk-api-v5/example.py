@@ -38,7 +38,7 @@ if __name__ == '__main__':
     # 查看历史持仓信息
     # result = accountAPI.get_positions_history(instType = '', instId = '', mgnMode = '', type = '', after = '', before = '', limit = '', posId = '359410150083538946')
     # 账单流水查询（近七天） Get Bills Details (recent 7 days)
-    # result = accountAPI.get_bills_detail('FUTURES', 'BTC', 'cross')
+    # result = accountAPI.get_bills_detail(instType = 'SWAP', ccy = 'BTC', mgnMode = 'cross', instId = 'BTC-USDT-SWAP')
     # 账单流水查询（近三个月） Get Bills Details (recent 3 months)
     # result = accountAPI.get_bills_details('FUTURES', 'BTC', 'cross')
     # 查看账户配置  Get Account Configuration
@@ -539,7 +539,8 @@ if __name__ == '__main__':
     # 网格交易
     TradingBot = TradingBot.TradingBotAPI(api_key, secret_key, passphrase, False, flag)
     # 网格策略下单
-    # result = TradingBot.grid_order_algo(instId = 'BTC-USDT', algoOrdType = 'grid', maxPx = '100000', minPx = '10000', gridNum = '2', runType = '', tpTriggerPx = '', slTriggerPx = '', tag = '', baseSz = '1')
+    # result = TradingBot.grid_order_algo(instId = 'BTC-USDT', algoOrdType = 'grid', maxPx = '100000', minPx = '10000', gridNum = '2', runType = '', tpTriggerPx = '', slTriggerPx = '', algoClOrdId='', profitSharingRatio = '', tag = '', 
+    #     triggerParams = [{"triggerAction":"start", "triggerStrategy":"rsi", "timeframe":"30M","thold":"10","triggerCond":"cross","timePeriod":"14"}])
     # 修改网格策略订单
     # result = TradingBot.grid_amend_order_algo(algoId = '451791361361317888', instId = '', slTriggerPx = '', tpTriggerPx = '')
     # 网格策略停止
@@ -563,7 +564,7 @@ if __name__ == '__main__':
     # 网格策略智能回测（公共）
     # result = TradingBot.grid_ai_param(algoOrdType = 'grid', instId = 'BTC-USDT', direction = '', duration = '')
 
-    # 赚币 Finance API
+    # 金融产品 Finance API
     Finance = Finance.FinanceAPI(api_key, secret_key, passphrase, False, flag)
     # 查看项目 View items
     # result = Finance.staking_defi_offers(productId = '', protocolType = 'defi', ccy = '')
@@ -611,6 +612,14 @@ if __name__ == '__main__':
     # result = Finance.fixed_loan_lending_apy_history()
     # 获取借贷量 GET /api/v5/finance/fixed-loan/pending-lending-volume
     # result = Finance.fixed_loan_pending_lending_vol()
+    # 定期简单赚币申购 POST /api/v5/finance/fixed-loan/lending-order
+    # result = Finance.fixed_loan_lending_order(ccy = 'BTC', amt = '1', rate ='0.01', term = '30', autoRenewal = '')
+    # 定期简单赚币修改订单 POST /api/v5/finance/fixed-loan/amend-lending-order
+    # result = Finance.fixed_loan_amend_lending_order(ordId = '', changeAmt = '', rate ='', autoRenewal = '')
+    # 获取定期简单赚币订单信息 GET /api/v5/finance/fixed-loan/lending-orders-list
+    # result = Finance.fixed_loan_lending_orders_list(ordId = '', ccy ='', state ='', after = '', before = '', limit = '')
+    # 获取定期简单赚币子订单信息
+    result = Finance.fixed_loan_lending_sub_orders(ordId = '', state ='', after = '', before = '', limit = '')
 
 
     Copytrading = Copytrading.CopytradingAPI(api_key, secret_key, passphrase, False, flag)
@@ -697,7 +706,7 @@ if __name__ == '__main__':
     # 查看账户配置信息/api/v5/copytrading/config
     # result = Copytrading.config()
     # 交易员待分润汇总 /api/v5/copytrading/total-unrealized-profit-sharing
-    result = Copytrading.total_unrealized_profit_sharing()
+    # result = Copytrading.total_unrealized_profit_sharing()
 
     # 定投
     Recurring = Recurring.RecurringAPI(api_key, secret_key, passphrase, False, flag)

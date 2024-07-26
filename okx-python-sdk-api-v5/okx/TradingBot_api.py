@@ -6,10 +6,10 @@ class TradingBotAPI(Client):
     def __init__(self, api_key, api_secret_key, passphrase, use_server_time=False, flag='1'):
         Client.__init__(self, api_key, api_secret_key, passphrase, use_server_time, flag)
 
-    def grid_order_algo(self, instId = '', algoOrdType = '', maxPx= '', minPx = '', gridNum ='', runType = '', tpTriggerPx = '', slTriggerPx = '', tag = '', quoteSz = '',
-                        baseSz = '', sz = '', direction = '', lever = '', basePos = '',tpRatio = '',slRatio=''):
+    def grid_order_algo(self, instId = '', algoOrdType = '', maxPx= '', minPx = '', gridNum ='', runType = '', tpTriggerPx = '', slTriggerPx = '', tag = '', quoteSz = '',algoClOrdId='',
+                        baseSz = '', sz = '', direction = '', lever = '', basePos = '',tpRatio = '',slRatio='',profitSharingRatio='',triggerParams =[]):
         params = {'instId': instId, 'algoOrdType': algoOrdType, 'maxPx': maxPx, 'minPx': minPx, 'gridNum': gridNum, 'runType': runType, 'tpTriggerPx': tpTriggerPx, 'slTriggerPx': slTriggerPx, 'tag': tag, 'quoteSz': quoteSz, 'baseSz': baseSz, 'sz': sz, 'direction': direction, 'lever': lever, 'basePos':basePos,
-                  'tpRatio': tpRatio,'slRatio': slRatio,}
+                  'tpRatio': tpRatio,'slRatio': slRatio,'algoClOrdId':algoClOrdId,'profitSharingRatio':profitSharingRatio,'triggerParams':triggerParams}
         return self._request_with_params(POST, GRID_ORDER_ALGO, params)
 
     def grid_amend_order_algo(self, algoId = '', instId = '', slTriggerPx= '', tpTriggerPx ='',tpRatio = '',slRatio=''):

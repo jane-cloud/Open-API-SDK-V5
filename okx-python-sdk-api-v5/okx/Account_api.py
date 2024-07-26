@@ -27,17 +27,17 @@ class AccountAPI(Client):
         return self._request_with_params(GET, POSITION_INFO, params)
 
     # Get Bills Details (recent 7 days)
-    def get_bills_detail(self, instType='', ccy='', mgnMode='', ctType='', type='', subType='', after='', before='',
+    def get_bills_detail(self, instType='', instId='', ccy='', mgnMode='', ctType='', type='', subType='', after='', before='',begin='',end='',
                          limit=''):
         params = {'instType': instType, 'ccy': ccy, 'mgnMode': mgnMode, 'ctType': ctType, 'type': type,
-                  'subType': subType, 'after': after, 'before': before, 'limit': limit}
+                  'subType': subType, 'after': after, 'before': before, 'limit': limit, 'instId':instId, 'begin':begin, 'end':end}
         return self._request_with_params(GET, BILLS_DETAIL, params)
 
     # Get Bills Details (recent 3 months)
-    def get_bills_details(self, instType='', ccy='', mgnMode='', ctType='', type='', subType='', after='', before='',
+    def get_bills_details(self, instType='', instId = '', ccy='', mgnMode='', ctType='', type='', subType='', after='', before='',begin='',end='',
                           limit=''):
         params = {'instType': instType, 'ccy': ccy, 'mgnMode': mgnMode, 'ctType': ctType, 'type': type,
-                  'subType': subType, 'after': after, 'before': before, 'limit': limit}
+                  'subType': subType, 'after': after, 'before': before, 'limit': limit, 'instId':instId, 'begin':begin, 'end':end}
         return self._request_with_params(GET, BILLS_ARCHIVE, params)
 
     # Get Account Configuration

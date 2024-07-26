@@ -301,6 +301,10 @@ SAVINGS_LENDING_RATE_HIS = '/api/v5/finance/savings/lending-rate-history'
 FIXED_LOAN_LENDING_OFFERS = '/api/v5/finance/fixed-loan/lending-offers'
 FIXED_LOAN_LENDING_APY_HIS = '/api/v5/finance/fixed-loan/lending-apy-history'
 FIXED_LOAN_PENDING_LENDING_VOL = '/api/v5/finance/fixed-loan/pending-lending-volume'
+FIXED_LOAN_LENDING_ORDER = '/api/v5/finance/fixed-loan/lending-order'
+FIXED_LOAN_AMEND_LENDING_ORDER = '/api/v5/finance/fixed-loan/amend-lending-order'
+FIXED_LOAN_LENDING_ORDERS_LIST = '/api/v5/finance/fixed-loan/lending-orders-list'
+FIXED_LOAN_LENDING_SUB_ORDERS = '/api/v5/finance/fixed-loan/lending-sub-orders'
 
 
 

@@ -84,3 +84,23 @@ class FinanceAPI(Client):
     def fixed_loan_pending_lending_vol(self, ccy='', term='',  ):
         params = {'ccy': ccy, 'term': term, }
         return self._request_with_params(GET, FIXED_LOAN_PENDING_LENDING_VOL, params)
+
+    # POST /api/v5/finance/fixed-loan/lending-order
+    def fixed_loan_lending_order(self, ccy = '', amt = '', rate = '', term = '', autoRenewal = ''):
+        params = {'ccy':ccy,'amt':amt,'rate':rate,'term':term,'autoRenewal':autoRenewal}
+        return self._request_with_params(POST, FIXED_LOAN_LENDING_ORDER, params)
+
+    # POST /api/v5/finance/fixed-loan/amend-lending-order
+    def fixed_loan_amend_lending_order(self, ordId = '', changeAmt = '', rate = '', autoRenewal = ''):
+        params = {'ordId':ordId,'changeAmt':changeAmt,'rate':rate,'autoRenewal':autoRenewal}
+        return self._request_with_params(POST, FIXED_LOAN_AMEND_LENDING_ORDER, params)
+
+    # GET /api/v5/finance/fixed-loan/lending-orders-list
+    def fixed_loan_lending_orders_list(self, ordId='', ccy='', state='', after='', before='', limit=''):
+        params = {'ordId': ordId, 'ccy': ccy, 'state':state, 'after':after, 'before':before, 'limit':limit}
+        return self._request_with_params(GET, FIXED_LOAN_LENDING_ORDERS_LIST, params)
+
+    # GET /api/v5/finance/fixed-loan/lending-sub-orders
+    def fixed_loan_lending_sub_orders(self, ordId='', state='', after='', before='', limit=''):
+        params = {'ordId': ordId, 'state':state, 'after':after, 'before':before, 'limit':limit}
+        return self._request_with_params(GET, FIXED_LOAN_LENDING_SUB_ORDERS, params)
