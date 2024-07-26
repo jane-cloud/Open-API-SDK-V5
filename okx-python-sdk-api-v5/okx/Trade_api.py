@@ -171,8 +171,8 @@ class TradeAPI(Client):
         params = {'instType':instType, 'instFamily':instFamily}
         return self._request_with_params(POST, MASS_CANCEL, params)
 
-    def cancel_all_after(self,timeOut):
-        params = {'timeOut': timeOut,}
+    def cancel_all_after(self,timeOut= '', tag = ''):
+        params = {'timeOut': timeOut, 'tag': tag}
         return self._request_with_params(POST, CANCEL_ALL_AFTER, params)
 
     # POST / api / v5 / trade / fills - archive

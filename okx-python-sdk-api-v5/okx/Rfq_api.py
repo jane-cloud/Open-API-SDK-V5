@@ -63,9 +63,9 @@ class RfqAPI(Client):
         return self._request_with_params(GET, GET_PUBLIC_TRADES, params)
 
 
-    def cancel_all_after(self, timeOut = ''):
-        params = {'timeOut': timeOut, }
-        return self._request_with_params(POST, CANCEL_ALL_AFTER, params)
+    def rfq_cancel_all_after(self, timeOut = ''):
+        params = {'timeOut': timeOut}
+        return self._request_with_params(POST, RFQ_CANCEL_ALL_AFTER, params)
 
     def maker_instrument_settings(self, instType='', data=[]):
         params = [{'instType': instType, 'data': data}]

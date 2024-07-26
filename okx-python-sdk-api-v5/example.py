@@ -115,6 +115,8 @@ if __name__ == '__main__':
     # result  = accountAPI.set_account_level(acctLv='')
     # 仓位创建器 POST /api/v5/account/position-builder
     # result = accountAPI.position_builder()
+    # 设置现货对冲占用 POST /api/v5/account/set-riskOffset-amt
+    result = accountAPI.set_riskOffset_amt(ccy = 'BTC', clSpotInUseAmt = '0.01')
 
 
 
@@ -274,10 +276,20 @@ if __name__ == '__main__':
     tradingDataAPI = TradingData.TradingDataAPI(api_key, secret_key, passphrase, False, flag)
     # 获取支持币种 Get support coin
     # result = tradingDataAPI.get_support_coin()
+    # 获取获取合约持仓量历史
+    # result = tradingDataAPI.get_open_interest_history(instId = 'BTC-USDT-SWAP', period = '5m', end = '1597027383085', begin = '1597027383085', limit = '')
     # 获取币币或衍生品主动买入/卖出情况 Get taker volume
     # result = tradingDataAPI.get_taker_volume(ccy='BTC', instType='SPOT')
+    # 获取合约主动买入/卖出情况
+    # result = tradingDataAPI.get_taker_volume_contract(instId = 'BTC-USDT-SWAP')
     # 获取杠杆多空比 Get Margin lending ratio
     # result = tradingDataAPI.get_margin_lending_ratio('BTC')
+    # 获取精英交易员合约多空持仓人数比
+    # result = tradingDataAPI.get_long_short_account_ratio_contract_top_trader(instId = 'BTC-USDT-SWAP', period = '', end = '', begin = '', limit = '')
+    # 获取精英交易员合约多空持仓仓位比
+    # result = tradingDataAPI.get_long_short_position_ratio_contract_top_trader(instId = 'BTC-USDT-SWAP', period = '', end = '', begin = '', limit = '')
+    # 获取合约多空持仓人数比
+    # result = tradingDataAPI.get_long_short_account_ratio_contract(instId = 'BTC-USDT-SWAP', period = '', end = '', begin = '', limit = '')
     # 获取多空持仓人数比 Get Long/Short ratio
     # result = tradingDataAPI.get_long_short_ratio('BTC')
     # 获取持仓总量及交易量 Get contracts open interest and volume
@@ -372,7 +384,7 @@ if __name__ == '__main__':
     # 撤销 MMP 订单
     # result =tradeAPI.mass_cancel()
     # 倒计时全部撤单
-    # result = tradeAPI.cancel_all_after()
+    # result = tradeAPI.cancel_all_after(timeOut = '10', tag = '')
     # 申请成交明细（近两年） POST /api/v5/trade/fills-archive
     # result = tradeAPI.fills_archive()
     # 获取成交明细（近两年） GET /api/v5/trade/fills-archive
@@ -381,7 +393,7 @@ if __name__ == '__main__':
     # result = accountAPI.account_rate_limit()
 
 
-    #价差撮合交易 SprdAPI
+    # 价差撮合交易 SprdAPI
     sprdAPI = Sprd.SprdAPI(api_key, secret_key, passphrase, False, flag)
     # 下单 POST /api/v5/sprd/order
     # result = sprdAPI.place(sprdId='',clOrdId='',tag='',side='',ordType='',sz='',px='')
@@ -409,6 +421,8 @@ if __name__ == '__main__':
     # result = sprdAPI.ticker(sprdId='')
     # 获取公共成交数据（公共）GET /api/v5/sprd/public-trades
     # result = sprdAPI.public_trades(sprdId='')
+    # 倒计时全部撤单 POST /api/v5/sprd/cancel-all-after
+    # result = sprdAPI.sprd_cancel_all_after(timeOut='10')
 
     # 子账户API subAccount
     subAccountAPI = SubAccount.SubAccountAPI(api_key, secret_key, passphrase, False, flag)
@@ -532,7 +546,7 @@ if __name__ == '__main__':
     # 获取大宗交易公共成交数据
     # result = RfqAPI.get_public_trades(beginId = '', endId = '', limit = '')
     # 倒计时全部撤单 POST /api/v5/rfq/cancel-all-after
-    # result = RfqAPI.cancel_all_after()
+    # result = RfqAPI.tag()
 
 
 
@@ -619,9 +633,9 @@ if __name__ == '__main__':
     # 获取定期简单赚币订单信息 GET /api/v5/finance/fixed-loan/lending-orders-list
     # result = Finance.fixed_loan_lending_orders_list(ordId = '', ccy ='', state ='', after = '', before = '', limit = '')
     # 获取定期简单赚币子订单信息
-    result = Finance.fixed_loan_lending_sub_orders(ordId = '', state ='', after = '', before = '', limit = '')
+    # result = Finance.fixed_loan_lending_sub_orders(ordId = '', state ='', after = '', before = '', limit = '')
 
-
+    # 跟单
     Copytrading = Copytrading.CopytradingAPI(api_key, secret_key, passphrase, False, flag)
     # 交易员获取当前带单
     # result = Copytrading.current_subpositions(instId='', after='', before='', limit='')

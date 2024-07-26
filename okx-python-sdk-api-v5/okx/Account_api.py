@@ -224,3 +224,9 @@ class AccountAPI(Client):
         params = {'acctLv': acctLv, 'spotOffsetType': spotOffsetType, 'simPos': simPos, 'simAsset': simAsset,
                   'greeksType': greeksType, }
         return self._request_with_params(POST, POSITION_BUILDER, params)
+
+
+    # POST /api/v5/account/set-riskOffset-amt
+    def set_riskOffset_amt(self,ccy = '', clSpotInUseAmt = ''):
+        params = {'ccy': ccy, 'clSpotInUseAmt': clSpotInUseAmt}
+        return self._request_with_params(POST, SET_RISKOFFSET_AMT, params)

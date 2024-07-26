@@ -88,4 +88,9 @@ class SprdAPI(Client):
         params = {'sprdId': sprdId}
         return self._request_with_params(GET, SPRD_PUBLIC_TRADES, params)
 
+    # POST /api/v5/sprd/cancel-all-after
+    def sprd_cancel_all_after(self,timeOut=''):
+        params = {'timeOut':timeOut }
+        return self._request_with_params(POST, SPRD_CANCEL_ALL_AFTER, params)
+
 

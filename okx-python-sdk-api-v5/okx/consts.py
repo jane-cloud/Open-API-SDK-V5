@@ -58,6 +58,7 @@ INTEREST_LIMITS = '/api/v5/account/subaccount/interest-limits'
 SET_RISKOFFSET_TYPE = '/api/v5/account/set-riskOffset-type'
 SET_AUTO_LOAN = '/api/v5/account/set-auto-loan'
 MMP_RESET = '/api/v5/account/mmp-reset'
+SET_RISKOFFSET_AMT = '/api/v5/account/set-riskOffset-amt'
 
 # funding
 DEPOSIT_ADDRESS = '/api/v5/asset/deposit-address'
@@ -142,6 +143,11 @@ PUT_CALL_RATIO = '/api/v5/rubik/stat/option/open-interest-volume-ratio'
 OPEN_INTEREST_VOLUME_EXPIRY = '/api/v5/rubik/stat/option/open-interest-volume-expiry'
 INTEREST_VOLUME_STRIKE = '/api/v5/rubik/stat/option/open-interest-volume-strike'
 TAKER_FLOW = '/api/v5/rubik/stat/option/taker-block-volume'
+GET_OPEN_INTEREST_HISTORY = '/api/v5/rubik/stat/contracts/open-interest-history'
+GET_TAKER_VOLUME_CONTRACT = '/api/v5/rubik/stat/taker-volume-contract'
+GET_LONG_SHORT_ACCOUNT_RADIO_CONTRACT_TOP_TRADER = '/api/v5/rubik/stat/contracts/long-short-account-ratio-contract-top-trader'
+GET_LONG_SHORT_POSTION_RADIO_CONTRACT_TOP_TRADER = '/api/v5/rubik/stat/contracts/long-short-position-ratio-contract-top-trader'
+GET_LONG_SHORT_ACCOUNT_RADIO_CONTRACT = '/api/v5/rubik/stat/contracts/long-short-account-ratio-contract'
 
 # TRADE
 PLACR_ORDER = '/api/v5/trade/order'
@@ -190,6 +196,7 @@ SPRD_SPREADS = '/api/v5/sprd/spreads'
 SPRD_BOOKS = '/api/v5/sprd/books'
 SPRD_TICKER = '/api/v5/sprd/ticker'
 SPRD_PUBLIC_TRADES = '/api/v5/sprd/public-trades'
+SPRD_CANCEL_ALL_AFTER = '/api/v5/sprd/cancel-all-after'
 
 
 
@@ -259,7 +266,7 @@ GET_RFQS = '/api/v5/rfq/rfqs'
 GET_QUOTES = '/api/v5/rfq/quotes'
 GET_RFQ_TRADES = '/api/v5/rfq/trades'
 GET_PUBLIC_TRADES = '/api/v5/rfq/public-trades'
-CANCEL_ALL_AFTER = '/api/v5/rfq/cancel-all-after'
+RFQ_CANCEL_ALL_AFTER = '/api/v5/rfq/cancel-all-after'
 MARKET_INSTRUMENT_SETTINGS = '/api/v5/rfq/maker-instrument-settings'
 MMP_RESET = '/api/v5/rfq/mmp-reset'
 MMP_CONFIG = '/api/v5/rfq/mmp-config'
