@@ -24,8 +24,8 @@ if __name__ == '__main__':
     passphrase = ""
 
     # flag是实盘与模拟盘的切换参数 flag is the key parameter which can help you to change between demo and real trading.
-    # flag = '1'  # 模拟盘 demo trading
-    flag = '0'  # 实盘 real trading
+    flag = '1'  # 模拟盘 demo trading
+    # flag = '0'  # 实盘 real trading
 
     # account api
     accountAPI = Account.AccountAPI(api_key, secret_key, passphrase, False, flag)
@@ -114,7 +114,7 @@ if __name__ == '__main__':
     # 设置账户模式 POST /api/v5/account/set-account-level
     # result  = accountAPI.set_account_level(acctLv='')
     # 仓位创建器 POST /api/v5/account/position-builder
-    result = accountAPI.position_builder()
+    # result = accountAPI.position_builder()
 
 
 
@@ -261,7 +261,7 @@ if __name__ == '__main__':
     # 获取尊享借币杠杆利率和借币限额 GET Obtain the privileged currency borrowing leverage rate and currency borrowing limit
     # result = publicAPI.get_vip_interest_rate_loan_quota()
     # 获取风险准备金余额
-    result = publicAPI.get_insurance_fund(instType = 'SWAP', type = '', uly = 'BTC-USDT', ccy = '', before = '', after = '', limit = '')
+    # result = publicAPI.get_insurance_fund(instType = 'SWAP', type = '', uly = 'BTC-USDT', ccy = '', before = '', after = '', limit = '')
     # 张币转换
     # result = publicAPI.convert_contract_coin(type = '2', instId = 'BTC-USDT-SWAP', sz = '1', px = '',
     #                                          unit = '', opType='')
@@ -376,9 +376,9 @@ if __name__ == '__main__':
     # 申请成交明细（近两年） POST /api/v5/trade/fills-archive
     # result = tradeAPI.fills_archive()
     # 获取成交明细（近两年） GET /api/v5/trade/fills-archive
-    result = tradeAPI.fills_archives()
+    # result = tradeAPI.fills_archives()
     # 获取账户限速 GET /api/v5/trade/account-rate-limit
-    result = accountAPI.account_rate_limit()
+    # result = accountAPI.account_rate_limit()
 
 
     #价差撮合交易 SprdAPI
@@ -388,17 +388,17 @@ if __name__ == '__main__':
     # 撤单 POST /api/v5/sprd/cancel-order
     # result = sprdAPI.cancel_order(ordId='',clOrdId='')
     # 全部撤单 POST /api/v5/sprd/mass-cancel
-    result = sprdAPI.mass_cancel(sprdId='')
+    # result = sprdAPI.mass_cancel(sprdId='')
     # 修改订单（仅适用白名单用户） POST /api/v5/sprd/amend-order
-    result = sprdAPI.amend_cancel(reqId='',ordId='', clOrdId='', newSz='', newPx='')
+    # result = sprdAPI.amend_cancel(reqId='',ordId='', clOrdId='', newSz='', newPx='')
     # 获取订单信息 GET /api/v5/sprd/order
     # result = sprdAPI.order(ordId='',clOrdId='')
     # 获取未成交订单列表 GET /api/v5/sprd/orders-pending
     # result = sprdAPI.orders_pending(sprdId='',ordType='',state='',beginId='',endId='',limit='')
     # 获取历史订单记录（近21天) GET /api/v5/sprd/orders-history (按创建时间倒叙排序)
-    result = sprdAPI.orders_history(sprdId='',ordType='',state='',beginId='',endId='',begin='',end='',limit='')
+    # result = sprdAPI.orders_history(sprdId='',ordType='',state='',beginId='',endId='',begin='',end='',limit='')
     # 获取历史订单记录（近三月)
-    result = sprdAPI.orders_history_archive(sprdId='',ordType='',state='',beginId='',endId='',begin='',end='',limit='')
+    # result = sprdAPI.orders_history_archive(sprdId='',ordType='',state='',beginId='',endId='',begin='',end='',limit='')
     # 获取历史成交数据（近七天）GET /api/v5/sprd/trades (按时间倒叙排序)
     # result = sprdAPI.trades(sprdId='',tradeId='',ordId='',beginId='',endId='',begin='',end='',limit='')
     # 获取Spreads（公共）GET /api/v5/sprd/spreads
@@ -510,11 +510,11 @@ if __name__ == '__main__':
     # 设置可报价产品
     # result = RfqAPI.maker_instrument_settings(instType = 'SPOT', data = [{"instFamily":"","instId":"","maxBlockSz":"","makerPxBand":""}])
     # 重设MMP状态
-    result = RfqAPI.mmp_reset()
+    # result = RfqAPI.mmp_reset()
     # 设置 MMP
-    result = RfqAPI.mmp_config(timeInterval='',frozenInterval='',countLimit='')
+    # result = RfqAPI.mmp_config(timeInterval='',frozenInterval='',countLimit='')
     # 查看 MMP 配置
-    result = RfqAPI.mmp_configs(timeInterval='', frozenInterval='', countLimit='',mmpFrozen='',mmpFrozenUntil='',)
+    # result = RfqAPI.mmp_configs(timeInterval='', frozenInterval='', countLimit='',mmpFrozen='',mmpFrozenUntil='',)
     # 报价
     # result = RfqAPI.create_quote(rfqId = '', clQuoteId = '', tag = '123', quoteSide = 'buy', anonymous = 'True', expiresIn = '', legs = [{"px":"39450.0","sz":"200000","instId":"BTC-USDT-SWAP","side":"buy"}])
     # 取消报价单
@@ -539,9 +539,9 @@ if __name__ == '__main__':
     # 网格交易
     TradingBot = TradingBot.TradingBotAPI(api_key, secret_key, passphrase, False, flag)
     # 网格策略下单
-    result = TradingBot.grid_order_algo(instId = 'BTC-USDT', algoOrdType = 'grid', maxPx = '100000', minPx = '10000', gridNum = '2', runType = '', tpTriggerPx = '', slTriggerPx = '', tag = '', baseSz = '1')
+    # result = TradingBot.grid_order_algo(instId = 'BTC-USDT', algoOrdType = 'grid', maxPx = '100000', minPx = '10000', gridNum = '2', runType = '', tpTriggerPx = '', slTriggerPx = '', tag = '', baseSz = '1')
     # 修改网格策略订单
-    result = TradingBot.grid_amend_order_algo(algoId = '451791361361317888', instId = '', slTriggerPx = '', tpTriggerPx = '')
+    # result = TradingBot.grid_amend_order_algo(algoId = '451791361361317888', instId = '', slTriggerPx = '', tpTriggerPx = '')
     # 网格策略停止
     # result = TradingBot.grid_stop_order_algo(algoId = '455784823937040384', instId = 'BTC-USDT', algoOrdType = 'grid', stopType = '1')
     # 获取未完成网格策略委托单列表
@@ -608,16 +608,9 @@ if __name__ == '__main__':
     # 获取借币信息 GET /api/v5/finance/fixed-loan/lending-offers
     # result = Finance.fixed_loan_lending_offers()
     # 获取历史收益率 GET /api/v5/finance/fixed-loan/lending-apy-history
-    result = Finance.fixed_loan_lending_apy_history()
+    # result = Finance.fixed_loan_lending_apy_history()
     # 获取借贷量 GET /api/v5/finance/fixed-loan/pending-lending-volume
-    result = Finance.fixed_loan_pending_lending_vol()
-
-
-
-
-
-
-
+    # result = Finance.fixed_loan_pending_lending_vol()
 
 
     Copytrading = Copytrading.CopytradingAPI(api_key, secret_key, passphrase, False, flag)
@@ -676,46 +669,33 @@ if __name__ == '__main__':
     # GET / 获取交易员当前带单
     # result = Copytrading.public_current_subpositions(after='', before='', limit='', instType='', uniqueCode='')
     # GET / 获取交易员历史带单
-    result = Copytrading.public_subpositions_history(after='', before='', limit='', instType='', uniqueCode='')
+    # result = Copytrading.public_subpositions_history(after='', before='', limit='', instType='', uniqueCode='')
     # 带单申请 POST /api/v5/copytrading/apply-lead-trading
-    result = Copytrading.apply_lead_trading()
-
+    # result = Copytrading.apply_lead_trading()
     # 停止带单 /api/v5/copytrading/stop-lead-trading
-    result = Copytrading.stop_lead_trading()
-
+    # result = Copytrading.stop_lead_trading()
     # 修改分润比例 /api/v5/copytrading/amend-profit-sharing-ratio
-    result = Copytrading.amend_profit_sharing_ratio()
-
+    # result = Copytrading.amend_profit_sharing_ratio()
     # 获取交易员排名（私有）GET /api/v5/copytrading/lead-traders
-    result = Copytrading.lead_traders()
-
+    # result = Copytrading.lead_traders()
     # 获取交易员收益周表现（私有）GET /api/v5/copytrading/weekly-pnl
-    result = Copytrading.weekly_pnl()
-
+    # result = Copytrading.weekly_pnl()
     # 获取交易员收益日表现（私有）/api/v5/copytrading/pnl
-    result = Copytrading.pnl()
-
+    # result = Copytrading.pnl()
     # 获取交易员带单情况（私有）/api/v5/copytrading/stats
-    result = Copytrading.stats()
-
+    # result = Copytrading.stats()
     # 获取交易员币种偏好（私有）/api/v5/copytrading/preference-currency
-    result = Copytrading.preference_currency()
-
+    # result = Copytrading.preference_currency()
     # 获取交易员当前带单（私有）/api/v5/copytrading/performance-current-subpositions
-    result = Copytrading.performance_current_subpositions(after='', before='', limit='', instType='', uniqueCode='')
-
+    # result = Copytrading.performance_current_subpositions(after='', before='', limit='', instType='', uniqueCode='')
     # 获取交易员历史带单（私有）/api/v5/copytrading/performance-subpositions-history
-    result = Copytrading.performance_subpositions_history(after='', before='', limit='', instType='', uniqueCode='')
-
+    # result = Copytrading.performance_subpositions_history(after='', before='', limit='', instType='', uniqueCode='')
     # 获取跟单人信息（私有）/api/v5/copytrading/copy-traders
-    result = Copytrading.copy_traders(uniqueCode='')
-
+    # result = Copytrading.copy_traders(uniqueCode='')
     # 获取跟单人信息/api/v5/copytrading/public-copy-traders
-    result = Copytrading.public_copy_traders()
-
+    # result = Copytrading.public_copy_traders()
     # 查看账户配置信息/api/v5/copytrading/config
-    result = Copytrading.config()
-
+    # result = Copytrading.config()
     # 交易员待分润汇总 /api/v5/copytrading/total-unrealized-profit-sharing
     result = Copytrading.total_unrealized_profit_sharing()
 
