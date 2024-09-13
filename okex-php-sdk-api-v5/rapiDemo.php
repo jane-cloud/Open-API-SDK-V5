@@ -281,6 +281,30 @@ $obj = new TradeAPI(Config::$config);
 // 获取成交明细 Get Transaction Details
 //$res = $obj -> getFills('SPOT','','','','','','4');
 //$res = $obj -> getFillsHistory('','','','','297793186030845953','','');
+// 申请成交明细（近两年）
+// $res = $obj -> fillsArchive('','');
+// 获取成交明细（近两年）
+// $res = $obj -> getFillsArchive('','');
+// 获取一键兑换主流币币种列表
+// $res = $obj -> easyConvertCurrencyList('','');
+// 一键兑换主流币交易
+// $res = $obj -> easyConvert('','');
+// 获取一键兑换主流币历史记录
+// $res = $obj -> easyConvertHistory('','','');
+// 获取一键还债币种列表
+// $res = $obj -> oneClickRepayCurrencyList('');
+// 一键还债交易
+// $res = $obj -> oneClickRepay('');
+//  获取一键还债历史记录
+// $res = $obj -> oneClickRepayHistory('');
+//  撤销 MMP 订单
+// $res = $obj -> massCancel('');
+//  倒计时全部撤单
+// $res = $obj -> cancelAllAfter('');
+//  获取账户限速
+// $res = $obj -> accountRateLimit('');
+//   订单预检查
+// $res = $obj -> orderPrecheck('');
 // 策略委托下单 Place Algo Order
 //$res = $obj -> orderAlgo('BTC-USDT-SWAP','cross','','buy','long','trigger','1','','20','21','','','-1','','','-1','','','','','','','','','','','mark');
 // 撤销策略委托订单 Cancel Algo Order

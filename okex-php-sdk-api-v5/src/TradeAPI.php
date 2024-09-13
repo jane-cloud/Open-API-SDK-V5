@@ -294,4 +294,129 @@ class TradeAPI extends Utils
 
         return $this->request('/api/v5/trade/cancel-advance-algos', $params, 'GET');
     }
+
+    public function fillsArchive($year,$quarter)
+    {
+        $params = [
+            'year' => $year,
+            'quarter' => $quarter,
+        ];
+
+        return $this->request('/api/v5/trade/fills-archive', $params, 'POST');
+    }
+
+    public function getFillsArchive($year,$quarter)
+    {
+        $params = [
+            'year' => $year,
+            'quarter' => $quarter,
+        ];
+
+        return $this->request('/api/v5/trade/fills-archive', $params, 'GET');
+    }
+
+    public function easyConvertCurrencyList()
+    {
+        $params = [
+        ];
+
+        return $this->request('/api/v5/trade/easy-convert-currency-list', '', 'GET');
+    }
+
+    public function easyConvert($fromCcy,$toCcy)
+    {
+        $params = [
+            'fromCcy' => $fromCcy,
+            'toCcy' => $toCcy,
+        ];
+
+        return $this->request('/api/v5/trade/easy-convert', $params, 'POST');
+    }
+
+    public function easyConvertHistory($after='',$before='',$limit='')
+    {
+        $params = [
+            'after' => $after,
+            'before' => $before,
+            'limit' => $limit,
+        ];
+
+        return $this->request('/api/v5/trade/easy-convert-history', $params, 'GET');
+    }
+
+    public function oneClickRepayCurrencyList($debtType='')
+    {
+        $params = [
+            'debtType' => $debtType,
+        ];
+
+        return $this->request('/api/v5/trade/one-click-repay-currency-list', $params, 'GET');
+    }
+
+    public function oneClickRepay($debtCcy,$repayCcy)
+    {
+        $params = [
+            'debtCcy' => $debtCcy,
+            'repayCcy' => $repayCcy,
+        ];
+
+        return $this->request('/api/v5/trade/one-click-repay', $params, 'POST');
+    }
+
+    public function oneClickRepayHistory($after='',$before='',$limit='')
+    {
+        $params = [
+            'after' => $after,
+            'before' => $before,
+            'limit' => $limit,
+        ];
+
+        return $this->request('/api/v5/trade/one-click-repay-history', $params, 'GET');
+    }
+
+    public function massCancel($instType,$instFamily)
+    {
+        $params = [
+            'instType' => $instType,
+            'instFamily' => $instFamily,
+        ];
+
+        return $this->request('/api/v5/trade/mass-cancel', $params, 'POST');
+    }
+
+    public function cancelAllAfter($timeOut,$tag='')
+    {
+        $params = [
+            'timeOut' => $timeOut,
+            'tag' => $tag,
+        ];
+
+        return $this->request('/api/v5/trade/cancel-all-after', $params, 'POST');
+    }
+
+    public function accountRateLimit()
+    {
+        $params = [
+        ];
+
+        return $this->request('/api/v5/trade/account-rate-limit', $params, 'GET');
+    }
+
+    public function orderPrecheck($instId,$tdMode,$side,$posSide='',$ordType,$sz,$px='',$reduceOnly='',$tgtCcy='',$attachAlgoOrds='')
+    {
+        $params = [
+            'instId' => $instId,
+            'tdMode' => $tdMode,
+            'side' => $side,
+            'posSide' => $posSide,
+            'ordType' => $ordType,
+            'sz' => $sz,
+            'px' => $px,
+            'reduceOnly' => $reduceOnly,
+            'tgtCcy' => $tgtCcy,
+            'attachAlgoOrds' => $attachAlgoOrds,
+        ];
+
+        return $this->request('/api/v5/trade/order-precheck', $params, 'POST');
+    }
 }
