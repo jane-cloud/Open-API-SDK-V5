@@ -242,4 +242,41 @@ class FundingApi extends Utils
 
         return $this->request('/api/v5/account/positions-history',$params, 'GET');
     }
+
+    public function nonTradableAssets($ccy='')
+    {
+        $params = [
+            'ccy' => $ccy,
+        ];
+
+        return $this->request('/api/v5/asset/non-tradable-assets',$params, 'GET');
+    }
+
+    public function depositWithdrawStatus($wdId='',$txId='',$ccy='',$to='',$chain='')
+    {
+        $params = [
+            'wdId' => $wdId,
+            'txId' => $txId,
+            'ccy' => $ccy,
+            'to' => $to,
+            'chain' => $chain,
+        ];
+
+        return $this->request('/api/v5/asset/deposit-withdraw-status',$params, 'GET');
+    }
+
+    public function exchangeList()
+    {
+        
+        return $this->request('/api/v5/asset/exchange-list','', 'GET');
+    }
+
+    public function getMonthlyStatement($month='')
+    {
+        $params = [
+            'month' => $month,
+        ];
+
+        return $this->request('/api/v5/asset/monthly-statement',$params, 'GET');
+    }
 }

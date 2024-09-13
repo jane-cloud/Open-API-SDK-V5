@@ -126,6 +126,8 @@ $obj = new FundingApi(Config::$config);
 // $res = $obj -> getCurrencies('USDC');
 // 获取资金账户余额
 //$res = $obj -> getBalance('BTC');
+// 获取不可交易资产
+//$res = $obj -> nonTradableAssets('BTC');
 //获取账户资产估值
 //$res = $obj -> assetValuation('BTC');
 // 资金划转
@@ -148,8 +150,16 @@ $obj = new FundingApi(Config::$config);
 //$res = $obj -> cancelWithdrawal('');
 //获取提币记录
 //$res = $obj -> getWithdrawalHistory('','','','','','','');
+//获取充值/提现的详细状态
+//$res = $obj -> depositWithdrawStatus('','','','','','','');
 //小额资产兑换
 //$res = $obj -> convertDustAssets('');
+//获取交易所列表（公共）
+//$res = $obj -> exchangeList('');
+//申请月结单 (近一年)
+//$res = $obj -> monthlyStatement('');
+//获取月结单 (近一年)
+//$res = $obj -> getMonthlyStatement('');
 //获取余币宝余额
 //$res = $obj -> getPiggyBalance('');
 // 余币宝申购/赎回
