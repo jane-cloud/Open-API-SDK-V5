@@ -207,6 +207,13 @@ public class WebSocketClient {
         if (null != webSocket)
             sendMessage(str);
     }
+    public static void wsFills(List<Map> list) {
+        String s = listToJson(list);
+        String str = "{\"op\": \"subscribe\", \"args\":" + s + "}";
+
+        if (null != webSocket)
+            sendMessage(str);
+    }
 
 
     private static void sendMessage(String str) {

@@ -21,6 +21,7 @@ public class AttachAlgoOrds {
     private String sz;
     private String amendPxOnTriggerType;
 
+
     public String getNewTpOrdKind() {
         return newTpOrdKind;
     }

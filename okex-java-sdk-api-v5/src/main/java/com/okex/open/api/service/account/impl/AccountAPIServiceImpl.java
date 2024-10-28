@@ -92,8 +92,8 @@ public class AccountAPIServiceImpl implements AccountAPIService {
 
     //获取杠杆倍数 Get Leverage
     @Override
-    public JSONObject getLeverage(String instId, String mgnMode) {
-        return this.client.executeSync(this.api.getLeverage(instId,mgnMode));
+    public JSONObject getLeverage(String instId, String mgnMode,String ccy) {
+        return this.client.executeSync(this.api.getLeverage(instId,mgnMode,ccy));
     }
 
     //获取币币逐仓杠杆最大可借 Get the maximum loan of instrument
@@ -104,8 +104,8 @@ public class AccountAPIServiceImpl implements AccountAPIService {
 
     //获取当前账户交易手续费费率 Get Fee Rates
     @Override
-    public JSONObject getFeeRates(String instType, String instId, String uly,String instFamily) {
-        return this.client.executeSync(this.api.getFeeRates(instType,instId,uly,instFamily));
+    public JSONObject getFeeRates(String instType, String instId, String uly,String instFamily,String ruleType) {
+        return this.client.executeSync(this.api.getFeeRates(instType,instId,uly,instFamily,ruleType));
     }
 
     //获取计息记录 Get interest-accrued
@@ -305,12 +305,53 @@ public class AccountAPIServiceImpl implements AccountAPIService {
     }
 
     @Override
-    public JSONObject getBorrowingOrdersList(String ordId, String ccy, String state, String after, String before, String limit) {
-        return this.client.executeSync(this.api.getBorrowingOrdersList(ordId,  ccy,  state,  after,  before,  limit));
+    public JSONObject getBorrowingOrdersList(String ordId, String ccy, String state, String after, String before, String limit,String term) {
+        return this.client.executeSync(this.api.getBorrowingOrdersList(ordId,  ccy,  state,  after,  before,  limit,term));
     }
 
     @Override
     public JSONObject setRiskOffsetAmt(SetRiskOffsetAmt setRiskOffsetAmt) {
         return this.client.executeSync(this.api.setRiskOffsetAmt(JSONObject.parseObject(JSON.toJSONString(setRiskOffsetAmt))));
+    }
+
+    @Override
+    public JSONObject applyBillsHistoryArchive(BillsHistoryArchive billsHistoryArchive) {
+        return this.client.executeSync(this.api.applyBillsHistoryArchive(JSONObject.parseObject(JSON.toJSONString(billsHistoryArchive))));
+
+    }
+
+    @Override
+    public JSONObject getBillsHistoryArchive(String year, String quarter) {
+        return this.client.executeSync(this.api.getBillsHistoryArchive(year,  quarter));
+
+    }
+
+    @Override
+    public JSONObject convertToMarketLoan(BorrowingOrder repayBorrowingOrder) {
+        return this.client.executeSync(this.api.convertToMarketLoan(JSONObject.parseObject(JSON.toJSONString(repayBorrowingOrder))));
+
+    }
+
+    @Override
+    public JSONObject reduceLiabilities(BorrowingOrder repayBorrowingOrder) {
+        return this.client.executeSync(this.api.reduceLiabilities(JSONObject.parseObject(JSON.toJSONString(repayBorrowingOrder))));
+    }
+
+    @Override
+    public JSONObject spotManualBorrowRepay(BorrowingOrder borrowingOrder) {
+        return this.client.executeSync(this.api.spotManualBorrowRepay(JSONObject.parseObject(JSON.toJSONString(borrowingOrder))));
+
+    }
+
+    @Override
+    public JSONObject setAutoRepay(BorrowingOrder borrowingOrder) {
+        return this.client.executeSync(this.api.setAutoRepay(JSONObject.parseObject(JSON.toJSONString(borrowingOrder))));
+
+    }
+
+    @Override
+    public JSONObject getSpotBorrowRepayHistory(String ccy, String type, String after, String before, String limit) {
+        return this.client.executeSync(this.api.getSpotBorrowRepayHistory(ccy,type,after,before,limit));
+
     }
 }

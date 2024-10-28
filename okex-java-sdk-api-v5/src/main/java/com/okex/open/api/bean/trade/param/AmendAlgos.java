@@ -1,5 +1,7 @@
 package com.okex.open.api.bean.trade.param;
 
+import java.util.ArrayList;
+
 public class AmendAlgos {
     private String instId;
     private String algoId;
@@ -11,6 +13,44 @@ public class AmendAlgos {
     private String newTpOrdPx;
     private String newSlTriggerPx;
     private String newSlOrdPx;
+
+    public String getNewTriggerPx() {
+        return newTriggerPx;
+    }
+
+    public void setNewTriggerPx(String newTriggerPx) {
+        this.newTriggerPx = newTriggerPx;
+    }
+
+    public String getNewOrdPx() {
+        return newOrdPx;
+    }
+
+    public void setNewOrdPx(String newOrdPx) {
+        this.newOrdPx = newOrdPx;
+    }
+
+    public String getNewTriggerPxType() {
+        return newTriggerPxType;
+    }
+
+    public void setNewTriggerPxType(String newTriggerPxType) {
+        this.newTriggerPxType = newTriggerPxType;
+    }
+
+    private String newTriggerPx;
+    private String newOrdPx;
+    private String newTriggerPxType;
+    public ArrayList<AttachAlgoOrds> getAttachAlgoOrds() {
+        return attachAlgoOrds;
+    }
+
+    public void setAttachAlgoOrds(ArrayList<AttachAlgoOrds> attachAlgoOrds) {
+        this.attachAlgoOrds = attachAlgoOrds;
+    }
+
+    private ArrayList<AttachAlgoOrds> attachAlgoOrds;
+
 
     public String getInstId() {
         return instId;

@@ -561,7 +561,7 @@ public class TradeAPITest extends TradeAPIBaseTest {
      */
     @Test
     public void getEasyConvertCurrencyList(){
-        JSONObject result = tradeAPIService.getEasyConvertCurrencyList();
+        JSONObject result = tradeAPIService.getEasyConvertCurrencyList("");
         toResultString(LOG, "result", result);
     }
 
@@ -577,6 +577,7 @@ public class TradeAPITest extends TradeAPIBaseTest {
         fromCcy.add("NEO");
         easyConvert.setFromCcy(fromCcy);
         easyConvert.setToCcy("USDT");
+        easyConvert.setSource("");
         JSONObject result = tradeAPIService.placeEasyConvert(easyConvert);
         toResultString(LOG, "result", result);
     }
@@ -657,6 +658,19 @@ public class TradeAPITest extends TradeAPIBaseTest {
         amendAlgos.setNewSlOrdPx("");
         amendAlgos.setNewTpTriggerPxType("");
         amendAlgos.setNewSlTriggerPxType("");
+        amendAlgos.setNewTriggerPx("");
+        amendAlgos.setNewOrdPx("");
+        amendAlgos.setNewTriggerPxType("");
+        ArrayList<AttachAlgoOrds> list = new ArrayList<>();
+        AttachAlgoOrds attachAlgoOrds = new AttachAlgoOrds();
+        attachAlgoOrds.setNewTpTriggerPx("");
+        attachAlgoOrds.setNewTpTriggerPxType("");
+        attachAlgoOrds.setNewTpOrdPx("");
+        attachAlgoOrds.setNewSlTriggerPx("");
+        attachAlgoOrds.setNewSlTriggerPxType("");
+        attachAlgoOrds.setNewSlOrdPx("");
+        list.add(attachAlgoOrds);
+        amendAlgos.setAttachAlgoOrds(list);
 
         JSONObject result = tradeAPIService.amendAlgos(amendAlgos);
         toResultString(LOG, "result", result);
@@ -670,6 +684,7 @@ public class TradeAPITest extends TradeAPIBaseTest {
         CancelOrder cancelOrder = new CancelOrder();
         cancelOrder.setInstType("");
         cancelOrder.setInstFamily("");
+        cancelOrder.setLockInterval("");
 
         JSONObject result = tradeAPIService.massCancelOrder(cancelOrder);
 
@@ -725,5 +740,41 @@ public class TradeAPITest extends TradeAPIBaseTest {
 
         toResultString(LOG, "result", result);
     }
+    /**
+     * 订单预检查 order-precheck
+     * POST /api/v5/trade/order-precheck
+     */
+    @Test
+    public void orderPrecheck(){
+        PlaceOrder placeOrder =new PlaceOrder();
+        placeOrder.setInstId("DOT-USDT-SWAP");
+        placeOrder.setTdMode("cross");
+        placeOrder.setSide("sell");
+        placeOrder.setPosSide("short");
+        placeOrder.setOrdType("market");
+        placeOrder.setSz("1");
+        placeOrder.setPx("60000");
+//        placeOrder.setReduceOnly(false);
+//        placeOrder.setTgtCcy("");
+        //止盈止损参数
 
+        ArrayList<AttachAlgoOrds> list = new ArrayList<>();
+        AttachAlgoOrds attachAlgoOrds = new AttachAlgoOrds();
+        attachAlgoOrds.setAttachAlgoClOrdId("");
+        attachAlgoOrds.setTpTriggerPxType("");
+        attachAlgoOrds.setTpOrdPx("");
+        attachAlgoOrds.setTpTriggerPx("");
+        attachAlgoOrds.setSlTriggerPxType("");
+        attachAlgoOrds.setSlOrdPx("");
+        attachAlgoOrds.setSlTriggerPx("");
+        attachAlgoOrds.setSz("");
+        attachAlgoOrds.setTpOrdKind("");
+        list.add(attachAlgoOrds);
+        placeOrder.setAttachAlgoOrds(list);
+
+
+        JSONObject result = tradeAPIService.orderPrecheck(placeOrder);
+
+        toResultString(LOG, "result", result);
+    }
 }

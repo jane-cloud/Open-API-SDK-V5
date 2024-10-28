@@ -1,5 +1,7 @@
 package com.okex.open.api.bean.funding.param;
 
+import java.util.ArrayList;
+
 public class Withdrawal {
     private String ccy;
     private String chain;
@@ -11,6 +13,15 @@ public class Withdrawal {
 
     private String areaCode;
 
+    public ArrayList<RcvrInfo> getRcvrInfo() {
+        return rcvrInfo;
+    }
+
+    public void setRcvrInfo(ArrayList<RcvrInfo> rcvrInfo) {
+        this.rcvrInfo = rcvrInfo;
+    }
+
+    private ArrayList<RcvrInfo> rcvrInfo;
     @Override
     public String toString() {
         return "Withdrawal{" +

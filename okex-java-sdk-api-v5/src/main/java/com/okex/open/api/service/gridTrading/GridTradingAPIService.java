@@ -42,4 +42,6 @@ public interface GridTradingAPIService {
     JSONObject computeMarginBalance(WithdrawIncome withdrawIncome);
 
     JSONObject adjustInvestment(Investment adjustInvestment);
+
+    JSONObject getMaxGridQuantity(String instId, String runType, String algoOrdType, String maxPx, String minPx, String lever);
 }

@@ -205,5 +205,16 @@ public class GridTradingAPITests extends GridTradingAPIBaseTests {
         toResultString(LOG, "result", result);
     }
 
+    /**
+     * GET / 最大网格数量（公共）grid-quantity
+     * GET /api/v5/tradingBot/grid/grid-quantity
+     */
+    @Test
+    public void getMaxGridQuantity(){
+
+        JSONObject result = this.gridTradingAPIService.getMaxGridQuantity("","","","","","");
+        toResultString(LOG, "result", result);
+    }
+
 
 }

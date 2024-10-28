@@ -43,13 +43,13 @@ public interface AccountAPIService {
      JSONObject increaseDecreaseMargin(IncreaseDecreaseMargin increaseDecreaseMargin);
 
     //获取杠杆倍数 Get Leverage
-    JSONObject getLeverage(String instId,String mgnMode);
+    JSONObject getLeverage(String instId,String mgnMode,String ccy);
 
     //获取交易产品最大可借 Get the maximum loan of instrument
     JSONObject getTheMaximumLoanOfIsolatedMARGIN(String instId,String mgnMode,String mgnCcy);
 
     //获取当前账户交易手续费费率 Get Fee Rates
-    JSONObject getFeeRates(String instType,String instId,String uly,String instFamily);
+    JSONObject getFeeRates(String instType,String instId,String uly,String instFamily,String ruleType);
 
     //获取计息记录 Get interest-accrued
     JSONObject getInterestAccrued(String type,String instId,String ccy,String mgnMode,String after,String before,String limit);
@@ -142,7 +142,21 @@ public interface AccountAPIService {
 
     JSONObject repayBorrowingOrder(BorrowingOrder repayBorrowingOrder);
 
-    JSONObject getBorrowingOrdersList(String ordId, String ccy, String state, String after, String before, String limit);
+    JSONObject getBorrowingOrdersList(String ordId, String ccy, String state, String after, String before, String limit,String term);
 
     JSONObject setRiskOffsetAmt(SetRiskOffsetAmt setRiskOffsetAmt);
+
+    JSONObject applyBillsHistoryArchive(BillsHistoryArchive billsHistoryArchive);
+
+    JSONObject getBillsHistoryArchive(String year, String quarter);
+
+    JSONObject convertToMarketLoan(BorrowingOrder repayBorrowingOrder);
+
+    JSONObject reduceLiabilities(BorrowingOrder repayBorrowingOrder);
+
+    JSONObject spotManualBorrowRepay(BorrowingOrder borrowingOrder);
+
+    JSONObject setAutoRepay(BorrowingOrder borrowingOrder);
+
+    JSONObject getSpotBorrowRepayHistory(String ccy, String type, String after, String before, String limit);
 }

@@ -131,6 +131,19 @@ public class FundingAPITests extends FundingAPIBaseTests {
         withdrawal.setFee("1");
         withdrawal.setClientId(null);
         withdrawal.setAreaCode(null);
+//        ArrayList<RcvrInfo> list = new ArrayList<>();
+//        RcvrInfo rcvrInfo = new RcvrInfo();
+//        rcvrInfo.setRcvrCountry("");
+//        rcvrInfo.setExchId("");
+//        rcvrInfo.setRcvrFirstName("");
+//        rcvrInfo.setRcvrLastName("");
+//        rcvrInfo.setRcvrStreetName("");
+//        rcvrInfo.setRcvrTownName("");
+//        rcvrInfo.setRcvrCountrySubDivision("");
+//        rcvrInfo.setWalletType("");
+//        list.add(rcvrInfo);
+//        withdrawal.setRcvrInfo(list);
+
         JSONObject result = fundingAPIService.Withdrawal(withdrawal);
         toResultString(LOG, "result", result);
     }

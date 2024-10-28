@@ -250,4 +250,13 @@ public class MarketDataAPITest extends MarketDataAPIBaseTest {
         JSONObject result = this.marketDataAPIService.getBooksFull("","");
         this.toResultString(MarketDataAPITest.LOG,"result",result);
     }
+    /**
+     * GET / 集合竞价信息Get call-auction-details
+     * GET /api/v5/market/call-auction-details
+     */
+    @Test
+    public void getCallAuctionDetails(){
+        JSONObject result = this.marketDataAPIService.getCallAuctionDetails("");
+        this.toResultString(MarketDataAPITest.LOG,"result",result);
+    }
 }

@@ -307,6 +307,31 @@ public class TradeChannelTest {
             e.printStackTrace();
         }
     }
+    /**
+     * 成交频道
+     * fills
+     */
+    @Test
+    public void wsFills() {
+
+        ArrayList<Map> fills= new ArrayList<>();
+        Map fill =new HashMap();
+
+        fill.put("channel","fills");
+        fill.put("instId","BTC-USDT");
+
+
+        fills.add(fill);
+
+        //订阅
+        WebSocketClient.wsFills(fills);
+        //为保证测试方法不停，需要让线程延迟
+        try {
+            Thread.sleep(10000000);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
 
 }

@@ -64,7 +64,7 @@ public interface TradeAPIService {
     JSONObject getAlgoOrderHistory(String state, String algoId, String instType, String instId, String ordType,String clOrdId, String after, String before, String limit);
 
     //获取一键兑换主流币币种列表  Get easy convert currency list
-    JSONObject getEasyConvertCurrencyList();
+    JSONObject getEasyConvertCurrencyList(String source);
 
     //一键兑换主流币交易  Place easy convert
     JSONObject placeEasyConvert(EasyConvert easyConvert);
@@ -118,4 +118,6 @@ public interface TradeAPIService {
     JSONObject getFillsArchive(String year, String quarter);
 
     JSONObject getAccountRateLimit(String fillRatio, String mainFillRatio, String accRateLimit, String nextAccRateLimit, String ts);
+
+    JSONObject orderPrecheck(PlaceOrder placeOrder);
 }

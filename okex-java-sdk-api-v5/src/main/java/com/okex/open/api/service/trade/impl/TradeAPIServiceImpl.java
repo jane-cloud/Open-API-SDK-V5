@@ -129,8 +129,8 @@ public class TradeAPIServiceImpl implements TradeAPIService {
 
     //获取一键兑换主流币币种列表  Get easy convert currency list
     @Override
-    public JSONObject getEasyConvertCurrencyList() {
-        return this.client.executeSync(this.tradeAPI.getEasyConvertCurrencyList());
+    public JSONObject getEasyConvertCurrencyList(String source) {
+        return this.client.executeSync(this.tradeAPI.getEasyConvertCurrencyList(source));
     }
 
     //一键兑换主流币交易  Place easy convert
@@ -227,5 +227,10 @@ public class TradeAPIServiceImpl implements TradeAPIService {
     @Override
     public JSONObject getAccountRateLimit(String fillRatio, String mainFillRatio, String accRateLimit, String nextAccRateLimit, String ts) {
         return this.client.executeSync(this.tradeAPI.getAccountRateLimit( fillRatio,  mainFillRatio,  accRateLimit,  nextAccRateLimit,  ts));
+    }
+
+    @Override
+    public JSONObject orderPrecheck(PlaceOrder placeOrder) {
+        return this.client.executeSync(this.tradeAPI.orderPrecheck(placeOrder));
     }
 }

@@ -151,7 +151,7 @@ interface TradeAPI {
 
     //获取一键兑换主流币币种列表  Get easy convert currency list
     @GET("/api/v5/trade/easy-convert-currency-list")
-    Call<JSONObject> getEasyConvertCurrencyList();
+    Call<JSONObject> getEasyConvertCurrencyList(@Query("source") String source);
 
     //一键兑换主流币交易  Place easy convert
     @POST("/api/v5/trade/easy-convert")
@@ -211,4 +211,7 @@ interface TradeAPI {
 
     @GET("/api/v5/trade/account-rate-limit")
     Call<JSONObject> getAccountRateLimit(@Query("fillRatio")String fillRatio,@Query("mainFillRatio") String mainFillRatio,@Query("accRateLimit") String accRateLimit,@Query("nextAccRateLimit") String nextAccRateLimit,@Query("ts") String ts);
+
+    @POST("/api/v5/trade/order-precheck")
+    Call<JSONObject> orderPrecheck(@Body PlaceOrder placeOrder);
 }

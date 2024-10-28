@@ -76,7 +76,7 @@ public interface AccountAPI {
 
     //获取杠杆倍数 Get Leverage
     @GET("/api/v5/account/leverage-info")
-    Call<JSONObject> getLeverage(@Query("instId") String instId,@Query("mgnMode") String mgnMode);
+    Call<JSONObject> getLeverage(@Query("instId") String instId,@Query("mgnMode") String mgnMode,@Query("ccy") String ccy);
 
     //获取交易产品最大可借 Get the maximum loan of instrument
     @GET("/api/v5/account/max-loan")
@@ -84,7 +84,7 @@ public interface AccountAPI {
 
     //获取当前账户交易手续费费率 Get Fee Rates
     @GET("/api/v5/account/trade-fee")
-    Call<JSONObject> getFeeRates(@Query("instType")String instType,@Query("instId")String instId,@Query("uly")String uly,@Query("instFamily")String instFamily);
+    Call<JSONObject> getFeeRates(@Query("instType")String instType,@Query("instId")String instId,@Query("uly")String uly,@Query("instFamily")String instFamily,@Query("ruleType") String ruleType);
 
     //获取计息记录 Get interest-accrued
     @GET("/api/v5/account/interest-accrued")
@@ -214,8 +214,28 @@ public interface AccountAPI {
     Call<JSONObject> repayBorrowingOrder(@Body JSONObject parseObject);
 
     @GET("/api/v5/account/fixed-loan/borrowing-orders-list")
-    Call<JSONObject> getBorrowingOrdersList(@Query("ordId")String ordId,@Query("ccy") String ccy,@Query("state") String state,@Query("after") String after,@Query("before") String before,@Query("limit") String limit);
+    Call<JSONObject> getBorrowingOrdersList(@Query("ordId")String ordId,@Query("ccy") String ccy,@Query("state") String state,@Query("after") String after,@Query("before") String before,@Query("limit") String limit,@Query("term") String term);
 
     @POST("/api/v5/account/set-riskOffset-amt")
     Call<JSONObject> setRiskOffsetAmt(@Body JSONObject parseObject);
+
+    @POST("/api/v5/account/bills-history-archive")
+    Call<JSONObject> applyBillsHistoryArchive(@Body JSONObject jsonObject);
+
+    @GET("/api/v5/account/bills-history-archive")
+    Call<JSONObject> getBillsHistoryArchive(@Query("year") String year,@Query("quarter") String quarter);
+
+    @POST("/api/v5/account/fixed-loan/convert-to-market-loan")
+    Call<JSONObject> convertToMarketLoan(@Body JSONObject jsonObject);
+
+    @POST("/api/v5/account/fixed-loan/reduce-liabilities")
+    Call<JSONObject> reduceLiabilities(@Body JSONObject jsonObject);
+
+    @POST("/api/v5/account/spot-manual-borrow-repay")
+    Call<JSONObject> spotManualBorrowRepay(@Body JSONObject jsonObject);
+
+    @POST("/api/v5/account/set-auto-repay")
+    Call<JSONObject> setAutoRepay(@Body JSONObject jsonObject);
+    @GET("/api/v5/account/spot-borrow-repay-history")
+    Call<JSONObject> getSpotBorrowRepayHistory(@Query("ccy") String ccy,@Query("type") String type,@Query("after") String after,@Query("before") String before,@Query("limit") String limit);
 }

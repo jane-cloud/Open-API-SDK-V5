@@ -6,6 +6,16 @@ public class EasyConvert {
     private List<String> fromCcy;
     private String toCcy;
 
+    public String getSource() {
+        return source;
+    }
+
+    public void setSource(String source) {
+        this.source = source;
+    }
+
+    private String source;
+
     public List<String> getFromCcy() {
         return fromCcy;
     }

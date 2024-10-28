@@ -90,4 +90,9 @@ public class GridTradingAPIServiceImpl implements GridTradingAPIService {
     public JSONObject adjustInvestment(Investment adjustInvestment) {
         return this.client.executeSync(this.gridAPI.adjustInvestment(adjustInvestment));
     }
+
+    @Override
+    public JSONObject getMaxGridQuantity(String instId, String runType, String algoOrdType, String maxPx, String minPx, String lever) {
+        return this.client.executeSync(this.gridAPI.getMaxGridQuantity( instId,  runType,  algoOrdType,  maxPx,  minPx,  lever));
+    }
 }

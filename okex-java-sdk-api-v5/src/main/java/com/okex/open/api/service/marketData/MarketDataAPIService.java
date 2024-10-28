@@ -74,4 +74,6 @@ public interface MarketDataAPIService {
     JSONObject getInstrumentFamilyTrades(String instFamily);
 
     JSONObject getBooksFull(String instId, String sz);
+
+    JSONObject getCallAuctionDetails(String instId);
 }

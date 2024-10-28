@@ -4,6 +4,54 @@ public class BorrowingOrder {
     private String ordId;
     private String reborrow;
 
+    private String ccy;
+    private String side;
+
+    public String getAutoRepay() {
+        return autoRepay;
+    }
+
+    public void setAutoRepay(String autoRepay) {
+        this.autoRepay = autoRepay;
+    }
+
+    private String  autoRepay;
+    public String getAmt() {
+        return amt;
+    }
+
+    public void setAmt(String amt) {
+        this.amt = amt;
+    }
+
+    public String getSide() {
+        return side;
+    }
+
+    public void setSide(String side) {
+        this.side = side;
+    }
+
+    public String getCcy() {
+        return ccy;
+    }
+
+    public void setCcy(String ccy) {
+        this.ccy = ccy;
+    }
+
+    private String amt;
+
+    public String getPendingRepay() {
+        return pendingRepay;
+    }
+
+    public void setPendingRepay(String pendingRepay) {
+        this.pendingRepay = pendingRepay;
+    }
+
+    private String pendingRepay;
+
     public String getMaxRate() {
         return maxRate;
     }

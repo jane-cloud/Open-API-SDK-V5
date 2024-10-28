@@ -100,4 +100,7 @@ interface MarketDataAPI {
 
     @GET("/api/v5/market/books-full")
     Call<JSONObject>  getBooksFull(@Query("instId") String instId, @Query("sz") String sz);
+
+    @GET("/api/v5/market/call-auction-details")
+    Call<JSONObject> getCallAuctionDetails(@Query("instId") String instId);
 }

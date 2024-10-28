@@ -148,4 +148,9 @@ public class MarketDataAPIServiceImpl implements MarketDataAPIService {
         return this.client.executeSync(this.marketDataAPI.getBooksFull(instId,sz));
     }
 
+    @Override
+    public JSONObject getCallAuctionDetails(String instId) {
+        return this.client.executeSync(this.marketDataAPI.getCallAuctionDetails(instId));
+    }
+
 }

@@ -80,4 +80,7 @@ public interface GridTradingAPI {
 
     @POST("/api/v5/tradingBot/grid/adjust-investment")
     Call<JSONObject> adjustInvestment(@Body Investment adjustInvestment);
+
+    @GET("/api/v5/tradingBot/grid/grid-quantity")
+    Call<JSONObject> getMaxGridQuantity(@Query("instId") String instId,@Query("runType") String runType,@Query("algoOrdType") String algoOrdType,@Query("maxPx") String maxPx,@Query("minPx") String minPx,@Query("lever") String lever);
 }

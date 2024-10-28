@@ -5,6 +5,16 @@ public class CancelOrder {
     private String ordId;
     private String clOrdId;
 
+    public String getLockInterval() {
+        return lockInterval;
+    }
+
+    public void setLockInterval(String lockInterval) {
+        this.lockInterval = lockInterval;
+    }
+
+    private String  lockInterval;
+
     public String getTag() {
         return tag;
     }

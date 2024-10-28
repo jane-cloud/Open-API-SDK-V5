@@ -170,7 +170,7 @@ public class AccountAPITests extends  AccountAPIBaseTests {
      */
     @Test
     public void getLeverage(){
-        JSONObject result = this.accountAPIService.getLeverage("BTC-USDT-211231 ","cross");
+        JSONObject result = this.accountAPIService.getLeverage("BTC-USDT-211231 ","cross","");
         toResultString(LOG, "result", result);
     }
 
@@ -190,7 +190,7 @@ public class AccountAPITests extends  AccountAPIBaseTests {
      */
     @Test
     public void getFeeRates(){
-        JSONObject result = this.accountAPIService.getFeeRates("SWAP",null,"BTC-USDT","");
+        JSONObject result = this.accountAPIService.getFeeRates("SWAP",null,"BTC-USDT","","");
         toResultString(LOG, "result", result);
     }
 
@@ -623,7 +623,7 @@ public class AccountAPITests extends  AccountAPIBaseTests {
     @Test
     public void getBorrowingOrdersList(){
 
-        JSONObject result = this.accountAPIService.getBorrowingOrdersList("","","","","","");
+        JSONObject result = this.accountAPIService.getBorrowingOrdersList("","","","","","","");
         toResultString(LOG, "result", result);
     }
     /**
@@ -637,6 +637,87 @@ public class AccountAPITests extends  AccountAPIBaseTests {
         setRiskOffsetAmt.setClSpotInUseAmt("");
 
         JSONObject result = this.accountAPIService.setRiskOffsetAmt(setRiskOffsetAmt);
+        toResultString(LOG, "result", result);
+    }
+    /**
+     * 申请账单流水（自 2021 年）bills-history-archive
+     * POST /api/v5/account/bills-history-archive
+     */
+    @Test
+    public void applyBillsHistoryArchive(){
+        BillsHistoryArchive billsHistoryArchive = new BillsHistoryArchive();
+        billsHistoryArchive.setQuarter("");
+        billsHistoryArchive.setYear("");
+
+        JSONObject result = this.accountAPIService.applyBillsHistoryArchive(billsHistoryArchive);
+        toResultString(LOG, "result", result);
+    }
+    /**
+     * 获取账单流水（自 2021 年）bills-history-archive
+     * GET /api/v5/account/bills-history-archive
+     */
+    @Test
+    public void getBillsHistoryArchive(){
+
+        JSONObject result = this.accountAPIService.getBillsHistoryArchive("","");
+        toResultString(LOG, "result", result);
+    }
+    /**
+     * 固定借币转市场借币 convert-to-market-loan
+     * POST  /api/v5/account/fixed-loan/convert-to-market-loan
+     */
+    @Test
+    public void convertToMarketLoan(){
+        BorrowingOrder repayBorrowingOrder = new BorrowingOrder();
+        repayBorrowingOrder.setOrdId("");
+        JSONObject result = this.accountAPIService.convertToMarketLoan(repayBorrowingOrder);
+        toResultString(LOG, "result", result);
+    }
+    /**
+     * 固定借币减少负债 reduce-liabilities
+     * POST  /api/v5/account/fixed-loan/reduce-liabilities
+     */
+    @Test
+    public void reduceLiabilities(){
+        BorrowingOrder repayBorrowingOrder = new BorrowingOrder();
+        repayBorrowingOrder.setOrdId("");
+        repayBorrowingOrder.setPendingRepay("");
+        JSONObject result = this.accountAPIService.reduceLiabilities(repayBorrowingOrder);
+        toResultString(LOG, "result", result);
+    }
+    /**
+     * 手动借/还币 spot-manual-borrow-repay
+     * POST /api/v5/account/spot-manual-borrow-repay
+     */
+    @Test
+    public void spotManualBorrowRepay(){
+        BorrowingOrder borrowingOrder = new BorrowingOrder();
+        borrowingOrder.setCcy("");
+        borrowingOrder.setSide("");
+        borrowingOrder.setAmt("");
+        JSONObject result = this.accountAPIService.spotManualBorrowRepay(borrowingOrder);
+        toResultString(LOG, "result", result);
+    }
+    /**
+     * 设置自动还币set-auto-repay
+     * POST /api/v5/account/set-auto-repay
+     */
+    @Test
+    public void setAutoRepay(){
+        BorrowingOrder borrowingOrder = new BorrowingOrder();
+        borrowingOrder.setAutoRepay("");
+        JSONObject result = this.accountAPIService.setAutoRepay(borrowingOrder);
+        toResultString(LOG, "result", result);
+    }
+    /**
+     * 获取借/还币历史 getSpotBorrowRepayHistory
+     *  get
+     *  /api/v5/account/spot-borrow-repay-history
+     */
+    @Test
+    public void getSpotBorrowRepayHistory(){
+
+        JSONObject result = this.accountAPIService.getSpotBorrowRepayHistory("","","","","");
         toResultString(LOG, "result", result);
     }
 }
