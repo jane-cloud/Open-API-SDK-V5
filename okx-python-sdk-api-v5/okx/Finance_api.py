@@ -61,6 +61,10 @@ class FinanceAPI(Client):
         params = {'days': days,}
         return self._request_with_params(GET, STAKING_DEFI_ETH_APY_HISTORY, params)
 
+    def staking_defi_eth_product_info(self):
+        params = {}
+        return self._request_with_params(GET, STAKING_DEFI_ETH_PRODUCT_INFO, params)
+
     def savings_lending_rate_summary(self,ccy='',):
         params = {'ccy': ccy,}
         return self._request_with_params(GET, SAVINGS_LENDING_RATE_SUM, params)

@@ -322,6 +322,7 @@ FIXED_LOAN_LENDING_ORDER = '/api/v5/finance/fixed-loan/lending-order'
 FIXED_LOAN_AMEND_LENDING_ORDER = '/api/v5/finance/fixed-loan/amend-lending-order'
 FIXED_LOAN_LENDING_ORDERS_LIST = '/api/v5/finance/fixed-loan/lending-orders-list'
 FIXED_LOAN_LENDING_SUB_ORDERS = '/api/v5/finance/fixed-loan/lending-sub-orders'
+STAKING_DEFI_ETH_PRODUCT_INFO = '/api/v5/finance/staking-defi/eth/product-info'
 
 
 

@@ -30,7 +30,7 @@ if __name__ == '__main__':
     # account api
     accountAPI = Account.AccountAPI(api_key, secret_key, passphrase, False, flag)
     # 获取交易产品基础信息
-    result = accountAPI.get_account_instruments(instType = 'SWAP', uly = '', instFamily = '', instId = '')
+    # result = accountAPI.get_account_instruments(instType = 'SWAP', uly = '', instFamily = '', instId = '')
     # 查看账户持仓风险 GET Position_risk
     # result = accountAPI.get_position_risk('SWAP')
     # 查看账户余额  Get Balance
@@ -624,6 +624,8 @@ if __name__ == '__main__':
     # result = Finance.staking_defi_eth_p_r_history()
     # 获取历史收益率(公共) GET /api/v5/finance/staking-defi/eth/apy-history
     # result = Finance.staking_defi_eth_apy_history()
+    # 获取产品信息
+    result = Finance.staking_defi_eth_product_info()
 
     # 活期简单赚币
     # 余币宝申购/赎回  PiggyBank Purchase/Redemption
