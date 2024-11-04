@@ -131,6 +131,10 @@ if __name__ == '__main__':
     # result = accountAPI.fixed_loan_manual_reborrow(ordId = '111111111111', maxRate = '0.01')
     # 固定借币手动还币 POST /api/v5/account/fixed-loan/repay-borrowing-order
     # result = accountAPI.fixed_loan_repay_borrowing_order(ordId = '111111111111')
+    # 固定借币转市场借币 POST /api/v5/account/fixed-loan/convert-to-market-loan
+    # result = accountAPI.convert_to_market_loan(ordId = '')
+    # 固定借币减少负债
+    result = accountAPI.reduce_liabilities(ordId = '1', pendingRepay = '')
     # 获取固定借币订单信息 GET /api/v5/account/fixed-loan/borrowing-orders-list
     # result = accountAPI.get_fixed_loan_borrowing_orders_list(ordId = '', ccy = '', state = '', after = '', before = '', limit = '', term = '')
     # 手动借/还币 POST /api/v5/account/spot-manual-borrow-repay
@@ -139,6 +143,8 @@ if __name__ == '__main__':
     # result = accountAPI.set_auto_repay(autoRepay = 'true')
     # 获取借/还币历史
     # result = accountAPI.get_spot_borrow_repay_history(ccy = '', type = '', after = '', before = '', limit = '')
+    # 获取账户限速 GET /api/v5/trade/account-rate-limit
+    # result = accountAPI.account_rate_limit()
 
     # funding api
     fundingAPI = Funding.FundingAPI(api_key, secret_key, passphrase, False, flag)
@@ -402,15 +408,13 @@ if __name__ == '__main__':
     # 获取一键还债历史记录
     # result = tradeAPI.one_click_repay_history(after = '', before = '', limit = '')
     # 撤销 MMP 订单
-    # result =tradeAPI.mass_cancel()
+    # result =tradeAPI.mass_cancel(instType = '', instFamily = '', lockInterval = '')
     # 倒计时全部撤单
     # result = tradeAPI.cancel_all_after(timeOut = '10', tag = '')
-    # 申请成交明细（近两年） POST /api/v5/trade/fills-archive
+    # 申请成交明细（近两年） POST /api/v5/trade/fills-archive （已下线）
     # result = tradeAPI.fills_archive()
-    # 获取成交明细（近两年） GET /api/v5/trade/fills-archive
+    # 获取成交明细（近两年） GET /api/v5/trade/fills-archive （已下线）
     # result = tradeAPI.fills_archives()
-    # 获取账户限速 GET /api/v5/trade/account-rate-limit
-    # result = accountAPI.account_rate_limit()
 
 
     # 价差撮合交易 SprdAPI

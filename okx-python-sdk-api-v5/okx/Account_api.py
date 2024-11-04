@@ -293,5 +293,18 @@ class AccountAPI(Client):
         params = {'ccy':ccy, 'type':type, 'after':after, 'before':before, 'limit':limit}
         return self._request_with_params(GET, GET_SPOT_BORROW_REPAY_HISTORY, params)
 
+    # POST /api/v5/account/fixed-loan/convert-to-market-loan
+    def convert_to_market_loan(self,ordId = ''):
+        params = {'ordId':ordId}
+        return self._request_with_params(POST, CONVERT_TO_MARKET_LOAN, params)
 
+    # POST /api/v5/account/fixed-loan/reduce-liabilities
+    def reduce_liabilities(self,ordId = '',pendingRepay = ''):
+        params = {'ordId':ordId,'pendingRepay':pendingRepay}
+        return self._request_with_params(POST, REDYCE_LIABILITIES, params)
+        
+    # GET /api/v5/trade/account-rate-limit
+    def account_rate_limit(self,):
+        params = {}
+        return self._request_with_params(GET, ACC_RATE_LIMIT, params)
 

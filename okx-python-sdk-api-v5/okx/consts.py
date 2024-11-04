@@ -70,6 +70,9 @@ GET_ACCOUNT_INSTRUMENTS = '/api/v5/account/instruments'
 SPOT_MANUAL_BORROW_REPAY = '/api/v5/account/spot-manual-borrow-repay'
 SET_AUTO_REPAY = '/api/v5/account/set-auto-repay'
 GET_SPOT_BORROW_REPAY_HISTORY = '/api/v5/account/spot-borrow-repay-history'
+CONVERT_TO_MARKET_LOAN = '/api/v5/account/fixed-loan/convert-to-market-loan'
+REDYCE_LIABILITIES = '/api/v5/account/fixed-loan/reduce-liabilities'
+ACC_RATE_LIMIT = '/api/v5/trade/account-rate-limit'
 
 
 # funding
@@ -192,7 +195,6 @@ MASS_CANCEL = '/api/v5/trade/mass-cancel'
 CANCEL_ALL_AFTER = '/api/v5/trade/cancel-all-after'
 FILLS_ARCHIVE = '/api/v5/trade/fills-archive'
 FILLS_ARCHIVES = '/api/v5/trade/fills-archive'
-ACC_RATE_LIMIT = '/api/v5/trade/account-rate-limit'
 
 #Sprd
 SPRD_PLACE_ORDER = '/api/v5/sprd/order'

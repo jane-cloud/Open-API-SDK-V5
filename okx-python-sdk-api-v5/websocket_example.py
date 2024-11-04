@@ -558,7 +558,8 @@ channels = [{"channel": "call-auction-details","instId":"BTC-USDT-SWAP"}]
 # 撤销 MMP 订单
 # trade_param = {"id":"","op":"mass-cancel","args":[{
 #     "instType":"",
-#     "instFamily":""
+#     "instFamily":"",
+#。   "lockInterval":""
 # }]}
 
 # 价差撮合下单 sprd_order

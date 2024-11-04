@@ -167,8 +167,8 @@ class TradeAPI(Client):
         return self._request_with_params(GET, GET_ORDER_ALGO, params)
 
     # POST /api/v5/trade/mass-cancel
-    def mass_cancel(self,instType,instFamily):
-        params = {'instType':instType, 'instFamily':instFamily}
+    def mass_cancel(self,instType= '',instFamily = '',lockInterval = ''):
+        params = {'instType':instType, 'instFamily':instFamily, 'lockInterval':lockInterval}
         return self._request_with_params(POST, MASS_CANCEL, params)
 
     def cancel_all_after(self,timeOut= '', tag = ''):
@@ -184,10 +184,5 @@ class TradeAPI(Client):
     def fills_archives(self,year, quarter):
         params = {'year': year, 'quarter':quarter}
         return self._request_with_params(GET, FILLS_ARCHIVES, params)
-
-
-    def account_rate_limit(self,):
-        params = {}
-        return self._request_with_params(GET, ACC_RATE_LIMIT, params)
 
 
