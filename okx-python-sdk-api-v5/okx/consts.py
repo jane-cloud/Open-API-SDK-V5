@@ -67,6 +67,10 @@ FIXED_LOAN_MANUAL_BORROWING = '/api/v5/account/fixed-loan/manual-reborrow'
 FIXED_LOAN_REPAY_BORROWING_ORDER = '/api/v5/account/fixed-loan/repay-borrowing-order'
 GET_FIXED_LOAN_BORROWING_ORDERS_LIST = '/api/v5/account/fixed-loan/borrowing-orders-list'
 GET_ACCOUNT_INSTRUMENTS = '/api/v5/account/instruments'
+SPOT_MANUAL_BORROW_REPAY = '/api/v5/account/spot-manual-borrow-repay'
+SET_AUTO_REPAY = '/api/v5/account/set-auto-repay'
+GET_SPOT_BORROW_REPAY_HISTORY = '/api/v5/account/spot-borrow-repay-history'
+
 
 # funding
 DEPOSIT_ADDRESS = '/api/v5/asset/deposit-address'
@@ -379,3 +383,5 @@ RECURRING_SUB_ORDERS = '/api/v5/tradingBot/recurring/sub-orders'
 
 # status
 STATUS = '/api/v5/system/status'
+GET_ANNOUNCEMENTS = '/api/v5/support/announcements'
+GET_ANNOUNCEMENTS_TYPES = '/api/v5/support/announcement-types'

@@ -454,11 +454,13 @@ url = "wss://wspap.okx.com:8443/ws/v5/public?brokerId=9999"
 # channels = [{"channel": "public-block-trades", "instId":"BTC-USDT-SWAP"}]
 # 全部交易频道
 # channels = [{"channel": "trades-all","instId":"BTC-USDT-SWAP"}]
+# 集合竞价信息频道
+channels = [{"channel": "call-auction-details","instId":"BTC-USDT-SWAP"}]
 
 
-#价差撮合
+# 价差撮合
 # 深度频道 sprd-bbo-tbt/sprd-books5
-channels = [{"channel": "sprd-bbo-tbt","sprdId":""}]
+# channels = [{"channel": "sprd-bbo-tbt","sprdId":""}]
 # 公共成交数据频道 sprd-public-trades （每次推送一条成交数据）
 # channels = [{"channel": "sprd-public-trades","sprdId":""}]
 # 行情频道 tickers
@@ -514,15 +516,15 @@ channels = [{"channel": "sprd-bbo-tbt","sprdId":""}]
 # 定投策略委托订单频道
 # channels = [{"channel": "algo-recurring-buy", "instType":"SPOT"}]
 # 跟单消息通知频道
-channels = [{"channel": "copytrading-notification", "instType":"SWAP","instId":"BTC-USDT-SWAP"}]
+# channels = [{"channel": "copytrading-notification", "instType":"SWAP","instId":"BTC-USDT-SWAP"}]
 # 带单消息通知频道
-channels = [{"channel": "copytrading-lead-notification", "instType":"SWAP","instId":"BTC-USDT-SWAP"}]
+# channels = [{"channel": "copytrading-lead-notification", "instType":"SWAP","instId":"BTC-USDT-SWAP"}]
 
 #价差撮合
 # 订单频道 sprd-orders
-channels = [{"channel": "sprd-orders", "sprdId":""}]
+# channels = [{"channel": "sprd-orders", "sprdId":""}]
 # 成交数据頻道 sprd-trades
-channels = [{"channel": "sprd-trades", "sprdId":""}]
+# channels = [{"channel": "sprd-trades", "sprdId":""}]
 
 
 

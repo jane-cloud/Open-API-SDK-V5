@@ -71,8 +71,8 @@ class AccountAPI(Client):
         return self._request_with_params(POST, ADJUSTMENT_MARGIN, params)
 
     # Get Leverage
-    def get_leverage(self, instId, mgnMode):
-        params = {'instId': instId, 'mgnMode': mgnMode}
+    def get_leverage(self, instId, mgnMode, ccy):
+        params = {'instId': instId, 'mgnMode': mgnMode, 'ccy':ccy}
         return self._request_with_params(GET, GET_LEVERAGE, params)
 
     # Get the maximum loan of isolated MARGIN
@@ -266,11 +266,32 @@ class AccountAPI(Client):
 
 
     # GET /api/v5/account/fixed-loan/borrowing-orders-list
-    def get_fixed_loan_borrowing_orders_list(self,ordId = '', ccy = '', state = '', after = '', before = '',limit = ''):
-        params = {'ordId':ordId, 'ccy':ccy, 'state':state, 'after':after, 'before':before, 'limit':limit}
+    def get_fixed_loan_borrowing_orders_list(self,ordId = '', ccy = '', state = '', after = '', before = '',limit = '',term = ''):
+        params = {'ordId':ordId, 'ccy':ccy, 'state':state, 'after':after, 'before':before, 'limit':limit, 'term':term}
         return self._request_with_params(GET, GET_FIXED_LOAN_BORROWING_ORDERS_LIST, params)
 
     # GET /api/v5/account/instruments
     def get_account_instruments(self,instType = '', uly = '', instFamily = '', instId = ''):
         params = {'instType':instType, 'uly':uly, 'instFamily':instFamily, 'instId':instId}
         return self._request_with_params(GET, GET_ACCOUNT_INSTRUMENTS, params)
+
+
+    # POST /api/v5/account/spot-manual-borrow-repay
+    def spot_manual_borrow_repay(self,ccy = '', side = '', amt = ''):
+        params = {'ccy':ccy, 'side':side, 'amt':amt}
+        return self._request_with_params(POST, SPOT_MANUAL_BORROW_REPAY, params)
+
+
+    # POST /api/v5/account/set-auto-repay
+    def set_auto_repay(self,autoRepay = ''):
+        params = {'autoRepay':autoRepay}
+        return self._request_with_params(POST, SET_AUTO_REPAY, params)
+
+
+    # GET /api/v5/account/spot-borrow-repay-history
+    def get_spot_borrow_repay_history(self,ccy = '', type = '', after = '', before = '', limit = ''):
+        params = {'ccy':ccy, 'type':type, 'after':after, 'before':before, 'limit':limit}
+        return self._request_with_params(GET, GET_SPOT_BORROW_REPAY_HISTORY, params)
+
+
+

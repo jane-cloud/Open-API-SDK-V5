@@ -56,7 +56,7 @@ if __name__ == '__main__':
     # 调整保证金  Increase/Decrease margint
     # result = accountAPI.Adjustment_margin('BTC-USDT-210409', 'long', 'add', '100')
     # 获取杠杆倍数 Get Leverage
-    # result = accountAPI.get_leverage('BTC-USDT-210409', 'isolated')
+    # result = accountAPI.get_leverage(instId = 'BTC-USDT-SWAP', mgnMode = 'isolated', ccy = '')
     # 获取交易产品最大可借  Get the maximum loan of instrument
     # result = accountAPI.get_max_load('BTC-USDT', 'cross', 'BTC')
     # 获取当前账户交易手续费费率  Get Fee Rates
@@ -132,7 +132,13 @@ if __name__ == '__main__':
     # 固定借币手动还币 POST /api/v5/account/fixed-loan/repay-borrowing-order
     # result = accountAPI.fixed_loan_repay_borrowing_order(ordId = '111111111111')
     # 获取固定借币订单信息 GET /api/v5/account/fixed-loan/borrowing-orders-list
-    # result = accountAPI.get_fixed_loan_borrowing_orders_list(ordId = '', ccy = '', state = '', after = '', before = '', limit = '')
+    # result = accountAPI.get_fixed_loan_borrowing_orders_list(ordId = '', ccy = '', state = '', after = '', before = '', limit = '', term = '')
+    # 手动借/还币 POST /api/v5/account/spot-manual-borrow-repay
+    # result = accountAPI.spot_manual_borrow_repay(ccy = 'BTC', side = 'borrow', amt = '0.1')
+    # 设置自动还币 POST /api/v5/account/set-auto-repay
+    # result = accountAPI.set_auto_repay(autoRepay = 'true')
+    # 获取借/还币历史
+    # result = accountAPI.get_spot_borrow_repay_history(ccy = '', type = '', after = '', before = '', limit = '')
 
     # funding api
     fundingAPI = Funding.FundingAPI(api_key, secret_key, passphrase, False, flag)
@@ -164,7 +170,7 @@ if __name__ == '__main__':
     # result = fundingAPI.get_withdrawal_history()
     # 获取充值/提现的详细状态
     # result = fundingAPI.deposit_withdraw_status(wdId = '', txId = '', ccy = '', to = '', chain = '')
-    # 小额资产兑换 CONVERT_DUST_ASSETS
+    # 小额资产兑换CONVERT_DUST_ASSETS （已经下线）
     # result = fundingAPI.convert_dust_assets()
     # 获取账户资产估值 GET Obtain account asset valuation
     # result = fundingAPI.get_asset_valuation(ccy = 'USDT')
@@ -384,9 +390,9 @@ if __name__ == '__main__':
     # 获取历史策略委托单列表  Get Algo Order History
     # result = tradeAPI.order_algos_history('conditional', 'canceled', instType='FUTURES')
     # 获取一键兑换主流币币种列表
-    # result = tradeAPI.easy_convert_currency_list()
+    # result = tradeAPI.easy_convert_currency_list(source = '1')
     # 一键兑换主流币交易
-    # result = tradeAPI.easy_convert(fromCcy = '', toCcy = '')
+    # result = tradeAPI.easy_convert(fromCcy = '', toCcy = '', source = '')
     # 获取一键兑换主流币历史记录
     # result = tradeAPI.easy_convert_history(after = '', before = '', limit = '')
     # 获取一键还债币种列表
@@ -625,7 +631,7 @@ if __name__ == '__main__':
     # 获取历史收益率(公共) GET /api/v5/finance/staking-defi/eth/apy-history
     # result = Finance.staking_defi_eth_apy_history()
     # 获取产品信息
-    result = Finance.staking_defi_eth_product_info()
+    # result = Finance.staking_defi_eth_product_info()
 
     # 活期简单赚币
     # 余币宝申购/赎回  PiggyBank Purchase/Redemption
@@ -767,4 +773,8 @@ if __name__ == '__main__':
     Status = Status.StatusAPI(api_key, secret_key, passphrase, False, flag)
     # 查看系统的升级状态
     # result = Status.status()
+    # 公告 GET /api/v5/support/announcements
+    # result = Status.get_announcements(annType = '', page = '')
+    # 公告类型 GET /api/v5/support/announcement-types
+    result = Status.get_announcements_types()
     print(json.dumps(result))

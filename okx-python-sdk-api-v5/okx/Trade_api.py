@@ -137,12 +137,12 @@ class TradeAPI(Client):
                   'limit': limit,'subType':subType}
         return self._request_with_params(GET, ORDERS_FILLS_HISTORY, params)
 
-    def easy_convert_currency_list(self):
-        params = {}
+    def easy_convert_currency_list(self, source = ''):
+        params = {'source':source}
         return self._request_with_params(GET, EASY_CONVERT_CURRENCY_LIST, params)
 
-    def easy_convert(self, fromCcy = '', toCcy = ''):
-        params = {'fromCcy':fromCcy, 'toCcy':toCcy}
+    def easy_convert(self, fromCcy = '', toCcy = '', source = ''):
+        params = {'fromCcy':fromCcy, 'toCcy':toCcy, 'source':source}
         return self._request_with_params(POST, EASY_CONVERT, params)
 
     def easy_convert_history(self, after = '', before = '', limit = ''):
