@@ -106,13 +106,15 @@ class TradeAPI(Client):
         return self._request_with_params(POST, CANCEL_ALGOS, params)
 
     # POST /api/v5/trade/amend-algos
-    def amend_algos(self, instId, algoId, algoClOrdId, cxlOnFail = '',reqId = '',newSz = '',
+    def amend_algos(self, instId='', algoId='', algoClOrdId='', cxlOnFail = '',reqId = '',newSz = '',
                     newTpTriggerPx = '',newTpOrdPx = '',newSlTriggerPx = '',
-                    newSlOrdPx = '',newTpTriggerPxType = '',newSlTriggerPxType=''):
+                    newSlOrdPx = '',newTpTriggerPxType = '',newSlTriggerPxType='',
+                    newTriggerPx='',newOrdPx='',newTriggerPxType='',attachAlgoOrds=[]):
         params = {'instId':instId,'algoId':algoId,'algoClOrdId':algoClOrdId,'cxlOnFail':cxlOnFail,
                   'reqId':reqId,'newSz':newSz,'newTpTriggerPx':newTpTriggerPx,'newTpOrdPx':newTpOrdPx,
                   'newSlTriggerPx':newSlTriggerPx,'newSlOrdPx':newSlOrdPx,'newTpTriggerPxType':newTpTriggerPxType,
-                  'newSlTriggerPxType':newSlTriggerPxType,}
+                  'newSlTriggerPxType':newSlTriggerPxType,'newTriggerPx':newTriggerPx, 'newOrdPx':newOrdPx, 'newTriggerPxType':newTriggerPxType,
+                  'attachAlgoOrds':attachAlgoOrds}
         return self._request_with_params(POST, AMEND_ALGOS, params)
 
     # Cancel Advance Algos
@@ -184,5 +186,12 @@ class TradeAPI(Client):
     def fills_archives(self,year, quarter):
         params = {'year': year, 'quarter':quarter}
         return self._request_with_params(GET, FILLS_ARCHIVES, params)
+
+    # POST /api/v5/trade/order-precheck
+    def order_precheck(self,instid = '', tdMode = '', side = '', posSide = '', ordType = '', sz = '', px = '',
+        reduceOnly = '', tgtCcy = '', attachAlgoOrds = []):
+        params = {'instid': instid, 'tdMode':tdMode, 'side':side, 'posSide':posSide, 'ordType':ordType,
+        'sz':sz, 'px':px, 'reduceOnly':reduceOnly, 'tgtCcy':tgtCcy, 'attachAlgoOrds':attachAlgoOrds}
+        return self._request_with_params(POST, ORDER_PRECHECK, params)
 
 

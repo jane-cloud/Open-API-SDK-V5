@@ -73,7 +73,8 @@ GET_SPOT_BORROW_REPAY_HISTORY = '/api/v5/account/spot-borrow-repay-history'
 CONVERT_TO_MARKET_LOAN = '/api/v5/account/fixed-loan/convert-to-market-loan'
 REDYCE_LIABILITIES = '/api/v5/account/fixed-loan/reduce-liabilities'
 ACC_RATE_LIMIT = '/api/v5/trade/account-rate-limit'
-
+BILLS_HISTORY_ARCHIVE = '/api/v5/account/bills-history-archive'
+GET_BILLS_HISTORY_ARCHIVE = '/api/v5/account/bills-history-archive'
 
 # funding
 DEPOSIT_ADDRESS = '/api/v5/asset/deposit-address'
@@ -124,6 +125,7 @@ HISTORY_MARK_PRICE_CANDLES = '/api/v5/market/history-mark-price-candles'
 INSTRUMENT_FAMILY_TRADES = '/api/v5/market/option/instrument-family-trades'
 GET_BOOKS_LITE = '/api/v5/market/books-lite'
 BOOKS_FULL = '/api/v5/market/books-full'
+GET_CALL_AUCTION_DETAILS = '/api/v5/market/call-auction-details'
 
 # Public Data
 INSTRUMENT_INFO = '/api/v5/public/instruments'
@@ -195,6 +197,7 @@ MASS_CANCEL = '/api/v5/trade/mass-cancel'
 CANCEL_ALL_AFTER = '/api/v5/trade/cancel-all-after'
 FILLS_ARCHIVE = '/api/v5/trade/fills-archive'
 FILLS_ARCHIVES = '/api/v5/trade/fills-archive'
+ORDER_PRECHECK = '/api/v5/trade/order-precheck'
 
 #Sprd
 SPRD_PLACE_ORDER = '/api/v5/sprd/order'
@@ -306,6 +309,7 @@ GRID_COMPUTE_MARGIN_BALANCE = '/api/v5/tradingBot/grid/compute-margin-balance'
 GRID_MARGIN_BALANCE = '/api/v5/tradingBot/grid/margin-balance'
 GRID_AI_PARAM = '/api/v5/tradingBot/grid/ai-param'
 GRID_ADJUST_INVESTMETN = '/api/v5/tradingBot/grid/adjust-investment'
+GRID_QUANTITY = '/api/v5/tradingBot/grid/grid-quantity'
 
 # finance
 STAKING_DEFI_OFFERS = '/api/v5/finance/staking-defi/offers'

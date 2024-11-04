@@ -122,3 +122,12 @@ class MarketAPI(Client):
     def books_full(self, instId='',sz=''):
         params = {'instId': instId,'sz':sz}
         return self._request_with_params(GET, BOOKS_FULL, params)
+
+    # GET /api/v5/market/call-auction-details
+    def get_call_auction_details(self, instId=''):
+        params = {'instId': instId}
+        return self._request_with_params(GET, GET_CALL_AUCTION_DETAILS, params)
+
+
+
+

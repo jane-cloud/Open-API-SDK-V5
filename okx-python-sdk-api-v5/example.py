@@ -60,7 +60,7 @@ if __name__ == '__main__':
     # 获取交易产品最大可借  Get the maximum loan of instrument
     # result = accountAPI.get_max_load('BTC-USDT', 'cross', 'BTC')
     # 获取当前账户交易手续费费率  Get Fee Rates
-    # result = accountAPI.get_fee_rates(instType = 'FUTURES',instId = '', category='1',instFamily = '')
+    # result = accountAPI.get_fee_rates(instType = 'FUTURES',instId = '', category='1',instFamily = '',ruleType = '')
     # 获取计息记录  Get interest-accrued
     # result = accountAPI.get_interest_accrued('BTC-USDT', 'BTC', 'isolated', '', '', '10', '')
     # 获取用户当前杠杆借币利率 Get interest rate
@@ -134,7 +134,7 @@ if __name__ == '__main__':
     # 固定借币转市场借币 POST /api/v5/account/fixed-loan/convert-to-market-loan
     # result = accountAPI.convert_to_market_loan(ordId = '')
     # 固定借币减少负债
-    result = accountAPI.reduce_liabilities(ordId = '1', pendingRepay = '')
+    # result = accountAPI.reduce_liabilities(ordId = '1', pendingRepay = '')
     # 获取固定借币订单信息 GET /api/v5/account/fixed-loan/borrowing-orders-list
     # result = accountAPI.get_fixed_loan_borrowing_orders_list(ordId = '', ccy = '', state = '', after = '', before = '', limit = '', term = '')
     # 手动借/还币 POST /api/v5/account/spot-manual-borrow-repay
@@ -145,6 +145,10 @@ if __name__ == '__main__':
     # result = accountAPI.get_spot_borrow_repay_history(ccy = '', type = '', after = '', before = '', limit = '')
     # 获取账户限速 GET /api/v5/trade/account-rate-limit
     # result = accountAPI.account_rate_limit()
+    # 申请账单流水（自 2021 年）
+    # result = accountAPI.bills_history_archive(year = '', quarter = '')
+    # 获取账单流水（自 2021 年）
+    # result = accountAPI.get_bills_history_archive(year = '', quarter = '')
 
     # funding api
     fundingAPI = Funding.FundingAPI(api_key, secret_key, passphrase, False, flag)
@@ -162,10 +166,8 @@ if __name__ == '__main__':
     # result = fundingAPI.get_deposit_history()
     # 获取币种列表  Get Currencies
     # result = fundingAPI.get_currency('ETH,BTC')
-
     # 资金流水查询  Asset Bills Details
     # result = fundingAPI.get_bills()
-
     # 闪电网络充币
     # result = fundingAPI.get_deposit_lightning(ccy='BTC',amt='0.01')
     # 闪电网络提币
@@ -180,7 +182,6 @@ if __name__ == '__main__':
     # result = fundingAPI.convert_dust_assets()
     # 获取账户资产估值 GET Obtain account asset valuation
     # result = fundingAPI.get_asset_valuation(ccy = 'USDT')
-
     # 获取市场借贷信息（公共) GET LENDING RATE HISTORY
     # result = fundingAPI.get_lending_rate_history(ccy = '')
     # 获取市场借贷历史（公共）GET LENDING RATE SUMMARY
@@ -220,7 +221,6 @@ if __name__ == '__main__':
     # result = marketAPI.get_books_lite(instId = 'BTC-USDT')
     # 获取产品完整深度 GET /api/v5/market/books-full
     # result = marketAPI.books_full()
-
     # 获取所有交易产品K线数据  Get Candlesticks
     # result = marketAPI.get_candlesticks('BTC-USDT-210924', bar='1m')
     # 获取交易产品历史K线数据（仅主流币实盘数据）  Get Candlesticks History（top currencies in real-trading only）
@@ -253,6 +253,8 @@ if __name__ == '__main__':
     # result = marketAPI.get_block_ticker(instId = 'BTC-USDT')
     # 获取大宗交易公共成交数据
     # result = marketAPI.get_block_trades(instId = 'BTC-USDT')
+    # 集合竞价信息 GET /api/v5/market/call-auction-details
+    # result = marketAPI.get_call_auction_details(instId = 'BTC-USDT')
 
     # public api
     publicAPI = Public.PublicAPI(api_key, secret_key, passphrase, False, flag)
@@ -386,7 +388,13 @@ if __name__ == '__main__':
     # 撤销策略委托订单  Cancel Algo Order
     # result = tradeAPI.cancel_algo_order([{'algoId': '297394002194735104', 'instId': 'BTC-USDT-210409'}])
     # 修改策略委托订单 POST AMEND ALGOS
-    # result = tradeAPI.amend_algos()
+    # result = tradeAPI.amend_algos(instId = '', algoId = '', algoClOrdId = '', cxlOnFail = '', reqId = '', newSz = '',
+    #     newTpTriggerPx = '', newTpOrdPx = '', newTpTriggerPxType = '',
+    #     newSlTriggerPx = '', newSlOrdPx = '', newSlTriggerPxType = '',
+    #     newTriggerPx = '', newOrdPx = '', newTriggerPxType ='',
+    #     attachAlgoOrds = [{"newTpTriggerPx":"","newTpTriggerPxType":"","newTpOrdPx":"",
+    #     "newSlTriggerPx":"","newSlTriggerPxType":"","newSlOrdPx":""}]
+    # )
     # 撤销高级策略委托订单
     # result = tradeAPI.cancel_advance_algos([ {"algoId":"198273485","instId":"BTC-USDT"}])
     # 获取策略委托单信息
@@ -415,6 +423,10 @@ if __name__ == '__main__':
     # result = tradeAPI.fills_archive()
     # 获取成交明细（近两年） GET /api/v5/trade/fills-archive （已下线）
     # result = tradeAPI.fills_archives()
+    # 订单预检查 POST /api/v5/trade/order-precheck
+    result = tradeAPI.order_precheck(instid = '', tdMode = '', side = '', posSide = '', ordType = '', sz = '', px = '',
+        reduceOnly = '', tgtCcy = '', attachAlgoOrds = [{"attachAlgoClOrdId":"","tpTriggerPx":"","tpOrdPx":"",
+        "tpOrdKind":"","slTriggerPx":"","slOrdPx":"","tpTriggerPxType":"","slTriggerPxType":"","sz":""}])
 
 
     # 价差撮合交易 SprdAPI
@@ -607,6 +619,9 @@ if __name__ == '__main__':
     # result = TradingBot.grid_ai_param(algoOrdType = 'grid', instId = 'BTC-USDT', direction = '', duration = '')
     # 加仓 POST /api/v5/tradingBot/grid/adjust-investment
     # result = TradingBot.grid_adjust_investment(algoId = '', amt = '')
+    # 最大网格数量（公共）GET /api/v5/tradingBot/grid/grid-quantity
+    # result = TradingBot.grid_quantity(instId = 'BTC-USDT', runType = '1', algoOrdType = '', maxPx = '', minPx = '', lever = '')
+
 
     # 金融产品 Finance API
     Finance = Finance.FinanceAPI(api_key, secret_key, passphrase, False, flag)
@@ -780,5 +795,5 @@ if __name__ == '__main__':
     # 公告 GET /api/v5/support/announcements
     # result = Status.get_announcements(annType = '', page = '')
     # 公告类型 GET /api/v5/support/announcement-types
-    result = Status.get_announcements_types()
+    # result = Status.get_announcements_types()
     print(json.dumps(result))

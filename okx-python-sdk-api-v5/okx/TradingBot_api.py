@@ -60,3 +60,8 @@ class TradingBotAPI(Client):
     def grid_adjust_investment(self, algoId = '', amt = ''):
         params = {'algoId': algoId, 'amt':amt}
         return self._request_with_params(POST, GRID_ADJUST_INVESTMETN, params)
+
+    # GET /api/v5/tradingBot/grid/grid-quantity
+    def grid_quantity(self, instId = '', runType = '', algoOrdType = '', maxPx = '', minPx = '', lever = ''):
+        params = {'instId': instId, 'runType': runType, 'algoOrdType': algoOrdType, 'maxPx': maxPx, 'minPx': minPx, 'lever': lever}
+        return self._request_with_params(GET, GRID_QUANTITY, params)

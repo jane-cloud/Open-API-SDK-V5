@@ -81,8 +81,8 @@ class AccountAPI(Client):
         return self._request_with_params(GET, MAX_LOAN, params)
 
     # Get Fee Rates
-    def get_fee_rates(self, instType, instId='', uly='', category='', instFamily=''):
-        params = {'instType': instType, 'instId': instId, 'uly': uly, 'category': category,'instFamily':instFamily}
+    def get_fee_rates(self, instType = '', instId='', uly='', category='', instFamily='',ruleType = ''):
+        params = {'instType': instType, 'instId': instId, 'uly': uly, 'category': category,'instFamily':instFamily,'ruleType':ruleType}
         return self._request_with_params(GET, FEE_RATES, params)
 
     # Get interest-accrued
@@ -307,4 +307,14 @@ class AccountAPI(Client):
     def account_rate_limit(self,):
         params = {}
         return self._request_with_params(GET, ACC_RATE_LIMIT, params)
+
+    # POST /api/v5/account/bills-history-archive
+    def bills_history_archive(self,year = '', quarter = ''):
+        params = {'year':year, 'quarter':quarter}
+        return self._request_with_params(POST, BILLS_HISTORY_ARCHIVE, params)
+
+    # GET /api/v5/account/bills-history-archive
+    def get_bills_history_archive(self, year = '', quarter = ''):
+        params = {'year':year, 'quarter':quarter}
+        return self._request_with_params(GET, GET_BILLS_HISTORY_ARCHIVE, params)
 
