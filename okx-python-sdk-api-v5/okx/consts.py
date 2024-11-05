@@ -377,6 +377,38 @@ PUB_COPY_TRADERS = '/api/v5/copytrading/public-copy-traders'
 CONFIG = '/api/v5/copytrading/config'
 TOTAL_UNREA_PRO_SHAR = '/api/v5/copytrading/total-unrealized-profit-sharing'
 
+# Signal
+CREAT_SIGNAL = '/api/v5/tradingBot/signal/create-signal'
+SIGNALS = '/api/v5/tradingBot/signal/signals'
+ORDER_ALGO_SIGNAL = '/api/v5/tradingBot/signal/order-algo'
+SIGNAL_STOP_ORDER_ALGO = '/api/v5/tradingBot/signal/stop-order-algo'
+SIGNAL_MARGIN_BALANCE = '/api/v5/tradingBot/signal/margin-balance'
+AMENDTPSL = '/api/v5/tradingBot/signal/amendTPSL'
+SIGNAL_SET_INSTRUMENTS = '/api/v5/tradingBot/signal/set-instruments'
+ORDERS_ALGO_DETAILS = '/api/v5/tradingBot/signal/orders-algo-details'
+ORDERS_ALGO_PENDING = '/api/v5/tradingBot/signal/orders-algo-pending'
+ORDERS_ALGO_HISTORY = '/api/v5/tradingBot/signal/orders-algo-history'
+SIGNAL_POSITIONS = '/api/v5/tradingBot/signal/positions'
+SIGNAL_POSITIONS_HISTORY = '/api/v5/tradingBot/signal/positions-history'
+SIGNAL_CLOSE_POSITION = '/api/v5/tradingBot/signal/close-position'
+SUB_ORDER = '/api/v5/tradingBot/signal/sub-order'
+CANCEL_SUB_ORDER = '/api/v5/tradingBot/signal/cancel-sub-order'
+SUB_ORDERS = '/api/v5/tradingBot/signal/sub-orders'
+EVENT_HISTORY = '/api/v5/tradingBot/signal/event-history'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 # recurring
 RECURRING_ORDER_ALGO = '/api/v5/tradingBot/recurring/order-algo'

@@ -17,6 +17,7 @@ import okx.Finance_api as Finance
 import okx.Copytrading_api as Copytrading
 import okx.Recurring_api as Recurring
 import okx.SprdApi_api as Sprd
+import okx.Singal_api as Signal
 
 if __name__ == '__main__':
     api_key = ""
@@ -487,6 +488,67 @@ if __name__ == '__main__':
     # result = subAccountAPI.max_withdrawal()
     # 查询托管子账户转账记录
     # result = subAccountAPI.managed_subaccount_bills()
+
+    # 信号交易 SignalApi
+    SignalAPI = Signal.SignalApi(api_key, secret_key, passphrase, False, flag)
+    # POST / 创建信号 /api/v5/tradingBot/signal/create-signal
+    result = SignalAPI.create_signal(signalChanName='',signalChanDesc='')
+    # GET / 查询所有信号 /api/v5/tradingBot/signal/signals
+    result = SignalAPI.signals(signalSourceType='', signalChanId='',after='', before='',
+                limit='', )
+    # POST / 创建信号策略 /api/v5/tradingBot/signal/order-algo
+    result = SignSignalAPIalAPI.order_algo(includeAll='', signalChanId='',instIds='', lever='',
+                investAmt='',subOrdType='',ratio='',entrySettingParam='',exitSettingParam='',)
+    # POST / 停止信号策略 POST /api/v5/tradingBot/signal/stop-order-algo
+    result = SignSignalAPIalAPI.signal_stop_order_algo( algoId='', )
+    # 调整保证金 POST /api/v5/tradingBot/signal/margin-balance
+    result = SignSignalAPIalAPI.signal_margin_balance(algoId='',type='',amt='',allowReinvest='', )
+    # 修改止盈止损 POST /api/v5/tradingBot/signal/amendTPSL
+    result = SignSignalAPIalAPI.amendTPSL(algoId='',exitSettingParam='', )
+    # 设置币对 POST /api/v5/tradingBot/signal/set-instruments
+    result = SignSignalAPIalAPI.signal_set_instruments(algoId='',instIds='', includeAll='')
+    # 获取信号策略详情 GET /api/v5/tradingBot/signal/orders-algo-details
+    result = SignSignalAPIalAPI.orders_algo_details( algoId='',algoOrdType='',)
+    # 获取活跃信号策略 GET /api/v5/tradingBot/signal/orders-algo-pending
+    result = SignSignalAPIalAPI.orders_algo_pending(algoId='',algoOrdType='',after='',before='',limit='',)
+    # 获取历史信号策略 GET /api/v5/tradingBot/signal/orders-algo-history
+    result = SignSignalAPIalAPI.orders_algo_history(algoId='',algoOrdType='',after='',before='',limit='', )
+    # 获取信号策略持仓 GET /api/v5/tradingBot/signal/positions
+    result = SignSignalAPIalAPI.signal_positions(algoId='',algoOrdType='', )
+    # 查看历史持仓信息 GET /api/v5/tradingBot/signal/positions-history
+    result = SignSignalAPIalAPI.signal_positions_history(algoId='',instId='',after='',before='',limit='', )
+    # 市价仓位全平 POST /api/v5/tradingBot/signal/close-position
+    result = SignSignalAPIalAPI.signal_close_position( algoId='',instId='',)
+    # 下单 POST /api/v5/tradingBot/signal/sub-order
+    result = SignSignalAPIalAPI.sub_order(algoId='',instId='',side='',ordType='',sz='',px='',reduceOnly='')
+    # 撤单  POST /api/v5/tradingBot/signal/cancel-sub-order
+    result = SignSignalAPIalAPI.cancel_sub_order(algoId='',instId='',signalOrdId='',)
+    # 获取信号策略子订单信息 GET /api/v5/tradingBot/signal/sub-orders
+    result = SignSignalAPIalAPI.sub_orders(algoId='',algoOrdType='',signalOrdId='',state='',after='',before='',limit='',
+                   begin='',end='',type='',clOrdId='')
+    # 获取信号策略历史事件 GET /api/v5/tradingBot/signal/event-history
+    result = SignSignalAPIalAPI.event_history(algoId='',after='',before='',limit='',)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     # BrokerAPI
