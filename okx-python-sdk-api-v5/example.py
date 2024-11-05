@@ -529,28 +529,6 @@ if __name__ == '__main__':
     # 获取信号策略历史事件 GET /api/v5/tradingBot/signal/event-history
     result = SignSignalAPIalAPI.event_history(algoId='',after='',before='',limit='',)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     # BrokerAPI
     BrokerAPI = Broker.BrokerAPI(api_key, secret_key, passphrase, False, flag)
     # 获取独立经纪商账户信息 GET Obtain independent broker account information

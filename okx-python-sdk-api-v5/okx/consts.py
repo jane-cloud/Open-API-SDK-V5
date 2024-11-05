@@ -396,20 +396,6 @@ CANCEL_SUB_ORDER = '/api/v5/tradingBot/signal/cancel-sub-order'
 SUB_ORDERS = '/api/v5/tradingBot/signal/sub-orders'
 EVENT_HISTORY = '/api/v5/tradingBot/signal/event-history'
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 # recurring
 RECURRING_ORDER_ALGO = '/api/v5/tradingBot/recurring/order-algo'
 RECURRING_AMEND_ORDER_ALGO = '/api/v5/tradingBot/recurring/amend-order-algo'
