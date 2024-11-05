@@ -424,9 +424,9 @@ if __name__ == '__main__':
     # 获取成交明细（近两年） GET /api/v5/trade/fills-archive （已下线）
     # result = tradeAPI.fills_archives()
     # 订单预检查 POST /api/v5/trade/order-precheck
-    result = tradeAPI.order_precheck(instid = '', tdMode = '', side = '', posSide = '', ordType = '', sz = '', px = '',
-        reduceOnly = '', tgtCcy = '', attachAlgoOrds = [{"attachAlgoClOrdId":"","tpTriggerPx":"","tpOrdPx":"",
-        "tpOrdKind":"","slTriggerPx":"","slOrdPx":"","tpTriggerPxType":"","slTriggerPxType":"","sz":""}])
+    # result = tradeAPI.order_precheck(instid = '', tdMode = '', side = '', posSide = '', ordType = '', sz = '', px = '',
+    #     reduceOnly = '', tgtCcy = '', attachAlgoOrds = [{"attachAlgoClOrdId":"","tpTriggerPx":"","tpOrdPx":"",
+    #     "tpOrdKind":"","slTriggerPx":"","slOrdPx":"","tpTriggerPxType":"","slTriggerPxType":"","sz":""}])
 
 
     # 价差撮合交易 SprdAPI
@@ -658,7 +658,7 @@ if __name__ == '__main__':
     # 获取余币宝余额 PIGGY BALABCE
     # result = fundingAPI.get_piggy_balance()
     # 设置余币宝借贷利率 POST SET LENDING RATE
-    # result = fundingAPI.set_lending_rate(ccy = 'USDT',rate='')
+    result = fundingAPI.set_lending_rate(ccy = 'USDT',rate='')
     # 获取余币宝出借明细 GET LENDING HISTORY
     # result = fundingAPI.get_lending_rate(ccy = '')
     # 获取市场借贷信息（公共）GET /api/v5/finance/savings/lending-rate-summary
