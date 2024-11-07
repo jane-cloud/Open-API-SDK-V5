@@ -251,7 +251,213 @@ class TradingbotApi extends Utils
         return $this->request('/api/v5/tradingBot/grid/grid-quantity', $params, 'GET');
     }
 
-    
+    public function createSignal($signalChanName,$signalChanDesc='')
+    {
+        $params = [
+            'signalChanName' => $signalChanName,
+            'signalChanDesc' => $signalChanDesc,
+        ];
+
+        return $this->request('/api/v5/tradingBot/signal/create-signal', $params, 'POST');
+    }
+
+    public function getSignals($signalSourceType,$signalChanId='',$after='',$before='',$limit='')
+    {
+        $params = [
+            'signalSourceType' => $signalSourceType,
+            'signalChanId' => $signalChanId,
+            'after' => $after,
+            'before' => $before,
+            'limit' => $limit,
+        ];
+
+        return $this->request('/api/v5/tradingBot/signal/signals', $params, 'GET');
+    }
+
+    public function signalOrderAlgo($signalChanId,$includeAll='',$instIds='',$lever,$investAmt,$subOrdType,$ratio='',$entrySettingParam='',$exitSettingParam='')
+    {
+        $params = [
+            'signalChanId' => $signalChanId,
+            'includeAll' => $includeAll,
+            'instIds' => $instIds,
+            'lever' => $lever,
+            'investAmt' => $investAmt,
+            'subOrdType' => $subOrdType,
+            'ratio' => $ratio,
+            'entrySettingParam' => $entrySettingParam,
+            'exitSettingParam' => $exitSettingParam,
+        ];
+
+        return $this->request('/api/v5/tradingBot/signal/order-algo', $params, 'POST');
+    }
+
+    public function signalStopOrderAlgo($algoId)
+    {
+        $params = [
+            'algoId' => $algoId,
+        ];
+
+        return $this->request('/api/v5/tradingBot/signal/stop-order-algo', $params, 'POST');
+    }
+
+    public function signalMarginBalance($algoId,$type,$amt,$allowReinvest='')
+    {
+        $params = [
+            'algoId' => $algoId,
+            'type' => $type,
+            'amt' => $amt,
+            'allowReinvest' => $allowReinvest,
+        ];
+
+        return $this->request('/api/v5/tradingBot/signal/margin-balance', $params, 'POST');
+    }
+
+    public function amendTPSL($algoId,$exitSettingParam)
+    {
+        $params = [
+            'algoId' => $algoId,
+            'exitSettingParam' => $exitSettingParam,
+        ];
+
+        return $this->request('/api/v5/tradingBot/signal/amendTPSL', $params, 'POST');
+    }
+
+    public function setInstruments($algoId,$instIds,$includeAll)
+    {
+        $params = [
+            'algoId' => $algoId,
+            'instIds' => $instIds,
+            'includeAll' => $includeAll,
+        ];
+
+        return $this->request('/api/v5/tradingBot/signal/set-instruments', $params, 'POST');
+    }
+
+    public function signalOrdersAlgoDetails($algoOrdType,$algoId)
+    {
+        $params = [
+            'algoOrdType' => $algoOrdType,
+            'algoId' => $algoId,
+        ];
+
+        return $this->request('/api/v5/tradingBot/signal/orders-algo-details', $params, 'GET');
+    }
+
+    public function signalOrdersAlgoPending($algoOrdType,$algoId='',$after='',$before='',$limit='')
+    {
+        $params = [
+            'algoOrdType' => $algoOrdType,
+            'algoId' => $algoId,
+            'after' => $after,
+            'before' => $before,
+            'limit' => $limit,
+        ];
+
+        return $this->request('/api/v5/tradingBot/signal/orders-algo-pending', $params, 'GET');
+    }
+
+    public function signalOrdersAlgoHistory($algoOrdType,$algoId='',$after='',$before='',$limit='')
+    {
+        $params = [
+            'algoOrdType' => $algoOrdType,
+            'algoId' => $algoId,
+            'after' => $after,
+            'before' => $before,
+            'limit' => $limit,
+        ];
+
+        return $this->request('/api/v5/tradingBot/signal/orders-algo-history', $params, 'GET');
+    }
+
+    public function signalPositions($algoOrdType,$algoId)
+    {
+        $params = [
+            'algoOrdType' => $algoOrdType,
+            'algoId' => $algoId,
+        ];
+
+        return $this->request('/api/v5/tradingBot/signal/positions', $params, 'GET');
+    }
+
+    public function signalPositionsHistory($algoId,$instId='',$after='',$before='',$limit='')
+    {
+        $params = [
+            'algoId' => $algoId,
+            'instId' => $instId,
+            'after' => $after,
+            'before' => $before,
+            'limit' => $limit,
+        ];
+
+        return $this->request('/api/v5/tradingBot/signal/positions-history', $params, 'GET');
+    }
+
+    public function signalClosePositions($algoId,$instId)
+    {
+        $params = [
+            'algoId' => $algoId,
+            'instId' => $instId,
+        ];
+
+        return $this->request('/api/v5/tradingBot/signal/close-position', $params, 'POST');
+    }
+
+    public function signalSubOrder($instId,$algoId,$side,$ordType,$sz,$px='',$reduceOnly='')
+    {
+        $params = [
+            'instId' => $instId,
+            'algoId' => $algoId,
+            'side' => $side,
+            'ordType' => $ordType,
+            'sz' => $sz,
+            'px' => $px,
+            'reduceOnly' => $reduceOnly,
+        ];
+
+        return $this->request('/api/v5/tradingBot/signal/sub-order', $params, 'POST');
+    }
+
+    public function signalCancelSubOrder($algoId,$instId,$signalOrdId)
+    {
+        $params = [
+            'algoId' => $algoId,
+            'instId' => $instId,
+            'signalOrdId' => $signalOrdId,
+        ];
+
+        return $this->request('/api/v5/tradingBot/signal/cancel-sub-order', $params, 'POST');
+    }
+
+    public function getSignalSubOrders($algoId,$algoOrdType,$state='',$signalOrdId='',$after='',$before='',$begin='',$end='',$limit='',$type='',$clOrdId='')
+    {
+        $params = [
+            'algoId' => $algoId,
+            'algoOrdType' => $algoOrdType,
+            'state' => $state,
+            'signalOrdId' => $signalOrdId,
+            'after' => $after,
+            'before' => $before,
+            'begin' => $begin,
+            'end' => $end,
+            'limit' => $limit,
+            'type' => $type,
+            'clOrdId' => $clOrdId,
+        ];
+
+        return $this->request('/api/v5/tradingBot/signal/sub-orders', $params, 'GET');
+    }
+
+    public function eventHistory($algoId,$after='',$before='',$limit='')
+    {
+        $params = [
+            'algoId' => $algoId,
+            'after' => $after,
+            'before' => $before,
+            'limit' => $limit,
+        ];
+
+        return $this->request('/api/v5/tradingBot/signal/event-history', $params, 'GET');
+    }
 
 
 }

@@ -318,6 +318,7 @@ $obj = new TradeAPI(Config::$config);
 /**
  * 策略交易 Trade
  */
+$obj = new TradeAPI(Config::$config);
 // 策略委托下单 Place Algo Order
 //$res = $obj -> orderAlgo('BTC-USDT-SWAP','cross','','buy','long','trigger','1','','20','21','','','-1','','','-1','','','','','','','','','','','mark');
 // 撤销策略委托订单 Cancel Algo Order
@@ -375,6 +376,46 @@ $obj = new TradingbotApi(Config::$config);
 // $res = $obj -> rsiBackTesting();
 // 最大网格数量（公共）
 // $res = $obj -> ridQuantity();
+
+
+/**
+ * 信号交易
+ */
+$obj = new TradingbotApi(Config::$config);
+// 创建信号
+// $res = $obj -> createSignal();
+// 查询所有信号
+// $res = $obj -> getSignals();
+// 创建信号策略
+// $res = $obj -> signalOrderAlgo();
+// 停止信号策略
+// $res = $obj -> signalStopOrderAlgo();
+// 调整保证金
+// $res = $obj -> signalMarginBalance();
+// 修改止盈止损
+// $res = $obj -> amendTPSL();
+// 设置币对
+// $res = $obj -> setInstruments();
+// 获取信号策略详情
+// $res = $obj -> signalOrdersAlgoDetails();
+// 获取活跃信号策略
+// $res = $obj -> signalOrdersAlgoPending();
+// 获取历史信号策略
+// $res = $obj -> signalOrdersAlgoHistory();
+// 获取信号策略持仓
+// $res = $obj -> signalPositions();
+// 查看历史持仓信息
+// $res = $obj -> signalPositionsHistory();
+//  市价仓位全平
+// $res = $obj -> signalClosePositions();
+//  下单
+// $res = $obj -> signalSubOrder();
+//  撤单
+// $res = $obj -> signalCancelSubOrder();
+//  获取信号策略子订单信息
+// $res = $obj -> getSignalSubOrders();
+//  获取信号策略历史事件
+// $res = $obj -> eventHistory();
 
 
 /**
