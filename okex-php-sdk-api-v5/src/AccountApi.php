@@ -511,4 +511,183 @@ class AccountApi extends Utils
 
         return $this->request('/api/v5/account/mmp-config', $params, 'GET');
     }
+
+    public function instruments($instType,$uly='',$instFamily='',$instId='')
+    {
+        $params = [
+            'instType' => $instType,
+            'uly' => $uly,
+            'instFamily' => $instFamily,
+            'instId' => $instId,
+            
+        ];
+
+        return $this->request('/api/v5/account/instruments', $params, 'GET');
+    }
+
+    public function billsHistoryArchive($year,$quarter)
+    {
+        $params = [
+            'year' => $year,
+            'quarter' => $quarter,
+            
+        ];
+
+        return $this->request('/api/v5/account/bills-history-archive', $params, 'POST');
+    }
+
+    public function getBillsHistoryArchive($year,$quarter)
+    {
+        $params = [
+            'year' => $year,
+            'quarter' => $quarter,
+            
+        ];
+
+        return $this->request('/api/v5/account/bills-history-archive', $params, 'GET');
+    }
+
+    public function borrowingLimit()
+    {
+        $params = [
+            
+        ];
+
+        return $this->request('/api/v5/account/fixed-loan/borrowing-limit', $params, 'GET');
+    }
+
+    public function borrowingQuote($type,$ccy='',$amt='',$maxRate='',$term='',$ordId='')
+    {
+        $params = [
+            'type' => $type,
+            'ccy' => $ccy,
+            'amt' => $amt,
+            'maxRate' => $maxRate,
+            'term' => $term,
+            'ordId' => $ordId,
+        ];
+
+        return $this->request('/api/v5/account/fixed-loan/borrowing-quote', $params, 'GET');
+    }
+
+    public function borrowingOrder($ccy,$amt,$maxRate,$term,$reborrow='',$reborrowRate='')
+    {
+        $params = [
+            'ccy' => $ccy,
+            'amt' => $amt,
+            'maxRate' => $maxRate,
+            'term' => $term,
+            'reborrow' => $reborrow,
+            'reborrowRate' => $reborrowRate,
+        ];
+
+        return $this->request('/api/v5/account/fixed-loan/borrowing-order', $params, 'POST');
+    }
+
+    public function amendBorrowingOrder($ordId,$reborrow='',$reborrowRate='')
+    {
+        $params = [
+            'ordId' => $ordId,
+            'reborrow' => $reborrow,
+            'reborrowRate' => $reborrowRate,
+        ];
+
+        return $this->request('/api/v5/account/fixed-loan/amend-borrowing-order', $params, 'POST');
+    }
+
+    public function manualReborrow($ordId,$maxRate)
+    {
+        $params = [
+            'ordId' => $ordId,
+            'maxRate' => $maxRate,
+        ];
+
+        return $this->request('/api/v5/account/fixed-loan/manual-reborrow', $params, 'POST');
+    }
+
+    public function repayBorrowingOrder($ordId)
+    {
+        $params = [
+            'ordId' => $ordId,
+        ];
+
+        return $this->request('/api/v5/account/fixed-loan/repay-borrowing-order', $params, 'POST');
+    }
+
+    public function convertToMarketLoan($ordId)
+    {
+        $params = [
+            'ordId' => $ordId,
+        ];
+
+        return $this->request('/api/v5/account/fixed-loan/convert-to-market-loan', $params, 'POST');
+    }
+
+    public function reduceLiabilities($ordId,$pendingRepay)
+    {
+        $params = [
+            'ordId' => $ordId,
+            'pendingRepay' => $pendingRepay,
+        ];
+
+        return $this->request('/api/v5/account/fixed-loan/reduce-liabilities', $params, 'POST');
+    }
+
+    public function borrowingOrdersList($ordId='',$ccy='',$state='',$term='',$after='',$before='',$limit='')
+    {
+        $params = [
+            'ordId' => $ordId,
+            'ccy' => $ccy,
+            'state' => $state,
+            'term' => $term,
+            'after' => $after,
+            'before' => $before,
+            'limit' => $limit,
+        ];
+
+        return $this->request('/api/v5/account/fixed-loan/borrowing-orders-list', $params, 'GET');
+    }
+
+    public function spotManualBorrowRepay($ccy,$side,$amt)
+    {
+        $params = [
+            'ccy' => $ccy,
+            'side' => $side,
+            'amt' => $amt,
+        ];
+
+        return $this->request('/api/v5/account/spot-manual-borrow-repay', $params, 'POST');
+    }
+
+    public function setAutoRepay($autoRepay)
+    {
+        $params = [
+            'autoRepay' => $autoRepay,
+        ];
+
+        return $this->request('/api/v5/account/set-auto-repay', $params, 'POST');
+    }
+
+    public function spotBorrowRepayHistory($ccy='',$type='',$after='',$before='',$limit='')
+    {
+        $params = [
+            'ccy' => $ccy,
+            'type' => $type,
+            'after' => $after,
+            'before' => $before,
+            'limit' => $limit,
+        ];
+
+        return $this->request('/api/v5/account/spot-borrow-repay-history', $params, 'GET');
+    }
+
+    public function setRiskOffsetAmt($ccy,$clSpotInUseAmt)
+    {
+        $params = [
+            'ccy' => $ccy,
+            'clSpotInUseAmt' => $clSpotInUseAmt,
+        ];
+
+        return $this->request('/api/v5/account/set-riskOffset-amt', $params, 'POST');
+    }
 }

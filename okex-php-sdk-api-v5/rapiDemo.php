@@ -30,27 +30,33 @@ use okv5\ConvertApi;
  */
 $obj = new AccountApi(Config::$config);
 $coin = "XMR";
-//查看账户持仓风险 Get Account
-//$res = $obj -> getAccountPositionRisk('SWAP');
+//获取交易产品基础信息
+//$res = $obj -> instruments('SWAP');
 // 查看账户余额 Get Balance
 // $res = $obj -> getBalance('UST');
 // 查看持仓信息 Get Positions
 //$res = $obj -> getPositions('SWAP','BTC-USDT-SWAP','');
 // 查看历史持仓信息 Get Positions history
 // $res = $obj -> getPositionsHistory('SWAP','BTC-USDT-SWAP','','','','','');
+//查看账户持仓风险 Get Account
+//$res = $obj -> getAccountPositionRisk('SWAP');
 // 账单流水查询（近七天） Get Bills Details (last 7 days)
 //$res = $obj -> getBills('','','','','1','','','','');
 // 账单流水查询（近三个月） Get Bills Details (last 3 months)
 //$res = $obj -> getBillsArchive('SPOT','','','','','','','','');
+// 申请账单流水（自 2021 年）
+//$res = $obj -> billsHistoryArchive();
+// 申请账单流水（自 2021 年）
+//$res = $obj -> getBillsHistoryArchive();
 // 查看账户配置 Get Account Configuration
 //$res = $obj -> getConfig();
 // 设置持仓模式 Set Position mode
 //$res = $obj -> setPositionMode('long_short_mode');
 // 设置杠杆倍数 Set Leverage
 //$res = $obj -> setLeverage('XLM-USDT-SWAP','','3','cross','net');
-// 获取最大可买卖/开仓数量 Get Maximum Tradable Size For Instrument
+// 获取最大可下单数量
 //$res = $obj -> getMaxSize('BTC-USDT-SWAP','isolated','','39002.4915','10');
-// 获取最大可用数量 Get Maximum Available Tradable Amount
+// 获取最大可用余额/保证金
 //$res = $obj -> getMaxAvailSize('BTC-USDT-SWAP','','cross','','');
 // 调整保证金 Increase/Decrease margin
 //$res = $obj -> marginBalance('BTC-USD-210402','long','reduce','0.5','','','');
@@ -64,9 +70,9 @@ $coin = "XMR";
 //$res = $obj -> getTradeFee('MARGIN','BTC-USDT','','');
 // 获取计息记录 Get interest-accrued
 //$res = $obj -> getInterestAccrued('','','','','','','10');
-//获取用户当前杠杆借币利率
+//获取用户当前市场借币利率
 //$res = $obj -> getInterestRate('');
-// 期权希腊字母PA/BS切换 Set Greeks (PA/BS)
+// 期权greeks的PA/BS切换
 //$res = $obj -> setGreeks('PA');
 //逐仓交易设置
 //$res = $obj -> setIsolatedMode('','');
@@ -78,24 +84,36 @@ $coin = "XMR";
 // $res = $obj -> quickMarginBorrowRepay('','','','');
 //获取一键借币还币历史
 // $res = $obj -> quickMarginBorrowRepayHistory('','','','','','','','');
-//尊享借币还币
-//$res = $obj -> borrowRepay('BTC','borrow','1');
-//获取尊享借币还币历史
-//$res = $obj -> borrowRepayHistory('','','','');
-//获取尊享借币计息记录
-// $res = $obj -> vipInterestAccrued('','','','','');
-//获取尊享借币扣息记录
-// $res = $obj -> vipInterestDeducted('','','','','');
-//尊享借币订单列表
-// $res = $obj -> vipLoanOrderList('','','','','','');
-//尊享借币订单详情
-// $res = $obj -> vipLoanOrderDetail('','','','','');
 //获取借币利率与限额
 //$res = $obj -> interestLimits('','');
-//组合保证金的虚拟持仓保证金计算
-//$res = $obj -> simulatedMargin('','','');
+//获取固定借币限额
+//$res = $obj -> borrowingLimit();
+//获取固定借币询价
+//$res = $obj -> borrowingQuote();
+//固定借币下单
+//$res = $obj -> borrowingOrder();
+//修改固定借币订单
+//$res = $obj -> amendBorrowingOrder();
+//固定借币手动续借
+//$res = $obj -> manualReborrow();
+//固定借币手动还币
+//$res = $obj -> repayBorrowingOrder();
+//固定借币转市场借币
+//$res = $obj -> convertToMarketLoan();
+//固定借币减少负债
+//$res = $obj -> reduceLiabilities();
+//获取固定借币订单信息
+//$res = $obj -> borrowingOrdersList();
+//手动借/还币
+//$res = $obj -> spotManualBorrowRepay();
+//设置自动还币
+//$res = $obj -> setAutoRepay();
+//获取借/还币历史
+//$res = $obj -> spotBorrowRepayHistory();
 //仓位创建器
 // $res = $obj -> positionBuilder('','','','','');
+//设置现货对冲占用
+// $res = $obj -> setRiskOffsetAmt('','');
 //查看账户Greeks
 //$res = $obj -> greeks('');
 //获取组合保证金模式仓位限制
