@@ -419,4 +419,28 @@ class TradeAPI extends Utils
 
         return $this->request('/api/v5/trade/order-precheck', $params, 'POST');
     }
+
+    public function amendAlgos($instId,$algoId='',$algoClOrdId='',$cxlOnFail='',$reqId='',$newSz='')
+    {
+        $params = [
+            'instId' => $instId,
+            'algoId' => $algoId,
+            'algoClOrdId' => $algoClOrdId,
+            'cxlOnFail' => $cxlOnFail,
+            'reqId' => $reqId,
+            'newSz' => $newSz,
+        ];
+
+        return $this->request('/api/v5/trade/amend-algos', $params, 'POST');
+    }
+
+    public function getOrderAlgo($algoId='',$algoClOrdId='')
+    {
+        $params = [
+            'algoId' => $algoId,
+            'algoClOrdId' => $algoClOrdId,
+        ];
+
+        return $this->request('/api/v5/trade/order-algo', $params, 'GET');
+    }
 }

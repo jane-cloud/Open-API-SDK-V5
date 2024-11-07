@@ -23,6 +23,7 @@ use okv5\StatusApi;
 use okv5\RubikApi;
 use okv5\BrokerApi;
 use okv5\ConvertApi;
+use okv5\TradingbotApi;
 // use okv5\Copytrading;
 
 /**
@@ -293,10 +294,6 @@ $obj = new TradeAPI(Config::$config);
 // 获取成交明细 Get Transaction Details
 //$res = $obj -> getFills('SPOT','','','','','','4');
 //$res = $obj -> getFillsHistory('','','','','297793186030845953','','');
-// 申请成交明细（近两年）
-// $res = $obj -> fillsArchive('','');
-// 获取成交明细（近两年）
-// $res = $obj -> getFillsArchive('','');
 // 获取一键兑换主流币币种列表
 // $res = $obj -> easyConvertCurrencyList('','');
 // 一键兑换主流币交易
@@ -317,16 +314,68 @@ $obj = new TradeAPI(Config::$config);
 // $res = $obj -> accountRateLimit('');
 //   订单预检查
 // $res = $obj -> orderPrecheck('');
+
+/**
+ * 策略交易 Trade
+ */
 // 策略委托下单 Place Algo Order
 //$res = $obj -> orderAlgo('BTC-USDT-SWAP','cross','','buy','long','trigger','1','','20','21','','','-1','','','-1','','','','','','','','','','','mark');
 // 撤销策略委托订单 Cancel Algo Order
 //$res = $obj -> cancelAlgos([['307913429122170880','BTC-USDT-210625'],['307913525461139456','BTC-USDT-210625']]);
+// 修改策略委托订单
+//$res = $obj -> amendAlgos();
+//撤销高级策略委托订单
+//$res = $obj -> cancelAdvanceAlgos('','314738893715283968','FUTURES','','trigger','','','');
+// 获取策略委托单信息
+//$res = $obj -> getOrderAlgo('','SWAP','BTC-USDT-SWAP','conditional','','','');
 // 获取未完成策略委托单列表 Get Algo Order List
 //$res = $obj -> getAlgoPending('','SWAP','BTC-USDT-SWAP','conditional','','','');
 // 获取历史策略委托单列表 Get Algo Order History
 //$res = $obj -> getAlgoHistory('','388040684007202816','SWAP','','conditional','','','');
-//撤销高级策略委托订单
-//$res = $obj -> cancelAdvanceAlgos('','314738893715283968','FUTURES','','trigger','','','');
+
+/**
+ * 网格交易
+ */
+$obj = new TradingbotApi(Config::$config);
+//网格策略委托下单
+// $res = $obj -> orderAlgo();
+//修改网格策略订单
+// $res = $obj -> amendOrderAlgo();
+//网格策略停止
+// $res = $obj -> stopOrderAlgo();
+//合约网格平仓
+// $res = $obj -> closePosition();
+//撤销合约网格平仓单
+// $res = $obj -> cancelCloseOrder();
+//网格策略立即触发
+// $res = $obj -> orderInstantTrigger();
+// 获取未完成网格策略委托单列表
+// $res = $obj -> ordersAlgoPending();
+// 获取历史网格策略委托单列表
+// $res = $obj -> ordersAlgoHistory();
+// 获取网格策略委托订单详情
+// $res = $obj -> ordersAlgoDetails();
+// 获取网格策略委托子订单信息
+// $res = $obj -> subOrders();
+// 获取网格策略委托持仓
+// $res = $obj -> positions();
+// 现货网格提取利润
+// $res = $obj -> withdrawIncome();
+// 调整保证金计算
+// $res = $obj -> computeMarginBalance();
+// 调整保证金
+// $res = $obj -> marginBalance();
+// 加仓
+// $res = $obj -> adjustInvestment();
+// 网格策略智能回测（公共）
+// $res = $obj -> aiParam();
+// 计算最小投资数量（公共）
+// $res = $obj -> minInvestment();
+// RSI回测（公共）
+// $res = $obj -> rsiBackTesting();
+// 最大网格数量（公共）
+// $res = $obj -> ridQuantity();
+
 
 /**
  * 跟单 copytrading
