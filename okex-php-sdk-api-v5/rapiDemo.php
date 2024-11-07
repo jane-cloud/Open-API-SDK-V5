@@ -154,8 +154,6 @@ $obj = new FundingApi(Config::$config);
 //$res = $obj -> transferState('203950','');
 // 获取资金流水
 //$res = $obj -> getBills('','','','','');
-//闪电网络充币
-//$res = $obj -> depositLightning('','','');
 //获取充值地址信息
 //$res = $obj -> getDepositAddress('USDT');
 //获取充值记录
@@ -170,28 +168,24 @@ $obj = new FundingApi(Config::$config);
 //$res = $obj -> getWithdrawalHistory('','','','','','','');
 //获取充值/提现的详细状态
 //$res = $obj -> depositWithdrawStatus('','','','','','','');
-//小额资产兑换
-//$res = $obj -> convertDustAssets('');
 //获取交易所列表（公共）
 //$res = $obj -> exchangeList('');
 //申请月结单 (近一年)
 //$res = $obj -> monthlyStatement('');
 //获取月结单 (近一年)
 //$res = $obj -> getMonthlyStatement('');
-//获取余币宝余额
-//$res = $obj -> getPiggyBalance('');
-// 余币宝申购/赎回
-//$res = $obj -> PurchaseRedempt('BTC','1','purchase','');
-//设置余币宝借贷利率
-//$res = $obj -> setLendingRate('BTC','');
-//获取余币宝出借明细
-//$res = $obj -> lendingHistory('BTC','','','');
-//获取市场借贷信息（公共）
-//$res = $obj -> lendingRateSummary('BTC');
-//获取市场借贷历史（公共）
-//$res = $obj -> lendingRateHistory('BTC');
-//查看历史持仓信息
-// $res = $obj -> positionsHistory('','BTC-USDT-SWAP','','','','','1');
+//获取闪兑币种列表
+//$res = $obj -> currencies('');
+//获取闪兑币对信息
+//$res = $obj -> currencyPair('');
+//闪兑预估询价
+//$res = $obj -> estimateQuote('');
+//闪兑交易
+//$res = $obj -> trade('');
+//获取闪兑交易历史
+//$res = $obj -> history('');
+
+
 
 
 /**

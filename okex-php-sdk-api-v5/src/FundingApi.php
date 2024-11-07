@@ -279,4 +279,65 @@ class FundingApi extends Utils
 
         return $this->request('/api/v5/asset/monthly-statement',$params, 'GET');
     }
+
+    public function currencies()
+    {
+        
+        return $this->request('/api/v5/asset/convert/currencies','', 'GET');
+    }
+
+    public function currencyPair($fromCcy,$toCcy)
+    {
+        $params = [
+            'fromCcy' => $fromCcy,
+            'toCcy' => $toCcy,
+        ];
+
+        return $this->request('/api/v5/asset/convert/currency-pair',$params, 'GET');
+    }
+    
+    public function estimateQuote($baseCcy,$quoteCcy,$side,$rfqSz,$rfqSzCcy,$clQReqId='',$tag='')
+    {
+        $params = [
+            'baseCcy' => $baseCcy,
+            'quoteCcy' => $quoteCcy,
+            'side' => $side,
+            'rfqSz' => $rfqSz,
+            'rfqSzCcy' => $rfqSzCcy,
+            'clQReqId' => $clQReqId,
+            'tag' => $tag,
+        ];
+
+        return $this->request('/api/v5/asset/convert/estimate-quote',$params, 'POST');
+    }
+
+    public function trade($quoteId,$baseCcy,$quoteCcy,$side,$sz,$szCcy,$clQReqId='',$tag='')
+    {
+        $params = [
+            'quoteId' => $quoteId,
+            'baseCcy' => $baseCcy,
+            'quoteCcy' => $quoteCcy,
+            'side' => $side,
+            'sz' => $sz,
+            'szCcy' => $szCcy,
+            'clQReqId' => $clQReqId,
+            'tag' => $tag,
+        ];
+
+        return $this->request('/api/v5/asset/convert/trade',$params, 'POST');
+    }
+
+    public function history($clTReqId='',$after='',$before='',$limit='',$tag='')
+    {
+        $params = [
+            'clTReqId' => $clTReqId,
+            'after' => $after,
+            'before' => $before,
+            'limit' => $limit,
+            'tag' => $tag,
+        ];
+
+        return $this->request('/api/v5/asset/convert/history',$params, 'GET');
+    }
+
 }
