@@ -125,6 +125,10 @@ $coin = "XMR";
 // $res = $obj -> activateOption();
 //设置自动借币
 // $res = $obj -> setAutoLoan('');
+//预设置账户模式切换
+// $res = $obj -> accountLevelSwitchPreset('');
+//预检查账户模式切换
+// $res = $obj -> setAccountSwitchPrecheck('');
 //设置账户模式
 // $res = $obj -> setAccountLevel('');
 //重置 MMP 状态
@@ -460,6 +464,47 @@ $obj = new TradingbotApi(Config::$config);
 // $res = $obj -> copySettings('','');
 // 批量获取杠杆倍数
 // $res = $obj -> batchLeverageInfo('','');
+// 批量设置杠杆倍数
+// $res = $obj -> batchSetLeverage('','');
+// 获取我的交易员
+// $res = $obj -> currentLeadTraders('','');
+// 获取我的交易员历史
+// $res = $obj -> leadTradersHistory('','');
+// 获取跟单配置信息
+// $res = $obj -> publicConfig('','');
+// 获取交易员排名
+// $res = $obj -> publicLeadTraders('','');
+// 获取交易员收益周表现
+// $res = $obj -> publicWeeklyPnl('','');
+// 获取交易员收益日表现
+// $res = $obj -> publicPnl('','');
+// 获取交易员带单情况
+// $res = $obj -> publicStats('','');
+// 获取交易员币种偏好
+// $res = $obj -> publicPreferenceCurrency('','');
+// 获取交易员当前带单
+// $res = $obj -> publicCurrentSubpositions('','');
+// 获取交易员历史带单
+// $res = $obj -> publicSubpositionsHistory('','');
+// 获取跟单人信息
+// $res = $obj -> publicCopyTraders('','');
+// 获取交易员排名（私有）
+// $res = $obj -> leadTraders('','');
+// 获取交易员收益周表现（私有）
+// $res = $obj -> weeklyPnl('','');
+// 获取交易员收益日表现（私有）
+// $res = $obj -> pnl('','');
+// 获取交易员带单情况（私有）
+// $res = $obj -> stats('','');
+// 获取交易员币种偏好（私有）
+// $res = $obj -> preferenceCurrency('','');
+// 获取交易员当前带单（私有）
+// $res = $obj -> performanceCurrentSubpositions('','');
+// 获取交易员历史带单（私有）
+// $res = $obj -> performanceSubpositionsHistory('','');
+// 获取跟单人信息（私有）
+// $res = $obj -> copyTraders('','');
+
 
 
 /**
@@ -483,7 +528,20 @@ $obj = new SubaccountApi(Config::$config);
  * Status Status
  */
 $obj = new StatusApi(Config::$config);
+//Status
 //$res = $obj -> getStatus('');
+
+/**
+ * 公告 support
+ */
+$obj = new StatusApi(Config::$config);
+//公告
+//$res = $obj -> announcements('');
+//公告类型
+//$res = $obj -> announcementTypes('');
+
+
+
 /**
  *交易大数据
  */

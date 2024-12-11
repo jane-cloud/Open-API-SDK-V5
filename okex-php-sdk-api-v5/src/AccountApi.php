@@ -690,4 +690,24 @@ class AccountApi extends Utils
 
         return $this->request('/api/v5/account/set-riskOffset-amt', $params, 'POST');
     }
+
+    public function accountLevelSwitchPreset($acctLv,$lever='',$riskOffsetType='')
+    {
+        $params = [
+            'acctLv' => $acctLv,
+            'lever' => $lever,
+            'riskOffsetType' => $riskOffsetType,
+        ];
+
+        return $this->request('/api/v5/account/account-level-switch-preset', $params, 'POST');
+    }
+
+    public function setAccountSwitchPrecheck($acctLv)
+    {
+        $params = [
+            'acctLv' => $acctLv,
+        ];
+
+        return $this->request('/api/v5/account/set-account-switch-precheck', $params, 'GET');
+    }
 }

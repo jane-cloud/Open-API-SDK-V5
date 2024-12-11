@@ -231,7 +231,223 @@ class Copytrading extends Utils
 
         return $this->request('/api/v5/copytrading/batch-leverage-info', $params, 'GET');
     }
-    
 
+    public function batchSetLeverage($mgnMode,$lever,$instId){
+        $params = [
+            'mgnMode' => $mgnMode,
+            'lever' => $lever,
+            'instId' => $instId,
+
+        ];
+
+        return $this->request('/api/v5/copytrading/batch-set-leverage', $params, 'POST');
+    }
+    
+    public function currentLeadTraders($instType=''){
+        $params = [
+            'instType' => $instType,
+        ];
+
+        return $this->request('/api/v5/copytrading/current-lead-traders', $params, 'GET');
+    }
+
+    public function leadTradersHistory($instType='',$after='',$before='',$limit=''){
+        $params = [
+            'instType' => $instType,
+            'after' => $after,
+            'before' => $before,
+            'limit' => $limit,
+        ];
+
+        return $this->request('/api/v5/copytrading/lead-traders-history', $params, 'GET');
+    }
+
+    public function publicConfig($instType=''){
+        $params = [
+            'instType' => $instType,
+        ];
+
+        return $this->request('/api/v5/copytrading/public-config', $params, 'GET');
+    }
+
+    public function publicLeadTraders($instType='',$sortType='',$state='',$minLeadDays='',$minAssets='',$maxAssets='',$minAum='',$maxAum='',$dataVer='',$page='',$limit=''){
+        $params = [
+            'instType' => $instType,
+            'sortType' => $sortType,
+            'state' => $state,
+            'minLeadDays' => $minLeadDays,
+            'minAssets' => $minAssets,
+            'maxAssets' => $maxAssets,
+            'minAum' => $minAum,
+            'maxAum' => $maxAum,
+            'dataVer' => $dataVer,
+            'page' => $page,
+            'limit' => $limit,
+        ];
+
+        return $this->request('/api/v5/copytrading/public-lead-traders', $params, 'GET');
+    }
+
+    public function publicWeeklyPnl($instType='',$uniqueCode){
+        $params = [
+            'instType' => $instType,
+            'uniqueCode' => $uniqueCode,
+        ];
+
+        return $this->request('/api/v5/copytrading/public-weekly-pnl', $params, 'GET');
+    }
+
+    public function publicPnl($instType='',$uniqueCode,$lastDays){
+        $params = [
+            'instType' => $instType,
+            'uniqueCode' => $uniqueCode,
+            'lastDays' => $lastDays,
+        ];
+
+        return $this->request('/api/v5/copytrading/public-pnl', $params, 'GET');
+    }
+
+    public function publicStats($instType='',$uniqueCode,$lastDays){
+        $params = [
+            'instType' => $instType,
+            'uniqueCode' => $uniqueCode,
+            'lastDays' => $lastDays,
+        ];
+
+        return $this->request('/api/v5/copytrading/public-stats', $params, 'GET');
+    }
+
+    public function publicPreferenceCurrency($instType='',$uniqueCode){
+        $params = [
+            'instType' => $instType,
+            'uniqueCode' => $uniqueCode,
+        ];
+
+        return $this->request('/api/v5/copytrading/public-preference-currency', $params, 'GET');
+    }
+
+    public function publicCurrentSubpositions($instType='',$uniqueCode,$after='',$before='',$limit=''){
+        $params = [
+            'instType' => $instType,
+            'uniqueCode' => $uniqueCode,
+            'after' => $after,
+            'before' => $before,
+            'limit' => $limit,
+        ];
+
+        return $this->request('/api/v5/copytrading/public-current-subpositions', $params, 'GET');
+    }
+
+    public function publicSubpositionsHistory($instType='',$uniqueCode,$after='',$before='',$limit=''){
+        $params = [
+            'instType' => $instType,
+            'uniqueCode' => $uniqueCode,
+            'after' => $after,
+            'before' => $before,
+            'limit' => $limit,
+        ];
+
+        return $this->request('/api/v5/copytrading/public-subpositions-history', $params, 'GET');
+    }
+
+    public function publicCopyTraders($instType='',$uniqueCode,$limit=''){
+        $params = [
+            'instType' => $instType,
+            'uniqueCode' => $uniqueCode,
+            'limit' => $limit,
+        ];
+
+        return $this->request('/api/v5/copytrading/public-copy-traders', $params, 'GET');
+    }
+
+    public function leadTraders($instType='',$sortType='',$state='',$minLeadDays='',$minAssets='',$maxAssets='',$minAum='',$maxAum='',$dataVer='',$page='',$limit=''){
+        $params = [
+            'instType' => $instType,
+            'sortType' => $sortType,
+            'state' => $state,
+            'minLeadDays' => $minLeadDays,
+            'minAssets' => $minAssets,
+            'maxAssets' => $maxAssets,
+            'minAum' => $minAum,
+            'maxAum' => $maxAum,
+            'dataVer' => $dataVer,
+            'page' => $page,
+            'limit' => $limit,
+        ];
+
+        return $this->request('/api/v5/copytrading/lead-traders', $params, 'GET');
+    }
+
+    public function weeklyPnl($instType='',$uniqueCode){
+        $params = [
+            'instType' => $instType,
+            'uniqueCode' => $uniqueCode,
+        ];
+
+        return $this->request('/api/v5/copytrading/weekly-pnl', $params, 'GET');
+    }
+
+    public function pnl($instType='',$uniqueCode,$lastDays){
+        $params = [
+            'instType' => $instType,
+            'uniqueCode' => $uniqueCode,
+            'lastDays' => $lastDays,
+        ];
+
+        return $this->request('/api/v5/copytrading/pnl', $params, 'GET');
+    }
+
+    public function stats($instType='',$uniqueCode,$lastDays){
+        $params = [
+            'instType' => $instType,
+            'uniqueCode' => $uniqueCode,
+            'lastDays' => $lastDays,
+        ];
+
+        return $this->request('/api/v5/copytrading/stats', $params, 'GET');
+    }
+
+    public function preferenceCurrency($instType='',$uniqueCode){
+        $params = [
+            'instType' => $instType,
+            'uniqueCode' => $uniqueCode,
+        ];
+
+        return $this->request('/api/v5/copytrading/preference-currency', $params, 'GET');
+    }
+
+    public function performanceCurrentSubpositions($instType='',$uniqueCode,$after='',$before='',$limit=''){
+        $params = [
+            'instType' => $instType,
+            'uniqueCode' => $uniqueCode,
+            'after' => $after,
+            'before' => $before,
+            'limit' => $limit,
+        ];
+
+        return $this->request('/api/v5/copytrading/performance-current-subpositions', $params, 'GET');
+    }
+
+    public function performanceSubpositionsHistory($instType='',$uniqueCode,$after='',$before='',$limit=''){
+        $params = [
+            'instType' => $instType,
+            'uniqueCode' => $uniqueCode,
+            'after' => $after,
+            'before' => $before,
+            'limit' => $limit,
+        ];
+
+        return $this->request('/api/v5/copytrading/performance-subpositions-history', $params, 'GET');
+    }
+
+    public function copyTraders($instType='',$uniqueCode,$limit=''){
+        $params = [
+            'instType' => $instType,
+            'uniqueCode' => $uniqueCode,
+            'limit' => $limit,
+        ];
+
+        return $this->request('/api/v5/copytrading/copy-traders', $params, 'GET');
+    }
     
 }
