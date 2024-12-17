@@ -574,7 +574,7 @@ if __name__ == '__main__':
     # 设置模拟盘ND子账户资产
     # result = BrokerAPI.set_subaccount_assets(subAcct='',ccy='')
     # 子账户IP上报 POST /api/v5/broker/nd/report-subaccount-ip
-    result = BrokerAPI.report_subaccount_ip(subAcct='',clientIP='')
+    # result = BrokerAPI.report_subaccount_ip(subAcct='',clientIP='')
     # 获取用户的 Broker 返佣信息 GET /api/v5/broker/nd/if-rebate
     # result = BrokerAPI.if_rebate(subAcct='',clientIP='')
 
@@ -740,6 +740,25 @@ if __name__ == '__main__':
     # result = Finance.fixed_loan_lending_orders_list(ordId = '', ccy ='', state ='', after = '', before = '', limit = '')
     # 获取定期简单赚币子订单信息
     # result = Finance.fixed_loan_lending_sub_orders(ordId = '', state ='', after = '', before = '', limit = '')
+
+    # 活期借币 
+    # 可借币种列表 GET /api/v5/finance/flexible-loan/borrow-currencies
+    # result = Finance.flexible_loan_borrow_currencies()
+    # 可抵押资产 GET /api/v5/finance/flexible-loan/collateral-assets
+    # result = Finance.flexible_loan_collateral_assets(ccy = 'BTC')
+    # 最大可借 POST /api/v5/finance/flexible-loan/max-loan
+    # result = Finance.flexible_loan_max_loan(borrowCcy = 'BTC')
+    # 抵押物最大可赎回数量 GET /api/v5/finance/flexible-loan/max-collateral-redeem-amount
+    # result = Finance.flexible_loan_max_c_r_a(borrowCcy = 'BTC')
+    # 调整抵押物 POST /api/v5/finance/flexible-loan/adjust-collateral
+    # result = Finance.flexible_loan_adj_coll(type = '', collateralCcy = '', collateralAmt = '')
+    # 借贷信息 GET /api/v5/finance/flexible-loan/loan-info
+    # result = Finance.flexible_loan_loan_info()
+    # 借贷历史 GET /api/v5/finance/flexible-loan/loan-history
+    # result = Finance.flexible_loan_loan_history(type = '', after = '', before = '', limit = '')
+    # 计息记录 GET /api/v5/finance/flexible-loan/interest-accrued
+    result = Finance.flexible_loan_interest_accrued(ccy = '', after = '', before = '', limit = '')
+
 
     # 跟单
     Copytrading = Copytrading.CopytradingAPI(api_key, secret_key, passphrase, False, flag)

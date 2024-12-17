@@ -135,3 +135,55 @@ class FinanceAPI(Client):
     def fixed_loan_lending_sub_orders(self, ordId='', state='', after='', before='', limit=''):
         params = {'ordId': ordId, 'state':state, 'after':after, 'before':before, 'limit':limit}
         return self._request_with_params(GET, FIXED_LOAN_LENDING_SUB_ORDERS, params)
+
+    # GET /api/v5/finance/flexible-loan/borrow-currencies
+    def flexible_loan_borrow_currencies(self):
+        params = {}
+        return self._request_with_params(GET, FLEXIBLE_LOAN_BORROW_CURRENCIES, params)
+
+    # GET /api/v5/finance/flexible-loan/collateral-assets
+    def flexible_loan_collateral_assets(self, ccy = ''):
+        params = {'ccy':ccy}
+        return self._request_with_params(GET, FLEXIBLE_LOAN_COLLATERAL_ASSETS, params)
+
+    # POST /api/v5/finance/flexible-loan/max-loan
+    def flexible_loan_max_loan(self, borrowCcy = '', supCollateral = []):
+        params = {'borrowCcy':borrowCcy,'supCollateral':supCollateral}
+        return self._request_with_params(POST, FLEXIBLE_LOAN_MAX_LOAN, params)
+
+    # GET /api/v5/finance/flexible-loan/max-collateral-redeem-amount
+    def flexible_loan_max_c_r_a(self, borrowCcy = ''):
+        params = {'borrowCcy':borrowCcy}
+        return self._request_with_params(GET, FLEXIBLE_LOAN_MAX_C_R_A, params)
+
+    # POST /api/v5/finance/flexible-loan/adjust-collateral
+    def flexible_loan_adj_coll(self, type = '', collateralCcy = '', collateralAmt = ''):
+        params = {'type':type,'collateralCcy':collateralCcy,'collateralAmt':collateralAmt}
+        return self._request_with_params(POST, FLEXIBLE_LOAN_ADJ_COLL, params)
+
+    # GET /api/v5/finance/flexible-loan/loan-info
+    def flexible_loan_loan_info(self):
+        params = {}
+        return self._request_with_params(GET, FLEXIBLE_LOAN_LOAN_INFO, params)
+
+    # GET /api/v5/finance/flexible-loan/loan-history
+    def flexible_loan_loan_history(self, type = '', after = '', before = '', limit = ''):
+        params = {'type':type, 'after':after,'before':before,'limit':limit}
+        return self._request_with_params(GET, FLEXIBLE_LOAN_LOAN_HISTORY, params)
+
+    # GET /api/v5/finance/flexible-loan/interest-accrued
+    def flexible_loan_interest_accrued(self, ccy = '', after = '', before = '', limit = ''):
+        params = {'ccy':ccy, 'after':after,'before':before,'limit':limit}
+        return self._request_with_params(GET, FLEXIBLE_LOAN_INT_ACC, params)
+
+
+
+
+
+
+
+
+
+
+
+
