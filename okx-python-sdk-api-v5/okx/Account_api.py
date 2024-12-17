@@ -318,3 +318,13 @@ class AccountAPI(Client):
         params = {'year':year, 'quarter':quarter}
         return self._request_with_params(GET, GET_BILLS_HISTORY_ARCHIVE, params)
 
+    # POST /api/v5/account/account-level-switch-preset
+    def account_level_switch_preset(self,acctLv = '', lever = '', riskOffsetType = ''):
+        params = {'acctLv':acctLv, 'lever':lever, 'riskOffsetType':riskOffsetType}
+        return self._request_with_params(POST, ACCOUNT_LEVEL_SWITCH_PRESET, params)
+
+    # GET /api/v5/account/set-account-switch-precheck
+    def set_account_switch_precheck(self, acctLv = ''):
+        params = {'acctLv':acctLv}
+        return self._request_with_params(GET, SET_ACCOUNT_SWITCH_PRECHECK, params)
+

@@ -54,8 +54,8 @@ class RfqAPI(Client):
         params = {'rfqId': rfqId, 'clRfqId': clRfqId, 'quoteId':quoteId,'clQuoteId':clQuoteId, 'state': state, 'beginId': beginId, 'endId': endId, 'limit':limit}
         return self._request_with_params(GET, GET_QUOTES, params)
 
-    def get_rfq_trades(self, rfqId = '', clRfqId = '', quoteId = '', blockTdId = '', clQuoteId = '', state = '', beginId = '', endId = '', limit = '', beginTs ='', endTs = ''):
-        params = {'rfqId': rfqId, 'clRfqId': clRfqId, 'quoteId':quoteId,'clQuoteId':clQuoteId, 'state': state, 'beginId': beginId, 'endId': endId, 'limit':limit,'blockTdId':blockTdId,'beginTs':beginTs,'endTs':endTs}
+    def get_rfq_trades(self, rfqId = '', clRfqId = '', quoteId = '', blockTdId = '', clQuoteId = '', isSuccessful = '', beginId = '', endId = '', limit = '', beginTs ='', endTs = ''):
+        params = {'rfqId': rfqId, 'clRfqId': clRfqId, 'quoteId':quoteId,'clQuoteId':clQuoteId, 'isSuccessful': isSuccessful, 'beginId': beginId, 'endId': endId, 'limit':limit,'blockTdId':blockTdId,'beginTs':beginTs,'endTs':endTs}
         return self._request_with_params(GET, GET_RFQ_TRADES, params)
 
     def get_public_trades(self, beginId = '', endId = '', limit = ''):

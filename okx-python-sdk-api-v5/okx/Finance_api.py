@@ -65,6 +65,33 @@ class FinanceAPI(Client):
         params = {}
         return self._request_with_params(GET, STAKING_DEFI_ETH_PRODUCT_INFO, params)
 
+    # POST /api/v5/finance/staking-defi/sol/purchase
+    def staking_defi_sol_purcase(self, amt = ''):
+        params = {}
+        return self._request_with_params(POST, STAKING_DEFI_SOL_PURCASE, params)
+
+    # POST /api/v5/finance/staking-defi/sol/redeem
+    def staking_defi_sol_redeem(self, amt = ''):
+        params = {}
+        return self._request_with_params(POST, STAKING_DEFI_SOL_REDEEM, params)
+
+    # GET /api/v5/finance/staking-defi/sol/balance
+    def staking_defi_sol_balance(self, ):
+        params = {}
+        return self._request_with_params(GET, STAKING_DEFI_SOL_BALANCE, params) 
+
+    # GET /api/v5/finance/staking-defi/sol/purchase-redeem-history
+    def staking_defi_sol_p_r_history(self,type='',status='',after='',before='',limit='', ):
+        params = {'type': type,'status': status,'after': after,'before': before,'limit': limit,}
+        return self._request_with_params(GET, STAKING_DEFI_SOL_P_R_HISTORY, params)
+
+    # GET /api/v5/finance/staking-defi/sol/apy-history
+    def staking_defi_sol_apy_history(self,days='',):
+        params = {'days': days,}
+        return self._request_with_params(GET, STAKING_DEFI_SOL_APY_HISTORY, params)
+
+
+
     def savings_lending_rate_summary(self,ccy='',):
         params = {'ccy': ccy,}
         return self._request_with_params(GET, SAVINGS_LENDING_RATE_SUM, params)

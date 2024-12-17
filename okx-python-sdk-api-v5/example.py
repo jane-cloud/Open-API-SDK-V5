@@ -20,9 +20,9 @@ import okx.SprdApi_api as Sprd
 import okx.Singal_api as Signal
 
 if __name__ == '__main__':
-    api_key = ""
-    secret_key = ""
-    passphrase = ""
+    api_key = "1"
+    secret_key = "1"
+    passphrase = "1"
 
     # flag是实盘与模拟盘的切换参数 flag is the key parameter which can help you to change between demo and real trading.
     flag = '1'  # 模拟盘 demo trading
@@ -108,6 +108,10 @@ if __name__ == '__main__':
     # result = accountAPI.activate_option()
     # 设置自动借币
     # result = accountAPI.set_auto_loan(autoLoan = '')
+    # 预设置账户模式切换 POST /api/v5/account/account-level-switch-preset
+    # result = accountAPI.account_level_switch_preset(acctLv = '', lever = '', riskOffsetType = '')
+    # 预检查账户模式切换 GET /api/v5/account/set-account-switch-precheck
+    # result = accountAPI.set_account_switch_precheck(acctLv = '')
     # 重置 MMP 状态
     # result = accountAPI.mmp_reset()
     # 设置MMP
@@ -492,42 +496,42 @@ if __name__ == '__main__':
     # 信号交易 SignalApi
     SignalAPI = Signal.SignalApi(api_key, secret_key, passphrase, False, flag)
     # POST / 创建信号 /api/v5/tradingBot/signal/create-signal
-    result = SignalAPI.create_signal(signalChanName='',signalChanDesc='')
+    # result = SignalAPI.create_signal(signalChanName='',signalChanDesc='')
     # GET / 查询所有信号 /api/v5/tradingBot/signal/signals
-    result = SignalAPI.signals(signalSourceType='', signalChanId='',after='', before='',
-                limit='', )
+    # result = SignalAPI.signals(signalSourceType='', signalChanId='',after='', before='',
+    #             limit='', )
     # POST / 创建信号策略 /api/v5/tradingBot/signal/order-algo
-    result = SignSignalAPIalAPI.order_algo(includeAll='', signalChanId='',instIds='', lever='',
-                investAmt='',subOrdType='',ratio='',entrySettingParam='',exitSettingParam='',)
+    # result = SignSignalAPIalAPI.order_algo(includeAll='', signalChanId='',instIds='', lever='',
+                # investAmt='',subOrdType='',ratio='',entrySettingParam='',exitSettingParam='',)
     # POST / 停止信号策略 POST /api/v5/tradingBot/signal/stop-order-algo
-    result = SignSignalAPIalAPI.signal_stop_order_algo( algoId='', )
+    # result = SignSignalAPIalAPI.signal_stop_order_algo( algoId='', )
     # 调整保证金 POST /api/v5/tradingBot/signal/margin-balance
-    result = SignSignalAPIalAPI.signal_margin_balance(algoId='',type='',amt='',allowReinvest='', )
+    # result = SignSignalAPIalAPI.signal_margin_balance(algoId='',type='',amt='',allowReinvest='', )
     # 修改止盈止损 POST /api/v5/tradingBot/signal/amendTPSL
-    result = SignSignalAPIalAPI.amendTPSL(algoId='',exitSettingParam='', )
+    # result = SignSignalAPIalAPI.amendTPSL(algoId='',exitSettingParam='', )
     # 设置币对 POST /api/v5/tradingBot/signal/set-instruments
-    result = SignSignalAPIalAPI.signal_set_instruments(algoId='',instIds='', includeAll='')
+    # result = SignSignalAPIalAPI.signal_set_instruments(algoId='',instIds='', includeAll='')
     # 获取信号策略详情 GET /api/v5/tradingBot/signal/orders-algo-details
-    result = SignSignalAPIalAPI.orders_algo_details( algoId='',algoOrdType='',)
+    # result = SignSignalAPIalAPI.orders_algo_details( algoId='',algoOrdType='',)
     # 获取活跃信号策略 GET /api/v5/tradingBot/signal/orders-algo-pending
-    result = SignSignalAPIalAPI.orders_algo_pending(algoId='',algoOrdType='',after='',before='',limit='',)
+    # result = SignSignalAPIalAPI.orders_algo_pending(algoId='',algoOrdType='',after='',before='',limit='',)
     # 获取历史信号策略 GET /api/v5/tradingBot/signal/orders-algo-history
-    result = SignSignalAPIalAPI.orders_algo_history(algoId='',algoOrdType='',after='',before='',limit='', )
+    # result = SignSignalAPIalAPI.orders_algo_history(algoId='',algoOrdType='',after='',before='',limit='', )
     # 获取信号策略持仓 GET /api/v5/tradingBot/signal/positions
-    result = SignSignalAPIalAPI.signal_positions(algoId='',algoOrdType='', )
+    # result = SignSignalAPIalAPI.signal_positions(algoId='',algoOrdType='', )
     # 查看历史持仓信息 GET /api/v5/tradingBot/signal/positions-history
-    result = SignSignalAPIalAPI.signal_positions_history(algoId='',instId='',after='',before='',limit='', )
+    # result = SignSignalAPIalAPI.signal_positions_history(algoId='',instId='',after='',before='',limit='', )
     # 市价仓位全平 POST /api/v5/tradingBot/signal/close-position
-    result = SignSignalAPIalAPI.signal_close_position( algoId='',instId='',)
+    # result = SignSignalAPIalAPI.signal_close_position( algoId='',instId='',)
     # 下单 POST /api/v5/tradingBot/signal/sub-order
-    result = SignSignalAPIalAPI.sub_order(algoId='',instId='',side='',ordType='',sz='',px='',reduceOnly='')
+    # result = SignSignalAPIalAPI.sub_order(algoId='',instId='',side='',ordType='',sz='',px='',reduceOnly='')
     # 撤单  POST /api/v5/tradingBot/signal/cancel-sub-order
-    result = SignSignalAPIalAPI.cancel_sub_order(algoId='',instId='',signalOrdId='',)
+    # result = SignSignalAPIalAPI.cancel_sub_order(algoId='',instId='',signalOrdId='',)
     # 获取信号策略子订单信息 GET /api/v5/tradingBot/signal/sub-orders
-    result = SignSignalAPIalAPI.sub_orders(algoId='',algoOrdType='',signalOrdId='',state='',after='',before='',limit='',
-                   begin='',end='',type='',clOrdId='')
+    # result = SignSignalAPIalAPI.sub_orders(algoId='',algoOrdType='',signalOrdId='',state='',after='',before='',limit='',
+    #                begin='',end='',type='',clOrdId='')
     # 获取信号策略历史事件 GET /api/v5/tradingBot/signal/event-history
-    result = SignSignalAPIalAPI.event_history(algoId='',after='',before='',limit='',)
+    # result = SignSignalAPIalAPI.event_history(algoId='',after='',before='',limit='',)
 
     # BrokerAPI
     BrokerAPI = Broker.BrokerAPI(api_key, secret_key, passphrase, False, flag)
@@ -622,7 +626,7 @@ if __name__ == '__main__':
     # 获取报价单信息
     # result = RfqAPI.get_quotes(rfqId = '', clRfqId = '', quoteId = '', clQuoteId = '', state = '', beginId = '', endId = '', limit = '')
     # 获取大宗交易信息
-    # result = RfqAPI.get_rfq_trades(rfqId = '', clRfqId = '', quoteId = '', blockTdId = '', clQuoteId = '', state = '', beginId = '', endId = '', beginTs ='', endTs = '', limit = '')
+    result = RfqAPI.get_rfq_trades(rfqId = '', clRfqId = '', quoteId = '', blockTdId = '', clQuoteId = '', isSuccessful = '', beginId = '', endId = '', beginTs ='', endTs = '', limit = '')
     # 获取大宗交易公共成交数据
     # result = RfqAPI.get_public_trades(beginId = '', endId = '', limit = '')
     # 倒计时全部撤单 POST /api/v5/rfq/cancel-all-after
@@ -692,13 +696,26 @@ if __name__ == '__main__':
     # 获取产品信息
     # result = Finance.staking_defi_eth_product_info()
 
+    # SOL质押
+    # 申购 POST /api/v5/finance/staking-defi/sol/purchase
+    # result = Finance.staking_defi_sol_purcase(amt = '')
+    # 赎回 POST /api/v5/finance/staking-defi/sol/redeem
+    # result = Finance.staking_defi_sol_redeem(amt = '')
+    # 获取余额 GET /api/v5/finance/staking-defi/sol/balance
+    # result = Finance.staking_defi_sol_balance()
+    # 获取申购赎回记录 GET /api/v5/finance/staking-defi/sol/purchase-redeem-history
+    # result = Finance.staking_defi_sol_p_r_history(type = '', status = '', after = '', before = '', limit = '')
+    # 获取历史收益率(公共) GET /api/v5/finance/staking-defi/sol/apy-history
+    # result = Finance.staking_defi_sol_apy_history(days = '1')
+
+
     # 活期简单赚币
     # 余币宝申购/赎回  PiggyBank Purchase/Redemption
     # result = fundingAPI.purchase_redempt('BTC', '1', 'purchase')
     # 获取余币宝余额 PIGGY BALABCE
     # result = fundingAPI.get_piggy_balance()
     # 设置余币宝借贷利率 POST SET LENDING RATE
-    result = fundingAPI.set_lending_rate(ccy = 'USDT',rate='')
+    # result = fundingAPI.set_lending_rate(ccy = 'USDT',rate='')
     # 获取余币宝出借明细 GET LENDING HISTORY
     # result = fundingAPI.get_lending_rate(ccy = '')
     # 获取市场借贷信息（公共）GET /api/v5/finance/savings/lending-rate-summary

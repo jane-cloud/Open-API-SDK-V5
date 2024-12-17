@@ -75,6 +75,8 @@ REDYCE_LIABILITIES = '/api/v5/account/fixed-loan/reduce-liabilities'
 ACC_RATE_LIMIT = '/api/v5/trade/account-rate-limit'
 BILLS_HISTORY_ARCHIVE = '/api/v5/account/bills-history-archive'
 GET_BILLS_HISTORY_ARCHIVE = '/api/v5/account/bills-history-archive'
+ACCOUNT_LEVEL_SWITCH_PRESET = '/api/v5/account/account-level-switch-preset'
+SET_ACCOUNT_SWITCH_PRECHECK = '/api/v5/account/set-account-switch-precheck'
 
 # funding
 DEPOSIT_ADDRESS = '/api/v5/asset/deposit-address'
@@ -333,9 +335,11 @@ FIXED_LOAN_AMEND_LENDING_ORDER = '/api/v5/finance/fixed-loan/amend-lending-order
 FIXED_LOAN_LENDING_ORDERS_LIST = '/api/v5/finance/fixed-loan/lending-orders-list'
 FIXED_LOAN_LENDING_SUB_ORDERS = '/api/v5/finance/fixed-loan/lending-sub-orders'
 STAKING_DEFI_ETH_PRODUCT_INFO = '/api/v5/finance/staking-defi/eth/product-info'
-
-
-
+STAKING_DEFI_SOL_PURCASE = '/api/v5/finance/staking-defi/sol/purchase'
+STAKING_DEFI_SOL_REDEEM = '/api/v5/finance/staking-defi/sol/redeem'
+STAKING_DEFI_SOL_BALANCE = '/api/v5/finance/staking-defi/sol/balance'
+STAKING_DEFI_SOL_P_R_HISTORY = '/api/v5/finance/staking-defi/sol/purchase-redeem-history'
+STAKING_DEFI_SOL_APY_HISTORY = '/api/v5/finance/staking-defi/sol/apy-history'
 
 # copytrading
 CURRENT_SUBPOSITIONS = '/api/v5/copytrading/current-subpositions'
