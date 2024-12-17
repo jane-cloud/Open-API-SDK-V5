@@ -533,7 +533,7 @@ if __name__ == '__main__':
     # 获取信号策略历史事件 GET /api/v5/tradingBot/signal/event-history
     # result = SignSignalAPIalAPI.event_history(algoId='',after='',before='',limit='',)
 
-    # BrokerAPI
+    # BrokerAPI -- DMA经纪商
     BrokerAPI = Broker.BrokerAPI(api_key, secret_key, passphrase, False, flag)
     # 获取独立经纪商账户信息 GET Obtain independent broker account information
     # result = BrokerAPI.broker_info()
@@ -542,8 +542,10 @@ if __name__ == '__main__':
     # 删除子账户 Delete sub account
     # result = BrokerAPI.delete_subaccount(subAcct = 'qwerty')
     # 获取子账户列表 Get sub account list
-    # result = BrokerAPI.subaccount_info(page = '', subAcct = '', limit = '')
-    # 设置子账户的账户等级 Set account level of sub account
+    # result = BrokerAPI.subaccount_info(page = '', subAcct = '', limit = '', uid = '')
+    # 获取子账户交易手续费费率 GET /api/v5/broker/dma/subaccount-trade-fee
+    # result = BrokerAPI.subaccount_trade_fee(page = '', subAcct = '', limit = '', uid = '')
+    # 设置子账户的账户模式 Set account level of sub account
     # result = BrokerAPI.set_subaccount_level(subAcct = 'qwerty', acctLv = '1')
     # 设置子账户的交易手续费费率 Set transaction fee rate of sub account
     # result = BrokerAPI.set_subaccount_fee_rate(subAcct = 'qwerty', instType = 'SPOT', mgnType = '', chgType = 'absolute', chgTaker = '0.1bp', chgMaker = '', effDate = '')
@@ -556,13 +558,13 @@ if __name__ == '__main__':
     # 获取子账户返佣记录 Get rebate record of sub account
     # result = BrokerAPI.rebate_daily(subAcct = 'qwerty', begin = '', end = '', page = '', limit = '')
     # 创建子账户的APIKEY Apikey for creating sub accounts
-    # result = BrokerAPI.nd_create_apikey(subAcct = 'qwerty', label = '', passphrase = '', ip = '', perm = '')
+    # result = BrokerAPI.dma_create_apikey(subAcct = 'qwerty', label = '', passphrase = '', ip = '', perm = '')
     # 查询子账户的APIKEY
-    # result = BrokerAPI.nd_select_apikey(subAcct = 'qwerty', apiKey = '')
+    # result = BrokerAPI.dma_select_apikey(subAcct = 'qwerty', apiKey = '')
     # 重置子账户的APIKEY
-    # result = BrokerAPI.nd_modify_apikey(subAcct = 'qwerty', apiKey = '', label = '', perm = '', ip = '')
+    # result = BrokerAPI.dma_modify_apikey(subAcct = 'qwerty', apiKey = '', label = '', perm = '', ip = '')
     # 删除子账户的APIKEY
-    # result = BrokerAPI.nd_delete_apikey(subAcct = 'qwerty', apiKey = '')
+    # result = BrokerAPI.dma_delete_apikey(subAcct = 'qwerty', apiKey = '')
     # 生成返佣明细下载链接
     # result = BrokerAPI.rebate_per_orders(begin = '', end = '')
     # 获取返佣明细下载链接
@@ -572,7 +574,7 @@ if __name__ == '__main__':
     # 设置模拟盘ND子账户资产
     # result = BrokerAPI.set_subaccount_assets(subAcct='',ccy='')
     # 子账户IP上报 POST /api/v5/broker/nd/report-subaccount-ip
-    # result = BrokerAPI.report_subaccount_ip(subAcct='',clientIP='')
+    result = BrokerAPI.report_subaccount_ip(subAcct='',clientIP='')
     # 获取用户的 Broker 返佣信息 GET /api/v5/broker/nd/if-rebate
     # result = BrokerAPI.if_rebate(subAcct='',clientIP='')
 
@@ -626,7 +628,7 @@ if __name__ == '__main__':
     # 获取报价单信息
     # result = RfqAPI.get_quotes(rfqId = '', clRfqId = '', quoteId = '', clQuoteId = '', state = '', beginId = '', endId = '', limit = '')
     # 获取大宗交易信息
-    result = RfqAPI.get_rfq_trades(rfqId = '', clRfqId = '', quoteId = '', blockTdId = '', clQuoteId = '', isSuccessful = '', beginId = '', endId = '', beginTs ='', endTs = '', limit = '')
+    # result = RfqAPI.get_rfq_trades(rfqId = '', clRfqId = '', quoteId = '', blockTdId = '', clQuoteId = '', isSuccessful = '', beginId = '', endId = '', beginTs ='', endTs = '', limit = '')
     # 获取大宗交易公共成交数据
     # result = RfqAPI.get_public_trades(beginId = '', endId = '', limit = '')
     # 倒计时全部撤单 POST /api/v5/rfq/cancel-all-after

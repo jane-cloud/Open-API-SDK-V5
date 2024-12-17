@@ -18,9 +18,13 @@ class BrokerAPI(Client):
         params = {'subAcct': subAcct}
         return self._request_with_params(POST, DELETE_SUBACCOUNT, params)
 
-    def subaccount_info(self, subAcct='', page='', limit=''):
-        params = {'subAcct': subAcct, 'page': page, 'limit': limit}
+    def subaccount_info(self, subAcct='', page='', limit='', uid=''):
+        params = {'subAcct': subAcct, 'page': page, 'limit': limit, 'uid':uid}
         return self._request_with_params(GET, SUBACCOUNT_INFO, params)
+
+    def subaccount_trade_fee(self, subAcct='', page='', limit='', uid=''):
+        params = {'subAcct': subAcct, 'page': page, 'limit': limit, 'uid':uid}
+        return self._request_with_params(GET, SUBACCOUNT_TRADE_FEE, params)
 
     def set_subaccount_level(self, subAcct='', acctLv=''):
         params = {'subAcct': subAcct, 'acctLv': acctLv}
@@ -46,21 +50,21 @@ class BrokerAPI(Client):
                   'beginTime':beginTime, 'endTime': endTime}
         return self._request_with_params(GET, REBATE_DAILY, params)
 
-    def nd_create_apikey(self, subAcct = '', label = '', passphrase = '', ip = '', perm = ''):
+    def dma_create_apikey(self, subAcct = '', label = '', passphrase = '', ip = '', perm = ''):
         params = {'subAcct': subAcct, 'label': label, 'passphrase': passphrase, 'ip': ip, 'perm': perm}
-        return self._request_with_params(POST, ND_CREAET_APIKEY, params)
+        return self._request_with_params(POST, DMA_CREAET_APIKEY, params)
 
-    def nd_select_apikey(self, subAcct = '', apiKey = ''):
+    def dma_select_apikey(self, subAcct = '', apiKey = ''):
         params = {'subAcct': subAcct, 'apiKey': apiKey}
-        return self._request_with_params(GET, ND_SELECT_APIKEY, params)
+        return self._request_with_params(GET, DMA_SELECT_APIKEY, params)
 
-    def nd_modify_apikey(self, subAcct = '', apiKey = '', label = '', perm = '', ip = ''):
+    def dma_modify_apikey(self, subAcct = '', apiKey = '', label = '', perm = '', ip = ''):
         params = {'subAcct': subAcct, 'apiKey': apiKey, 'label': label, 'perm': perm, 'ip': ip}
-        return self._request_with_params(POST, ND_MODIFY_APIKEY, params)
+        return self._request_with_params(POST, DMA_MODIFY_APIKEY, params)
 
-    def nd_delete_apikey(self, subAcct = '', apiKey = ''):
+    def dma_delete_apikey(self, subAcct = '', apiKey = ''):
         params = {'subAcct': subAcct, 'apiKey': apiKey}
-        return self._request_with_params(POST, ND_DELETE_APIKEY, params)
+        return self._request_with_params(POST, DMA_DELETE_APIKEY, params)
 
     def rebate_per_orders(self, begin = '', end = ''):
         params = {'begin': begin, 'end': end}
