@@ -236,7 +236,7 @@ $instrumentId = "BTC-USDT-SWAP";
 $currency = "EOS";
 $obj = new PublicDataAPI(Config::$config);
 // 获取交易产品基础信息 Get Instruments
-//$res = $obj->getInstruments('SPOT','','ETH-USDT');
+$res = $obj->getInstruments('SPOT','','ETH-USDT');
 // 获取交割和行权记录 Get Delivery/Exercise History
 //$res = $obj->getDeliveryExerciseHistory('FUTURES','BTC-USD','','','');
 // 获取持仓总量 Get Open Interest
