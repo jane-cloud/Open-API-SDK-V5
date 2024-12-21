@@ -168,4 +168,156 @@ class PublicDataAPI extends Utils
 
         return $this->request('/api/v5/public/underlying',$params, 'GET');
     }
+
+    public function insuranceFund($instType,$type='',$uly='',$instFamily='',$ccy='',$before='',$after='',$limit='')
+    {
+        $params = [
+            'instType' => $instType,
+            'type' => $type,
+            'uly' => $uly,
+            'instFamily' => $instFamily,
+            'ccy' => $ccy,
+            'before' => $before,
+            'after' => $after,
+            'limit' => $limit,
+        ];
+
+        return $this->request('/api/v5/public/insurance-fund',$params, 'GET');
+    }
+
+    public function convertContractCoin($type='',$instId,$sz,$px='',$unit='',$opType='')
+    {
+        $params = [
+            'type' => $type,
+            'instId' => $instId,
+            'sz' => $sz,
+            'px' => $px,
+            'unit' => $unit,
+            'opType' => $opType,
+        ];
+
+        return $this->request('/api/v5/public/convert-contract-coin',$params, 'GET');
+    }
+
+    public function instrumentTickBands($instType,$instFamily='')
+    {
+        $params = [
+            'instType' => $instType,
+            'instFamily' => $instFamily,
+        ];
+
+        return $this->request('/api/v5/public/instrument-tick-bands',$params, 'GET');
+    }
+
+    public function premiumHistory($instId,$after='',$before='',$limit='')
+    {
+        $params = [
+            'instId' => $instId,
+            'after' => $after,
+            'before' => $before,
+            'limit' => $limit,
+        ];
+
+        return $this->request('/api/v5/public/premium-history',$params, 'GET');
+    }
+
+    public function indexTickers($quoteCcy='',$instId='')
+    {
+        $params = [
+            'quoteCcy' => $quoteCcy,
+            'instId' => $instId,
+        ];
+
+        return $this->request('/api/v5/market/index-tickers',$params, 'GET');
+    }
+
+    public function indexCandles($instId,$after='',$before='',$bar='',$limit='')
+    {
+        $params = [
+            'instId' => $instId,
+            'after' => $after,
+            'before' => $before,
+            'bar' => $bar,
+            'limit' => $limit,
+        ];
+
+        return $this->request('/api/v5/market/index-candles',$params, 'GET');
+    }
+
+    public function historyIndexCandles($instId,$after='',$before='',$bar='',$limit='')
+    {
+        $params = [
+            'instId' => $instId,
+            'after' => $after,
+            'before' => $before,
+            'bar' => $bar,
+            'limit' => $limit,
+        ];
+
+        return $this->request('/api/v5/market/history-index-candles',$params, 'GET');
+    }
+
+    public function markPriceCandles($instId,$after='',$before='',$bar='',$limit='')
+    {
+        $params = [
+            'instId' => $instId,
+            'after' => $after,
+            'before' => $before,
+            'bar' => $bar,
+            'limit' => $limit,
+        ];
+
+        return $this->request('/api/v5/market/mark-price-candles',$params, 'GET');
+    }
+
+    public function historyMarkPriceCandles($instId,$after='',$before='',$bar='',$limit='')
+    {
+        $params = [
+            'instId' => $instId,
+            'after' => $after,
+            'before' => $before,
+            'bar' => $bar,
+            'limit' => $limit,
+        ];
+
+        return $this->request('/api/v5/market/history-mark-price-candles',$params, 'GET');
+    }
+
+    public function openOracle()
+    {
+        $params = [
+        ];
+
+        return $this->request('/api/v5/market/open-oracle',$params, 'GET');
+    }
+
+    public function exchangeRate()
+    {
+        $params = [
+        ];
+
+        return $this->request('/api/v5/market/exchange-rate',$params, 'GET');
+    }
+
+    public function indexComponents($index)
+    {
+        $params = [
+            'index' => $index,
+        ];
+
+        return $this->request('/api/v5/market/index-components',$params, 'GET');
+    }
+
+    public function economicCalendar($region='',$importance='',$before='',$after='',$limit='')
+    {
+        $params = [
+            'region' => $region,
+            'importance' => $importance,
+            'before' => $before,
+            'after' => $after,
+            'limit' => $limit,
+        ];
+
+        return $this->request('/api/v5/market/economic-calendar',$params, 'GET');
+    }
 }

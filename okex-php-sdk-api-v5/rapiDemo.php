@@ -24,7 +24,9 @@ use okv5\RubikApi;
 use okv5\BrokerApi;
 use okv5\ConvertApi;
 use okv5\TradingbotApi;
-// use okv5\Copytrading;
+use okv5\SprdApi;
+use okv5\FinanceApi;
+use okv5\Copytrading;
 
 /**
  * 账户 Account
@@ -201,7 +203,6 @@ $instrumentId = "ETH-USD-200925";
 $coin = "EOS";
 $obj = new MarketDataAPI(Config::$config);
 // 获取所有产品行情信息 Get Tickers
-
 //$res = $obj->getTickers('SWAP','ETH-USD');
 // 获取单个产品行情信息 Get Ticker
 //$res = $obj->getTicker('ETH-USDT');
@@ -236,7 +237,6 @@ $currency = "EOS";
 $obj = new PublicDataAPI(Config::$config);
 // 获取交易产品基础信息 Get Instruments
 //$res = $obj->getInstruments('SPOT','','ETH-USDT');
-
 // 获取交割和行权记录 Get Delivery/Exercise History
 //$res = $obj->getDeliveryExerciseHistory('FUTURES','BTC-USD','','','');
 // 获取持仓总量 Get Open Interest
@@ -255,18 +255,41 @@ $obj = new PublicDataAPI(Config::$config);
 //$res = $obj->getQuota('');
 // 获取系统时间 Get System Time
 //$res = $obj->getTime();
-// 获取平台公共爆仓单信息 Get Liquidation Orders
-//$res = $obj->getLiquidationOrders('FUTURES','','','','BTC-USD','this_week','filled','','','');
 // 获取标记价格 Get Mark Price
 //$res = $obj->getMarkPrice('MARGIN','','');
 //获取合约衍生品仓位档位
 //$res = $obj->getTier('','','','','');
-//获取杠杆利率和借币限额公共信息接口
+//获取市场借币杠杆利率和借币限额
 //$res = $obj->getInterestRateLoanQuota();
-//获取尊享借币杠杆利率和借币限额
-//$res = $obj->vipInterestRateLoanQuota();
 //获取合约衍生品标的指数
-//$res = $obj->getUnderlying('SWAP');
+//$res = $obj->getUnderlying('');
+//获取风险准备金余额
+//$res = $obj->insuranceFund('');
+//张币转换
+//$res = $obj->insuranceFund('');
+//获取期权价格梯度
+//$res = $obj->instrumentTickBands('');
+//获取溢价历史数据
+//$res = $obj->premiumHistory('');
+//获取指数行情
+//$res = $obj->indexTickers('');
+//获取指数K线数据
+//$res = $obj->indexCandles('');
+//获取指数历史K线数据
+//$res = $obj->historyIndexCandles('');
+//获取标记价格K线数据
+//$res = $obj->markPriceCandles('');
+//获取标记价格历史K线数据
+//$res = $obj->historyMarkPriceCandles('');
+//Oracle 上链交易数据
+//$res = $obj->openOracle('');
+//获取法币汇率
+//$res = $obj->exchangeRate('');
+//获取指数成分数据
+//$res = $obj->indexComponents('');
+//获取经济日历数据
+//$res = $obj->economicCalendar('');
+
 
 
 /**
@@ -421,6 +444,25 @@ $obj = new TradingbotApi(Config::$config);
 //  获取信号策略历史事件
 // $res = $obj -> eventHistory();
 
+/**
+ * 定投 recurring
+ */
+$obj = new TradingbotApi(Config::$config);
+//定投策略委托下单
+// $res = $obj -> recurringOrderAlgo('','','','','','','');
+//修改定投策略订单
+// $res = $obj -> recurringAmendOrderAlgo('','','','','','','');
+//定投策略停止
+// $res = $obj -> recurringStopOrderAlgo('','','','','','','');
+//获取未完成定投策略委托单列表
+// $res = $obj -> recurringOrdersAlgoPending('','','','','','','');
+//获取历史定投策略委托单列表
+// $res = $obj -> recurringOrdersAlgoHistory('','','','','','','');
+//获取定投策略委托订单详情
+// $res = $obj -> recurringOrdersAlgoDetails('','','','','','','');
+//获取定投策略子订单信息
+// $res = $obj -> recurringSubOrders('','','','','','','');
+
 
 /**
  * 跟单 copytrading
@@ -505,6 +547,42 @@ $obj = new TradingbotApi(Config::$config);
 // 获取跟单人信息（私有）
 // $res = $obj -> copyTraders('','');
 
+/**
+ * 价差交易
+ */
+$obj = new SprdApi(Config::$config);
+//下单
+//$res = $obj -> order('','','','','');
+//撤单
+//$res = $obj -> cancelOrder('','','','','');
+//全部撤单
+//$res = $obj -> massCancel('','','','','');
+//修改订单
+//$res = $obj -> amendOrder('','','','','');
+//获取订单信息
+//$res = $obj -> getOrder('','','','','');
+//获取未成交订单列表
+//$res = $obj -> ordersPending('','','','','');
+//获取历史订单记录（近21天)
+//$res = $obj -> ordersHistory('','','','','');
+//获取历史订单记录（近三月)
+//$res = $obj -> ordersHistoryArchive('','','','','');
+//获取历史成交数据（近七天）
+//$res = $obj -> trades('','','','','');
+//获取Spreads（公共）
+//$res = $obj -> spreads('','','','','');
+//获取Spread产品深度（公共）
+//$res = $obj -> books('','','','','');
+//获取单个Spread产品行情信息（公共）
+//$res = $obj -> sprdTicker('','','','','');
+//获取公共成交数据（公共）
+//$res = $obj -> publicTrades('','','','','');
+//获取价差交易产品K线数据
+//$res = $obj -> sprdCandles('','','','','');
+//获取价差交易产品历史K线数据
+//$res = $obj -> sprdHistoryCandles('','','','','');
+//倒计时全部撤单
+//$res = $obj -> cancelAllAfter('','','','','');
 
 
 /**
@@ -513,16 +591,136 @@ $obj = new TradingbotApi(Config::$config);
 $obj = new SubaccountApi(Config::$config);
 //查看子账户列表（仅适用于母账户）
 //$res = $obj -> subaccountList('','','','','');
-//获取子账户资产余额
-//$res = $obj -> balances('shangguanlin');
+//重置子账户的APIKey
+//$res = $obj -> modifyApikey('','','','','');
+//获取子账户交易账户余额
+//$res = $obj -> balances('');
+//获取子账户资金账户余额
+//$res = $obj -> assetBalances('');
+//获取子账户最大可转余额
+//$res = $obj -> maxWithdrawal('');
 //查询子账户转账记录
-//$res = $obj -> bills('','','shangguanlin123','','','');
-//查询子账户转账记录
+//$res = $obj -> bills('','','','','','');
+//查询托管子账户转账记录
+//$res = $obj -> managedSubaccountBills('','','','','','');
+//子账户间资金划转
 //$res = $obj -> transfer('','','','','','','');
 //设置子账户主动转出权限
 //$res = $obj -> setTransferOut('','');
 //查看被托管的子账户列表
 //$res = $obj -> entrustSubaccountList('','','','','','','');
+
+
+/**
+ * 链上赚币
+ */
+$obj = new FinanceApi(Config::$config);
+//查看项目
+//$res = $obj -> offers('');
+//申购项目
+//$res = $obj -> purchase('');
+//赎回项目
+//$res = $obj -> redeem('');
+//赎回项目
+//$res = $obj -> cancel('');
+//查看活跃订单
+//$res = $obj -> ordersActive('');
+//查看历史订单
+//$res = $obj -> ordersHistory('');
+
+
+/**
+ * ETH质押
+ */
+$obj = new FinanceApi(Config::$config);
+//获取产品信息
+//$res = $obj -> productInfo('');
+//申购
+//$res = $obj -> ethPurchase('');
+//赎回
+//$res = $obj -> ethRedeem('');
+//获取余额
+//$res = $obj -> ethBalance('');
+// 获取申购赎回记录
+//$res = $obj -> purchaseRedeemHistory('');
+// 获取历史收益率(公共)
+//$res = $obj -> ethApyHistory('');
+
+
+/**
+ * SOL质押
+ */
+$obj = new FinanceApi(Config::$config);
+//申购
+//$res = $obj -> solPurchase('');
+//赎回
+//$res = $obj -> solRedeem('');
+//获取余额
+//$res = $obj -> solBalance('');
+// 获取申购赎回记录
+//$res = $obj -> solPurchaseRedeemHistory('');
+// 获取历史收益率(公共)
+//$res = $obj -> solApyHistory('');
+
+
+/**
+ * 活期简单赚币
+ */
+$obj = new FinanceApi(Config::$config);
+//获取余币宝余额
+//$res = $obj -> savingsBalance('');
+//余币宝申购/赎回
+//$res = $obj -> savingsPurchaseRedempt('');
+//设置余币宝借贷利率
+//$res = $obj -> savingsSetLendingRate('');
+//获取余币宝出借明细
+//$res = $obj -> savingsLendingHistory('');
+//获取市场借贷信息（公共）
+//$res = $obj -> savingsLendingRateSummary('');
+//获取市场借贷历史（公共）
+//$res = $obj -> savingsLendingRateHistory('');
+
+/**
+ * 定期简单赚币
+ */
+$obj = new FinanceApi(Config::$config);
+//获取借币信息（公共）
+//$res = $obj -> fixedLoanLendingOffers('');
+//获取借币信息（公共）
+//$res = $obj -> fixedLoanLendingApyHistory('');
+//获取借贷量（公共）
+//$res = $obj -> fixedLoanPendingLendingVolume('');
+//定期简单赚币申购
+//$res = $obj -> fixedLoanLendingOrder('');
+//定期简单赚币修改订单
+//$res = $obj -> fixedLoanAmendLendingOrder('');
+//获取定期简单赚币订单信息
+//$res = $obj -> fixedLoanLendingOrdersList('');
+//获取定期简单赚币子订单信息
+//$res = $obj -> fixedLoanLendingSubOrders('');
+
+/**
+ * 活期借币
+ */
+$obj = new FinanceApi(Config::$config);
+//可借币种列表
+//$res = $obj -> flexibleLoanBorrowCurrencies('');
+//可抵押资产
+//$res = $obj -> flexibleLoanCollateralAssets('');
+//最大可借
+//$res = $obj -> flexibleLoanMaxLoan('');
+//抵押物最大可赎回数量
+//$res = $obj -> flexibleLoanMaxCollateralRedeemAmount('');
+//调整抵押物
+//$res = $obj -> flexibleLoanAdjustCollateral('');
+//借贷信息
+//$res = $obj -> flexibleLoanLoanInfo('');
+//借贷历史
+//$res = $obj -> flexibleLoanLoanHistory('');
+//计息记录
+//$res = $obj -> flexibleLoanInterestAccrued('');
+
+
 
 /**
  * Status Status
@@ -546,15 +744,35 @@ $obj = new StatusApi(Config::$config);
  *交易大数据
  */
 $obj = new RubikApi(Config::$config);
+//获取交易大数据支持币种
 // $res = $obj -> supportCoin();
+//获取合约持仓量历史
+//$res = $obj -> openInterestHistory('BTC','SPOT','','','');
+//获取主动买入/卖出情况
 //$res = $obj -> takerVolume('BTC','SPOT','','','');
+//获取合约主动买入/卖出情况
+//$res = $obj -> takerVolumeContract('BTC','SPOT','','','');
+//获取杠杆多空比
 //$res = $obj -> loanRatio('','','','');
+//获取精英交易员合约多空持仓人数比
+//$res = $obj -> longShortAccountRatioContracTopTrader('','','','');
+//获取精英交易员合约多空持仓仓位比
+//$res = $obj -> longShortPositionRatioContractTopTrader('','','','');
+//获取合约多空持仓人数比
+//$res = $obj -> longShortAccountRatioContrac('','','','');
+//获取多空持仓人数比
 //$res = $obj -> accountRatio('','','','');
+//获取合约持仓量及交易量
 //$res = $obj -> openinterestvolume('','','','');
+//获取期权持仓量及交易量
 //$res = $obj -> optionOpenInterestVolume('','');
+//看涨/看跌期权合约 持仓总量比/交易总量比
 //$res = $obj -> openinterestvolumeratio('','');
+//看涨看跌持仓总量及交易总量（按到期日分）
 //$res = $obj -> openInterestVolumeExpiry('','');
+//看涨看跌持仓总量及交易总量（按执行价格分）
 //$res = $obj -> openInterestVolumeStrike('','','');
+//看跌/看涨期权合约 主动买入/卖出量
 //$res = $obj -> takerBlockVolume('','');
 
 /**
@@ -596,22 +814,5 @@ $obj = new BrokerApi(Config::$config);
 //生成返佣明细下载链接
 //$res = $obj -> PostrebatePerOrders('','');
 
-
-
-
-/**
- *闪兑
- */
-$obj = new ConvertApi(Config::$config);
-//获取闪兑币种列表
-//$res = $obj -> currencies();
-//获取闪兑币对信息
-//$res = $obj -> currencyPair('','');
-//闪兑预估询价
-//$res = $obj -> estimateQuote('','','','','','','');
-//闪兑交易
-// $res = $obj -> trade('quoterUSDCUSDT','USDC','USDT','sell','1','USDT','test0324006','');
-//获取闪兑交易历史
-//$res = $obj -> history('','','','');
 
 var_dump($res);

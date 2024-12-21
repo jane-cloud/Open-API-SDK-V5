@@ -105,4 +105,72 @@ class RubikApi extends Utils
         return $this->request('/api/v5/rubik/stat/option/taker-block-volume', $params, 'GET');
     }
 
+    public function openInterestHistory($instId,$period='',$end='',$begin='',$limit=''){
+        $params = [
+            'instId' => $instId,
+            'period' => $period,
+            'end' => $end,
+            'begin' => $begin,
+            'limit' => $limit,
+        ];
+
+        return $this->request('/api/v5/rubik/stat/contracts/open-interest-history', $params, 'GET');
+    }
+
+    public function takerVolumeContract($instId,$period='',$unit='',$end='',$begin='',$limit=''){
+        $params = [
+            'instId' => $instId,
+            'period' => $period,
+            'unit' => $unit,
+            'end' => $end,
+            'begin' => $begin,
+            'limit' => $limit,
+        ];
+
+        return $this->request('/api/v5/rubik/stat/taker-volume-contract', $params, 'GET');
+    }
+
+    public function longShortAccountRatioContracTopTrader($instId,$period='',$end='',$begin='',$limit=''){
+        $params = [
+            'instId' => $instId,
+            'period' => $period,
+            'end' => $end,
+            'begin' => $begin,
+            'limit' => $limit,
+        ];
+
+        return $this->request('/api/v5/rubik/stat/contracts/long-short-account-ratio-contract-top-trader
+
+', $params, 'GET');
+    }
+
+    public function longShortPositionRatioContractTopTrader($instId,$period='',$end='',$begin='',$limit=''){
+        $params = [
+            'instId' => $instId,
+            'period' => $period,
+            'end' => $end,
+            'begin' => $begin,
+            'limit' => $limit,
+        ];
+
+        return $this->request('/api/v5/rubik/stat/contracts/long-short-position-ratio-contract-top-trader
+
+', $params, 'GET');
+    }
+
+    public function longShortAccountRatioContrac($instId,$period='',$end='',$begin='',$limit=''){
+        $params = [
+            'instId' => $instId,
+            'period' => $period,
+            'end' => $end,
+            'begin' => $begin,
+            'limit' => $limit,
+        ];
+
+        return $this->request('/api/v5/rubik/stat/contracts/long-short-account-ratio-contract
+
+', $params, 'GET');
+    }
+    
+
 }

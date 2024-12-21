@@ -114,4 +114,37 @@ class SubaccountApi extends Utils
 
         return $this->request('/api/v5/users/entrust-subaccount-list', $params, 'GET');
     }
+
+    public function assetBalances($subAcct,$ccy=''){
+        $params = [
+            'subAcct' => $subAcct,
+            'ccy' => $ccy,
+        ];
+
+        return $this->request('/api/v5/asset/subaccount/balances', $params, 'GET');
+    }
+
+    public function maxWithdrawal($subAcct,$ccy=''){
+        $params = [
+            'subAcct' => $subAcct,
+            'ccy' => $ccy,
+        ];
+
+        return $this->request('/api/v5/account/subaccount/max-withdrawal', $params, 'GET');
+    }
+
+    public function managedSubaccountBills($ccy='',$type='',$subAcct='',$subUid='',$after='',$before='',$limit=''){
+        $params = [
+            'ccy' => $ccy,
+            'type' => $type,
+            'subAcct' => $subAcct,
+            'subUid' => $subUid,
+            'after' => $after,
+            'before' => $before,
+            'limit' => $limit,
+        ];
+
+        return $this->request('/api/v5/asset/subaccount/managed-subaccount-bills', $params, 'GET');
+    }
+
 }

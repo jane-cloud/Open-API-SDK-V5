@@ -459,5 +459,90 @@ class TradingbotApi extends Utils
         return $this->request('/api/v5/tradingBot/signal/event-history', $params, 'GET');
     }
 
+    public function recurringOrderAlgo($stgyName,$recurringList,$period,$recurringDay='',$recurringHour='',$recurringTime,$timeZone,$amt,$investmentCcy,$tdMode,$algoClOrdId='',$tag='')
+    {
+        $params = [
+            'stgyName' => $stgyName,
+            'recurringList' => $recurringList,
+            'period' => $period,
+            'recurringDay' => $recurringDay,
+            'recurringHour' => $recurringHour,
+            'recurringTime' => $recurringTime,
+            'timeZone' => $timeZone,
+            'amt' => $amt,
+            'investmentCcy' => $investmentCcy,
+            'tdMode' => $tdMode,
+            'algoClOrdId' => $algoClOrdId,
+            'tag' => $tag,
+        ];
+
+        return $this->request('/api/v5/tradingBot/recurring/order-algo', $params, 'POST');
+    }
+
+    public function recurringAmendOrderAlgo($algoId,$stgyName)
+    {
+        $params = [
+            'algoId' => $algoId,
+            'stgyName' => $stgyName,
+        ];
+
+        return $this->request('/api/v5/tradingBot/recurring/amend-order-algo', $params, 'POST');
+    }
+
+    public function recurringStopOrderAlgo($algoId)
+    {
+        $params = [
+            'algoId' => $algoId,
+        ];
+
+        return $this->request('/api/v5/tradingBot/recurring/stop-order-algo', $params, 'POST');
+    }
+
+    public function recurringOrdersAlgoPending($algoId='',$after='',$before='',$limit='')
+    {
+        $params = [
+            'algoId' => $algoId,
+            'after' => $after,
+            'before' => $before,
+            'limit' => $limit,
+        ];
+
+        return $this->request('/api/v5/tradingBot/recurring/orders-algo-pending', $params, 'GET');
+    }
+
+    public function recurringOrdersAlgoHistory($algoId='',$after='',$before='',$limit='')
+    {
+        $params = [
+            'algoId' => $algoId,
+            'after' => $after,
+            'before' => $before,
+            'limit' => $limit,
+        ];
+
+        return $this->request('/api/v5/tradingBot/recurring/orders-algo-history', $params, 'GET');
+    }
+
+    public function recurringOrdersAlgoDetails($algoId)
+    {
+        $params = [
+            'algoId' => $algoId,
+        ];
+
+        return $this->request('/api/v5/tradingBot/recurring/orders-algo-details', $params, 'GET');
+    }
+
+    public function recurringSubOrders($algoId,$ordId='',$after='',$before='',$limit='')
+    {
+        $params = [
+            'algoId' => $algoId,
+            'ordId' => $ordId,
+            'after' => $after,
+            'before' => $before,
+            'limit' => $limit,
+        ];
+
+        return $this->request('/api/v5/tradingBot/recurring/sub-orders', $params, 'GET');
+    }
+
 
 }
