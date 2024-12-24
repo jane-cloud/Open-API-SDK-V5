@@ -2,8 +2,11 @@ package com.okex.open.api.test.finance;
 
 
 import com.alibaba.fastjson.JSONObject;
+import com.okex.open.api.bean.earn.param.Purchase;
+import com.okex.open.api.bean.earn.param.Redeem;
 import com.okex.open.api.bean.finance.param.AmendFinance;
 import com.okex.open.api.bean.finance.param.Finance;
+import com.okex.open.api.bean.finance.param.SupCollateral;
 import com.okex.open.api.bean.trade.param.ClosePositions;
 import com.okex.open.api.service.finance.FinanceAPIService;
 import com.okex.open.api.service.finance.impl.FinanceAPIServiceImpl;
@@ -11,6 +14,8 @@ import org.junit.Before;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.util.ArrayList;
 
 public class FinanceAPITest extends FinanceAPIBaseTests {
     private static final Logger LOG = LoggerFactory.getLogger(FinanceAPITest.class);
@@ -154,8 +159,8 @@ public class FinanceAPITest extends FinanceAPIBaseTests {
     public void amendLendingOrder(){
         AmendFinance amendFinance =  new AmendFinance();
         amendFinance.setOrdId("");
-        amendFinance.setAutoRenewal("");
-        amendFinance.setRate("");
+//        amendFinance.setAutoRenewal("");
+//        amendFinance.setRate("");
         amendFinance.setChangeAmt("");
         JSONObject result = financeAPIService.amendLendingOrder(amendFinance);
 
@@ -182,4 +187,156 @@ public class FinanceAPITest extends FinanceAPIBaseTests {
         toResultString(LOG, "result", result);
 
     }
+    //活期借币
+    /**
+     * GET /  可借币种列表 Get borrow-currencies
+     * GET /api/v5/finance/flexible-loan/borrow-currencies
+     */
+    @Test
+    public void getBorrowCurrencies(){
+        JSONObject result = financeAPIService.getBorrowCurrencies();
+        toResultString(LOG, "result", result);
+
+    }
+    /**
+     * GET /  可抵押资产 Get collateral-assets
+     * GET /api/v5/finance/flexible-loan/collateral-assets
+     */
+    @Test
+    public void getCollateralAssets(){
+        JSONObject result = financeAPIService.getCollateralAssets("");
+        toResultString(LOG, "result", result);
+
+    }
+    /**
+     * POST / 最大可借 Get max-loan
+     * POST /api/v5/finance/flexible-loan/max-loan
+     */
+    @Test
+    public void getMaxLoan(){
+        Finance finance =  new Finance();
+        finance.setBorrowCcy("");
+        ArrayList<SupCollateral> list = new ArrayList<>();
+        SupCollateral supCollateral = new SupCollateral();
+        supCollateral.setAmt("");
+        supCollateral.setCcy("");
+        list.add(supCollateral);
+        finance.setSupCollateral(list);
+        JSONObject result = financeAPIService.getMaxLoan(finance);
+
+        toResultString(LOG, "result", result);
+
+    }
+    /**
+     * GET /  抵押物最大可赎回数量 max-collateral-redeem-amount
+     * GET /api/v5/finance/flexible-loan/max-collateral-redeem-amount
+     */
+    @Test
+    public void getMaxCollateralRedeemAmount(){
+        JSONObject result = financeAPIService.getMaxCollateralRedeemAmount("");
+        toResultString(LOG, "result", result);
+
+    }
+    /**
+     * POST / 调整抵押物 adjust-collateral
+     * POST /api/v5/finance/flexible-loan/adjust-collateral
+     */
+    @Test
+    public void adjustCollateral(){
+        Finance finance =  new Finance();
+        finance.setType("");
+        finance.setCollateralAmt("");
+        finance.setCollateralCcy("");
+        JSONObject result = financeAPIService.adjustCollateral(finance);
+
+        toResultString(LOG, "result", result);
+
+    }
+    /**
+     * GET /  借贷信息loan-info
+     * GET /api/v5/finance/flexible-loan/loan-info
+     */
+    @Test
+    public void getLoanInfo(){
+        JSONObject result = financeAPIService.getLoanInfo();
+        toResultString(LOG, "result", result);
+
+    }
+
+    /**
+     * GET /  借贷历史loan-history
+     * GET /api/v5/finance/flexible-loan/loan-history
+     */
+    @Test
+    public void getLoanHistory(){
+        JSONObject result = financeAPIService.getLoanHistory("","","","");
+        toResultString(LOG, "result", result);
+
+    }
+    /**
+     * GET /  计息记录interest-accrued
+     * GET /api/v5/finance/flexible-loan/interest-accrued
+     */
+    @Test
+    public void getInterestAccrued(){
+        JSONObject result = financeAPIService.getInterestAccrued("","","","");
+        toResultString(LOG, "result", result);
+
+    }
+    //SOL质押
+    /**
+     * 申购 Purchase
+     * POST /api/v5/finance/staking-defi/sol/purchase
+     */
+    @Test
+    public void solPurchase(){
+        Purchase purchase = new Purchase();
+        purchase.setAmt("");
+
+        JSONObject result = this.financeAPIService.solPurchase(purchase);
+        toResultString(LOG, "result", result);
+    }
+
+    /**
+     * 赎回 redeem
+     * POST /api/v5/finance/staking-defi/sol/redeem
+     */
+    @Test
+    public void solRedeem(){
+        Redeem redeem = new Redeem();
+        redeem.setAmt("");
+        JSONObject result = this.financeAPIService.solRedeem(redeem);
+        toResultString(LOG, "result", result);
+    }
+    /**
+     * 获取余额 balance
+     * GET  /api/v5/finance/staking-defi/sol/balance
+     */
+    @Test
+    public void getBalance(){
+
+        JSONObject result = this.financeAPIService.getBalance("","","","");
+        toResultString(LOG, "result", result);
+    }
+    /**
+     * 获取申购赎回记录 purchase-redeem-history
+     * GET //api/v5/finance/staking-defi/sol/purchase-redeem-history
+     */
+    @Test
+    public void getPurchaseRedeemHistory(){
+
+        JSONObject result = this.financeAPIService.getPurchaseRedeemHistory("","","","","");
+        toResultString(LOG, "result", result);
+    }
+    /**
+     * 获取历史收益率(公共) apy-history
+     * GET/api/v5/finance/staking-defi/sol/apy-history
+     */
+    @Test
+    public void getApyHistory(){
+
+        JSONObject result = this.financeAPIService.getApyHistory("");
+        toResultString(LOG, "result", result);
+    }
+
 }

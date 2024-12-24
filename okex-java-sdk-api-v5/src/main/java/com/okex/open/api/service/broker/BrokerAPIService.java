@@ -79,4 +79,6 @@ public interface BrokerAPIService {
     JSONObject activateCredit(ActivateCredit activateCredit);
 
     JSONObject getCredits(String state, String limit);
+
+    JSONObject getSubaccountTradeFee(String subAcct, String uid, String page, String limit);
 }

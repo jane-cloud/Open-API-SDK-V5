@@ -25,4 +25,7 @@ public interface ETHPledgeAPI {
 
     @GET("/api/v5/finance/staking-defi/eth/apy-history")
     Call<JSONObject> getApyHistory(@Query("days")String days);
+
+    @GET("/api/v5/finance/staking-defi/eth/product-info")
+    Call<JSONObject> getProductInfo();
 }

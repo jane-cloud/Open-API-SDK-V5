@@ -173,4 +173,9 @@ public class BrokerAPIServiceImpl implements BrokerAPIService {
         return this.client.executeSync(this.api.getCredits(state,limit));
     }
 
+    @Override
+    public JSONObject getSubaccountTradeFee(String subAcct, String uid, String page, String limit) {
+        return this.client.executeSync(this.api.getSubaccountTradeFee(subAcct,uid,page,limit));
+    }
+
 }

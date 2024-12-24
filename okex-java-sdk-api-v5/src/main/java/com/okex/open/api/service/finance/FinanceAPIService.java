@@ -36,4 +36,30 @@ public interface FinanceAPIService {
     JSONObject getLendingOrdersList(String ordId, String ccy, String state, String after, String before, String limit);
 
     JSONObject getLendingSubOrders(String ordId, String state, String after, String before, String limit);
+
+    JSONObject getBorrowCurrencies();
+
+    JSONObject getCollateralAssets(String ccy);
+
+    JSONObject getMaxLoan(Finance finance);
+
+    JSONObject getMaxCollateralRedeemAmount(String borrowCcy);
+
+    JSONObject adjustCollateral(Finance finance);
+
+    JSONObject getLoanInfo();
+
+    JSONObject getLoanHistory(String type, String after, String before, String limit);
+
+    JSONObject getInterestAccrued(String type, String after, String before, String limit);
+
+    JSONObject solPurchase(Purchase purchase);
+
+    JSONObject solRedeem(Redeem redeem);
+
+    JSONObject getBalance(String ccy, String amt, String latestInterestAccrual, String totalInterestAccrual);
+
+    JSONObject getPurchaseRedeemHistory(String type, String status, String after, String before, String limit);
+
+    JSONObject getApyHistory(String days);
 }

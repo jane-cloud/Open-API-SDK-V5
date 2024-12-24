@@ -48,4 +48,9 @@ public class ETHPledgeAPIServiceImpl implements ETHPledgeAPIService {
         return this.client.executeSync(this.api.getApyHistory( days));
     }
 
+    @Override
+    public JSONObject getProductInfo() {
+        return this.client.executeSync(this.api.getProductInfo());
+    }
+
 }

@@ -2,6 +2,8 @@ package com.okex.open.api.service.finance.impl;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import com.okex.open.api.bean.earn.param.Purchase;
+import com.okex.open.api.bean.earn.param.Redeem;
 import com.okex.open.api.bean.finance.param.AmendFinance;
 import com.okex.open.api.bean.finance.param.Finance;
 import com.okex.open.api.client.APIClient;
@@ -82,5 +84,79 @@ public class FinanceAPIServiceImpl implements FinanceAPIService {
     @Override
     public JSONObject getLendingSubOrders(String ordId, String state, String after, String before, String limit) {
         return this.client.executeSync(this.api.getLendingSubOrders( ordId, state, after, before, limit));
+    }
+
+    @Override
+    public JSONObject getBorrowCurrencies() {
+        return this.client.executeSync(this.api.getBorrowCurrencies());
+
+    }
+
+    @Override
+    public JSONObject getCollateralAssets(String ccy) {
+        return this.client.executeSync(this.api.getCollateralAssets(ccy));
+    }
+
+    @Override
+    public JSONObject getMaxLoan(Finance finance) {
+        return this.client.executeSync(this.api.getMaxLoan( JSONObject.parseObject(JSON.toJSONString(finance))));
+
+    }
+
+    @Override
+    public JSONObject getMaxCollateralRedeemAmount(String borrowCcy) {
+        return this.client.executeSync(this.api.getMaxCollateralRedeemAmount(borrowCcy));
+
+    }
+
+    @Override
+    public JSONObject adjustCollateral(Finance finance) {
+        return this.client.executeSync(this.api.adjustCollateral( JSONObject.parseObject(JSON.toJSONString(finance))));
+
+    }
+
+    @Override
+    public JSONObject getLoanInfo() {
+        return this.client.executeSync(this.api.getLoanInfo());
+
+    }
+
+    @Override
+    public JSONObject getLoanHistory(String type, String after, String before, String limit) {
+        return this.client.executeSync(this.api.getLoanHistory(type,after,before,limit));
+    }
+
+    @Override
+    public JSONObject getInterestAccrued(String type, String after, String before, String limit) {
+        return this.client.executeSync(this.api.getInterestAccrued(type,after,before,limit));
+    }
+
+    @Override
+    public JSONObject solPurchase(Purchase purchase) {
+        return this.client.executeSync(this.api.solPurchase( JSONObject.parseObject(JSON.toJSONString(purchase))));
+
+    }
+
+    @Override
+    public JSONObject solRedeem(Redeem redeem) {
+        return this.client.executeSync(this.api.solRedeem( JSONObject.parseObject(JSON.toJSONString(redeem))));
+
+    }
+
+    @Override
+    public JSONObject getBalance(String ccy, String amt, String latestInterestAccrual, String totalInterestAccrual) {
+        return this.client.executeSync(this.api.getBalance(ccy,amt,latestInterestAccrual,totalInterestAccrual));
+    }
+
+    @Override
+    public JSONObject getPurchaseRedeemHistory(String type, String status, String after, String before, String limit) {
+        return this.client.executeSync(this.api.getPurchaseRedeemHistory(type,  status,  after,  before,  limit));
+
+    }
+
+    @Override
+    public JSONObject getApyHistory(String days) {
+        return this.client.executeSync(this.api.getApyHistory(days));
+
     }
 }

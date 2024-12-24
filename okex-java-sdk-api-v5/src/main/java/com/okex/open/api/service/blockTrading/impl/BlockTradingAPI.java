@@ -91,7 +91,8 @@ public interface BlockTradingAPI {
                                @Query("endId") String endId,
                                @Query("limit") String limit,
                                @Query("beginTs") String beginTs,
-                               @Query("endTs") String endTs);
+                               @Query("endTs") String endTs,
+                               @Query("isSuccessful")String isSuccessful);
 
     //获取大宗交易公共成交数据 Get public trades
     @GET("/api/v5/public/block-trades")

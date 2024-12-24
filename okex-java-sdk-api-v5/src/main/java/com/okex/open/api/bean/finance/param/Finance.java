@@ -1,5 +1,7 @@
 package com.okex.open.api.bean.finance.param;
 
+import java.util.ArrayList;
+
 public class Finance {
     public String getCcy() {
         return ccy;
@@ -37,6 +39,53 @@ public class Finance {
     private String amt;
     private String side;
     private String rate;
+    private String  borrowCcy;
+    private String type;
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getCollateralCcy() {
+        return collateralCcy;
+    }
+
+    public void setCollateralCcy(String collateralCcy) {
+        this.collateralCcy = collateralCcy;
+    }
+
+    public String getCollateralAmt() {
+        return collateralAmt;
+    }
+
+    public void setCollateralAmt(String collateralAmt) {
+        this.collateralAmt = collateralAmt;
+    }
+
+    private String collateralCcy;
+    private String collateralAmt;
+
+    public ArrayList<SupCollateral> getSupCollateral() {
+        return supCollateral;
+    }
+
+    public void setSupCollateral(ArrayList<SupCollateral> supCollateral) {
+        this.supCollateral = supCollateral;
+    }
+
+    public String getBorrowCcy() {
+        return borrowCcy;
+    }
+
+    public void setBorrowCcy(String borrowCcy) {
+        this.borrowCcy = borrowCcy;
+    }
+
+    private ArrayList<SupCollateral> supCollateral;
 
     public String getTerm() {
         return term;

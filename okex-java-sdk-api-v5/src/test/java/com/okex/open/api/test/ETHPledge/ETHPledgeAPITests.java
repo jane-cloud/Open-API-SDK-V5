@@ -78,4 +78,14 @@ public class ETHPledgeAPITests extends  ETHPledgeAPIBaseTests {
         JSONObject result = this.ETHPledgeAPI.getApyHistory("");
         toResultString(LOG, "result", result);
     }
+    /**
+     * 获取产品信息 product-info
+     * GET /api/v5/finance/staking-defi/eth/product-info
+     */
+    @Test
+    public void getProductInfo(){
+
+        JSONObject result = this.ETHPledgeAPI.getProductInfo();
+        toResultString(LOG, "result", result);
+    }
 }

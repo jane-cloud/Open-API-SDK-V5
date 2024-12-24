@@ -355,4 +355,13 @@ public class BrokerAPITests extends BrokerAPIBaseTests{
         JSONObject result = this.brokerAPIService.getCredits("","");
         toResultString(LOG, "result", result);
     }
+    /**
+     * 获取子账户交易手续费费率get subaccount-trade-fee
+     * GET /api/v5/broker/dma/subaccount-trade-fee
+     */
+    @Test
+    public void getSubaccountTradeFee(){
+        JSONObject result = this.brokerAPIService.getSubaccountTradeFee("","","","");
+        toResultString(LOG, "result", result);
+    }
 }

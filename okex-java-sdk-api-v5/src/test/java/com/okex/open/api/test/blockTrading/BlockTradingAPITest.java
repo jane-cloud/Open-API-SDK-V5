@@ -320,7 +320,7 @@ public class BlockTradingAPITest extends BlockTradingAPIBaseTest {
      */
     @Test
     public void getTrades(){
-        JSONObject result = this.blockTradingAPIService.getTrades("","","","","","","","","","");
+        JSONObject result = this.blockTradingAPIService.getTrades("","","","","","","","","","","");
         toResultString(LOG, "result", result);
     }
 

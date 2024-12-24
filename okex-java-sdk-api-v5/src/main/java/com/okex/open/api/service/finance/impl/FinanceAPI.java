@@ -49,4 +49,42 @@ public interface FinanceAPI {
  @GET("/api/v5/finance/fixed-loan/lending-sub-orders")
  Call<JSONObject> getLendingSubOrders(@Query("ordId")String ordId,@Query("state") String state, @Query("after")String after,@Query("before") String before,@Query("limit") String limit);
 
+ @GET("/api/v5/finance/flexible-loan/borrow-currencies")
+    Call<JSONObject> getBorrowCurrencies();
+
+ @GET("/api/v5/finance/flexible-loan/collateral-assets")
+ Call<JSONObject> getCollateralAssets(@Query("ccy") String ccy);
+
+ @POST("/api/v5/finance/flexible-loan/max-loan")
+ Call<JSONObject> getMaxLoan(@Body JSONObject jsonObject);
+
+ @GET("/api/v5/finance/flexible-loan/max-collateral-redeem-amount")
+ Call<JSONObject> getMaxCollateralRedeemAmount(@Query("borrowCcy") String borrowCcy);
+
+ @POST("/api/v5/finance/flexible-loan/adjust-collateral")
+ Call<JSONObject> adjustCollateral(@Body JSONObject jsonObject);
+
+ @GET("/api/v5/finance/flexible-loan/loan-info")
+ Call<JSONObject> getLoanInfo();
+
+ @GET("/api/v5/finance/flexible-loan/loan-history")
+ Call<JSONObject> getLoanHistory(@Query("type") String type,@Query("after") String after,@Query("before") String before,@Query("limit") String limit);
+
+ @GET("/api/v5/finance/flexible-loan/interest-accrued")
+ Call<JSONObject> getInterestAccrued(@Query("type") String type,@Query("after") String after,@Query("before") String before,@Query("limit") String limit);
+
+ @POST("/api/v5/finance/staking-defi/sol/purchase")
+ Call<JSONObject> solPurchase(@Body JSONObject jsonObject);
+
+ @POST("/api/v5/finance/staking-defi/sol/redeem")
+ Call<JSONObject> solRedeem(@Body JSONObject jsonObject);
+
+ @GET("/api/v5/finance/staking-defi/sol/balance")
+ Call<JSONObject> getBalance(@Query("ccy") String ccy,@Query("amt")  String amt,@Query("latestInterestAccrual")  String latestInterestAccrual,@Query("totalInterestAccrual")  String totalInterestAccrual);
+
+ @GET("/api/v5/finance/staking-defi/sol/purchase-redeem-history")
+ Call<JSONObject> getPurchaseRedeemHistory(@Query("type")String type, @Query("status")String status,@Query("after") String after, @Query("before")String before, @Query("limit")String limit);
+
+ @GET("/api/v5/finance/staking-defi/sol/apy-history")
+ Call<JSONObject> getApyHistory(@Query("days") String days);
 }
