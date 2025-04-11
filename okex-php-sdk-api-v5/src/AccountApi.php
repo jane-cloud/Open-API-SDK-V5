@@ -412,11 +412,12 @@ class AccountApi extends Utils
         return $this->request('/api/v5/account/vip-loan-order-detail', $params, 'GET');
     }
 
-    public function positionBuilder($inclRealPosAndEq='',$spotOffsetType='',$simPos='',$simAsset='',$greeksType='')
+    public function positionBuilder($acctLv='',$inclRealPosAndEq='',$lever='',$simPos='',$simAsset='',$greeksType='')
     {
         $params = [
+            'acctLv' => $acctLv,
             'inclRealPosAndEq' => $inclRealPosAndEq,
-            'spotOffsetType' => $spotOffsetType,
+            'lever' => $lever,
             'simPos' => $simPos,
             'simAsset' => $simAsset,
             'greeksType' => $greeksType,
@@ -709,5 +710,26 @@ class AccountApi extends Utils
         ];
 
         return $this->request('/api/v5/account/set-account-switch-precheck', $params, 'GET');
+    }
+
+    public function setCollateralAssets($type,$collateralEnabled,$ccyList='')
+    {
+        $params = [
+            'type' => $type,
+            'collateralEnabled' => $collateralEnabled,
+            'ccyList' => $ccyList,
+        ];
+
+        return $this->request('/api/v5/account/set-collateral-assets', $params, 'POST');
+    }
+
+    public function getCollateralAssets($ccy='',$collateralEnabled='')
+    {
+        $params = [
+            'ccy' => $ccy,
+            'collateralEnabled' => $collateralEnabled,
+        ];
+
+        return $this->request('/api/v5/account/collateral-assets', $params, 'GET');
     }
 }

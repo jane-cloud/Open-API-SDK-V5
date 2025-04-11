@@ -344,23 +344,24 @@ class TradeAPI extends Utils
         return $this->request('/api/v5/trade/easy-convert-history', $params, 'GET');
     }
 
-    public function oneClickRepayCurrencyList($debtType='')
+    public function oneClickRepayCurrencyList($debtType='',$repayData='')
     {
         $params = [
             'debtType' => $debtType,
+            'repayData' => $repayData,
         ];
 
-        return $this->request('/api/v5/trade/one-click-repay-currency-list', $params, 'GET');
+        return $this->request('/api/v5/trade/one-click-repay-currency-list-v2', $params, 'GET');
     }
 
-    public function oneClickRepay($debtCcy,$repayCcy)
+    public function oneClickRepay($debtCcy,$repayCcyList)
     {
         $params = [
             'debtCcy' => $debtCcy,
-            'repayCcy' => $repayCcy,
+            'repayCcyList' => $repayCcyList,
         ];
 
-        return $this->request('/api/v5/trade/one-click-repay', $params, 'POST');
+        return $this->request('/api/v5/trade/one-click-repay-v2', $params, 'POST');
     }
 
     public function oneClickRepayHistory($after='',$before='',$limit='')
@@ -371,7 +372,7 @@ class TradeAPI extends Utils
             'limit' => $limit,
         ];
 
-        return $this->request('/api/v5/trade/one-click-repay-history', $params, 'GET');
+        return $this->request('/api/v5/trade/one-click-repay-history-v2', $params, 'GET');
     }
 
     public function massCancel($instType,$instFamily)

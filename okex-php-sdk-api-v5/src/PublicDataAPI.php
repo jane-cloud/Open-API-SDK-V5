@@ -320,4 +320,34 @@ class PublicDataAPI extends Utils
 
         return $this->request('/api/v5/market/economic-calendar',$params, 'GET');
     }
+
+    public function estimatedPrice($instId)
+    {
+        $params = [
+            'instId' => $instId,
+        ];
+
+        return $this->request('/api/v5/public/estimated-price',$params, 'GET');
+    }
+
+    public function estimatedSettlementInfo($instId)
+    {
+        $params = [
+            'instId' => $instId,
+        ];
+
+        return $this->request('/api/v5/public/estimated-settlement-info',$params, 'GET');
+    }
+
+    public function settlementHistory($instFamily,$after='',$before='',$limit='')
+    {
+        $params = [
+            'instFamily' => $instFamily,
+            'after' => $after,
+            'before' => $before,
+            'limit' => $limit,
+        ];
+
+        return $this->request('/api/v5/public/settlement-history',$params, 'GET');
+    }
 }

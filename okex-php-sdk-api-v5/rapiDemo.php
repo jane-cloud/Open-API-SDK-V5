@@ -89,24 +89,6 @@ $coin = "XMR";
 // $res = $obj -> quickMarginBorrowRepayHistory('','','','','','','','');
 //获取借币利率与限额
 //$res = $obj -> interestLimits('','');
-//获取固定借币限额
-//$res = $obj -> borrowingLimit();
-//获取固定借币询价
-//$res = $obj -> borrowingQuote();
-//固定借币下单
-//$res = $obj -> borrowingOrder();
-//修改固定借币订单
-//$res = $obj -> amendBorrowingOrder();
-//固定借币手动续借
-//$res = $obj -> manualReborrow();
-//固定借币手动还币
-//$res = $obj -> repayBorrowingOrder();
-//固定借币转市场借币
-//$res = $obj -> convertToMarketLoan();
-//固定借币减少负债
-//$res = $obj -> reduceLiabilities();
-//获取固定借币订单信息
-//$res = $obj -> borrowingOrdersList();
 //手动借/还币
 //$res = $obj -> spotManualBorrowRepay();
 //设置自动还币
@@ -133,6 +115,10 @@ $coin = "XMR";
 // $res = $obj -> setAccountSwitchPrecheck('');
 //设置账户模式
 // $res = $obj -> setAccountLevel('');
+//设置质押币种
+// $res = $obj -> setCollateralAssets('','');
+//查看质押币种
+// $res = $obj -> getCollateralAssets('','');
 //重置 MMP 状态
 // $res = $obj -> mmpReset('','');
 //设置 MMP
@@ -236,9 +222,15 @@ $instrumentId = "BTC-USDT-SWAP";
 $currency = "EOS";
 $obj = new PublicDataAPI(Config::$config);
 // 获取交易产品基础信息 Get Instruments
-$res = $obj->getInstruments('SPOT','','ETH-USDT');
+// $res = $obj->getInstruments('SPOT','','ETH-USDT');
+// 获取预估交割/行权价格
+// $res = $obj->estimatedPrice();
 // 获取交割和行权记录 Get Delivery/Exercise History
 //$res = $obj->getDeliveryExerciseHistory('FUTURES','BTC-USD','','','');
+// 获取交割预估结算价格
+// $res = $obj->estimatedSettlementInfo();
+// 获取交割结算记录
+// $res = $obj->settlementHistory();
 // 获取持仓总量 Get Open Interest
 //$res = $obj->getOpenInterest('FUTURES','BTC-USD','');
 // 获取永续合约当前资金费率 Get Funding Rate
@@ -680,24 +672,7 @@ $obj = new FinanceApi(Config::$config);
 //获取市场借贷历史（公共）
 //$res = $obj -> savingsLendingRateHistory('');
 
-/**
- * 定期简单赚币
- */
-$obj = new FinanceApi(Config::$config);
-//获取借币信息（公共）
-//$res = $obj -> fixedLoanLendingOffers('');
-//获取借币信息（公共）
-//$res = $obj -> fixedLoanLendingApyHistory('');
-//获取借贷量（公共）
-//$res = $obj -> fixedLoanPendingLendingVolume('');
-//定期简单赚币申购
-//$res = $obj -> fixedLoanLendingOrder('');
-//定期简单赚币修改订单
-//$res = $obj -> fixedLoanAmendLendingOrder('');
-//获取定期简单赚币订单信息
-//$res = $obj -> fixedLoanLendingOrdersList('');
-//获取定期简单赚币子订单信息
-//$res = $obj -> fixedLoanLendingSubOrders('');
+
 
 /**
  * 活期借币
