@@ -145,5 +145,16 @@ public class PublicDataAPIServiceImpl implements PublicDataAPIService {
         return this.client.executeSync(this.api.getPremiumHistory(instId, after,before,ts));
     }
 
+    @Override
+    public JSONObject getSettlementHistory(String instFamily, String after, String before, String limit) {
+        return this.client.executeSync(this.api.getSettlementHistory(instFamily, after,before,limit));
+    }
+
+    @Override
+    public JSONObject getEstimatedSettlementInfo(String instId) {
+        return this.client.executeSync(this.api.getEstimatedSettlementInfo(instId));
+
+    }
+
 
 }

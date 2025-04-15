@@ -777,4 +777,42 @@ public class TradeAPITest extends TradeAPIBaseTest {
 
         toResultString(LOG, "result", result);
     }
+    /**
+     *   获取一键还债币种列表(新) one-click-repay-currency-list-v2
+     * GET /api/v5/trade/one-click-repay-currency-list-v2
+     */
+    @Test
+    public void getRepayList(){
+
+        JSONObject result = tradeAPIService.getRepayList();
+
+        toResultString(LOG, "result", result);
+    }
+    /**
+     * 一键还债交易(新)Trade one-click-repay-v2
+     * POST /api/v5/trade/one-click-repay-v2
+     */
+    @Test
+    public void oneClickRepay_V2(){
+        OneClickRepay oneClickRepay = new OneClickRepay();
+        List<String> repayCcyList = new ArrayList();
+        repayCcyList.add("USDT");
+
+        oneClickRepay.setRepayCcyList(repayCcyList);
+        oneClickRepay.setDebtCcy_v2("XRP");
+
+        JSONObject result = tradeAPIService.oneClickRepay_V2(oneClickRepay);
+        toResultString(LOG, "result", result);
+    }
+    /**
+     *   获取一键还债历史记录(新) one-click-repay-history-v2
+     * GET /api/v5/trade/one-click-repay-history-v2
+     */
+    @Test
+    public void getRepayHistory(){
+
+        JSONObject result = tradeAPIService.getRepayHistory("","","");
+
+        toResultString(LOG, "result", result);
+    }
 }

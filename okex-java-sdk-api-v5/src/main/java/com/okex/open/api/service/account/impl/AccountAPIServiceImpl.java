@@ -354,4 +354,16 @@ public class AccountAPIServiceImpl implements AccountAPIService {
         return this.client.executeSync(this.api.getSpotBorrowRepayHistory(ccy,type,after,before,limit));
 
     }
+
+    @Override
+    public JSONObject setCollateralAssets(CollateralAssets collateralAssets) {
+        return this.client.executeSync(this.api.setCollateralAssets(JSONObject.parseObject(JSON.toJSONString(collateralAssets))));
+
+    }
+
+    @Override
+    public JSONObject getCollateralAssets(String ccy, String collateralEnabled) {
+        return this.client.executeSync(this.api.getCollateralAssets(ccy,collateralEnabled));
+
+    }
 }

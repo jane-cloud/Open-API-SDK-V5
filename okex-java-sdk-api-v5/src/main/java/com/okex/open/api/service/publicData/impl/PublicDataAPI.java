@@ -117,4 +117,10 @@ public interface PublicDataAPI {
 
     @GET("/api/v5/public/premium-history")
     Call<JSONObject> getPremiumHistory(@Query("instId")String instId, @Query("after")String after, @Query("before")String before, @Query("ts")String ts);
+
+    @GET("/api/v5/public/settlement-history")
+    Call<JSONObject> getSettlementHistory(@Query("instFamily")String instFamily, @Query("after")String after, @Query("before")String before,@Query("limit") String limit);
+
+    @GET("/api/v5/public/estimated-settlement-info")
+    Call<JSONObject> getEstimatedSettlementInfo(@Query("instId")String instId);
 }

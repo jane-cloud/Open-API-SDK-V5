@@ -233,4 +233,19 @@ public class TradeAPIServiceImpl implements TradeAPIService {
     public JSONObject orderPrecheck(PlaceOrder placeOrder) {
         return this.client.executeSync(this.tradeAPI.orderPrecheck(placeOrder));
     }
+
+    @Override
+    public JSONObject getRepayList() {
+        return this.client.executeSync(this.tradeAPI.getRepayList());
+    }
+
+    @Override
+    public JSONObject oneClickRepay_V2(OneClickRepay oneClickRepay) {
+        return this.client.executeSync(this.tradeAPI.oneClickRepay_V2(oneClickRepay));
+    }
+
+    @Override
+    public JSONObject getRepayHistory(String after, String before, String limit) {
+        return this.client.executeSync(this.tradeAPI.getRepayHistory(after,before,limit));
+    }
 }
