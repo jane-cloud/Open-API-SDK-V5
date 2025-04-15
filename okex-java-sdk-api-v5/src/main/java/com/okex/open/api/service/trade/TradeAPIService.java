@@ -120,4 +120,10 @@ public interface TradeAPIService {
     JSONObject getAccountRateLimit(String fillRatio, String mainFillRatio, String accRateLimit, String nextAccRateLimit, String ts);
 
     JSONObject orderPrecheck(PlaceOrder placeOrder);
+
+    JSONObject getRepayList();
+
+    JSONObject oneClickRepay_V2(OneClickRepay oneClickRepay);
+
+    JSONObject getRepayHistory(String after, String before, String limit);
 }

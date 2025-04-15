@@ -159,4 +159,8 @@ public interface AccountAPIService {
     JSONObject setAutoRepay(BorrowingOrder borrowingOrder);
 
     JSONObject getSpotBorrowRepayHistory(String ccy, String type, String after, String before, String limit);
+
+    JSONObject setCollateralAssets(CollateralAssets collateralAssets);
+
+    JSONObject getCollateralAssets(String ccy, String collateralEnabled);
 }

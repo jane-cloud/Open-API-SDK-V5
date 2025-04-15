@@ -238,4 +238,10 @@ public interface AccountAPI {
     Call<JSONObject> setAutoRepay(@Body JSONObject jsonObject);
     @GET("/api/v5/account/spot-borrow-repay-history")
     Call<JSONObject> getSpotBorrowRepayHistory(@Query("ccy") String ccy,@Query("type") String type,@Query("after") String after,@Query("before") String before,@Query("limit") String limit);
+
+    @POST("/api/v5/account/set-collateral-assets")
+    Call<JSONObject> setCollateralAssets(@Body JSONObject jsonObject);
+
+    @GET("/api/v5/account/collateral-assets")
+    Call<JSONObject> getCollateralAssets(@Query("ccy") String ccy,@Query("collateralEnabled") String collateralEnabled);
 }

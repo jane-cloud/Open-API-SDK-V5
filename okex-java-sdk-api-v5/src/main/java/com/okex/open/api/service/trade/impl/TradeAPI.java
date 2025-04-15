@@ -214,4 +214,13 @@ interface TradeAPI {
 
     @POST("/api/v5/trade/order-precheck")
     Call<JSONObject> orderPrecheck(@Body PlaceOrder placeOrder);
+
+    @GET("/api/v5/trade/one-click-repay-currency-list-v2")
+    Call<JSONObject> getRepayList();
+
+    @POST("/api/v5/trade/one-click-repay-v2")
+    Call<JSONObject> oneClickRepay_V2(@Body OneClickRepay oneClickRepay);
+
+    @GET("/api/v5/trade/one-click-repay-history-v2")
+    Call<JSONObject> getRepayHistory(@Query("after") String after,@Query("before") String before,@Query("limit") String limit);
 }

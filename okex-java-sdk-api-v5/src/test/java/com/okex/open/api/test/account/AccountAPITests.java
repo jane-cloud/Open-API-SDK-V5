@@ -720,4 +720,33 @@ public class AccountAPITests extends  AccountAPIBaseTests {
         JSONObject result = this.accountAPIService.getSpotBorrowRepayHistory("","","","","");
         toResultString(LOG, "result", result);
     }
+    /**
+     * 设置质押币种 set-collateral-assets
+     * POST /api/v5/account/set-collateral-assets
+     */
+    @Test
+    public void setCollateralAssets(){
+        CollateralAssets collateralAssets = new CollateralAssets();
+        ArrayList<String> list = new ArrayList<>();
+        list.add("");
+
+        collateralAssets.setCollateralEnabled("");
+        collateralAssets.setType("");
+        collateralAssets.setCcyList(list);
+
+        JSONObject result = this.accountAPIService.setCollateralAssets(collateralAssets);
+        toResultString(LOG, "result", result);
+    }
+    /**
+     * 查看质押币种 get collateral-assets
+     *  get
+     *  /api/v5/account/collateral-assets
+     */
+    @Test
+    public void getCollateralAssets(){
+
+        JSONObject result = this.accountAPIService.getCollateralAssets("","");
+        toResultString(LOG, "result", result);
+    }
+
 }

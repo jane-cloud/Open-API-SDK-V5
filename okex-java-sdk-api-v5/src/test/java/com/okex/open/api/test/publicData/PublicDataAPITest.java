@@ -258,4 +258,28 @@ public class PublicDataAPITest extends PublicDataAPIBaseTest {
         toResultString(LOG, "result", result);
 
     }
+
+    /**
+     * 获取交割结算记录Get settlement-history
+     *
+     * GET /api/v5/public/settlement-history
+     */
+    @Test
+    public void getSettlementHistory(){
+        JSONObject result = publicDataAPIService.getSettlementHistory("","","","");
+        toResultString(LOG, "result", result);
+
+    }
+
+    /**
+     * 获取交割预估结算价格Get estimated-settlement-info
+     *
+     * GET /api/v5/public/estimated-settlement-info
+     */
+    @Test
+    public void getEstimatedSettlementInfo(){
+        JSONObject result = publicDataAPIService.getEstimatedSettlementInfo("");
+        toResultString(LOG, "result", result);
+
+    }
 }

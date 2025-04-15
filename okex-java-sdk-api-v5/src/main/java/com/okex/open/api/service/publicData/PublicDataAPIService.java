@@ -70,4 +70,8 @@ public interface PublicDataAPIService {
     JSONObject getEconomicCalendar(String region, String importance, String before, String after, String limit);
 
     JSONObject getPremiumHistory(String instId, String after, String before, String ts);
+
+    JSONObject getSettlementHistory(String instFamily, String after, String before, String limit);
+
+    JSONObject getEstimatedSettlementInfo(String instId);
 }
