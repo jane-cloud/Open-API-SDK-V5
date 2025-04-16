@@ -9,14 +9,16 @@ class TradeAPI(Client):
 
     # Place Order
     def place_order(self, instId, tdMode, side, ordType, sz, ccy='', clOrdId='', tag='', posSide='', px='',
-                    reduceOnly='', tgtCcy='', banAmend='',quickMgnType='',tpTriggerPx = '', tpOrdPx = '',
+                    reduceOnly='', tgtCcy='', banAmend='',tpTriggerPx = '', tpOrdPx = '',
                     slTriggerPx = '', slOrdPx = '', tpTriggerPxType = '', slTriggerPxType = '',stpId='',
-                    stpMode='',attachAlgoClOrdId=''):
+                    pxUsd = '',pxVol = '',
+                    stpMode='',attachAlgoClOrdId='',attachAlgoOrds=[]):
         params = {'instId': instId, 'tdMode': tdMode, 'side': side, 'ordType': ordType, 'sz': sz, 'ccy': ccy,
                   'clOrdId': clOrdId, 'tag': tag, 'posSide': posSide, 'px': px, 'reduceOnly': reduceOnly,
-                  'tgtCcy': tgtCcy, 'banAmend': banAmend,'quickMgnType':quickMgnType,'tpTriggerPx':tpTriggerPx,'tpOrdPx':tpOrdPx,'slTriggerPx':slTriggerPx
+                  'tgtCcy': tgtCcy, 'banAmend': banAmend,'tpTriggerPx':tpTriggerPx,'tpOrdPx':tpOrdPx,'slTriggerPx':slTriggerPx
                   ,'slOrdPx':slOrdPx,'tpTriggerPxType':tpTriggerPxType,'slTriggerPxType':slTriggerPxType,
-                  'stpId':stpId,'stpMode':stpMode,'attachAlgoClOrdId':attachAlgoClOrdId}
+                  'pxUsd':pxUsd,'pxVol':pxVol,
+                  'stpId':stpId,'stpMode':stpMode,'attachAlgoClOrdId':attachAlgoClOrdId,'attachAlgoOrds':attachAlgoOrds}
         return self._request_with_params(POST, PLACR_ORDER, params)
 
     # Place Multiple Orders

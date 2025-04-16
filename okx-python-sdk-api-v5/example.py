@@ -341,9 +341,16 @@ if __name__ == '__main__':
     # trade api
     tradeAPI = Trade.TradeAPI(api_key, secret_key, passphrase, False, flag)
     # 下单  Place Order
-    # result = tradeAPI.place_order(instId='BTC-USDT-SWAP', tdMode='cross', side='sell', posSide='',
-    #                               ordType='market', sz='100',tgtCcy='',banAmend='',quickMgnType='auto_borrow',
-    #                               tpTriggerPx = '1111', tpOrdPx = '1000', slTriggerPx = '', slOrdPx = '', tpTriggerPxType = '', slTriggerPxType = '')
+    result = tradeAPI.place_order(instId='BTC-USDT-SWAP', tdMode='isolated', ccy='', clOrdId='', tag='',
+                                  side='buy', posSide='long', ordType='market', sz='0.1', px='86000',
+                                  pxUsd='', pxVol='', reduceOnly='', tgtCcy='', banAmend='', stpMode='',
+                                  attachAlgoOrds = [{"tachAlgoClOrdId":"",
+                                                     "slTriggerPxType":"",
+                                                     "tpTriggerPx":"8",
+                                                     "slOrdPx":"",
+                                                     "slTriggerPx":"",
+                                                     "tpOrdPx":"-1"}]
+                                )
     # 批量下单  Place Multiple Orders
     # result = tradeAPI.place_multiple_orders([
     #     {'instId': 'BTC-USD-210402', 'tdMode': 'isolated', 'side': 'buy', 'ordType': 'limit', 'sz': '1', 'px': '17400',
@@ -757,7 +764,7 @@ if __name__ == '__main__':
     # 借贷历史 GET /api/v5/finance/flexible-loan/loan-history
     # result = Finance.flexible_loan_loan_history(type = '', after = '', before = '', limit = '')
     # 计息记录 GET /api/v5/finance/flexible-loan/interest-accrued
-    result = Finance.flexible_loan_interest_accrued(ccy = '', after = '', before = '', limit = '')
+    # result = Finance.flexible_loan_interest_accrued(ccy = '', after = '', before = '', limit = '')
 
 
     # 跟单
