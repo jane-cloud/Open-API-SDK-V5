@@ -196,4 +196,19 @@ class TradeAPI(Client):
         'sz':sz, 'px':px, 'reduceOnly':reduceOnly, 'tgtCcy':tgtCcy, 'attachAlgoOrds':attachAlgoOrds}
         return self._request_with_params(POST, ORDER_PRECHECK, params)
 
+    # GET /api/v5/trade/one-click-repay-currency-list-v2
+    def one_click_repay_currency_list_v2(self):
+        params = {}
+        return self._request_with_params(GET, ONE_CLICK_REPAY_CURRENCY_LIST_V2, params)
+
+    # POST /api/v5/trade/one-click-repay-v2
+    def one_click_repay_v2(self,debtCcy='', repayCcyList = []):
+        params = {'debtCcy': debtCcy, 'repayCcyList':repayCcyList}
+        return self._request_with_params(POST, ONE_CLICK_REPAY_V2, params)
+
+    # GET /api/v5/trade/one-click-repay-history-v2
+    def one_click_repay_history_v2(self, after = '', before = '', limit = ''):
+        params = {'after': after,'before': before,'limit': limit}
+        return self._request_with_params(GET, ONE_CLICK_REPAY_HISTORY_V2, params)
+
 

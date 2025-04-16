@@ -77,6 +77,8 @@ BILLS_HISTORY_ARCHIVE = '/api/v5/account/bills-history-archive'
 GET_BILLS_HISTORY_ARCHIVE = '/api/v5/account/bills-history-archive'
 ACCOUNT_LEVEL_SWITCH_PRESET = '/api/v5/account/account-level-switch-preset'
 SET_ACCOUNT_SWITCH_PRECHECK = '/api/v5/account/set-account-switch-precheck'
+SET_COLLATERAL_ASSETS = '/api/v5/account/set-collateral-assets'
+GET_COLLATERAL_ASSETS = '/api/v5/account/collateral-assets'
 
 # funding
 DEPOSIT_ADDRESS = '/api/v5/asset/deposit-address'
@@ -150,6 +152,8 @@ INSURANCE_FUND = '/api/v5/public/insurance-fund'
 CONVERT_CONTRACT_COIN = '/api/v5/public/convert-contract-coin'
 INSTRUMENT_TICK_BANDS = '/api/v5/public/instrument-tick-bands'
 OPTION_TRADES = '/api/v5/public/option-trades'
+ESTIMATED_SETTLEMENT_INFO = '/api/v5/public/estimated-settlement-info'
+SETTLEMENT_HISTORY = '/api/v5/public/settlement-history'
 
 # TRADING DATA
 SUPPORT_COIN = '/api/v5/rubik/stat/trading-data/support-coin'
@@ -200,6 +204,9 @@ CANCEL_ALL_AFTER = '/api/v5/trade/cancel-all-after'
 FILLS_ARCHIVE = '/api/v5/trade/fills-archive'
 FILLS_ARCHIVES = '/api/v5/trade/fills-archive'
 ORDER_PRECHECK = '/api/v5/trade/order-precheck'
+ONE_CLICK_REPAY_CURRENCY_LIST_V2 = '/api/v5/trade/one-click-repay-currency-list-v2'
+ONE_CLICK_REPAY_V2 = '/api/v5/trade/one-click-repay-v2'
+ONE_CLICK_REPAY_HISTORY_V2 = '/api/v5/trade/one-click-repay-history-v2'
 
 #Sprd
 SPRD_PLACE_ORDER = '/api/v5/sprd/order'

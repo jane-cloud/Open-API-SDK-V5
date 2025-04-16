@@ -105,3 +105,13 @@ class PublicAPI(Client):
     def option_trades(self, instId = '', instFamily = '', optType = ''):
         params = {'instId':instId, 'instFamily':instFamily, 'optType':optType}
         return self._request_with_params(GET, OPTION_TRADES, params)
+
+    # GET /api/v5/public/estimated-settlement-info
+    def estimated_settlement_info(self, instId = ''):
+        params = {'instId':instId}
+        return self._request_with_params(GET, ESTIMATED_SETTLEMENT_INFO, params)
+
+    # GET /api/v5/public/settlement-history
+    def settlement_history(self, instFamily = '', after = '', before = '', limit= ''):
+        params = {'instFamily':instFamily,'after':after,'before':before,'limit':limit}
+        return self._request_with_params(GET, SETTLEMENT_HISTORY, params)

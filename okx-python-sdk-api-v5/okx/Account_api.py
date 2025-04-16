@@ -219,10 +219,10 @@ class AccountAPI(Client):
         return self._request_with_params(POST, SET_ACCOUNT_LEVEL, params)
 
 
-    def position_builder(self,inclRealPosAndEq='',spotOffsetType='',simPos='',simAsset='',
+    def position_builder(self,acctLv = '', inclRealPosAndEq='',lever='',simPos=[],simAsset=[],
                          greeksType='',):
-        params = {'acctLv': acctLv, 'spotOffsetType': spotOffsetType, 'simPos': simPos, 'simAsset': simAsset,
-                  'greeksType': greeksType, }
+        params = {'acctLv': acctLv, 'inclRealPosAndEq': inclRealPosAndEq, 'lever': lever, 'simPos': simPos,
+                  'simAsset': simAsset,'greeksType':greeksType}
         return self._request_with_params(POST, POSITION_BUILDER, params)
 
 
@@ -327,4 +327,14 @@ class AccountAPI(Client):
     def set_account_switch_precheck(self, acctLv = ''):
         params = {'acctLv':acctLv}
         return self._request_with_params(GET, SET_ACCOUNT_SWITCH_PRECHECK, params)
+
+    # POST /api/v5/account/set-collateral-assets
+    def set_collateral_assets(self, type = '', collateralEnabled = '',ccyList = []):
+        params = {'type':type,'collateralEnabled':collateralEnabled,'ccyList':ccyList}
+        return self._request_with_params(POST, SET_COLLATERAL_ASSETS, params)
+
+    # GET /api/v5/account/collateral-assets
+    def get_collateral_assets(self, ccy = '', collateralEnabled = ''):
+        params = {'ccy':ccy, 'collateralEnabled':collateralEnabled}
+        return self._request_with_params(GET, GET_COLLATERAL_ASSETS, params)
 

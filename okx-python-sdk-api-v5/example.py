@@ -20,9 +20,9 @@ import okx.SprdApi_api as Sprd
 import okx.Singal_api as Signal
 
 if __name__ == '__main__':
-    api_key = "1"
-    secret_key = "1"
-    passphrase = "1"
+    api_key = "Your apikey"
+    secret_key = "Your secretkey"
+    passphrase = "Your passphrase"
 
     # flag是实盘与模拟盘的切换参数 flag is the key parameter which can help you to change between demo and real trading.
     flag = '1'  # 模拟盘 demo trading
@@ -102,7 +102,7 @@ if __name__ == '__main__':
     # result = accountAPI.get_greeks()
     # 获取组合保证金模式全仓限制
     # result = accountAPI.position_tiers(instType = 'SWAP', uly = 'BTC-USDT')
-    # 设置组合保证金账户风险对冲模式
+    # 设置组合保证金账户风险对冲模式 已下线
     # result = accountAPI.set_riskOffset_type(type = '1')
     # 开通期权交易
     # result = accountAPI.activate_option()
@@ -121,26 +121,30 @@ if __name__ == '__main__':
     # 设置账户模式 POST /api/v5/account/set-account-level
     # result  = accountAPI.set_account_level(acctLv='')
     # 仓位创建器 POST /api/v5/account/position-builder
-    # result = accountAPI.position_builder()
+    # result = accountAPI.position_builder(acctLv = '', inclRealPosAndEq = '', lever = '', 
+    #                                     simPos = [{"instId":"", "pos":"","avgPx":"","lever":"",}],
+    #                                     simAsset = [{"ccy":"", "amt":""}],
+    #                                     greeksType = ''
+    #                                 )
     # 设置现货对冲占用 POST /api/v5/account/set-riskOffset-amt
     # result = accountAPI.set_riskOffset_amt(ccy = 'BTC', clSpotInUseAmt = '0.01')
-    # 获取固定借币限额 GET /api/v5/account/fixed-loan/borrowing-limit
+    # 获取固定借币限额 GET /api/v5/account/fixed-loan/borrowing-limit 已下线
     # result = accountAPI.get_fixed_loan_borrowing_limit()
-    # 获取固定借币询价 GET /api/v5/account/fixed-loan/borrowing-quote
+    # 获取固定借币询价 GET /api/v5/account/fixed-loan/borrowing-quote 已下线
     # result = accountAPI.get_fixed_loan_borrowing_quote(type = '', ccy = '', amt = '', maxRate = '', term = '', ordId = '')
-    # 固定借币下单 POST /api/v5/account/fixed-loan/borrowing-order
+    # 固定借币下单 POST /api/v5/account/fixed-loan/borrowing-order 已下线
     # result = accountAPI.fixed_loan_borrowing_order(ccy = '', amt = '', maxRate = '', term = '', reborrow = '', reborrowRate = '')
-    # 修改固定借币订单 POST /api/v5/account/fixed-loan/amend-borrowing-order
+    # 修改固定借币订单 POST /api/v5/account/fixed-loan/amend-borrowing-order 已下线
     # result = accountAPI.fixed_loan_amend_borrowing_order(ordId = '111111111111', reborrow = '', renewMaxRate = '')
-    # 固定借币手动续借 POST /api/v5/account/fixed-loan/manual-reborrow
+    # 固定借币手动续借 POST /api/v5/account/fixed-loan/manual-reborrow 已下线
     # result = accountAPI.fixed_loan_manual_reborrow(ordId = '111111111111', maxRate = '0.01')
-    # 固定借币手动还币 POST /api/v5/account/fixed-loan/repay-borrowing-order
+    # 固定借币手动还币 POST /api/v5/account/fixed-loan/repay-borrowing-order 已下线
     # result = accountAPI.fixed_loan_repay_borrowing_order(ordId = '111111111111')
-    # 固定借币转市场借币 POST /api/v5/account/fixed-loan/convert-to-market-loan
+    # 固定借币转市场借币 POST /api/v5/account/fixed-loan/convert-to-market-loan 已下线
     # result = accountAPI.convert_to_market_loan(ordId = '')
     # 固定借币减少负债
     # result = accountAPI.reduce_liabilities(ordId = '1', pendingRepay = '')
-    # 获取固定借币订单信息 GET /api/v5/account/fixed-loan/borrowing-orders-list
+    # 获取固定借币订单信息 GET /api/v5/account/fixed-loan/borrowing-orders-list 已下线
     # result = accountAPI.get_fixed_loan_borrowing_orders_list(ordId = '', ccy = '', state = '', after = '', before = '', limit = '', term = '')
     # 手动借/还币 POST /api/v5/account/spot-manual-borrow-repay
     # result = accountAPI.spot_manual_borrow_repay(ccy = 'BTC', side = 'borrow', amt = '0.1')
@@ -154,6 +158,11 @@ if __name__ == '__main__':
     # result = accountAPI.bills_history_archive(year = '', quarter = '')
     # 获取账单流水（自 2021 年）
     # result = accountAPI.get_bills_history_archive(year = '', quarter = '')
+    # 设置质押币种 POST /api/v5/account/set-collateral-assets
+    # result = accountAPI.set_collateral_assets(type = 'all', collateralEnabled = 'true', ccyList = ["BTC", "ETH"])
+    # 查看质押币种 GET /api/v5/account/collateral-assets
+    # result = accountAPI.get_collateral_assets(ccy ='BTC,ETH', collateralEnabled = '')
+
 
     # funding api
     fundingAPI = Funding.FundingAPI(api_key, secret_key, passphrase, False, flag)
@@ -244,7 +253,7 @@ if __name__ == '__main__':
     # result = marketAPI.instrument_family_trades(instFamily = 'BTC-USD')
     # 获取平台24小时成交总量  Get Platform 24 Volume
     # result = marketAPI.get_volume()
-    # Oracle 上链交易数据 GET Oracle
+    # Oracle 上链交易数据 GET Oracle  已下线
     # result = marketAPI.get_oracle()
     # 获取指数成分数据 GET Index Components
     # result = marketAPI.get_index_components(index='')
@@ -267,6 +276,10 @@ if __name__ == '__main__':
     # result = publicAPI.get_instruments(instType = 'FUTURES', uly = '', instFamily = 'BTC-USDT', instId = '')
     # 获取交割和行权记录  Get Delivery/Exercise History
     # result = publicAPI.get_deliver_history('FUTURES', 'BTC-USD')
+    # 获取交割预估结算价格 GET /api/v5/public/estimated-settlement-info
+    # result = publicAPI.estimated_settlement_info(instId = 'BTC-USDT-250307')
+    # 获取交割结算记录
+    # result = publicAPI.settlement_history(instFamily = 'BTC-USDT', after = '', before = '', limit = '')
     # 获取持仓总量  Get Open Interest
     # result = publicAPI.get_open_interest('SWAP')
     # 获取永续合约当前资金费率  Get Funding Rate
@@ -439,6 +452,12 @@ if __name__ == '__main__':
     # result = tradeAPI.order_precheck(instid = '', tdMode = '', side = '', posSide = '', ordType = '', sz = '', px = '',
     #     reduceOnly = '', tgtCcy = '', attachAlgoOrds = [{"attachAlgoClOrdId":"","tpTriggerPx":"","tpOrdPx":"",
     #     "tpOrdKind":"","slTriggerPx":"","slOrdPx":"","tpTriggerPxType":"","slTriggerPxType":"","sz":""}])
+    # 获取一键还债币种列表(新) GET /api/v5/trade/one-click-repay-currency-list-v2
+    # result = tradeAPI.one_click_repay_currency_list_v2()
+    # 一键还债交易(新) POST /api/v5/trade/one-click-repay-v2
+    # result = tradeAPI.one_click_repay_v2(debtCcy = 'USDT', repayCcyList = ["USDC","BTC"])
+    # 获取一键还债历史记录(新) GET /api/v5/trade/one-click-repay-history-v2
+    # result = tradeAPI.one_click_repay_history_v2(after = '', before = '', limit = '')
 
 
     # 价差撮合交易 SprdAPI
@@ -732,7 +751,7 @@ if __name__ == '__main__':
     # 获取市场借贷历史（公共） GET /api/v5/finance/savings/lending-rate-history
     # result = Finance.savings_lending_rate_his()
 
-    # 定期简单赚币
+    # 定期简单赚币 整个模块已下线
     # 获取借币信息 GET /api/v5/finance/fixed-loan/lending-offers
     # result = Finance.fixed_loan_lending_offers()
     # 获取历史收益率 GET /api/v5/finance/fixed-loan/lending-apy-history
