@@ -2,9 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="17bd8d01-d93f-47b5-8b9f-802e831eeec2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/okx/Singal_api.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/example.py" beforeDir="false" afterPath="$PROJECT_DIR$/example.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/okx/Account_api.py" beforeDir="false" afterPath="$PROJECT_DIR$/okx/Account_api.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/okx/Finance_api.py" beforeDir="false" afterPath="$PROJECT_DIR$/okx/Finance_api.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/okx/Trade_api.py" beforeDir="false" afterPath="$PROJECT_DIR$/okx/Trade_api.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/okx/consts.py" beforeDir="false" afterPath="$PROJECT_DIR$/okx/consts.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -31,13 +33,13 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/oker/Desktop/D/V5/Open-API-SDK-V5/okx-python-sdk-api-v5&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "/Users/oker/Desktop/V5 update/Open-API-SDK-V5/okx-python-sdk-api-v5"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\oker\Desktop\新建文件夹\Open-API-SDK-V5\okx-python-sdk-api-v5\okx_http2" />

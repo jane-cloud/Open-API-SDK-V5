@@ -90,6 +90,11 @@ class FinanceAPI(Client):
         params = {'days': days,}
         return self._request_with_params(GET, STAKING_DEFI_SOL_APY_HISTORY, params)
 
+    # GET /api/v5/finance/staking-defi/sol/product-info
+    def staking_defi_sol_product_info(self):
+        params = {}
+        return self._request_with_params(GET,STAKING_DEFI_SOL_PRODUCT_INFO,params)
+
 
 
     def savings_lending_rate_summary(self,ccy='',):

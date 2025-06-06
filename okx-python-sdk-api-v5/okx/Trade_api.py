@@ -91,7 +91,7 @@ class TradeAPI(Client):
                          pxSpread='', cxlOnClosePos='',
                          szLimit='', pxLimit='', timeInterval='', tpTriggerPxType='', slTriggerPxType='',
                          callbackRatio='',callbackSpread='',activePx='',tag='',triggerPxType='',
-                         algoClOrdId='',quickMgnType='',closeFraction='', attachAlgoClOrdId=''):
+                         algoClOrdId='',quickMgnType='',closeFraction='', attachAlgoClOrdId='',attachAlgoOrds=[]):
         params = {'instId': instId, 'tdMode': tdMode, 'side': side, 'ordType': ordType, 'sz': sz, 'ccy': ccy,
                   'posSide': posSide, 'reduceOnly': reduceOnly, 'tpTriggerPx': tpTriggerPx, 'tpOrdPx': tpOrdPx,
                   'slTriggerPx': slTriggerPx, 'slOrdPx': slOrdPx, 'triggerPx': triggerPx, 'orderPx': orderPx,
@@ -100,7 +100,7 @@ class TradeAPI(Client):
                   'pxSpread': pxSpread, 'tpTriggerPxType': tpTriggerPxType, 'slTriggerPxType': slTriggerPxType,
                   'callbackRatio' : callbackRatio, 'callbackSpread':callbackSpread,'activePx':activePx,
                   'tag':tag,'triggerPxType':triggerPxType,'algoClOrdId':algoClOrdId,'quickMgnType':quickMgnType,
-                  'closeFraction':closeFraction, 'attachAlgoClOrdId':attachAlgoClOrdId}
+                  'closeFraction':closeFraction, 'attachAlgoClOrdId':attachAlgoClOrdId,'attachAlgoOrds':attachAlgoOrds}
         return self._request_with_params(POST, PLACE_ALGO_ORDER, params)
 
     # Cancel Algo Order

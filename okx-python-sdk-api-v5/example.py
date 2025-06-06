@@ -161,7 +161,13 @@ if __name__ == '__main__':
     # 设置质押币种 POST /api/v5/account/set-collateral-assets
     # result = accountAPI.set_collateral_assets(type = 'all', collateralEnabled = 'true', ccyList = ["BTC", "ETH"])
     # 查看质押币种 GET /api/v5/account/collateral-assets
-    # result = accountAPI.get_collateral_assets(ccy ='BTC,ETH', collateralEnabled = '')
+    result = accountAPI.get_collateral_assets(ccy ='BTC,ETH', collateralEnabled = '')
+    # 移仓 POST /api/v5/account/move-positions
+    result = accountAPI.move_assets(fromAcct='',toAcct='',legs="[{'from':{'posId':'','sz':'','side':''}},"
+                                                               "'to':{'tdMode':'','posSide':'','ccy':''}]",
+                                    clientId='')
+    # 获取移仓历史 GET /api/v5/account/move-positions-history
+    result = accountAPI.get_move_positions_history(blockTdId='',clientId='',beginTs='',endTs='',limit='',state='')
 
 
     # funding api
@@ -735,6 +741,8 @@ if __name__ == '__main__':
     # result = Finance.staking_defi_sol_p_r_history(type = '', status = '', after = '', before = '', limit = '')
     # 获取历史收益率(公共) GET /api/v5/finance/staking-defi/sol/apy-history
     # result = Finance.staking_defi_sol_apy_history(days = '1')
+    # 获取产品信息 GET /api/v5/finance/staking-defi/sol/product-info
+    # result = Finance.staking_defi_sol_product_info()
 
 
     # 活期简单赚币

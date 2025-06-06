@@ -338,3 +338,13 @@ class AccountAPI(Client):
         params = {'ccy':ccy, 'collateralEnabled':collateralEnabled}
         return self._request_with_params(GET, GET_COLLATERAL_ASSETS, params)
 
+    # POST /api/v5/account/move-positions
+    def move_assets(self,move_assets='',toAcct='',legs='',clientId=''):
+        params = {'move_assets': move_assets, 'toAcct': toAcct,'legs': legs, 'clientId': clientId,}
+        return self._request_with_params(POST, MOVE_ASSETS, params)
+
+    # GET /api/v5/account/move-positions-history
+    def get_move_positions_history(self,blockTdId='',clientId='',beginTs='',endTs='',limit='',state=''):
+        params={'blockTdId': blockTdId, 'clientId': clientId,'beginTs': beginTs, 'endTs': endTs,'limit': limit, 'state': state,}
+        return self._request_with_params(GET, GET_MOVE_POS_HISTORY, params)
+
