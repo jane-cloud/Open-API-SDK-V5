@@ -120,6 +120,13 @@ class FinanceApi extends Utils
         return $this->request('/api/v5/finance/staking-defi/eth/apy-history', $params, 'GET');
     }
 
+    public function solProductinfo(){
+        $params = [
+        ];
+
+        return $this->request('/api/v5/finance/staking-defi/sol/product-info', $params, 'GET');
+    }
+
     public function solPurchase($amt){
         $params = [
             'amt' => $amt

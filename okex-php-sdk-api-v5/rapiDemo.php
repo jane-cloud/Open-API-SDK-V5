@@ -27,6 +27,7 @@ use okv5\TradingbotApi;
 use okv5\SprdApi;
 use okv5\FinanceApi;
 use okv5\Copytrading;
+use okv5\AffiliateApi;
 
 /**
  * 账户 Account
@@ -125,6 +126,10 @@ $coin = "XMR";
 // $res = $obj -> mmpConfig('','','','');
 //查看 MMP 配置
 // $res = $obj -> getMmpConfig('');
+//移仓
+// $res = $obj -> movePositions('');
+//获取移仓历史
+// $res = $obj -> movePositionsHistory('');
 
 
 /**
@@ -344,8 +349,6 @@ $obj = new TradeAPI(Config::$config);
 //$res = $obj -> cancelAlgos([['307913429122170880','BTC-USDT-210625'],['307913525461139456','BTC-USDT-210625']]);
 // 修改策略委托订单
 //$res = $obj -> amendAlgos();
-//撤销高级策略委托订单
-//$res = $obj -> cancelAdvanceAlgos('','314738893715283968','FUTURES','','trigger','','','');
 // 获取策略委托单信息
 //$res = $obj -> getOrderAlgo('','SWAP','BTC-USDT-SWAP','conditional','','','');
 // 获取未完成策略委托单列表 Get Algo Order List
@@ -653,6 +656,8 @@ $obj = new FinanceApi(Config::$config);
 $obj = new FinanceApi(Config::$config);
 //申购
 //$res = $obj -> solPurchase('');
+//获取产品信息
+//$res = $obj -> solPurchase('');
 //赎回
 //$res = $obj -> solRedeem('');
 //获取余额
@@ -720,6 +725,13 @@ $obj = new StatusApi(Config::$config);
 //$res = $obj -> announcements('');
 //公告类型
 //$res = $obj -> announcementTypes('');
+
+/**
+ * 节点
+ */
+$obj = new AffiliateApi(Config::$config);
+//获取被邀请人返佣信息
+//$res = $obj -> detail('');
 
 
 

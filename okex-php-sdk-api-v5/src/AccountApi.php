@@ -732,4 +732,30 @@ class AccountApi extends Utils
 
         return $this->request('/api/v5/account/collateral-assets', $params, 'GET');
     }
+
+    public function movePositions($fromAcct,$toAcct,$legs,$clientId)
+    {
+        $params = [
+            'fromAcct' => $fromAcct,
+            'toAcct' => $toAcct,
+            'legs' => $legs,
+            'clientId' => $clientId,
+        ];
+
+        return $this->request('/api/v5/account/move-positions', $params, 'POST');
+    }
+
+    public function movePositionsHistory($blockTdId='',$clientId='',$beginTs='',$endTs='',$limit='',$state='')
+    {
+        $params = [
+            'blockTdId' => $blockTdId,
+            'clientId' => $clientId,
+            'beginTs' => $beginTs,
+            'endTs' => $endTs,
+            'limit' => $limit,
+            'state' => $state,
+        ];
+
+        return $this->request('/api/v5/account/move-positions-history', $params, 'GET');
+    }
 }
