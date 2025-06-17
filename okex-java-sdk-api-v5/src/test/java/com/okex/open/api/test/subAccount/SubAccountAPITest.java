@@ -179,4 +179,69 @@ public class SubAccountAPITest extends SubAccountAPIBaseTest{
         JSONObject result = this.subAccountAPIService.getManagedSubaccountBills("","","","","","","");
         toResultString(LOG, "result", result);
     }
+    /**
+     * 创建子账户
+     * POST /api/v5/users/subaccount/create-subaccount
+     */
+    @Test
+    public void createSubaccount(){
+        SubAccount subAccount = new SubAccount();
+        subAccount.setSubAcct("");
+        subAccount.setLabel("");
+        subAccount.setPwd("");
+        subAccount.setType("");
+        JSONObject result = this.subAccountAPIService.createSubaccount(subAccount);
+        toResultString(LOG,"result",result);
+    }
+    /**
+     * 创建子账户apikey
+     * POST /api/v5/users/subaccount/apikey
+     */
+    @Test
+    public void createSubaccountApikey(){
+        SubAccount subAccount = new SubAccount();
+        subAccount.setSubAcct("");
+        subAccount.setLabel("");
+        subAccount.setPassphrase("");
+        subAccount.setPerm("");
+        subAccount.setIp("");
+        JSONObject result = this.subAccountAPIService.createSubaccountApikey(subAccount);
+        toResultString(LOG,"result",result);
+    }
+    /**
+     * 查询子账户的API Key
+     * GET /api/v5/users/subaccount/apikey
+     */
+    @Test
+    public void getSubAccountApiKey(){
+        JSONObject result = this.subAccountAPIService.getSubAccountApiKey("","");
+        toResultString(LOG, "result", result);
+    }
+    /**
+     * 重置子账户的APIKey
+     * POST /api/v5/users/subaccount/modify-apikey
+     */
+    @Test
+    public void modifySubAccountApiKey(){
+        SubAccount subAccount = new SubAccount();
+        subAccount.setSubAcct("");
+        subAccount.setLabel("");
+        subAccount.setApiKey("");
+        subAccount.setPerm("");
+        subAccount.setIp("");
+        JSONObject result = this.subAccountAPIService.modifySubAccountApiKey(subAccount);
+        toResultString(LOG,"result",result);
+    }
+    /**
+     * 删除子账户的API Key
+     * POST /api/v5/users/subaccount/delete-apikey
+     */
+    @Test
+    public void deleteSubAccountApiKey(){
+        SubAccount subAccount = new SubAccount();
+        subAccount.setSubAcct("");
+        subAccount.setApiKey("");
+        JSONObject result = this.subAccountAPIService.deleteSubAccountApiKey(subAccount);
+        toResultString(LOG,"result",result);
+    }
 }

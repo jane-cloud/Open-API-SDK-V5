@@ -163,4 +163,8 @@ public interface AccountAPIService {
     JSONObject setCollateralAssets(CollateralAssets collateralAssets);
 
     JSONObject getCollateralAssets(String ccy, String collateralEnabled);
+
+    JSONObject movePositions(MovePositions movePositions);
+
+    JSONObject getMovePositionsHistory(String blockTdId, String clientId, String beginTs, String endTs, String limit, String state);
 }

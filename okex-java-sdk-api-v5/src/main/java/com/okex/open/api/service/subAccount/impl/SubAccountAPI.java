@@ -67,4 +67,14 @@ public interface SubAccountAPI {
 
     @GET("/api/v5/asset/subaccount/managed-subaccount-bills")
     Call<JSONObject>  getManagedSubaccountBills(@Query("ccy")String ccy,@Query("type") String type,@Query("subAcct") String subAcct, @Query("subUid")String subUid, @Query("after")String after, @Query("before")String before, @Query("limit")String limit);
+    @POST("/api/v5/users/subaccount/create-subaccount")
+    Call<JSONObject> createSubaccount(@Body SubAccount subAccount);
+    @POST("/api/v5/users/subaccount/apikey")
+    Call<JSONObject> createSubaccountApikey(@Body SubAccount subAccount);
+    @GET("/api/v5/users/subaccount/apikey")
+    Call<JSONObject> getSubAccountApiKey(@Query("subAcct") String subAcct,@Query("apiKey")  String apiKey);
+    @POST("/api/v5/users/subaccount/modify-apikey")
+    Call<JSONObject> modifySubAccountApiKey(@Body SubAccount subAccount);
+    @POST("/api/v5/users/subaccount/delete-apikey")
+    Call<JSONObject> deleteSubAccountApiKey(@Body SubAccount subAccount);
 }

@@ -244,4 +244,8 @@ public interface AccountAPI {
 
     @GET("/api/v5/account/collateral-assets")
     Call<JSONObject> getCollateralAssets(@Query("ccy") String ccy,@Query("collateralEnabled") String collateralEnabled);
+    @POST("/api/v5/account/move-positions")
+    Call<JSONObject> movePositions(@Body JSONObject jsonObject);
+    @GET("/api/v5/account/move-positions-history")
+    Call<JSONObject> getMovePositionsHistory(@Query("blockTdId") String blockTdId,@Query("clientId") String clientId,@Query("beginTs")  String beginTs,@Query("endTs")  String endTs,@Query("limit")  String limit,@Query("state")  String state);
 }

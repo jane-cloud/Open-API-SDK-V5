@@ -366,4 +366,15 @@ public class AccountAPIServiceImpl implements AccountAPIService {
         return this.client.executeSync(this.api.getCollateralAssets(ccy,collateralEnabled));
 
     }
+
+    @Override
+    public JSONObject movePositions(MovePositions movePositions) {
+        return this.client.executeSync(this.api.movePositions(JSONObject.parseObject(JSON.toJSONString(movePositions))));
+
+    }
+
+    @Override
+    public JSONObject getMovePositionsHistory(String blockTdId, String clientId, String beginTs, String endTs, String limit, String state) {
+        return this.client.executeSync(this.api.getMovePositionsHistory(blockTdId,  clientId,  beginTs,  endTs,  limit,  state));
+    }
 }
