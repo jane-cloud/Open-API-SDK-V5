@@ -748,5 +748,46 @@ public class AccountAPITests extends  AccountAPIBaseTests {
         JSONObject result = this.accountAPIService.getCollateralAssets("","");
         toResultString(LOG, "result", result);
     }
+    /**
+     * 移仓 move-positions
+     * POST /api/v5/account/move-positions
+     */
+    @Test
+    public void movePositions(){
+        MovePositions movePositions = new MovePositions();
+        movePositions.setFromAcct("test1");
+        movePositions.setToAcct("test2");
+        ArrayList<Legs> legs = new ArrayList<>();
+        Legs leg = new Legs();
 
+        From from = new From();
+        from.setSide("buy");
+        from.setSz("1");
+        from.setPosId("111");
+        leg.setFrom(from);
+
+        To to = new To();
+        to.setCcy("BTC");
+        to.setPosSide("long");
+        to.setTdMode("cross");
+        leg.setTo(to);
+
+        legs.add(leg);
+
+        movePositions.setLegs(legs);
+        movePositions.setClientId("test001");
+        JSONObject result = this.accountAPIService.movePositions(movePositions);
+        toResultString(LOG, "result", result);
+    }
+    /**
+     * 获取移仓历史 move-positions-history
+     *  get
+     * GET /api/v5/account/move-positions-history
+     */
+    @Test
+    public void getMovePositionsHistory(){
+
+        JSONObject result = this.accountAPIService.getMovePositionsHistory("","","","","","");
+        toResultString(LOG, "result", result);
+    }
 }

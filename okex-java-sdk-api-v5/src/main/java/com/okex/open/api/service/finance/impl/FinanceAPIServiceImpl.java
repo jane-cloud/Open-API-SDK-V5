@@ -159,4 +159,9 @@ public class FinanceAPIServiceImpl implements FinanceAPIService {
         return this.client.executeSync(this.api.getApyHistory(days));
 
     }
+
+    @Override
+    public JSONObject getProductInfo(String fastRedemptionDailyLimit, String fastRedemptionAvail) {
+        return this.client.executeSync(this.api.getProductInfo(fastRedemptionDailyLimit,fastRedemptionAvail));
+    }
 }

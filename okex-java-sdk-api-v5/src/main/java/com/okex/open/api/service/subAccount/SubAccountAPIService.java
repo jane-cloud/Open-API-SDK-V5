@@ -43,4 +43,14 @@ public interface SubAccountAPIService {
     JSONObject getSubAccountMaxWithdrawal(String subAcct, String ccy);
 
     JSONObject getManagedSubaccountBills(String ccy, String type, String subAcct, String subUid, String after, String before,String limit);
+
+    JSONObject createSubaccount(SubAccount subAccount);
+
+    JSONObject createSubaccountApikey(SubAccount subAccount);
+
+    JSONObject getSubAccountApiKey(String subAcct, String apiKey);
+
+    JSONObject modifySubAccountApiKey(SubAccount subAccount);
+
+    JSONObject deleteSubAccountApiKey(SubAccount subAccount);
 }

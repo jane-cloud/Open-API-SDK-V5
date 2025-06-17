@@ -87,4 +87,6 @@ public interface FinanceAPI {
 
  @GET("/api/v5/finance/staking-defi/sol/apy-history")
  Call<JSONObject> getApyHistory(@Query("days") String days);
+ @GET("/api/v5/finance/staking-defi/sol/product-info")
+    Call<JSONObject> getProductInfo(@Query("fastRedemptionDailyLimit") String fastRedemptionDailyLimit,@Query("fastRedemptionAvail")  String fastRedemptionAvail);
 }

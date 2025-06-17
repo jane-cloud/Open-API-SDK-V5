@@ -285,6 +285,16 @@ public class FinanceAPITest extends FinanceAPIBaseTests {
     }
     //SOL质押
     /**
+     * GET / 获取产品信息
+     * GET /api/v5/finance/staking-defi/sol/product-info
+     */
+    @Test
+    public void getProductInfo(){
+
+        JSONObject result = this.financeAPIService.getProductInfo("","");
+        toResultString(LOG, "result", result);
+    }
+    /**
      * 申购 Purchase
      * POST /api/v5/finance/staking-defi/sol/purchase
      */

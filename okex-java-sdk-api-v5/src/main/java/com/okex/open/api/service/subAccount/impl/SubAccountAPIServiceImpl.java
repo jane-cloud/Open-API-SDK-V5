@@ -87,4 +87,29 @@ public class SubAccountAPIServiceImpl implements SubAccountAPIService {
     public JSONObject getManagedSubaccountBills(String ccy, String type, String subAcct, String subUid, String after, String before, String limit) {
         return this.client.executeSync(this.api.getManagedSubaccountBills(ccy,type,subAcct,subUid,after,before,limit));
     }
+
+    @Override
+    public JSONObject createSubaccount(SubAccount subAccount) {
+        return this.client.executeSync(this.api.createSubaccount(subAccount));
+    }
+
+    @Override
+    public JSONObject createSubaccountApikey(SubAccount subAccount) {
+        return this.client.executeSync(this.api.createSubaccountApikey(subAccount));
+    }
+
+    @Override
+    public JSONObject getSubAccountApiKey(String subAcct, String apiKey) {
+        return this.client.executeSync(this.api.getSubAccountApiKey(subAcct,apiKey));
+    }
+
+    @Override
+    public JSONObject modifySubAccountApiKey(SubAccount subAccount) {
+        return this.client.executeSync(this.api.modifySubAccountApiKey(subAccount));
+    }
+
+    @Override
+    public JSONObject deleteSubAccountApiKey(SubAccount subAccount) {
+        return this.client.executeSync(this.api.deleteSubAccountApiKey(subAccount));
+    }
 }
