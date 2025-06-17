@@ -181,11 +181,12 @@ class TradingbotApi extends Utils
         return $this->request('/api/v5/tradingBot/grid/margin-balance', $params, 'POST');
     }
 
-    public function adjustInvestment($algoId,$amt)
+    public function adjustInvestment($algoId,$amt,$allowReinvestProfit='')
     {
         $params = [
             'algoId' => $algoId,
             'amt' => $amt,
+            'allowReinvestProfit' => $allowReinvestProfit,
         ];
 
         return $this->request('/api/v5/tradingBot/grid/adjust-investment', $params, 'POST');

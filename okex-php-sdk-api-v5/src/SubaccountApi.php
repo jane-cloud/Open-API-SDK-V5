@@ -147,4 +147,45 @@ class SubaccountApi extends Utils
         return $this->request('/api/v5/asset/subaccount/managed-subaccount-bills', $params, 'GET');
     }
 
+    public function createSubaccount($subAcct,$type,$label,$pwd=''){
+        $params = [
+            'subAcct' => $subAcct,
+            'type' => $type,
+            'label' => $label,
+            'pwd' => $pwd,
+        ];
+
+        return $this->request('/api/v5/users/subaccount/create-subaccount', $params, 'POST');
+    }
+
+    public function apikey($subAcct,$label,$passphrase,$perm='',$ip=''){
+        $params = [
+            'subAcct' => $subAcct,
+            'label' => $label,
+            'passphrase' => $passphrase,
+            'perm' => $perm,
+            'ip' => $ip,
+        ];
+
+        return $this->request('/api/v5/users/subaccount/apikey', $params, 'POST');
+    }
+
+    public function getApikey($subAcct,$apiKey=''){
+        $params = [
+            'subAcct' => $subAcct,
+            'apiKey' => $apiKey,
+        ];
+
+        return $this->request('/api/v5/users/subaccount/apikey', $params, 'GET');
+    }
+
+    public function deleteApikey($subAcct,$apiKey){
+        $params = [
+            'subAcct' => $subAcct,
+            'apiKey' => $apiKey,
+        ];
+
+        return $this->request('/api/v5/users/subaccount/delete-apikey', $params, 'POST');
+    }
+
 }

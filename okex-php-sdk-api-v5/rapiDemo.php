@@ -583,8 +583,16 @@ $obj = new SprdApi(Config::$config);
 $obj = new SubaccountApi(Config::$config);
 //查看子账户列表（仅适用于母账户）
 //$res = $obj -> subaccountList('','','','','');
+//创建子账户
+//$res = $obj -> createSubaccount('','','','','');
+//创建子账户的API Key
+//$res = $obj -> apikey('','','','','');
+//查询子账户的API Key
+//$res = $obj -> getApikey('','','','','');
 //重置子账户的APIKey
 //$res = $obj -> modifyApikey('','','','','');
+//删除子账户的API Key
+//$res = $obj -> deleteApikey('','','','','');
 //获取子账户交易账户余额
 //$res = $obj -> balances('');
 //获取子账户资金账户余额
