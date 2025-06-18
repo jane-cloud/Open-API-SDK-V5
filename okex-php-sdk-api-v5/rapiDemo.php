@@ -26,7 +26,7 @@ use okv5\ConvertApi;
 use okv5\TradingbotApi;
 use okv5\SprdApi;
 use okv5\FinanceApi;
-use okv5\Copytrading;
+use okv5\CopytradingApi;
 use okv5\AffiliateApi;
 
 /**
@@ -462,7 +462,7 @@ $obj = new TradingbotApi(Config::$config);
 /**
  * 跟单 copytrading
  */
-// $obj = new Copytrading(Config::$config);
+$obj = new CopytradingApi(Config::$config);
 //获取当前带单或跟单
 // $res = $obj -> currentSubpositions('','','','','','','');
 // 获取历史带单或跟单

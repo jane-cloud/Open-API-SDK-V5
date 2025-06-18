@@ -27,15 +27,7 @@ class SubaccountApi extends Utils
         return $this->request('/api/v5/asset/subaccount/bills', $params, 'GET');
     }
 
-    public function deleteApikey($pwd,$subAcct,$apiKey){
-        $params = [
-            'pwd' => $pwd,
-            'subAcct' => $subAcct,
-            'apiKey' => $apiKey,
-        ];
-
-        return $this->request('/api/v5/users/subaccount/delete-apikey', $params, 'POST');
-    }
+    
 
     public function modifyApikey($pwd,$subAcct,$label,$apiKey,$perm,$ip=''){
         $params = [
@@ -50,28 +42,9 @@ class SubaccountApi extends Utils
         return $this->request('/api/v5/users/subaccount/modify-apikey', $params, 'POST');
     }
 
-    public function apikey($pwd,$subAcct,$label,$Passphrase,$perm='',$ip=''){
-        $params = [
-            'pwd' => $pwd,
-            'subAcct' => $subAcct,
-            'label' => $label,
-            'Passphrase' => $Passphrase,
-            'perm' => $perm,
-            'ip' => $ip,
-        ];
+   
 
-        return $this->request('/api/v5/users/subaccount/apikey', $params, 'POST');
-    }
-
-    public function getapikey($subAcct,$apiKey=''){
-        $params = [
-            'subAcct' => $subAcct,
-            'apiKey' => $apiKey,
-        ];
-
-        return $this->request('/api/v5/users/subaccount/apikey', $params, 'GET');
-    }
-
+   
     public function subaccountList($enable='',$subAcct='',$after='',$before='',$limit=''){
         $params = [
             'enable' => $enable,

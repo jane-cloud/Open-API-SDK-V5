@@ -4,7 +4,7 @@
 namespace okv5;
 
 
-class Copytrading extends Utils
+class CopytradingApi extends Utils
 {
 
     public function currentSubpositions($instType='',$instId='',$uniqueCode='',$subPosType='',$after='',$before='',$limit=''){
