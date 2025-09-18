@@ -55,14 +55,14 @@ class AccountAPI(Client):
         return self._request_with_params(POST, SET_LEVERAGE, params)
 
     # Get Maximum Tradable Size For Instrument
-    def get_maximum_trade_size(self, instId, tdMode, ccy='', px='', leverage='',unSpotOffset=''):
-        params = {'instId': instId, 'tdMode': tdMode, 'ccy': ccy, 'px': px, 'leverage':leverage,'unSpotOffset':unSpotOffset}
+    def get_maximum_trade_size(self, instId, tdMode, ccy='', px='', leverage='',tradeQuoteCcy=''):
+        params = {'instId': instId, 'tdMode': tdMode, 'ccy': ccy, 'px': px, 'leverage':leverage,'tradeQuoteCcy':tradeQuoteCcy }
         return self._request_with_params(GET, MAX_TRADE_SIZE, params)
 
     # Get Maximum Available Tradable Amount
-    def get_max_avail_size(self, instId, tdMode, ccy='', reduceOnly='', unSpotOffset='',quickMgnType='',px=''):
+    def get_max_avail_size(self, instId, tdMode, ccy='', reduceOnly='', tradeQuoteCcy='',px=''):
         params = {'instId': instId, 'tdMode': tdMode, 'ccy': ccy, 'reduceOnly': reduceOnly,
-                  'unSpotOffset':unSpotOffset,'quickMgnType':quickMgnType,'px': px}
+                  'tradeQuoteCcy':tradeQuoteCcy,'px': px}
         return self._request_with_params(GET, MAX_AVAIL_SIZE, params)
 
     # Increase / Decrease margin
@@ -81,8 +81,8 @@ class AccountAPI(Client):
         return self._request_with_params(GET, MAX_LOAN, params)
 
     # Get Fee Rates
-    def get_fee_rates(self, instType = '', instId='', uly='', category='', instFamily='',ruleType = ''):
-        params = {'instType': instType, 'instId': instId, 'uly': uly, 'category': category,'instFamily':instFamily,'ruleType':ruleType}
+    def get_fee_rates(self, instType = '', instId='', uly='', instFamily='',ruleType = ''):
+        params = {'instType': instType, 'instId': instId, 'uly': uly, 'instFamily':instFamily,'ruleType':ruleType}
         return self._request_with_params(GET, FEE_RATES, params)
 
     # Get interest-accrued
@@ -94,6 +94,10 @@ class AccountAPI(Client):
     def get_interest_rate(self, ccy=''):
         params = {'ccy': ccy}
         return self._request_with_params(GET, INTEREST_RATE, params)
+
+    def set_fee_type(self, feeType):
+        params = {'feeType': feeType}
+        return self._request_with_params(POST, SET_FEE_TYPE, params)
 
     # Set Greeks (PA/BS)
     def set_greeks(self, greeksType):
@@ -220,10 +224,16 @@ class AccountAPI(Client):
 
 
     def position_builder(self,acctLv = '', inclRealPosAndEq='',lever='',simPos=[],simAsset=[],
-                         greeksType='',):
+                         greeksType='',idxVol = ''):
         params = {'acctLv': acctLv, 'inclRealPosAndEq': inclRealPosAndEq, 'lever': lever, 'simPos': simPos,
-                  'simAsset': simAsset,'greeksType':greeksType}
+                  'simAsset': simAsset,'greeksType':greeksType,'idxVol':idxVol}
         return self._request_with_params(POST, POSITION_BUILDER, params)
+
+    def position_builder_graph(self,mmrConfig, inclRealPosAndEq='',simPos=[],simAsset=[],
+                         type = ''):
+        params = {'inclRealPosAndEq': inclRealPosAndEq, 'simPos': simPos,
+                  'simAsset': simAsset,'type':type,'mmrConfig':mmrConfig}
+        return self._request_with_params(POST, POSITION_BUILDER_GRAPH, params)
 
 
     # POST /api/v5/account/set-riskOffset-amt
@@ -348,3 +358,7 @@ class AccountAPI(Client):
         params={'blockTdId': blockTdId, 'clientId': clientId,'beginTs': beginTs, 'endTs': endTs,'limit': limit, 'state': state,}
         return self._request_with_params(GET, GET_MOVE_POS_HISTORY, params)
 
+    # POST /api/v5/account/set-auto-earn
+    def set_auto_earn(self,earnType = '', ccy = '', action = '', apr = ''):
+        params = {'earnType':earnType, 'ccy':ccy, 'action':action, 'apr':apr}
+        return self._request_with_params(POST, SET_AUTO_EARN, params)

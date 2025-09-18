@@ -51,9 +51,9 @@ if __name__ == '__main__':
     # 设置杠杆倍数  Set Leverage
     # result = accountAPI.set_leverage(instId='BTC-USD-210402', lever='10', mgnMode='cross')
     # 获取最大可交易数量  Get Maximum Tradable Size For Instrument
-    # result = accountAPI.get_maximum_trade_size(instId='BTC-USDT-SWAP', tdMode='cross',ccy='',px='',leverage='10',unSpotOffset='false')
+    # result = accountAPI.get_maximum_trade_size(instId='BTC-USDT-SWAP', tdMode='cross',ccy='',px='',leverage='10',tradeQuoteCcy='')
     # 获取最大可用数量  Get Maximum Available Tradable Amount
-    # result = accountAPI.get_max_avail_size(instId='BTC-USDT-SWAP', tdMode='isolated', ccy='BTC', reduceOnly='', unSpotOffset='false',quickMgnType='')
+    # result = accountAPI.get_max_avail_size(instId='BTC-USDT-SWAP', tdMode='isolated', ccy='BTC', reduceOnly='', px='',tradeQuoteCcy='')
     # 调整保证金  Increase/Decrease margint
     # result = accountAPI.Adjustment_margin('BTC-USDT-210409', 'long', 'add', '100')
     # 获取杠杆倍数 Get Leverage
@@ -61,11 +61,13 @@ if __name__ == '__main__':
     # 获取交易产品最大可借  Get the maximum loan of instrument
     # result = accountAPI.get_max_load('BTC-USDT', 'cross', 'BTC')
     # 获取当前账户交易手续费费率  Get Fee Rates
-    # result = accountAPI.get_fee_rates(instType = 'FUTURES',instId = '', category='1',instFamily = '',ruleType = '')
+    # result = accountAPI.get_fee_rates(instType = 'SPOT',instId = '',instFamily = '',ruleType = '')
     # 获取计息记录  Get interest-accrued
     # result = accountAPI.get_interest_accrued('BTC-USDT', 'BTC', 'isolated', '', '', '10', '')
-    # 获取用户当前杠杆借币利率 Get interest rate
+    # 获取用户当前市场借币利率 Get interest rate
     # result = accountAPI.get_interest_rate()
+    # 设置手续费计价方式 Set fee type
+    # result = accountAPI.set_fee_type(feeType = '1')
     # 期权希腊字母PA / BS切换  Set Greeks (PA/BS)
     # result = accountAPI.set_greeks('BS')
     # 逐仓交易设置 Set Isolated Mode
@@ -124,7 +126,13 @@ if __name__ == '__main__':
     # result = accountAPI.position_builder(acctLv = '', inclRealPosAndEq = '', lever = '', 
     #                                     simPos = [{"instId":"", "pos":"","avgPx":"","lever":"",}],
     #                                     simAsset = [{"ccy":"", "amt":""}],
-    #                                     greeksType = ''
+    #                                     greeksType = '',idxVol = ''
+    #                                 )
+    # 仓位创建器趋势图 POST /api/v5/account/position-builder-graph
+    # result = accountAPI.position_builder_graph(inclRealPosAndEq = '',type = '',
+    #                                     simPos = [{"instId":"", "pos":"","avgPx":"","lever":"",}],
+    #                                     simAsset = [{"ccy":"", "amt":""}],
+    #                                     mmrConfig = {"acctLv":"", "lever":""}
     #                                 )
     # 设置现货对冲占用 POST /api/v5/account/set-riskOffset-amt
     # result = accountAPI.set_riskOffset_amt(ccy = 'BTC', clSpotInUseAmt = '0.01')
@@ -161,13 +169,15 @@ if __name__ == '__main__':
     # 设置质押币种 POST /api/v5/account/set-collateral-assets
     # result = accountAPI.set_collateral_assets(type = 'all', collateralEnabled = 'true', ccyList = ["BTC", "ETH"])
     # 查看质押币种 GET /api/v5/account/collateral-assets
-    result = accountAPI.get_collateral_assets(ccy ='BTC,ETH', collateralEnabled = '')
+    # result = accountAPI.get_collateral_assets(ccy ='BTC,ETH', collateralEnabled = '')
     # 移仓 POST /api/v5/account/move-positions
-    result = accountAPI.move_assets(fromAcct='',toAcct='',legs="[{'from':{'posId':'','sz':'','side':''}},"
-                                                               "'to':{'tdMode':'','posSide':'','ccy':''}]",
-                                    clientId='')
+    # result = accountAPI.move_assets(fromAcct='',toAcct='',legs="[{'from':{'posId':'','sz':'','side':''}},"
+                                    #                            "'to':{'tdMode':'','posSide':'','ccy':''}]",
+                                    # clientId='')
     # 获取移仓历史 GET /api/v5/account/move-positions-history
-    result = accountAPI.get_move_positions_history(blockTdId='',clientId='',beginTs='',endTs='',limit='',state='')
+    # result = accountAPI.get_move_positions_history(blockTdId='',clientId='',beginTs='',endTs='',limit='',state='')
+    # 设置自动赚币 POST /api/v5/account/set-auto-earn
+    # result = accountAPI.set_auto_earn(earnType = '1', ccy = 'BTC', action = 'turn_off', apr = '')
 
 
     # funding api
@@ -181,13 +191,20 @@ if __name__ == '__main__':
     # 获取资金划转状态 Transfer State
     # result = fundingAPI.transfer_state(transId='', type='')
     # 提币  Withdrawal
-    # result = fundingAPI.coin_withdraw(ccy='', amt='', dest='', toAddr='', fee='', chain='', areaCode='', clientId='')
+    # result = fundingAPI.coin_withdraw(ccy='', amt='', dest='', toAddr='', toAddrType='',chain='',areaCode='',
+    #     rcvrInfo={"walletType":"exchange",
+    #     "exchId":"did:ethr:0xfeb4f99829a9acdf52979abee87e83addf22a7e1",
+    #     "rcvrFirstName":"Bruce",
+    #     "rcvrLastName":"Wayne"},
+    #     clientId='')
     # 获取充值记录  Get Deposit History
     # result = fundingAPI.get_deposit_history()
     # 获取币种列表  Get Currencies
     # result = fundingAPI.get_currency('ETH,BTC')
-    # 资金流水查询  Asset Bills Details
+    # 获取资金流水  Asset Bills Details
     # result = fundingAPI.get_bills()
+    # 获取资金流水  Asset Bills Details
+    # result = fundingAPI.get_bills_history(ccy='BTC', type='', clientId = '', after='', before='', limit='', pagingType = '')
     # 闪电网络充币
     # result = fundingAPI.get_deposit_lightning(ccy='BTC',amt='0.01')
     # 闪电网络提币
@@ -212,6 +229,16 @@ if __name__ == '__main__':
     # result = fundingAPI.monthly_statement(month='')
     # 获取月结单 (近一年)
     # result = fundingAPI.monthly_statement(month='')
+    # 获取买卖交易币种 GET /api/v5/fiat/buy-sell/currencies
+    # result = fundingAPI.buy_sell_currencies()
+    # 获取买卖交易币对 GET /api/v5/fiat/buy-sell/currency-pair
+    # result = fundingAPI.buy_sell_currencies_pair(fromCcy = '', toCcy = '')
+    # 获取买卖交易报价 POST /api/v5/fiat/buy-sell/quote
+    # result = fundingAPI.buy_sell_quote(side = '', fromCcy = '', toCcy = '', rfqAmt = '', rfqCcy = '')
+    # 买卖交易 POST /api/v5/fiat/buy-sell/trade
+    # result = fundingAPI.buy_sell_trade(quoteId = '', side = '', fromCcy = '', toCcy = '', rfqAmt = '', rfqCcy = '', paymentMethod = '', clOrdId = '')
+    # 获取买卖交易历史 GET /api/v5/fiat/buy-sell/history
+    # result = fundingAPI.buy_sell_history(ordId = '', clOrdId = '', state = '', begin = '', end = '', limit = '')
 
     # convert api
     convertAPI = Convert.ConvertAPI(api_key, secret_key, passphrase, False, flag)
@@ -323,6 +350,9 @@ if __name__ == '__main__':
     # result = publicAPI.instrument_tick_bands(instType = 'OPTION', instFamily = '')
     # 获取期权公共成交数据
     # result = publicAPI.option_trades(instId = '', instFamily = 'BTC-USD', optType = '')
+    # 获取历史市场数据 Get market data history
+    # result = publicAPI.get_market_data_history(module = '1', instType = 'SWAP', instIdList = '', instFamilyList = 'BTC-USDT', dateAggrType = 'daily', begin = '1756604295000', end = '1756777095000')
+
 
     # trading data
     tradingDataAPI = TradingData.TradingDataAPI(api_key, secret_key, passphrase, False, flag)
@@ -361,14 +391,14 @@ if __name__ == '__main__':
     tradeAPI = Trade.TradeAPI(api_key, secret_key, passphrase, False, flag)
     # 下单  Place Order
     result = tradeAPI.place_order(instId='BTC-USDT-SWAP', tdMode='isolated', ccy='', clOrdId='', tag='',
-                                  side='buy', posSide='long', ordType='market', sz='0.1', px='86000',
-                                  pxUsd='', pxVol='', reduceOnly='', tgtCcy='', banAmend='', stpMode='',
-                                  attachAlgoOrds = [{"tachAlgoClOrdId":"",
-                                                     "slTriggerPxType":"",
-                                                     "tpTriggerPx":"8",
-                                                     "slOrdPx":"",
-                                                     "slTriggerPx":"",
-                                                     "tpOrdPx":"-1"}]
+                                  side='buy', posSide='long', ordType='market', sz='0.1', px='86000',tradeQuoteCcy = '',
+                                  pxUsd='', pxVol='', reduceOnly='', tgtCcy='', banAmend='', stpMode='',pxAmendType = '',
+                                  # attachAlgoOrds = [{"tachAlgoClOrdId":"",
+                                  #                    "slTriggerPxType":"",
+                                  #                    "tpTriggerPx":"",
+                                  #                    "slOrdPx":"",
+                                  #                    "slTriggerPx":"",
+                                  #                    "tpOrdPx":""}]
                                 )
     # 批量下单  Place Multiple Orders
     # result = tradeAPI.place_multiple_orders([
@@ -413,7 +443,7 @@ if __name__ == '__main__':
     # 策略委托下单  Place Algo Order
     # result = tradeAPI.place_algo_order('BTC-USDT-SWAP', 'isolated', 'buy', ordType='conditional',
     #                                    sz='100',posSide='long', tpTriggerPx='60000', tpOrdPx='59999',
-    #                                   tpTriggerPxType = 'last', slTriggerPxType = 'last', algoClOrdId ='123456',
+    #                                   tpTriggerPxType = 'last', slTriggerPxType = 'last', algoClOrdId ='123456',tradeQuoteCcy = '',
     #                                    quickMgnType='', closeFraction = '1',cxlOnClosePos= '', attachAlgoClOrdId='',
     #                                    )
     # 撤销策略委托订单  Cancel Algo Order

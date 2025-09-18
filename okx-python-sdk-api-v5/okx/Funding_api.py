@@ -28,8 +28,8 @@ class FundingAPI(Client):
         return self._request_with_params(POST, TRANSFER_STATE, params)
 
     # Withdrawal
-    def coin_withdraw(self, ccy, amt, dest, toAddr, fee,chain='',areaCode='',clientId=''):
-        params = {'ccy': ccy, 'amt': amt, 'dest': dest, 'toAddr': toAddr, 'fee': fee,'chain': chain,'areaCode':areaCode,'clientId':clientId}
+    def coin_withdraw(self, ccy, amt, dest, toAddr, toAddrType, rcvrInfo, chain='',areaCode='',clientId=''):
+        params = {'ccy': ccy, 'amt': amt, 'dest': dest, 'toAddr': toAddr, 'toAddrType': toAddrType,'chain': chain,'areaCode':areaCode,'clientId':clientId,'rcvrInfo':rcvrInfo}
         return self._request_with_params(POST, WITHDRAWAL_COIN, params)
 
     # Get Deposit History
@@ -57,11 +57,15 @@ class FundingAPI(Client):
         params = {'ccy': ccy, 'amt': amt, 'side': side,'rate': rate}
         return self._request_with_params(POST, PURCHASE_REDEMPT, params)
 
-    # Get Withdrawal History
-    def get_bills(self, ccy='', type='', after='', before='', limit=''):
-        params = {'ccy': ccy, 'type': type, 'after': after, 'before': before, 'limit': limit}
+    # GET /api/v5/asset/bills
+    def get_bills(self, ccy='', type='', clientId = '', after='', before='', limit=''):
+        params = {'ccy': ccy, 'type': type, 'clientId': clientId, 'after': after, 'before': before, 'limit': limit}
         return self._request_with_params(GET, BILLS_INFO, params)
 
+    # GET /api/v5/asset/bills-history
+    def get_bills_history(self, ccy='', type='', clientId = '', after='', before='', limit='', pagingType = ''):
+        params = {'ccy': ccy, 'type': type, 'clientId': clientId, 'after': after, 'before': before, 'limit': limit, 'pagingType': pagingType}
+        return self._request_with_params(GET, BILLS_INFO_HISTORY, params)
 
     #Get Piggy Balance
     def get_piggy_balance(self, ccy=''):
@@ -134,3 +138,27 @@ class FundingAPI(Client):
         params = {'month':month}
         return self._request_with_params(GET, MONTHLY_STATEMENTS,params)
 
+    # GET /api/v5/fiat/buy-sell/currencies
+    def buy_sell_currencies(self):
+        params = {}
+        return self._request_with_params(GET, BUY_SELL_CURRENCIES,params)
+
+    # GET /api/v5/fiat/buy-sell/currency-pair
+    def buy_sell_currencies_pair(self, fromCcy = '', toCcy = ''):
+        params = {'fromCcy': fromCcy, 'toCcy': toCcy}
+        return self._request_with_params(GET, BUY_SELL_CURRENCIES_PAIR,params)
+
+    # POST /api/v5/fiat/buy-sell/quote
+    def buy_sell_quote(self,side = '', fromCcy = '', toCcy = '', rfqAmt = '', rfqCcy = ''):
+        params = {'side':side,'fromCcy':fromCcy,'toCcy':toCcy,'rfqAmt':rfqAmt,'rfqCcy':rfqCcy}
+        return self._request_with_params(POST, BUY_SELL_QUOTE,params)
+
+    # POST /api/v5/fiat/buy-sell/trade
+    def buy_sell_trade(self,quoteId = '', side = '', fromCcy = '', toCcy = '', rfqAmt = '', rfqCcy = '', paymentMethod = '', clOrdId = ''):
+        params = {'quoteId':quoteId,'side':side,'fromCcy':fromCcy,'toCcy':toCcy,'rfqAmt':rfqAmt,'paymentMethod':paymentMethod,'clOrdId':clOrdId}
+        return self._request_with_params(POST, BUY_SELL_TRADE,params)
+
+    # GET /api/v5/fiat/buy-sell/history
+    def buy_sell_history(self, ordId = '', clOrdId = '', state = '', begin = '', end = '', limit = ''):
+        params = {'ordId': ordId, 'clOrdId': clOrdId, 'state': state, 'begin': begin, 'end': end, 'limit': limit}
+        return self._request_with_params(GET, BUY_SELL_HISTORY,params)

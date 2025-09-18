@@ -11,13 +11,13 @@ class TradeAPI(Client):
     def place_order(self, instId, tdMode, side, ordType, sz, ccy='', clOrdId='', tag='', posSide='', px='',
                     reduceOnly='', tgtCcy='', banAmend='',tpTriggerPx = '', tpOrdPx = '',
                     slTriggerPx = '', slOrdPx = '', tpTriggerPxType = '', slTriggerPxType = '',stpId='',
-                    pxUsd = '',pxVol = '',
+                    pxUsd = '',pxVol = '',pxAmendType = '',tradeQuoteCcy = '',     
                     stpMode='',attachAlgoClOrdId='',attachAlgoOrds=[]):
         params = {'instId': instId, 'tdMode': tdMode, 'side': side, 'ordType': ordType, 'sz': sz, 'ccy': ccy,
                   'clOrdId': clOrdId, 'tag': tag, 'posSide': posSide, 'px': px, 'reduceOnly': reduceOnly,
                   'tgtCcy': tgtCcy, 'banAmend': banAmend,'tpTriggerPx':tpTriggerPx,'tpOrdPx':tpOrdPx,'slTriggerPx':slTriggerPx
                   ,'slOrdPx':slOrdPx,'tpTriggerPxType':tpTriggerPxType,'slTriggerPxType':slTriggerPxType,
-                  'pxUsd':pxUsd,'pxVol':pxVol,
+                  'pxUsd':pxUsd,'pxVol':pxVol,'pxAmendType':pxAmendType,'tradeQuoteCcy':tradeQuoteCcy,
                   'stpId':stpId,'stpMode':stpMode,'attachAlgoClOrdId':attachAlgoClOrdId,'attachAlgoOrds':attachAlgoOrds}
         return self._request_with_params(POST, PLACR_ORDER, params)
 
@@ -35,13 +35,10 @@ class TradeAPI(Client):
         return self._request_with_params(POST, CANAEL_BATCH_ORDERS, orders_data)
 
     # Amend Order
-    def amend_order(self, instId, cxlOnFail='', ordId='', clOrdId='', reqId='', newSz='',
-                    newPx = '', newTpTriggerPx='', newTpOrdPx='',newSlTriggerPx='', newSlOrdPx='',
-                    newTpTriggerPxType='', newSlTriggerPxType=''):
+    def amend_order(self, instId='', cxlOnFail='', ordId='', clOrdId='', reqId='', newSz='',
+                    newPx = '', newPxUsd = '',newPxVol = '', pxAmendType = '',attachAlgoOrds=[]):
         params = {'instId': instId, 'cxlOnFailc': cxlOnFail, 'ordId': ordId, 'clOrdId': clOrdId, 'reqId': reqId,
-                  'newSz': newSz,'newPx': newPx,'newTpTriggerPx': newTpTriggerPx,'newTpOrdPx': newTpOrdPx,
-                  'newSlTriggerPx': newSlTriggerPx,'newSlOrdPx': newSlOrdPx,'newTpTriggerPxType': newTpTriggerPxType,
-                  'newSlTriggerPxType': newSlTriggerPxType}
+                  'newSz': newSz,'newPx': newPx,'newPxUsd': newPxUsd,'newPxVol': newPxVol,'pxAmendType': pxAmendType, 'attachAlgoOrds':attachAlgoOrds}
         return self._request_with_params(POST, AMEND_ORDER, params)
 
     # Amend Multiple Orders
@@ -88,7 +85,7 @@ class TradeAPI(Client):
                          posSide='', reduceOnly='', tpTriggerPx='',
                          tpOrdPx='', slTriggerPx='', slOrdPx='',
                          triggerPx='', orderPx='', tgtCcy='', pxVar='',
-                         pxSpread='', cxlOnClosePos='',
+                         pxSpread='', cxlOnClosePos='', tradeQuoteCcy = '',
                          szLimit='', pxLimit='', timeInterval='', tpTriggerPxType='', slTriggerPxType='',
                          callbackRatio='',callbackSpread='',activePx='',tag='',triggerPxType='',
                          algoClOrdId='',quickMgnType='',closeFraction='', attachAlgoClOrdId='',attachAlgoOrds=[]):
@@ -96,7 +93,7 @@ class TradeAPI(Client):
                   'posSide': posSide, 'reduceOnly': reduceOnly, 'tpTriggerPx': tpTriggerPx, 'tpOrdPx': tpOrdPx,
                   'slTriggerPx': slTriggerPx, 'slOrdPx': slOrdPx, 'triggerPx': triggerPx, 'orderPx': orderPx,
                   'tgtCcy': tgtCcy, 'pxVar': pxVar, 'szLimit': szLimit, 'pxLimit': pxLimit,
-                  'timeInterval': timeInterval, 'cxlOnClosePos': cxlOnClosePos,
+                  'timeInterval': timeInterval, 'cxlOnClosePos': cxlOnClosePos, 'tradeQuoteCcy': tradeQuoteCcy,
                   'pxSpread': pxSpread, 'tpTriggerPxType': tpTriggerPxType, 'slTriggerPxType': slTriggerPxType,
                   'callbackRatio' : callbackRatio, 'callbackSpread':callbackSpread,'activePx':activePx,
                   'tag':tag,'triggerPxType':triggerPxType,'algoClOrdId':algoClOrdId,'quickMgnType':quickMgnType,

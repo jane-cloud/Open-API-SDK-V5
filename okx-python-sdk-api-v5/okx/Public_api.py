@@ -115,3 +115,8 @@ class PublicAPI(Client):
     def settlement_history(self, instFamily = '', after = '', before = '', limit= ''):
         params = {'instFamily':instFamily,'after':after,'before':before,'limit':limit}
         return self._request_with_params(GET, SETTLEMENT_HISTORY, params)
+
+    # GET /api/v5/public/market-data-history
+    def get_market_data_history(self, module = '', instType = '', instIdList = '', instFamilyList = '', dateAggrType = '', begin = '', end = ''):
+        params = {'module':module,'instType':instType,'instIdList':instIdList,'instFamilyList':instFamilyList,'dateAggrType':dateAggrType,'begin':begin,'end':end}
+        return self._request_with_params(GET, GET_MARKET_DATA_HISTORY, params)
