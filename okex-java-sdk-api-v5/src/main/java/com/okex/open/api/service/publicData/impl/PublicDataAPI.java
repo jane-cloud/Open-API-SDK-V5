@@ -6,6 +6,8 @@ import retrofit2.http.GET;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 
+import java.util.ArrayList;
+
 public interface PublicDataAPI {
 
     //获取交易产品基础信息 Get Instruments
@@ -123,4 +125,6 @@ public interface PublicDataAPI {
 
     @GET("/api/v5/public/estimated-settlement-info")
     Call<JSONObject> getEstimatedSettlementInfo(@Query("instId")String instId);
+    @GET("/api/v5/public/market-data-history")
+    Call<JSONObject> getMarketDataHistory(@Query("module") String module,@Query("instType") String instType,@Query("instIdList") String instIdList,@Query("instFamilyList") String instFamilyList,@Query("dateAggrType") String dateAggrType,@Query("begin") String begin,@Query("end") String end);
 }

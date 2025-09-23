@@ -27,8 +27,8 @@ public class HmacSHA256Base64Utils {
      * @param requestPath eg: /orders
      * @param queryString eg: before=2&limit=30
      * @param body        json string, eg: {"product_id":"BTC-USD-0309","order_id":"377454671037440"}
-     * @param secretKey   user's secret key eg: E65791902180E9EF4510DB6A77F6EBAE
-     * @return signed string   eg: TO6uwdqz+31SIPkd4I+9NiZGmVH74dXi+Fd5X0EzzSQ=
+     * @param secretKey   user's secret key
+     * @return signed string   eg:
      * @throws CloneNotSupportedException
      * @throws InvalidKeyException
      * @throws UnsupportedEncodingException

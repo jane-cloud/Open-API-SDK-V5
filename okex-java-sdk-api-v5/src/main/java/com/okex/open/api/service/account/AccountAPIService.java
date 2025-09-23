@@ -167,4 +167,10 @@ public interface AccountAPIService {
     JSONObject movePositions(MovePositions movePositions);
 
     JSONObject getMovePositionsHistory(String blockTdId, String clientId, String beginTs, String endTs, String limit, String state);
+
+    JSONObject setAutoEarn(AutoEarn autoEarn);
+
+    JSONObject positionBuilderGraph(PositionBuilderGraph positionBuilderGraph);
+
+    JSONObject setFeeType(AccountMode account);
 }

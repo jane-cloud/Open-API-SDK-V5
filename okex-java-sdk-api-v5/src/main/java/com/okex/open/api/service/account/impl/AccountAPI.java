@@ -1,7 +1,10 @@
 package com.okex.open.api.service.account.impl;
 
 import com.alibaba.fastjson.JSONObject;
+import com.okex.open.api.bean.account.param.AccountMode;
 import com.okex.open.api.bean.account.param.AccountQuickBorrowRepay;
+import com.okex.open.api.bean.account.param.AutoEarn;
+import com.okex.open.api.bean.account.param.PositionBuilderGraph;
 import retrofit2.Call;
 import retrofit2.http.*;
 
@@ -248,4 +251,10 @@ public interface AccountAPI {
     Call<JSONObject> movePositions(@Body JSONObject jsonObject);
     @GET("/api/v5/account/move-positions-history")
     Call<JSONObject> getMovePositionsHistory(@Query("blockTdId") String blockTdId,@Query("clientId") String clientId,@Query("beginTs")  String beginTs,@Query("endTs")  String endTs,@Query("limit")  String limit,@Query("state")  String state);
+    @POST("/api/v5/account/set-auto-earn")
+    Call<JSONObject> setAutoEarn(@Body AutoEarn autoEarn);
+    @POST("/api/v5/account/position-builder-graph")
+    Call<JSONObject> positionBuilderGraph(@Body PositionBuilderGraph positionBuilderGraph);
+    @POST("/api/v5/account/set-fee-type")
+    Call<JSONObject> setFeeType(@Body AccountMode account);
 }

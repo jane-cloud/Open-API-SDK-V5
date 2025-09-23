@@ -326,6 +326,16 @@ public class FundingAPITests extends FundingAPIBaseTests {
         JSONObject result = fundingAPIService.getMonthlyStatement("");
         toResultString(LOG,"result",result);
     }
+
+    /**
+     * 获取资金流水全历史 Get bills-history
+     * GET /api/v5/asset/bills-history
+     */
+    @Test
+    public void getBillsHistory(){
+        JSONObject result = fundingAPIService.getBillsHistory("","","","","","","");
+        toResultString(LOG,"result",result);
+    }
 }
 
 
