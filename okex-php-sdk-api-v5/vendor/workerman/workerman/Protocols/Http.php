@@ -484,12 +484,7 @@ class Http
             HttpCache::$instance->sessionFile = HttpCache::$sessionPath . '/ses_' . $_COOKIE[HttpCache::$sessionName];
         }
         // Read session from session file.
-        if (HttpCache::$instance->sessionFile) {
-            $raw = \file_get_contents(HttpCache::$instance->sessionFile);
-            if ($raw) {
-                $_SESSION = \unserialize($raw);
-            }
-        }
+        
         return true;
     }
 
