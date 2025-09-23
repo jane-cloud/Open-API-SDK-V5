@@ -374,7 +374,7 @@ public class PublicChannelTest {
 
         Map map =new HashMap();
         map.put("channel","bbo-tbt");
-        map.put("instId","BTC-USDT");
+        map.put("instId","XAUT-USDT-SWAP");
 
         channelList.add(map);
         //调用订阅方法

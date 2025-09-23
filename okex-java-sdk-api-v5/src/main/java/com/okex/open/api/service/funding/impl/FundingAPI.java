@@ -101,4 +101,6 @@ interface FundingAPI {
 
     @GET("/api/v5/asset/exchange-list")
     Call<JSONObject> getMonthlyStatement(@Query("month")String month);
+    @GET("/api/v5/asset/bills-history")
+    Call<JSONObject> getBillsHistory(@Query("ccy") String ccy,@Query("type")  String type,@Query("clientId") String clientId,@Query("after") String after,@Query("before") String before,@Query("limit") String limit,@Query("pagingType") String pagingType);
 }

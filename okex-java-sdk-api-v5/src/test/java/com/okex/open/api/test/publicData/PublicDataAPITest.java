@@ -10,6 +10,8 @@ import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.ArrayList;
+
 public class PublicDataAPITest extends PublicDataAPIBaseTest {
     private static final Logger LOG = LoggerFactory.getLogger(PublicDataAPITest.class);
 
@@ -279,6 +281,18 @@ public class PublicDataAPITest extends PublicDataAPIBaseTest {
     @Test
     public void getEstimatedSettlementInfo(){
         JSONObject result = publicDataAPIService.getEstimatedSettlementInfo("");
+        toResultString(LOG, "result", result);
+
+    }
+    /**
+     * 获取历史市场数据Get market-data-history
+     *
+     * GET /api/v5/public/market-data-history
+     */
+    @Test
+    public void getMarketDataHistory(){
+
+        JSONObject result = publicDataAPIService.getMarketDataHistory("1","SPOT","BTC-USDT,ETH-USDT","","daily","1756604295000","1756777095000");
         toResultString(LOG, "result", result);
 
     }

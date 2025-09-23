@@ -2,7 +2,6 @@ package com.okex.open.api.service.funding;
 
 import com.alibaba.fastjson.JSONObject;
 import com.okex.open.api.bean.funding.param.*;
-import retrofit2.http.Query;
 
 public interface FundingAPIService {
 
@@ -78,4 +77,6 @@ public interface FundingAPIService {
     JSONObject applyMonthlyStatement(MonthlyStatement monthlyStatement);
 
     JSONObject getMonthlyStatement(String month);
+
+    JSONObject getBillsHistory(String ccy, String type, String clientId, String after, String before, String limit, String pagingType);
 }

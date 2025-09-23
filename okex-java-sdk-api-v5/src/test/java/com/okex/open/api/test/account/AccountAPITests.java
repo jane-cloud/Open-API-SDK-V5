@@ -790,4 +790,66 @@ public class AccountAPITests extends  AccountAPIBaseTests {
         JSONObject result = this.accountAPIService.getMovePositionsHistory("","","","","","");
         toResultString(LOG, "result", result);
     }
+    /**
+     * 设置自动赚币 set-auto-earn
+     * POST /api/v5/account/set-auto-earn
+     */
+    @Test
+    public void setAutoEarn(){
+        AutoEarn autoEarn = new AutoEarn();
+        autoEarn.setEarnType("");
+        autoEarn.setAction("");
+        autoEarn.setApr("");
+        autoEarn.setCcy("");
+        JSONObject result = this.accountAPIService.setAutoEarn(autoEarn);
+        toResultString(LOG, "result", result);
+    }
+    /**
+     * 仓位创建器趋势图 position-builder-graph
+     * POST /api/v5/account/position-builder-graph
+     */
+    @Test
+    public void positionBuilderGraph(){
+        PositionBuilderGraph positionBuilderGraph = new PositionBuilderGraph();
+
+        positionBuilderGraph.setType("");
+
+        ArrayList list = new ArrayList<>();
+
+        SimAsset simAsset = new SimAsset();
+        simAsset.setAmt("");
+        simAsset.setCcy("");
+
+        list.add(simAsset);
+        positionBuilderGraph.setSimAsset(list);
+
+        ArrayList list2 = new ArrayList<>();
+        SimPos simPos = new SimPos();
+        simPos.setPos("");
+        simPos.setAvgPx("");
+        simPos.setLever("");
+        simPos.setInstId("");
+        list2.add(simPos);
+        positionBuilderGraph.setSimPos(list2);
+
+        MmrConfig mmrConfig = new MmrConfig();
+        mmrConfig.setAcctLv("");
+        mmrConfig.setLever("");
+        positionBuilderGraph.setMmrConfig(mmrConfig);
+
+        JSONObject result = this.accountAPIService.positionBuilderGraph(positionBuilderGraph);
+        toResultString(LOG, "result", result);
+    }
+
+    /**
+     * 设置手续费计价方式。set-fee-type
+     * POST /api/v5/account/set-fee-type
+     */
+    @Test
+    public void setFeeType(){
+        AccountMode account = new AccountMode();
+        account.setFeeType("");
+        JSONObject result = this.accountAPIService.setFeeType(account);
+        toResultString(LOG, "result", result);
+    }
 }

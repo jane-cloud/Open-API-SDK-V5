@@ -6,6 +6,8 @@ import com.okex.open.api.client.APIClient;
 import com.okex.open.api.config.APIConfiguration;
 import com.okex.open.api.service.publicData.PublicDataAPIService;
 
+import java.util.ArrayList;
+
 public class PublicDataAPIServiceImpl implements PublicDataAPIService {
     private APIClient client;
     private PublicDataAPI api;
@@ -154,6 +156,11 @@ public class PublicDataAPIServiceImpl implements PublicDataAPIService {
     public JSONObject getEstimatedSettlementInfo(String instId) {
         return this.client.executeSync(this.api.getEstimatedSettlementInfo(instId));
 
+    }
+
+    @Override
+    public JSONObject getMarketDataHistory(String module, String instType, String instIdList, String instFamilyList, String dateAggrType, String begin, String end) {
+        return this.client.executeSync(this.api.getMarketDataHistory(module,  instType,  instIdList,  instFamilyList,  dateAggrType,  begin,  end));
     }
 
 

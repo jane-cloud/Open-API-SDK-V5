@@ -11,6 +11,15 @@ public class AccountMode {
 
     private String acctLv;
 
+    public String getFeeType() {
+        return feeType;
+    }
+
+    public void setFeeType(String feeType) {
+        this.feeType = feeType;
+    }
+
+    private String feeType;
     @Override
     public String toString() {
         return "AccountMode{" +

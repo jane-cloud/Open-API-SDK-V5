@@ -377,4 +377,20 @@ public class AccountAPIServiceImpl implements AccountAPIService {
     public JSONObject getMovePositionsHistory(String blockTdId, String clientId, String beginTs, String endTs, String limit, String state) {
         return this.client.executeSync(this.api.getMovePositionsHistory(blockTdId,  clientId,  beginTs,  endTs,  limit,  state));
     }
+
+    @Override
+    public JSONObject setAutoEarn(AutoEarn autoEarn) {
+        return this.client.executeSync(this.api.setAutoEarn(autoEarn));
+
+    }
+
+    @Override
+    public JSONObject positionBuilderGraph(PositionBuilderGraph positionBuilderGraph) {
+        return this.client.executeSync(this.api.positionBuilderGraph(positionBuilderGraph));
+    }
+
+    @Override
+    public JSONObject setFeeType(AccountMode account) {
+        return this.client.executeSync(this.api.setFeeType(account));
+    }
 }
