@@ -340,4 +340,19 @@ class FundingApi extends Utils
         return $this->request('/api/v5/asset/convert/history',$params, 'GET');
     }
 
+    public function billsHistory($ccy='',$type='',$clientId='',$after='',$before='',$limit='',$pagingType='')
+    {
+        $params = [
+            'ccy' => $ccy,
+            'type' => $type,
+            'clientId' => $clientId,
+            'after' => $after,
+            'before' => $before,
+            'limit' => $limit,
+            'pagingType' => $pagingType,
+        ];
+
+        return $this->request('/api/v5/asset/bills-history',$params, 'GET');
+    }
+
 }

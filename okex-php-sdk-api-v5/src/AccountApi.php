@@ -758,4 +758,29 @@ class AccountApi extends Utils
 
         return $this->request('/api/v5/account/move-positions-history', $params, 'GET');
     }
+
+    public function setAutoEarn($earnType='',$ccy,$action,$apr='')
+    {
+        $params = [
+            'earnType' => $earnType,
+            'ccy' => $ccy,
+            'action' => $action,
+            'apr' => $apr,
+        ];
+
+        return $this->request('/api/v5/account/set-auto-earn', $params, 'POST');
+    }
+
+    public function positionBuilderGraph($inclRealPosAndEq='',$simPos='',$simAsset='',$type,$mmrConfig)
+    {
+        $params = [
+            'inclRealPosAndEq' => $inclRealPosAndEq,
+            'simPos' => $simPos,
+            'simAsset' => $simAsset,
+            'type' => $type,
+            'mmrConfig' => $mmrConfig,
+        ];
+
+        return $this->request('/api/v5/account/position-builder-graph', $params, 'POST');
+    }
 }

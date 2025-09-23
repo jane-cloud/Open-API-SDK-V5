@@ -350,4 +350,19 @@ class PublicDataAPI extends Utils
 
         return $this->request('/api/v5/public/settlement-history',$params, 'GET');
     }
+
+    public function marketDataHistory($module,$instType,$instIdList='',$instFamilyList='',$dateAggrType,$begin,$end)
+    {
+        $params = [
+            'module' => $module,
+            'instType' => $instType,
+            'instIdList' => $instIdList,
+            'instFamilyList' => $instFamilyList,
+            'dateAggrType' => $dateAggrType,
+            'begin' => $begin,
+            'end' => $end,
+        ];
+
+        return $this->request('/api/v5/public/market-data-history',$params, 'GET');
+    }
 }

@@ -98,6 +98,8 @@ $coin = "XMR";
 //$res = $obj -> spotBorrowRepayHistory();
 //仓位创建器
 // $res = $obj -> positionBuilder('','','','','');
+//仓位创建器趋势图
+// $res = $obj -> positionBuilderGraph('','','','','');
 //设置现货对冲占用
 // $res = $obj -> setRiskOffsetAmt('','');
 //查看账户Greeks
@@ -130,6 +132,8 @@ $coin = "XMR";
 // $res = $obj -> movePositions('');
 //获取移仓历史
 // $res = $obj -> movePositionsHistory('');
+//设置自动赚币
+// $res = $obj -> setAutoEarn('');
 
 
 /**
@@ -152,6 +156,8 @@ $obj = new FundingApi(Config::$config);
 //$res = $obj -> transferState('203950','');
 // 获取资金流水
 //$res = $obj -> getBills('','','','','');
+// 获取资金流水全历史
+//$res = $obj -> billsHistory('','','','','');
 //获取充值地址信息
 //$res = $obj -> getDepositAddress('USDT');
 //获取充值记录
@@ -285,6 +291,8 @@ $obj = new PublicDataAPI(Config::$config);
 //获取指数成分数据
 //$res = $obj->indexComponents('');
 //获取经济日历数据
+//$res = $obj->economicCalendar('');
+//获取历史市场数据
 //$res = $obj->economicCalendar('');
 
 
