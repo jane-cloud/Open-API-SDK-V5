@@ -31,18 +31,18 @@ public class TradeAPITest extends TradeAPIBaseTest {
     public void placeOrder(){
 
         PlaceOrder placeOrder =new PlaceOrder();
-        placeOrder.setInstId("DOT-USDT-SWAP");
+        placeOrder.setInstId("BTC-USDT-SWAP");
         placeOrder.setTdMode("cross");
 //        placeOrder.setCcy("USDT");
         placeOrder.setClOrdId("0423a3a06···");
 //        placeOrder.setTag("");
-        placeOrder.setSide("sell");
-        placeOrder.setPosSide("short");
-        placeOrder.setOrdType("market");
+        placeOrder.setSide("buy");
+        placeOrder.setPosSide("long");
+        placeOrder.setOrdType("limit");
         placeOrder.setSz("1");
         placeOrder.setQuickMgnType("");
 
-//        placeOrder.setPx("60000");
+        placeOrder.setPx("110000");
 //        placeOrder.setReduceOnly(false);
 //        placeOrder.setTgtCcy("");
 //        placeOrder.setBanAmend(false);
@@ -52,11 +52,11 @@ public class TradeAPITest extends TradeAPIBaseTest {
         AttachAlgoOrds attachAlgoOrds = new AttachAlgoOrds();
         attachAlgoOrds.setAttachAlgoClOrdId("");
         attachAlgoOrds.setTpTriggerPxType("");
-        attachAlgoOrds.setTpOrdPx("");
-        attachAlgoOrds.setTpTriggerPx("");
+        attachAlgoOrds.setTpOrdPx("150000");
+        attachAlgoOrds.setTpTriggerPx("150000");
         attachAlgoOrds.setSlTriggerPxType("");
-        attachAlgoOrds.setSlOrdPx("");
-        attachAlgoOrds.setSlTriggerPx("");
+        attachAlgoOrds.setSlOrdPx("100000");
+        attachAlgoOrds.setSlTriggerPx("100000");
         attachAlgoOrds.setSz("");
         attachAlgoOrds.setAmendPxOnTriggerType("");
         attachAlgoOrds.setTpOrdKind("");
